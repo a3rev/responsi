@@ -85,7 +85,7 @@ if ( ! class_exists( 'Customize_iMultiCheckbox_Control' ) && class_exists('WP_Cu
 			#>
 			<div class="customize-control-container">
 				<# if ( data.label ) { #>
-				<span class="customize-control-title customize-imulticheckbox-title">{{{ data.label }}}</span>
+				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
 				<# 
 				_.each(choices, function(  val, key ){
@@ -97,7 +97,7 @@ if ( ! class_exists( 'Customize_iMultiCheckbox_Control' ) && class_exists('WP_Cu
 						checked = '';
 					}
 					#>
-					<div class="responsi-imulticheckbox-item responsi-imulticheckbox-item-{{ key }}">
+					<div class="responsi-imulticheckbox-item imulticheckbox-{{ key }}">
 					<input value="{{ value }}" name="{{ data.setting_id }}_{{ key }}" id="{{ data.setting_id }}_{{ key }}" data-customize-setting-link="{{ data.setting_id }}_{{ key }}" {{{ checked }}} class="responsi-input responsi-imulticheckbox responsi-ui-imulticheckbox" type="checkbox" /><label>{{{ val }}}</label>
 					</div>
 					<div class="clear"></div>

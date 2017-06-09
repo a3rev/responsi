@@ -860,12 +860,8 @@ if ( !function_exists( 'responsi_build_additional' ) ) {
         $atts     = array_merge( $defaults, $atts );
         $output   = '';
 
-        if ( isset( $responsi_options['responsi_footer_below'] ) && 'false' === $responsi_options['responsi_footer_below'] ) {
-            $output = '';
-        } else {
-            if ( isset( $responsi_options['responsi_footer_below'] ) && 'true' === $responsi_options['responsi_footer_below'] ) {
-                $output = sprintf('%1$s%3$s%2$s', $atts['before'], $atts['after'], do_shortcode(apply_filters( 'a3_lazy_load_html', wpautop(responsi_autoembed_media($responsi_options['responsi_footer_below_text'])))));
-            }
+        if( isset( $responsi_options['responsi_footer_below']) && 'true' === $responsi_options['responsi_footer_below'] ){
+            $output = sprintf('%1$s%3$s%2$s', $atts['before'], $atts['after'], do_shortcode(apply_filters( 'a3_lazy_load_html', wpautop(responsi_autoembed_media($responsi_options['responsi_footer_below_text'])))));
         }
         return apply_filters( 'responsi_build_additional', $output, $atts );
 

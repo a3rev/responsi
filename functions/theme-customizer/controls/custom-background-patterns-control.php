@@ -86,7 +86,7 @@ if ( ! class_exists( 'Customize_Background_Patterns_Control' ) && class_exists('
 				}
 			#>
 			<div class="customize-control-container">
-				<span class="customize-control-title customize-background-patterns-title"><?php echo __( 'Background Tiles', 'responsi' ); ?></span>
+				<span class="customize-control-title"><?php echo __( 'Background Tiles', 'responsi' ); ?></span>
 				<#
 				var i = 0;
 				var checked = '';
@@ -107,7 +107,7 @@ if ( ! class_exists( 'Customize_Background_Patterns_Control' ) && class_exists('
 					</span>
 				<# }); #>
 				<hr class="customize-background-line">
-				<span class="customize-control-title customize-background-patterns-title"><?php echo __( 'Patterns', 'responsi' ); ?></span>
+				<span class="customize-control-title"><?php echo __( 'Patterns', 'responsi' ); ?></span>
 				<#
 				_.each( patterns, function( val, key ) {
 					i++;

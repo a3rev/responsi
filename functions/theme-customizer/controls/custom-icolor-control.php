@@ -53,10 +53,10 @@ if ( ! class_exists( 'Customize_iColor_Control' ) && class_exists('WP_Customize_
 			?>
 			<div class="customize-control-container">
 				<# if ( data.label ) { #>
-				<span class="customize-control-title customize-icolor-title">{{{ data.label }}}</span>
+				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
 				<div class="icolor-container">
-					<input class="color-picker-hex responsi-color-picker responsi-icolor responsi-icolor-color" type="text" value="{{ data.defaultValue }}" data-default-color="{{ data.defaultValue }}" />
+					<input class="color-picker-hex responsi-color-picker" type="text" value="{{ data.defaultValue }}" data-default-color="{{ data.defaultValue }}" />
 				</div>
 				<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>

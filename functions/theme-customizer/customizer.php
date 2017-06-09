@@ -32,6 +32,7 @@ class Responsi_Theme_Customizer {
 		}
 	}
 
+
 	public function responsi_default_scripts( &$scripts ) {
 		global $responsi_version;
 
@@ -73,7 +74,7 @@ class Responsi_Theme_Customizer {
 
 		// Registry main responsi customize script
 		$scripts->add( 'responsi-customize-function-preview', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.function.preview' .$suffix . '.js', array( 'jquery', 'customize-preview' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize', get_template_directory_uri() . '/functions/theme-customizer/js/customize' .$suffix . '.js', array( 'jquery', 'customize-controls' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize', get_template_directory_uri() . '/functions/theme-customizer/js/customize' .$suffix . '.js', array( 'jquery', 'wp-util', 'customize-controls', 'responsi-customize-function-preview', 'customize-preview' ), $responsi_version, true );
 
 		// Registry control scripts
 		$scripts->add( 'responsi-customize-controls', get_template_directory_uri() . '/functions/theme-customizer/js/customize-controls' . $suffix . '.js', array( 'jquery', 'wp-backbone', 'customize-controls', 'wp-color-picker' ), $responsi_version, true );
@@ -761,7 +762,11 @@ class Responsi_Theme_Customizer {
 	public function responsi_add_dynamic_css() {
 
 		if ( is_customize_preview() ) {
-			wp_add_inline_style( 'customize-preview', responsi_build_dynamic_css( true ) );
+			if( is_child_theme() ){
+				wp_add_inline_style( 'responsi-theme', responsi_build_dynamic_css( true ) );
+			}else{
+				wp_add_inline_style( 'responsi-framework', responsi_build_dynamic_css( true ) );
+			}
 		} else {
 			$framework_custom_css = get_theme_mod( 'framework_custom_css' );
 			if ( false === $framework_custom_css ) {

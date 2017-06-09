@@ -4,7 +4,7 @@ Theme URI: https://www.a3rev.com/themes/responsi
 Author: a3THEMES
 Author URI: https://a3rev.com/
 Description: WordPress Designers have been calling for it and at last it is here - a lightweight Framework that sits on top of core WordPress to make every aspect of WordPress theme design completely customizable with instant live preview. Install and activate Responsi Framework and it opens the WordPress Customizer menu with its 700+ site layout and style options. Sick of searching for a WordPress Theme that fits all of your projects requirements? The fully customizable and extendable Responsi Framework is your answer. Are you a designer not a coder? Responsi Framework is for you. The customizer allows you to see every change live as it is made in the customizer preview screen.  The customizer menu has been sorted logically into all elements of a WordPress site e.g. Site Structure, Header, Nav Bars, Site Body, Pages, Blog Posts, Blog Cards, Footer Widgets, Footer, to make creating and editing site layout and style a simple process. Responsi Framework empowers everyone regardless of skill level or experience to create a unique hand crafted WordPress theme for their site. Built in cross platform code with mobile first focus means you never have to worry about your design breaking in tablet or mobile, your handcrafted theme design will always show perfectly in any browser. Responsi Framework changes the way that we think about WordPress Themes. The Framework is endlessly extendable with a built in ecosystem of Free and Premium Responsi Plugins that add advanced features to the Framework (see Responsi Plugins menu in the WordPress Appearance menu). The Responsi Themes menu has Responsi Starter Child themes for those looking for some design starter inspiration. Or just add content and launch your fully mobile responsive site right away.
-Version: 6.5.9.11
+Version: 6.5.9.12
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Copyright: (c) 2011 a3THEMES Software Development team.
@@ -19,6 +19,8 @@ To make it easy to update your theme, you should not edit the styles in this fil
 the custom.css file to add your styles. You can copy a style from this file and paste it in
 custom.css and it will override the style in this file. You have been warned! :)
 */
+html{height:100%;}
+body{height:100%;overflow-x:hidden;margin:0;padding:0;border:0;outline:0;font-size:100%;box-sizing:border-box;}
 article,aside,details,figcaption,figure,footer,header,nav,section,summary{display:block;}
 audio,canvas,video{display:inline-block;}
 audio:not([controls]){display:none;height:0;}
@@ -64,11 +66,9 @@ ol,ul{list-style:none;}
 li > ul,li > ol{margin:0;}
 nav ul,nav ol{list-style:none;list-style-image:none;}
 menu,ol,ul{margin:0 0 15px 0;padding:0 0 0 30px;}
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;background-color:transparent;box-sizing:border-box;}
+html,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;background-color:transparent;box-sizing:border-box;}
 .clearfix:before,.clearfix:after,.site-width:before,.site-width:after,.col-full:after,.col-full:before,.box-content:after,.box-content:before,.sub_categories_container:after,.sub_categories_container:before,.custom_box:after,.custom_box:before{clear:both;content:".";display:block;height:0;visibility:hidden;width:100%;line-height:0;overflow:hidden;}
-html body * span.clear,html body * div.clear,html body * li.clear,html body * dd.clear{background:0;border:0;clear:both;display:block;float:none;font-size:0;list-style:none;margin:0;padding:0;overflow:hidden;visibility:hidden;width:0;height:0;}
-html{height:100%;}
-body{height:100%;overflow-x:hidden;}
+html body * span.clear,html body * div.clear,html body * li.clear,html body * dd.clear{background:transparent;border:0;clear:both;display:block;float:none;font-size:0;list-style:none;margin:0;padding:0;overflow:hidden;visibility:hidden;width:0;height:0;}
 a:link,a:visited{text-decoration:none;}
 a:hover{text-decoration:none;}
 a:focus:hover{color:lime;}
@@ -86,15 +86,15 @@ table tr th:last-child,table tr td:last-child{border-right:none;}
 table tbody tr:first-child th,table tbody tr:first-child td{border-bottom:1px solid #eee;border-top:1px solid #dbdbdb;}
 table tbody tr:last-child th,table tbody tr:last-child td{border-bottom:0;}
 table tbody:first-child tr:first-child th,table tbody:first-child tr:first-child td{border-top:0;}
-video{max-width:100%;height:auto;}
+.video_ojbect_container video{max-width:100%;height:auto;}
 iframe{max-width:100%;}
 embed{max-width:100%;}
 object{max-width:100%;}
-.wp-video{margin-left:auto;margin-right:auto;position:relative!important;height:auto!important;}
-.wp-video *{max-width:100%!important;float:left;}
-.mejs-mediaelement{position:relative!important;height:auto!important;}
-.mejs-video{position:relative!important;height:auto!important;}
-.wp-video-shortcode{max-width:100%;}
+.video_ojbect_container .wp-video{margin-left:auto;margin-right:auto;position:relative!important;height:auto!important;}
+.video_ojbect_container .wp-video *{max-width:100%!important;float:left;}
+.video_ojbect_container .mejs-mediaelement{position:relative!important;height:auto!important;}
+.video_ojbect_container .mejs-video{position:relative!important;height:auto!important;}
+.video_ojbect_container .wp-video-shortcode{max-width:100%;}
 .video_ojbect_container{text-align:center;position:relative;overflow:hidden;}
 .video_ojbect_container .lazy-hidden{position:relative!important;z-index:0!important;}
 .clear{clear:both;}
@@ -124,7 +124,7 @@ object{max-width:100%;}
 .entry .quote cite:before{content:'~ ';}
 .entry p,p{margin-bottom:10px;}
 .entry-bottom a.button,.masonry-brick .button,.masonry-brick .button:visited{margin-bottom:0!important;margin-top:0!important;}
-.entry .quote,.entry .video{margin-bottom:1.5em;}
+.entry .quote,.entry .video_ojbect_container .video{margin-bottom:1.5em;}
 .entry .quote blockquote,#main .quote blockquote{font-style:italic;}
 .entry ol,#additional ol{margin:0 0 15px 0;padding:0 0 0 30px;}
 .entry ul,#additional ul{margin:0 0 15px 0;padding:0 0 0 30px;}
@@ -147,6 +147,7 @@ object{max-width:100%;}
 .post-entries{clear:both;margin-top:0;margin-bottom:10px;display:inline-block;width:100%;box-sizing:border-box;}
 .post-entries a:hover{text-decoration:none;color:#666;}
 .widget{margin:0;}
+.widget .fw_widget_title:empty, .widget .fw_widget_content:empty {display:none !important;}
 .widget p{font-size:12px;}
 .widget ul li{list-style:none;}
 .widget ul li a:hover{text-decoration:underline;}

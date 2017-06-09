@@ -78,7 +78,7 @@ if ( ! class_exists( 'Customize_Slider_Control' ) && class_exists('WP_Customize_
 			<# var setting_id = data.setting_id; #>
 			<div class="customize-control-container">
 				<# if ( data.label ) { #>
-				<span class="customize-control-title customize-slider-title">{{{ data.label }}}</span>
+				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
 				<div class="responsi-range-slider">
 					<div class="ui-slide" id="{{ setting_id }}_div"></div>

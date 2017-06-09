@@ -104,14 +104,14 @@ if ( ! class_exists( 'Customize_Border_Radius_Control' ) && class_exists('WP_Cus
 			#>
 			<div class="customize-control-container {{ data.custom_class }}">
 				<# if ( data.label ) { #>
-				<span class="customize-control-title customize-border-title">{{{ data.label }}}</span>
+				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
 				<div class="border-radius-container">
 					<div class="responsi-iphone-checkbox responsi-iswitcher-checkbox">
 						<input type="checkbox" data-customize-setting-link="{{ setting_id }}[corner]" id="{{ setting_id }}_corner" name="{{ setting_id }}[corner]" value="{{ value }}" {{{ checked }}} class="checkbox responsi-input responsi-ui-icheckbox responsi-ui-iswitcher" />
 					</div>
 					<div class="clear"></div>
-					<div class="responsi-range-slider responsi-border-corner-slider">
+					<div class="responsi-range-slider">
 						<div class="ui-slide" id="{{ setting_id }}_rounded_div"></div>
 						<input type="text" readonly="readonly" data-customize-setting-link="{{ setting_id }}[rounded_value]" id="{{ setting_id }}_rounded" name="{{ setting_id }}[rounded_value]" value="{{ rounded_value }}" class="responsi-input regular-text responsi-slide-value" />
 					</div>

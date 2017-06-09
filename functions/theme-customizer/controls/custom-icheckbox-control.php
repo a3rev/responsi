@@ -95,9 +95,9 @@ if ( ! class_exists( 'Customize_iCheckbox_Control' ) && class_exists('WP_Customi
 			#>
 			<div class="customize-control-container">
 				<# if ( data.label ) { #>
-				<span class="customize-control-title customize-<?php echo $this->type; ?>-title">{{{ data.label }}}</span>
+				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
-				<div class="responsi-iphone-checkbox responsi-<?php echo $this->type; ?>-checkbox">
+				<div class="responsi-iphone-checkbox">
 					<input type="checkbox" data-customize-setting-link="{{ setting_id }}" id="{{ setting_id }}" name="{{ setting_id }}" value="{{ value }}" {{{ checked }}} class="checkbox responsi-input responsi-ui-icheckbox <?php echo $this->ui_class; ?>" />
 				</div>
 				<# if ( data.description ) { #>

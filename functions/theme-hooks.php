@@ -31,7 +31,7 @@ function responsi_register_styles( $styles ){
 	}
 }
 
-add_action( 'wp_default_styles', 'responsi_register_styles', 11 );
+add_action( 'wp_default_styles', 'responsi_register_styles', 1 );
 
 /*-----------------------------------------------------------------------------------*/
 /* Theme Enqueue Google Fonts */

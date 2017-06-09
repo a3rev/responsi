@@ -86,7 +86,7 @@ if ( ! class_exists( 'Customize_Multiple_Text_Control' ) && class_exists('WP_Cus
 			#>
 			<div class="customize-control-container">
 				<# if ( data.label ) { #>
-				<span class="customize-control-title customize-multitext-title">{{{ data.label }}}</span>
+				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
 				<#
 				var i = 0;

@@ -14,7 +14,6 @@ function responsi_wp_editor_customize() {
 			do_action('filter_mce_external_plugins_after');
 			$output .= ob_get_clean();
 			echo $output;
-
 			?>
 			<p><a href="#" data-id="setting-id" class="button button-primary update-editor-button"><?php echo __( 'Save and close', 'responsi' ); ?></a></p>
 		</div>
@@ -98,7 +97,7 @@ if ( ! class_exists( 'Customize_iEditor_Control' ) && class_exists('WP_Customize
 			<# var setting_id = data.settings['default']; #>
 			<div class="customize-control-container">
 				<# if ( data.label ) { #>
-				<span class="customize-control-title customize-itext-title">{{{ data.label }}}</span>
+				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
 				<div class="ieditor-container">
 					<button type="button" class="button show-editor-button" id="{{ setting_id }}">{{{ data.button_label }}}</button>

@@ -51,9 +51,9 @@ if ( ! class_exists( 'Customize_iLabel_Control' ) && class_exists('WP_Customize_
 		 */
 		public function content_template() {
 			?>
-			<div class="customize-control-ilabel-container">
+			<div class="ilabel-container">
 				<# if ( data.label ) { #>
-				<span class="customize-control-title customize-control-ilabel-title">{{{ data.label }}}</span>
+				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
 				<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>

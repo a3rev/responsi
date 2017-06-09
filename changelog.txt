@@ -1,5 +1,13 @@
 *** Responsi Framework Changelog ***
 
+= 6.5.9.12 - 2017/06/09 =
+* Tweak - Tested for full compatibility with WordPress 4.8
+* Tweak  Make register_sidebar compatibility with WordPress 4.8
+* Tweak - Remove class not use on customize control
+* Tweak - Hook customize inline style on customize-preview to responsi-framework same order frontend load 
+* Fix - Background colour control not applied in customizer preview 
+* Fix  h title fonts not being applied by some response plugins such as Home Builder
+
 = 6.5.9.11 - 2017/04/25 =
 * Tweak - Tested for full compatibility with WordPress 4.7.4
 * Tweak - Jumped version from 6.5.9.9 to 6.5.9.11 

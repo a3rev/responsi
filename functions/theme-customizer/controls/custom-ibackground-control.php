@@ -103,10 +103,10 @@ if ( ! class_exists( 'Customize_iBackground_Control' ) && class_exists('WP_Custo
 			#>
 			<div class="customize-control-container {{ data.custom_class }}">
 				<# if ( data.label ) { #>
-				<span class="customize-control-title customize-ibackground-title">{{{ data.label }}}</span>
+				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
 				<div class="ibackground-container">
-					<div class="responsi-iphone-checkbox responsi-icheckbox-checkbox">
+					<div class="responsi-iphone-checkbox">
 						<input type="checkbox" data-customize-setting-link="{{ setting_id }}[onoff]" id="{{ setting_id }}_onoff" name="{{ setting_id }}[onoff]" value="{{ onoff_value }}" {{{ onoff_checked }}} class="checkbox responsi-input responsi-ibackground-onoff responsi-ui-icheckbox" />
 					</div>
 					<div class="responsi-ibackground-container">

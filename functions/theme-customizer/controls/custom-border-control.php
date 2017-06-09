@@ -96,7 +96,7 @@ if ( ! class_exists( 'Customize_Border_Control' ) && class_exists('WP_Customize_
 			#>
 			<div class="customize-control-container {{ data.custom_class }}">
 				<# if ( data.label ) { #>
-				<span class="customize-control-title customize-border-title">{{{ data.label }}}</span>
+				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
 				<div class="border-container">
 					<select data-customize-setting-link="{{ setting_id }}[width]" name="{{ setting_id }}[width]" class="responsi-border responsi-border-width" >

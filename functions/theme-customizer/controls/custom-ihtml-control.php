@@ -53,7 +53,7 @@ if ( ! class_exists( 'Customize_iHtml_Control' ) && class_exists('WP_Customize_C
 			?>
 			<div class="customize-control-ihtml-container">
 				<# if ( data.label ) { #>
-				<span class="customize-control-title customize-control-ihtml-title">{{{ data.label }}}</span>
+				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
 				<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>

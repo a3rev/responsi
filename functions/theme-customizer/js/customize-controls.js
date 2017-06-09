@@ -125,9 +125,9 @@
 			var corner_value = control.params.values.corner;
 
 			if (corner_value == checked_value) {
-				control.container.find('.responsi-border-corner-slider').show();
+				control.container.find('.responsi-range-slider').show();
 			} else {
-				control.container.find('.responsi-border-corner-slider').hide();
+				control.container.find('.responsi-range-slider').hide();
 			}
 
 			var section_container = control.container.parent('ul.accordion-section-content').parent('li.accordion-section');
@@ -152,10 +152,10 @@
 							var status = value.toString();
 							if (elem.prop('checked')) {
 								var val = checked_value;
-								control.container.find('.responsi-border-corner-slider').show();
+								control.container.find('.responsi-range-slider').show();
 							} else {
 								var val = unchecked_value;
-								control.container.find('.responsi-border-corner-slider').hide();
+								control.container.find('.responsi-range-slider').hide();
 							}
 							control.settings[control_id + '[corner]'].set(val);
 							switcher.trigger("responsi-ui-icheckbox-switch", [elem, status]);

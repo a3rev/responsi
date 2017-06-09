@@ -88,7 +88,7 @@
 			}
 			$('#' + groupID + ' .header-widgets-logic .responsi-imulticheckbox-item').hide();
 			for (var i = 1; i <= widget_num; i++) {
-				$('#' + groupID + ' .responsi-imulticheckbox-item-' + i).show();
+				$('#' + groupID + ' .imulticheckbox-' + i).show();
 			}
 
 			//Sidebar Widget Mobile
@@ -174,7 +174,6 @@
 		},
 
 		handleEvents: function() {
-
 			$(document).on('responsi-ui-iradio-switch', '.customize-control input[name="responsi_comments"]', function(elem, status) {
 				if ($(this).prop("checked")) {
 					if ($(this).val() == 'none') {
@@ -306,7 +305,7 @@
 				}
 				$('.header-widgets-logic .responsi-imulticheckbox-item').hide();
 				for (var i = 1; i <= w_num; i++) {
-					$('.responsi-imulticheckbox-item-' + i).slideDown();
+					$('.imulticheckbox-' + i).slideDown();
 				}
 			});
 
@@ -396,7 +395,7 @@
 	};
 
 	$(document).ready( function() {
-		responsiCustomizeBase.handleEvents();
+		//responsiCustomizeBase.handleEvents();
 		$('li.control-section-default, ul.customize-pane-child').on('expanded', function() {
 			var groupID = $(this).attr('id');
 			responsiCustomizeBase.setup_ui_custom_logic(groupID);
@@ -438,6 +437,15 @@
 			}
 
 		});
+
 	});
 
 })(window.wp, jQuery);
+
+wp.customize.responsiFrameworkCustomize = wp.customize.ResponsiFrameworkPreview = ( function( $, _, wp, api ) {
+
+	api.bind( 'preview-ready', function() {
+		responsiCustomizeBase.handleEvents();
+	} );
+
+}( jQuery, _, wp, wp.customize ) );

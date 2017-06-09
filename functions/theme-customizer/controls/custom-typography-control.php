@@ -96,7 +96,7 @@ if ( ! class_exists( 'Customize_Typography_Control' ) && class_exists('WP_Custom
 			#>
 			<div class="customize-control-container {{ data.custom_class }}">
 				<# if ( data.label ) { #>
-				<span class="customize-control-title customize-typography-title">{{{ data.label }}}</span>
+				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
 				<div class="typography-container">
 					<select data-customize-setting-link="{{ setting_id }}[size]" name="{{ setting_id }}[size]" class="responsi-typography responsi-typography-size" >

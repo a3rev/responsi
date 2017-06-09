@@ -75,7 +75,7 @@ if ( ! class_exists( 'Customize_iText_Control' ) && class_exists('WP_Customize_C
 			<# var setting_id = data.settings['default']; #>
 			<div class="customize-control-container">
 				<# if ( data.label ) { #>
-				<span class="customize-control-title customize-itext-title">{{{ data.label }}}</span>
+				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
 				<div class="clear itext-clear"></div>
 				<div class="itext-container">

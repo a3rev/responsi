@@ -81,7 +81,7 @@ if ( ! class_exists( 'Customize_iSelect_Control' ) && class_exists('WP_Customize
 			#>
 			<div class="customize-control-container">
 				<# if ( data.label ) { #>
-				<span class="customize-control-title customize-iselect-title">{{{ data.label }}}</span>
+				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
 				<div class="iselect-container">
 					<select class="responsi-iselect" name="{{ setting_id }}" id="{{ setting_id }}" data-customize-setting-link="{{ setting_id }}">

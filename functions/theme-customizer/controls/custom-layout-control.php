@@ -78,7 +78,7 @@ if ( ! class_exists( 'Customize_Layout_Control' ) && class_exists('WP_Customize_
 			#>
 			<div class="customize-control-container">
 				<# if ( data.label ) { #>
-				<span class="customize-control-title customize-layout-title">{{{ data.label }}}</span>
+				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
 				<# 
 				var checked = '';
