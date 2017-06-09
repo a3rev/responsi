@@ -1,0 +1,1286 @@
+*** Responsi Framework Changelog ***
+
+= 6.5.9.11 - 2017/04/25 =
+* Tweak - Tested for full compatibility with WordPress 4.7.4
+* Tweak - Jumped version from 6.5.9.9 to 6.5.9.11 
+* Fix - Primary Navigations background option not appling on some child themes
+
+= 6.5.9.9 - 2017/01/18 =
+* Tweak - Load logic js when click to expand menus instead of when customize js is finished loading to prevent third party plugins broken js from blocking customizer menu loading.
+* Credit - Thanks to Sorin Gabriel for finding and reporting the bug
+
+= 6.5.9.8 - 2016/12/23 =
+* Fix - Responsi menu icon not showing in WordPress admin tool bar menus when a3rev Dashboard plugin is not activated
+
+= 6.5.9.7 - 2016/12/07 =
+* Tweak – Add Custom CSS feature updated to the new WordPress 4.7 custom CSS feature in the customizer
+* Tweak – Update blog template for compatibility with WordPress 4.7 new Post Type Templates feature
+* Tweak - Tested for full compatibility with WordPress major version 4.7.0
+
+= 6.5.9.6 - 2016/12/01 =
+* Tweak – Framework now auto adds Responsi menu to the WP Top Admin Tool Bar. Previously was an option on the Responsi Developer plugin
+* Tweak – Updated google fonts lib to the latest version.
+* Tweak - Tested for full compatibility with WordPress version 4.7.0 RC1
+
+= 6.5.9.5 - 2016/11/25 =
+* Tweak – Use Global variables in framework for file and template instead of declaring in function
+* Tweak - Tested for full compatibility with WordPress version 4.7.0 RC1 
+* Fix - Post meta missing in google structure data when Post Enhancer Plugin not installed
+
+= 6.5.9.4 - 2016/11/22 =
+* Tweak - Function responsi_header() make wp_head() is the last item placed just before the closing </head> tag
+* Tweak - Function responsi_footer() make wp_footer() is the last item placed just before the closing </body> tag
+* Tweak - Removed the dummy content used to populate footer widgets
+* Tweak - Removed TGM Plugins
+* Tweak - Removed wp_reset_query()
+* Tweak - Added wp_localize_script for masonry custom js
+* Tweak – Remove responsi_site_logo() function use custom-logo core wordpress
+* Tweak - Default value for custom-logo use Site Title while theme active.
+* Tweak - Removed add_filter( 'doing_it_wrong_trigger_error', 'set_wp_debug_display', 1 );
+* Tweak - wp_enqueue_script( 'jquery' ); - use a dependent script's array to include it.
+* Tweak - Change index loop to default WordPress code
+* Tweak - Change GPLv3 to GPLv2 in style.css
+* Tweak - Added non minified version of jquery.infinitescroll.min.js.
+* Tweak - Removed maskedinput js.
+* Tweak - Removed responsi_theme_activate_redirect(), when activate theme don't redirect to customize.
+* Tweak - Removed shortcode creation - add to shortcode plugin.
+* Tweak - Removed add_filter( 'widget_text', 'do_shortcode' ) and add to shortcode plugin.
+* Tweak - Removed responsi_generator_tag() function.
+* Tweak - Removed add_theme_support( 'favicon' );
+* Tweak - Removed add_theme_support( 'nav-menus' );
+* Tweak - Removed $wp_customize->remove_section( 'colors' );
+* Tweak - Removed $wp_customize->remove_section( 'header_image' );
+* Tweak - Removed $wp_customize->remove_section( 'background_image' );
+* Tweak - Removed $wp_customize->remove_control( 'display_header_text' );
+* Tweak - Removed function responsi_sass_compile_less_mincss() use inline-style for dynamic CSS
+* Tweak - Change responsi_build_sass_css() function to responsi_build_dynamic_css() and add escaping.
+* Tweak - Add escaping responsi_generate_border() function
+* Tweak - Add escaping responsi_generate_box_shadow() function
+* Tweak - Add escaping responsi_generate_border_radius() function
+* Tweak - Add escaping responsi_generate_background_color() function
+* Tweak - Add escaping responsi_generate_border_radius_value() function
+* Tweak - Add escaping responsi_generate_fonts() function
+* Tweak - Tested for full compatibility with WordPress version 4.7.0 with this version
+
+= 6.5.9.3 - 2016/11/08 =
+* Fix - Blog cards and product card not resizing correctly in mobile when change screen wide.
+
+= 6.5.9.2 - 2016/11/01 =
+* Fix - CSS show images while masonry class is being loaded for container image container. This fixes a conflict some plugin that use masonry and infinite scroll
+
+= 6.5.9.1 - 2016/10/31 =
+* Fix - Masonry conflict with WooCommerce Product Sort and Display while endless scroll load
+
+= 6.5.9 - 2016/10/28 =
+* Tweak - Image load on product cards.
+* Fix - Masonry conflict with lazyload plugins
+
+= 6.5.8 - 2016/10/27 =
+* Fix - Footer Copyright Notice ON | OFF option show default in 6.5.7
+* Fix - Avariale $responsi_navi_border_padding_right in general dynamic css bug in 6.5.7
+
+= 6.5.7 - 2016/10/26 =
+* Tweak: Full code security audit. Gone through the code line by line sanitize all inputs and escape all outputs in strict compliance with WordPress codex best practices.
+* Tweak: Update PHP Comparison Operators
+* Tweak - Tested for full compatibility with PHP 7.0 with this version
+* Tweak - Tested for full compatibility with WordPress 4.6.1 with this version
+* Fix - Header widgets ON | OFF option for mobile not working since version 6.5.6
+* Fix - Endless scroll js conflict with a3 Lazy Load
+
+= 6.5.6 - 2016/10/11 =
+* Tweak - Change all framework function prefixing from a3rev_ to responsi_ 
+* Tweak - Change all framework variable prefixing from a3rev_ to responsi_ 
+* Tweak - Change all framework ID Class prefixing in structure html from a3rev- to responsi- 
+* Tweak - Rewrite customizer save theme_mods to WordPress core
+* Tweak - Tested for full compatibility with PHP 7.0 with this version
+* Tweak - Tested for full compatibility with WordPress 4.6.1 with this version
+
+= 6.5.5 - 2016/09/15 =
+* Tweak - Tweak rewrite customizer save theme options to only create one row in options table instead of create several rows for compatibility with WordPress Repo guidelines
+* Tweak - Rewrite custom customizer control functions to theme_mods function of WordPress core
+* Tweak - Remove SASS and LESS compiler from framework. Replace with function minify CSS for compatibility with WordPress Repo guidelines
+* Tweak - Remove favicon.png option from customizer. Option exist in WordPress core. Done for compatibility with WordPress Repo Guidelines
+* Tweak - Add support for TMG plugins class as recommended by WordPress Repo Guidelines
+* Tweak - Replace recommend Responsi Dummy Data plugin with TGM Plugin recommendation
+* Tweak - Tested for full compatibility with PHP 7.0
+* Tweak - Tested for full compatibility with WordPress 4.6.1
+
+= 6.5.4 - 2016/08/25 =
+* Fix - Fixed bug widgets margin in version 6.5.3 after change widget structure html
+
+= 6.5.3 - 2016/08/23 =
+* Tweak - Tweak sidebar widgets HTML structure
+* Tweak - Tweak CSS and JS for sidebar widgets
+
+= 6.5.2 - 2016/08/20 =
+* Tweak - Major code review and rewrite to improve Customizer menu and site preview load times
+* Tweak - Call customizer menu fonts from the default font of computer it is being viewed on. Previously Open Sans was called from Google Fonts and slow the customizer load 
+* Tweak - Review and rewrite all Customizer Preview JavaScripts to make them smaller for faster load in customizer
+* Tweak - Review and tidy up customizer HTML. Removed unnecessary white space and some style inline in control for faster load
+
+= 6.5.1 - 2016/08/16 =
+* Tweak - Tweak iUpload control async Media Upload in WordPress 4.6
+* Tweak - Tested for full compatibility with upcoming Major WordPress version 4.6
+
+= 6.5.0 - 2016/08/16 =
+* Feature - Performance enhancement - google webfonts now load locally not call to google fonts API on page load
+* Feature - Performance enhancement - rewrite load CSS from external links to added them by class in style CSS
+* Feature - Enqueue style and script support for Responsi Developer plugin version 1.4.0 new Minify JS, CSS and HTML feature
+* Tweak - Tweak iUpload control async Media Upload in WordPress 4.6
+* Tweak - Tested for full compatibility with upcoming WordPress version 4.6
+
+= 6.4.2 - 2016/07/16 =
+* Tweak - Tweak function a3rev_google_webfonts() wp_enqueue_style a google-fonts url
+* Fix - Tweak general.js masonry breaking column in IE 9 when caching plugins as used example WP Super Cache
+
+= 6.4.1 - 2016/07/05 =
+* Tweak - Tweak icon shiftclick don’t override element while sift+click icon
+* Fix - Responsi fontface conflict with Responsi icon fontface
+
+= 6.4.0 - 2016/07/02 =
+* Feature - Added full support for shift-click to edit site elements in customizer preview.
+* Feature - Shift- Click on any element of the framework in the customizer and that elements style and layout options open in the customizer menu
+
+= 6.3.9 - 2016/06/29 =
+* Fix - Conflict with WooCommerce Template loop ajax update cart popup, remove trigger('added_to_cart') after image is loaded
+
+= 6.3.8 - 2016/06/23 =
+* Tweak - Tweak a3rev_nav() function support filter a3rev_mobile_navigation_before and a3rev_mobile_navigation_after
+* Tweak - Tested for full compatibility with WordPress version 4.5.3
+* Fix - Primary Nav Bar dropdown menu layout.css z-index showing behind some container on home page
+* Fix - Blockquote icon css conflict in bbpress replies
+
+= 6.3.7 - 2016/06/15 =
+* Tweak - Tweak layout.css for z-index support for Responsi Header Extender Plugin
+* Tweak - Tweak layout.css for Mobile Nav Bar Dropdown style support for Responsi Header Extender Plugin
+* Tweak - Tweak a3rev_nav() function fix structure for Navigation in Mobile.
+* Tweak - Tested for full compatibility with upcoming WordPress version 4.5.3
+
+= 6.3.6 - 2016/06/07 =
+* Tweak - Removed accessibility-ready tags
+* Tweak - Customize options by adding background color for #wrapper-container
+* Tweak - Updated media screen from min-width 768 to 721.
+* Fix - Style navigation to fix navigation has child arrow style
+
+= 6.3.5 - 2016/06/01 =
+* Tweak - Responsi to pass validation tests with WordPress Theme Cheker plugin
+* Tweak - Responsi passed the tests with Wordpress theme unit test data.
+* Tweak - Updated Responsi Theme placeholder description
+* Tweak - Added new Responsi Header Extender plugin to the Responsi Plugins menu
+* Tweak - Removed Responsi Header Navbar plugin from the Responsi Plugins menu - superseded with the Responsi Header Extender plugin
+* Tweak - Submitted Responsi to wordpress.org theme reviewers
+* Tweak - Created a plugin Responsi Framework public repo on Github
+* Tweak - Added Download Plugin to repo and commenced building Description and download page on a3rev
+
+= 6.3.4 - 2016/05/26 =
+* Tweak - Add CSS control .ilabel2 and .ilabel3 for customize UI
+* Tweak - Add js function setup_ui_unhide_hidden_custom_sub() in customize.js support validate for plugins on customize
+* Tweak - Tested for full compatibility with WordPress version 4.5.3
+
+= 6.3.3 - 2016/05/04 =
+* Tweak - Add Css for .fb_iframe_widget fix Facebook widget width resize in mobiles
+
+= 6.3.2 - 2016/05/03 =
+* Tweak - Change Header Widgets display from 1 column to 2 column layout in Tablet browsers
+* Tweak - Change Footer Widgets display from 1 column to 2 column layout in Tablet browsers
+
+= 6.3.1 - 2016/04/29 =
+* Tweak - Tweak sidebar widgets to add customizer shift+click edit feature for Responsi plugins
+* Tweak - Tested for full compatibility with WordPress version 4.5.1
+* Fix - Nav Bar Menus Items arrow icon not showing in customizer when item have sub menu dropdown
+
+= 6.3.0 - 2016/04/25 =
+* Feature - Header Widgets - add default blank widgets Lorem Ipsum text that shows until a widget is added
+* Feature - Header Widgets - added support on customizer preview for shift-click feature
+
+= 6.2.0 - 2016/04/22 =
+* Feature - Added support for shift-click Selective Refresh for Header Logo editing
+* Feature - Added support for shift-click Selective Refresh for Footer editing
+
+= 6.1.0 - 2016/04/19 =
+* Feature - Site Structure added Boxed Content Inner Border style option to Site Layout menu
+* Feature - Boxed Content Inner Border options are Background Colour, Borders, Border Corner, Border Shadow, Margin and Padding
+
+= 6.0.0 - 2016/04/12 =
+* Feature - Linking Partials to Controls "Shift-click to edit this widget." on widgets areas in WordPress version 4.5
+* Feature - Selective Refresh in the Customizer work on widgets and Navigation Menus in WordPress version 4.5
+* Tweak - Changes to the Term Edit Page to work with WordPress 4.5
+* Tweak - function a3rev_sidebar() support filter "a3rev_dynamic_sidebar_has_widgets" so Responsi Custom Sidebar Plugins can Hook to this filter
+* Tweak - Tested for full compatibility with WordPress version 4.5
+
+= 5.9.1 - 2016/04/05 =
+* Tweak - Add Margin options for widgets title container
+* Tweak - Added a3rev_get_thumbnail_image() function support and add customizer style options
+* Tweak - Changed More Features menu name to Responsi Plugins and Themes
+
+= 5.9.0 - 2016/03/28 =
+* Feature - Added Site Header - Header Content Container full style options. Find the new options on the Header > Header - Style menu
+* Tweak - Remove hardcode css #wrapper-header-container on layout.css
+* Fix - Widgets preview js confict on Home Builder plugins which fixes text editor options not working on Home Widget area preview
+
+= 5.8.0 - 2016/03/25 =
+* Feature - Refactor Framework structure to convert from 5 Column layout framework to a 6 column layout framework
+* Feature - Added ON | OFF switch feature for Header Widget layout. Used to have to select it from icons and was not clear 
+* Feature - Added ON | OFF switch for Footer Widget layout
+
+= 5.7.0 - 2016/03/18 =
+* Feature - Framework structural refactor. Added full support for Dynamic Site Vertical Gutter Width. Previously the vertical gutter margin was hardcoded at 2% of the site width in browsers
+* Feature - Option to set the Sites Vertical Gutter width in these percentage increments 0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0
+* Feature - Framework structural refactor. Added full support for Dynamic Card Rows Horizontal Margin. Previously the horizontal space between card rows was hard coded at 20px
+* Tweak - Sites Vertical Gutter option added to the Site Structure > Layout Structure menu at the bottom
+* Tweak - Card Rows Horizontal Margin option added to the Site Structure > Layout Structure menu in the Content Layout section
+* Tweak - Added menu class for single small box textra entry field with help text to the right
+* Tweak - Upgrade all full width textra fields to new single small box class
+* Tweak - Tweak select control on customize sort key by float value.
+* Tweak - Updated and added some more menu Section Titles, Option names and help text.
+
+= 5.6.1 2016/03/03 =
+* Feature - Add feature show/hide Title each for post/page and taxonomy
+* Fix - Fixed missing (dot) on lazyload-hidden class
+
+= 5.6.0 - 2016/03/02 =
+* Feature - Add Center widget content in mobile option for sidebar widgets and footer widgets
+* Feature - Added ON | OFF option for buttons text font shadow
+* Feature - Added option to set the number of cards to load per endless scroll event on Archive pages. This previously had to be set from the WordPress Settings > Reading menu 
+* Feature - Archive Pages. Removed get layout and style from Page and add Page Content Container options, Background Colour, Border, Border Corners, Border Shadow and Border Padding and Margin
+* Feature - When cards are viewed in single column in mobile device the image height now always shows as scaled in proportion to the image width (DYNAMIC) even when FIXED image height is set.
+* Feature - Added Left, Centre, Right alignment option to blog card Read More Button or text link
+* Feature - Blog Card Footer cells refactor of menu options. Conditional logic applies to container style options. If any feature is ON the container style options show - If all are OFF the options don't show 
+* Feature - Added ON | OFF option for meta icons on blog cards and blog posts
+* Feature - Added option to ON | OFF the Site Title Tagline so that it will show under the site logo if required 
+* Feature - Added Linked Text Hover colour option for Header Widgets
+* Feature - Added font, icon and container style options for Blog Post Tag meta
+* Feature - Upgraded Add Tracking Codes menu. Can now add code and scripts to Header, Body and Footer
+* Feature - Added default secondary sidebar widget HTML same as primary sidebar and footer widgets so that sidebar show content in customizer preview and frontend until widget is added
+* Feature - Add support for plugins that are on wordpress.org to be directly downloaded from the WordPress repo from the Responsi Plugins menu
+* Feature - Make check new version and notify when have new version for WordPress.org plugins
+* Feature - Added a3 Lazy Load plugin to the WordPress menu
+* Feature - Added Page View Count plugin to the WordPress menu
+* Feature - Added a3 Portfolio to the Portfolio menu
+* Dev - Add action before_wrapper_center and after_wrapper_center hook for plugins creating layout features
+* Tweak - Moved Top of Screen Border option out of the Framework and into the Responsi Header Nav Bar plugin
+* Tweak - Change Layout - Style main menu name to Site Structure
+* Tweak - Change menu names - Layout Style to Site Layout, Old Site Layout menu name to Layout Structure and move the set site content width setting to Site Layout menu. 
+* Tweak - Change Theme - Background menu name to Site Background
+* Tweak - Changed Body - Container menu name to Site Body Container and moved it from General Settings menu to main menu under Primary Nav Bar menu
+* Tweak - Moved Post Background settings into Post Style menu and removed the Post Background menu from Blog Posts menu
+* Tweak - Change Post Layout menu name to Post Features and move it below the Post Style menu on the Blog Posts menu
+* Tweak - Change Blog Card Layout menu name to Blog Card Style
+* Tweak - Change Blog Card Style menu name to Blog Card Features
+* Tweak - Major resort of blog card options so all style options are on Blog Card Style menu and all features and their style are on the Blog Card Features menu
+* Tweak - Removed Blog Page - Exclude Categories and Blog Category Pages RSS from the Blog Cards > Blog Cards Layout menu and move them on the Archive Pages Features menu
+* Tweak - Archive Pages removed Archive Title Background ON | OFF switch and Archive Title Box Type DEFAULT | CUSTOM switch and options
+* Tweak - Archie Pages added Inner Container ON | OFF switch with options for Container background Colour, Border, Border Corners, Border Shadow, margin and Padding
+* Tweak - Change Archive Page menu name to Archive Pages Style 
+* Tweak - Add new Archive Pages Features menu
+* Tweak - Removed Endless Scroll Menu from General Settings and move them to Archive Page Features menu
+* Tweak - Removed Scroll on Click Boxed option and upgrade to container style options
+* Tweak - Added container border margin option for endless scroll on click
+* Tweak - Added Archive Page content container border margin option
+* Tweak - Added Page content container border margin option
+* Tweak - Removed Post background menu and moved options onto the Post Style menu
+* Tweak - Added margin to Post Title meta container options
+* Tweak - Added support for Post Date icon on Post title meta - same as Post cards
+* Tweak - Changed Footer Custom Content menu name to Footer Content
+* Tweak - Changed Footer Infor menu name to Footer Notifications
+* Tweak - Removed Breadcrumb Boxed Breadcrumb option and upgrade to framework container style options
+* Tweak - On first install all Resposni Plugins show on the plugins menu
+* Tweak - Added placeholder image for all plugins on Responsi plugin menu
+* Tweak - Input boxes UI changed to full width of customizer menu = Input Custom CSS and Tracking codes
+* Tweak - Change Child Themes menu name to Responsi Themes
+* Tweak - Massive updates to many menu Section Titles, option names and help text. Now have consistent many layout and text across the entire framework.
+
+= 5.5.0 - 2016/02/03 =
+* Feature - Responsi Blank Child theme to make custom code in Responsi Framework without a child theme and want to add some custom CSS or php to their theme design.
+* Feature - Add full support for font line height to all font editors. Set line height as em
+* Feature - Added Responsi Plugins & Themes menu with help text and button links to Responsi Plugin admin page and Responsi Child Theme admin page
+* Tweak - Move the Post author settings out of the framework into the Responsi Post Enhancer plugin
+* Tweak - Removed masonry js products on shop page out of framework and added to Responsi WooCommerce Templates plugins where it belongs
+* Tweak - Remove fixed px font editor line height
+* Tweak - Remove the Image Settings menu from the General Setting Menu
+* Tweak - Make get first image uploaded to post if not feature image is set default action of framework - remove setting option for it. 
+* Tweak - If no image is uploaded to a post get the theme default no image
+* Tweak - Removed set archive card image size for site. Now redundant with WordPress 4.4 srcset and size. Sizes set from Blog Card and Product card image setting options
+* Tweak - Change Site Branding Menu name to Site Logo and Images
+* Tweak - Move upload theme default image and RSS thumbnail image options to the Site Logo and images menu
+* Tweak - Remove enable Lightbox pop up feature for images - does not belong in the framework
+* Tweak - Change Sidebar Widgets menu to Sidebars and Widgets for clarity
+* Tweak - Changed Add-on Plugins menu name to Responsi Plugins
+
+= 5.4.0 - 2016/01/23 =
+* Feature - Removed Full Width Template from Framework and create it as a Responsi Plugin. When installed is menu is added to Pages customizer menu
+* Feature - Remove Feature Content Area from Framework and create it as a Responsi Plugin. When installed menu is added to the Site Layout customizer menu
+* Feature - Remove Related and Recent Post feature and create it as a Responsi Plugin. When installed menu is added to Blog Posts > Post Layout customizer menu
+* Feature - Remove WP Login Page from the Framework and create it as a Responsi Plugin. When installed is menu is added to Pages customizer menu
+* Feature - WP Login page shows in customizer preview when access the WP Login page menu and closes when click out of menu
+* Feature - Removed Header, Body and Footer Background feature out of the framework and added it to the Responsi backgrounds plugin
+* Feature - Removed Top Nav bar feature out of the framework and added it to the Responsi Header Nav Bar plugin. When installed is added to the Navigation Bars customizer menu
+* Feature - Added Sidebars full customizer container options
+* Feature - Sidebar Widgets added text link colour, hover colour and click link colour options to sidebar widgets
+* Feature - Footer Widget Section code refactor. Added Footer Widget Section Container and Footer Widget Container full customizer options
+* Feature - Footer Widgets added all customizer options to have same options as the sidebar widget customizer options 
+* Feature - Footer Section code refactor. Added Footer Section Container and Footer Content Container full customizer options
+* Feature - Footer Section added Font editor for Footer Notices
+* Feature - Customizer menu only shows Footer Widget Section and Sidebar menus when Footer Widget Area and or Sidebar is set in layout
+* Feature - Customizer menu recognizes when a sidebar is showing in Preview and loads the Sidebar and Widgets menu
+* Tweak - Remove hard coded margin between content bottom border and Footer
+* Tweak - Added ON | OFF switch for background image option on WP Login Page menu
+* Tweak - Added More menu to customizer menu with links to Responsi Themes and Responsi Plugin menus 
+* Tweak - Optimized Responsi Placemarker image
+* Tweak - Change Layout - Style Content - Body Style menu name to Body Container
+* Tweak - Complete resort and text updates for Primary Nav Bar and Dropdown menu for improved UI and UX 
+* Tweak - Moved all Footer Widget Section options out of Footer menu onto its own menu
+* Tweak - Move 404 Page settings from Customizer General Settings menu to Pages menu
+* Tweak - Move Page Background options onto Page Style menu and remove Page background menu on Page customizer menu
+* Fix - Full Body background colour not applying to header with Stretched Layout and Fixed header in browser option
+* Fix - Margin not applying to Primary Nav Bar Container unless top border was set
+* Update - Make upgrade function for convert old data that was pulled out of Framework to new data in Responsi plugins when they are installed when upgrade to Reponsi Framework v 5.4.0
+
+= 5.3.6 - 2016/01/05 =
+* Tweak - Update all Background Color options on Framework to new ON | OFF control. This replaces user having to type transparent for no background colour which is a much better UX
+
+= 5.3.5 - 2015/12/22 =
+* Fix - Add support for Unordered list and Order list in Customizer menu for WordPress Content editor on Footer Info - Content, Content Section #1, Content Section #2 menus
+* Fix - Add support for Unordered list and Ordered list in the Feature Content Editor on Posts and Pages editor
+
+= 5.3.4 - 2015/12/18 =
+* Tweak - Tested and Tweaked for full compatibility with WordPress Version 4.4
+* Tweak - Add support for Multi Widget Horizontal Margin option for sidebar widgets and header widgets
+* Tweak - Add Widget Vertical Margin apply in Mobile screens.
+* Tweak - Added full support for Responsive Images feature of WordPress major version 4.4
+* Tweak - Change all post meta on Term Feature Top Area to Term Meta. WordPress 4.4 support term meta same post
+* Fix - Sidebar Widget padding not applying.
+* Fix - Set site width Slider not saving a value and returning NaN value when try to use it
+* Fix - Quotation marks loading above page and post titles
+
+= 5.3.3 - 2015/12/04 =
+* Tweak - Updated Responsi placemarker image
+* Fix - Warning show when open customizer for Typography, Border, Border Radius and Box Shadow functions 
+* Fix - Customizer js change typography not working when options are empty which was causing issues with all customizer controls
+
+= 5.3.2 - 2015/12/01 =
+* Tweak - Remove all CSS webkit style to fix 140+ warnings on WC3 CSS validator
+* Tweak - Edited and removed all help text from customizer menu that are now obsolete with live preview
+* Fix - Change all customize default options to fix customizer loading the wrong default options
+* Fix - HTML structure to fix bug found on WC3 HTML validator
+* Fix - HTML special for input text control on customizer
+* Fix - Add trigger for masonry to load while WooCommerce Add To Cart ajax is loading
+
+= 5.3.1 - 2015/11/12 =
+* Fix - Updated jQuery script for the login page, make it works now
+
+= 5.3.0 - 2015/11/09 =
+* Feature - Responsi License is removed from the framework in preparation for submission to wordpress.org
+* Feature - Completely remove Responsi custom menu - all options now only available via the WordPress Customizer 
+* Feature - Moved Responsi Child Theme and Add-on Plugins menu to the WordPress Appearance menu
+* Feature - Launch of all new Add-on Plugins 2 column UI with menus for Premium, Free and 3rd Party Plugins
+* Feature - Free Responsi plugins now can be downloaded directly from the Add-on Plugins menu
+* Feature - Launch of the Responsi Premium Pack plugin which enables buyers to download all Responsi Plugins from the Add-on Plugins menu
+* Feature - When install Responsi Framework users can download the Default child theme from the Child theme menu
+* Feature - Launch of the Responsi Premium Pack plugin enables buyers to access all Responsi Child themes
+* Tweak - Change Text Domain of framework to framework slug
+* Tweak - Added Text Domain and Domain Path to the framework header
+* Tweak - Change file name of languages files inside /languages/ folder from 'a3revthemes' to 'responsi'
+
+= 5.2.4 - 2015/10/28 =
+* Tweak - Update function customize_preview_save_options so that clicking customizer Save & Publish button recompiles Child Theme and Plugin stylesheets if options have been changed. Previously all .css was rebuilt.
+* Fix - Remove .css hard coded margin from footer container
+* Fix - Change add_action( 'init', 'a3rev_global_options', 2 ); to add_action( 'init', 'a3rev_global_options', 1 ); to fix some Responsi plugins options not saving if they use $a3rev_options
+
+= 5.2.3 - 2015/10/12 =
+* Tweak - Major refactoring of Responsi Customizer control templates to dramatically improve customizer menu first load times.
+* Tweak - Refactored all customizer menu JavaScript and JavaScript logic
+* Tweak - Convert all Responsi HTML customizer controls templates to js underscore templates
+* Tweak - Add new customizer multiple select checkbox controls
+* Tweak - Add Header Widget Display in Mobile Phones control to customizer Layout Menu
+* Tweak - Remove all a3 Widgets from the framework. Those widgets are added by new Responsi Widget Pack plugin (coming soon)
+* Tweak - Remove all Follow and subscribe options from the framework. Feature will be added as a plugin (coming soon)
+* Tweak - Remove all a3 Rooms, a3 Sponser Showcase, a3 Project and a3 People plugins templates out of the framework
+* Tweak - Changed Layout - Content menu name to Site Structure and updated that menus help text. Start of menus text upgrade 
+
+= 5.2.2 - 2015/09/17 =
+* Tweak - Version 5.2.2 is the next step to full integration of Responsi Framework / Responsi Themes and plugins into the WordPress Customizer
+* Tweak - Added hooks, filters and functions for child theme admin Panels - Sections - Controls and Settings in the WordPress Customizer
+* Tweak - When switch between Responsi Themes all settings edits done are saved and load when switch back. Don't lose any work done if checking out another Child theme
+* Tweak - Added support for the WordPress text editor in WordPress Customizer
+* Tweak - Added the last of the framework settings to WordPress Customizer in preparation for complete removal of Framework custom menus in version 5.3
+* Fix - Various bugs from when switching themes in the WordPress customizer 
+* Fix - Responsi Child themes load their default options settings when previewed in the WordPress Customizer (Change Themes).
+
+= 5.2.1 - 2015/09/08 =
+* Fix - Delete check new version transient when transient_timeout is deleted by WordPress 4.3 get_transients function so call to a3api for new version still works.
+
+= 5.2.0 - 2015/08/31 =
+* Feature - Added Full integration of Responsi Theme Customizer with WordPress Customizer in WP Version 4.3
+* Feature - All Theme Options can now be set via the WP Customizer with on screen live preview.
+* Feature - Optimize Theme Customizer Live Preview in all legacy browsers, Chrome, Firefox, Safari, Edge, IE11, IE10 and IE9
+* Tweak - Tweaked and Tested Framework for full compatibility with WordPress version 4.3
+* Fix - Added fallback cron job schedule to fix License Key deactivation bug that occurs when call to server returns null for server name when checking key status for auto Maintenance and Feature upgrades
+* Fix - Change timeout of call to a3API for updates from 45 seconds to 8 seconds to resolve the server PHP timeout 30 seconds default. Server timeout before call finish was causing the 24 hour cron call not to be set and causing the dashboard to load slowly if a3API is not reachable.
+* Fix - Set 24 hours cron before call to a3API so that if have fail to connection then it will call in 24 hours on Cron instead of continue call each time Dashboard is loaded
+* Fix - validate the response from called to resolve PHP notice 'Undefined offset: 1'
+
+= 5.1.2 - 2015/08/05 =
+* Fix - Masonry js conflict with a3 Lazy Load plugin. Conflict was causing the Masony layout on home page not to reset.
+
+= 5.1.1 - 2015/07/27 =
+* Fix - Ajax save options configuration with Developer Add-on plugin.
+
+= 5.1.0 - 2015/07/25 =
+* Feature - Upgraded Framework WP Text Editors to be fully featured the same as wp editor on posts and pages
+* Feature - Added wp editor support for oembed https://codex.wordpress.org/Embeds
+* Feature - Added wp editor support for wp shortcodes and wp media gallery embed
+* Tweak - Remove function auto update database from old version 4.7.0
+
+= 5.0.4 - 2015/07/21 =
+* Fix - Fixed masonry js conflict with WooCommerce Product Sort and Display plugins.
+
+= 5.0.3 - 2015/07/15 =
+* Fix - Add Style back in for wp-caption and gallery class that was missed in Version 5.0.0 upgrade
+* Credit - Thanks to Frank Ugolini http://betterbabyshop.com.au for bringing this bug to our attention
+
+= 5.0.2 - 2015/07/09 =
+* Fix - Code space error in footer.php file on framework in version 5.0.1 upgrade - was blocking JavaScript from loading from the footer
+
+= 5.0.1 - 2015/07/08 =
+* Fix - Function to update Login Page settings that where not saved on some site after Responsi version 4.8.0 upgrade
+
+= 5.0.0 - 2015/06/30 =
+* Feature - Moved Social Share feature out of the Framework and created as new Responsi Social Share Add-On Plugin
+* Feature - Auto upgrade. Run Reponsi 5.0 upgrade, go to Responsi Add-Ons menu and activate the Social Share plugin. All settings are restored
+* Feature - Move features to add-ons and code clean up over the last 12 weeks has reduced the Framework zip file from 1.7MB to just 860KB
+* Tweak - Upgrade all include and require_once functions to get_template_part()
+* Tweak - Moved Demo Import data feature out of the Framework. Feature will be upgraded and created as new Add-On Plugin in the near future
+* Tweak - Removed redundant Responsi Shortcodes menu from Theme Customizer > General settings menu
+* Tweak - Removed WordPress Quote menu and settings from the Framework. These settings are moved to the Responsi Shortcode plugin
+* Tweak - Upgrade screen shoot image to 600 x 450px for compliance with WordPress 4:3 image size
+* Fix - Framework description Tags not being found in style.css header
+
+= 4.9.0 - 2015/06/24 =
+* Feature - Moved Theme Backgrounds Tiles and Patterns out of the Framework and created as new Responsi Background Add-On Plugin.
+* Feature - Auto upgrade. Run Reponsi 4.9.0 upgrade, IF your theme have background tiles or patterns Activate the Backgrounds Add-On plugin
+* Tweak - Framework code review and clean up. Removed unused code and functions
+* Tweak - Moved logical js write from framework to all plugins that have been created by pulling code out of framework
+* Fix - Upgraded title tag with call to wp_title() and use the wp_title filter to modify the output
+
+= 4.8.0 - 2015/06/18 =
+* Feature - Developer Settings menu moved out of the Framework and created as new Responsi Developer Tools Add-On Plugin
+* Feature - Auto upgrade. Run 4.8.0 upgrade, then from Responsi Add-On Menu, install new Developer Tools Add-On. All old settings will be preserved.
+* Feature - Added new Responsi Developer Tools Add-On into the Frameworks Add-On menu with License configuration in a3API.
+* Tweak - Renamed Theme Options menu to Theme Customizer as it is a more accurate description of the menu
+* Tweak - Moved Developer Footer Branding from old Developer settings to the Theme Customizer > Footer > Footer Info Content menu
+* Tweak - Moved WP Login Page settings from the old Developer settings to the Theme Customizer as new menu item
+* Tweak - Nav Bar - Mobile. Nav Bar Type - Dropdown. Now Tap anywhere on menu bar (not just the icon) to open and close the menu.
+* Fix - Options template bug that was causing the framework to run $wpdb Queries on all WordPress admin pages.
+
+= 4.7.0 - 2015/06/09 =
+* Feature - Home Page Builder menu moved out of the Framework and created as a Responsi Add On Plugin
+* Feature - Auto upgrade. Install the new Home Page Builder plugin and run this 4.7.0 upgrade and it will auto convert your home page.
+* Feature - Testing shows loading the home page builder by plugin leads to a massive 40% improvement theme load times.
+* Feature - If site is created by a Static home page then the Home Page Builder code is not present in the framework.
+* Feature - Added new Responsi Home Page Builder Add-On into the Frameworks Add-On menu with License configuration in a3API.
+
+= 4.6.3 - 2015/06/02 =
+* Tweak - Remove all shortcode from framework because it has been superseded by the Responsi Shortcode Add On
+* Tweak - Security Hardening. Removed all php file_put_contents functions in the Framework and replace with the WP_Filesystem API
+* Tweak - Security Hardening. Removed all php file_get_contents functions in the Framework and replace with the WP_Filesystem API
+* Tweak - Moved PHP variable $list_plugins out of Translation function in functions/plugins/importer/required-plugins.php.
+* Tweak - Remove Unknown property '-moz-border-radius'. Declaration dropped in Firefox browser
+* Tweak - Remove Unknown property '-moz-box-shadow'. Declaration dropped in Firefox browser.
+* Fix - Minify css bug on WordPress multiste.
+
+= 4.6.2 - 2015/05/25 =
+* Tweak - Removed redundant Content Toggle and Tabs Layout links from Framework shortcode dropdown
+* Fix - Security Patch Update PrettyPhoto to 3.1.6 to resolve XSS security issue https://github.com/scaron/prettyphoto/issues/149
+
+= 4.6.1 - 2015/05/14 =
+* Tweak - Shortcodes button now on all Feature page content WordPress text editor on categories and Tags taxonomy including custom taxonomies.
+* Fix - Nav bar sub menus dropdown not showing on tap on tablets
+* Fix - Slider Plugins not displaying when inserted by shortcode in the Feature Content Area
+* Credit - Thanks to Frank Ugolini for advising us about the Tablet Nav bar and slider shortcode bugs.
+
+= 4.6.0 - 2015/05/13 =
+* Tweak - Removed icon Box Shortcode from the Framework Shortcode dropdown on text editor. Superseded by Shortcode Add-On plugin.
+
+= 4.5.9 - 2015/05/11 =
+* Tweak - Removed Divider Shortcode from the Framework Shortcode dropdown on text editor. Superseded by Shortcode Add-On plugin.
+
+= 4.5.8 - 2015/05/09 =
+* Tweak - Removed Button Shortcode from the Framework Shortcode dropdown on text editor. Superseded by Shortcode Add-On plugin
+
+= 4.5.7 - 2015/05/06 =
+* Tweak - Removed Typography Shortcode from the Framework Shortcode dropdown on text editor. Superseded by Shortcode Add-On plugin
+* Tweak - Remove Shortcodes menu from Responsi Theme Customizer menu
+* Tweak - Add shortcode_unautop() and remove <p> tags before and after for textarea using WordPress editor tynimce - removes padding top and bottom of the shortcode containers.
+
+= 4.5.6 - 2015/04/29 =
+* Tweak - Mobile phone UI. Blog Card Title line height is always auto in Mobile screens when cards show in single column (portrait)
+
+= 4.5.5 - 2015/04/27 =
+* Tweak - Removed Icon Link & List General Shortcode from the Framework. Superceded by Shortcode Add-On plugin shortcode.
+
+= 4.5.4 - 2015/04/23 =
+* Fix - Move the output of add_query_arg() into esc_url() function to fix the XSS vulnerability identified in WordPress 4.1.2 security upgrade.
+
+= 4.5.3 - 2015/04/21 =
+* Tweak - Tested and Tweaked for full compatibility with WordPress Version 4.2.0
+* Tweak - Add admin.css support style for admin Framework
+* Tweak - Change get_current_theme() is deprecated since version 3.4! Use wp_get_theme() instead.
+* Tweak - Full WP_DEBUG done. All errors, notices, warnings when theme and add-on install.
+
+= 4.5.2 - 2015/03/31 =
+* Tweak - Removed Column Layout shortcode from the Framework. Superceded by Shortcode Add-On plugin v1.2.0 new Column shortcode.
+* Tweak - Add admin.css support interface for new shortcode insert pop-up
+
+= 4.5.1 - 2015/03/24 =
+* Fix - Meta Tag for mobile causing sites not to break down in mobile screens. Tag messed up in version 4.5.0 release
+
+= 4.5.0 - 2015/03/24 =
+* Feature - Added major new feature - Full Width 100% page template to create screen edge to edge display.
+* Feature - Full Width 100% page template has full support for new Responsi Shortcode Add-on Full Width Section shortcode to create a mix of edge to edge and custom wide content on the Full Width page template.
+* Tweak - Remove old media uploader from the Framework and replaced with new WordPress media uploader.
+* Fix - Fixed user profile 404s by adding support for bbPress profile URL via %bbpress_profile_url%.
+* Fix - Change add_action from 'template_redirect' to 'get_header' for 404 check and redirect
+* Fix - Responsive resizing of mp4 video via js resize.
+
+= 4.4.9 - 2015/03/17 =
+* Tweak - Remove hard code 404 Page not found template.
+* Tweak - Added 404 Page menu item to Theme Customizer > General Settings sun menu items.
+* Tweak - Default is set at the sites Home page.
+* Tweak - Select any page to redirect users when a 404 error occurs.
+
+= 4.4.8 - 2015/03/16 =
+*Tweak - Change class_exists('Responsi_A3_Icon_Class') to class_exists('Responsi_A3_Shortcode_Class') a3 Icons Add-on has been merged into new Responsi Shortcodes Add-on
+*Tweak - Change shortcode.css to support Responsi Shortcode Add-On.
+
+= 4.4.7 - 2015/02/28 =
+* Feature - Add show post Date show on blog card can ON | OFF activation. Go to Blog Cards > Blog Cards Layout > Post Date settings
+* Feature - Add dynamic style settings for Blog Card Post date on Blog Cards > Blog Cards Style > Post Date Font Style
+* Fix - Fixed JavaScript bug on Mobile display when Dropdown menu is selected which was breaking the dropdown menu.
+
+= 4.4.6 - 2015/01/23 =
+* Fix - jquery.admin.interface.js conflict causing the conditional logic ON - show options, OFF - hide options on admin panels to not work properly.
+
+= 4.4.5 - 2015/01/21 =
+* Fix - CSS in IE 11 browser which was causing the Home Page not to scroll.
+* Fix - Framework CSS from overriding class lazy-hidden which was causing the Lazy Load spinner to not show while loading images
+
+= 4.4.4 - 2014/12/31 =
+* Fix - The tap event don't work on iOS
+* Fix - Masonry don't relayout when a3 lazy load is installed.
+
+= 4.4.3 - 2014/12/29 =
+* Tweak - edit jquery.admin.interface.js so that it only loads tabs display block
+* Tweak - Change init chosen function so that it is called after HTML load is done
+* Fix - User permission loop on Developer settings > Permissions.
+
+= 4.4.2 - 2014/12/26 =
+* Tweak - Removed a3rev-border-corner-preview.js, call preview from priviews.js. Removes 1 HTTP call from header.
+* Tweak - Removed a3rev-typography-preview.js, call preview from priviews.js. Removes 1 HTTP call from header.
+* Tweak - Removed a3rev-box-shadow-preview.js, call preview from priviews.js. Removes 1 HTTP call from header.
+* Tweak - Removed redundant ajaxupload.js. Removes 1 HTTP call from header.
+* Tweak - Removed redundant php.js. Removes 1 HTTP call from header.
+* Tweak - Replaced custom ScrollToFixed js to jquery-scrolltofixed.js
+* Fix - Replaced jQuery Mirate .live() method which was deprecated since jQuery 1.7 and has been removed in 1.9 with .on() method.
+
+= 4.4.1 - 2014/12/24 =
+* Feature - Added Background Image Resizer settings for better control of large background images display for Theme Background, Body Container and wp-login pages.
+* Tweak - Change filter for all image for compatibility with a3 Lazy load v1.0.1
+* Tweak - Removed jon2.js.- json2 is now included in jQuery version 1.9 and later. Removes 1 HTTP call from header.
+* Tweak - Removed redundant third-party.js. Removes 1 HTTP call from header.
+* Tweak - Only load jquery.prettyPhoto.js when Lightbox option is enabled in Theme Customizer > Image Settings.
+* Fix - Replaced jQuery Mirate .live() method which was deprecated since jQuery 1.7 and has been removed in 1.9 with .on() method.
+* Fix - Loop on js infinitescroll for compatibility with a3 Lazy load v1.0.1
+* Fix - Added support for background image display on iOS.
+
+= 4.4.0 - 2014/12/20 =
+* Feature - a3rev_save_options function now stores the Child Theme and Add-on plugins settings in it’s own database tables. Means you can change Child themes and when change back and no settings are lost.
+* Tweak - Add filter for all image from framework for 100% compatibility with new a3 Lazy load.
+* Tweak - Full WP_DEBUG done. All errors, notices, warnings and un-caught exceptions fixed.
+
+= 4.3.2 - 2014/12/16 =
+* Tweak - Added make document titles fully customizable for compatibility with new feature in soon to be released WordPress version 4.1
+* Fix - Infinite scroll bug on URLs that end with -#. Upgraded to latest infinite scroll jQuery version and rewrite js.
+
+= 4.3.1 - 2014/12/12 =
+* Fix - Mobile Nav Bar display. When select Dropdown mobile option both Nav bars where displaying with dropdown always open.
+* Fix - Add max-width for WordPress image captions when embedded in posts and pages. Was breaking the image resizing for larger images.
+* Credit - Thanks to Frank Ugolini for reporting the mobile Nav bar bug.
+
+= 4.3.0 - 2014/12/10 =
+* Feature - Primary Navigation Bar set Items position LEFT , RIGHT or CENTER
+* Tweak - Removed subscribe by email on posts and pages. Feature is better added by third party plugin.
+* Fix - Style CSS for primary navigation
+* Fix - Sass compile path not saving on windows xampp.
+
+= 4.2.2 - 2014/12/04 =
+* Feature - Release of new Header Nav Bar Add-on plugin. Install from the Responsi Add-Ons menu.
+* Fix - Fix javascript for Mobile Nav Bar display and add support for new Header Nav Bar Add-On
+
+= 4.2.1 - 2014/11/24 =
+* Fix - Fixed Enable Gallery Container background bug on Stretched layout
+* Fix - Added Padding , Margin for Gallery Container missed in 4.2.0
+* Fix - Mobile and tablet navigation bar Show on Click option bug on some mobile device as sony, iphone 6 plus
+* Fix - Header Widget Display in Mobile Phones for iPhone 6 and 6 Plus.
+
+= 4.2.0 - 2014/11/20 =
+* Feature - Added mobile and tablet navigation bar Show on Click option and dynamic Option selector for it.
+* Feature - Reworked site display in Mobiles for a much improved user experience. Use the whole screen in portrait to display content.
+* Feature - Framework HTML structure rework to replace fixed Boxed Content Padding with dynamic margin and padding.
+* Feature - Framework now supports edge to edge content for entire site or for site sections example - Header, Body, footer.
+* Feature - Added dynamic Padding for Top, Bottom, Left, Right for Boxed content layout.
+* Feature - Added dynamic Padding for Top, Bottom, Left, Right for Footer Widget Area Container
+* Feature - Added dynamic Padding and Margin for Top, Bottom, Left, Right for Footer Widget Area Container
+* Feature - Added dynamic Padding and Margin for Top, Bottom, Left, Right for Footer Container
+* Feature - Added dynamic style for header container left and right border.
+* Feature - Added dynamic style for Primary Nav Bar container left and right border.
+* Feature - Added dynamic style for Footer Widget Area Container top - bottom - left and right borders
+* Tweak - Complete re-sort of the Theme Customizer > Layout - Style menu for improved UX.
+* Tweak - Created new main menus, Header, Navigation Bars, Sidebar - Widgets and Footer and moved relevant sub menus to each main menu.
+* Tweak - Body Container. Added new Section Title, Content Body Border and moved border settings from Body Container to that section.
+* Tweak - Some minor text changes on menus.
+* Tweak - Moved Comments settings off Blog Posts > Post Layout menu to a new Comments sub menu in General Settings.
+* Tweak - Upgraded all Responsi Themes for compatibility with new framework HTML structure.
+* Fix - Ajax error when saving options on Responsi dashboard
+* Fix - a3rev License code now recognises domain with and without the www. We believe that this will solve Licenses auto deactivating on some sites.
+
+= 4.1.3 - 2014/11/04 =
+* Fix - Entire header being linked to home page when only header logo text is active in header.
+* Fix - Sass style not applying when activating the framework. Added hook function 'responsi_sass_compile_less_mincss()
+
+= 4.1.2 - 2014/10/14 =
+Fix - Top of page or post feature content areas alignment. Add class .custom-wrapper for feature content areas
+
+= 4.1.1- 2014/10/08 =
+* Fix - Style Shortcode Icon align, change css .shortcode-unorderedlist-image.star ul li { background: url(../images/shortcode-star.png) no-repeat 2px padding-box; } to .shortcode-unorderedlist-image.star ul li { background: url(../images/shortcode-star.png) no-repeat 2px 2px padding-box; } on shortcodes.css  )
+* Fix - Width, height Logo on Login Page, width, height for logo icon on function a3rev_custom_login_logo()
+* Fix - Style Sass not applying boxed layout on responsi_build_sass_css()
+
+= 4.1.0- 2014/09/20 =
+* Feature - Added fully independent Home Page Layout set width settings. Set a different width for the home page than the rest of the site.
+* Feature - Added Home Page Content Style settings that are independent of the rest of the theme. Menu at Theme Customizer -> Home Page Builder -> Home Page Layout.
+* Feature - Added a Feature Content Area between the Primary Nav bar and sites Content | Sidebar.
+* Feature - Add content via the WordPress text editor. Add anything, images, font, sliders via shortcode.
+* Feature - Full Sass #dynamic Style settings for new Feature Content Area Container. Menu at Theme Customizer -> Layout Style -> Feature Content Area
+* Feature - Activate the new Feature Content Area and add content from the Responsi Framework Custom Settings Meta on any post, custom post type or page.
+* Feature - Activate the new Feature Content Area and add content from the - create or edit Categories.
+* Feature - Feature Content Area supports WordPress category Taxonomy type - example WooCommerce product categories.
+* Feature - Added support for embedding Tracking Codes / Scripts into the <body> of the theme - Some examples are facebook JavaScript SDK, Google AdWords tracking code. Menu at Theme Option -> General Settings -> Tracking Code / Scripts
+* Feature - Full integration of new Responsi Nav Bar Widgets Add-on plugin.
+* Feature - Full integration of new Responsi Custom Sidebars Add-on plugin.
+* Feature - Added support for facebook JavaScipt SDK to insert of HTML5 code snippets
+* Tweak - Renamed the Responsi Custom Settings meta box on post and pages to Responsi Framework Custom Settings
+* Tweak - Renamed meta tab Custom Settings to Custom Layout
+* Tweak - Added new meta tab - Feature Content Area and settings.
+* Tweak - Added new WordPress 4.0 style SVG icons for all Responsi Add-on plugins.
+* Tweak - Various Responsi admin panels text tweaks and changes for new features help text.
+* Fix - Google Plus sharing not getting the post feature image.
+
+= 4.0.5 - 2014/09/11 =
+* Fix - Apply font style for Navbar menu missed in Sass version 4.0
+* Fix - Widget Text alignment, missed in Sass version 4.0
+* Fix - Fontface on widget working for a3 Shortcode Add-on, missed in Sass version 4.0
+
+= 4.0.4 - 2014/09/03 =
+* Tweak - Tested 100% compatible with soon to be released WordPress Version 4.0 and backwards to WordPress version 3.8
+* Tweak - Style on admin.css.min. Tag focus with shadow was breaking menu on options settings in WordPress 4.0
+* Tweak - Change $ to jQuery to solve conflict with jQuery 1.11.1 when define some variable $ on WordPress version 4.0
+
+= 4.0.3 - 2014/08/29 =
+* Tweak - Added option to clear facebook Cache on update to post and custom post types Publish Meta.
+* Fix - Responsi Framework filter save_post action now only on posts and custom post types when selected.
+
+= 4.0.2 - 2014/08/18 =
+* Fix - Changed "add_action( 'after_setup_theme','a3rev_options',1 )"  to "add_action( 'admin_head','a3rev_options',1 )" to fixed duplicate Responsi Custom Data settings in Post and Page edit settings.
+* Tweak - Update Google Fonts code for a futher improvement in Sass load times on front end and back end.
+* Tweak - Added new google font - Dosis - to google fonts list
+* Tweak - Remove call to admin-ajax.php to get nonce security in Admin Panel so that do not use nonce security for shortcode popup
+
+= 4.0.1 - 2014/08/14 =
+* Feature - Added centre header widget on mobile display settings @ Layout Style > Header > Center Widget in Mobile.
+* Fix - Added .tel custom class for widget Phone Numbers (Tap to call) in Mobile Devices. Supports phone number as : <a href="tel:+13174562564">317-456-2564</a> or <span class="tel">07 4562564</span>
+* Fix - Change all border, font, to function general - missed in version 4.0 causing => convert sass error.
+* Fix - Button class for tag <a>. Link font Colour was being applied instead of the button font settings.
+* Fix - Export and Import Options auto build Sass.
+
+= 4.0.0 - 2014/08/07 =
+* Feature - All framework backend admin panel CSS converted to Sass
+* Feature - All framework front end CSS converted to dynamic Sass
+* Tweak - Bumped framework version from 4.0.0 to 4.0.0 to mark the rebuild in Sass.
+
+= 3.2.2.5 - 2014/07/24 =
+* Fix - Primary Nav Bar drop down menu not applying dynamic style changes
+
+= 3.2.2.4 - 2014/07/19 =
+* Fix - Post Background Colour not being applied from the colour setting on Blog Posts, Post Backround menu
+
+= 3.2.2.3 - 2014/07/15 =
+* Tweak - Change Primary Nav bar drop down menu width from absolute to 100% wide of the Nav bar menu item
+* Tweak - Change Primary Nav bar drop down menu item from wrap to no wrap.
+
+= 3.2.2.2 - 2014/06/30 =
+* Tweak - Home Page card Zones Content by Custom IDs now show in the order that the custom IDs are entered instead of by date published.
+* Tweak - Home Page Card Zones - Added conditional logic to hide row selector when adding content by custom post ID. Shows the number entered.
+* Tweak - Added filter to hide Comments are closed text from posts and custom post types when comments are turned off.
+* Fix - Home Page Card Zones not showing the correct content or number of rows after update v3.2.2.1
+
+= 3.2.2.1 - 2014/06/28 =
+* Feature - Auto detect custom post types created by 3rd party plugins and show as a selectable Content Type in Home Page Builder, Card Zones.
+* Feature - Home Page Blog Cards - Show Custom post type content in cards zones by Most Recent or Custom Post IDs
+
+= 3.2.2 - 2014/06/20 =
+* Feature - New Responsi Add-On plugin launch. Responsi Pre Launch Page.
+* Feature - Launch a Pre-Launch, maintenance mode wall on your site with the click of a switch.
+* Feature - Pre Launch page is fully customizable with Contact, Follow us, email Subscribe and Countdown Clock
+* Feature - WP Login Page menu on Developers Setting Menu
+* Feature - Style your login page / Lost Password pages to completely match your theme.
+
+= 3.2.1.4 - 2014/06/13 =
+* Tweak - Update header text on Responsi Framework Shortcode pop-up
+* Fix - Framework shortcode create Unordered list using a3 Shortcode icon conflict with shortcode images - was showing both.
+* Fix - Added missing hook to allow the a3 Icon shortcode to be used on the WordPress Editor in Framework
+
+= 3.2.1.3 - 2014/06/12 =
+* Fix - Inner Scroll bar showing and pushing content to the left when auto Endless scroll auto scroll loads next page.
+* Fix - Fontface RSS and EMAIL icon not rendering in IE browsers.
+* Fix - Theme background Image position fixed (content scrolls over it) jumping down then up in IE browers.
+* Fix - Add style font for unordered and ordered List in Widgets.
+* Fix - Gravity Forms Captcha gadget CSS was breaking when form added to widget.
+* Fix - Button Style CSS display on IE browsers and Firefox 30.0
+* Fix - Header Widgets - Font Colour settings not being applied.
+
+= 3.2.1.2 - 2014/05/29 =
+* Tweak - Changed add_filter( 'gettext', array( $this, 'change_button_text' ), null, 2 ); to add_filter( 'gettext', array( $this, 'change_button_text' ), null, 3 );
+* Tweak - Update change_button_text() function from ( $original == 'Insert into Post' ) to ( is_admin() && $original === 'Insert into Post' )
+* Fix - Masonary double loading of Blog cards when resizing in legacy browsers.
+
+= 3.2.1.1 - 2014/05/22 =
+* Fix - Changed wp_enqueue_style 'a3rev-chosen-style' to 'responsi-chosen-style' to fix conflicts with plugins that use the Chosen script.
+
+= 3.2.1 - 2014/05/16 =
+* Feature - Added Framework support for adding fontawesome icons by shortcode.
+* Feature - New a3 Shortcode Add-On plugin - adds 360+ fontawesome icons with icon customization.
+* Feature - Responsi a3 Shortcode Add-on menu has all settings to make a custom default size and style for all icons.
+* Feature - Responsi a3 Shortcode insert shortcode pop-up has all settings to customize the default style and size for each icon.
+* Feature - Fully Integrated a3 Shortcode with Responsi Shortcodes 'Unordered List' feature.
+* Feature - Fully integrated a3 Shortcode with Responsi Shortcodes 'Icon Link' feature.
+* Feature - Manually add a3 Icon shortcodes to Text Widgets.
+* Tweak - Moved Shortcodes sub menu from General Settings menu to its own main Responsi Menu
+* Tweak - Created sub menus on new Shortcodes main menu to make for better UX.
+* Tweak - Icon Border Corner Preview CSS now shows true settings right up to 100 percent - Circle.
+* Tweak - Launch new Responsi Framework logo with icon vectors using that design.
+* Tweak - Replaced Responsi WordPress admin sidebar menu icon [a3] with new [RF] icon.
+* Tweak - Replaced Responis Shortcode icon [RSc] with new purple [RF] icon.
+* Tweak - New Responsi a3 Shortcode Add-On plugin adds a new green [RF] icon to WordPress text editor.
+* Tweak - Replaced Responsi Framework Themes place marker with new design including new logo.
+* Tweak - Updated framework fontawesome from version 3 to latest version 4.1.0
+* Tweak - Full WP_DEBUG of new features.
+* Tweak - a3 Icon fully optimized for all legacy and mobile browsers.
+
+= 3.2.0.3 - 2014/04/25 =
+* Fix - On archive pages card thumbnail loading small then reloading in correct size after page has loaded.
+* Fix - Subscribe and connect show subscribe my email text on front end when subscribe by email feature is not activated.
+* Fix - The value "1.0;" for key "initial-scale" was truncated to its numeric prefix
+* Fix - The value "1.0;" for key "maximum-scale" was truncated to its numeric prefix
+* Fix - Error parsing a meta element's content: ';' is not a valid key-value pair separator. Updated to use ',' instead.
+
+= 3.2.0.2 - 2014/04/18 =
+* Fix - Some plugins showing double Title and Meta on post and custom post types. Moved post title and meta from page.php and single.php to content.php
+
+= 3.2.0.1 - 2014/04/17 =
+* Fix - Blog Post JS Masony break down of realted and recent post cards display in new WordPress Version 3.9
+
+= 3.2.0 - 2014/04/16 =
+* Feature - Add Button by shortcode. Create buttons and insert by shortcode. Full Responsi Button creation features.
+* Tweak - Tested and updated for full WordPress version 3.9 compatibility.
+* Tweak - Updated all Masonry script to work with WP 3.9 with backward compatibility to WP v 3.8
+* Tweak - Updated js to work with new tynimce 4.x  with backward compatibility to WP v 3.8
+* Fix - Meta icon alignment.
+
+= 3.1.1 - 2014/04/08 =
+* Fix - ajax save options for tinymce
+* Fix - fixed some style align center , align left , align right, when insert image on tinymce.
+* Fix - fixed class col-left, col-right on layout style.
+
+= 3.1.0 - 2014/03/26 =
+* Feature - Header widgets mobile display. Turn active header widgets ON | OFF for mobile display.
+* Feature – Blog Post added as main menu item. All blog post settings now on this menu.
+* Feature - New Page menu. Restructured Framework so that Page style settings are separate from Posts style settings for greater clarity and flexibility.
+* Feature – Page | Archives Pages Boxed title style. Use Child Theme default or create custom style.
+* Feature - White Label Responsi Widgets. Developer menu | White Label Responsi – Replace the Responsi a3 widget title prefix with your custom name.
+* Feature - Developer Branding. Developer menu | White Label Responsi. Added footer developer branding text editor and logo uploader. Replace Powered by a3Themes with your own.
+* Feature - Footer Content. Add content to footer using the WordPress Text editor.
+* Feature - Footer Content. Added ON | OFF setting for copyright notice and simple text edit field.
+* Feature - Footer Content. Added Log in / Log out link with ON | OFF settings. Shows far right.
+* Feature - Added Social Sharing to blog posts. When activated show sharing icons under post title and post author, date meta.
+* Feature - Blog Posts | Follow and Subscribe. Upload custom Social Media icons to replace default images.
+* Feature - Home Page Builder - added Content Creator Full wide area activation under Gallery Image Gallery Settings.
+* Feature - Home Page Builder - added Content Creator to the Content | Sidebar menu items.
+* Feature - Added support for WordPress text editor to Responsi Framework.
+* Tweak - Renamed Home Page menu to Home Page Builder.
+* Tweak - Resorted the Home Page Builder sub menus to logical order including new Content Creator menus.
+* Tweak - Rename Content Setup menu Content | Sidebar and move the container background style settings to new Content Creator menu.
+* Tweak - Renamed Section Header sub menus to Card Zone # 1, Card Zone #2, Card Zone #3 and Card Zone # 4
+* Tweak - Moved each sections content configuration settings from Content | Sidebar onto the appropriate card Zone menu.
+* Tweak - Card Zone - Set number of card rows to show instead of number of cards.
+* Tweak - Blog Posts | Post Layout. Related and Recent Posts - Set number of blog card rows to show instead of number of blog cards.
+* Tweak - Theme Customizer | Layout & Style | Background Theme - increased the size of the Background Tiles and Pattern icons and added CSS pop-up on hover. Greatly improves the UI.
+* Tweak - Blog Posts | Follow and Subscribe. Social media icons alignment and margin.
+* Tweak - Blog Posts | Follow and Subscribe. Added Custom Social media URL and image upload.
+* Tweak - Blog Posts | Social Sharing. Added Global ON | OFF setting and individual activation settings.
+* Tweak - Blog Posts | Social Sharing. Added Share text and font editor.
+* Tweak - Blog Posts | Social Sharing. Added Font face icon and text font editor.
+* Tweak - Blog Posts | Social Sharing. Added Font padding, background colour and bg hover colour editor.
+* Tweak - Replaced WebSymbols-Regular font with @font-face
+* Tweak - Added new Blog Cards per row selection icons.
+* Tweak - Home Page Builder | Image Gallery Setup - Added set Gallery image container layout icons.
+* Tweak - Home Page Builder | Content | Sidebar - Added new Cards Per Row selection icons.
+* Tweak - Blog Cards | Blog Card Layout - Replace set Image content layout 3 switches with Image Content icon selector.
+* Tweak - Blog Cards | Social Sharing – Added Customize sharing icon size, colour and hover colour.
+* Tweak - Blog Cards | Social Sharing – Added Customize icon background shape, padding and margin
+* Tweak - Split Post and Cards sub menu into to submenus - Blog Posts, Blog Cards.
+* Tweak - Split Footer - Site info sub menu into 2 sub menu items Footer – Style and Footer Content for better UI.
+* Tweak - Add Page menu with 3 sub menu items, Page Background | Page Style | Archive Pages.
+* Tweak - Added new Blog Cards menu icon.
+* Tweak - Changed admin pages section header font colour from black to green
+* Tweak - Run full WP_DEBUG. All uncaught errors, warnings, notices and exceptions fixed.
+* Tweak - Optimized for Legacy browsers IE8 to IE11, Chrome and Firefox.
+* Tweak - Optimized for iOS and Android OS, mobile and tablet
+* Tweak - Numerous Description and help text updates.
+* Fix - Added Facebook Open Graph API to stop Facebook caching images and content on Blog cards and Blog posts Facebook social share for post and custom post types.
+
+= 3.0.9.1 - 2014/02/17 =
+* Fixed - Added missing Home Page Gallery layout CSS.
+
+= 3.0.9 - 2014/01/28 =
+* Feature - Increased the site width setting range from 600px min 1600px max to 600px min 3000px max for enhanced display on the largest screens.
+* Feature - Framework code upgraded to be compatible with new WooCommerce version 2.1 via the Responsi WooCommerce Add-on plugin
+* Feature - Added Content Body Padding and Margin feature. Set margin outside of body content border and padding inside between content body border and page post border.
+* Feature - Added Padding and Margin settings for Breadcrumb on Breadcrumb menu.
+* Feature - Removed a3rev_image function and replaced by a3rev_get_thumbnail_image for Card images.
+* Feature - Option to auto get Cards image at full size or set image height and wide dimensions.
+* Feature - Added option to turn on PrettyPhoto lightbox  pop-up on images within pots, pages and custom post types.
+* Feature - Remove Tumblog settings and function from the framework.  If required will add Tumblog feature it as an Add-on Plugin.
+* Tweak - Create Combine Responsi CSS file as a .php file to allow CDN to server .css files.
+* Tweak - Moved Layout & Style menu to fist menu item on Theme Customizer menu and sorted sub menus into logical order.
+* Tweak - Moved Topography menu from Layout & Style menu to General Settings menu.
+* Tweak - Changed Layout & Style sub menu Background Content name to Content – Body Style to better describe the menu
+* Tweak – Moved Post & Page Style settings off the Content –Body Style menu onto a new submenu Post & Page Style to make it easier to find.
+* Tweak - Removed Dynamic Images menu and all settings and functionality.
+* Tweak - Replaced Dynamic Images menu with Image Settings menu. Moved Site Default Image setting to here from General Settings menu.
+* Tweak - Framework development for IE7 stopped with the Microsoft announcement that Windows XP support finished on April 8th.
+* Tweak - All IE7 browser support js will be removed progressively after this date and pending a decision about IE8 support.
+* Tweak - Removed fixed style for gravity forms
+* Tweak - Trim framework code to reduce the download file size from 2.1MB to 1.7MB
+* Fix - Blog Card description showing any shortcode when it is at top of blog content.
+
+= 3.0.8 - 2014/01/11 =
+* Feature - Introducing Intelligent Framework activation after validation of license upon install.
+* Feature - Upon initial activation of License, auto redirect to Responsi Themes menu. Must install and activate a Child theme to activate full Responsi Menu.
+* Feature - Responsi Themes 2 Click Activation. Install and activate a Responsi Child Theme in 2 Clicks without leaving the WordPress admin menu.
+* Feature - Introducing Add-on Plugins 'Smart' menu with 2 Click activation.
+* Feature - Framework automatically detects if the WooCommerce or bbPress plugins are installed and displays a notification to install the Responsi Add-on plugin with link.
+* Feature - Add-on plugin menu 2 Click install. Install and activate Responsi Add-on plugins in 2 clicks without leaving the WordPress admin menu.
+* Feature - Instant Child Theme and Add-on Plugin updates. As soon as an update is release a notification automatically shows above the Framework header.
+* Feature - Update Responsi Themes from the Child Theme menu using the WordPress Themes uploader.
+* Feature - Update Add-on Plugins from the Add-on Plugins menu using the Wordpress plugins uploader.
+* Tweak - Upgraded Responsi Themes menu UI and function to be the same as the WordPress 3.8 themes.php UI.
+* Tweak - Made new Responsi License Menu UI
+* Tweak - Created new Add-on plugin menu UI with Install | Activate | Update | Version and chnagelog pop-up functions.
+* Tweak - Added Responsi Framework updates notification to WP admin dashboard with link for viewing chnagelog and update.
+* Tweak - Added new Responsi Framework image that shows on themes.php
+* Tweak - Added Framework description and tags for themes.php
+* Fix - Update permission to check all roles of user instead of just first role in database for when other plugins add user roles example Gravity forms adds gform_full_access
+* Fix - Endless scroll Blog card load script error in last update 3.0.7 causing cards to load on top of each other.
+* Fix - Last row of blog cards has no padding from footer in IE7, IE8 and IE9.
+
+= 3.0.7 - 2014/01/06 =
+* Feature - Developer Settings | Permissions > Responsi Developer Role. Assign users with Administrator Role to Developer Role. They have full access.
+* Feature - Developer Settings | Permissions > Developer Access Only. ON to hide Responsi menus from all users except Developers.
+* Feature - Developer Settings | Permissions > User Role Access to Responsi Menus. When Developer Access Only is OFF can assign any Role to access individual Responsi Menus.
+* Feature - Developer Settings | Permissions  > Administrator Role WP Core Menu Access. Turn Access ON | OFF for admin to core WordPress menus eg Plugins menu.
+* Feature - Developer Settings | White Label WP > WP Admin Panel Footer Message and Version ON | OFF setting.
+* Feature - Developer Settings | White Label Responsi > Custom Child Theme Name. Replace the Responsi Child Theme name in the Framework header with a custom Theme name.
+* Feature - Developer Settings | White Label Responsi > ON | OFF switch for View Help Docs Quick Link in Framework header. When ON add custom text and link URL.
+* Feature - Developer Settings | White Label Responsi > ON | OFF switch for Visit Support Forum Quick Link in Framework header. When ON add custom text and link URL.
+* Feature - Developer Settings | WP Admin Toolbar > ON | OFF switch for WordPress Logo and Drop down Menu
+* Feature - Developer Settings | Backup Settings. Add backup menu with Import and export functionality.
+* Feature - Developer Settings | System Stats. WordPress Install and Server environment settings at a glance.
+* Feature – Blog Cards. Set Image Container fixed tall by % instead of by pixels. Set tall to show at 50% to 100% of the card wide. Fixes gap showing under image in cards.
+* Feature – Blog Cards – Added settings to create individual corner rounded settings for Image container.
+* Tweak – Moved the Responsi License menu from the WordPress Appearance menu onto the Responsi Framework main menu.
+* Tweak - Responsi Themes. Converted Responsi Themes display to new WordPress 3.8.0 UI
+* Tweak - Developer Settings | WP Admin Toolbar. Added icon to Responsi Framework Quick Access Menu and converted drop down menu to WordPress 3.8 UI
+* Tweak - Added WP Admin Toolbar mobile Responsi Framework Quick Access Menu via icon and dropdown. Fully integrated with WordPress 3.8 UI
+* Tweak - Developer Settings | Performance - add new menu icon
+* Tweak – Removed admin-bar.min.css, a3rev-responsi/style.css, responsi/css/layout.min.css from Combine and Minify CSS Style Sheets to enhance performance.
+* Fix - Minify settings unchecked isset($output['framework_a3rev_caching_enable'])
+* Fix – Caching plugins create cache in FireFox or Chrome browser respond-ie.js is not loaded and theme breaks in IE. Replaced PHP loading code by HTML.
+
+= 3.0.6 - 2013/12/24 =
+* Feature - Complete rebuild of the Responsi Framework admin interface.
+* Feature - Admin interface fully integrated into the new WordPress v3.8.0 flat admin interface.
+* Feature - WordPress Admin Coloured interface is auto applied to the responsi framework interface.
+* Feature - Full conversion of Framework admin interface to mobile and tablet responsive layout.
+* Feature - Full integration of Responsi Framework admin with WordPress admin interface in mobile and tablet devices.
+* Feature - Faster and smoother Framework admin interface loading.
+* Feature - Added support for Google + Social Share feature on Blog Cards.
+* Feature - Added individual ON | OFF settings for each Social Share Icon.
+* Feature - Added Social Share vector icon background and hover colour settings.
+* Feature - Added Shortcode Quote Boxed border and background colour settings.
+* Feature - Blog Cards padding now applied by each content section of the blog card for ultimate control of the layout and display.
+* Feature - Framework Settings Main Menu item converted into Developer Settings in first important step to full white labelling of the framework.
+* Tweak - Upgraded dashboard switches and sliders to Vector based display that shows when WordPress version 3.8.0 is activated.
+* Tweak - Upgraded all plugin .jpg icons and images to Vector based display for full compatibility with new WordPress version.
+* Tweak - Upgraded Framework loading icon to Vector.
+* Tweak - Optimize Framework admin panel display in iOS and Android browsers.
+* Tweak - Full layout and text rework of the Theme Customizer > General Settings > Shortcode admin menu.
+* Tweak - Full layout and text rework of the Theme Customizer > Post and Cards > Blog Card Layout admin panel.
+* Tweak - Removed the select content type Excerpt | Full Content from Post Card Layout menu. Responsi only support excerpt on post cards.
+* Tweak - Full layout and text rework of the Theme Customizer > Post and Cards > Blog Card Style admin menu.
+* Tweak - Moved Social Share setting for blog cards onto its own Posts and cards menu item.
+* Tweak - When Social Share feature is switched off the Insert Responsi Shortcode icon does not show on post and pages visual editor.
+* Tweak - Change shortcode icon hover text from Insert a3Themes Shortcode to Insert Responsi Shortcode.
+* Tweak - Developer Settings. Converted Admin Menu to Permissions menu as a forerunner to adding user role permissions.
+* Tweak - Developer Settings. Converted Branding Menu to White Label WP. This menu will contain all settings for White labelling WordPress
+* Tweak - Developer Settings. Converted WordPress Toolbar menu to WP Admin Toolbar. This menu will contain enhancements to the Responsi Menu on the WP Admin Toolbar.
+* Tweak - Developer Settings. Moved old caching Main Menu item to Developers Settings and renamed the menu item, Performance.
+* Tweak - Developer Settings, Performance menu. Full layout, text and conditional logic rework of this menu.
+* Fix - WordPress Visual editor ordered and unordered list text not using the Post content font and line spacing.
+* Fix - Center Image alignment in post and pages.
+
+= 3.0.5 - 2013/11/25 =
+* Feature - Upgraded Framework admin interface to the newly developed app style interface. Just on 300 hours work in this version upgrade.
+* Feature - New admin UI features check boxes replaced by switches, some dropdowns replaced by sliders.
+* Feature - Replaced colour picker with new WordPress 3.6.0 colour picker.
+* Feature - Added choice of 350 Google fonts to the existing 17 websafe fonts in all new single row font editor.
+* Feature - Added intuitive triggers for admin panel settings. When selected corresponding feature settings appear.
+* Feature - Added border internal shadow settings.
+* Feature - Added new border features Grove | Ridge | Insert | Outset
+* Feature - Added new button border types Grove | Ridge | Inset | Outset and button border Inner shadow settings.
+* Feature - Add new Sidebar Widget Header Title settings - Border corners and border shadow Inner and Outer.
+* Feature - Added floating Save Changes and Reset Options buttons so that they are always in screen when on the admin panel.
+* Feature - Added Blockquote / Quotation Icon ON | OFF and icon colour settings.
+* Feature - Added Blockquote / Quotation Icon boxed style settings.
+* Feature - Added ON | OFF settings for Next | Previous Posts Linked Text on single post and single custom post types.
+* Feature - Add Blog Card image styling options including padding, border and shadow.
+* Tweak - Major Responsi Theme Customizer admin menu items consolidation and resort.
+* Tweak - Admin panel section Titles in blue boxes with Conditionals help text. Task approx 80% complete.
+* Tweak - Added Menu loading icon scroll bar.
+
+= 3.0.4.1 - 2013/10/22 =
+* Feature -  Added facebook Open Graph meta tags to head for social sharing. og:url, og:title, og:description for all post and pages.
+* Fix - Facebook share get post feature image. Updated the og:image to get full image instead of medium post thumbnail.
+* Fix - Video embedded by iframe not resizing in proportion on tablets and mobiles ( embed, video, object, youtube, vimeo, kickstarter ).
+* Fix - Page load causing the Page View Count video to count 2 for each page load.
+
+= 3.0.4 - 2013/10/07 =
+* Feature - Added 'Post Cards' feature for displaying Related Recent Posts under each blog post. Related posts used to show only as hyperlinked blog title text in list format.
+* Feature - Added option to show 'Recent Posts' under each post in the new 'Post Card' display.
+* Feature - Added option to activate or deactivate 'Related Posts' and 'Recent Posts'. Settings found on Theme Customizer > Posts and Cards > Post Layout.
+* Feature - Can set custom text for 'Related Posts' and 'Recent Posts' titles that show above each section.
+* Feature - When 'Related' and or 'Recent' post featured is activated, can set the number of posts to show per post type. Example if 'Blog Cards Per Row' is set at 3 and there are 6 posts set to show - display will be 2 rows of 3 per row.
+* Feature - Set the number of Blog Cards Per Row from the settings Theme Customizer > Theme Layout & Style > Layout Setup - Blog Cards Per Row.
+* Tweak - Removed 'Upload Images' feature from Responsi Custom settings on each post. Use native WordPress Add Media to upload and set feature image.
+* Tweak - Removed 'Embedded' feature from Responsi Custom settings on each post. WordPress 3.6.0 supports embed video code directly into posts.
+
+= 3.0.3 - 2013/10/04 =
+* Feature - Added "Fixed Header and Primary Nav Bar" feature. Can be activated in Theme Layout & Style > Header when when Header outside boxed layout feature is activated.
+* Feature - Added Custom styling of Primary Navigation dropdown menu. Full range of point & click settings can be found in Theme layout & Style > Primary Navigation.
+* Feature - Added new border style 'Double' to existing 'Solid', Dash' and 'Dotted'.
+* Fix - Google fonts support for WooCommerce and bbPress Add-On plugins.
+
+= 3.0.2 - 2013/09/23 =
+* Feature - Major Framework structural rework. Changed from Post 'Grid View' layout that was set by post and page column settings to independent 'Post Cards' (Blog Extracts).
+* Feature - Set the number of Post Cards that show per row within post and page content totally independent of the number of columns used to set the content wide.
+* Feature - New 'Post Cards' feature allows the creation of any wide sidebar independent of the post card wide.
+* Feature - New 'Post Cards' feature allows the creation of List View by setting Post Cards to show as one per row with image positioned to the right or left.
+* Feature - Added much more flexibility in setting the wide of the Post image on Post cards when image showing on the left or right. Set wide by increments of 1% + or -.
+* Tweak - Replaced set Post image wide on Post cards drop down with slider. Slider range is 25% to 50% by 1% increments.
+* Tweak - Optimized Post card render in IE7, IE8, IE9 and IE10, tablets and mobile devices.
+* Tweak - Updated Menu items, feature titles and help text on Theme Customizer admin panel to reflect the change in terminology from 'Grid View' to 'Post Cards'.
+* Fix - Ajax save function (miss some settings in add-on plugins and child theme).
+* Fix - Responsi Framework CSS first load. Save and Rest buttons loading at top of admin panel then moving to bottom.
+* Fix - Updated Google Rich Snippets author meta code to work properly.
+* Fix - Remove wp_get_referer() function from Responsi Framework for compatibility with WordPress 3.6.1 load order.
+
+= 3.0.1 - 2013/09/13 =
+* Feature - Framework has auto full support for Google Rich Snippets.
+* Credit - Thanks to Frank Ugolini for the suggestion and help with adding this very good SEO feature.
+* Tweak - Replaced the single form Framework Options panel with Multi-Form function which loads by Ajax
+* Tweak - Multi-Form panel allowed us to add Save Changes apply to just the current panel. This is a massive improvement because with single panel Save Changes saved all options on entire Framework.
+* Tweak - Removed 'Reset Theme Customizer' function and replaced with 'Reset Options'. Multi-Panel allows us just to reset colour, font and border settings on the current panel back to the child theme default.
+* Tweak - Added Title blocks within admin panels UI. This allows us to break up content into sections within panels. To be further enhanced in upcoming version 3.0.3
+* Fix - Themes minify script so it can process style url and script url that has format //domain.com
+* Localization - Added language folder and default English .po files to allow for International Localization.
+* License - Added License folder with License in line with GNU guidelines.
+
+= 3.0.0 - 2013/09/03 =
+* Feature - Added support for individual WooCommerce post and page Layout.
+* Tweak - Finished integration of a3revFramework into Responsi Parent Theme Framework.
+* Tweak - Removed WooFramework - and completed conversion to Responsi Framework. Now just Responsi Framework and Responsi Themes.
+* Tweak - Added support for bbPress full theme style and layout via the new Responsi bbPress Add-on plugin.
+* Tweak - Media screen for widget on sidebar now supported within the framework for all pages.
+* Fix - Replaced get_pagenum_link() function with add_query_arg() function. Endless scroll not loading pages on sites with SSL redirects from https to http on shop and archive pages.
+* Fix - Updated some prefixes to a3rev_ for compatibility with the a3revFramework.
+
+= 2.1.8 - 2013/08/22 =
+* Feature - Added support for Responsi bbPress theme style and layout plugin.
+* Fix - Responsi filter hook so can show bbPress Profile and Search results page.
+
+= 2.1.7 - 2013/08/13 =
+* Feature - Added caching functions. Reponsi > Caching. Combines, minifies, and caches JavaScript and CSS files. (source form http://code.google.com/p/minify/)
+* Tweak - respond.js polyfiler used for enhanced display in IE7, IE8 and IE9
+* Tweak - Responsi Child theme CSS breaking in IE7 to IE9 when other plugins load CSS and exceed IE 32 style sheet limit.
+* Tweak - Replaced all @import with <link href> for >CSS style sheets to improve legacy load time in IE
+* Tweak - Optimized style sheets to aviod IE 4,090 selector limitation in style sheets.
+
+= 2.1.6 - 2013/08/07 =
+* Tweak - Change all script "live" jQuery click funtion to jQuery "on" function.
+* Fix - Style Css for WP Use Reviews Plugins.
+
+= 2.1.5 - 2013/08/01 =
+* Tweak - Ran full WP_DEBUG for compatibility with WordPress 3.6.0
+* Tweak - Ran full WP_DEBUG on Child themes - no update required.
+* Tweak - Ran full WP_DEBUG on Responsi Woocommerce plugin. No Update required.
+* Fix - Warning in DEBUG mode undefined variable theme_option
+
+= 2.1.4 - 2013/07/25 =
+* Tweak - Changed jQuery Infinite Scroll to make compatible with Woocommerce Show Products by Category plugin Infinite Scroll.
+
+= 2.1.3 - 2013/07/01 =
+* Feature - Added content body background colour feature.
+* Feature - Added widget content alignment (left, right, center or justify) for all widgets.
+* Tweak - Removed the contact us feature out of the Parent Theme Framework.
+* Tweak - Major clean up of the Theme Framework code ready for launch.
+* Tweak - Optimized PTF code for faster PTF load time
+* Tweak - Updated all Responsi Themes and synched code between PTF and each child.
+* Tweak - Major rework of the adim panel User interface.
+* Tweak - Add new Theme Customizer tab > Content Backgrounds with settings sorted into Sub tabs
+* Tweak - Added Enable/Disable settings to many Content Background and Site Background settings.
+* Tweak - Added more descriptive help text to many features.
+* Tweak - Updated Theme Customizer support URL to the a3rev forum.
+* Fix - Masonry display bug in IE7
+
+= 2.1.2 - 2013/06/15 =
+* Tweak - Moved the code check to show extract box when Add to Cart button is hidden by setting in Woocommerce Email Inquiry plugin panel to Responsi A3revCommecre Add-on plugin.
+
+= 2.1.1 - 2013/06/14 =
+* Feature - Added padding widget content (Top/Bottom, Left/Right) for Primary Widget, Secondry Widget, Home Slider Widget and Below Home Slider Widget.
+
+= 2.1.0 - 2013/06/07 =
+* Tweak - Changed text on endless scroll pop up on Woocommerce Grid View pages to show  loading next set of products instead of next set of posts
+* Fix - Bug in first load that was sent out in version 2.0.9. On upgrading to 2.0.9 the bug caused logo and nav bar of activated child themes to be replaced with child default logo and nav bar.
+* Fix - Tap to view bug in iPhone 5 and iPad for product and blog extract with social share icons enabled. iOS has tap to hover feature. Second tap did not open link. If disable social share icons then all links open on tap. If social share icons activated then link opens on second tap.
+
+= 2.0.9 - 2013/06/06 =
+* Tweak - Added new footer info.
+* Tweak - Moved Primary and Secondary sidebars to the top of the Widget sidebar tree so that the default WordPress widgets don't log in the themes header widget on install.
+* Fix - Child theme Changelog thickbox pop-up bug.
+
+= 2.0.8 - 2013/06/03 =
+* Feature - Major change. Moved the Woocommerce templates layout and style edit feature out of the Parent Theme framework and created it as an add-on via a plugin. This slims the Parent Theme Framework down to just its core and gives us the scope to add other major plugin template editors.
+* Feature - Responsi Woocommerce add-on plugin. Move all the Woocommerce template edit functions to a plugin that can be installed as an add on if the Woocommerce plugin is installed. Active Parent Theme License holders can download the add on plugin for free as part of their subscription from their A3rev My Account > Subscription Downloads dashboard.
+* Feature - Added Subscriptions Download tab to the a3rev My Account Dashboard. On this dashboard active License holders can log in and download the Responsi Parent Theme, all Responsi Themes and Responsi Add on plugins.
+
+= 2.0.7 - 2013/05/21 =
+* Feature - Added scroll back to top of page feature. Shows as an arrow icon in the bottom right of legacy browsers and mobile devices after first endless scroll page load.
+* Feature - Added auto conversion of primary nav bar display in mobile devices to web app style select menu.
+* Feature - Added independent Typography settings for all Woocommerce templates (previously set from Page Styling).
+* Feature - Added Custom Style background for boxed layout.
+* Feature - Added header font styling for Widgets independent of Widget styling. Style Title text, content text, link text from the General Layout > Header sub tab..
+* Feature - Added Custom colour selector for sidebar login icons in header widget independent of sidebar login widgets user in sidebars.
+* Feature - Added Primary Nav bar customization to allow for creation of tabs. Added items as border, background , margin, border radius settings for creating tabs.
+* Feature - Added Custom background, border for Container on Primary Navigation.
+* Feature - Add Custom background, border for Footer Widget.
+* Feature - Add Custom text for Footer Widget.
+* Feature - Add Custom text, border for Footer Widget list.
+* Feature - Add Custom padding for extract Title, extract Description, extract footer cell in grid.(can customize grid show like http://pinterest.com/)
+* Feature - Add Custom padding for extract Title, extract price, extract Description, extract footer cell in grid for Woocommerce.(can customize grid show like http://pinterest.com/).
+* Fix - Woocommerce shop and archive page sort dropdown feature shows aligned to the right of page title.
+
+= 2.0.6 - 2013/05/15 =
+* Feature - Added Woocommerce > Grid View Layout option to pull product extract description text from either the products description or the Short Description
+* Fix - A3rev Framework adding site title to the end of post / page names.
+
+= 2.0.5 - 2013/05/11 =
+* Feature - Added Masonry 'Modernirz' animation. This enables browsers that support CSS transitions to load beautifully using CSS while browsers that don't use jQuery animation.
+* Fix - Optimized CSS style sheet and JavaScript load order for faster browser rendering.
+* Fix - Header background 'transparent' setting.
+* Fix - Optimized style sheets to work with IE bowsers 7, 8 and 9 under 32 styles sheet and under 4,000 selector limitations.
+* Fix - Various jQuery bugs in IE7and IE8 render. All of these issues relate to the underpowered resources of both those old browsers.
+* Note - 'Stack Overflow' warning on IE7 which at tis time cannot be resolved. IE7 is only available on Windows XP we don't see the value in spending any more time in optimizing for a depreciated browser.
+
+= 2.0.4 - 2013/05/07 =
+* Fix - Header and Nav bar style CSS not rendering in IE9
+* Fix - Masonry grid view layout breaking in IE8
+* Fix - Theme update failing due to verify SSL error.
+
+= 2.0.3 - 2013/05/03 =
+* Feature - Added Home page content area now supports show posts by Post ID.
+* Tweak - Run WP_DEBUG on new home page content features and fixed uncaught exceptions.
+
+= 2.0.2 - 2013/05/02 =.
+* Feature - Added Home page content area support for show a3 Projects plugin grid view extracts by Latest or Sticky.
+* Feature - Added Home page content area support for show a3 People plugin grid view extracts by Latest or Sticky.
+* Feature - Added Home page content area support for show a3 Sponsors plugin grid view extracts by Latest or Sticky.
+* Fix - Added miss class on parent theme for table style to apply to dashboard and My Licenses pages.
+* Fix - Bug when set custom layout for post that layout was over-riding the default layout for the sub-category the post was assigned to.
+
+= 2.0.1 - 2013/04/29 =
+* Feature - Major Upgrade. Created independent custom layout and style settings for Posts, Post Grid View, Pages and all front end out put of the Woocommerce plugin.
+* Feature - Added 4 new content areas to the Home page Content. This allows the user to sort Products and posts into content areas.
+* Feature - Added configure Products or Posts to show in any of the 4 new Home Content section.
+* Feature - Added auto show Woocommerce Featured Products in Home content areas.
+* Feature - Added auto show Woocommerce 'Specials' in Home Content area.
+* Feature - Added site content padding left / right now just 1% of screen. this allows content to be set full wide.
+* Feature -  Each section is broken down into custom settings for Layout and style.
+* Tweak - Major UX upgrade. Completely reworked the Theme Customizer dashboard to greatly enhance navigation and User experience.
+* Tweak - Added New Main Tab - General Styling (formerly General Settings) with these sub tabs.
+* Tweak - Upload site logo and favicon. Add tracking code (only there because had nowhere to put it)
+* Tweak - Buttons. Moved to its own sub tab. New feature is create button gradient colour.
+* Tweak - Links. Theme link text colour settings, Link, hover and visited colour.
+* Tweak - Breadcrumb. Activate / Deactivate and full custom style settings for the theme.
+* Tweak - Widgets. Allows the user to style everything about the layout and style of the site widget.
+* Tweak - Endless Scroll (New). Moved to own sub tab. Selected auto or scroll on click. Style on-click feature.
+* Tweak - Add Custom CSS. Moved to won sub tab. Add custom CSS and 'front End Theme Style Selector' settings.
+* Tweak - Added New Main Tab - General Layout (formerly Layout) with these sub tabs.
+* Tweak - Layout Setup. Global layout settings for Width, Header Widgets, Main Layout, Content Layout and footer Widgets.
+* Tweak - Box Site & Style. Activate / Deactivate boxed layout and boxed styling settings.
+* Tweak - Site Background. Customize the site background patterns, colours or background image.
+* Tweak - Top Navigation. Custom style settings for the top navigation bar.
+* Tweak - Primary Navigation. All custom style settings. New Feature, custom nav bar shadow
+* Tweak - Header. All header custom settings. New Feature, custom header shadow colour. Fixed Header padding (Left/Right/Top/Bottom):
+* Tweak - Footer. All custom footer style settings. New Feature, custom footer shadow colour.
+* Tweak - Footer site info. Moved from main Nav bar to sub nav bar of General layout.
+* Tweak - Subscription Settings: Moved to General layout from old General Settings tab.
+* Tweak - Added New Main Tab - Home Page (complete rework featuring 4 new content sections) with these sub tabs.
+* Tweak - Gallery Setup menu item. Activate / Deactivate and layout settings.
+* Tweak - Gallery Style (New) menu item. Custom style the display of the Gallery Container section, Image slider border and full Gallery Widgets custom style and layout that are independent of the themes Widget style settings.
+* Tweak - Widget Setup menu item. Activate / Deactivate, layout settings and Custom content area above widgets (between Gallery and Widgets)
+* Tweak - Widget Style (New) menu item. Custom style everything about the layout and style of the row of Widget independent of the Themes Widget style settings.
+* Tweak - Content Setup (New) menu item. Activate / Deactivate and Layout settings. New Feature, now has 4 content sections, each section has option to display Posts or if installed Woocommerce Products. Add posts by recent or sticky and add products by Recent, Sticky, On Sale or Featured. Add title for each section and number of grid view extracts to show.
+* Tweak - Content Style (New) menu item. Activate / Deactivate featured area above content, Full custom style.
+* Tweak - Section 1 Header Style (New) menu item. Custom style content Section 1 header, Font, alignment, background and box shadow.
+* Tweak - Section 2 Header Style (New) menu item. Custom style content Section 2 header, Font, alignment, background and box shadow.
+* Tweak - Section 3 Header Style (New) menu item. Custom style content Section 3 header, Font, alignment, background and box shadow.
+* Tweak - Section 4 Header Style (New) menu item. Custom style content Section 4 header, Font, alignment, background and box shadow.
+* Tweak - Added New Main Tab - Post and Grid View with these sub tabs.
+* Tweak - Post Layout (New) menu item. Activate / Deactivate every feature that displays on a WordPress post.
+* Tweak - Post Style (New) menu item. Custom style every element of the Posts, including Titles, content font, post meta, comments style, everything.
+* Tweak - Grid View Layout (New) menu item. Activate / Deactivate every element on post extracts display including set image display position in the grid (left/right/top) and fix image tall. Other new features include set number of lines to show for title, description and content of grid view footer 1 and footer 2.
+* Tweak - Grid View Style (New) menu item. Custom style for every element of the grid view display, too numerous to list them all.
+* Tweak - Added New Main Tab - Page Style (new feature, full independent styling for theme WordPress pages) with these sub tabs.
+* Tweak - Page Style (New) menu item. Box style for pages independent of General Layout > Box Site & Style.
+* Tweak - Topography (New) menu item. Style the topography of pages independent of posts.
+* Tweak - Added New Main Tab - Woocommerce with these sub tabs
+* Tweak - Product Page Layout (New) menu item. Set Product Page Gallery Wide (25%,50%,75%,100%), Product Meta Wide (25%,50%,75%)and position left/right if product gallery is set at 100%, Tabs Position (Top/Left/Right).
+* Tweak - Product Page Style (New) menu item. Custom Product meta (padding, border, background), Customize Tabs (font, border, background ...).
+* Tweak - Grid View Layout (New) menu item. Disable Social Network Icons, set Thumbnail Image position (Top/Left/Right), Thumbnail Image Wide as a % of the grid, Fix Thumbnail Height, Set number of lines Product Title can wrap to, disable description, set number of lines description can wrap to.
+* Tweak - Grid View Style (New) menu item. Customize Grid View (padding, border, background), Product Title (Padding ,Font, colour, text style), Description (Padding ,Font, colour, text style), Price (Padding Font, colour, text style).
+* Tweak - Sub Categories Layout (New) menu item. Customize Category Thumbnail Image position (Top/Left/Right), Thumbnail Image Wide as a % of the Grid, set fixed  Thumbnail height, Sub Categories Title position (Top/Bottom)
+* Tweak - Sub Categories Style (New) menu item. Customize Sub Categories (padding, border, background), Customize Title Sub Categories Style.
+* Tweak - My Account Style (New) menu item. Activate / Deactivate. Customize the My Account Dashboard nav bar.
+* Tweak - Success, Errors Style (New) menu item. Customize Success, Errors Style (padding, border, font, colour, background, text style).
+* Tweak - Button Style (New) menu item. Customize Woocommerce buttons, Gradient Colour, Font, Text Style, Rounded Corners.
+* Tweak - Table Style (New) menu item. Custom settings for styling the Woocommerce table.
+* Fix - Full WP_DEBUG done. All errors, notices, warnings and un-caught exceptions fixed.
+
+= 1.1.5 - 2013/03/08 =
+* Feature - Add full customize settings Blog and Blog Categories page.
+* Feature: Moved blog archive settings to [Theme Option -> Layout -> Blog Categories] and added these customization features:
+* Feature - Customize Blog Categories extracts Background on Archive or Blog page
+* Feature - Customize Blog Categories extracts Padding Top/Bottom
+* Feature - Added Show or hide Author and Categories on Blog Extract grid view 'footer'. Set default as false
+* Feature - Added Show or hide Extracts Tags and Comments on Blog Extract grid view 'footer'. Set default as false
+* Feature: Created a new Woocommerce Tab on the Theme Customizer with sub tabs | Settings | Shop pages | Product pages.
+* Tweak - Woocommerce Tab only shows when the Woocommerce plugin is activated.
+* Tweak - New Woocommerce Settings tab [Theme Option > Woocommerce > Settings, features moved from General Settings > Display options tab are - Display Account - Woocommerce Product Page 'more from' feature and Woocommerce Product Tabs position feature.
+* Tweak - New Woocommerce Shop pages tab includes these custom settings for Shop and product category product grid view listings.
+* Tweak - Customize Product title fonts
+* Tweak - Set Product Title Alignment - Left , Right or Centre.
+* Tweak - Customize Product price font
+* Tweak - Set Product Price Alignment - Left , Right or Centre.
+* Tweak - Customize Product extracts Top Border - Specify border properties for the top border.
+* Tweak - Customize Product extracts Bottom Border - Specify border properties for the bottom border.
+* Tweak - Customize the Product extracts Background colour on shop and product category pages
+* Tweak - Customize Product extracts Padding Top/Bottom
+* Tweak - Customize the Product extracts text alignment - Left , Right or Centre.
+* Tweak - New Woocommerce Product pages tab includes these custom settings for the Woocommerce single product page theme template.
+* Tweak - Customize Product Page meta Padding Top/Bottom (the Add to cart, Price, Select Options, Cats and tags section of the product page)
+* Tweak - Customize Product page meta Padding Left/Right
+* Tweak - Customize the Product page meta background colour
+* Tweak - Customize the Product page meta borders Top/Bottom/Left/Right
+* Fix - Email Inquiry Button for "Woocommerce Email Inquiry & Cart Options" plugins
+
+= 1.1.4 - 2013/02/28 =
+* Tweak - All Responsi Parent Theme code updated to be 100% compatible with Woocommerce version 2.0 and backwards.
+* Tweak - Front end user interface enhancement. Working to uniform the loading of the Post and Product extracts. Change the option to fix the the tall of Post titles that show under the Blog extracts and Woocommerce products from 2 lines to multiple lines (auto , 1, 2, 3) [ Theme Customizer > General Settings > Display Options -> Fix line Title Height for post extract in Grid View ].
+* Tweak - UI enhancement. Add the option to fix the Fix Thumbnail Height for post extract in Grid View [ Theme Customizer > General Settings > Display Options -> Fix Thumbnail Height for post extract in Grid View ].
+
+= 1.1.3 - 2013/02/06 =
+* Tweak - UI enhancement. Add the option to fix the Post titles that show under the Blog extracts and Woocommerce products to 2 lines. If title only 1 line a space shows under it. This is to help keep the Grid View 'bricks' in alignment with jQuery Masonry. Settings found on [ Theme Customizer > General Settings > Display Options -> Fix 2 line Title Height for post extract in Grid View ].
+* Tweak - Woocommerce Shop, Category and Sticky posts. Fixed Price field on the Product extracts. If no Price Entered just shows Price: - this is to help with the alignment of the extracts in the jQuery Masonary framework and is an add on the the Fixed Title feature.
+
+= 1.1.2 - 2013/02/04 =
+* Feature - Added Endless scroll options - Auto Endless Scoll or Scroll on click.
+
+= 1.1.1 - 2013/01/31 =
+* Feature - Customize Padding for widget title (Top, Buttom, Left, Right) [Theme Option -> Layout -> Widget -> Widget Title Padding]
+* Fix - My Account Sidebar. Add content to side and it only shows to logged in users. A3revComerce plugin must be activated for the My Account feature to work.
+* Fix - Home Page Conetbnt layout bug in IE9. IE9 was displaying all home page content added by Sticky in a single column down the page.
+* Fix - IE9 jQuery and Masonry load conflict. Edited theme so that the Masonary framewok does not load until JQuery script has loaded.
+* Fix - Alignment of the Red X that shows with Error messages
+* Fix - Theme Customizer > Layout > Posts - Fixed Post Text Font Style being over ridden by General Text Font Style on Style > Topography
+
+= 1.1.0 - 2013/01/22 =
+* Feature - Add Gallery by shortcode to allow users to install and use any gallery Slider that outputs a gallery by shortcode.
+
+= 1.0.9 - 2013/01/16 =
+* Feature - Removed Skin Styles from Parent theme. These skin styles are only found in the Chameleon Child Theme and so we have moved them from the Parent to Chameleon Child.
+* Feature - Child Theme setting show as the current setting through the Responsi dashboard now.
+* Feature - Added Responsi Themes 'Manager' to Responsi Dashboard. Go to Responsi > Responsi Themes.
+* Feature - Updated the a3rev API so that active Theme License holders can see all Child themes with links to live demos and are able to download any theme from the dashboard. All Child Theme downloads are recorded on the users a3rev My-Account dashboard. This means that users can download any child theme to their computer and upload it using the Wordpress Themes uploader and activate.
+* Feature - Install a new Child Theme and all of the current sites layout setting are automatically kept, Only the Child Theme style is changed to the default
+* Feature - Upgraded 'Reset All Theme Customizer' - Now when 'Reset' all Child Theme style options are reset back to the theme default, but theme layout is retained. Allows users to start again with Child Theme style customization e.g. Fonts and colours while retaining customized layout settings e.g. Home page settings, site wide etc.
+* Feature - Added Home Primary Sidebar and Home Secondary Sidebar so that when Content | Sidebar is selected on home page unique content that is independent of the Primary Sidebar and secondary sidebar can we created for home page display.
+* Feature - Added content area above Home Page Widgets and Content. This allows users a full width area above those to areas on the Home Page to add content such as titles or images. Settings include -Add text, background colour or image with a font styler. Textarea accepts all HTML tags. These settings can be found on Theme Customizer > Home Layout > Widget Setup (and) > Content Setup.
+* Feature - Added Breadcrumb admin page with setting to activate/deactivate the breadcrumb and customize the breadcrumb style. The new setting can be found at Theme Customizer > Layout > Breadcrumbs.
+* Feature - Upgraded available theme background patterns with 36 new modern background colours. Retained 10 existing background colours. 46 background colours in total to choose from.
+* Feature - Add customize Widget Titles > set title position > Left > Right > Centre, style the background colour and title borders. Settings found on the Theme Customizer > Layout > Widgets.
+* Feature - Added setting to customize some elements on the Parents Woocommerce single product page template. Show tabs full wide and show 'more from' feature.
+* Tweak - Added Parent theme Changelog now shows in a pop up when from the Responsi dashboard header link.
+* Tweak - Various UI reworks on the Responsi Admin panel.
+
+= 1.0.8 - 2013/01/09 =
+* Fix - Top Navbar now an option from Menus - activate or deactivate.
+
+= 1.0.7 - 2013/01/07 =
+* Feature - Add option show tabs under Gallery on single product (woocommerce).
+* Feature - Add Style for WP User Reviews (Plugin).
+* Fix - Styling of widget text
+
+= 1.0.6 - 2013/01/02 =
+* Tweak - Updated API to allow Pro Version License holders to manage their Licenses from the all new "My Account" dashboard on a3rev. Includes the option to see which domains each theme is installed and activated on and the ability to deactivate the plugin on any domain from the ''My Account'' > Manage Licenses dashboard.
+
+= 1.0.5 - 2012/12/31 =
+* Feature - Add MyCart Sidebar and Checkout Sidebar for woocommerce
+
+= 1.0.4 - 2012/12/29 =
+* Feature - Add option show or hide "More from" product on single product (woocommerce).
+
+= 1.0.3 - 2012/12/26 =
+* Feature - Add background position admin customize
+* Feature - Add Header background position admin customize
+* Feature - Header, footer can set outsite of content area when boxed
+* Tweak - Change google API !
+* Fix -  Sidebar for mobile responsive.
+
+= 1.0.2 - 2012/12/20 =
+* Fix - Home widget layout.
+
+= 1.0.1 - 2012/12/19 =
+* Tweak - Mobile responsive optimization
+
+= 1.0.0 - 2012/09/28 =
+* First release!
