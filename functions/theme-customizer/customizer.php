@@ -32,192 +32,30 @@ class Responsi_Theme_Customizer {
 		}
 	}
 
+	public function responsi_add_dynamic_css() {
 
-	public function responsi_default_scripts( &$scripts ) {
-		global $responsi_version;
-
-		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
-
-		$system_fonts = array(
-			'Arial, sans-serif'                                           => array( 'name' => 'Arial' ),
-			'Verdana, Geneva, sans-serif'                                 => array( 'name' => 'Verdana' ),
-			'Trebuchet MS, Tahoma, sans-serif'                            => array( 'name' => 'Trebuchet MS' ),
-			'Georgia, serif'                                              => array( 'name' => 'Georgia' ),
-			'Times New Roman, serif'                                      => array( 'name' => 'Times New Roman' ),
-			'Tahoma, Geneva, Verdana, sans-serif'                         => array( 'name' => 'Tahoma' ),
-			'Palatino, Palatino Linotype, serif'                          => array( 'name' => 'Palatino' ),
-			'Helvetica Neue, Helvetica, sans-serif'                       => array( 'name' => 'Helvetica Neue' ),
-			'Calibri, Candara, Segoe, Optima, sans-serif'                 => array( 'name' => 'Calibri' ),
-			'Myriad Pro, Myriad, sans-serif'                              => array( 'name' => 'Myriad Pro' ),
-			'Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif' => array( 'name' => 'Lucida Grande' ),
-			'Arial Black, sans-serif'                                     => array( 'name' => 'Arial Black' ),
-			'Gill Sans, Gill Sans MT, Calibri, sans-serif'                => array( 'name' => 'Gill Sans' ),
-			'Geneva, Tahoma, Verdana, sans-serif'                         => array( 'name' => 'Geneva' ),
-			'Impact, Charcoal, sans-serif'                                => array( 'name' => 'Impact' ),
-			'Courier, Courier New, monospace'                             => array( 'name' => 'Courier, Courier New' ),
-			'Century Gothic, sans-serif'                                  => array( 'name' => 'Century Gothic' ),
-		);
-		// Google webfonts
-		global $google_fonts, $line_heights;
-
-		$all_fonts = array_merge( $system_fonts, $google_fonts );
-
-		$line_heights = array();
-		for ( $i = 0.6; $i <= 3.1; $i+=0.1 ){
-			$line_heights[] = $i;
+		if ( is_customize_preview() ) {
+			if( is_child_theme() ){
+				wp_add_inline_style( 'responsi-theme', responsi_build_dynamic_css( true ) );
+			}else{
+				wp_add_inline_style( 'responsi-framework', responsi_build_dynamic_css( true ) );
+			}
+		} else {
+			$framework_custom_css = get_theme_mod( 'framework_custom_css' );
+			if ( false === $framework_custom_css ) {
+				if( is_child_theme() ){
+					wp_add_inline_style( 'responsi-theme', responsi_build_dynamic_css( true ) );
+				}else{
+					wp_add_inline_style( 'responsi-framework', responsi_build_dynamic_css( true ) );
+				}
+			}else{
+				if( is_child_theme() ){
+					wp_add_inline_style( 'responsi-theme', get_theme_mod( 'framework_custom_css' ) );
+				}else{
+					wp_add_inline_style( 'responsi-framework', get_theme_mod( 'framework_custom_css' ) );
+				}
+			}
 		}
-
-		// Registry script libs
-		$scripts->add( 'jquery-ui-slider-rtl', get_template_directory_uri() . '/functions/js/jquery.ui.slider.rtl' .$suffix . '.js', array(' jquery' ), $responsi_version, true );
-		$scripts->add( 'jquery-ui-ioscheckbox', get_template_directory_uri() . '/functions/js/iphone-style-checkboxes' .$suffix . '.js', array( 'jquery' ), $responsi_version, true );
-		$scripts->add( 'jquery-ui-ioscheckbox-rtl', get_template_directory_uri() . '/functions/js/iphone-style-checkboxes.rtl' .$suffix . '.js', array( 'jquery' ), $responsi_version, true );
-
-		// Registry main responsi customize script
-		$scripts->add( 'responsi-customize-function-preview', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.function.preview' .$suffix . '.js', array( 'jquery', 'customize-preview' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize', get_template_directory_uri() . '/functions/theme-customizer/js/customize' .$suffix . '.js', array( 'jquery', 'wp-util', 'customize-controls', 'responsi-customize-function-preview', 'customize-preview' ), $responsi_version, true );
-
-		// Registry control scripts
-		$scripts->add( 'responsi-customize-controls', get_template_directory_uri() . '/functions/theme-customizer/js/customize-controls' . $suffix . '.js', array( 'jquery', 'wp-backbone', 'customize-controls', 'wp-color-picker' ), $responsi_version, true );
-
-		// Registry Preview scripts for run inside a Customizer preview frame.
-		$scripts->add( 'responsi-customize-header', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.header.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-navigation', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.navigation.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-layout', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.layout.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-setting', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.setting.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-widget', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.widget.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-footer', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.footer.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-post', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.post.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-page', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.page.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-blog', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.blog.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-shiftclick', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.shiftclick' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
-
-		$backgrounds_list = array();
-		$patterns_list    = array();
-		if ( function_exists( 'get_backgrounds_img' ) ) {
-			$backgrounds_list = get_backgrounds_img();
-			$patterns_list    = get_backgrounds_img( 'patterns' );
-		}
-		$background_patterns_control_parameters = array(
-			'backgrounds' => $backgrounds_list,
-			'patterns'    => $patterns_list,
-			'bg_url'      => defined( 'RESPONSI_BG_PICKER_URL' ) ? RESPONSI_BG_PICKER_URL : '',
-		);
-		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomBackgroundPatternsControl', $background_patterns_control_parameters );
-
-		$iradio_control_parameters = array(
-			'onoff' => array(
-				'checked_label'   => __( 'ON', 'responsi' ),
-				'unchecked_label' => __( 'OFF', 'responsi' ),
-				'container_width' => 80,
-			),
-		);
-		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomIRadioControl', $iradio_control_parameters );
-
-		$imulticheckbox_control_parameters = array(
-			'onoff' => array(
-				'checked_label'   => __( 'ON', 'responsi' ),
-				'unchecked_label' => __( 'OFF', 'responsi' ),
-				'checked_value'   => 'true',
-				'unchecked_value' => 'false',
-				'container_width' => 80,
-			),
-		);
-		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomIMultiCheckboxControl', $imulticheckbox_control_parameters );
-
-		$border_radius_control_parameters = array(
-			'rounded' => array(
-				'min' => 0,
-				'max' => 100,
-				'step'=> 1,
-			),
-			'corner' => array(
-				'checked_value'   => 'rounded',
-				'unchecked_value' => 'square',
-				'checked_label'   => __( 'ROUNDED', 'responsi' ),
-				'unchecked_label' => __( 'SQUARE', 'responsi' ),
-				'container_width' => 120,
-			)
-		);
-		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomBorderRadiusControl', $border_radius_control_parameters );
-
-		$box_shadow_control_parameters = array(
-			'size' => array(
-				'min' => -20,
-				'max' => 20,
-			),
-			'onoff' => array(
-				'checked_value'   => 'true',
-				'unchecked_value' => 'false',
-				'checked_label'   => __( 'ON', 'responsi' ),
-				'unchecked_label' => __( 'OFF', 'responsi' ),
-				'container_width' => 80,
-			),
-			'inset' => array(
-				'checked_value'   => 'inset',
-				'unchecked_value' => 'outset',
-				'checked_label'   => __( 'INNER', 'responsi' ),
-				'unchecked_label' => __( 'OUTER', 'responsi' ),
-				'container_width' => 100,
-			)
-		);
-		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomBoxShadowControl', $box_shadow_control_parameters );
-
-		$ibackground_control_parameters = array(
-			'onoff' => array(
-				'checked_value'   => 'true',
-				'unchecked_value' => 'false',
-				'checked_label'   => __( 'ON', 'responsi' ),
-				'unchecked_label' => __( 'OFF', 'responsi' ),
-				'container_width' => 80,
-			)
-		);
-		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomiBackgroundControl', $ibackground_control_parameters );
-
-		$typography_control_parameters = array(
-			'size' => array(
-				'min' => 9,
-				'max' => 71,
-			),
-			'line_heights' => $line_heights,
-			'fonts' => $all_fonts,
-			'styles' => array(
-				'300'         => __( 'Thin', 'responsi' ),
-				'300 italic'  => __( 'Thin/Italic', 'responsi' ),
-				'normal'      => __( 'Normal', 'responsi' ),
-				'italic'      => __( 'Italic', 'responsi' ),
-				'bold'        => __( 'Bold', 'responsi' ),
-				'bold italic' => __( 'Bold/Italic', 'responsi' ),
-			),
-		);
-		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomTypographyControl', $typography_control_parameters );
-
-		$border_control_parameters = array(
-			'width' => array(
-				'min' => 0,
-				'max' => 20,
-			),
-			'styles' => array(
-				'solid' 	=> __( 'Solid', 'responsi' ),
-				'dashed' 	=> __( 'Dashed', 'responsi' ),
-				'dotted' 	=> __( 'Dotted', 'responsi' ),
-				'double' 	=> __( 'Double', 'responsi' ),
-				'groove' 	=> __( 'Groove', 'responsi' ),
-				'ridge' 	=> __( 'Ridge', 'responsi' ) ,
-				'inset' 	=> __( 'Inset', 'responsi' ) ,
-				'outset' 	=> __( 'Outset', 'responsi' )
-			),
-		);
-		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomBorderControl', $border_control_parameters );
-
-		$_panelIds = apply_filters( 'responsi_focus_panels', array( array( 'selector' => '', 'settings' => '' )) ) ;
-		did_action( 'init' ) && $scripts->localize( 'responsi-customize-shiftclick', '_panelIds', $_panelIds );
-		
-		$_sectionIds = apply_filters( 'responsi_focus_sections', array( array( 'selector' => '', 'settings' => '' ) ) );
-		did_action( 'init' ) && $scripts->localize( 'responsi-customize-shiftclick', '_sectionIds', $_sectionIds );
-		
-		$_controlIds = apply_filters( 'responsi_focus_controls', array( array( 'selector' => '', 'settings' => '' ) ) );
-		did_action( 'init' ) && $scripts->localize( 'responsi-customize-shiftclick', '_controlIds', $_controlIds );
-
 	}
 
 	public function responsi_focus_controls( $_controlIds ) {
@@ -303,28 +141,22 @@ class Responsi_Theme_Customizer {
 
 	}
 
-	public function responsi_customize_controls_enqueue_scripts() {
-		// Load some script libs
-		if ( is_rtl() ){
-			wp_enqueue_script( 'jquery-ui-slider-rtl' );
-			wp_enqueue_script( 'jquery-ui-ioscheckbox-rtl' );
-		} else {
-			wp_enqueue_script( 'jquery-ui-slider' );
-			wp_enqueue_script( 'jquery-ui-ioscheckbox' );
+	public function responsi_customize_register_panels( $wp_customize ){
+		$panels = apply_filters( 'responsi_customize_register_panels', array() );
+		if( is_array( $panels ) && count( $panels ) > 0 ){
+			foreach ($panels as $key => $value) {
+				$wp_customize->add_panel( $key, $value );
+			}
 		}
-		wp_enqueue_script( 'responsi-customize' );
 	}
 
-	public function responsi_customize_preview_init() {
-		wp_enqueue_script( 'responsi-customize-function-preview' );
-		wp_enqueue_script( 'responsi-customize-shiftclick' );
-	}
-
-	public function responsi_customize_controls_print_styles() {
-		global $responsi_version;
-		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
-		$rtl = is_rtl() ? '.rtl' : '';
-		wp_enqueue_style( 'responsi-customize', get_template_directory_uri() . '/functions/theme-customizer/css/customize' . $rtl .$suffix . '.css', array(), $responsi_version, 'screen' );
+	public function responsi_customize_register_sections( $wp_customize ){
+		$sections = apply_filters( 'responsi_customize_register_sections', array() );
+		if( is_array( $sections ) && count( $sections ) > 0 ){
+			foreach ($sections as $key => $value) {
+				$wp_customize->add_section( $key, $value );
+			}
+		}
 	}
 
 	public function responsi_customize_register( $wp_customize ) {
@@ -475,20 +307,94 @@ class Responsi_Theme_Customizer {
 		   
 	}
 
-	public function responsi_customize_register_panels( $wp_customize ){
-		$panels = apply_filters( 'responsi_customize_register_panels', array() );
-		if( is_array( $panels ) && count( $panels ) > 0 ){
-			foreach ($panels as $key => $value) {
-				$wp_customize->add_panel( $key, $value );
-			}
-		}
-	}
+	public function responsi_customize_register_controls( $wp_customize ){
+		$_controls_settings = apply_filters( 'responsi_customize_register_settings', array() );
+		if( is_array( $_controls_settings ) && count( $_controls_settings ) > 0 ){
+			foreach ($_controls_settings as $key => $value) {
+				//Add Control
+				if( isset($value['control']) ){
+					if( isset($value['control']['settings']) && $value['control']['settings'] == 'multiple' ){
+						$value['control']['settings'] = responsi_custom_control_settings( $key, $value['control']['type'] );
+					}
+					if( isset($value['control']['settings']) && $value['control']['settings'] == 'multitext' ){
+						$value['control']['settings'] = responsi_custom_control_settings( $key, $value['control']['type'], $value['control'] );
+					}
+					if( isset($value['control']['settings']) && $value['control']['settings'] == 'multicheckbox' ){
+						$value['control']['settings'] = responsi_custom_control_settings( $key, $value['control']['type'], $value['control'] );
+					}
 
-	public function responsi_customize_register_sections( $wp_customize ){
-		$sections = apply_filters( 'responsi_customize_register_sections', array() );
-		if( is_array( $sections ) && count( $sections ) > 0 ){
-			foreach ($sections as $key => $value) {
-				$wp_customize->add_section( $key, $value );
+					switch ( $value['control']['type'] ) {
+						case "iradio":
+					        $wp_customize->add_control( new Customize_iRadio_Control( $wp_customize, $key, $value['control']) );
+					        break;
+						case "icheckbox":
+					        $wp_customize->add_control( new Customize_iCheckbox_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "imulticheckbox":
+					        $wp_customize->add_control( new Customize_iMultiCheckbox_Control( $wp_customize, $key, $value['control']) );
+					        break;
+						case "iswitcher":
+					        $wp_customize->add_control( new Customize_iSwitcher_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "slider":
+					        $wp_customize->add_control( new Customize_Slider_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "layout":
+					        $wp_customize->add_control( new Customize_Layout_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "ibackground":
+					        $wp_customize->add_control( new Customize_iBackground_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "border":
+					        $wp_customize->add_control( new Customize_Border_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "border_radius":
+					        $wp_customize->add_control( new Customize_Border_Radius_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "box_shadow":
+					        $wp_customize->add_control( new Customize_Box_Shadow_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "typography":
+					        $wp_customize->add_control( new Customize_Typography_Control( $wp_customize, $key, $value['control']) );
+					       break;
+					    case "multitext":
+					        $wp_customize->add_control( new Customize_Multiple_Text_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "icolor":
+					        $wp_customize->add_control( new Customize_iColor_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "iupload":
+					    	$wp_customize->add_control( new Customize_iUpload_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "iuploadcrop":
+					    	$wp_customize->add_control( new Customize_iUploadCrop_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "background_patterns":
+					        $wp_customize->add_control( new Customize_Background_Patterns_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "itext":
+					        $wp_customize->add_control( new Customize_iText_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "itextarea":
+					        $wp_customize->add_control( new Customize_iTextarea_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "ieditor":
+					        $wp_customize->add_control( new Customize_iEditor_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "iselect":
+					        $wp_customize->add_control( new Customize_iSelect_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "ilabel":
+					        $wp_customize->add_control( new Customize_iLabel_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    case "ihtml":
+					        $wp_customize->add_control( new Customize_iHtml_Control( $wp_customize, $key, $value['control']) );
+					        break;
+					    default:
+					        $wp_customize->add_control( $key, $value['control'] );
+					        break;
+					}
+				}
 			}
 		}
 	}
@@ -622,96 +528,215 @@ class Responsi_Theme_Customizer {
 		}
 	}
 
-	public function responsi_customize_register_controls( $wp_customize ){
-		$_controls_settings = apply_filters( 'responsi_customize_register_settings', array() );
-		if( is_array( $_controls_settings ) && count( $_controls_settings ) > 0 ){
-			foreach ($_controls_settings as $key => $value) {
-				//Add Control
-				if( isset($value['control']) ){
-					if( isset($value['control']['settings']) && $value['control']['settings'] == 'multiple' ){
-						$value['control']['settings'] = responsi_custom_control_settings( $key, $value['control']['type'] );
-					}
-					if( isset($value['control']['settings']) && $value['control']['settings'] == 'multitext' ){
-						$value['control']['settings'] = responsi_custom_control_settings( $key, $value['control']['type'], $value['control'] );
-					}
-					if( isset($value['control']['settings']) && $value['control']['settings'] == 'multicheckbox' ){
-						$value['control']['settings'] = responsi_custom_control_settings( $key, $value['control']['type'], $value['control'] );
-					}
+	public function responsi_customize_controls_print_styles() {
+		global $responsi_version;
+		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+		$rtl = is_rtl() ? '.rtl' : '';
+		wp_enqueue_style( 'responsi-customize', get_template_directory_uri() . '/functions/theme-customizer/css/customize' . $rtl .$suffix . '.css', array(), $responsi_version, 'screen' );
+	}
 
-					switch ( $value['control']['type'] ) {
-						case "iradio":
-					        $wp_customize->add_control( new Customize_iRadio_Control( $wp_customize, $key, $value['control']) );
-					        break;
-						case "icheckbox":
-					        $wp_customize->add_control( new Customize_iCheckbox_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "imulticheckbox":
-					        $wp_customize->add_control( new Customize_iMultiCheckbox_Control( $wp_customize, $key, $value['control']) );
-					        break;
-						case "iswitcher":
-					        $wp_customize->add_control( new Customize_iSwitcher_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "slider":
-					        $wp_customize->add_control( new Customize_Slider_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "layout":
-					        $wp_customize->add_control( new Customize_Layout_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "ibackground":
-					        $wp_customize->add_control( new Customize_iBackground_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "border":
-					        $wp_customize->add_control( new Customize_Border_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "border_radius":
-					        $wp_customize->add_control( new Customize_Border_Radius_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "box_shadow":
-					        $wp_customize->add_control( new Customize_Box_Shadow_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "typography":
-					        $wp_customize->add_control( new Customize_Typography_Control( $wp_customize, $key, $value['control']) );
-					       break;
-					    case "multitext":
-					        $wp_customize->add_control( new Customize_Multiple_Text_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "icolor":
-					        $wp_customize->add_control( new Customize_iColor_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "iupload":
-					    	$wp_customize->add_control( new Customize_iUpload_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "iuploadcrop":
-					    	$wp_customize->add_control( new Customize_iUploadCrop_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "background_patterns":
-					        $wp_customize->add_control( new Customize_Background_Patterns_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "itext":
-					        $wp_customize->add_control( new Customize_iText_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "itextarea":
-					        $wp_customize->add_control( new Customize_iTextarea_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "ieditor":
-					        $wp_customize->add_control( new Customize_iEditor_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "iselect":
-					        $wp_customize->add_control( new Customize_iSelect_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "ilabel":
-					        $wp_customize->add_control( new Customize_iLabel_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    case "ihtml":
-					        $wp_customize->add_control( new Customize_iHtml_Control( $wp_customize, $key, $value['control']) );
-					        break;
-					    default:
-					        $wp_customize->add_control( $key, $value['control'] );
-					        break;
-					}
-				}
-			}
+	public function responsi_default_scripts( &$scripts ) {
+		global $responsi_version;
+
+		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+
+		$system_fonts = array(
+			'Arial, sans-serif'                                           => array( 'name' => 'Arial' ),
+			'Verdana, Geneva, sans-serif'                                 => array( 'name' => 'Verdana' ),
+			'Trebuchet MS, Tahoma, sans-serif'                            => array( 'name' => 'Trebuchet MS' ),
+			'Georgia, serif'                                              => array( 'name' => 'Georgia' ),
+			'Times New Roman, serif'                                      => array( 'name' => 'Times New Roman' ),
+			'Tahoma, Geneva, Verdana, sans-serif'                         => array( 'name' => 'Tahoma' ),
+			'Palatino, Palatino Linotype, serif'                          => array( 'name' => 'Palatino' ),
+			'Helvetica Neue, Helvetica, sans-serif'                       => array( 'name' => 'Helvetica Neue' ),
+			'Calibri, Candara, Segoe, Optima, sans-serif'                 => array( 'name' => 'Calibri' ),
+			'Myriad Pro, Myriad, sans-serif'                              => array( 'name' => 'Myriad Pro' ),
+			'Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif' => array( 'name' => 'Lucida Grande' ),
+			'Arial Black, sans-serif'                                     => array( 'name' => 'Arial Black' ),
+			'Gill Sans, Gill Sans MT, Calibri, sans-serif'                => array( 'name' => 'Gill Sans' ),
+			'Geneva, Tahoma, Verdana, sans-serif'                         => array( 'name' => 'Geneva' ),
+			'Impact, Charcoal, sans-serif'                                => array( 'name' => 'Impact' ),
+			'Courier, Courier New, monospace'                             => array( 'name' => 'Courier, Courier New' ),
+			'Century Gothic, sans-serif'                                  => array( 'name' => 'Century Gothic' ),
+		);
+		// Google webfonts
+		global $google_fonts, $line_heights;
+
+		$all_fonts = array_merge( $system_fonts, $google_fonts );
+
+		$line_heights = array();
+		for ( $i = 0.6; $i <= 3.1; $i+=0.1 ){
+			$line_heights[] = $i;
 		}
+
+		// Registry script libs
+		$scripts->add( 'jquery-ui-slider-rtl', get_template_directory_uri() . '/functions/js/jquery.ui.slider.rtl' .$suffix . '.js', array(' jquery' ), $responsi_version, true );
+		$scripts->add( 'jquery-ui-ioscheckbox', get_template_directory_uri() . '/functions/js/iphone-style-checkboxes' .$suffix . '.js', array( 'jquery' ), $responsi_version, true );
+		$scripts->add( 'jquery-ui-ioscheckbox-rtl', get_template_directory_uri() . '/functions/js/iphone-style-checkboxes.rtl' .$suffix . '.js', array( 'jquery' ), $responsi_version, true );
+
+		// Registry main responsi customize script
+		$scripts->add( 'responsi-customize-function-preview', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.function.preview' .$suffix . '.js', array( 'jquery', 'customize-preview' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize', get_template_directory_uri() . '/functions/theme-customizer/js/customize' .$suffix . '.js', array( 'jquery', 'wp-util', 'customize-controls' ), $responsi_version, true );
+
+		// Registry control scripts
+		$scripts->add( 'responsi-customize-controls', get_template_directory_uri() . '/functions/theme-customizer/js/customize-controls' . $suffix . '.js', array( 'jquery', 'wp-backbone', 'customize-controls', 'wp-color-picker' ), $responsi_version, true );
+
+		// Registry Preview scripts for run inside a Customizer preview frame.
+		$scripts->add( 'responsi-customize-header', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.header.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-navigation', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.navigation.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-layout', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.layout.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-setting', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.setting.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-widget', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.widget.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-footer', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.footer.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-post', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.post.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-page', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.page.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-blog', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.blog.preview' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-shiftclick', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.shiftclick' .$suffix . '.js', array( 'jquery', 'responsi-customize-function-preview' ), $responsi_version, true );
+
+		$backgrounds_list = array();
+		$patterns_list    = array();
+		if ( function_exists( 'get_backgrounds_img' ) ) {
+			$backgrounds_list = get_backgrounds_img();
+			$patterns_list    = get_backgrounds_img( 'patterns' );
+		}
+		$background_patterns_control_parameters = array(
+			'backgrounds' => $backgrounds_list,
+			'patterns'    => $patterns_list,
+			'bg_url'      => defined( 'RESPONSI_BG_PICKER_URL' ) ? RESPONSI_BG_PICKER_URL : '',
+		);
+		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomBackgroundPatternsControl', $background_patterns_control_parameters );
+
+		$iradio_control_parameters = array(
+			'onoff' => array(
+				'checked_label'   => __( 'ON', 'responsi' ),
+				'unchecked_label' => __( 'OFF', 'responsi' ),
+				'container_width' => 80,
+			),
+		);
+		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomIRadioControl', $iradio_control_parameters );
+
+		$imulticheckbox_control_parameters = array(
+			'onoff' => array(
+				'checked_label'   => __( 'ON', 'responsi' ),
+				'unchecked_label' => __( 'OFF', 'responsi' ),
+				'checked_value'   => 'true',
+				'unchecked_value' => 'false',
+				'container_width' => 80,
+			),
+		);
+		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomIMultiCheckboxControl', $imulticheckbox_control_parameters );
+
+		$border_radius_control_parameters = array(
+			'rounded' => array(
+				'min' => 0,
+				'max' => 100,
+				'step'=> 1,
+			),
+			'corner' => array(
+				'checked_value'   => 'rounded',
+				'unchecked_value' => 'square',
+				'checked_label'   => __( 'ROUNDED', 'responsi' ),
+				'unchecked_label' => __( 'SQUARE', 'responsi' ),
+				'container_width' => 120,
+			)
+		);
+		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomBorderRadiusControl', $border_radius_control_parameters );
+
+		$box_shadow_control_parameters = array(
+			'size' => array(
+				'min' => -20,
+				'max' => 20,
+			),
+			'onoff' => array(
+				'checked_value'   => 'true',
+				'unchecked_value' => 'false',
+				'checked_label'   => __( 'ON', 'responsi' ),
+				'unchecked_label' => __( 'OFF', 'responsi' ),
+				'container_width' => 80,
+			),
+			'inset' => array(
+				'checked_value'   => 'inset',
+				'unchecked_value' => 'outset',
+				'checked_label'   => __( 'INNER', 'responsi' ),
+				'unchecked_label' => __( 'OUTER', 'responsi' ),
+				'container_width' => 100,
+			)
+		);
+		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomBoxShadowControl', $box_shadow_control_parameters );
+
+		$ibackground_control_parameters = array(
+			'onoff' => array(
+				'checked_value'   => 'true',
+				'unchecked_value' => 'false',
+				'checked_label'   => __( 'ON', 'responsi' ),
+				'unchecked_label' => __( 'OFF', 'responsi' ),
+				'container_width' => 80,
+			)
+		);
+		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomiBackgroundControl', $ibackground_control_parameters );
+
+		$typography_control_parameters = array(
+			'size' => array(
+				'min' => 9,
+				'max' => 71,
+			),
+			'line_heights' => $line_heights,
+			'fonts' => $all_fonts,
+			'styles' => array(
+				'300'         => __( 'Thin', 'responsi' ),
+				'300 italic'  => __( 'Thin/Italic', 'responsi' ),
+				'normal'      => __( 'Normal', 'responsi' ),
+				'italic'      => __( 'Italic', 'responsi' ),
+				'bold'        => __( 'Bold', 'responsi' ),
+				'bold italic' => __( 'Bold/Italic', 'responsi' ),
+			),
+		);
+		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomTypographyControl', $typography_control_parameters );
+
+		$border_control_parameters = array(
+			'width' => array(
+				'min' => 0,
+				'max' => 20,
+			),
+			'styles' => array(
+				'solid' 	=> __( 'Solid', 'responsi' ),
+				'dashed' 	=> __( 'Dashed', 'responsi' ),
+				'dotted' 	=> __( 'Dotted', 'responsi' ),
+				'double' 	=> __( 'Double', 'responsi' ),
+				'groove' 	=> __( 'Groove', 'responsi' ),
+				'ridge' 	=> __( 'Ridge', 'responsi' ) ,
+				'inset' 	=> __( 'Inset', 'responsi' ) ,
+				'outset' 	=> __( 'Outset', 'responsi' )
+			),
+		);
+		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomBorderControl', $border_control_parameters );
+
+		$_panelIds = apply_filters( 'responsi_focus_panels', array( array( 'selector' => '', 'settings' => '' )) ) ;
+		did_action( 'init' ) && $scripts->localize( 'responsi-customize-shiftclick', '_panelIds', $_panelIds );
+		
+		$_sectionIds = apply_filters( 'responsi_focus_sections', array( array( 'selector' => '', 'settings' => '' ) ) );
+		did_action( 'init' ) && $scripts->localize( 'responsi-customize-shiftclick', '_sectionIds', $_sectionIds );
+		
+		$_controlIds = apply_filters( 'responsi_focus_controls', array( array( 'selector' => '', 'settings' => '' ) ) );
+		did_action( 'init' ) && $scripts->localize( 'responsi-customize-shiftclick', '_controlIds', $_controlIds );
+
+	}
+
+	public function responsi_customize_preview_init() {
+		wp_enqueue_script( 'responsi-customize-function-preview' );
+		wp_enqueue_script( 'responsi-customize-shiftclick' );
+	}
+
+	public function responsi_customize_controls_enqueue_scripts() {
+		// Load some script libs
+		if ( is_rtl() ){
+			wp_enqueue_script( 'jquery-ui-slider-rtl' );
+			wp_enqueue_script( 'jquery-ui-ioscheckbox-rtl' );
+		} else {
+			wp_enqueue_script( 'jquery-ui-slider' );
+			wp_enqueue_script( 'jquery-ui-ioscheckbox' );
+		}
+		wp_enqueue_script( 'responsi-customize' );
 	}
 
 	public function responsi_customized_post_value( $post_value ){
@@ -759,31 +784,7 @@ class Responsi_Theme_Customizer {
 		}
 	}
 
-	public function responsi_add_dynamic_css() {
-
-		if ( is_customize_preview() ) {
-			if( is_child_theme() ){
-				wp_add_inline_style( 'responsi-theme', responsi_build_dynamic_css( true ) );
-			}else{
-				wp_add_inline_style( 'responsi-framework', responsi_build_dynamic_css( true ) );
-			}
-		} else {
-			$framework_custom_css = get_theme_mod( 'framework_custom_css' );
-			if ( false === $framework_custom_css ) {
-				if( is_child_theme() ){
-					wp_add_inline_style( 'responsi-theme', responsi_build_dynamic_css( true ) );
-				}else{
-					wp_add_inline_style( 'responsi-framework', responsi_build_dynamic_css( true ) );
-				}
-			}else{
-				if( is_child_theme() ){
-					wp_add_inline_style( 'responsi-theme', get_theme_mod( 'framework_custom_css' ) );
-				}else{
-					wp_add_inline_style( 'responsi-framework', get_theme_mod( 'framework_custom_css' ) );
-				}
-			}
-		}
-	}
+	
 }
 
 global $responsi_theme_customizer;

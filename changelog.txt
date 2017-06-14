@@ -1,5 +1,11 @@
 *** Responsi Framework Changelog ***
 
+= 6.5.9.13 - 2017/06/14 =
+* Tweak - Tested for full compatibility with WordPress 4.8
+* Tweak - Make register_sidebar compatibility with WordPress 4.8
+* Fix - Fixed button close append customize_changeset_uuid while click close customize
+* Fix - jquery.responsi.js conflict with masonry js after fix customize fix button close
+
 = 6.5.9.12 - 2017/06/09 =
 * Tweak - Tested for full compatibility with WordPress 4.8
 * Tweak  Make register_sidebar compatibility with WordPress 4.8
