@@ -444,7 +444,7 @@
 
 wp.customize.responsiFrameworkCustomize = wp.customize.ResponsiFrameworkPreview = ( function( $, _, wp, api ) {
 
-	api.bind( 'preview-ready', function() {
+	api.bind( 'ready', function() {
 		responsiCustomizeBase.handleEvents();
 	} );
 

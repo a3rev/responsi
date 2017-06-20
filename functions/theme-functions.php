@@ -569,6 +569,36 @@ if ( !function_exists( 'responsi_get_sidebar_main_after' ) ) {
 }
 
 /*-----------------------------------------------------------------------------------*/
+/* responsi_embed_ob_start */
+/*-----------------------------------------------------------------------------------*/
+
+/*if ( !function_exists( 'responsi_embed_ob_start' ) ) {
+    function responsi_embed_ob_start(){
+        global $responsi_options;
+        if( is_array( $responsi_options ) && isset( $responsi_options['responsi_mediaembed'] ) && 'true' === $responsi_options['responsi_mediaembed'] ){
+            ob_start();
+        }
+    }
+}*/
+
+/*-----------------------------------------------------------------------------------*/
+/* responsi_embed_ob_end_flush */
+/*-----------------------------------------------------------------------------------*/
+
+/*if ( !function_exists( 'responsi_embed_ob_end_flush' ) ) {
+    function responsi_embed_ob_end_flush(){
+        global $wp_embed, $responsi_options;
+        if( is_array( $responsi_options ) && isset( $responsi_options['responsi_mediaembed'] ) && 'true' === $responsi_options['responsi_mediaembed'] ){
+            $html = ob_get_contents();
+            ob_end_clean();
+            $html = $wp_embed->run_shortcode( $html );
+            $html = do_shortcode( $wp_embed->autoembed( $html ) );
+            echo $html;
+        }
+    }
+}*/
+
+/*-----------------------------------------------------------------------------------*/
 /* Post Date */
 /*-----------------------------------------------------------------------------------*/
 /**
@@ -1197,7 +1227,7 @@ if ( !function_exists( 'responsi_add_pagination_links' ) ) {
 if ( !function_exists( 'responsi_meta_tags' ) ) {
     function responsi_meta_tags() {
         $html = '';
-        $html .= '<meta name=viewport content="width=device-width, initial-scale=1">';
+        $html .= '<meta name=viewport content="width=device-width, initial-scale=1 maximum-scale=1">';
         $html .= '<meta name="format-detection" content="telephone=yes">';
         echo $html;
     }

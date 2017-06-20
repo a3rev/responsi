@@ -11,10 +11,28 @@ if ( !is_admin() ) {
     }
 }
 
+add_filter( 'responsi_autoembed_media', array( 
+	$wp_embed, 
+	'run_shortcode' 
+), 8 );
+
 add_filter( 'responsi_autoembed_media', array(
     $wp_embed,
     'autoembed'
 ), 8 );
+
+add_filter( 'widget_text', array( 
+	$wp_embed, 
+	'run_shortcode' 
+), 8 );
+
+add_filter( 'widget_text', array( 
+	$wp_embed, 
+	'autoembed' 
+), 8 );
+
+/*add_action( 'responsi_wrapper_container_before', 'responsi_embed_ob_start', 0 );
+add_action( 'responsi_wrapper_container_after', 'responsi_embed_ob_end_flush', 999 );		*/
 
 add_filter( 'extra_theme_headers', 'responsi_extra_theme_headers' );
 add_filter( 'body_class', 'responsi_body_class', 10 );
