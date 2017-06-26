@@ -1,5 +1,8 @@
 *** Responsi Framework Changelog ***
 
+= 6.6.1 - 2017/06/26 =
+* Fix - Updated responsi_get_thumbnail() function to prevent duplicate queries running to get post images
+
 = 6.6.0 - 2017/06/20 =
 * Feature - Add support for new WordPress embed Video and audio from URL feature of WordPress to the WordPress text widget
 * Fix - Customizer menus JS conditional logic not working on some menus

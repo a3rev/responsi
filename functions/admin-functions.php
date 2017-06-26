@@ -251,7 +251,7 @@ function responsi_get_attachment_id_by_url( $url ) {
 /*-----------------------------------------------------------------------------------*/
 /* Responsi get thumbnail */
 /*-----------------------------------------------------------------------------------*/
-function responsi_get_thumbnail( $args = array() ) {
+function responsi_get_thumbnail_bk( $args = array() ) {
     global $post, $responsi_options;
 
     $default = array(
@@ -379,6 +379,147 @@ function responsi_get_thumbnail( $args = array() ) {
                         }elseif( 'src' === $type ){
                             $_thumbnail_src = esc_url( $_thumbnail_src );
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    if ( '' === trim( $_thumbnail_src ) && '' === trim( $_thumbnail_image ) ){
+        $_thumbnail_src = responsi_get_placeholder_image();
+        if( 'image' === $type ){
+            if( $style ){
+                $style_ext = ' style="' . esc_attr( $style ) . '"';
+            }
+            if( '' === $width_height_attr )
+                $width_height_attr = responsi_get_image_attribute( esc_url($_thumbnail_src ) );
+            $_thumbnail_image = '<img class="' . esc_attr( stripslashes( trim( $class ) ) ) . '"' . $style_ext . ' src="' . esc_url( $_thumbnail_src ) . '" alt="'.__( 'No Image', 'responsi' ).'"'.$width_height_attr.'>';
+        } elseif ( 'src' === $type ){
+            $_thumbnail_src = esc_url( $_thumbnail_src );
+        }
+    }
+
+    if ( $return ){
+        if( 'image' === $type ){
+            return $_thumbnail_image;
+        }elseif( 'src' === $type ){
+            return $_thumbnail_src;
+        }
+    } else {
+        if( 'image' === $type ){
+            echo $_thumbnail_image;
+        }elseif( 'src' === $type ){
+            echo $_thumbnail_src;
+        }
+    }
+}
+
+function responsi_get_thumbnail( $args = array() ) {
+    global $post, $responsi_options;
+
+    $default = array(
+        'class' => 'responsi_img',
+        'type' => 'image',
+        'return' => false,
+        'size' => 'large',
+        'id' => '',
+        'style' => ''
+    );
+
+    if ( !is_array( $args ) )
+        parse_str( $args, $args );
+
+    $args = array_merge( $default, $args );
+
+    extract( $args );
+
+    if ( empty( $id ) ) {
+        $id = $post->ID;
+    }
+
+    $size_attr = false;
+    if ( isset( $width ) && isset( $height ) ) {
+        $size           = array(
+            $width,
+            $height
+        );
+        $size_attr = true;
+    }
+
+    $width_height_attr = '';
+    if( $size_attr ){
+        $width_height_attr = ' width="'.$size[0].'" height="'.$size[1].'"';
+    }
+
+    $_thumbnail_src = '';
+    $_thumbnail_image = '';
+    $alt = '';
+    $style_ext = '';
+
+    if ( has_post_thumbnail( $id ) ) {
+        if( 'image' === $type ){
+            $_thumbnail_image         = get_the_post_thumbnail( $id, $size, array( 'class' => $class, 'style' => $style, 'alt' => the_title_attribute( 'echo=0' ) )) ;
+        }elseif( 'src' === $type ){
+            $_thumbnail_id      = get_post_thumbnail_id( $id );
+            $_thumbnail_info    = wp_get_attachment_image_src( $_thumbnail_id, $size );
+            $_thumbnail_src     = $_thumbnail_info[0];
+        }
+    } else {
+        
+        $post = get_post( $id );
+        $alt = '';
+        ob_start();
+        ob_end_clean();
+        $output = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
+        if ( !empty( $matches[1][0] ) ) {
+            $_thumbnail_src = esc_url( $matches[1][0] );
+            $output = preg_match_all( '/<img.+alt=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
+            if ( !empty($matches[1][0] ) ) {
+                $alt = esc_attr( $matches[1][0] );
+            }
+            $output = preg_match_all( '/<img.+class=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
+            if ( !empty( $matches[1][0] ) ) {
+                $attr_class = str_replace( 'alignleft', "", $matches[1][0] );
+                $attr_class = str_replace( 'alignright', "", $attr_class );
+                $attr_class = str_replace( 'alignnone', "", $attr_class );
+                $attr_class = str_replace( 'aligncenter', "", $attr_class );
+                $class .= ' '.esc_attr( $attr_class );
+            }
+
+            if( 'image' === $type ){
+                if( $style ){
+                    $style_ext = ' style="' . esc_attr( $style ) . '"';
+                }
+                $_thumbnail_image = '<img class="' . esc_attr( stripslashes( trim($class ) ) ) . '"' . $style_ext . ' src="' . esc_url( $_thumbnail_src ) . '" alt="' . esc_attr( $alt ) . '"'.$width_height_attr.'>';
+            }elseif( 'src' === $type ){
+                $_thumbnail_src = $_thumbnail_src;
+            }
+
+        } else {
+            $pattern = '/<if' . 'rame.+src=[\'"]([^\'"]+)[\'"].*>/i';
+            $output  = preg_match_all( $pattern, $post->post_content, $matches );
+            if ( !empty( $matches[1][0] ) ) {
+                $_thumbnail_src = esc_url( responsi_get_video_image( esc_url( $matches[1][0] ) ) );
+                if( 'image' === $type ){
+                    if( $style ){
+                        $style_ext = ' style="' . esc_attr( $style ) . '"';
+                    }
+                    $_thumbnail_image = '<img class="' . esc_attr( stripslashes( trim($class ) ) ) . '"' . $style_ext . ' src="' . esc_url( $_thumbnail_src ) . '" alt="' . esc_attr( $alt ) . '"'.$width_height_attr.'>';
+                }elseif( 'src' === $type ){
+                    $_thumbnail_src = $_thumbnail_src;
+                }
+            }else{
+                $pattern = responsi_parse_yturl_pattern();
+                $output  = preg_match_all( $pattern, $post->post_content, $matches );
+                if ( !empty( $matches[1][0] ) ) {
+                    $_thumbnail_src = "http://img.youtube.com/vi/" . urlencode($matches[1][0]) . "/0.jpg";
+                    if( 'image' === $type ){
+                        if( $style ){
+                            $style_ext = ' style="' . esc_attr( $style ) . '"';
+                        }
+                        $_thumbnail_image = '<img class="' . esc_attr( stripslashes( trim($class ) ) ) . '"' . $style_ext . ' src="' . esc_url( $_thumbnail_src ) . '" alt="' . esc_attr( $alt ) . '"'.$width_height_attr.'>';
+                    }elseif( 'src' === $type ){
+                        $_thumbnail_src = esc_url( $_thumbnail_src );
                     }
                 }
             }
@@ -595,6 +736,246 @@ if ( !function_exists( 'responsi_pagination' ) ) {
 }
 
 /*-----------------------------------------------------------------------------------*/
+/* responsi_custom_breadcrumbs() - Custom breadcrumb generator function  */
+/*-----------------------------------------------------------------------------------*/
+
+function responsi_custom_breadcrumbs() {
+
+    global $wp_query, $wp_rewrite, $responsi_options;
+
+    if ( !isset($responsi_options['responsi_breadcrumbs_show']) || 'true' !== $responsi_options['responsi_breadcrumbs_show'] ) {
+        return;
+    }
+       
+    // Settings
+    $separator          = '&gt;';
+    $breadcrums_id      = 'breadcrumbs';
+    $breadcrums_class   = 'breadcrumb breadcrumbs responsi-breadcrumbs';
+    $home_title         = __('Home', 'responsi');
+      
+    // If you have any custom post types with custom taxonomies, put the taxonomy name below (e.g. product_cat)
+    $custom_taxonomy    = "{$wp_query->post->post_type}_cat";
+       
+    // Get the query & post information
+    global $post,$wp_query,$prefix;
+       
+    // Do not display on the homepage
+    if ( !is_front_page() ) {
+       
+        // Build the breadcrums
+        echo '<div id="' . $breadcrums_id . '" class="' . $breadcrums_class . '"><div class="breadcrumb-trail">';
+           
+        // Home page
+        echo '<a href="' . esc_url( home_url() ) . '" title="' . esc_attr( get_bloginfo( 'name' ) ) . '" rel="home" class="trail-begin">' . $home_title . '</a>';
+        echo '<span class="sep"> ' . wp_kses_post( $separator ) . ' </span>';
+           
+        if ( is_archive() && !is_tax() && !is_category() && !is_tag() && !is_author() ) {
+              
+            echo '<span class="trail-end">' . post_type_archive_title($prefix, false) . '</span>';
+              
+        } else if ( is_archive() && is_tax() && !is_category() && !is_tag() ) {
+              
+            // If post is a custom post type
+            $post_type = get_post_type();
+              
+            // If it is a custom post type display name and link
+            if($post_type != 'post') {
+                  
+                $post_type_object = get_post_type_object($post_type);
+                $post_type_archive = get_post_type_archive_link($post_type);
+              
+                echo '<a href="' . $post_type_archive . '">' . $post_type_object->labels->name . '</a>';
+                echo '<span class="sep"> ' . wp_kses_post( $separator ) . ' </span>';
+              
+            }
+              
+            $custom_tax_name = get_queried_object()->name;
+            echo '<span class="trail-end">' . $custom_tax_name . '</span>';
+              
+        } else if ( is_single() ) {
+              
+            // If post is a custom post type
+            $post_type = get_post_type();
+              
+            // If it is a custom post type display name and link
+            if($post_type != 'post') {
+                  
+                $post_type_object = get_post_type_object($post_type);
+                $post_type_archive = get_post_type_archive_link($post_type);
+              
+                echo '<a href="' . $post_type_archive . '">' . $post_type_object->labels->name . '</a>';
+                echo '<span class="sep"> ' . wp_kses_post( $separator ) . ' </span>';
+              
+            }
+              
+            // Get post category info
+            $category = get_the_category();
+             
+            if(!empty($category)) {
+              
+                // Get last category post is in
+                $last_category = end( ( $category ) );
+                  
+                // Get parent any categories and create array
+                $get_cat_parents = rtrim(get_category_parents($last_category->term_id, true, ','),',');
+                $cat_parents = explode(',',$get_cat_parents);
+                  
+                // Loop through parent categories and store in variable $cat_display
+                $cat_display = '';
+                foreach($cat_parents as $parents) {
+                    $cat_display .= $parents;
+                    $cat_display .= '<span class="sep"> ' . wp_kses_post( $separator ) . ' </span>';
+                }
+             
+            }
+              
+            // If it's a custom post type within a custom taxonomy
+            $taxonomy_exists = taxonomy_exists($custom_taxonomy);
+            if(empty($last_category) && !empty($custom_taxonomy) && $taxonomy_exists) {
+                   
+                $taxonomy_terms = get_the_terms( $post->ID, $custom_taxonomy );
+                $cat_id         = $taxonomy_terms[0]->term_id;
+                $cat_nicename   = $taxonomy_terms[0]->slug;
+                $cat_link       = get_term_link($taxonomy_terms[0]->term_id, $custom_taxonomy);
+                $cat_name       = $taxonomy_terms[0]->name;
+               
+            }
+              
+            // Check if the post is in a category
+            if(!empty($last_category)) {
+                echo $cat_display;
+                echo '<span class="trail-end">' . get_the_title() . '</span>';
+                  
+            // Else if post is in a custom taxonomy
+            } else if(!empty($cat_id)) {
+                  
+                echo '<a href="' . $cat_link . '">' . $cat_name . '</a>';
+                echo '<span class="sep"> ' . wp_kses_post( $separator ) . ' </span>';
+                echo '<span class="trail-end">' . get_the_title() . '</span>';
+              
+            } else {
+                  
+                echo '<span class="trail-end">' . get_the_title() . '</span>';
+                  
+            }
+              
+        } else if ( is_category() ) {
+               
+            // Category page
+            echo '<span class="trail-end">' . single_cat_title('', false) . '</span>';
+               
+        } else if ( is_page() ) {
+               
+            // Standard page
+            if( $post->post_parent ){
+                   
+                // If child page, get parents 
+                $anc = get_post_ancestors( $post->ID );
+                   
+                // Get parents in the right order
+                $anc = array_reverse($anc);
+                   
+                // Parent page loop
+                if ( !isset( $parents ) ) $parents = null;
+                foreach ( $anc as $ancestor ) {
+                    $parents .= '<a href="' . get_permalink($ancestor) . '">' . get_the_title($ancestor) . '</a>';
+                    $parents .= '<span class="sep"> ' . wp_kses_post( $separator ) . ' </span>';
+                }
+                   
+                // Display parent pages
+                echo $parents;
+                   
+                // Current page
+                echo '<span class="trail-end">' . get_the_title() . '</span>';
+                   
+            } else {
+                   
+                // Just display current page if not parents
+                echo '<span class="trail-end">' . get_the_title() . '</span>';
+                   
+            }
+               
+        } else if ( is_tag() ) {
+               
+            // Tag page
+               
+            // Get tag information
+            $term_id        = get_query_var('tag_id');
+            $taxonomy       = 'post_tag';
+            $args           = 'include=' . $term_id;
+            $terms          = get_terms( $taxonomy, $args );
+            $get_term_id    = $terms[0]->term_id;
+            $get_term_slug  = $terms[0]->slug;
+            $get_term_name  = $terms[0]->name;
+               
+            // Display the tag name
+            echo '<span class="trail-end">' . $get_term_name . '</span>';
+           
+        } elseif ( is_day() ) {
+               
+            // Day archive
+               
+            // Year link
+            echo '<a href="' . get_year_link( get_the_time('Y') ) . '">' . get_the_time('Y') . '</a>';
+            echo '<span class="sep"> ' . wp_kses_post( $separator ) . ' </span>';
+               
+            // Month link
+            echo '<a href="' . get_month_link( get_the_time('Y'), get_the_time('m') ) . '">' . get_the_time('M') . '</a>';
+            echo '<span class="sep"> ' . wp_kses_post( $separator ) . ' </span>';
+               
+            // Day display
+            echo '<span class="trail-end">' . get_the_time('jS') . ' ' . get_the_time('M') . '</span>';
+               
+        } else if ( is_month() ) {
+               
+            // Month Archive
+               
+            // Year link
+            echo '<a href="' . get_year_link( get_the_time('Y') ) . '">' . get_the_time('Y') . '</a>';
+            echo '<span class="sep"> ' . wp_kses_post( $separator ) . ' </span>';
+               
+            // Month display
+            echo '<span class="trail-end">' . get_the_time('M') . '</span>';
+               
+        } else if ( is_year() ) {
+               
+            // Display year archive
+            echo '<span class="trail-end">' . get_the_time('Y') . '</span>';
+               
+        } else if ( is_author() ) {
+               
+            // Auhor archive
+               
+            // Get the author information
+            global $author;
+            $userdata = get_userdata( $author );
+               
+            // Display author name
+            echo '<span class="trail-end">' . $userdata->display_name . '</span>';
+           
+        } else if ( get_query_var('paged') ) {
+               
+            // Paginated archives
+            echo '<span class="trail-end">'.__('Page') . ' ' . get_query_var('paged') . '</span>';
+               
+        } else if ( is_search() ) {
+           
+            // Search results page
+            echo '<span class="trail-end">Search results for: ' . get_search_query() . '</span>';
+           
+        } elseif ( is_404() ) {
+               
+            // 404 page
+            echo '<span class="trail-end">' . 'Error 404' . '</span>';
+        }
+       
+        echo '</div></div>';
+           
+    }
+       
+}
+
+/*-----------------------------------------------------------------------------------*/
 /* responsi_breadcrumbs() - Custom breadcrumb generator function  */
 /*-----------------------------------------------------------------------------------*/
 
@@ -669,8 +1050,8 @@ function responsi_breadcrumbs( $args = array() ) {
                 $path .= $post_type_object->rewrite['slug'];
 
             /* If there's a path, check for parents. */
-            if ( !empty( $path ) && '/' != $path )
-                $trail = array_merge( $trail, responsi_breadcrumbs_get_parents( '', $path ) );
+            /*if ( !empty( $path ) && '/' != $path )
+                $trail = array_merge( $trail, responsi_breadcrumbs_get_parents( '', $path ) );*/
 
             /* If there's an archive page, add it to the trail. */
             if ( !empty( $post_type_object->has_archive ) && function_exists( 'get_post_type_archive_link' ) )
@@ -687,6 +1068,13 @@ function responsi_breadcrumbs( $args = array() ) {
             if ( $posts_page != '' && is_numeric( $posts_page ) ) {
                 $trail = array_merge( $trail, responsi_breadcrumbs_get_parents( $posts_page, '' ) );
             }
+        }elseif( is_singular( 'post' ) && !empty( $post_id ) ){
+            $cats = get_the_category( $post_id );
+            if( $cats ){
+                foreach ( $cats as $cat ){
+                    $trail[] = '<a href="' . esc_url( get_category_link( $cat->term_id ) ) . '">'.$cat->cat_name.'</a>';
+                }
+            }
         }
 
         /* Display terms for specific post type taxonomy if requested. */
@@ -697,6 +1085,8 @@ function responsi_breadcrumbs( $args = array() ) {
         $post_title = get_the_title( $post_id ); 
         if ( !empty( $post_title ) )
             $trail['trail_end'] = $post_title;
+
+
     } elseif (is_archive()) {
 
         /* If viewing a taxonomy term archive. */
@@ -860,7 +1250,7 @@ function responsi_breadcrumbs_get_parents( $post_id = '', $path = '' ){
             // search on page name (single word)
             $parent_page = get_page_by_title( $path );
 
-        if (empty($parent_page))
+        if (empty($parent_page) )
             // search on page title (multiple words)
             $parent_page = get_page_by_title( str_replace( array(
                 '-',
