@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 6.6.2 - 2017/06/30 =
+* Tweak - Added Embed media auto render on customize editor control.
+* Tweak - Added Embed media auto render on Responsi editor on feature content.
+
 = 6.6.1 - 2017/06/26 =
 * Fix - Updated responsi_get_thumbnail() function to prevent duplicate queries running to get post images
 

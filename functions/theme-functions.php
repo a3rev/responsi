@@ -1214,9 +1214,7 @@ function responsi_get_placeholder_image( $file = 'no-image.png' ) {
 
 if ( !function_exists( 'responsi_add_pagination_links' ) ) {
     function responsi_add_pagination_links() {
-        //if ( !is_home() ) {
-            add_action( 'responsi_loop_after', 'responsi_pagination', 10, 0 );
-        //}
+        add_action( 'responsi_loop_after', 'responsi_pagination', 10, 0 );
     }
 }
 
@@ -1230,6 +1228,28 @@ if ( !function_exists( 'responsi_meta_tags' ) ) {
         $html .= '<meta name=viewport content="width=device-width, initial-scale=1 maximum-scale=1">';
         $html .= '<meta name="format-detection" content="telephone=yes">';
         echo $html;
+    }
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* responsi_filter_media_view_settings() */
+/*-----------------------------------------------------------------------------------*/
+
+if ( !function_exists( 'responsi_filter_media_view_settings' ) ) {
+    function responsi_filter_media_view_settings( $settings, $post ){
+        if( is_admin() || is_customize_prview() ){
+            if( is_array( $settings ) && isset( $settings['post'] ) && is_array( $settings['post'] ) && isset( $settings['post']['id'] ) && $settings['post']['id'] == 0 ){
+                $post_id = get_option( 'responsi_framework_auto_draft' );
+                if( $post_id > 0 && post_exists( 'Responsi Framework' ) ){
+                    $settings['post']['id'] = $post_id;
+                }else{
+                    $post_id = wp_insert_post( array( 'post_title' => 'Responsi Framework', 'post_status' => 'auto-draft', 'post_type' => 'framework' ) );
+                    update_option( 'responsi_framework_auto_draft', $post_id );
+                    $settings['post']['id'] = $post_id;
+                }
+            }
+        }
+        return $settings;
     }
 }
 

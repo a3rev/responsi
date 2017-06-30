@@ -31,9 +31,9 @@ add_filter( 'widget_text', array(
 	'autoembed' 
 ), 8 );
 
-/*add_action( 'responsi_wrapper_container_before', 'responsi_embed_ob_start', 0 );
-add_action( 'responsi_wrapper_container_after', 'responsi_embed_ob_end_flush', 999 );		*/
-
+//add_action( 'responsi_wrapper_container_before', 'responsi_embed_ob_start', 0 );
+//add_action( 'responsi_wrapper_container_after', 'responsi_embed_ob_end_flush', 999 );
+add_filter( 'media_view_settings', 'responsi_filter_media_view_settings', 10 , 2 );
 add_filter( 'extra_theme_headers', 'responsi_extra_theme_headers' );
 add_filter( 'body_class', 'responsi_body_class', 10 );
 add_filter( 'get_custom_logo', 'responsi_filter_get_custom_logo', 10, 2 );
