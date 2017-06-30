@@ -28,7 +28,7 @@ if ( have_comments() ) {
 	echo '<div id="comments">';
 
  	if ( ! empty( $comments_by_type['comment'] ) ) { ?>
-	 	<h3 id="comments-title"><?php printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'responsi' ), number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' ); ?></h3>
+	 	<h3 id="comments-title"><?php printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', (int)get_comments_number(), 'responsi' ), number_format_i18n( (int)get_comments_number() ), '<em>' . get_the_title() . '</em>' ); ?></h3>
 	 	<ol class="commentlist">
 			<?php
 				/* Loop through and list the comments. Tell wp_list_comments()
