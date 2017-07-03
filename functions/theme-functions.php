@@ -1240,12 +1240,14 @@ if ( !function_exists( 'responsi_filter_media_view_settings' ) ) {
         if( is_admin() || is_customize_preview() ){
             if( is_array( $settings ) && isset( $settings['post'] ) && is_array( $settings['post'] ) && isset( $settings['post']['id'] ) && $settings['post']['id'] == 0 ){
                 $post_id = get_option( 'responsi_framework_auto_draft' );
-                if( $post_id > 0 && post_exists( 'Responsi Framework' ) ){
+                if( $post_id > 0 && function_exists('post_exists') && post_exists( 'Responsi Framework' ) ){
                     $settings['post']['id'] = $post_id;
                 }else{
-                    $post_id = wp_insert_post( array( 'post_title' => 'Responsi Framework', 'post_status' => 'auto-draft', 'post_type' => 'framework' ) );
-                    update_option( 'responsi_framework_auto_draft', $post_id );
-                    $settings['post']['id'] = $post_id;
+                    if( function_exists('post_exists') && !post_exists( 'Responsi Framework' ) ){
+                        $post_id = wp_insert_post( array( 'post_title' => 'Responsi Framework', 'post_status' => 'auto-draft', 'post_type' => 'framework' ) );
+                        update_option( 'responsi_framework_auto_draft', $post_id );
+                        $settings['post']['id'] = $post_id;
+                    }
                 }
             }
         }
