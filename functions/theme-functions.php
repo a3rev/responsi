@@ -1237,7 +1237,7 @@ if ( !function_exists( 'responsi_meta_tags' ) ) {
 
 if ( !function_exists( 'responsi_filter_media_view_settings' ) ) {
     function responsi_filter_media_view_settings( $settings, $post ){
-        if( is_admin() || is_customize_prview() ){
+        if( is_admin() || is_customize_preview() ){
             if( is_array( $settings ) && isset( $settings['post'] ) && is_array( $settings['post'] ) && isset( $settings['post']['id'] ) && $settings['post']['id'] == 0 ){
                 $post_id = get_option( 'responsi_framework_auto_draft' );
                 if( $post_id > 0 && post_exists( 'Responsi Framework' ) ){
