@@ -3248,7 +3248,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     } elseif ($responsi_pri_navbar_postion == 'center') {
         $pri_navbar_postion = 'center';
     }
-    $dynamic_css .= '@media only screen and (min-width: 721px){#navigation ul.nav.fl, #navigation ul.nav,#navigation ul.nav.fr {float:none;display:inline-block !important;}#navigation,#secondary{text-align:' . $pri_navbar_postion . ';}}';
+    $dynamic_css .= '@media only screen and (min-width: 783px){#navigation ul.nav.fl, #navigation ul.nav,#navigation ul.nav.fr {float:none;display:inline-block;}#navigation,#secondary{text-align:' . $pri_navbar_postion . ';}}';
     
     $responsi_nav_dropdown_background               = isset( $responsi_options['responsi_nav_dropdown_background'] ) ? $responsi_options['responsi_nav_dropdown_background'] :  array( 'onoff' => 'true', 'color' => '#ffffff');
     $responsi_nav_dropdown_padding_left             = isset( $responsi_options['responsi_nav_dropdown_padding_left'] ) ? esc_attr( $responsi_options['responsi_nav_dropdown_padding_left'] ) : 0;

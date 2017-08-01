@@ -109,34 +109,13 @@ body.box-full{margin:0!important;padding:0!important;box-sizing:border-box;max-w
 #infscr-loading{background:none repeat scroll 0 0 #000;bottom:0!important;color:#fff;left:32%!important;margin:0;opacity:.8;padding:2% 1%;position:absolute;text-align:center;width:30%;min-width:200px;font-size:12px!important;font-family:"Open Sans",sans-serif!important;line-height:1!important;border-radius:5px;}
 #infscr-loading img{width:auto!important;}
 .tax-room_category .click_showmore_container, .tax-people_group .click_showmore_container, .tax-project_category .click_showmore_container, .tax-sponsor_category .click_showmore_container{display:none !important;}
-@media only screen and (min-width:721px){
-	.site-width{margin:0 auto;}
-	.responsi-menu {display:inherit !important;}
-	.col-left{float:left;}
-	.col-right{float:right;}
-	.box-content .box-item.masonry-brick{float:none!important;margin-left:0;margin-right:auto!important;}
-	#wrapper-header #header .widget{margin-bottom:0!important;}
-	#wrapper-header #header .box{margin-bottom:0!important;}
-	#sidebar .sidebar-wrap-content{height:auto!important;position:relative!important;}
-	#sidebar-alt .sidebar-wrap-content{height:auto!important;position:relative!important;}
-	#sidebar{height:auto!important;}
-	#sidebar .masonry_widget{position:inherit !important;top:0!important;left:0!important;}
-	#sidebar-alt{height:auto!important;}
-	#sidebar-alt .masonry_widget{position:inherit !important;top:0!important;left:0!important;}
-	#wrapper #sidebar{display:inline;margin-top:0;margin-bottom:0!important;}
-	#wrapper #sidebar-alt{display:inline;margin-top:0;margin-bottom:0!important;}
-	#main-sidebar-container{display:inline;position:relative;}
-	#main{position:relative;}
-	#main-sidebar-container #sidebar{display:inline;}
-	#footer-widgets.col-2 .footer-widget-2{margin-right:0;}
-	#footer-widgets.col-3 .footer-widget-3{margin-right:0;}
-	#footer-widgets.col-4 .footer-widget-4{margin-right:0;}
-	#footer .col-left{margin-bottom:0;}
-	#footer .col-right{margin-bottom:0;text-align:right;}
+
+@media only screen and (min-width:783px){
+	.responsi-menu,body #navigation ul.nav.fl, body #navigation ul.nav, body #navigation ul.nav.fr {display:inherit;}
 }
-@media only screen and (max-width:720px){
+@media only screen and (max-width:782px){
 	#wrapper-top-fixed{position:relative!important;}
-	.responsi-menu {display:none;}
+	.responsi-menu,body #navigation ul.nav.fl, body #navigation ul.nav, body #navigation ul.nav.fr {display:none;}
 	.mobile-header-1 .header-widget-1{display:none!important;}
 	.mobile-header-2 .header-widget-2{display:none!important;}
 	.mobile-header-3 .header-widget-3{display:none!important;}
@@ -179,6 +158,33 @@ body.box-full{margin:0!important;padding:0!important;box-sizing:border-box;max-w
 	.mobile-navigation.mobile-navigation-alignment-right span.nav-separator{border-right:none;}
 	.mobile-navigation span.nav-mobile-text{display:inline-block;font-size:16px;line-height:normal;margin:5px 5px 5px 8px;padding:0;position:inherit;vertical-align:middle;top:0;font-weight:bold;}
 	select.mobileMenu{margin:0!important;padding:5px!important;max-width:100%;width:100%;border:none!important;border-radius:0px!important;background-color:#000!important;color:#ffffff!important;min-height:30px!important;height:30px!important;line-height:30px!important;}
+}
+
+@media only screen and (min-width:721px){
+	.site-width{margin:0 auto;}
+	.col-left{float:left;}
+	.col-right{float:right;}
+	.box-content .box-item.masonry-brick{float:none!important;margin-left:0;margin-right:auto!important;}
+	#wrapper-header #header .widget{margin-bottom:0!important;}
+	#wrapper-header #header .box{margin-bottom:0!important;}
+	#sidebar .sidebar-wrap-content{height:auto!important;position:relative!important;}
+	#sidebar-alt .sidebar-wrap-content{height:auto!important;position:relative!important;}
+	#sidebar{height:auto!important;}
+	#sidebar .masonry_widget{position:inherit !important;top:0!important;left:0!important;}
+	#sidebar-alt{height:auto!important;}
+	#sidebar-alt .masonry_widget{position:inherit !important;top:0!important;left:0!important;}
+	#wrapper #sidebar{display:inline;margin-top:0;margin-bottom:0!important;}
+	#wrapper #sidebar-alt{display:inline;margin-top:0;margin-bottom:0!important;}
+	#main-sidebar-container{display:inline;position:relative;}
+	#main{position:relative;}
+	#main-sidebar-container #sidebar{display:inline;}
+	#footer-widgets.col-2 .footer-widget-2{margin-right:0;}
+	#footer-widgets.col-3 .footer-widget-3{margin-right:0;}
+	#footer-widgets.col-4 .footer-widget-4{margin-right:0;}
+	#footer .col-left{margin-bottom:0;}
+	#footer .col-right{margin-bottom:0;text-align:right;}
+}
+@media only screen and (max-width:720px){
 	#footer #copyright{text-align:center;}
 	#footer #credit{text-align:center;}
 }

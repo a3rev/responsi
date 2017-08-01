@@ -5,7 +5,7 @@
 	var menuCount = 0;
 	$.fn.mobileMenu = function (options) {
 		var settings = {
-			switchWidth: 721,
+			switchWidth: 783,
 			topOptionText: 'Menu',
 			indentString: '&nbsp;&nbsp;&nbsp;'
 		};
@@ -270,7 +270,7 @@ jQuery(document).ready(function(){
 		if(jQuery('nav#navigation').find('.mobile-navigation').length == undefined || jQuery('nav#navigation').find('.mobile-navigation').length == 0 ){
 			// Responsive Navigation (switch top drop down for select)
 			jQuery('ul#main-nav').mobileMenu({
-				switchWidth: 721,                   	//width (in px to switch at)
+				switchWidth: 783,                   	//width (in px to switch at)
 				topOptionText: 'Menu...',		     	//first option text
 				indentString: '&nbsp;&nbsp;&nbsp;'  	//string for indenting nested items
 			});

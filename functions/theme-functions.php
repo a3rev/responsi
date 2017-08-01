@@ -1445,6 +1445,9 @@ if ( !function_exists( 'responsi_navigation' ) ) {
                 $nav_ctr = '<div class="mobile-navigation mobile-navigation-open mobile-navigation-alignment-left"><div class="clearfix"></div>'.$nav_ctr_before.'<span class="nav-mobile-text nav-mobile-text-before"></span><span class="nav-separator"><i class="responsi-icon-mobile-menu responsi-icon-menu"></i></span><span class="nav-mobile-text nav-mobile-text-after">'. __('Navigation', 'responsi') .'</span>'.$nav_ctr_after.'<div class="clearfix"></div>'. do_action( 'responsi_navigation' ) .'<div class="clearfix"></div></div>';
                 $nav_ctr = apply_filters( 'responsi_mobile_navigation', $nav_ctr );
             }
+            if ( isset( $responsi_options['responsi_nav_mobile_type'] ) && 'select' === $responsi_options['responsi_nav_mobile_type'] ) {
+                $nav_ctr = $nav_ctr_before.$nav_ctr.$nav_ctr_after;
+            }
             echo $nav_ctr;
             if ( function_exists('has_nav_menu' ) && has_nav_menu( 'primary-menu' ) ) {
                 @wp_nav_menu(array(

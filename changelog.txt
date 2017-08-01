@@ -1,5 +1,8 @@
 *** Responsi Framework Changelog ***
 
+= 6.6.3 - 2017/08/01 =
+* Tweak - Updated media queries for navigation menus to apply mobile view on screen 782px
+
 = 6.6.2.1 - 2017/07/03 =
 * Fix - Updated function is_customizer_prview() to is_customizer_preview() to fix white screen error on frontend
 
