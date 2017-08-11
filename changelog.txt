@@ -1,5 +1,13 @@
 *** Responsi Framework Changelog ***
 
+= 6.7.0 - 2017/08/11 =
+* Feature - Added support for Parallax feature with Parallax js
+* Dev - Add Parallax effect to element html with attribute class=parallax-edge data-speedFactor=0.7" 
+* Dev - Add Parallax effect for background an element with attribute class=parallax-background data-speedFactor=0.3"
+* Dev - Added function responsi_hextorgb to change hex colour to rbg color
+* Dev - Added function responsi_generate_background_transparent_color
+* Tweak - Tested for compatibility with WordPress version 4.8.1
+
 = 6.6.3 - 2017/08/01 =
 * Tweak - Updated media queries for navigation menus to apply mobile view on screen 782px
 

@@ -1,3 +1,73 @@
+/*
+Plugin: jQuery Parallax
+Version 1.1.3
+Author: Ian Lunn
+Twitter: @IanLunn
+Author URL: http://www.ianlunn.co.uk/
+Plugin URL: http://www.ianlunn.co.uk/plugins/jquery-parallax/
+
+Dual licensed under the MIT and GPL licenses:
+http://www.opensource.org/licenses/mit-license.php
+http://www.gnu.org/licenses/gpl.html
+*/
+
+(function( $ ){
+	var $window = $(window);
+	var windowHeight = $window.height();
+
+	$window.resize(function () {
+		windowHeight = $window.height();
+	});
+
+	$.fn.parallax = function(xpos, speedFactor, outerHeight) {
+		var $this = $(this);
+		var getHeight;
+		var firstTop;
+		var paddingTop = 0;
+		
+		//get the starting position of each element to have parallax applied to it		
+		$this.each(function(){
+		    firstTop = $this.offset().top;
+		});
+
+		if (outerHeight) {
+			getHeight = function(jqo) {
+				return jqo.outerHeight(true);
+			};
+		} else {
+			getHeight = function(jqo) {
+				return jqo.height();
+			};
+		}
+			
+		// setup defaults if arguments aren't specified
+		if (arguments.length < 1 || xpos === null) xpos = "50%";
+		if (arguments.length < 2 || speedFactor === null) speedFactor = 0.1;
+		if (arguments.length < 3 || outerHeight === null) outerHeight = true;
+		
+		// function to be called whenever the window is scrolled or resized
+		function update(){
+			var pos = $window.scrollTop();				
+
+			$this.each(function(){
+				var $element = $(this);
+				var top = $element.offset().top;
+				var height = getHeight($element);
+
+				// Check if totally above or totally below viewport
+				if (top + height < pos || top > pos + windowHeight) {
+					return;
+				}
+
+				$this.css('backgroundPosition', xpos + " " + Math.round((firstTop - pos) * speedFactor) + "px");
+			});
+		}		
+
+		$window.bind('scroll', update).resize(update);
+		update();
+	};
+})(jQuery);
+
 /*-----------------------------------------------------------------------------------*/
 /* Responsive menus */
 /*-----------------------------------------------------------------------------------*/
@@ -192,12 +262,12 @@ jQuery(document).ready(function(){
 			warn: function(){},
 			error: function(){}
    		};
-   	}
+   	};
 
    	function isIE () {
 		var myNav = navigator.userAgent.toLowerCase();
 		return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
-	}
+	};
 
 	function getBaseURL() {
 		var url = location.href;  // entire url including querystring - also: window.location.href;
@@ -219,15 +289,131 @@ jQuery(document).ready(function(){
 			return baseURL + "/";
 		}
 
-	}
+	};
+
+	var isMobile = {
+	    Android: function() {
+	        var check;
+	        if (navigator.userAgent.match(/Android/i)) check = true;
+	        return check;
+	    },
+	    BlackBerry: function() {
+	        var check;
+	        if (navigator.userAgent.match(/BlackBerry/i)) check = true;
+	        return check;
+	    },
+	    iOS: function() {
+	        var check;
+	        if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) check = true;
+	        return check;
+	    },
+	    Opera: function() {
+	        var check;
+	        if (navigator.userAgent.match(/Opera Mini/i)) check = true;
+	        return check;
+	    },
+	    Windows: function() {
+	        var check;
+	        if (navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i)) check = true;
+	        return check;
+	    },
+	    any: function() {
+	        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+	    }
+	};
+
+	function is_touch_device() {
+	    return ('ontouchstart' in document.documentElement);
+	};
+
+	jQuery.exists = function(selector) {
+	    return (jQuery(selector).length > 0);
+	};
+
+	function responsi_header_height(){
+		var win = jQuery(window);
+		var header_height = jQuery("#wrapper-top-fixed").outerHeight(true);
+		jQuery("#wrapper-top-container").height(header_height);
+	};
+
+	/* Parallax for edge slider */
+	/* -------------------------------------------------------------------- */
+
+	function responsi_parallax_edge() {
+	    "use strict";
+	    
+	    if ( !isMobile.any() ) {
+	        var $parallaxLayer = [];
+	        jQuery('.parallax-edge').each(function() {
+	            var progressVal,
+	                currentPoint,
+	                ticking = false,
+	                scrollY = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop,
+	                $this = jQuery(this),
+	                $window = jQuery(window),
+	                windowHeight = jQuery(window).height(),
+	                parentHeight = $this.outerHeight(),
+	                startPoint = 0,
+	                endPoint = $this.offset().top + parentHeight,
+	                effectLayer = $this,
+	                cntLayer = $this.find('.responsi-grid'),
+	                height = $this.outerHeight();
+	           
+	            var $speedFactor = 0.7;
+	            if (typeof $this.attr('data-speedFactor') !== typeof undefined && $this.attr('data-speedFactor') !== false) {
+	                $speedFactor = $this.attr('data-speedFactor');
+	            }
+
+	            var animationSet = function() {
+	                scrollY = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+	                currentPoint = (startPoint + scrollY) * $speedFactor;
+	                progressVal = (1 / (endPoint - startPoint) * (scrollY - startPoint));
+	                if (progressVal <= 1) {
+	                    effectLayer.css({
+	                        '-webkit-transform': 'translateY(' + currentPoint + 'px)',
+	                        '-moz-transform': 'translateY(' + currentPoint + 'px)',
+	                        '-ms-transform': 'translateY(' + currentPoint + 'px)',
+	                        '-o-transform': 'translateY(' + currentPoint + 'px)',
+	                        'transform': 'translateY(' + currentPoint + 'px)'
+	                    });
+	                }
+	                cntLayer.stop().css({
+	                    opacity: (1 - (progressVal * 2))
+	                });
+	                ticking = false;
+	            }
+	            animationSet();
+	            var requestTick = function() {
+	                if (!ticking) {
+	                    window.requestAnimationFrame(animationSet);
+	                    ticking = true;
+	                }
+	            };
+	            $window.on('scroll', requestTick);
+	        });
+	    }
+	};
+
+	function responsi_parallax() {
+	    "use strict";
+	    if (!is_touch_device() && jQuery(window).width() > 1050) {
+	        jQuery('.parallax-background').each(function() {
+	            var $this = jQuery(this),
+	                $speedFactor = 0.3;
+	            if (typeof $this.attr('data-speedFactor') !== typeof undefined && $this.attr('data-speedFactor') !== false) {
+	                $speedFactor = $this.attr('data-speedFactor');
+	            }
+	            jQuery($this).parallax("49%", $speedFactor);
+	        });
+	    }
+	};
 
 	jQuery(document).on("tap", ".mobile-navigation-close .nav-separator,.mobile-navigation-close .nav-mobile-text", function(){
 		var clicked = jQuery(this).parent('div.mobile-navigation');
 		clicked.siblings( ".responsi-menu" ).slideUp( "fast", function() {
 			clicked.children('.responsi-icon-mobile-menu').removeClass('responsi-icon-cancel').addClass('responsi-icon-menu');
 			clicked.removeClass('mobile-navigation-close').addClass('mobile-navigation-open');
-			var header_height = jQuery("#wrapper-top-fixed").outerHeight(true);
-			jQuery("#wrapper-top-container").height(header_height);
+			responsi_header_height();
 		});
 	});
 
@@ -267,6 +453,12 @@ jQuery(document).ready(function(){
 			jQuery('body').removeClass('ie ie9');
 		}
 
+		responsi_header_height();
+		responsi_parallax_edge();
+		responsi_parallax();
+
+		//jQuery("#wrapper-top-fixed").css('position','fixed');
+
 		if(jQuery('nav#navigation').find('.mobile-navigation').length == undefined || jQuery('nav#navigation').find('.mobile-navigation').length == 0 ){
 			// Responsive Navigation (switch top drop down for select)
 			jQuery('ul#main-nav').mobileMenu({
@@ -275,10 +467,6 @@ jQuery(document).ready(function(){
 				indentString: '&nbsp;&nbsp;&nbsp;'  	//string for indenting nested items
 			});
 		}
-
-		var header_height = jQuery("#wrapper-top-fixed").outerHeight(true);
-        jQuery("#wrapper-top-container").height(header_height);
-        jQuery("#wrapper-top-fixed").css('position','fixed');
 
         var fw_widget_content = 0;
         jQuery( '.masonry_widget' ).each( function(){
@@ -444,8 +632,7 @@ jQuery(document).ready(function(){
 
 	jQuery(window).on( 'resize', function() {
 		
-		var header_height = jQuery("#wrapper-top-fixed").outerHeight(true);
-        jQuery("#wrapper-top-container").height(header_height);
+		responsi_header_height();
 
         if( $allVideos.length > 0 ){ 
 	        $allVideos.each(function() {

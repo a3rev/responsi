@@ -1502,6 +1502,62 @@ if ( !function_exists( 'responsi_generate_background_color' ) ) {
     }
 }
 
+if ( !function_exists( 'responsi_hextorgb' ) ) {
+    function responsi_hextorgb( $color = '', $text = true ) {
+        $color = trim( $color );
+        if ( '' == $color || 'transparent' == $color ) {
+            return false;
+        }
+
+        if ( '#' == $color[0] ) {
+            $color = substr( $color, 1 );
+        }
+
+        if ( 6 == strlen( $color ) ) {
+            list( $r, $g, $b ) = array( $color[0].$color[1], $color[2].$color[3], $color[4].$color[5] );
+        } elseif ( 3 == strlen( $color ) ) {
+            list( $r, $g, $b ) = array( $color[0].$color[0], $color[1].$color[1], $color[2].$color[2] );
+        } else {
+            return false;
+        }
+
+        $r = hexdec($r);
+        $g = hexdec($g);
+        $b = hexdec($b);
+
+        if ( $text ) {
+            return $r.','.$g.','.$b;
+        } else {
+            return array( $r, $g, $b );
+        }
+    }
+}
+
+if ( !function_exists( 'responsi_generate_background_transparent_color' ) ) {
+    function responsi_generate_background_transparent_color( $color, $transparency = 100, $important = true ) {
+
+        if ( $important ) {
+            $ipt = ' !important';
+        } else {
+            $ipt = '';
+        }
+
+        $background_transparent = 'background-color:rgba( 0, 0, 0, 0 ) '.$ipt.';';
+
+        $color = responsi_hextorgb( $color );
+        $transparency = (int) $transparency / 100;
+
+        if ( $color !== false && 0 <= $transparency ) {
+            $background_transparent = 'background-color: rgba( ' . $color . ', ' . $transparency . ' ) '.$ipt.';';
+        }
+        
+        return $background_transparent;
+
+    }
+}
+
+
+
 /*-----------------------------------------------------------------------------------*/
 /* responsi_generate_border_radius_value() */
 /*-----------------------------------------------------------------------------------*/
