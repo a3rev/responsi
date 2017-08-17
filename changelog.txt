@@ -1,5 +1,8 @@
 *** Responsi Framework Changelog ***
 
+= 6.7.1 - 2017/08/17 =
+* Fix - Parallax background image jumping on IE 10 and 11 and Edge 14 and 15 when scroll with mouse
+
 = 6.7.0 - 2017/08/11 =
 * Feature - Added support for Parallax feature with Parallax js
 * Dev - Add Parallax effect to element html with attribute class="parallax-edge" data-speedFactor="0.7"
