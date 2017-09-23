@@ -421,7 +421,7 @@ function responsi_get_thumbnail( $args = array() ) {
         'class' => 'responsi_img',
         'type' => 'image',
         'return' => false,
-        'size' => 'large',
+        'size' => 'medium',
         'id' => '',
         'style' => ''
     );
