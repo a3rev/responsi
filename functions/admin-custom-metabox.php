@@ -607,7 +607,7 @@ add_action( 'edit_form_before_permalink', 'responsi_title_custom_field_tab_conte
 function responsi_taxonomy_add_new_meta_field(){
     ?>
     <div class="form-field">
-        <label><strong><?php _e('Custom Title', 'responsi'); ?><strong></label>
+        <label><strong><?php _e('Custom Title', 'responsi'); ?></strong></label>
         <label><input type="checkbox" name="responsi_custom_meta_term[hide_title]" value="1" /> <?php _e('Check to hide Title of this Category Page.', 'responsi'); ?></label>
     </div>
     <?php
@@ -627,7 +627,7 @@ function responsi_taxonomy_edit_meta_field( $term ){
     <tr class="form-field">
     <th scope="row" valign="top"><label for="responsi_custom_meta_term"><?php _e('Custom Title', 'responsi'); ?></label></th>
         <td>
-        <input <?php echo $checked; ?>type="checkbox" name="responsi_custom_meta_term[hide_title]" id="active_responsi_custom_meta_term" value="1" /> <?php _e('Check to hide Title of this Category Page.', 'responsi'); ?></label>
+        <input <?php echo $checked; ?>type="checkbox" name="responsi_custom_meta_term[hide_title]" id="active_responsi_custom_meta_term" value="1" /> <?php _e('Check to hide Title of this Category Page.', 'responsi'); ?>
         </td>
     </tr>
     <?php

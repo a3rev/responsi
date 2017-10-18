@@ -656,7 +656,7 @@ if (browser() === 'ie') {
                         onRenderCallback = options.onRender;
                     }
                     if (options.remove) {
-                        log("122", "smoothWheel", "remove", "");
+                        //log("122", "smoothWheel", "remove", "");
                         running = false;
                         container.unbind("mousewheel", onWheel);
                         container.unbind("DOMMouseScroll", onWheel);
@@ -668,11 +668,9 @@ if (browser() === 'ie') {
             });
         };
     })(jQuery);
-    (function($, window) {
-        $(window).load(function() {
-            $(window).smoothWheel()
-        });
-    })(jQuery, window);
+    
+    jQuery(window).smoothWheel();
+
 }
 
 /*

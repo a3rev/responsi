@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 6.7.3 - 2017/10/18 =
+* Fix - smoothWheel js conflict jQuery Parallax on IE 11 ( Win 7 , Win 8, Win 10 )
+* Credit – Thanks to Frank Ugolini for reporting the page scroll bug in IE 11 browser
+
 = 6.7.2 - 2017/09/23 =
 * Tweak - Changed responsi_get_thumbnail function to use medium size image instead of large image.
 
