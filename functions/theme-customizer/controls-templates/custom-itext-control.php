@@ -1,12 +1,11 @@
 <?php
 /**
- * Class to create a custom iSelect control
+ * Class to create a custom iText control
  */
+if ( ! class_exists( 'Customize_iText_Control' ) && class_exists('WP_Customize_Control')) {
+	class Customize_iText_Control extends WP_Customize_Control {
 
-if ( ! class_exists( 'Customize_iSelect_Control' ) && class_exists('WP_Customize_Control')) {
-	class Customize_iSelect_Control extends WP_Customize_Control {
-
-		public $type = 'iselect';
+		public $type = 'itext';
 
 		/**
 		 * Constructor.
@@ -39,25 +38,25 @@ if ( ! class_exists( 'Customize_iSelect_Control' ) && class_exists('WP_Customize
 		 */
 		public function to_json() {
 			parent::to_json();
-			$this->json['value']   = $this->setting->default;
-			$this->json['choices'] = $this->choices;
+			$this->json['value'] = $this->setting->default;
 			$this->json['input_attrs'] = $this->input_attrs;
 		}
 
 		protected function render() {
+			
 			$custom_class = '';
 			if( isset( $this->input_attrs['class']) && $this->input_attrs['class'] ){
 				$custom_class = ' '.$this->input_attrs['class'];
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control responsi-customize-control customize-control-' . $this->type;
+			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
-			?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
-				<?php $this->render_content(); ?>
-			</li><?php
+			printf( '<li id="%s" class="%s">', esc_attr( $id ), esc_attr( $class ) );
+			$this->render_content();
+			echo '</li>';
 		}
 
 		/**
@@ -74,45 +73,16 @@ if ( ! class_exists( 'Customize_iSelect_Control' ) && class_exists('WP_Customize
 		 */
 		public function content_template() {
 			?>
-			<# 
-				var setting_id = data.settings['default'];
-				var choices    = data.choices;
-				var input_attrs    = data.input_attrs;
-			#>
+			<# var setting_id = data.settings['default']; #>
 			<div class="customize-control-container">
 				<# if ( data.label ) { #>
 				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
-				<div class="iselect-container">
-					<select class="responsi-iselect" name="{{ setting_id }}" id="{{ setting_id }}" data-customize-setting-link="{{ setting_id }}">
-					<# var selected = '';
-					
-					if( "min" in input_attrs && "step" in input_attrs && "max" in input_attrs ) {
-
-						for ( var i = parseFloat(input_attrs['min']); i <= parseFloat(input_attrs['max']); i = i+parseFloat(input_attrs['step']) ) {
-
-						selected = '';
-							if ( data.value == i ) {
-								selected = 'selected="selected"';
-							}
-							#>
-							<option value="{{ i }}" {{{ selected }}} >{{{ choices[i] }}}</option>
-							<#
-						}
-
-					}else{
-						_.each(choices, function(  val, key ){
-							selected = '';
-							if ( data.value == key ) {
-								selected = 'selected="selected"';
-							}
-							#>
-							<option value="{{ key }}" {{{ selected }}} >{{{ val }}}</option>
-						<# }); 
-					}
-					#>
-					</select>
+				<div class="clear itext-clear"></div>
+				<div class="itext-container">
+					<input class="responsi-itext" name="{{ setting_id }}" id="{{ setting_id }}" data-customize-setting-link="{{ setting_id }}" type="text" value="{{ data.value }}" /><span class="after_iinput ">{{{ data.input_attrs['after_input'] }}}</span>
 				</div>
+				<div class="clear itext-clear itext-clear-last"></div>
 				<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>

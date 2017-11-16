@@ -41,6 +41,13 @@ if ( ! class_exists( 'Customize_iCheckbox_Control' ) && class_exists('WP_Customi
 		public function to_json() {
 			parent::to_json();
 			$this->json['setting_id']      = $this->id;
+			$this->json['choices']     	   = isset( $this->choices ) ? $this->choices : array( 
+				'checked_value' 	=> 'true', 
+				'unchecked_value' 	=> 'false', 
+				'checked_label' 	=> __( 'ON', 'responsi' ), 
+				'unchecked_label' 	=> __( 'OFF', 'responsi' ),
+				'container_width' 	=> 80
+			);
 			$this->json['value']           = $this->setting->default;
 			$this->json['checked_value']   = isset( $this->choices['checked_value'] ) ? $this->choices['checked_value'] : 'true' ;
 			$this->json['unchecked_value'] = isset( $this->choices['unchecked_value'] ) ? $this->choices['unchecked_value'] : 'false' ;
@@ -50,19 +57,20 @@ if ( ! class_exists( 'Customize_iCheckbox_Control' ) && class_exists('WP_Customi
 		}
 
 		protected function render() {
+			
 			$custom_class = '';
 			if( isset( $this->input_attrs['class']) && $this->input_attrs['class'] ){
 				$custom_class = ' '.$this->input_attrs['class'];
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control responsi-customize-control customize-control-' . $this->type;
+			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
-			?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
-				<?php $this->render_content(); ?>
-			</li><?php
+			printf( '<li id="%s" class="%s">', esc_attr( $id ), esc_attr( $class ) );
+			$this->render_content();
+			echo '</li>';
 		}
 
 		/**
@@ -89,6 +97,7 @@ if ( ! class_exists( 'Customize_iCheckbox_Control' ) && class_exists('WP_Customi
 			var value = data.value;
 			if ( value == checked_value ) {
 				checked = 'checked="checked"';
+				value = checked_value;
 			} else {
 				value = unchecked_value;
 			}
@@ -98,7 +107,8 @@ if ( ! class_exists( 'Customize_iCheckbox_Control' ) && class_exists('WP_Customi
 				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
 				<div class="responsi-iphone-checkbox">
-					<input type="checkbox" data-customize-setting-link="{{ setting_id }}" id="{{ setting_id }}" name="{{ setting_id }}" value="{{ value }}" {{{ checked }}} class="checkbox responsi-input responsi-ui-icheckbox <?php echo $this->ui_class; ?>" />
+					<input type="checkbox" {{{ checked }}} id="{{ setting_id }}_cb" class="checkbox responsi-input responsi-ui-icheckbox <?php echo $this->ui_class; ?>" />
+					<input type="hidden" data-customize-setting-link="{{ setting_id }}" id="{{ setting_id }}" name="{{ setting_id }}" value="{{ value }}" />
 				</div>
 				<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>

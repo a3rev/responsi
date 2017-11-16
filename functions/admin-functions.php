@@ -956,7 +956,7 @@ function responsi_custom_breadcrumbs() {
         } else if ( get_query_var('paged') ) {
                
             // Paginated archives
-            echo '<span class="trail-end">'.__('Page') . ' ' . get_query_var('paged') . '</span>';
+            echo '<span class="trail-end">'.__('Page','responsi') . ' ' . get_query_var('paged') . '</span>';
                
         } else if ( is_search() ) {
            
@@ -966,7 +966,7 @@ function responsi_custom_breadcrumbs() {
         } elseif ( is_404() ) {
                
             // 404 page
-            echo '<span class="trail-end">' . 'Error 404' . '</span>';
+            echo '<span class="trail-end">' .__('Error 404','responsi') . '</span>';
         }
        
         echo '</div></div>';
@@ -1673,7 +1673,7 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
         }
         .box-content .box-item{margin-right:'.($gutter).'%;}';
 
-        $output .= '@media only screen and (min-width:721px) {';
+        $output .= '@media only screen and (min-width:783px) {';
 
             $output .= '
                 html .box.box-last{
@@ -2123,10 +2123,10 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
 
         $output .= '}';
 
-        $output .= '@media only screen and (min-width:480px) and (max-width:720px) {';
+        $output .= '@media only screen and (min-width:480px) and (max-width:782px) {';
             $output .= '
       
-            #header .box.col-item{
+            #header .box.col-item:not(.col-1){
                 display: inline-block;
                 float: left;
                 margin-left: 0 !important;
@@ -2134,13 +2134,13 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                 width: '.( (100 - ($gutter))/2 ).'% !important;
             }
 
-            #header .box.col-item.header-widget-1,
+            #header .box.col-item.header-widget-1:not(.box-last),
             #header .box.col-item.header-widget-3,
             #header .box.col-item.header-widget-5 {
                 margin-right: '.$gutter.'% !important;
             }
 
-            #footer-widgets .box.col-item{
+            #footer-widgets .box.col-item:not(.col-1){
                 display: inline-block;
                 float: left;
                 margin-left: 0 !important;
@@ -2148,7 +2148,7 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                 width: '.( (100 - ($gutter))/2 ).'% !important;
             }
 
-            #footer-widgets .box.col-item.footer-widget-1,
+            #footer-widgets .box.col-item.footer-widget-1:not(.box-last),
             #footer-widgets .box.col-item.footer-widget-3,
             #footer-widgets .box.col-item.footer-widget-5 {
                 margin-right: '.$gutter.'% !important;
@@ -2165,14 +2165,14 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                 float: left;
                 margin-left: 0 !important;
             }
-            .full_container .box.col-item {
+            .full_container .box.col-item:not(.col-1) {
                 display: inline-block;
                 float: left;
                 margin-left: 0 !important;
                 margin-right: 0 !important;
                 width: '.( (100 - ($gutter))/2 ).'% !important;
             }
-            .full_container .box.col-item.widgetized-1,
+            .full_container .box.col-item.widgetized-1:not(.box-last),
             .full_container .box.col-item.widgetized-3,
             .full_container .box.col-item.widgetized-5 {
                 margin-right: '.$gutter.'% !important;
@@ -2192,10 +2192,6 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
             .col-2 .box.col-item {
                 float: left;
                 width: '.( (100 - ($gutter))/2 ).'% !important;
-            }
-            #footer-widgets.col-2 .box.col-item{
-                float: none;
-                width: 100% !important;
             }
             #boxes .col-item-content {
                 margin-left: 0 !important;
@@ -2389,7 +2385,7 @@ function responsi_build_dynamic_css( $preview = false ) {
         $dynamic_css .= '#wrapper-boxes-content,.layout-box-mode #wrapper-boxes{padding:0 !important;margin:0 !important;border:none !important;border-radius:0px !important;box-shadow:none !important;background-color:transparent !important;}';
     }
 
-    $dynamic_css .= '@media only screen and (min-width: 721px){.site-width{ max-width:' . $boxes_width . 'px; margin:auto; padding:0 !important; }}';
+    $dynamic_css .= '@media only screen and (min-width: 783px){.site-width{ max-width:' . $boxes_width . 'px; margin:auto; padding:0 !important; }}';
     
     /* Wrapper */
     $_wrapper_padding_top                   = isset( $responsi_options['responsi_wrapper_padding_top'] ) ? esc_attr( $responsi_options['responsi_wrapper_padding_top'] ) : 0;
@@ -2646,7 +2642,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $header_widget_mobile_css = '';
 
     if ( 'true' === $header_widget_alignment_mobile ) {
-        $header_widget_mobile_css .= '.masonry_widget_header .widget, .masonry_widget_header * .widget, .masonry_widget_header .widget *, .masonry_widget_header .widget .fw_widget_title h3 {text-align:center !important;}';
+        $header_widget_mobile_css .= '.masonry_widget_header .widget, .masonry_widget_header * .widget, .masonry_widget_header .widget *, .masonry_widget_header .widget .fw_widget_title h3, .header-widget-1 .widget .site-logo-container {text-align:center !important;}';
         $header_widget_mobile_css .= '.logo.site-logo,.site-logo-container,.site-description-container{margin:auto;}';
     }
 
@@ -2655,7 +2651,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     }else{
         $header_widget_mobile_css .= 'body #header .widget{margin-bottom:0px !important;}';
     }
-    $dynamic_css .= '@media only screen and (max-width: 720px){'.$header_widget_mobile_css.'}';
+    $dynamic_css .= '@media only screen and (max-width: 782px){'.$header_widget_mobile_css.'}';
     
     /* Single */
     $font_post_meta                             = isset( $responsi_options['responsi_font_post_meta'] ) ? $responsi_options['responsi_font_post_meta'] : array('size' => '12','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#555555');
@@ -3126,7 +3122,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     }
     $dynamic_css .= '#sidebar .fw_widget_title h3, #sidebar-alt .fw_widget_title h3{' . $widget_title_css . '}';
     if ( 'true' === $widget_text_alignment_mobile ) {
-        $dynamic_css .= '@media only screen and (max-width: 720px){#sidebar .fw_widget_title, #sidebar .fw_widget_title h3, #sidebar .fw_widget_title *, #sidebar .fw_widget_content, #sidebar .fw_widget_content *,  #sidebar-alt .fw_widget_title, #sidebar-alt .fw_widget_title h3, #sidebar-alt .fw_widget_title *, #sidebar-alt .fw_widget_content, #sidebar-alt .fw_widget_content * {text-align:center !important;}}';
+        $dynamic_css .= '@media only screen and (max-width: 782px){#sidebar .fw_widget_title, #sidebar .fw_widget_title h3, #sidebar .fw_widget_title *, #sidebar .fw_widget_content, #sidebar .fw_widget_content *,  #sidebar-alt .fw_widget_title, #sidebar-alt .fw_widget_title h3, #sidebar-alt .fw_widget_title *, #sidebar-alt .fw_widget_content, #sidebar-alt .fw_widget_content * {text-align:center !important;}}';
     }
 
     $widget_content_padding_top                     = isset( $responsi_options['responsi_widget_content_padding_top'] ) ? esc_attr( $responsi_options['responsi_widget_content_padding_top'] ) : 0;
@@ -3568,7 +3564,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $footer_widget_item_css .= 'padding-right:' . $footer_widget_content_padding_right . 'px !important;';
     $dynamic_css .= '.masonry_widget_footer .fw_widget_content{' . $footer_widget_item_css . '}';
     if ( isset($responsi_options['responsi_font_footer_widget_text_alignment_mobile']) && 'true' === $responsi_options['responsi_font_footer_widget_text_alignment_mobile'] ) {
-        $dynamic_css .= '@media only screen and (max-width: 720px){.masonry_widget_footer .widget .fw_widget_title, .masonry_widget_footer .widget .fw_widget_title *, .masonry_widget_footer .widget .fw_widget_content, .masonry_widget_footer .widget .fw_widget_content * {text-align:center !important;}}';
+        $dynamic_css .= '@media only screen and (max-width: 782px){.masonry_widget_footer .widget .fw_widget_title, .masonry_widget_footer .widget .fw_widget_title *, .masonry_widget_footer .widget .fw_widget_content, .masonry_widget_footer .widget .fw_widget_content * {text-align:center !important;}}';
     }
     
     $footer_widget_css = 'float: none;';
@@ -3844,12 +3840,12 @@ function responsi_build_dynamic_css( $preview = false ) {
         $dynamic_css .= '.blog-post-item .thumbnail_container{width:' . $grid_thumb_width . '%;float:right;}';
         $dynamic_css .= '.blog-post-item .content_container{width:' . $grid_content_width . '%;float:left;}';
     }
-    $dynamic_css .= '#main .box-item .entry-item .entry-bottom .postinfo{' . responsi_generate_border($blog_box_border, 'border', true) . 'border-left:0px !important;border-right:0px !important;}';
-    $dynamic_css .= '#main .box-item .entry-item.blog-post-item .entry-bottom{margin-top:0px;margin-bottom:0px !important;}';
-    $dynamic_css .= '#main .box-item .entry-item.blog-post-item .entry-bottom .postinfo,#main .box-item .entry-item.blog-post-item .entry-bottom .posttags,#main .box-item .entry-item .entry-bottom .posttags,#main .box-item .entry-item .entry-bottom .postinfo{padding-left:' . $blogext_padding_left . 'px;padding-right:' . $blogext_padding_right . 'px;padding-top:' . $blogext_padding_top . 'px;padding-bottom:' . $blogext_padding_bottom . 'px; margin :0px !important; ' . responsi_generate_border($_post_author_archive_border_top, 'border-top', true) . ' ' . responsi_generate_border($_post_author_archive_border_bottom, 'border-bottom', true) . '}';
-    $dynamic_css .= 'body #main .box-item .entry-item.blog-post-item .entry-bottom .posttags,#main .box-item .entry-item .entry-bottom .posttags, div.box-content .box-item div.entry-item .entry-bottom .posttags{' . responsi_generate_border($_post_tags_comment_border_top, 'border-top', true) . ' ' . responsi_generate_border($_post_tags_comment_border_bottom, 'border-bottom', true) . '}';
-    $dynamic_css .= '#main .box-item .entry-item.group.post .thumbnail{height:auto !important;margin-bottom:' . $blogext_padding_bottom . 'px !important;}';
-    $dynamic_css .= '#main .box-item .entry-item.group.post h3{height:auto !important;margin-bottom:0px !important;}';
+    $dynamic_css .= '.box-item .entry-item .entry-bottom .postinfo{' . responsi_generate_border($blog_box_border, 'border', true) . 'border-left:0px !important;border-right:0px !important;}';
+    $dynamic_css .= '.box-item .entry-item.blog-post-item .entry-bottom{margin-top:0px;margin-bottom:0px !important;}';
+    $dynamic_css .= '.box-item .entry-item.blog-post-item .entry-bottom .postinfo,.box-item .entry-item.blog-post-item .entry-bottom .posttags,.box-item .entry-item .entry-bottom .posttags, .box-item .entry-item .entry-bottom .postinfo{padding-left:' . $blogext_padding_left . 'px;padding-right:' . $blogext_padding_right . 'px;padding-top:' . $blogext_padding_top . 'px;padding-bottom:' . $blogext_padding_bottom . 'px; margin :0px !important; ' . responsi_generate_border($_post_author_archive_border_top, 'border-top', true) . ' ' . responsi_generate_border($_post_author_archive_border_bottom, 'border-bottom', true) . '}';
+    $dynamic_css .= '.box-item .entry-item.blog-post-item .entry-bottom .posttags,.box-item .entry-item .entry-bottom .posttags, div.box-content .box-item div.entry-item .entry-bottom .posttags{' . responsi_generate_border($_post_tags_comment_border_top, 'border-top', true) . ' ' . responsi_generate_border($_post_tags_comment_border_bottom, 'border-bottom', true) . '}';
+    $dynamic_css .= '.box-item .entry-item.group.post .thumbnail{height:auto !important;margin-bottom:' . $blogext_padding_bottom . 'px !important;}';
+    $dynamic_css .= '.box-item .entry-item.group.post h3{height:auto !important;margin-bottom:0px !important;}';
     
     $blog_box_css = '';
     $blog_box_css .= 'padding:0px !important;';
@@ -3858,7 +3854,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $blog_box_css .= $blog_box_border_radius;
     $blog_box_css .= $blog_box_shadow;
     
-    $dynamic_css .= '.box-item .entry-item.blog-post-item,#main .box-item .entry-item.blog-post-item,#main .box-item .entry-item{' . $blog_box_css . '}';
+    $dynamic_css .= '.box-item .entry-item.blog-post-item,.box-item .entry-item.blog-post-item,.box-item .entry-item{' . $blog_box_css . '}';
 
     $blog_thumbnail_css = 'float: none !important;text-align: center !important;width: auto !important;display:block !important;overflow: hidden;';
     $blog_thumbnail_css .= responsi_generate_background_color($_blog_post_thumbnail_bg, true);
@@ -3874,10 +3870,10 @@ function responsi_build_dynamic_css( $preview = false ) {
     $blog_thumbnail_css .= 'padding-left:' . $_blog_post_thumbnail_padding_left . 'px !important;';
     $blog_thumbnail_css .= 'padding-right:' . $_blog_post_thumbnail_padding_right . 'px !important;';
 
-    $dynamic_css .= '#main .box-item .entry-item.blog-post-item img.thumbnail{margin-bottom:0px !important;}';
-    $dynamic_css .= '#main .box-item .entry-item.blog-post-item .thumbnail{' . $blog_thumbnail_css . '}';
-    $dynamic_css .= '#main .box-item .entry-item.blog-post-item h3{margin:0;padding-top:' . $responsi_blog_post_title_padding_top . 'px !important;padding-bottom:' . $responsi_blog_post_title_padding_bottom . 'px !important;padding-left:' . $responsi_blog_post_title_padding_left . 'px !important;padding-right:' . $responsi_blog_post_title_padding_right . 'px !important;}';
-    $dynamic_css .= '#main .box-item .entry-item.blog-post-item .entry-content{margin:0px;padding-top:' . $responsi_blog_post_description_padding_top . 'px !important;padding-bottom:' . $responsi_blog_post_description_padding_bottom . 'px !important;padding-left:' . $responsi_blog_post_description_padding_left . 'px !important;padding-right:' . $responsi_blog_post_description_padding_right . 'px !important;}';
+    $dynamic_css .= '.box-item .entry-item.blog-post-item img.thumbnail{margin-bottom:0px !important;}';
+    $dynamic_css .= '.box-item .entry-item.blog-post-item .thumbnail{' . $blog_thumbnail_css . '}';
+    $dynamic_css .= '.box-item .entry-item.blog-post-item h3{margin:0;padding-top:' . $responsi_blog_post_title_padding_top . 'px !important;padding-bottom:' . $responsi_blog_post_title_padding_bottom . 'px !important;padding-left:' . $responsi_blog_post_title_padding_left . 'px !important;padding-right:' . $responsi_blog_post_title_padding_right . 'px !important;}';
+    $dynamic_css .= '.box-item .entry-item.blog-post-item .entry-content{margin:0px;padding-top:' . $responsi_blog_post_description_padding_top . 'px !important;padding-bottom:' . $responsi_blog_post_description_padding_bottom . 'px !important;padding-left:' . $responsi_blog_post_description_padding_left . 'px !important;padding-right:' . $responsi_blog_post_description_padding_right . 'px !important;}';
     $dynamic_css .= 'body.category #main .box-item .entry-item h3 a,body.tag #main .box-item .entry-item h3 a,body.page-template-template-blog-php #main .box-item .entry-item h3 a, .box-item .entry-item h3 a, body.category #main .box-item .entry-item h3,body.tag #main .box-item .entry-item h3,body.page-template-template-blog-php #main .box-item .entry-item h3, .box-item .entry-item h3,body #main .blog-post .blog-post-item h3 a:link,#main .blog-post.box-item .entry-item h3 a:link, #main .blog-post.box-item .entry-item h3 a:visited{text-align:' . $responsi_blog_post_title_alignment . ';' . responsi_generate_fonts($responsi_blog_post_font_title) . '}';
     $dynamic_css .= 'body.category #main .box-item .entry-item h3 a:hover,body.tag #main .box-item .entry-item h3 a:hover,body.page-template-template-blog-php #main .box-item .entry-item h3 a:hover, .box-item .entry-item h3 a:hover,#main .blog-post.box-item .entry-item h3 a:link:hover, #main .blog-post.box-item .entry-item h3 a:visited:hover{ color:' . $hover . ' !important;}';
     $dynamic_css .= 'body.category #main .box-item .entry-item .entry-content p,body.tag #main .box-item .entry-item .entry-content p,body.page-template-template-blog-php #main .box-item .entry-item .entry-content p, .box-item .entry-item .entry-content p{text-align:' . $responsi_blog_post_content_alignment . ';' . responsi_generate_fonts($responsi_blog_post_font_content) . '}';
@@ -3885,41 +3881,41 @@ function responsi_build_dynamic_css( $preview = false ) {
     $dynamic_css .= '@media only screen and (min-width: 480px) {';
     if ( $enable_fix_tall_title_grid == '1' ) {
         $blog_title_height = floatval($blog_title_line_height) + 0.1;
-        $dynamic_css .= 'body #main .box-item .entry-item h3 a{display:block !important;height: ' . $blog_title_height . 'em !important;overflow: hidden !important;line-height:' . floatval($blog_title_line_height) . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item h3 a{display:block !important;height: ' . $blog_title_height . 'em !important;overflow: hidden !important;line-height:' . floatval($blog_title_line_height) . 'em !important;}';
     } elseif ( $enable_fix_tall_title_grid == '2' ) {
         $blog_title_height = (floatval($blog_title_line_height) * 2) + 0.1;
-        $dynamic_css .= 'body #main .box-item .entry-item h3 a{display:block !important;height: ' . $blog_title_height . 'em !important;overflow: hidden !important;line-height:' . floatval($blog_title_line_height) . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item h3 a{display:block !important;height: ' . $blog_title_height . 'em !important;overflow: hidden !important;line-height:' . floatval($blog_title_line_height) . 'em !important;}';
     } elseif ( $enable_fix_tall_title_grid == '3' ) {
         $blog_title_height = (floatval($blog_title_line_height) * 3) + 0.1;
-        $dynamic_css .= 'body #main .box-item .entry-item h3 a{display:block !important;height: ' . $blog_title_height . 'em !important;overflow: hidden !important;line-height:' . floatval($blog_title_line_height) . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item h3 a{display:block !important;height: ' . $blog_title_height . 'em !important;overflow: hidden !important;line-height:' . floatval($blog_title_line_height) . 'em !important;}';
     } else {
-        $dynamic_css .= 'body #main .box-item .entry-item h3 a{display:inherit !important;height: inherit !important;overflow: inherit !important;line-height:' . floatval($blog_title_line_height) . ' !important;}';
+        $dynamic_css .= '.box-item .entry-item h3 a{display:inherit !important;height: inherit !important;overflow: inherit !important;line-height:' . floatval($blog_title_line_height) . ' !important;}';
     }
     $dynamic_css .= '}';
-    $dynamic_css .= 'body #main .box-item .entry-item p.gird_descriptions{margin-bottom:0em !important;}';
-    $dynamic_css .= 'body #main .box-item .entry-item a.more-link,body #main .box-item .entry-item.blog-post-item a.button{margin-top:5px !important;display:inline-block}';
+    $dynamic_css .= '.box-item .entry-item p.gird_descriptions{margin-bottom:0em !important;}';
+    $dynamic_css .= '.box-item .entry-item a.more-link,body #main .box-item .entry-item.blog-post-item a.button{margin-top:5px !important;display:inline-block}';
     
     if ( $enable_fix_tall_des_grid == '1' ) {
         $blog_des_height = floatval($blog_des_line_height);
-        $dynamic_css .= 'body #main .box-item .entry-item p.gird_descriptions{display:block !important;height: ' . $blog_des_height . 'em !important;overflow: hidden !important;line-height:' . $blog_des_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item p.gird_descriptions{display:block !important;height: ' . $blog_des_height . 'em !important;overflow: hidden !important;line-height:' . $blog_des_line_height . 'em !important;}';
     } elseif ( $enable_fix_tall_des_grid == '2' ) {
         $blog_des_height = floatval($blog_des_line_height) * 2;
-        $dynamic_css .= 'body #main .box-item .entry-item p.gird_descriptions{display:block !important;height: ' . $blog_des_height . 'em !important;overflow: hidden !important;line-height:' . $blog_des_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item p.gird_descriptions{display:block !important;height: ' . $blog_des_height . 'em !important;overflow: hidden !important;line-height:' . $blog_des_line_height . 'em !important;}';
     } elseif ( $enable_fix_tall_des_grid == '3' ) {
         $blog_des_height = floatval($blog_des_line_height) * 3;
-        $dynamic_css .= 'body #main .box-item .entry-item p.gird_descriptions{display:block !important;height: ' . $blog_des_height . 'em !important;overflow: hidden !important;line-height:' . $blog_des_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item p.gird_descriptions{display:block !important;height: ' . $blog_des_height . 'em !important;overflow: hidden !important;line-height:' . $blog_des_line_height . 'em !important;}';
     } elseif ( $enable_fix_tall_des_grid == '4' ) {
         $blog_des_height = floatval($blog_des_line_height) * 4;
-        $dynamic_css .= 'body #main .box-item .entry-item p.gird_descriptions{display:block !important;height: ' . $blog_des_height . 'em !important;overflow: hidden !important;line-height:' . $blog_des_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item p.gird_descriptions{display:block !important;height: ' . $blog_des_height . 'em !important;overflow: hidden !important;line-height:' . $blog_des_line_height . 'em !important;}';
     }
-    $dynamic_css .= 'body #main .box-item .entry-item h3 a,body #main .box-item .entry-item h3{text-transform:' . $responsi_blog_post_font_title_transform . '}';
+    $dynamic_css .= '.box-item .entry-item h3 a,.box-item .entry-item h3{text-transform:' . $responsi_blog_post_font_title_transform . '}';
         
     if ( 'true' === $responsi_fixed_thumbnail && $responsi_fixed_thumbnail_tall > 0 ) {
-        $dynamic_css .= 'body #main .box-item .entry-item .thumbnail > a {display: block !important;max-width: 100% !important;overflow: hidden !important;text-align: center !important;vertical-align: top !important;width: 100% !important;padding:0 !important;margin:0 !important;height: inherit;}';
-        $dynamic_css .= 'body #main .box-item.masonry-brick .entry-item .thumbnail a img {height: 100% !important;max-width: 100% !important;max-height: 100% !important;width:auto !important;}';
-        $dynamic_css .= 'body #main .box-item.masonry-brick .entry-item .thumbnail a img:not(.lazy-hidden){height:auto !important;}';
+        $dynamic_css .= '.box-item .entry-item .thumbnail > a {display: block !important;max-width: 100% !important;overflow: hidden !important;text-align: center !important;vertical-align: top !important;width: 100% !important;padding:0 !important;margin:0 !important;height: inherit;}';
+        $dynamic_css .= '.box-item.masonry-brick .entry-item .thumbnail a img {height: 100% !important;max-width: 100% !important;max-height: 100% !important;width:auto !important;}';
+        $dynamic_css .= '.box-item.masonry-brick .entry-item .thumbnail a img:not(.lazy-hidden){height:auto !important;}';
     } else {
-        $dynamic_css .= '#main .box-item .entry-item .thumbnail img:not(.lazy-hidden){height:auto;max-width: 100% !important;max-height: 100% !important;}';
+        $dynamic_css .= '.box-item .entry-item .thumbnail img:not(.lazy-hidden){height:auto;max-width: 100% !important;max-height: 100% !important;}';
     }
     $dynamic_css .= '.box-item .entry-item .postinfotitle{display:none !important;}';
     $dynamic_css .= '.box-item .entry-item .blogpostinfo{padding-top:' . $responsi_blog_post_date_padding_top . 'px;padding-bottom:' . $responsi_blog_post_date_padding_bottom . 'px;padding-left:' . $responsi_blog_post_date_padding_left . 'px;padding-right:' . $responsi_blog_post_date_padding_right . 'px;text-align:' . $responsi_blog_post_date_alignment . ';text-transform:' . $responsi_blog_post_font_date_transform . ';' . responsi_generate_fonts($responsi_blog_post_font_date) . '}';
@@ -3942,28 +3938,28 @@ function responsi_build_dynamic_css( $preview = false ) {
     
     if ( $responsi_enable_fix_ext_cat_author == '1' ) {
         $blog_ext_height = floatval($blog_ext_line_height);
-        $dynamic_css .= 'body #main .box-item .entry-item .entry-bottom .postinfo .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item .entry-bottom .postinfo .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
     } elseif ( $responsi_enable_fix_ext_cat_author == '2' ) {
         $blog_ext_height = floatval($blog_ext_line_height) * 2;
-        $dynamic_css .= 'body #main .box-item .entry-item .entry-bottom .postinfo .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item .entry-bottom .postinfo .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
     } elseif ( $responsi_enable_fix_ext_cat_author == '3' ) {
         $blog_ext_height = floatval($blog_ext_line_height) * 3;
-        $dynamic_css .= 'body #main .box-item .entry-item .entry-bottom .postinfo .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item .entry-bottom .postinfo .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
     } else {
-        $dynamic_css .= 'body #main .box-item .entry-item .entry-bottom .postinfo .custom_lines{display:inherit !important;height: auto !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . ' !important;}';
+        $dynamic_css .= '.box-item .entry-item .entry-bottom .postinfo .custom_lines{display:inherit !important;height: auto !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . ' !important;}';
     }
     
     if ( $responsi_enable_fix_ext_tags_comment == '1' ) {
         $blog_ext_height = floatval($blog_ext_line_height);
-        $dynamic_css .= 'body #main .box-item .entry-item .entry-bottom .posttags .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item .entry-bottom .posttags .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
     } elseif ( $responsi_enable_fix_ext_tags_comment == '2' ) {
         $blog_ext_height = floatval($blog_ext_line_height) * 2;
-        $dynamic_css .= 'body #main .box-item .entry-item .entry-bottom .posttags .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item .entry-bottom .posttags .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
     } elseif ( $responsi_enable_fix_ext_tags_comment == '3' ) {
         $blog_ext_height = floatval($blog_ext_line_height) * 3;
-        $dynamic_css .= 'body #main .box-item .entry-item .entry-bottom .posttags .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item .entry-bottom .posttags .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
     } else {
-        $dynamic_css .= 'body #main .box-item .entry-item .entry-bottom .posttags .custom_lines{display:inherit !important;height: auto !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . ' !important;}';
+        $dynamic_css .= '.box-item .entry-item .entry-bottom .posttags .custom_lines{display:inherit !important;height: auto !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . ' !important;}';
     }
     
     if ( 'false' === $responsi_disable_ext_author_cell ) {

@@ -1,11 +1,11 @@
 <?php
 /**
- * Class to create a custom Layout control
+ * Class to create a custom iRadio control
  */
-if ( ! class_exists( 'Customize_Layout_Control' ) && class_exists('WP_Customize_Control')) {
-	class Customize_Layout_Control extends WP_Customize_Control {
+if ( ! class_exists( 'Customize_iRadio_Control' ) && class_exists('WP_Customize_Control')) {
+	class Customize_iRadio_Control extends WP_Customize_Control {
 
-		public $type = 'layout';
+		public $type = 'iradio';
 
 		/**
 		 * Constructor.
@@ -39,23 +39,25 @@ if ( ! class_exists( 'Customize_Layout_Control' ) && class_exists('WP_Customize_
 		public function to_json() {
 			parent::to_json();
 			$this->json['value']   = $this->setting->default;
+			$this->json['std']     = isset($this->input_attrs['std']) ? $this->input_attrs['std'] : '';
 			$this->json['choices'] = $this->choices;
 		}
 
 		protected function render() {
+			
 			$custom_class = '';
 			if( isset( $this->input_attrs['class']) && $this->input_attrs['class'] ){
 				$custom_class = ' '.$this->input_attrs['class'];
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control responsi-customize-control customize-control-' . $this->type;
+			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
-			?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
-				<?php $this->render_content(); ?>
-			</li><?php
+			printf( '<li id="%s" class="%s">', esc_attr( $id ), esc_attr( $class ) );
+			$this->render_content();
+			echo '</li>';
 		}
 
 		/**
@@ -73,32 +75,31 @@ if ( ! class_exists( 'Customize_Layout_Control' ) && class_exists('WP_Customize_
 		public function content_template() {
 			?>
 			<# 
-				var setting_id = data.settings['default']; 
+				var setting_id = data.settings['default'];
 				var choices    = data.choices;
 			#>
 			<div class="customize-control-container">
 				<# if ( data.label ) { #>
 				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
-				<# 
-				var checked = '';
-				var selected = '';
-				var i = 0;
-				_.each(choices, function(  val, key ){
-					i++;
-					checked = '';
-					selected = '';
-					if ( data.value == key ) {
-						checked = 'checked="checked"';
-						selected = 'responsi-radio-img-selected';
-					}
-					#>
-					<span class="layout-item layout-item-{{ i }}">
-					<input data-customize-setting-link="{{ setting_id }}" type="radio" id="responsi-radio-img-{{ setting_id }}{{ i }}" class="checkbox responsi-radio-img-radio" value="{{key}}" name="{{ setting_id }}" {{{ checked }}} />
-					<span class="responsi-radio-img-label">{{ key }}</span>
-					<img id="{{ setting_id }}_{{ i }}" src="{{ val }}" alt="" data-value="{{ key }}" class="responsi-radio-img-img {{ selected }}" onClick="document.getElementById('responsi-radio-img-{{ setting_id }}{{ i }}').click();" />
-					</span>
-				<# }); #>
+				<div class="responsi-iphone-checkbox">
+					<# var checked = '';
+					_.each(choices, function(  val, key ){
+						checked = '';
+						if ( data.value != '' ) {
+							if ( data.value == key ) {
+								checked = 'checked="checked" checkbox-disabled="true"';
+							}
+						} else {
+							if ( data.std != '' && data.std == key ) {
+								checked = 'checked="checked" checkbox-disabled="true"';
+							}
+						}
+						#>
+						<input data-customize-setting-link="{{ setting_id }}" name="{{ setting_id }}" id="{{ setting_id }}_{{ key }}_iradio" value="{{ key }}" {{{ checked }}} class="responsi-input responsi-radio responsi-ui-iradio" type="radio" /><label>{{ val }}</label>
+						<div class="clear"></div>
+					<# }); #>
+				</div>
 				<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>

@@ -917,8 +917,6 @@ http://www.gnu.org/licenses/gpl.html
 // Works with either jQuery or Zepto
 })( window.jQuery || window.Zepto );
 
-
-
 /*-----------------------------------------------------------------------------------*/
 /* Run scripts on jQuery(document).ready() */
 /*-----------------------------------------------------------------------------------*/
@@ -1118,7 +1116,7 @@ jQuery(document).ready(function(){
             }
         }
 
-        if( screen_width <= 720 && screen_width >= 480 ){
+        if( screen_width <= 782 && screen_width >= 480 ){
             content_column = 2;
         }
         jQuery('div.box-content').imagesLoaded( function(){
@@ -1217,7 +1215,7 @@ jQuery(document).ready(function(){
 	                jQuery('head').append('<style id="blog-thumb-height">' + css + '</style>');
 	            }
 	        }
-	        if( screen_width <= 720 && screen_width >= 480 ){
+	        if( screen_width <= 782 && screen_width >= 480 ){
 	            content_column = 2;
 	        }
 	        if( jQuery('div.box-content .box-item').length ){
@@ -1257,7 +1255,7 @@ jQuery(document).ready(function(){
 		if ( 'one-col' !== responsi_paramaters.responsi_layout ) {
             var screen_width = jQuery('html').width();
             var content_column_sb = responsi_paramaters.responsi_content_column;
-            if( screen_width <= 720 && screen_width >= 480 ){
+            if( screen_width <= 782 && screen_width >= 480 ){
                 content_column_sb = 2;
                 jQuery('.sidebar-wrap-content').masonry({
                     itemSelector: '.masonry_widget',

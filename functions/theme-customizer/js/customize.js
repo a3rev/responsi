@@ -1,5 +1,7 @@
 (function(wp, $) {
 
+	var api = wp.customize;
+
 	responsiCustomizeBase = {
 
 		setup_ui_unhide_visible: function(groupID) {
@@ -61,7 +63,7 @@
 			$('#' + groupID + ' .customize-control-layout.post-thumb-type input.responsi-radio-img-radio:checked').siblings('img').trigger('click');
 
 			//Logic Boxed layout
-			if ($('#' + groupID + ' #responsi_layout_boxed').prop('checked')) {
+			if ($('#' + groupID + ' #responsi_layout_boxed_cb').prop('checked')) {
 				$('.for-wide-mode').addClass('hide-custom');
 				$('.for-box-mode').removeClass('hide-custom');
 			} else {
@@ -71,11 +73,11 @@
 			// end Logic Boxed layout
 
 			//Logic Background Theme
-			if ($('#' + groupID + ' #responsi_disable_background_style_img').prop('checked')) {
-				$('#' + groupID + ' #responsi_use_style_bg_image').removeAttr('checked').iphoneStyle("refresh");
+			if ($('#' + groupID + ' #responsi_disable_background_style_img_cb').prop('checked')) {
+				$('#' + groupID + ' #responsi_use_style_bg_image_cb').removeAttr('checked').iphoneStyle("refresh");
 			}
-			if ($('#' + groupID + ' #responsi_use_style_bg_image').prop('checked')) {
-				$('#' + groupID + ' #responsi_disable_background_style_img').removeAttr('checked').iphoneStyle("refresh");
+			if ($('#' + groupID + ' #responsi_use_style_bg_image_cb').prop('checked')) {
+				$('#' + groupID + ' #responsi_disable_background_style_img_cb').removeAttr('checked').iphoneStyle("refresh");
 			}
 			//end Logic Background Theme
 
@@ -118,13 +120,13 @@
 			//Logic Footer Cell
 			var footer_cell_1;
 			var footer_cell_2;
-			if ($('input#responsi_disable_ext_cat_author').prop('checked')) {
+			if ($('input#responsi_disable_ext_cat_author_cb').prop('checked')) {
 				footer_cell_1 = true;
 			} else {
 				footer_cell_1 = false;
 			}
 
-			if ($('input#responsi_disable_ext_tags_comment').prop('checked')) {
+			if ($('input#responsi_disable_ext_tags_comment_cb').prop('checked')) {
 				footer_cell_2 = true;
 			} else {
 				footer_cell_2 = false;
@@ -151,17 +153,17 @@
 			var _post_meta_date = false;
 			var _post_meta_comment = false;
 			var _post_meta_author = false;
-			if ($('input#responsi_disable_post_meta_date').prop('checked')) {
+			if ($('input#responsi_disable_post_meta_date_cb').prop('checked')) {
 				_post_meta_date = true;
 			} else {
 				_post_meta_date = false;
 			}
-			if ($('input#responsi_disable_post_meta_comment').prop('checked')) {
+			if ($('input#responsi_disable_post_meta_comment_cb').prop('checked')) {
 				_post_meta_comment = true;
 			} else {
 				_post_meta_comment = false;
 			}
-			if ($('input#responsi_disable_post_meta_author').prop('checked')) {
+			if ($('input#responsi_disable_post_meta_author_cb').prop('checked')) {
 				_post_meta_author = true;
 			} else {
 				_post_meta_author = false;
@@ -269,7 +271,7 @@
 			});
 
 			//Logic Boxed layout
-			$(document).on('responsi-ui-icheckbox-switch', '#responsi_layout_boxed', function(event, elem, status) {
+			$(document).on('responsi-ui-icheckbox-switch', '#responsi_layout_boxed_cb', function(event, elem, status) {
 				if (elem.prop('checked')) {
 					$('.for-wide-mode').addClass('hide-custom');
 					$('.for-box-mode').removeClass('hide-custom');
@@ -282,14 +284,14 @@
 
 			//Logic Background Theme
 			$(document).on('responsi-ui-icheckbox-switch', '.customize-control-icheckbox input.responsi-ui-icheckbox', function(event, elem, status) {
-				if (elem.attr('id') == 'responsi_disable_background_style_img') {
+				if (elem.attr('id') == 'responsi_disable_background_style_img_cb') {
 					if (elem.prop('checked')) {
-						$('#responsi_use_style_bg_image').removeAttr('checked').iphoneStyle("refresh");
+						$('#responsi_use_style_bg_image_cb').removeAttr('checked').iphoneStyle("refresh");
 					}
 				}
-				if (elem.attr('id') == 'responsi_use_style_bg_image') {
+				if (elem.attr('id') == 'responsi_use_style_bg_image_cb') {
 					if (elem.prop('checked')) {
-						$('#responsi_disable_background_style_img').removeAttr('checked').iphoneStyle("refresh");
+						$('#responsi_disable_background_style_img_cb').removeAttr('checked').iphoneStyle("refresh");
 					}
 				}
 			});
@@ -330,17 +332,17 @@
 			});
 
 			//Footer Cell
-			$(document).on('responsi-ui-icheckbox-switch', '.customize-control-icheckbox input#responsi_disable_ext_cat_author, .customize-control-icheckbox input#responsi_disable_ext_tags_comment', function(event, elem, status) {
+			$(document).on('responsi-ui-icheckbox-switch', '.customize-control-icheckbox input#responsi_disable_ext_cat_author_cb, .customize-control-icheckbox input#responsi_disable_ext_tags_comment_cb', function(event, elem, status) {
 				var footer_cell_1;
 				var footer_cell_2;
 
-				if ($('input#responsi_disable_ext_cat_author').prop('checked')) {
+				if ($('input#responsi_disable_ext_cat_author_cb').prop('checked')) {
 					footer_cell_1 = true;
 				} else {
 					footer_cell_1 = false;
 				}
 
-				if ($('input#responsi_disable_ext_tags_comment').prop('checked')) {
+				if ($('input#responsi_disable_ext_tags_comment_cb').prop('checked')) {
 					footer_cell_2 = true;
 				} else {
 					footer_cell_2 = false;
@@ -366,21 +368,21 @@
 
 			});
 
-			$(document).on('responsi-ui-icheckbox-switch', '.customize-control-icheckbox input#responsi_disable_post_meta_date, .customize-control-icheckbox input#responsi_disable_post_meta_comment, .customize-control-icheckbox input#responsi_disable_post_meta_author', function(event, elem, status) {
+			$(document).on('responsi-ui-icheckbox-switch', '.customize-control-icheckbox input#responsi_disable_post_meta_date_cb, .customize-control-icheckbox input#responsi_disable_post_meta_comment_cb, .customize-control-icheckbox input#responsi_disable_post_meta_author_cb', function(event, elem, status) {
 				var _post_meta_date = false;
 				var _post_meta_comment = false;
 				var _post_meta_author = false;
-				if ($('input#responsi_disable_post_meta_date').prop('checked')) {
+				if ($('input#responsi_disable_post_meta_date_cb').prop('checked')) {
 					_post_meta_date = true;
 				} else {
 					_post_meta_date = false;
 				}
-				if ($('input#responsi_disable_post_meta_comment').prop('checked')) {
+				if ($('input#responsi_disable_post_meta_comment_cb').prop('checked')) {
 					_post_meta_comment = true;
 				} else {
 					_post_meta_comment = false;
 				}
-				if ($('input#responsi_disable_post_meta_author').prop('checked')) {
+				if ($('input#responsi_disable_post_meta_author_cb').prop('checked')) {
 					_post_meta_author = true;
 				} else {
 					_post_meta_author = false;
@@ -394,13 +396,35 @@
 		}
 	};
 
-	$(document).ready( function() {
-		//responsiCustomizeBase.handleEvents();
+	$(window).on( 'load', function() {
+
+		if( window._responsiCustomizeControl ){
+
+			$.each( window._responsiCustomizeControl, function( id, data ) {
+				var Constructor = wp.customize.controlConstructor[ data.type ] || wp.customize.Control, options;
+				options = _.extend( { params: data }, data ); // Inclusion of params alias is for back-compat for custom controls that expect to augment this property.
+				wp.customize.control.add( new Constructor( id, options ) );
+			});
+
+		}
+
+		responsiCustomizeBase.handleEvents();
+
+		// Customize Responsi Focus
+		api.previewer.bind('focus-panel-for-setting', function(panelId) {
+			api.panel(panelId).expand();
+		});
+
+		api.previewer.bind('focus-section-for-setting', function(sectionId) {
+			api.section(sectionId).expand();
+		});
+
 		$('li.control-section-default, ul.customize-pane-child').on('expanded', function() {
+			
 			var groupID = $(this).attr('id');
 			responsiCustomizeBase.setup_ui_custom_logic(groupID);
-			if (!$(this).hasClass('applied_condition_logic')) {
-				$(this).addClass('applied_condition_logic');
+			if (!$(this).hasClass('controls-added')) {
+				$(this).addClass('controls-added');
 				if (!$('.customize-control-iuploadcrop').hasClass('customize-control-upload')) {
 					$('.customize-control-iuploadcrop').addClass('customize-control-upload');
 				}
@@ -408,34 +432,10 @@
 				responsiCustomizeBase.setup_ui_unhide_hidden_custom_sub(groupID);
 				responsiCustomizeBase.setup_ui_unhide_hidden(groupID);
 				responsiCustomizeBase.setup_ui_unhide_visible(groupID);
-				$(this).find('li.responsi-customize-control').css({
+				$(this).find('li.customize-control-responsi').css({
 					opacity: 1
 				});
 			}
-		});
-
-		// Customize Responsi Focus
-		wp.customize.previewer.bind('responsi-focus-panel', function(panelId) {
-			wp.customize.panel(panelId).expand();
-		});
-
-		wp.customize.previewer.bind('responsi-focus-section', function(sectionId) {
-			wp.customize.section(sectionId).expand();
-		});
-
-		wp.customize.previewer.bind('responsi-focus-control', function(settingId) {
-			var matchedControl;
-			wp.customize.control.each(function(control) {
-				var settingIds = _.pluck(control.settings, 'id');
-				if (-1 !== _.indexOf(settingIds, settingId)) {
-					matchedControl = control;
-				}
-			});
-
-			if (matchedControl) {
-				matchedControl.focus();
-			}
-
 		});
 
 	});
@@ -443,9 +443,8 @@
 })(window.wp, jQuery);
 
 wp.customize.responsiFrameworkCustomize = wp.customize.ResponsiFrameworkPreview = ( function( $, _, wp, api ) {
-
+	
 	api.bind( 'ready', function() {
-		responsiCustomizeBase.handleEvents();
-	} );
+	});
 
 }( jQuery, _, wp, wp.customize ) );

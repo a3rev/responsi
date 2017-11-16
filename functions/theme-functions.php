@@ -1225,7 +1225,8 @@ if ( !function_exists( 'responsi_add_pagination_links' ) ) {
 if ( !function_exists( 'responsi_meta_tags' ) ) {
     function responsi_meta_tags() {
         $html = '';
-        $html .= '<meta name=viewport content="width=device-width, initial-scale=1 maximum-scale=1">';
+        //$html .= '<meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1">';
+        $html .= '<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no,height=device-height">';
         $html .= '<meta name="format-detection" content="telephone=yes">';
         echo $html;
     }

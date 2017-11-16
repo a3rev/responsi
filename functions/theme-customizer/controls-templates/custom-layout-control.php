@@ -1,11 +1,11 @@
 <?php
 /**
- * Class to create a custom Multiple Text control
+ * Class to create a custom Layout control
  */
-if ( ! class_exists( 'Customize_iMultiCheckbox_Control' ) && class_exists('WP_Customize_Control')) {
-	class Customize_iMultiCheckbox_Control extends WP_Customize_Control {
+if ( ! class_exists( 'Customize_Layout_Control' ) && class_exists('WP_Customize_Control')) {
+	class Customize_Layout_Control extends WP_Customize_Control {
 
-		public $type = 'imulticheckbox';
+		public $type = 'layout';
 
 		/**
 		 * Constructor.
@@ -38,29 +38,25 @@ if ( ! class_exists( 'Customize_iMultiCheckbox_Control' ) && class_exists('WP_Cu
 		 */
 		public function to_json() {
 			parent::to_json();
-			$defaultValue = array();
-			foreach(  $this->choices as $key => $val ){
-				$defaultValue[] = $this->settings[ $this->id.'_'.$key ]->default;
-			}
-			$this->json['setting_id']   = $this->id;
-			$this->json['choices']      = $this->choices;
-			$this->json['defaultValue'] = $defaultValue;
+			$this->json['value']   = $this->setting->default;
+			$this->json['choices'] = $this->choices;
 		}
 
 		protected function render() {
+			
 			$custom_class = '';
 			if( isset( $this->input_attrs['class']) && $this->input_attrs['class'] ){
 				$custom_class = ' '.$this->input_attrs['class'];
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control responsi-customize-control customize-control-' . $this->type;
+			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
-			?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
-				<?php $this->render_content(); ?>
-			</li><?php
+			printf( '<li id="%s" class="%s">', esc_attr( $id ), esc_attr( $class ) );
+			$this->render_content();
+			echo '</li>';
 		}
 
 		/**
@@ -78,33 +74,32 @@ if ( ! class_exists( 'Customize_iMultiCheckbox_Control' ) && class_exists('WP_Cu
 		public function content_template() {
 			?>
 			<# 
-				var choices      = data.choices;
-				var defaultValues = data.defaultValue;
-				var checked = '';
-				var i = 0;
+				var setting_id = data.settings['default']; 
+				var choices    = data.choices;
 			#>
 			<div class="customize-control-container">
 				<# if ( data.label ) { #>
 				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
 				<# 
+				var checked = '';
+				var selected = '';
+				var i = 0;
 				_.each(choices, function(  val, key ){
+					i++;
 					checked = '';
-					value = defaultValues[i];
-					if ( value == 'true' ) {
-						checked = 'checked=checked';
-					}else{
-						checked = '';
+					selected = '';
+					if ( data.value == key ) {
+						checked = 'checked="checked"';
+						selected = 'responsi-radio-img-selected';
 					}
 					#>
-					<div class="responsi-imulticheckbox-item imulticheckbox-{{ key }}">
-					<input value="{{ value }}" name="{{ data.setting_id }}_{{ key }}" id="{{ data.setting_id }}_{{ key }}" data-customize-setting-link="{{ data.setting_id }}_{{ key }}" {{{ checked }}} class="responsi-input responsi-imulticheckbox responsi-ui-imulticheckbox" type="checkbox" /><label>{{{ val }}}</label>
-					</div>
-					<div class="clear"></div>
-				<# 
-					i++;
-				}); 
-				#>
+					<span class="layout-item layout-item-{{ i }}">
+					<input data-customize-setting-link="{{ setting_id }}" type="radio" id="responsi-radio-img-{{ setting_id }}{{ i }}" class="checkbox responsi-radio-img-radio" value="{{key}}" name="{{ setting_id }}" {{{ checked }}} />
+					<span class="responsi-radio-img-label">{{ key }}</span>
+					<img id="{{ setting_id }}_{{ i }}" src="{{ val }}" alt="" data-value="{{ key }}" class="responsi-radio-img-img {{ selected }}" onClick="document.getElementById('responsi-radio-img-{{ setting_id }}{{ i }}').click();" />
+					</span>
+				<# }); #>
 				<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>

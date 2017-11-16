@@ -68,7 +68,7 @@
             footer_widget_text_alignment_mobile += '.masonry_widget_footer .widget .fw_widget_content, .masonry_widget_footer .widget .fw_widget_content *{text-align:' + wp.customize.value('responsi_font_footer_widget_text_alignment')() + ' !important;}';
         }
 
-        css += '@media only screen and (max-width: 720px) {';
+        css += '@media only screen and (max-width: 782px) {';
         css += center_sidebar_widget_text_alignment_mobile;
         css += footer_widget_text_alignment_mobile;
         css += '}';

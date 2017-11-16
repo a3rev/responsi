@@ -1,16 +1,16 @@
 <?php
 /**
- * Class to create a custom Border Radius control
+ * Class to create a custom Border control
  */
-if ( ! class_exists( 'Customize_Border_Radius_Control' ) && class_exists('WP_Customize_Control')) {
-	class Customize_Border_Radius_Control extends WP_Customize_Control {
+if ( ! class_exists( 'Customize_Border_Control' ) && class_exists('WP_Customize_Control')) {
+	class Customize_Border_Control extends WP_Customize_Control {
 
-		public $type = 'border_radius';
+		public $type = 'border';
 
 		/**
 		 * Constructor.
 		 *
-		 * @since 3.4.0
+		 * @since 1.0.0
 		 * @uses WP_Customize_Control::__construct()
 		 *
 		 * @param WP_Customize_Manager $manager Customizer bootstrap instance.
@@ -22,18 +22,19 @@ if ( ! class_exists( 'Customize_Border_Radius_Control' ) && class_exists('WP_Cus
 		}
 
 		/**
-		 * Enqueue scripts/styles for the switcher.
+		 * Enqueue scripts/styles.
 		 *
-		 * @since 3.4.0
+		 * @since 1.0.0
 		 */
 		public function enqueue() {
+			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_script( 'responsi-customize-controls' );
 		}
 
 		/**
 		 * Refresh the parameters passed to the JavaScript via JSON.
 		 *
-		 * @since 3.4.0
+		 * @since 1.0.0
 		 * @uses WP_Customize_Control::to_json()
 		 */
 		public function to_json() {
@@ -60,19 +61,20 @@ if ( ! class_exists( 'Customize_Border_Radius_Control' ) && class_exists('WP_Cus
 		}
 
 		protected function render() {
+			
 			$custom_class = '';
 			if( isset( $this->input_attrs['class']) && $this->input_attrs['class'] ){
 				$custom_class = ' '.$this->input_attrs['class'];
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control responsi-customize-control customize-control-' . $this->type;
+			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
-			?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
-				<?php $this->render_content(); ?>
-			</li><?php
+			printf( '<li id="%s" class="%s">', esc_attr( $id ), esc_attr( $class ) );
+			$this->render_content();
+			echo '</li>';
 		}
 
 		/**
@@ -90,31 +92,19 @@ if ( ! class_exists( 'Customize_Border_Radius_Control' ) && class_exists('WP_Cus
 		public function content_template() {
 			?>
 			<#
-			var setting_id    = data.setting_id;
-			var corner_value  = data.values.corner;
-			var rounded_value = data.values.rounded_value;
-
-			var checked = '';
-			var value = corner_value;
-			if ( 'rounded' == value ) {
-				checked = 'checked="checked"';
-			} else {
-				value = 'square';
-			}
+			var setting_id  = data.setting_id;
+			var color_value = data.values.color;
 			#>
 			<div class="customize-control-container {{ data.custom_class }}">
 				<# if ( data.label ) { #>
 				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
-				<div class="border-radius-container">
-					<div class="responsi-iphone-checkbox responsi-iswitcher-checkbox">
-						<input type="checkbox" data-customize-setting-link="{{ setting_id }}[corner]" id="{{ setting_id }}_corner" name="{{ setting_id }}[corner]" value="{{ value }}" {{{ checked }}} class="checkbox responsi-input responsi-ui-icheckbox responsi-ui-iswitcher" />
-					</div>
-					<div class="clear"></div>
-					<div class="responsi-range-slider">
-						<div class="ui-slide" id="{{ setting_id }}_rounded_div"></div>
-						<input type="text" readonly="readonly" data-customize-setting-link="{{ setting_id }}[rounded_value]" id="{{ setting_id }}_rounded" name="{{ setting_id }}[rounded_value]" value="{{ rounded_value }}" class="responsi-input regular-text responsi-slide-value" />
-					</div>
+				<div class="border-container">
+					<select data-customize-setting-link="{{ setting_id }}[width]" name="{{ setting_id }}[width]" class="responsi-border responsi-border-width" >
+					</select>
+					<select data-customize-setting-link="{{ setting_id }}[style]" name="{{ setting_id }}[style]" class="responsi-border responsi-border-style" >
+					</select>
+					<input type="text" data-customize-setting-link="{{ setting_id }}[color]" name="{{ setting_id }}[color]" value="{{ color_value }}" data-default-color="{{ color_value }}" class="color-picker-hex icolor-picker responsi-border" />
 				</div>
 				<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>

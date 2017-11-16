@@ -60,20 +60,21 @@ if ( ! class_exists( 'Customize_Typography_Control' ) && class_exists('WP_Custom
 			$this->json['custom_class'] = $custom_class;
 		}
 
-		public function render() {
+		protected function render() {
+			
 			$custom_class = '';
 			if( isset( $this->input_attrs['class']) && $this->input_attrs['class'] ){
 				$custom_class = ' '.$this->input_attrs['class'];
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control responsi-customize-control customize-control-' . $this->type;
+			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
-			?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
-				<?php $this->render_content(); ?>
-			</li><?php
+			printf( '<li id="%s" class="%s">', esc_attr( $id ), esc_attr( $class ) );
+			$this->render_content();
+			echo '</li>';
 		}
 
 		/**
@@ -108,7 +109,7 @@ if ( ! class_exists( 'Customize_Typography_Control' ) && class_exists('WP_Custom
 					<div class="clear"></div>
 					<select data-customize-setting-link="{{ setting_id }}[style]" name="{{ setting_id }}[style]" class="responsi-typography responsi-typography-style" >
 					</select>
-					<input type="text" data-customize-setting-link="{{ setting_id }}[color]" name="{{ setting_id }}[color]" value="{{ color_value }}" data-default-color="{{ color_value }}" class="color-picker-hex responsi-color-picker responsi-typography responsi-typography-color"  />
+					<input type="text" data-customize-setting-link="{{ setting_id }}[color]" name="{{ setting_id }}[color]" value="{{ color_value }}" data-default-color="{{ color_value }}" class="color-picker-hex icolor-picker"  />
 				</div>
 				<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>

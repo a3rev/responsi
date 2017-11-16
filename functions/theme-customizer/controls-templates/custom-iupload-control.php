@@ -2,15 +2,15 @@
 /**
  * Class to create a custom iupload control
  */
-if ( ! class_exists( 'Customize_iUploadCrop_Control' ) && class_exists('WP_Customize_Cropped_Image_Control')) {
-	class Customize_iUploadCrop_Control extends WP_Customize_Cropped_Image_Control {
+if ( ! class_exists( 'Customize_iUpload_Control' ) && class_exists('WP_Customize_Image_Control')) {
+	class Customize_iUpload_Control extends WP_Customize_Image_Control {
 		
-		public $type = 'iuploadcrop';
+		public $type = 'iupload';
 		public $mime_type = 'image';
 
 		public function __construct( $manager, $id, $args = array() ) {
 			parent::__construct( $manager, $id, $args );
-			if ( ( $this instanceof WP_Customize_Cropped_Image_Control ) ) {
+			if ( ( $this instanceof WP_Customize_Image_Control ) ) {
 				$this->button_labels = array(
 					'select'       => __( 'Add Image', 'responsi' ),
 					'change'       => __( 'Change Image', 'responsi' ),
@@ -27,32 +27,21 @@ if ( ! class_exists( 'Customize_iUploadCrop_Control' ) && class_exists('WP_Custo
 			wp_enqueue_script( 'responsi-customize-controls' );
 		}
 
-		/**
-		 * Refresh the parameters passed to the JavaScript via JSON.
-		 *
-		 * @since 3.4.0
-		 * @uses WP_Customize_Control::to_json()
-		 */
-		public function to_json() {
-			parent::to_json();
-			$this->json['width'] = isset($this->input_attrs['width']) ? $this->input_attrs['width'] : 250;
-			$this->json['height'] = isset($this->input_attrs['height']) ? $this->input_attrs['height'] : 250;
-		}
-
 		protected function render() {
+			
 			$custom_class = '';
 			if( isset( $this->input_attrs['class']) && $this->input_attrs['class'] ){
 				$custom_class = ' '.$this->input_attrs['class'];
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control responsi-customize-control customize-control-upload customize-control-' . $this->type;
+			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
-			?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
-				<?php $this->render_content(); ?>
-			</li><?php
+			printf( '<li id="%s" class="%s">', esc_attr( $id ), esc_attr( $class ) );
+			$this->render_content();
+			echo '</li>';
 		}
 
 		/**
@@ -135,7 +124,6 @@ if ( ! class_exists( 'Customize_iUploadCrop_Control' ) && class_exists('WP_Custo
 			</div>
 			<?php
 		}
-
 	}
 }
 ?>

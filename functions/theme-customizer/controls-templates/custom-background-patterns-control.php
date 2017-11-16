@@ -45,19 +45,20 @@ if ( ! class_exists( 'Customize_Background_Patterns_Control' ) && class_exists('
 		}
 
 		protected function render() {
+			
 			$custom_class = '';
 			if( isset( $this->input_attrs['class']) && $this->input_attrs['class'] ){
 				$custom_class = ' '.$this->input_attrs['class'];
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control responsi-customize-control customize-control-' . $this->type;
+			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
-			?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
-				<?php $this->render_content(); ?>
-			</li><?php
+			printf( '<li id="%s" class="%s">', esc_attr( $id ), esc_attr( $class ) );
+			$this->render_content();
+			echo '</li>';
 		}
 
 		/**
@@ -99,14 +100,14 @@ if ( ! class_exists( 'Customize_Background_Patterns_Control' ) && class_exists('
 					imglink  = bg_url + '/backgrounds/' + val;
 					if ( data.value == imglink ) {
 						checked  = 'checked=checked';
-						selected = 'background-selected';
+						selected = 'bg-selected';
 					}
 				#>
 					<span onClick="document.getElementById('bp-img-{{ setting_id }}{{ i }}').click();" class="bp-item bp-item-{{ i }} {{ selected }}">
 						<input data-customize-setting-link="{{ setting_id }}" type="radio" id="bp-img-{{ setting_id }}{{ i }}" class="checkbox bp-radio" value="{{ bg_url }}/backgrounds/{{val}}" name="{{ setting_id }}" {{ checked }} />
 					</span>
 				<# }); #>
-				<hr class="customize-background-line">
+				<hr class="bg-hr">
 				<span class="customize-control-title"><?php echo __( 'Patterns', 'responsi' ); ?></span>
 				<#
 				_.each( patterns, function( val, key ) {
@@ -116,7 +117,7 @@ if ( ! class_exists( 'Customize_Background_Patterns_Control' ) && class_exists('
 					imglink  = bg_url + '/patterns/' + val;
 					if ( data.value == imglink ) {
 						checked  = 'checked=checked';
-						selected = 'background-selected';
+						selected = 'bg-selected';
 					}
 				#>
 					<span onClick="document.getElementById('bp-img-{{ setting_id }}{{ i }}').click();" class="bp-item bp-item-{{ i }} {{ selected }}">

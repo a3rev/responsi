@@ -9,26 +9,24 @@
 class Responsi_Theme_Customizer {
 
 	public function __construct() {
-
-		add_action( 'wp_enqueue_scripts', array( $this, 'responsi_add_dynamic_css' ) );
+		
+		add_filter( 'responsi_focus_panels', 					array( $this, 'responsi_focus_panels') );
+		add_filter( 'responsi_focus_sections', 					array( $this, 'responsi_focus_sections') );
+		add_filter( 'responsi_focus_controls', 					array( $this, 'responsi_focus_controls') );
+		
+		add_filter( 'responsi_customized_post_value', 			array( $this, 'responsi_customized_post_value') );
+		add_filter( 'responsi_customized_changeset_data_value', array( $this, 'responsi_customized_changeset_data_value') );
+		
+		add_action( 'wp_enqueue_scripts', 						array( $this, 'responsi_add_dynamic_css' ) );
+		add_action( 'customize_register', 						array( $this, 'responsi_customize_register' ) );
+		add_action( 'customize_controls_print_styles', 			array( $this, 'responsi_customize_controls_print_styles' ) );
+		add_action( 'customize_controls_print_footer_scripts', 'responsi_wp_editor_customize', 9 );
+		add_action( 'customize_controls_print_footer_scripts', 	array( $this, 'responsi_customize_controls_enqueue_scripts' ) );
+		add_action( 'customize_preview_init', 					array( $this, 'responsi_customize_preview_init' ), 9 );
+		add_action( 'customize_save_after', 					array( $this, 'responsi_customize_save_options'), 999 );
 
 		if( is_customize_preview() ){
-
-			add_filter( 'responsi_focus_panels', array( $this, 'responsi_focus_panels') );
-			add_filter( 'responsi_focus_sections', array( $this, 'responsi_focus_sections') );
-			add_filter( 'responsi_focus_controls', array( $this, 'responsi_focus_controls') );
-			
-			add_action( 'customize_register', array( $this, 'responsi_customize_register' ) );
-			add_action( 'customize_controls_print_styles', array( $this, 'responsi_customize_controls_print_styles' ) );
 			add_action( 'wp_default_scripts', array( $this, 'responsi_default_scripts' ), 11 );
-
-			add_action( 'customize_controls_print_footer_scripts', 'responsi_wp_editor_customize', 9 );
-			add_action( 'customize_controls_print_footer_scripts', array( $this, 'responsi_customize_controls_enqueue_scripts' ) );
-			add_action( 'customize_preview_init', 	array( $this, 'responsi_customize_preview_init' ), 9 );
-			
-			add_filter( 'responsi_customized_post_value', array( $this, 'responsi_customized_post_value') );
-			add_action( 'customize_save_after', array( $this, 'responsi_customize_save_options') );
-
 		}
 	}
 
@@ -160,29 +158,32 @@ class Responsi_Theme_Customizer {
 	}
 
 	public function responsi_customize_register( $wp_customize ) {
+
+		$controls_template = 'controls-templates';
+
 		$_custom_customizer_control = array(
-			'functions/theme-customizer/controls/custom-icheckbox-control.php',
-			'functions/theme-customizer/controls/custom-imulticheckbox-control.php',
-			'functions/theme-customizer/controls/custom-ilabel-control.php',
-			'functions/theme-customizer/controls/custom-ihtml-control.php',
-			'functions/theme-customizer/controls/custom-itext-control.php',
-			'functions/theme-customizer/controls/custom-itextarea-control.php',
-			'functions/theme-customizer/controls/custom-iselect-control.php',
-			'functions/theme-customizer/controls/custom-slider-control.php',
-			'functions/theme-customizer/controls/custom-background-patterns-control.php',
-			'functions/theme-customizer/controls/custom-layout-control.php',
-			'functions/theme-customizer/controls/custom-ieditor-control.php',
-			'functions/theme-customizer/controls/custom-iswitcher-control.php',
-			'functions/theme-customizer/controls/custom-iradio-control.php',
-			'functions/theme-customizer/controls/custom-icolor-control.php',
-			'functions/theme-customizer/controls/custom-iupload-control.php',
-			'functions/theme-customizer/controls/custom-iuploadcrop-control.php',
-			'functions/theme-customizer/controls/custom-multitext-control.php',
-			'functions/theme-customizer/controls/custom-ibackground-control.php',
-			'functions/theme-customizer/controls/custom-border-control.php',
-			'functions/theme-customizer/controls/custom-border-radius-control.php',
-			'functions/theme-customizer/controls/custom-box-shadow-control.php',
-			'functions/theme-customizer/controls/custom-typography-control.php'
+			'functions/theme-customizer/'.$controls_template.'/custom-ilabel-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-ihtml-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-icheckbox-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-imulticheckbox-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-itext-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-itextarea-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-iselect-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-slider-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-background-patterns-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-layout-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-ieditor-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-iswitcher-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-iradio-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-icolor-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-iupload-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-iuploadcrop-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-multitext-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-ibackground-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-border-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-border-radius-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-box-shadow-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-typography-control.php'
 		);
 		$_custom_customizer_control = apply_filters( '_custom_customizer_control', $_custom_customizer_control );
 		foreach ( $_custom_customizer_control as $i ) {
@@ -365,10 +366,10 @@ class Responsi_Theme_Customizer {
 					        break;
 					    case "iupload":
 					    	$wp_customize->add_control( new Customize_iUpload_Control( $wp_customize, $key, $value['control']) );
-					        break;
+					    	break;
 					    case "iuploadcrop":
 					    	$wp_customize->add_control( new Customize_iUploadCrop_Control( $wp_customize, $key, $value['control']) );
-					        break;
+					    	break;
 					    case "background_patterns":
 					        $wp_customize->add_control( new Customize_Background_Patterns_Control( $wp_customize, $key, $value['control']) );
 					        break;
@@ -510,12 +511,12 @@ class Responsi_Theme_Customizer {
 
 					}elseif( isset($value['control']['type']) && $value['control']['type'] == 'ilabel' ){
 
-						$value['setting']['type'] = 'option';
+						$value['setting']['type'] = '';
 						$wp_customize->{'add_setting'}( $key, $value['setting'] );
 
 					}elseif( isset($value['control']['type']) && $value['control']['type'] == 'ihtml' ){
 
-						$value['setting']['type'] = 'option';
+						$value['setting']['type'] = '';
 						$wp_customize->{'add_setting'}( $key, $value['setting'] );
 
 					}else{
@@ -565,8 +566,8 @@ class Responsi_Theme_Customizer {
 		$all_fonts = array_merge( $system_fonts, $google_fonts );
 
 		$line_heights = array();
-		for ( $i = 0.6; $i <= 3.1; $i+=0.1 ){
-			$line_heights[] = $i;
+		for ( $i = 0.6; $i <= 3.1; $i += 0.1 ){
+			$line_heights[] = trim( $i );
 		}
 
 		// Registry script libs
@@ -737,17 +738,18 @@ class Responsi_Theme_Customizer {
 			wp_enqueue_script( 'jquery-ui-ioscheckbox' );
 		}
 		wp_enqueue_script( 'responsi-customize' );
+
 	}
 
 	public function responsi_customized_post_value( $post_value ){
-		$merge = false;
 		$new_post_value = array();
 		if( is_array($post_value) && count( $post_value ) > 0 ){
 			foreach( $post_value as $key => $value ){
 				if(!is_array($key)){
 					$keys = preg_split( '/\[/', str_replace( ']', '', $key ) );
 					if( is_array($keys) && count($keys) > 0 && isset($keys[0]) && isset($keys[1]) ){
-						$new_post_value[$keys[0]][$keys[1]] = $value;
+						$k = str_replace( get_stylesheet().'::', '', $keys[0]);
+						$new_post_value[$k][$keys[1]] = $value;
 						unset($post_value[$key]);
 					}
 				}
@@ -757,13 +759,39 @@ class Responsi_Theme_Customizer {
 		return $post_value;
 	}
 
+	public function responsi_customized_changeset_data_value( $changeset_data ){
+		$new_post_value = array();
+		if( is_array( $changeset_data ) && count( $changeset_data ) > 0 ){
+			foreach ( $changeset_data as $key => $value ){
+				if(!is_array($key)){
+					$keys = preg_split( '/\[/', str_replace( ']', '', $key ) );
+					if( is_array($keys) && count($keys) > 0 && isset($keys[0]) && isset($keys[1]) ){
+						$k = str_replace( get_stylesheet().'::', '', $keys[0]);
+						$new_post_value[$k][$keys[1]] = $value['value'];
+					}else{
+						$k = str_replace( get_stylesheet().'::', '', $keys[0]);
+						$new_post_value[$k] = $value['value'];
+					}
+				}			
+			}
+
+			$changeset_data = $new_post_value;
+
+		}
+		return $changeset_data;
+	}
+
 	public function responsi_customize_save_options( $settings ) {
 		global $responsi_options, $wp_customize;
 		$post_value = array();
 		if( isset($_POST['customized']) ){
 			$post_value = json_decode( wp_unslash( $_POST['customized'] ), true );
 			$post_value = apply_filters( 'responsi_customized_post_value', $post_value );
+		}else{
+			$post_value = $settings->changeset_data();
+			$post_value = apply_filters( 'responsi_customized_changeset_data_value', $post_value );
 		}
+
 		if( is_array( $responsi_options ) && count( $responsi_options ) > 0 && is_array( $post_value ) && count( $post_value ) > 0 ){
 
 			$_default_options = responsi_default_options();
@@ -774,17 +802,19 @@ class Responsi_Theme_Customizer {
 					$build_dynamic_css = true;
 				}
 			}
+
 			if ( $wp_customize && !$wp_customize->is_theme_active()){
 				$build_dynamic_css = true;
 			}
+
 			if( function_exists('responsi_dynamic_css') && $build_dynamic_css ){
 				responsi_dynamic_css( 'framework' );
 				do_action('responsi_build_dynamic_css_success', $post_value );
+				return;
 			}
 		}
+		responsi_dynamic_css( 'framework' );
 	}
-
-	
 }
 
 global $responsi_theme_customizer;

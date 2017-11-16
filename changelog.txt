@@ -1,5 +1,13 @@
 *** Responsi Framework Changelog ***
 
+= 6.8.0 - 2017/11/16 =
+* Feature - Customizer full support for the new WordPress 4.9 Save to draft function
+* Feature - Customizer full support for scheduling Publish date and time
+* Feature - Customizer full support for create Draft URL for viewing draft in a browser while not logged in.
+* Feature - Customizer full support for trashing draft (changesets)
+* Tweak -  Upgrade custom customizer controls for Compatibility with WordPress 4.9
+* Tweak - Tested for compatibility with WordPress 4.9.0
+
 = 6.7.3 - 2017/10/18 =
 * Fix - smoothWheel js conflict jQuery Parallax on IE 11 ( Win 7 , Win 8, Win 10 )
 * Credit – Thanks to Frank Ugolini for reporting the page scroll bug in IE 11 browser

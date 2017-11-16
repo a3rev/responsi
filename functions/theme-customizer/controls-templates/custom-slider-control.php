@@ -1,11 +1,11 @@
 <?php
 /**
- * Class to create a custom Multiple Text control
+ * Class to create a Custom Slider control
  */
-if ( ! class_exists( 'Customize_Multiple_Text_Control' ) && class_exists('WP_Customize_Control')) {
-	class Customize_Multiple_Text_Control extends WP_Customize_Control {
+if ( ! class_exists( 'Customize_Slider_Control' ) && class_exists('WP_Customize_Control')) {
+	class Customize_Slider_Control extends WP_Customize_Control {
 
-		public $type = 'multitext';
+		public $type = 'slider';
 
 		/**
 		 * Constructor.
@@ -38,29 +38,28 @@ if ( ! class_exists( 'Customize_Multiple_Text_Control' ) && class_exists('WP_Cus
 		 */
 		public function to_json() {
 			parent::to_json();
-			$defaultValue = array();
-			foreach(  $this->choices as $key => $val ){
-				$defaultValue[] = $this->settings[ $this->id.'_'.$key ]->default;
-			}
-			$this->json['setting_id']   = $this->id;
-			$this->json['choices']      = $this->choices;
-			$this->json['defaultValue'] = $defaultValue;
+			$this->json['setting_id'] = $this->id;
+			$this->json['value']      = $this->setting->default;
+			$this->json['min']        = $this->input_attrs['min'];
+			$this->json['max']        = $this->input_attrs['max'];
+			$this->json['step']       = $this->input_attrs['step'];
 		}
 
 		protected function render() {
+			
 			$custom_class = '';
 			if( isset( $this->input_attrs['class']) && $this->input_attrs['class'] ){
 				$custom_class = ' '.$this->input_attrs['class'];
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control responsi-customize-control customize-control-' . $this->type;
+			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
-			?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
-				<?php $this->render_content(); ?>
-			</li><?php
+			printf( '<li id="%s" class="%s">', esc_attr( $id ), esc_attr( $class ) );
+			$this->render_content();
+			echo '</li>';
 		}
 
 		/**
@@ -76,27 +75,16 @@ if ( ! class_exists( 'Customize_Multiple_Text_Control' ) && class_exists('WP_Cus
 		 * @since 4.1.0
 		 */
 		public function content_template() {
-			//$this->manager->get_setting($this->id)
-			//var_dump($this->settings[ $setting_key ]->value());
 			?>
-	
-			<# 
-				var choices      = data.choices;
-				var defaultValue = data.defaultValue;
-			#>
+			<# var setting_id = data.setting_id; #>
 			<div class="customize-control-container">
 				<# if ( data.label ) { #>
 				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
-				<#
-				var i = 0;
-				_.each(data.choices, function(  val, key ){
-					#>
-					<div class="responsi-multitext-item"><input name="{{ data.setting_id }}_{{ key }}" id="{{ data.setting_id }}_{{ key }}" data-customize-setting-link="{{ data.setting_id }}_{{ key }}" value="{{defaultValue[i]}}" type="text" class="responsi-text responsi-multitext" /><span class="responsi-label-multitext responsi-label-multitext-{{{key}}}">{{{val}}}</span></div>
-					<#
-					i++;
-				});
-				#>
+				<div class="responsi-range-slider">
+					<div class="ui-slide" id="{{ setting_id }}_div"></div>
+					<input type="text" readonly="readonly" data-customize-setting-link="{{ setting_id }}" id="{{ setting_id }}" name="{{ setting_id }}" value="{{ data.value }}" class="responsi-input regular-text islide-value" />
+				</div>
 				<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>

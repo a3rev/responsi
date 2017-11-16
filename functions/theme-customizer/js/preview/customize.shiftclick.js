@@ -9,7 +9,7 @@
                 if (value.selector != '') {
                     $(document).on('click', value.selector, function(event) {
                         //if (event.shiftKey) {
-                            api.preview.send('responsi-focus-panel', value.settings);
+                            api.preview.send('focus-panel-for-setting', value.settings);
                         //}
                     });
                 }
@@ -23,7 +23,7 @@
                 if (value.selector != '') {
                     $(document).on('click', value.selector, function(event) {
                         //if (event.shiftKey) {
-                            api.preview.send('responsi-focus-section', value.settings);
+                            api.preview.send('focus-section-for-setting', value.settings);
                         //}
                     });
                 }
@@ -37,7 +37,7 @@
                 if (value.selector != '') {
                     $(document).on('click', value.selector, function(event) {
                         //if (event.shiftKey) {
-                            api.preview.send('responsi-focus-control', value.settings);
+                            api.preview.send('focus-control-for-setting', value.settings);
                         //}
                     });
                 }

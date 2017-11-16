@@ -92,7 +92,7 @@
             var center_header_widget_mobile = '.masonry_widget_header .widget, .masonry_widget_header * .widget, .masonry_widget_header .widget *, .masonry_widget_header .widget .fw_widget_title h3 {text-align:' + wp.customize.value('responsi_font_header_widget_text_alignment')() + ' !important;}.logo.site-logo,.site-logo-container,.site-description-container{margin:auto;}';
         }
 
-        css += '@media only screen and (max-width: 720px) {';
+        css += '@media only screen and (max-width: 782px) {';
         css += 'body #header .widget{ margin-bottom:' + header_widgets_margin + 'px !important;}';
         css += center_header_widget_mobile;
         css += '}';

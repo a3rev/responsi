@@ -61,19 +61,20 @@ if ( ! class_exists( 'Customize_Box_Shadow_Control' ) && class_exists('WP_Custom
 		}
 
 		protected function render() {
+			
 			$custom_class = '';
 			if( isset( $this->input_attrs['class']) && $this->input_attrs['class'] ){
 				$custom_class = ' '.$this->input_attrs['class'];
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control responsi-customize-control customize-control-' . $this->type;
+			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
-			?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
-				<?php $this->render_content(); ?>
-			</li><?php
+			printf( '<li id="%s" class="%s">', esc_attr( $id ), esc_attr( $class ) );
+			$this->render_content();
+			echo '</li>';
 		}
 
 		/**
@@ -116,7 +117,8 @@ if ( ! class_exists( 'Customize_Box_Shadow_Control' ) && class_exists('WP_Custom
 				<# } #>
 				<div class="box-shadow-container">
 					<div class="responsi-iphone-checkbox">
-						<input type="checkbox" data-customize-setting-link="{{ setting_id }}[onoff]" id="{{ setting_id }}_onoff" name="{{ setting_id }}[onoff]" value="{{ onoff_value }}" {{{ onoff_checked }}} class="checkbox responsi-input responsi-box-shadow-onoff responsi-ui-icheckbox" />
+						<input type="checkbox" {{{ onoff_checked }}} id="{{ setting_id }}_onoff_cb" class="checkbox responsi-input responsi-box-shadow-onoff responsi-ui-icheckbox" />
+						<input type="hidden" data-customize-setting-link="{{ setting_id }}[onoff]" id="{{ setting_id }}_onoff" name="{{ setting_id }}[onoff]" value="{{ onoff_value }}" />
 					</div>
 					<div class="clear"></div>
 					<div class="responsi-box-shadow-container">
@@ -130,9 +132,10 @@ if ( ! class_exists( 'Customize_Box_Shadow_Control' ) && class_exists('WP_Custom
 						</select>
 						<div class="clear"></div>
 						<div class="responsi-iphone-checkbox responsi-iswitcher-checkbox">
-							<input type="checkbox" data-customize-setting-link="{{ setting_id }}[inset]" id="{{ setting_id }}_inset" name="{{ setting_id }}[inset]" value="{{ inset_value }}" {{{ inset_checked }}} class="checkbox responsi-input responsi-box-shadow-inset responsi-ui-icheckbox responsi-ui-iswitcher" />
+							<input type="checkbox" id="{{ setting_id }}_inset_cb" {{{ inset_checked }}} class="checkbox responsi-input responsi-box-shadow-inset responsi-ui-icheckbox responsi-ui-iswitcher" />
+							<input type="hidden" data-customize-setting-link="{{ setting_id }}[inset]" id="{{ setting_id }}_inset" name="{{ setting_id }}[inset]" value="{{ inset_value }}" />
 						</div>
-						<input type="text" data-customize-setting-link="{{ setting_id }}[color]" name="{{ setting_id }}[color]" value="{{ color_value }}" data-default-color="{{ color_value }}" class="color-picker-hex responsi-color-picker responsi-box-shadow responsi-box-shadow-color" />
+						<input type="text" data-customize-setting-link="{{ setting_id }}[color]" name="{{ setting_id }}[color]" value="{{ color_value }}" data-default-color="{{ color_value }}" class="color-picker-hex icolor-picker" />
 					</div>
 				</div>
 				<# if ( data.description ) { #>

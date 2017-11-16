@@ -1,11 +1,11 @@
 <?php
 /**
- * Class to create a custom iLabel control
+ * Class to create a custom iHtml control
  */
-if ( ! class_exists( 'Customize_iLabel_Control' ) && class_exists('WP_Customize_Control')) {
-	class Customize_iLabel_Control extends WP_Customize_Control {
+if ( ! class_exists( 'Customize_iHtml_Control' ) && class_exists('WP_Customize_Control')) {
+	class Customize_iHtml_Control extends WP_Customize_Control {
 
-		public $type = 'ilabel';
+		public $type = 'ihtml';
 
 		/**
 		 * Constructor.
@@ -22,19 +22,20 @@ if ( ! class_exists( 'Customize_iLabel_Control' ) && class_exists('WP_Customize_
 		}
 
 		protected function render() {
+			
 			$custom_class = '';
 			if( isset( $this->input_attrs['class']) && $this->input_attrs['class'] ){
 				$custom_class = ' '.$this->input_attrs['class'];
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control responsi-customize-control customize-control-' . $this->type;
+			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
-			?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
-				<?php $this->render_content(); ?>
-			</li><?php
+			printf( '<li id="%s" class="%s">', esc_attr( $id ), esc_attr( $class ) );
+			$this->render_content();
+			echo '</li>';
 		}
 
 		/**
@@ -51,7 +52,7 @@ if ( ! class_exists( 'Customize_iLabel_Control' ) && class_exists('WP_Customize_
 		 */
 		public function content_template() {
 			?>
-			<div class="ilabel-container">
+			<div class="customize-control-ihtml-container">
 				<# if ( data.label ) { #>
 				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>

@@ -1,11 +1,33 @@
 <?php
+function responsi_wp_editor_customize() {
+	?>
+	<div id="wp-editor-customize-container" style="display:none;">
+		<a href="#" class="close close-editor-button" title="<?php echo __( 'Close', 'responsi' ); ?>"><span class="icon"></span></a>
+		<div class="editor">
+			<span id="wpeditor_customize_title" class="customize-control-title"></span>
+			<?php
+			$output = '';
+			ob_start();
+			remove_all_filters('mce_external_plugins');
+			do_action('filter_mce_external_plugins_before');
+			wp_editor( '', 'wpeditorcustomize', array( 'textarea_name' => 'wpeditorcustomize', 'media_buttons' => true, 'textarea_rows' => 20, 'tinymce' => true, 'wpautop' => true ) );
+			do_action('filter_mce_external_plugins_after');
+			$output .= ob_get_clean();
+			echo $output;
+			?>
+			<p><a href="#" data-id="setting-id" class="button button-primary update-editor-button"><?php echo __( 'Save and close', 'responsi' ); ?></a></p>
+		</div>
+	</div>
+	<div id="wp-editor-customize-backdrop" style="display:none;"></div>
+	<?php
+}
 /**
- * Class to create a custom iText control
+ * Class to create a custom iEditor control
  */
-if ( ! class_exists( 'Customize_iText_Control' ) && class_exists('WP_Customize_Control')) {
-	class Customize_iText_Control extends WP_Customize_Control {
+if ( ! class_exists( 'Customize_iEditor_Control' ) && class_exists('WP_Customize_Control')) {
+	class Customize_iEditor_Control extends WP_Customize_Control {
 
-		public $type = 'itext';
+		public $type = 'ieditor';
 
 		/**
 		 * Constructor.
@@ -38,24 +60,25 @@ if ( ! class_exists( 'Customize_iText_Control' ) && class_exists('WP_Customize_C
 		 */
 		public function to_json() {
 			parent::to_json();
-			$this->json['value'] = $this->setting->default;
-			$this->json['input_attrs'] = $this->input_attrs;
+			$this->json['value']        = $this->setting->default;
+			$this->json['button_label'] = isset( $this->button_label ) ? $this->button_label : __( 'Edit content', 'responsi' );
 		}
 
 		protected function render() {
+			
 			$custom_class = '';
 			if( isset( $this->input_attrs['class']) && $this->input_attrs['class'] ){
 				$custom_class = ' '.$this->input_attrs['class'];
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control responsi-customize-control customize-control-' . $this->type;
+			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
-			?><li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
-				<?php $this->render_content(); ?>
-			</li><?php
+			printf( '<li id="%s" class="%s">', esc_attr( $id ), esc_attr( $class ) );
+			$this->render_content();
+			echo '</li>';
 		}
 
 		/**
@@ -77,11 +100,9 @@ if ( ! class_exists( 'Customize_iText_Control' ) && class_exists('WP_Customize_C
 				<# if ( data.label ) { #>
 				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
-				<div class="clear itext-clear"></div>
-				<div class="itext-container">
-					<input class="responsi-itext" name="{{ setting_id }}" id="{{ setting_id }}" data-customize-setting-link="{{ setting_id }}" type="text" value="{{ data.value }}" /><span class="description_after_input ">{{{ data.input_attrs['after_input'] }}}</span>
+				<div class="ieditor-container">
+					<button type="button" class="button show-editor-button" id="{{ setting_id }}">{{{ data.button_label }}}</button>
 				</div>
-				<div class="clear itext-clear itext-clear-last"></div>
 				<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 				<# } #>

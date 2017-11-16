@@ -926,7 +926,6 @@ add_action( 'init', 'responsi_options', 1 );
 /*-----------------------------------------------------------------------------------*/
 
 $responsi_requires = array(
-    'functions/theme-deprecated.php',
     'functions/admin-functions.php',
     'functions/admin-setup.php',
     'functions/admin-custom-metabox.php',

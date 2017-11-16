@@ -41,7 +41,7 @@ if ( ! function_exists( 'responsi_custom_control_settings' ) ) {
 if ( ! function_exists( 'responsi_sanitize_numeric' ) ) {
     function responsi_sanitize_numeric( $value, $setting ) {
         if ( is_numeric( $value ) ) {
-            return $value;
+            return sanitize_text_field( $value );
         } 
     }
 }
@@ -85,7 +85,7 @@ if ( ! function_exists( 'responsi_sanitize_background_color' ) ) {
             if( 'color' === $keys[1] ){
                 return sanitize_hex_color( $value );
             }elseif( 'onoff' === $keys[1] ){
-                return $value;
+                return sanitize_text_field( $value );
             }
         }
     }
@@ -104,9 +104,9 @@ if ( ! function_exists( 'responsi_sanitize_border' ) ) {
             if( 'color' === $keys[1] ){
                 return sanitize_hex_color( $value );
             }elseif(  'style' === $keys[1] ){
-                return $value;
+                return sanitize_text_field( $value );
             }elseif( 'width' === $keys[1] ){
-                return $value;
+                return sanitize_text_field( $value );
             }
         }
     }
@@ -117,10 +117,10 @@ if ( ! function_exists( 'responsi_sanitize_border_radius' ) ) {
         $keys = preg_split( '/\[/', str_replace( ']', '', $setting->id ) );
         if ( is_array($keys) && count($keys) > 0 && isset($keys[1]) ){
             if( 'corner' === $keys[1] ){
-                return $value;
+                return sanitize_text_field( $value );
             }elseif( 'rounded_value' === $keys[1] ){
                 if ( is_numeric( $value ) ) {
-                    return $value;
+                    return sanitize_text_field( $value );
                 }
             }
         }
@@ -134,17 +134,17 @@ if ( ! function_exists( 'responsi_sanitize_box_shadow' ) ) {
             if( 'color' === $keys[1] ){
                 return sanitize_hex_color( $value );
             }elseif( 'onoff' === $keys[1] ){
-                return $value;
+                return sanitize_text_field( $value );
             }elseif( 'h_shadow' === $keys[1] ){
-                return $value;
+                return sanitize_text_field( $value );
             }elseif( 'v_shadow' === $keys[1] ){
-                return $value;
+                return sanitize_text_field( $value );
             }elseif( 'blur' === $keys[1] ){
-                return $value;
+                return sanitize_text_field( $value );
             }elseif( 'spread' === $keys[1] ){
-                return $value;
+                return sanitize_text_field( $value );
             }elseif( 'inset' === $keys[1] ){
-                return $value;
+                return sanitize_text_field( $value );
             }elseif( 'color' === $keys[1] ){
                 return sanitize_hex_color( $value );
             }
@@ -159,13 +159,13 @@ if ( ! function_exists( 'responsi_sanitize_typography' ) ) {
             if( 'color' === $keys[1] ){
                 return sanitize_hex_color( $value );
             }elseif( 'size' === $keys[1] ){
-                return $value;
+                return sanitize_text_field( $value );
             }elseif( 'line_height' === $keys[1] ){
-                return $value;
+                return sanitize_text_field( $value );
             }elseif( 'face' === $keys[1] ){
-                return $value;
+                return sanitize_text_field( $value );
             }elseif( 'style' === $keys[1] ){
-                return $value;
+                return sanitize_text_field( $value );
             }elseif( 'color' === $keys[1] ){
                 return sanitize_hex_color( $value );
             }
@@ -176,36 +176,55 @@ if ( ! function_exists( 'responsi_sanitize_typography' ) ) {
 if ( ! function_exists( 'responsi_sanitize_slider' ) ) {
     function responsi_sanitize_slider( $value , $setting ) {
         if ( is_numeric( $value ) ) {
-            return $value;
+            return (int)$value;
         }
     }
 }
 
 if ( ! function_exists( 'responsi_sanitize_choices' ) ) {
     function responsi_sanitize_choices( $value, $setting ) {
+        
+        $choices = isset ( $setting->manager->get_control( $setting->id )->choices ) ? $setting->manager->get_control( $setting->id )->choices : array() ;
+
+        if( !is_array( $choices) ){
+            return sanitize_text_field( $setting->default );
+        }
+
         $value = sanitize_key( $value );
-        $choices = $setting->manager->get_control( $setting->id )->choices;
-        return ( array_key_exists( $value, $choices ) ? $value : $setting->default );
+
+        return ( array_key_exists( $value, $choices ) ? sanitize_text_field( $value ) : sanitize_text_field( $setting->default ) );
     }
 }
 
 if ( ! function_exists( 'responsi_sanitize_checkboxs' ) ) {
     function responsi_sanitize_checkboxs( $value, $setting ) {
+
+        $default_choices = array( 
+            'checked_value'     => 'true', 
+            'unchecked_value'   => 'false', 
+            'checked_label'     => __( 'ON', 'responsi' ), 
+            'unchecked_label'   => __( 'OFF', 'responsi' ),
+            'container_width'   => 80
+        );
+
+        $choices = isset ( $setting->manager->get_control( $setting->id )->choices ) ? $setting->manager->get_control( $setting->id )->choices : array() ;
+
+        if( !is_array( $choices ) ){
+            $choices = $default_choices;
+        }else{
+            $choices = array_merge( $default_choices, $choices );
+        }
+
         $value = sanitize_key( $value );
-        $choices = $setting->manager->get_control( $setting->id )->choices;
-        return ( in_array( $value, $choices ) ? $value : $setting->default );
+
+        return ( in_array( $value, $choices ) ? sanitize_text_field( $value ) : sanitize_text_field( $setting->default ) );
     }
 }
 
 if ( ! function_exists( 'responsi_sanitize_multicheckboxs' ) ) {
     function responsi_sanitize_multicheckboxs( $value, $setting ) {
         $value = sanitize_key( $value );
-        if( 'true' === $value ){
-            return 'true';
-        }else{
-            return 'false';
-        }
-        return $setting->default;
+        return sanitize_text_field( $value );
     }
 }
 

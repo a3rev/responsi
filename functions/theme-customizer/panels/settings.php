@@ -726,7 +726,7 @@ class Responsi_Customize_General_Settings
 		        )
 			),
 			'setting' => array(
-			    'default'		=> isset($responsi_options['responsi_breadcrumbs_font']) ? $responsi_options['responsi_breadcrumbs_font'] : array('size' => '14', 'face' => 'Open Sans','style' => 'normal','color' => '#555555'),
+			    'default'		=> isset($responsi_options['responsi_breadcrumbs_font']) ? $responsi_options['responsi_breadcrumbs_font'] : array('size' => '14','line_height' => '1','face' => 'Open Sans','style' => 'normal','color' => '#555555'),
 			    'sanitize_callback' => 'responsi_sanitize_typography',
 			    'transport'	=> 'postMessage'
 			)
