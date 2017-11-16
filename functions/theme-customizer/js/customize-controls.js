@@ -42,7 +42,6 @@
 							control.settings[control.id + '[color]'].set('');
 						}
 					}).bind('change keyup', function( event ) {
-						event.preventDefault();
 						control.settings[control.id + '[color]'].set($(this).val());
 					});
 
@@ -110,7 +109,6 @@
 							control.settings[control.id + '[color]'].set('');
 						}
 					}).bind('change keyup', function( event ) {
-						event.preventDefault();
 						control.settings[control.id + '[color]'].set($(this).val());
 					});
 				
@@ -329,7 +327,6 @@
 							control.settings[control.id + '[color]'].set('');
 						}
 					}).bind('change keyup', function( event ) {
-						event.preventDefault();
 						control.settings[control.id + '[color]'].set($(this).val());
 					});
 
@@ -650,7 +647,6 @@
 							control.settings[control.id + '[color]'].set('');
 						}
 					}).bind('change keyup', function( event ) {
-						event.preventDefault();
 						control.settings[control.id + '[color]'].set($(this).val());
 					});
 
@@ -682,7 +678,6 @@
 							control.setting.set('');
 						}
 					}).bind('change keyup', function( event ) {
-						event.preventDefault();
 						control.setting.set($(this).val());
 					});
 
@@ -697,7 +692,6 @@
 			var control = this;
 
 			control.container.find('select.responsi-iselect').on('change', function( event ) {
-				event.preventDefault();
 				control.setting.set($(this).val());
 			});
 		}
@@ -709,7 +703,6 @@
 			var control = this;
 
 			control.container.find('input.responsi-itext').on('change keyup', function( event ) {
-				event.preventDefault();
 				control.setting.set($(this).val());
 			});
 		}
@@ -721,7 +714,6 @@
 			var control = this;
 
 			control.container.find('textarea.responsi-itextarea').on('change keyup', function( event ) {
-				event.preventDefault();
 				control.setting.set($(this).val());
 			});
 		}
@@ -732,7 +724,6 @@
 
 			var control = this;
 			control.container.find('input.responsi-multitext').on('change keyup', function( event ) {
-				event.preventDefault();
 				var setting_id = $(this).data('customize-setting-link');
 				control.settings[setting_id].set($(this).val());
 			});
@@ -746,13 +737,11 @@
 				sectionContainer = api.sectionContainer( this );
 
 			control.container.find('span.bp-item').on('click', function( event ) {
-				event.preventDefault();
 				$(this).siblings('span.bp-item').removeClass('bg-selected');
 				$(this).addClass('bg-selected');
 			});
 
 			control.container.find('input.bp-radio').on('change', function( event ) {
-				event.preventDefault();
 				control.setting.set($(this).val());
 			});
 
@@ -793,7 +782,6 @@
 					control.container.addClass('applied_layout');
 
 					control.container.find('img.responsi-radio-img-img').on('click', function( event ) {
-						event.preventDefault();
 						$(this).parent('.layout-item').siblings('.layout-item').children('img.responsi-radio-img-img').removeClass('responsi-radio-img-selected');
 						$(this).addClass('responsi-radio-img-selected');
 						var layout_val = $(this).data('value');
@@ -802,7 +790,6 @@
 					});
 
 					control.container.find('input.responsi-radio-img-radio').on('change', function( event ) {
-						event.preventDefault();
 						control.setting.set($(this).val());
 					});
 
@@ -883,13 +870,11 @@
 					control.container.on('click keydown', 'button.show-editor-button', control.openFrame);
 
 					$('a.close-editor-button').on('click keydown', function( event ) {
-						event.preventDefault();
 						control.hideEditor();
 						return false;
 					});
 
 					$(document).on('click keydown', '.update-editor-button[data-id="' + control.id + '"]', function( event ) {
-						event.preventDefault();
 						control.updateAndCloseEditor(control);
 						return false;
 					});
