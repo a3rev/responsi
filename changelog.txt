@@ -1,5 +1,11 @@
 *** Responsi Framework Changelog ***
 
+= 6.8.1 - 2017/11/29 =
+* Maintenance Update - Part 2 of WP 4.9 upgrade. Added full support for discover, install and preview Responsi themes from the customizer change theme interface
+* Tweak - Add full compatibility with WP 4.9 discovering, installing, and previewing themes feature
+* Tweak - a3rev Responsi Themes menu is now found when click Change theme in customizer menu 
+* Tweak - Update Responsi and themes screenshot images to images used on a3rev dashboard themes menu
+
 = 6.8.0 - 2017/11/16 =
 * Feature - Customizer full support for the new WordPress 4.9 Save to draft function
 * Feature - Customizer full support for scheduling Publish date and time

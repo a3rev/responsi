@@ -398,9 +398,9 @@
 
 	$(window).on( 'load', function() {
 
-		if( window._responsiCustomizeControl ){
+		if( window._responsiCustomizeControls ){
 
-			$.each( window._responsiCustomizeControl, function( id, data ) {
+			$.each( window._responsiCustomizeControls, function( id, data ) {
 				var Constructor = wp.customize.controlConstructor[ data.type ] || wp.customize.Control, options;
 				options = _.extend( { params: data }, data ); // Inclusion of params alias is for back-compat for custom controls that expect to augment this property.
 				wp.customize.control.add( new Constructor( id, options ) );
