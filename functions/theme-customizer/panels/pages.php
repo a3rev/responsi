@@ -18,7 +18,6 @@ class Responsi_Customize_Pages
 		$pages_panels = array();
 		$pages_panels['pages_panel'] = array(
 		    'title' => __('Pages', 'responsi'),
-		    'description' => '',
 		    'priority' => 4,
 		);
 		$panels = array_merge($panels, $pages_panels);
@@ -57,12 +56,10 @@ class Responsi_Customize_Pages
 		global $responsi_options;
 
 		$pages_controls_settings = array();
-		$pages_controls_settings['pages_label1'] = array(
+		$pages_controls_settings['lbpage1'] = array(
 			'control' => array(
 			    'label'      => __('Page Content Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_style',
-			    'settings'    => 'pages_label1',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -70,7 +67,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_page_box_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Color', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -84,7 +80,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_page_box_border'] = array(
 			'control' => array(
 			    'label' => __('Content Container Border', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -98,7 +93,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_page_box_border_radius'] = array(
 			'control' => array(
 			    'label'      => __('Border Corners', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -112,7 +106,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_page_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -126,7 +119,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_page_box_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -151,7 +143,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_page_box_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -174,12 +165,10 @@ class Responsi_Customize_Pages
 			)
 		);
 
-		$pages_controls_settings['pages_label2'] = array(
+		$pages_controls_settings['lbpage2'] = array(
 			'control' => array(
 			    'label'      => __('Page Title Style', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_style',
-			    'settings'    => 'pages_label2',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -187,7 +176,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_page_title_font'] = array(
 			'control' => array(
 			    'label' => __('Title Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -201,7 +189,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_page_title_font_transform'] = array(
 			'control' => array(
 			    'label'      => __('Title Transformation', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_style',
 			    'settings'   => 'responsi_page_title_font_transform',
 			    'type'       => 'iradio',
@@ -221,7 +208,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_page_title_margin'] = array(
 			'control' => array(
 			    'label'      => __('Title Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -243,12 +229,10 @@ class Responsi_Customize_Pages
 			    'transport'	=> 'postMessage',
 			)
 		);
-		$pages_controls_settings['pages_label3'] = array(
+		$pages_controls_settings['lbpage3'] = array(
 			'control' => array(
 			    'label'      => __('Page Content Font Style', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_style',
-			    'settings'    => 'pages_label3',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -256,7 +240,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_page_content_font'] = array(
 			'control' => array(
 			    'label' => __('Content Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -268,12 +251,11 @@ class Responsi_Customize_Pages
 			)
 		);
 
-		$pages_controls_settings['archive_label111'] = array(
+		$pages_controls_settings['lbpage4'] = array(
 			'control' => array(
 			    'label'      => __('Page Content Container', 'responsi'),
 			    'description' => __('Blog Page Template and WordPress Category and Tag and custom category and tag taxonomy pages - e.g. WooCommerce Shop page, product category and tag pages', 'responsi'),
 			    'section'    => 'page_archive',
-			    'settings'    => 'archive_label111',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -281,7 +263,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_box_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Color', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -295,7 +276,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_box_border'] = array(
 			'control' => array(
 			    'label' => __('Border', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -309,7 +289,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_box_border_radius'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -323,7 +302,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -337,7 +315,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_box_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -362,7 +339,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_box_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -385,12 +361,10 @@ class Responsi_Customize_Pages
 			)
 		);
 
-		$pages_controls_settings['pages_label4'] = array(
+		$pages_controls_settings['lbpage5'] = array(
 			'control' => array(
 			    'label'      => __('Archive Pages Title', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
-			    'settings'    => 'pages_label4',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -398,7 +372,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_title_font'] = array(
 			'control' => array(
 			    'label' => __('Title Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -412,7 +385,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_title_font_transform'] = array(
 			'control' => array(
 			    'label'      => __('Title Transformation', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'responsi_archive_title_font_transform',
 			    'type'       => 'iradio',
@@ -432,7 +404,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_title_border_bottom'] = array(
 			'control' => array(
 			    'label' => __('Under Title Border', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -446,7 +417,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_title_margin'] = array(
 			'control' => array(
 			    'label'      => __('Title Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -468,12 +438,10 @@ class Responsi_Customize_Pages
 			    'transport'	=> 'postMessage',
 			)
 		);
-		$pages_controls_settings['pages_label5'] = array(
+		$pages_controls_settings['lbpage6'] = array(
 			'control' => array(
 			    'label'      => __('Custom Content Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
-			    'settings'    => 'pages_label5',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -481,7 +449,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_content_font'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -492,12 +459,11 @@ class Responsi_Customize_Pages
 			    'transport'	=> 'postMessage'
 			)
 		);
-		$pages_controls_settings['pages_label6'] = array(
+		$pages_controls_settings['lbpage7'] = array(
 			'control' => array(
 			    'label'      => __('Inner Container', 'responsi'),
 			    'description' => __('Applies to the Archive Page title and any custom content added to the top of the page above the blog cards', 'responsi'),
 			    'section'    => 'page_archive',
-			    'settings'    => 'pages_label6',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -505,7 +471,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_enable_archive_title_box'] = array(
 			'control' => array(
 			    'label'      => __('Inner Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'responsi_enable_archive_title_box',
 			    'type'       => 'icheckbox',
@@ -522,7 +487,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_title_box_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Color', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground',
@@ -539,7 +503,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_title_box_border'] = array(
 			'control' => array(
 			    'label' => __('Container Borders', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -556,7 +519,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_title_box_border_radius'] = array(
 			'control' => array(
 			    'label'      => __('Border Corners', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius',
@@ -573,7 +535,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_title_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow',
@@ -590,7 +551,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_title_box_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -618,7 +578,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_title_box_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -644,12 +603,10 @@ class Responsi_Customize_Pages
 			)
 		);
 
-		$pages_controls_settings['page_archive_endless_label6'] = array(
+		$pages_controls_settings['lbpage8'] = array(
 			'control' => array(
 			    'label'      => __('Cards Per Endless Scroll', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
-			    'settings'    => 'page_archive_endless_label6',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -658,7 +615,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['posts_per_page'] = array(
 			'control' => array(
 			    'label'      => __('Number of Cards to Load', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
 			    'settings'   => 'posts_per_page',
 			    'type'       => 'itext'
@@ -670,12 +626,10 @@ class Responsi_Customize_Pages
 			)
 		);
 
-		$pages_controls_settings['page_archive_endless_label7'] = array(
+		$pages_controls_settings['lbpage9'] = array(
 			'control' => array(
 			    'label'      => __('Endless Scroll - Style', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
-			    'settings'    => 'page_archive_endless_label7',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -684,7 +638,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_showmore'] = array(
 			'control' => array(
 			    'label'      => __('Endless Scroll Load', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
 			    'settings'   => 'responsi_showmore',
 			    'type'       => 'iswitcher',
@@ -708,7 +661,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_showmore_text'] = array(
 			'control' => array(
 			    'label'      => __('Click to Load Text', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
 			    'settings'   => 'responsi_showmore_text',
 			    'type'       => 'itext',
@@ -725,7 +677,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_scroll_font'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography',
@@ -742,7 +693,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_scroll_font_text_alignment'] = array(
 			'control' => array(
 			    'label'      => __('Alignment', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
 			    'settings'   => 'responsi_scroll_font_text_alignment',
 			    'type'       => 'iradio',
@@ -760,12 +710,10 @@ class Responsi_Customize_Pages
 			    'transport'	=> 'postMessage'
 			)
 		);
-		$pages_controls_settings['page_archive_endless_label8'] = array(
+		$pages_controls_settings['lbpage10'] = array(
 			'control' => array(
 			    'label'      => __('Click to Load Text Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
-			    'settings'    => 'page_archive_endless_label8',
 			    'type'       => 'ilabel',
 			    'input_attrs' => array(
 			    	'class' => 'hide-custom'
@@ -777,7 +725,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_scroll_box_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground',
@@ -795,7 +742,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_scroll_box_border_top'] = array(
 			'control' => array(
 			    'label' => __('Container Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -812,7 +758,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_scroll_box_border_bottom'] = array(
 			'control' => array(
 			    'label' => __('Container Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -829,7 +774,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_scroll_box_border_lr'] = array(
 			'control' => array(
 			    'label' => __('Container Border - Left / Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -846,7 +790,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_scroll_box_border_radius'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius',
@@ -863,7 +806,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_scroll_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow',
@@ -881,7 +823,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_scroll_box_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -910,7 +851,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_scroll_box_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -936,12 +876,10 @@ class Responsi_Customize_Pages
 			)
 		);
 		
-		$pages_controls_settings['blog_label0'] = array(
+		$pages_controls_settings['lbpage11'] = array(
 			'control' => array(
 			    'label'      => __('Blog Page - Exclude Categories', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
-			    'settings'    => 'blog_label0',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -961,12 +899,10 @@ class Responsi_Customize_Pages
 			)
 		);
 
-		$pages_controls_settings['blog_label012'] = array(
+		$pages_controls_settings['lbpage12'] = array(
 			'control' => array(
 			    'label'      => __('Blog Category Pages RSS', 'responsi'),
-			    'description' => "",
 				'section'    => 'page_archive_features',
-			    'settings'    => 'blog_label012',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -975,7 +911,6 @@ class Responsi_Customize_Pages
 		$pages_controls_settings['responsi_archive_header_disable_rss'] = array(
 			'control' => array(
 			    'label'      => __('Category Pages RSS Link', 'responsi'),
-			    'description' => "",
 			    'section'    => 'page_archive_features',
 			    'settings'   => 'responsi_archive_header_disable_rss',
 			    'type'       => 'icheckbox'
@@ -986,12 +921,10 @@ class Responsi_Customize_Pages
 			)
 		);
 
-		$pages_controls_settings['page_archive_endless_label10'] = array(
+		$pages_controls_settings['lbpage13'] = array(
 			'control' => array(
 			    'label'      => __('404 Page Not Found', 'responsi'),
-			    'description' => "",
 				'section'    => 'settings_404',
-			    'settings'    => 'page_archive_endless_label10',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()

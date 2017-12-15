@@ -29,6 +29,8 @@ if ( ! class_exists( 'Customize_iEditor_Control' ) && class_exists('WP_Customize
 
 		public $type = 'ieditor';
 
+		public $notifications = array();
+
 		/**
 		 * Constructor.
 		 *
@@ -60,8 +62,10 @@ if ( ! class_exists( 'Customize_iEditor_Control' ) && class_exists('WP_Customize
 		 */
 		public function to_json() {
 			parent::to_json();
+			$this->json['setting_id']   = $this->id;
 			$this->json['value']        = $this->setting->default;
 			$this->json['button_label'] = isset( $this->button_label ) ? $this->button_label : __( 'Edit content', 'responsi' );
+			$this->json['notifications'] = $this->notifications;
 		}
 
 		protected function render() {
@@ -72,7 +76,7 @@ if ( ! class_exists( 'Customize_iEditor_Control' ) && class_exists('WP_Customize
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -95,17 +99,16 @@ if ( ! class_exists( 'Customize_iEditor_Control' ) && class_exists('WP_Customize
 		 */
 		public function content_template() {
 			?>
-			<# var setting_id = data.settings['default']; #>
+			<# 
+			var setting_id = data.setting_id ? data.setting_id : 'ieditor'; 
+			if( 'undefined' === typeof data.button_label ){ data.button_label = '<?php echo __( 'Edit content', 'responsi' );?>';}
+			#>
 			<div class="customize-control-container">
-				<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
+				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="ieditor-container">
 					<button type="button" class="button show-editor-button" id="{{ setting_id }}">{{{ data.button_label }}}</button>
 				</div>
-				<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
+				<# if( data.description ){ #><span class="customize-control-description">{{{ data.description }}}</span><# } #>
 			</div>
 			<?php
 		}

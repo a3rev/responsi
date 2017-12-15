@@ -1,5 +1,12 @@
 *** Responsi Framework Changelog ***
 
+= 6.8.2 - 2017/12/15 =
+* Major maintenance update. Completely rewrite of the framework customizer controls in Customizer JS API
+* Tweak - Refactor of customize controls from using PHP API to use Customizer JS API WP 4.9
+* Tweak - Elimination of Repeated ID in controls
+* Tweak - Major cleanup of framework HTML on customizer controls to speed up customizer load time
+* Tweak - Tested for compatibility with WordPress 4.9.1
+
 = 6.8.1 - 2017/11/29 =
 * Maintenance Update - Part 2 of WP 4.9 upgrade. Added full support for discover, install and preview Responsi themes from the customizer change theme interface
 * Tweak - Add full compatibility with WP 4.9 discovering, installing, and previewing themes feature

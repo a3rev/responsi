@@ -6,6 +6,8 @@ if ( ! class_exists( 'Customize_Background_Patterns_Control' ) && class_exists('
 	class Customize_Background_Patterns_Control extends WP_Customize_Control {
 
 		public $type = 'background_patterns';
+		
+		public $notifications = array();
 
 		/**
 		 * Constructor.
@@ -38,10 +40,12 @@ if ( ! class_exists( 'Customize_Background_Patterns_Control' ) && class_exists('
 		 */
 		public function to_json() {
 			parent::to_json();
+			$this->json['setting_id']       = $this->id;
 			$this->json['value']       = $this->setting->default;
 			$this->json['backgrounds'] = array();
 			$this->json['patterns']    = array();
 			$this->json['bg_url']      = '';
+			$this->json['notifications'] = $this->notifications;
 		}
 
 		protected function render() {
@@ -52,7 +56,7 @@ if ( ! class_exists( 'Customize_Background_Patterns_Control' ) && class_exists('
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -75,42 +79,25 @@ if ( ! class_exists( 'Customize_Background_Patterns_Control' ) && class_exists('
 		 */
 		public function content_template() {
 			?>
-			<# 
-				var setting_id  = data.settings['default'];
-				var backgrounds = data.backgrounds;
-				var patterns    = data.patterns
-				var bg_url      = data.bg_url
-				if ( typeof _wpCustomBackgroundPatternsControl != 'undefined' ) {
-					backgrounds = _wpCustomBackgroundPatternsControl.backgrounds;
-					patterns    = _wpCustomBackgroundPatternsControl.patterns;
-					bg_url      = _wpCustomBackgroundPatternsControl.bg_url;
-				}
-			#>
+			<# var setting_id = data.setting_id ? data.setting_id : 'background_patterns',backgrounds = data.backgrounds,patterns = data.patterns,bg_url = data.bg_url;
+			if(typeof _wpCustomBackgroundPatternsControl != 'undefined'){
+				backgrounds = _wpCustomBackgroundPatternsControl.backgrounds;
+				patterns = _wpCustomBackgroundPatternsControl.patterns;
+				bg_url = _wpCustomBackgroundPatternsControl.bg_url;
+			} #>
 			<div class="customize-control-container">
 				<span class="customize-control-title"><?php echo __( 'Background Tiles', 'responsi' ); ?></span>
-				<#
-				var i = 0;
-				var checked = '';
-				var selected = '';
-				var imglink;
-				_.each( backgrounds, function( val, key ) {
-					i++;
-					checked  = '';
-					selected = '';
-					imglink  = bg_url + '/backgrounds/' + val;
-					if ( data.value == imglink ) {
+				<# var i = 0,checked = '',selected = '',imglink; _.each( backgrounds, function( val, key ) {
+					i++; checked  = ''; selected = ''; imglink  = bg_url + '/backgrounds/' + val;
+					if(data.value == imglink){
 						checked  = 'checked=checked';
 						selected = 'bg-selected';
-					}
-				#>
-					<span onClick="document.getElementById('bp-img-{{ setting_id }}{{ i }}').click();" class="bp-item bp-item-{{ i }} {{ selected }}">
-						<input data-customize-setting-link="{{ setting_id }}" type="radio" id="bp-img-{{ setting_id }}{{ i }}" class="checkbox bp-radio" value="{{ bg_url }}/backgrounds/{{val}}" name="{{ setting_id }}" {{ checked }} />
-					</span>
+					} #>
+					<span onClick="document.getElementById('bp-img-{{ setting_id }}{{ i }}').click();" class="bp-item bp-item-{{ i }} {{ selected }}"><input type="radio" id="bp-img-{{ setting_id }}{{ i }}" class="checkbox bp-radio" value="{{ bg_url }}/backgrounds/{{val}}" name="{{ setting_id }}" {{ checked }} /></span>
 				<# }); #>
 				<hr class="bg-hr">
 				<span class="customize-control-title"><?php echo __( 'Patterns', 'responsi' ); ?></span>
-				<#
-				_.each( patterns, function( val, key ) {
+				<# _.each( patterns, function( val, key ) {
 					i++;
 					checked  = '';
 					selected = '';
@@ -118,19 +105,13 @@ if ( ! class_exists( 'Customize_Background_Patterns_Control' ) && class_exists('
 					if ( data.value == imglink ) {
 						checked  = 'checked=checked';
 						selected = 'bg-selected';
-					}
-				#>
-					<span onClick="document.getElementById('bp-img-{{ setting_id }}{{ i }}').click();" class="bp-item bp-item-{{ i }} {{ selected }}">
-						<input data-customize-setting-link="{{ setting_id }}" type="radio" id="bp-img-{{ setting_id }}{{ i }}" class="checkbox bp-radio" value="{{ bg_url }}/patterns/{{val}}" name="{{ setting_id }}" {{ checked }} />
-					</span>
+					} #>
+					<span onClick="document.getElementById('bp-img-{{ setting_id }}{{ i }}').click();" class="bp-item bp-item-{{ i }} {{ selected }}"><input type="radio" id="bp-img-{{ setting_id }}{{ i }}" class="checkbox bp-radio" value="{{ bg_url }}/patterns/{{val}}" name="{{ setting_id }}" {{ checked }} /></span>
 				<# }); #>
-				<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
+				<# if( data.description ){ #><span class="customize-control-description">{{{ data.description }}}</span><# } #>
 			</div>
 			<?php
 		}
-
 	}
 }
 ?>

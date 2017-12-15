@@ -9,6 +9,8 @@ if ( ! class_exists( 'Customize_iCheckbox_Control' ) && class_exists('WP_Customi
 
 		public $ui_class = '';
 
+		public $notifications = array();
+
 		/**
 		 * Constructor.
 		 *
@@ -54,6 +56,7 @@ if ( ! class_exists( 'Customize_iCheckbox_Control' ) && class_exists('WP_Customi
 			$this->json['checked_label']   = isset( $this->choices['checked_label'] ) ? $this->choices['checked_label'] : __( 'ON', 'responsi' ) ;
 			$this->json['unchecked_label'] = isset( $this->choices['unchecked_label'] ) ? $this->choices['unchecked_label'] : __( 'OFF', 'responsi' ) ;
 			$this->json['container_width'] = isset( $this->choices['container_width'] ) ? $this->choices['container_width'] : 80 ;
+			$this->json['notifications'] = $this->notifications;
 		}
 
 		protected function render() {
@@ -64,7 +67,7 @@ if ( ! class_exists( 'Customize_iCheckbox_Control' ) && class_exists('WP_Customi
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -87,32 +90,14 @@ if ( ! class_exists( 'Customize_iCheckbox_Control' ) && class_exists('WP_Customi
 		 */
 		public function content_template() {
 			?>
-			<#
-			var setting_id      = data.setting_id;
-			var checked_value   = data.checked_value;
-			var unchecked_value = data.unchecked_value;
-			var container_width = data.container_width;
-
-			var checked = '';
-			var value = data.value;
-			if ( value == checked_value ) {
-				checked = 'checked="checked"';
-				value = checked_value;
-			} else {
-				value = unchecked_value;
-			}
-			#>
+			<# var setting_id = data.setting_id ? data.setting_id : 'icheckbox',checked_value = data.checked_value,unchecked_value = data.unchecked_value,container_width = data.container_width,checked = '',value = data.value;
+			if ( value == checked_value ) {checked = 'checked="checked"';value = checked_value;}else{value = unchecked_value;} #>
 			<div class="customize-control-container">
-				<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
+				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="responsi-iphone-checkbox">
-					<input type="checkbox" {{{ checked }}} id="{{ setting_id }}_cb" class="checkbox responsi-input responsi-ui-icheckbox <?php echo $this->ui_class; ?>" />
-					<input type="hidden" data-customize-setting-link="{{ setting_id }}" id="{{ setting_id }}" name="{{ setting_id }}" value="{{ value }}" />
+					<input type="checkbox" {{{ checked }}} id="{{ setting_id }}" class="checkbox responsi-input responsi-ui-icheckbox <?php echo $this->ui_class; ?>" />
 				</div>
-				<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
+				<# if( data.description ){ #><span class="customize-control-description">{{{ data.description }}}</span><# } #>
 			</div>
 			<?php
 		}

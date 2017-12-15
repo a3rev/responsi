@@ -26,13 +26,11 @@ class Responsi_Customize_Footer
 		$footer_panels = array();
 		$footer_panels['footer_widget_settings_panel'] = array(
 		    'title' => __('Footer Widgets', 'responsi'),
-		    'description' => '',
 		    'priority' => 5.5,
 		    'active_callback' => array( $this, 'is_panel_footer_widgets_active' )
 		);
 		$footer_panels['footer_settings_panel'] = array(
 		    'title' => __('Footer', 'responsi'),
-		    'description' => '',
 		    'priority' => 6,
 		);
 		$panels = array_merge($panels, $footer_panels);
@@ -85,12 +83,10 @@ class Responsi_Customize_Footer
 		global $responsi_options;
 
 		$footer_controls_settings = array();
-		$footer_controls_settings['footer_label1'] = array(
+		$footer_controls_settings['lbfooter1'] = array(
 			'control' => array(
 			    'label'      => __('Footer Widget Area Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget',
-			    'settings'    => 'footer_label1',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -99,7 +95,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -113,7 +108,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_enable_before_footer_bg_image'] = array(
 			'control' => array(
 			    'label'      => __('Background Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget',
 			    'settings'   => 'responsi_enable_before_footer_bg_image',
 			    'type'       => 'icheckbox',
@@ -131,7 +125,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_bg_image'] = array(
 			'control' => array(
 			    'label'      => __('Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget',
 			    'settings'   => 'responsi_before_footer_bg_image',
 			    'type'       => 'iupload',
@@ -149,7 +142,7 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_bg_position'] = array(
 			'control' => array(
 			    'label'      => __('Image Alignment', 'responsi'),
-			    'description' => __( 'Supports absolute values left, right, center, top, bottom or pixel values e.g. 20px for inner container positioning of image.', 'responsi' ),
+			    //'description' => __( 'Supports absolute values left, right, center, top, bottom or pixel values e.g. 20px for inner container positioning of image.', 'responsi' ),
 			    'section'    => 'footer_widget',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -174,7 +167,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_bg_image_repeat'] = array(
 			'control' => array(
 			    'label'      => __('Image Repeat', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget',
 			    'settings'   => 'responsi_before_footer_bg_image_repeat',
 			    'type'       => 'iradio',
@@ -201,7 +193,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_border_top'] = array(
 			'control' => array(
 			    'label' => __('Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -215,7 +206,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_border_bottom'] = array(
 			'control' => array(
 			    'label' => __('Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -229,7 +219,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_border_lr'] = array(
 			'control' => array(
 			    'label' => __('Border - Left / Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -244,7 +233,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_border_radius_tl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -258,7 +246,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_border_radius_tr'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -272,7 +259,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_border_radius_bl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -286,7 +272,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_border_radius_br'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -301,7 +286,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -316,7 +300,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -342,7 +325,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -366,12 +348,10 @@ class Responsi_Customize_Footer
 		);
 
 		//Footer Widget content
-		$footer_controls_settings['footer_content_label1'] = array(
+		$footer_controls_settings['lbfooter2'] = array(
 			'control' => array(
 			    'label'      => __('Footer Widget Content', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_content',
-			    'settings'    => 'footer_content_label1',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -380,7 +360,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_content_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_content',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -394,7 +373,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_enable_before_footer_content_bg_image'] = array(
 			'control' => array(
 			    'label'      => __('Background Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_content',
 			    'settings'   => 'responsi_enable_before_footer_content_bg_image',
 			    'type'       => 'icheckbox',
@@ -412,7 +390,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_content_bg_image'] = array(
 			'control' => array(
 			    'label'      => __('Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_content',
 			    'settings'   => 'responsi_before_footer_content_bg_image',
 			    'type'       => 'iupload',
@@ -430,7 +407,7 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_content_bg_position'] = array(
 			'control' => array(
 			    'label'      => __('Image Alignment', 'responsi'),
-			    'description' => __( 'Supports absolute values left, right, center, top, bottom or pixel values e.g. 20px for inner container positioning of image.', 'responsi' ),
+			    //'description' => __( 'Supports absolute values left, right, center, top, bottom or pixel values e.g. 20px for inner container positioning of image.', 'responsi' ),
 			    'section'    => 'footer_widget_content',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -455,7 +432,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_content_bg_image_repeat'] = array(
 			'control' => array(
 			    'label'      => __('Image Repeat', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_content',
 			    'settings'   => 'responsi_before_footer_content_bg_image_repeat',
 			    'type'       => 'iradio',
@@ -482,7 +458,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_content_border_top'] = array(
 			'control' => array(
 			    'label' => __('Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_content',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -496,7 +471,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_content_border_bottom'] = array(
 			'control' => array(
 			    'label' => __('Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_content',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -510,7 +484,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_content_border_lr'] = array(
 			'control' => array(
 			    'label' => __('Border - Left / Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_content',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -525,7 +498,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_content_border_radius_tl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_content',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -539,7 +511,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_content_border_radius_tr'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_content',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -553,7 +524,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_content_border_radius_bl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_content',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -567,7 +537,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_content_border_radius_br'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_content',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -582,7 +551,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_content_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_content',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -597,7 +565,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_content_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_content',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -623,7 +590,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_content_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_content',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -647,12 +613,10 @@ class Responsi_Customize_Footer
 		);
 
 		//Footer Widget
-		$footer_controls_settings['footer_label4'] = array(
+		$footer_controls_settings['lbfooter3'] = array(
 			'control' => array(
 			    'label'      => __('Footer Widget Style', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
-			    'settings'    => 'footer_label4',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -660,7 +624,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Color', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -674,7 +637,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_border'] = array(
 			'control' => array(
 			    'label' => __('Border', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -688,7 +650,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_border_radius'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -702,7 +663,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -716,7 +676,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_margin_between'] = array(
 			'control' => array(
 			    'label'      => __('Widget Horizontal Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'    => 'responsi_footer_widget_margin_between',
 			    'type'       => 'itext',
@@ -734,7 +693,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -756,12 +714,10 @@ class Responsi_Customize_Footer
 			    'transport'	=> 'postMessage',
 			)
 		);
-		$footer_controls_settings['footer_label434'] = array(
+		$footer_controls_settings['lbfooter4'] = array(
 			'control' => array(
 			    'label'      => __('Widget Header & Titles', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
-			    'settings'    => 'footer_label434',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -769,7 +725,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_font_footer_widget_title'] = array(
 			'control' => array(
 			    'label' => __('Title Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -783,7 +738,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_title_text_alignment'] = array(
 			'control' => array(
 			    'label'      => __('Title Alignment', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'responsi_footer_widget_title_text_alignment',
 			    'type'       => 'iradio',
@@ -803,7 +757,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_title_transform'] = array(
 			'control' => array(
 			    'label'      => __('Title Transformation', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'responsi_footer_widget_title_transform',
 			    'type'       => 'iradio',
@@ -820,12 +773,10 @@ class Responsi_Customize_Footer
 			    'transport'	=> 'postMessage'
 			)
 		);
-		$footer_controls_settings['footer_label4341'] = array(
+		$footer_controls_settings['lbfooter5'] = array(
 			'control' => array(
 			    'label'      => __('Widget Title Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
-			    'settings'    => 'footer_label4341',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -834,7 +785,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_title_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Color', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -848,7 +798,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_title_border_top'] = array(
 			'control' => array(
 			    'label' => __('Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -862,7 +811,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_title_border_bottom'] = array(
 			'control' => array(
 			    'label' => __('Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -876,7 +824,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_title_border_left'] = array(
 			'control' => array(
 			    'label' => __('Border - Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -890,7 +837,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_title_border_right'] = array(
 			'control' => array(
 			    'label' => __('Border - Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -904,7 +850,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_title_border_radius_tl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -918,7 +863,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_title_border_radius_tr'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -932,7 +876,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_title_border_radius_bl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -946,7 +889,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_title_border_radius_br'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -960,7 +902,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_title_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -974,7 +915,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_title_align'] = array(
 			'control' => array(
 			    'label'      => __('Title Container Align', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'responsi_footer_widget_title_align',
 			    'type'       => 'iradio',
@@ -994,7 +934,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_title_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -1019,7 +958,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_title_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -1041,12 +979,10 @@ class Responsi_Customize_Footer
 			    'transport'	=> 'postMessage',
 			)
 		);
-		$footer_controls_settings['footer_label4342'] = array(
+		$footer_controls_settings['lbfooter6'] = array(
 			'control' => array(
 			    'label'      => __('Widget Content Styling', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
-			    'settings'    => 'footer_label4342',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -1054,7 +990,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_font_footer_widget_text'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -1068,7 +1003,6 @@ class Responsi_Customize_Footer
         $footer_controls_settings['responsi_footer_widget_link_color'] = array(
             'control' => array(
                 'label'      => __('Text Link', 'responsi'),
-                'description' => "",
                 'section'    => 'footer_widget_style',
                 'settings'   => 'responsi_footer_widget_link_color',
                 'type'       => 'icolor'
@@ -1082,7 +1016,6 @@ class Responsi_Customize_Footer
         $footer_controls_settings['responsi_footer_widget_link_hover_color'] = array(
             'control' => array(
                 'label'      => __('Text Link Hover', 'responsi'),
-                'description' => "",
                 'section'    => 'footer_widget_style',
                 'settings'   => 'responsi_footer_widget_link_hover_color',
                 'type'       => 'icolor'
@@ -1096,7 +1029,6 @@ class Responsi_Customize_Footer
         $footer_controls_settings['responsi_footer_widget_link_visited_color'] = array(
             'control' => array(
                 'label'      => __('Text Link Clicked', 'responsi'),
-                'description' => "",
                 'section'    => 'footer_widget_style',
                 'settings'   => 'responsi_footer_widget_link_visited_color',
                 'type'       => 'icolor'
@@ -1110,7 +1042,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_font_footer_widget_text_alignment'] = array(
 			'control' => array(
 			    'label'      => __('Alignment', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'responsi_font_footer_widget_text_alignment',
 			    'type'       => 'iradio',
@@ -1130,7 +1061,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_widget_content_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -1153,12 +1083,10 @@ class Responsi_Customize_Footer
 			)
 		);
 
-		$footer_controls_settings['footer_label4343'] = array(
+		$footer_controls_settings['lbfooter7'] = array(
 			'control' => array(
 			    'label'      => __('Footer Widget List Style', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
-			    'settings'    => 'footer_label4343',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -1166,7 +1094,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_font_footer_widget_list'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -1180,7 +1107,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_before_footer_border_list'] = array(
 			'control' => array(
 			    'label' => __('Line (border) Under Each list Item', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_widget_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -1193,12 +1119,10 @@ class Responsi_Customize_Footer
 		);
 
 		//Footer Container
-		$footer_controls_settings['footer_label7'] = array(
+		$footer_controls_settings['lbfooter8'] = array(
 			'control' => array(
 			    'label'      => __('Footer - Container Background', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_style',
-			    'settings'    => 'footer_label7',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -1206,7 +1130,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -1220,7 +1143,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_enable_footer_bg_image'] = array(
 			'control' => array(
 			    'label'      => __('Background Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_style',
 			    'settings'   => 'responsi_enable_footer_bg_image',
 			    'type'       => 'icheckbox',
@@ -1238,7 +1160,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_bg_image'] = array(
 			'control' => array(
 			    'label'      => __('Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_style',
 			    'settings'   => 'responsi_footer_bg_image',
 			    'type'       => 'iupload',
@@ -1256,7 +1177,7 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_bg_position'] = array(
 			'control' => array(
 			    'label'      => __('Image Alignment', 'responsi'),
-			    'description' => __( 'Supports absolute values left, right, center, top, bottom or pixel values e.g. 20px for inner container positioning of image.', 'responsi' ),
+			    //'description' => __( 'Supports absolute values left, right, center, top, bottom or pixel values e.g. 20px for inner container positioning of image.', 'responsi' ),
 			    'section'    => 'footer_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -1281,7 +1202,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_bg_image_repeat'] = array(
 			'control' => array(
 			    'label'      => __('Image Repeat', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_style',
 			    'settings'   => 'responsi_footer_bg_image_repeat',
 			    'type'       => 'iradio',
@@ -1307,7 +1227,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_border_top'] = array(
 			'control' => array(
 			    'label' => __('Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -1321,7 +1240,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_border_bottom'] = array(
 			'control' => array(
 			    'label' => __('Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -1335,7 +1253,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_border_lr'] = array(
 			'control' => array(
 			    'label' => __('Border - Left / Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -1349,7 +1266,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_border_radius_tl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -1363,7 +1279,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_border_radius_tr'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -1377,7 +1292,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_border_radius_bl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -1391,7 +1305,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_border_radius_br'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -1406,7 +1319,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -1421,7 +1333,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -1447,7 +1358,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -1470,12 +1380,10 @@ class Responsi_Customize_Footer
 			)
 		);
 
-		$footer_controls_settings['footer_label8888'] = array(
+		$footer_controls_settings['lbfooter9'] = array(
 			'control' => array(
 			    'label'      => __('Footer Content Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content_style',
-			    'settings'    => 'footer_label8888',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -1484,7 +1392,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_content_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -1498,7 +1405,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_enable_footer_content_bg_image'] = array(
 			'control' => array(
 			    'label'      => __('Background Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content_style',
 			    'settings'   => 'responsi_enable_footer_content_bg_image',
 			    'type'       => 'icheckbox',
@@ -1516,7 +1422,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_content_bg_image'] = array(
 			'control' => array(
 			    'label'      => __('Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content_style',
 			    'settings'   => 'responsi_footer_content_bg_image',
 			    'type'       => 'iupload',
@@ -1534,7 +1439,7 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_content_bg_position'] = array(
 			'control' => array(
 			    'label'      => __('Image Alignment', 'responsi'),
-			    'description' => __( 'Supports absolute values left, right, center, top, bottom or pixel values e.g. 20px for inner container positioning of image.', 'responsi' ),
+			    //'description' => __( 'Supports absolute values left, right, center, top, bottom or pixel values e.g. 20px for inner container positioning of image.', 'responsi' ),
 			    'section'    => 'footer_content_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -1559,7 +1464,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_content_bg_image_repeat'] = array(
 			'control' => array(
 			    'label'      => __('Image Repeat', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content_style',
 			    'settings'   => 'responsi_footer_content_bg_image_repeat',
 			    'type'       => 'iradio',
@@ -1585,7 +1489,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_content_border_top'] = array(
 			'control' => array(
 			    'label' => __('Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -1599,7 +1502,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_content_border_bottom'] = array(
 			'control' => array(
 			    'label' => __('Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -1613,7 +1515,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_content_border_lr'] = array(
 			'control' => array(
 			    'label' => __('Border - Left / Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -1627,7 +1528,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_content_border_radius_tl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -1641,7 +1541,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_content_border_radius_tr'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -1655,7 +1554,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_content_border_radius_bl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -1669,7 +1567,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_content_border_radius_br'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -1684,7 +1581,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_content_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -1699,7 +1595,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_content_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -1725,7 +1620,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_content_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -1748,12 +1642,10 @@ class Responsi_Customize_Footer
 			)
 		);
 
-		$footer_controls_settings['footer_label8'] = array(
+		$footer_controls_settings['lbfooter10'] = array(
 			'control' => array(
 			    'label'      => __('Footer Content', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_cusstom_content',
-			    'settings'    => 'footer_label8',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -1761,7 +1653,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_below'] = array(
 			'control' => array(
 			    'label'      => __('Footer Content', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_cusstom_content',
 			    'settings'   => 'responsi_footer_below',
 			    'type'       => 'icheckbox',
@@ -1776,8 +1667,6 @@ class Responsi_Customize_Footer
 		);
 		$footer_controls_settings['responsi_footer_below_text'] = array(
 			'control' => array(
-			    'label'      => "",
-			    'description' => "",
 			    'section'    => 'footer_cusstom_content',
 			    'settings'    => 'responsi_footer_below_text',
 			    'type'       => 'ieditor',
@@ -1791,12 +1680,10 @@ class Responsi_Customize_Footer
 			)
 		);
 
-		$footer_controls_settings['footer_label7877'] = array(
+		$footer_controls_settings['lbfooter11'] = array(
 			'control' => array(
 			    'label'      => __('Footer - Content Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_cusstom_content',
-			    'settings'    => 'footer_label7877',
 			    'type'       => 'ilabel',
 			    'input_attrs' => array(
 			    	'class' => 'hide'
@@ -1807,7 +1694,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_custom_font'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_cusstom_content',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography',
@@ -1824,7 +1710,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_custom_link_color'] = array(
 			'control' => array(
 			    'label'      => __('Link Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_cusstom_content',
 			    'settings'   => 'responsi_footer_custom_link_color',
 			    'type'       => 'icolor',
@@ -1841,7 +1726,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_custom_link_color_hover'] = array(
 			'control' => array(
 			    'label'      => __('Link Colour on Mouse Over', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_cusstom_content',
 			    'settings'   => 'responsi_footer_custom_link_color_hover',
 			    'type'       => 'icolor',
@@ -1856,12 +1740,10 @@ class Responsi_Customize_Footer
 			)
 		);
 
-		$footer_controls_settings['footer_label9'] = array(
+		$footer_controls_settings['lbfooter12'] = array(
 			'control' => array(
 			    'label'      => __('Site Copyright', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content',
-			    'settings'    => 'footer_label9',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -1870,7 +1752,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_left'] = array(
 			'control' => array(
 			    'label'      => __('Copyright Notice (Align Left)', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content',
 			    'settings'   => 'responsi_footer_left',
 			    'type'       => 'icheckbox',
@@ -1887,7 +1768,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_left_text'] = array(
 			'control' => array(
 			    'label'      => __('Copyright Notice (Align Left) Content', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content',
 			    'settings'   => 'responsi_footer_left_text',
 			    'type'       => 'itext',
@@ -1901,12 +1781,10 @@ class Responsi_Customize_Footer
 			)
 		);
 
-		$footer_controls_settings['footer_label219'] = array(
+		$footer_controls_settings['lbfooter13'] = array(
 			'control' => array(
 			    'label'      => __('Site Access Link', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content',
-			    'settings'    => 'footer_label219',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -1915,7 +1793,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_right_login'] = array(
 			'control' => array(
 			    'label'      => __('Log in / Log out Link (Far Right)', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content',
 			    'settings'   => 'responsi_footer_right_login',
 			    'type'       => 'icheckbox'
@@ -1926,12 +1803,10 @@ class Responsi_Customize_Footer
 			)
 		);
 
-		$footer_controls_settings['footer_label10'] = array(
+		$footer_controls_settings['lbfooter14'] = array(
 			'control' => array(
 			    'label'      => __('Developer Branding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content',
-			    'settings'    => 'footer_label10',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -1940,7 +1815,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_enable_footer_right'] = array(
 			'control' => array(
 			    'label'      => __('Site Developed By', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content',
 			    'settings'   => 'responsi_enable_footer_right',
 			    'type'       => 'icheckbox',
@@ -1957,7 +1831,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_right_text_before'] = array(
 			'control' => array(
 			    'label'      => __('Text Before Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content',
 			    'settings'   => 'responsi_footer_right_text_before',
 			    'type'       => 'itext',
@@ -1974,7 +1847,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_right_text_before_url'] = array(
 			'control' => array(
 			    'label'      => __('Text Link URL', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content',
 			    'settings'   => 'responsi_footer_right_text_before_url',
 			    'type'       => 'itext',
@@ -1991,7 +1863,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_right_logo'] = array(
 			'control' => array(
 			    'label'      => __('Developer Logo', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content',
 			    'settings'   => 'responsi_footer_right_logo',
 			    'type'       => 'iupload',
@@ -2008,7 +1879,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_right_logo_url'] = array(
 			'control' => array(
 			    'label'      => __('Developer Logo URL', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content',
 			    'settings'   => 'responsi_footer_right_logo_url',
 			    'type'       => 'itext',
@@ -2025,7 +1895,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_right_text_after'] = array(
 			'control' => array(
 			    'label'      => __('Text After Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content',
 			    'settings'   => 'responsi_footer_right_text_after',
 			    'type'       => 'itext',
@@ -2042,7 +1911,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_right_text_after_url'] = array(
 			'control' => array(
 			    'label'      => __('Text Link URL', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content',
 			    'settings'   => 'responsi_footer_right_text_after_url',
 			    'type'       => 'itext',
@@ -2056,12 +1924,10 @@ class Responsi_Customize_Footer
 			)
 		);
 
-		$footer_controls_settings['footer_label777'] = array(
+		$footer_controls_settings['lbfooter15'] = array(
 			'control' => array(
 			    'label'      => __('Footer Notices Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content',
-			    'settings'    => 'footer_label777',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -2069,7 +1935,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_font'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -2083,7 +1948,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_link_color'] = array(
 			'control' => array(
 			    'label'      => __('Link Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content',
 			    'settings'   => 'responsi_footer_link_color',
 			    'type'       => 'icolor'
@@ -2097,7 +1961,6 @@ class Responsi_Customize_Footer
 		$footer_controls_settings['responsi_footer_link_color_hover'] = array(
 			'control' => array(
 			    'label'      => __('Link Colour on Mouse Over', 'responsi'),
-			    'description' => "",
 			    'section'    => 'footer_content',
 			    'settings'   => 'responsi_footer_link_color_hover',
 			    'type'       => 'icolor'

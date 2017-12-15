@@ -7,6 +7,8 @@ if ( ! class_exists( 'Customize_Border_Control' ) && class_exists('WP_Customize_
 
 		public $type = 'border';
 
+		public $notifications = array();
+
 		/**
 		 * Constructor.
 		 *
@@ -58,6 +60,7 @@ if ( ! class_exists( 'Customize_Border_Control' ) && class_exists('WP_Customize_
 			$this->json['setting_id']   = $this->id;
 			$this->json['values']       = $values;
 			$this->json['custom_class'] = $custom_class;
+			$this->json['notifications'] = $this->notifications;
 		}
 
 		protected function render() {
@@ -68,7 +71,7 @@ if ( ! class_exists( 'Customize_Border_Control' ) && class_exists('WP_Customize_
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -91,24 +94,23 @@ if ( ! class_exists( 'Customize_Border_Control' ) && class_exists('WP_Customize_
 		 */
 		public function content_template() {
 			?>
-			<#
-			var setting_id  = data.setting_id;
-			var color_value = data.values.color;
-			#>
+			<# 
+			if( 'undefined' === typeof data.values ){
+				data.values = { 'width' : '0', 'style' : 'solid', 'color' : '#dbdbdb' };
+			}
+			var setting_id = data.setting_id ? data.setting_id : 'border', defaultValue = '#RRGGBB',defaultValueAttr = '',isHueSlider = data.mode === 'hue';
+			if( data.values.color && _.isString( data.values.color ) && ! isHueSlider ){
+				if ( '#' !== data.values.color.substring( 0, 1 ) ) {defaultValue = '#' + data.values.color;}else{defaultValue = data.values.color;}
+				defaultValueAttr = ' data-default-color=' + defaultValue;
+			} #>
 			<div class="customize-control-container {{ data.custom_class }}">
-				<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
+				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="border-container">
-					<select data-customize-setting-link="{{ setting_id }}[width]" name="{{ setting_id }}[width]" class="responsi-border responsi-border-width" >
-					</select>
-					<select data-customize-setting-link="{{ setting_id }}[style]" name="{{ setting_id }}[style]" class="responsi-border responsi-border-style" >
-					</select>
-					<input type="text" data-customize-setting-link="{{ setting_id }}[color]" name="{{ setting_id }}[color]" value="{{ color_value }}" data-default-color="{{ color_value }}" class="color-picker-hex icolor-picker responsi-border" />
+					<select class="responsi-border responsi-border-width" name="{{ setting_id }}[width]"></select>
+					<select class="responsi-border responsi-border-style" name="{{ setting_id }}[style]"></select>
+					<input class="color-picker-hex icolor-picker responsi-border" type="text" maxlength="7" placeholder="{{ defaultValue }}" {{ defaultValueAttr }} />
 				</div>
-				<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
+				<# if( data.description ){ #><span class="customize-control-description">{{{ data.description }}}</span><# } #>
 			</div>
 			<?php
 		}

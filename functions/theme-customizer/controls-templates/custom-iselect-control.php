@@ -8,6 +8,8 @@ if ( ! class_exists( 'Customize_iSelect_Control' ) && class_exists('WP_Customize
 
 		public $type = 'iselect';
 
+		public $notifications = array();
+
 		/**
 		 * Constructor.
 		 *
@@ -39,9 +41,11 @@ if ( ! class_exists( 'Customize_iSelect_Control' ) && class_exists('WP_Customize
 		 */
 		public function to_json() {
 			parent::to_json();
+			$this->json['setting_id']   = $this->id;
 			$this->json['value']   = $this->setting->default;
 			$this->json['choices'] = $this->choices;
 			$this->json['input_attrs'] = $this->input_attrs;
+			$this->json['notifications'] = $this->notifications;
 		}
 
 		protected function render() {
@@ -52,7 +56,7 @@ if ( ! class_exists( 'Customize_iSelect_Control' ) && class_exists('WP_Customize
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -76,47 +80,27 @@ if ( ! class_exists( 'Customize_iSelect_Control' ) && class_exists('WP_Customize
 		public function content_template() {
 			?>
 			<# 
-				var setting_id = data.settings['default'];
-				var choices    = data.choices;
-				var input_attrs    = data.input_attrs;
-			#>
+			if( 'undefined' === typeof data.input_attrs ){ data.input_attrs = {};}
+			var setting_id = data.setting_id ? data.setting_id : 'islect',choices = data.choices,input_attrs = data.input_attrs,selected = ''; #>
 			<div class="customize-control-container">
-				<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
+				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="iselect-container">
-					<select class="responsi-iselect" name="{{ setting_id }}" id="{{ setting_id }}" data-customize-setting-link="{{ setting_id }}">
-					<# var selected = '';
-					
-					if( "min" in input_attrs && "step" in input_attrs && "max" in input_attrs ) {
-
+					<select class="responsi-iselect" name="{{ setting_id }}" id="{{ setting_id }}">
+					<# if( "min" in input_attrs && "step" in input_attrs && "max" in input_attrs ){
 						for ( var i = parseFloat(input_attrs['min']); i <= parseFloat(input_attrs['max']); i = i+parseFloat(input_attrs['step']) ) {
-
-						selected = '';
-							if ( data.value == i ) {
-								selected = 'selected="selected"';
-							}
-							#>
-							<option value="{{ i }}" {{{ selected }}} >{{{ choices[i] }}}</option>
-							<#
+							selected = ''; if(data.value == i){selected = 'selected="selected"';}
+							#><option value="{{ i }}" {{{ selected }}} >{{{ choices[i] }}}</option><#
 						}
-
 					}else{
 						_.each(choices, function(  val, key ){
-							selected = '';
-							if ( data.value == key ) {
-								selected = 'selected="selected"';
-							}
-							#>
+							selected = ''; if(data.value == key){selected = 'selected="selected"';} #>
 							<option value="{{ key }}" {{{ selected }}} >{{{ val }}}</option>
 						<# }); 
 					}
 					#>
 					</select>
 				</div>
-				<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
+				<# if( data.description ){ #><span class="customize-control-description">{{{ data.description }}}</span><# } #>
 			</div>
 			<?php
 		}

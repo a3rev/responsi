@@ -18,7 +18,6 @@ class Responsi_Customize_General_Settings
 		$settings_panels = array();
 		$settings_panels['general_settings_panel'] = array(
 		    'title' => __('General Settings', 'responsi'),
-		    'description' => '',
 		    'priority' => 1.5,
 		);
 		$panels = array_merge($panels, $settings_panels);
@@ -68,25 +67,21 @@ class Responsi_Customize_General_Settings
 
 		$settings_controls_settings = array();
 
-		$settings_controls_settings['settings_label1'] = array(
+		$settings_controls_settings['lbsettings1'] = array(
 			'control' => array(
 			    'label'      => __('Site Logo', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_site_branding',
-			    'settings'    => 'settings_label1',
 			    'type'       => 'ilabel',
 			    'priority' => 1,
 			),
 			'setting' => array()
 		);
 
-		$settings_controls_settings['settings_label0'] = array(
+		$settings_controls_settings['lbsettings2'] = array(
 			'control' => array(
 			    'label'      => __('Site Title and Tag Line', 'responsi'),
 			    'priority' => 3,
-			    'description' => "",
 			    'section'    => 'settings_site_branding',
-			    'settings'    => 'settings_label0',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -95,7 +90,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_font_logo'] = array(
 			'control' => array(
 			    'label' => __('Site Title Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_site_branding',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography',
@@ -111,7 +105,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_enable_site_description'] = array(
 			'control' => array(
 			    'label'      => __('Show in Header', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_site_branding',
 			    'settings'   => 'responsi_enable_site_description',
 			    'type'       => 'icheckbox',
@@ -129,7 +122,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_font_desc'] = array(
 			'control' => array(
 			    'label' => __('Tagline Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_site_branding',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography',
@@ -145,24 +137,20 @@ class Responsi_Customize_General_Settings
 			)
 		);
 
-		$settings_controls_settings['siteiconlabel'] = array(
+		$settings_controls_settings['lbsettings3'] = array(
 			'control' => array(
 			    'label'      => __('Site Icon', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_site_branding',
-			    'settings'    => 'siteiconlabel',
 			    'type'       => 'ilabel',
 			    'priority' => 6,
 			),
 			'setting' => array()
 		);
 
-		$settings_controls_settings['image_label1'] = array(
+		$settings_controls_settings['lbsettings4'] = array(
 			'control' => array(
 			    'label'      => __('Site Default Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_site_branding',
-			    'settings'    => 'image_label1',
 			    'type'       => 'ilabel',
 			    'priority' => 12,
 			),
@@ -184,12 +172,10 @@ class Responsi_Customize_General_Settings
 			)
 		);
 
-		$settings_controls_settings['rss_label1'] = array(
+		$settings_controls_settings['lbsettings5'] = array(
 			'control' => array(
 			    'label'      => __('RSS Feed Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_site_branding',
-			    'settings'    => 'rss_label1',
 			    'type'       => 'ilabel',
 			    'priority' => 13,
 			),
@@ -198,7 +184,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_rss_thumb'] = array(
 			'control' => array(
 			    'label'      => __('RSS Image Thumbnail', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_site_branding',
 			    'settings'   => 'responsi_rss_thumb',
 			    'type'       => 'icheckbox',
@@ -209,12 +194,10 @@ class Responsi_Customize_General_Settings
 			    'sanitize_callback' => 'responsi_sanitize_checkboxs',
 			)
 		);
-		$settings_controls_settings['settings_label2'] = array(
+		$settings_controls_settings['lbsettings6'] = array(
 			'control' => array(
 			    'label'      => __('Site Button Style', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_buttons',
-			    'settings'    => 'settings_label2',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -222,7 +205,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_button_text'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_buttons',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -236,7 +218,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_button_text_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Font Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_buttons',
 			    'settings'   => 'responsi_button_text_shadow',
 			    'type'       => 'icheckbox',
@@ -250,7 +231,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_button_text_transform'] = array(
 			'control' => array(
 			    'label'      => __('Transform', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_buttons',
 			    'settings'   => 'responsi_button_text_transform',
 			    'type'       => 'iradio',
@@ -270,7 +250,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_button_color'] = array(
 			'control' => array(
 			    'label'      => __('Base Background Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_buttons',
 			    'settings'   => 'responsi_button_color',
 			    'type'       => 'icolor'
@@ -284,7 +263,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_button_gradient_from'] = array(
 			'control' => array(
 			    'label'      => __('Gradient from', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_buttons',
 			    'settings'   => 'responsi_button_gradient_from',
 			    'type'       => 'icolor'
@@ -298,7 +276,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_button_gradient_to'] = array(
 			'control' => array(
 			    'label'      => __('Gradient to', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_buttons',
 			    'settings'   => 'responsi_button_gradient_to',
 			    'type'       => 'icolor'
@@ -312,7 +289,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_button_border_top'] = array(
 			'control' => array(
 			    'label' => __('Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_buttons',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -326,7 +302,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_button_border_bottom'] = array(
 			'control' => array(
 			    'label' => __('Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_buttons',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -340,7 +315,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_button_border_left'] = array(
 			'control' => array(
 			    'label' => __('Border - Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_buttons',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -354,7 +328,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_button_border_right'] = array(
 			'control' => array(
 			    'label' => __('Border - Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_buttons',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -368,7 +341,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_button_border_radius_tl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_buttons',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -382,7 +354,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_button_border_radius_tr'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_buttons',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -396,7 +367,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_button_border_radius_bl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_buttons',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -410,7 +380,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_button_border_radius_br'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_buttons',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -424,7 +393,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_button_border_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_buttons',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -438,7 +406,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_button_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_buttons',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -460,12 +427,10 @@ class Responsi_Customize_General_Settings
 			    'transport'	=> 'postMessage',
 			)
 		);
-		$settings_controls_settings['settings_label3'] = array(
+		$settings_controls_settings['lbsettings7'] = array(
 			'control' => array(
 			    'label'      => __('Site Link Colours', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_links',
-			    'settings'    => 'settings_label3',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -473,7 +438,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_link_color'] = array(
 			'control' => array(
 			    'label'      => __('Text link Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_links',
 			    'settings'   => 'responsi_link_color',
 			    'type'       => 'icolor'
@@ -487,7 +451,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_link_hover_color'] = array(
 			'control' => array(
 			    'label'      => __('Text Link Colour on Mouse Over', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_links',
 			    'settings'   => 'responsi_link_hover_color',
 			    'type'       => 'icolor'
@@ -501,7 +464,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_link_visited_color'] = array(
 			'control' => array(
 			    'label'      => __('Clicked Text Link Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_links',
 			    'settings'   => 'responsi_link_visited_color',
 			    'type'       => 'icolor'
@@ -512,12 +474,10 @@ class Responsi_Customize_General_Settings
 			    'transport'	=> 'postMessage'
 			)
 		);
-		$settings_controls_settings['settings_comment_label4'] = array(
+		$settings_controls_settings['lbsettings8'] = array(
 			'control' => array(
 			    'label'      => __('Comments', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_comments',
-			    'settings'    => 'settings_comment_label4',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -525,7 +485,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_comments'] = array(
 			'control' => array(
 			    'label'      => __('Post/Page Comments', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_comments',
 			    'settings'   => 'responsi_comments',
 			    'type'       => 'iradio',
@@ -541,12 +500,10 @@ class Responsi_Customize_General_Settings
 				'sanitize_callback' => 'responsi_sanitize_choices',
 			)
 		);
-		$settings_controls_settings['post_label126'] = array(
+		$settings_controls_settings['lbsettings9'] = array(
 			'control' => array(
 			    'label'      => __('Comments Style', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_comments',
-			    'settings'    => 'post_label126',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -554,7 +511,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_post_comments_bg'] = array(
 			'control' => array(
 			    'label'      => __('Comments Background Color (even threads)', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_comments',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -565,12 +521,11 @@ class Responsi_Customize_General_Settings
 			    'transport'	=> 'postMessage'
 			)
 		);
-		$settings_controls_settings['settings_label4'] = array(
+		$settings_controls_settings['lbsettings10'] = array(
 			'control' => array(
 			    'label'      => __('Default Typography', 'responsi'),
 			    'description' => __('These fonts are your theme designs default fonts. There are many sections where these can be over ridden with custom font options', 'responsi'),
 			    'section'    => 'settings_typography',
-			    'settings'    => 'settings_label4',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -578,7 +533,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_font_text'] = array(
 			'control' => array(
 			    'label' => __('General Text Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_typography',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -592,7 +546,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_font_h1'] = array(
 			'control' => array(
 			    'label' => __('H1 Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_typography',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -606,7 +559,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_font_h2'] = array(
 			'control' => array(
 			    'label' => __('H2 Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_typography',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -620,7 +572,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_font_h3'] = array(
 			'control' => array(
 			    'label' => __('H3 Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_typography',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -634,7 +585,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_font_h4'] = array(
 			'control' => array(
 			    'label' => __('H4 Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_typography',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -648,7 +598,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_font_h5'] = array(
 			'control' => array(
 			    'label' => __('H5 Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_typography',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -662,7 +611,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_font_h6'] = array(
 			'control' => array(
 			    'label' => __('H6 Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_typography',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -673,12 +621,10 @@ class Responsi_Customize_General_Settings
 			    'transport'	=> 'postMessage'
 			)
 		);
-		$settings_controls_settings['settings_label5'] = array(
+		$settings_controls_settings['lbsettings11'] = array(
 			'control' => array(
 			    'label'      => __('Site Breadcrumbs', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_breadcrumbs',
-			    'settings'    => 'settings_label5',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -686,7 +632,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_breadcrumbs_show'] = array(
 			'control' => array(
 			    'label'      => __('Breadcrumbs', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_breadcrumbs',
 			    'settings'   => 'responsi_breadcrumbs_show',
 			    'type'       => 'icheckbox',
@@ -701,12 +646,10 @@ class Responsi_Customize_General_Settings
 			)
 		);
 
-		$settings_controls_settings['settings_label511'] = array(
+		$settings_controls_settings['lbsettings12'] = array(
 			'control' => array(
 			    'label'      => __('Breadcrumb Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_breadcrumbs',
-			    'settings'    => 'settings_label511',
 			    'type'       => 'ilabel',
 			    'input_attrs' => array(
 			    	'class' => 'hide-custom'
@@ -717,7 +660,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_breadcrumbs_font'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_breadcrumbs',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography',
@@ -734,7 +676,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_breadcrumbs_link'] = array(
 			'control' => array(
 			    'label'      => __('Text Link Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_breadcrumbs',
 			    'settings'   => 'responsi_breadcrumbs_link',
 			    'type'       => 'icolor',
@@ -751,7 +692,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_breadcrumbs_link_hover'] = array(
 			'control' => array(
 			    'label'      => __('Text Link Hover', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_breadcrumbs',
 			    'settings'   => 'responsi_breadcrumbs_link_hover',
 			    'type'       => 'icolor',
@@ -766,12 +706,10 @@ class Responsi_Customize_General_Settings
 			)
 		);
 
-		$settings_controls_settings['settings_label5111'] = array(
+		$settings_controls_settings['lbsettings13'] = array(
 			'control' => array(
 			    'label'      => __('Breadcrumb Separator', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_breadcrumbs',
-			    'settings'    => 'settings_label5111',
 			    'type'       => 'ilabel',
 			    'input_attrs' => array(
 			    	'class' => 'hide-custom'
@@ -782,7 +720,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_breadcrumbs_sep'] = array(
 			'control' => array(
 			    'label'      => __('Arrow Separator', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_breadcrumbs',
 			    'settings'   => 'responsi_breadcrumbs_sep',
 			    'type'       => 'icolor',
@@ -796,12 +733,10 @@ class Responsi_Customize_General_Settings
 			    'transport'	=> 'postMessage'
 			)
 		);
-		$settings_controls_settings['settings_label6'] = array(
+		$settings_controls_settings['lbsettings14'] = array(
 			'control' => array(
 			    'label'      => __('Breadcrumb Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_breadcrumbs',
-			    'settings'    => 'settings_label6',
 			    'type'       => 'ilabel',
 			    'input_attrs' => array(
 			    	'class' => 'hide-custom'
@@ -813,7 +748,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_breadcrumbs_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_breadcrumbs',
 			    'settings'   => 'responsi_breadcrumbs_bg',
 			    'settings'   => 'multiple',
@@ -832,7 +766,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_breadcrumbs_border_top'] = array(
 			'control' => array(
 			    'label' => __('Container Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_breadcrumbs',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -849,7 +782,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_breadcrumbs_border_bottom'] = array(
 			'control' => array(
 			    'label' => __('Container Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_breadcrumbs',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -866,7 +798,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_breadcrumbs_border_lr'] = array(
 			'control' => array(
 			    'label' => __('Container Border - Left / Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_breadcrumbs',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -883,7 +814,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_breadcrumbs_border_radius'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_breadcrumbs',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius',
@@ -900,7 +830,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_breadcrumbs_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_breadcrumbs',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow',
@@ -918,7 +847,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_breadcrumbs_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_breadcrumbs',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -946,7 +874,6 @@ class Responsi_Customize_General_Settings
 		$settings_controls_settings['responsi_breadcrumbs_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'settings_breadcrumbs',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -972,12 +899,10 @@ class Responsi_Customize_General_Settings
 			),
 		);
 
-		$settings_controls_settings['settings_label11'] = array(
+		$settings_controls_settings['lbsettings15'] = array(
 			'control' => array(
 			    'label'      => __('Add Custom CSS', 'responsi'),
-			    'description' => '',
 			    'section'    => 'settings_customcss',
-			    'settings'    => 'settings_label11',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()

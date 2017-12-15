@@ -7,6 +7,8 @@ if ( ! class_exists( 'Customize_iBackground_Control' ) && class_exists('WP_Custo
 
 		public $type = 'ibackground';
 
+		public $notifications = array();
+
 		/**
 		 * Constructor.
 		 *
@@ -58,6 +60,7 @@ if ( ! class_exists( 'Customize_iBackground_Control' ) && class_exists('WP_Custo
 			$this->json['setting_id']   = $this->id;
 			$this->json['values']       = $values;
 			$this->json['custom_class'] = $custom_class;
+			$this->json['notifications'] = $this->notifications;
 		}
 
 		protected function render() {
@@ -68,7 +71,7 @@ if ( ! class_exists( 'Customize_iBackground_Control' ) && class_exists('WP_Custo
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -90,34 +93,23 @@ if ( ! class_exists( 'Customize_iBackground_Control' ) && class_exists('WP_Custo
 		 * @since 4.1.0
 		 */
 		public function content_template() {
-			?>
-			<#
-			var setting_id     = data.setting_id;
-			var onoff_value    = data.values.onoff;
-			var color_value    = data.values.color;
-			var onoff_checked = '';
-			if ( 'true' == onoff_value ) {
-				onoff_checked = 'checked="checked"';
-			} else {
-				onoff_value = 'false';
+			?><# 
+			if( 'undefined' === typeof data.values ){
+				data.values = { 'onoff' : 'false', 'color' : '#dbdbdb' };
 			}
-			#>
+			var setting_id = data.setting_id ? data.setting_id : 'ibackground',onoff_value = data.values.onoff,defaultValue = '#RRGGBB',defaultValueAttr = '',isHueSlider = data.mode === 'hue',onoff_checked = '';
+			if('true' == onoff_value){onoff_checked = 'checked="checked"';}else{onoff_value = 'false';}
+			if( data.values.color && _.isString( data.values.color ) && ! isHueSlider ){
+				if ( '#' !== data.values.color.substring( 0, 1 ) ) {defaultValue = '#' + data.values.color;}else{defaultValue = data.values.color;}
+				defaultValueAttr = ' data-default-color=' + defaultValue;
+			} #>
 			<div class="customize-control-container {{ data.custom_class }}">
-				<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
+				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="ibackground-container">
-					<div class="responsi-iphone-checkbox">
-						<input type="checkbox" {{{ onoff_checked }}} id="{{ setting_id }}_onoff_cb" class="checkbox responsi-input responsi-ibackground-onoff responsi-ui-icheckbox" />
-						<input type="hidden" data-customize-setting-link="{{ setting_id }}[onoff]" id="{{ setting_id }}_onoff" name="{{ setting_id }}[onoff]" value="{{ onoff_value }}" />
-					</div>
-					<div class="responsi-ibackground-container">
-						<input type="text" data-customize-setting-link="{{ setting_id }}[color]" name="{{ setting_id }}[color]" value="{{ color_value }}" data-default-color="{{ color_value }}" class="color-picker-hex icolor-picker" />
-					</div>
+					<div class="responsi-iphone-checkbox"><input type="checkbox" {{{ onoff_checked }}} id="{{ setting_id }}_onoff" class="checkbox responsi-input responsi-ibackground-onoff responsi-ui-icheckbox" /></div>
+					<div class="responsi-ibackground-container"><input class="color-picker-hex icolor-picker" type="text" maxlength="7" placeholder="{{ defaultValue }}" {{ defaultValueAttr }} /></div>
 				</div>
-				<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
+				<# if( data.description ){ #><span class="customize-control-description">{{{ data.description }}}</span><# } #>
 			</div>
 			<?php
 		}

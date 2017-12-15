@@ -7,6 +7,8 @@ if ( ! class_exists( 'Customize_iMultiCheckbox_Control' ) && class_exists('WP_Cu
 
 		public $type = 'imulticheckbox';
 
+		public $notifications = array();
+
 		/**
 		 * Constructor.
 		 *
@@ -45,6 +47,7 @@ if ( ! class_exists( 'Customize_iMultiCheckbox_Control' ) && class_exists('WP_Cu
 			$this->json['setting_id']   = $this->id;
 			$this->json['choices']      = $this->choices;
 			$this->json['defaultValue'] = $defaultValue;
+			$this->json['notifications'] = $this->notifications;
 		}
 
 		protected function render() {
@@ -55,7 +58,7 @@ if ( ! class_exists( 'Customize_iMultiCheckbox_Control' ) && class_exists('WP_Cu
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -78,39 +81,17 @@ if ( ! class_exists( 'Customize_iMultiCheckbox_Control' ) && class_exists('WP_Cu
 		 */
 		public function content_template() {
 			?>
-			<# 
-				var choices      = data.choices;
-				var defaultValues = data.defaultValue;
-				var checked = '';
-				var i = 0;
-			#>
+			<# var setting_id = data.setting_id ? data.setting_id : 'imulticheckbox', choices = data.choices,defaultValues = data.defaultValue,checked = '',i = 0; #>
 			<div class="customize-control-container">
-				<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
-				<# 
-				_.each(choices, function(  val, key ){
-					checked = '';
-					value = defaultValues[i];
-					if ( value == 'true' ) {
-						checked = 'checked=checked';
-					}else{
-						checked = '';
-					}
-					#>
+				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
+				<# _.each(choices, function(  val, key ){
+					checked = ''; value = defaultValues[i];
+					if(value == 'true'){checked = 'checked=checked';}else{checked = '';} #>
 					<div class="responsi-imulticheckbox-item imulticheckbox-{{ key }}">
-					<input {{{ checked }}} id="{{ data.setting_id }}_{{ key }}_cb" class="responsi-input responsi-imulticheckbox responsi-ui-imulticheckbox" type="checkbox" /><label>{{{ val }}}</label>
-					<input type="hidden" value="{{ value }}" name="{{ data.setting_id }}_{{ key }}" id="{{ data.setting_id }}_{{ key }}" data-customize-setting-link="{{ data.setting_id }}_{{ key }}" />
-				
-					</div>
-					<div class="clear"></div>
-				<# 
-					i++;
-				}); 
-				#>
-				<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
+					<input {{{ checked }}} id="{{ setting_id }}_{{ key }}" name="{{ setting_id }}_{{ key }}" data-setting-link="{{ setting_id }}_{{ key }}" class="responsi-input responsi-imulticheckbox responsi-ui-imulticheckbox" type="checkbox" /><label>{{{ val }}}</label>
+					</div><div class="clear"></div>
+				<# i++; }); #>
+				<# if( data.description ){ #><span class="customize-control-description">{{{ data.description }}}</span><# } #>
 			</div>
 			<?php
 		}

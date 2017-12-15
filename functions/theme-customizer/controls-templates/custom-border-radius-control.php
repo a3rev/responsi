@@ -7,6 +7,8 @@ if ( ! class_exists( 'Customize_Border_Radius_Control' ) && class_exists('WP_Cus
 
 		public $type = 'border_radius';
 
+		public $notifications = array();
+
 		/**
 		 * Constructor.
 		 *
@@ -57,6 +59,7 @@ if ( ! class_exists( 'Customize_Border_Radius_Control' ) && class_exists('WP_Cus
 			$this->json['setting_id']   = $this->id;
 			$this->json['values']       = $values;
 			$this->json['custom_class'] = $custom_class;
+			$this->json['notifications'] = $this->notifications;
 		}
 
 		protected function render() {
@@ -67,7 +70,7 @@ if ( ! class_exists( 'Customize_Border_Radius_Control' ) && class_exists('WP_Cus
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -90,37 +93,25 @@ if ( ! class_exists( 'Customize_Border_Radius_Control' ) && class_exists('WP_Cus
 		 */
 		public function content_template() {
 			?>
-			<#
-			var setting_id    = data.setting_id;
-			var corner_value  = data.values.corner;
-			var rounded_value = data.values.rounded_value;
-
-			var checked = '';
-			var value = corner_value;
-			if ( 'rounded' == value ) {
-				checked = 'checked="checked"';
-			} else {
-				value = 'square';
+			<# 
+			if( 'undefined' === typeof data.values ){
+				data.values = {'corner': 'square', 'rounded_value': '0'};
 			}
-			#>
+			var setting_id = data.setting_id ? data.setting_id : 'border_radius',corner_value  = data.values.corner,rounded_value = data.values.rounded_value,checked = '',value = corner_value;
+			if('rounded' == value){checked = 'checked="checked"';}else{value = 'square';} #>
 			<div class="customize-control-container {{ data.custom_class }}">
-				<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
+				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="border-radius-container">
 					<div class="responsi-iphone-checkbox responsi-iswitcher-checkbox">
-						<input type="checkbox" {{{ checked }}} id="{{ setting_id }}_corner_cb" class="checkbox responsi-input responsi-ui-icheckbox responsi-ui-iswitcher" />
-						<input type="hidden" data-customize-setting-link="{{ setting_id }}[corner]" id="{{ setting_id }}_corner" name="{{ setting_id }}[corner]" value="{{ value }}" />
+						<input type="checkbox" {{{ checked }}} id="{{ setting_id }}_corner" class="checkbox responsi-input responsi-ui-icheckbox responsi-ui-iswitcher" />
 					</div>
 					<div class="clear"></div>
 					<div class="responsi-range-slider">
 						<div class="ui-slide" id="{{ setting_id }}_rounded_div"></div>
-						<input type="text" readonly="readonly" data-customize-setting-link="{{ setting_id }}[rounded_value]" id="{{ setting_id }}_rounded" name="{{ setting_id }}[rounded_value]" value="{{ rounded_value }}" class="responsi-input regular-text islide-value" />
+						<input type="text" readonly="readonly" id="{{ setting_id }}_rounded" name="{{ setting_id }}[rounded_value]" value="{{ rounded_value }}" class="responsi-input regular-text islide-value" />
 					</div>
 				</div>
-				<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
+				<# if( data.description ){ #><span class="customize-control-description">{{{ data.description }}}</span><# } #>
 			</div>
 			<?php
 		}

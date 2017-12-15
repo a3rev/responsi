@@ -18,7 +18,6 @@ class Responsi_Customize_Layout
 		$layout_panels = array();
 		$layout_panels['layout_settings_panel'] = array(
 		    'title' => __('Site Structure', 'responsi'),
-		    'description' => '',
 		    'priority' => 2,
 		);
 		$panels = array_merge($panels, $layout_panels);
@@ -56,12 +55,10 @@ class Responsi_Customize_Layout
 		global $responsi_options;
 		
 		$layout_controls_settings = array();
-		$layout_controls_settings['layout_label1'] = array(
+		$layout_controls_settings['lblayout1'] = array(
 			'control' => array(
 			    'label'      => __('Site Header', 'responsi'),
-			    'description' => '',
 			    'section'    => 'site_structure',
-			    'settings'    => 'layout_label1',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -70,7 +67,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_enable_header_widget'] = array(
 			'control' => array(
 			    'label'      => __('Header Widgets', 'responsi'),
-			    'description' => "",
 			    'section'    => 'site_structure',
 			    'settings'   => 'responsi_enable_header_widget',
 			    'type'       => 'icheckbox',
@@ -86,8 +82,6 @@ class Responsi_Customize_Layout
 
 		$layout_controls_settings['responsi_header_sidebars'] = array(
 			'control' => array(
-			    'label'      => "",
-			    'description' => "",
 			    'section'    => 'site_structure',
 			    'settings'   => 'responsi_header_sidebars',
 			    'type'       => 'layout',
@@ -113,7 +107,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_on_header'] = array(
 			'control' => array(
 			    'label'      => __('Header Widget Display in Mobile Phones', 'responsi'),
-			    'description' => "",
 			    'section'    => 'site_structure',
 			    'settings'   => 'multicheckbox',
 			    'type'       => 'imulticheckbox',
@@ -139,7 +132,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_font_header_widget_text_alignment_mobile'] = array(
 			'control' => array(
 			    'label'      => __('Center Widget Content in Mobile', 'responsi'),
-			    'description' => "",
 			    'section'    => 'site_structure',
 			    'settings'   => 'responsi_font_header_widget_text_alignment_mobile',
 			    'type'       => 'icheckbox',
@@ -154,12 +146,10 @@ class Responsi_Customize_Layout
 			)
 		);
 
-		$layout_controls_settings['layout_labelcs1'] = array(
+		$layout_controls_settings['lblayout2'] = array(
 			'control' => array(
 			    'label'      => __('Post / Page Layout', 'responsi'),
-			    'description' => '',
 			    'section'    => 'site_structure',
-			    'settings'    => 'layout_labelcs1',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -168,7 +158,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_layout'] = array(
 			'control' => array(
 			    'label'      => __('Content Sidebar Layout', 'responsi'),
-			    'description' => "",
 			    'section'    => 'site_structure',
 			    'settings'   => 'responsi_layout',
 			    'type'       => 'layout',
@@ -193,7 +182,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_font_sidebar_widget_text_alignment_mobile'] = array(
 			'control' => array(
 			    'label'      => __('Center Widget Content in Mobile', 'responsi'),
-			    'description' => "",
 			    'section'    => 'site_structure',
 			    'settings'   => 'responsi_font_sidebar_widget_text_alignment_mobile',
 			    'type'       => 'icheckbox',
@@ -208,12 +196,10 @@ class Responsi_Customize_Layout
 			)
 		);
 
-		$layout_controls_settings['layout_labelcl1'] = array(
+		$layout_controls_settings['lblayout3'] = array(
 			'control' => array(
 			    'label'      => __('Content Layout', 'responsi'),
-			    'description' => '',
 			    'section'    => 'site_structure',
-			    'settings'    => 'layout_labelcl1',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -222,7 +208,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_content_layout'] = array(
 			'control' => array(
 			    'label'      => __('Content Section Width', 'responsi'),
-			    'description' => "",
 			    'section'    => 'site_structure',
 			    'settings'   => 'responsi_content_layout',
 			    'type'       => 'layout',
@@ -247,7 +232,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_content_column_grid'] = array(
 			'control' => array(
 			    'label'      => __('Blog Cards Per Row', 'responsi'),
-			    'description' => "",
 			    'section'    => 'site_structure',
 			    'settings'   => 'responsi_content_column_grid',
 			    'type'       => 'layout',
@@ -269,7 +253,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_layout_gutter_vertical'] = array(
 			'control' => array(
 			    'label'      => __('Card Rows Horizontal Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'site_structure',
 			    'settings'   => 'responsi_layout_gutter_vertical',
 			    'type'       => 'itext',
@@ -284,12 +267,10 @@ class Responsi_Customize_Layout
 			)
 		);
 
-		$layout_controls_settings['layout_labelf1'] = array(
+		$layout_controls_settings['lblayout4'] = array(
 			'control' => array(
 			    'label'      => __('Site Footer', 'responsi'),
-			    'description' => '',
 			    'section'    => 'site_structure',
-			    'settings'    => 'layout_labelf1',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -298,7 +279,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_enable_footer_widget'] = array(
 			'control' => array(
 			    'label'      => __('Footer Widgets', 'responsi'),
-			    'description' => "",
 			    'section'    => 'site_structure',
 			    'settings'   => 'responsi_enable_footer_widget',
 			    'type'       => 'icheckbox',
@@ -314,8 +294,6 @@ class Responsi_Customize_Layout
 
 		$layout_controls_settings['responsi_footer_sidebars'] = array(
 			'control' => array(
-			    'label'      => "",
-			    'description' => "",
 			    'section'    => 'site_structure',
 			    'settings'   => 'responsi_footer_sidebars',
 			    'type'       => 'layout',
@@ -341,7 +319,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_font_footer_widget_text_alignment_mobile'] = array(
 			'control' => array(
 			    'label'      => __('Center Widget Content in Mobile', 'responsi'),
-			    'description' => "",
 			    'section'    => 'site_structure',
 			    'settings'   => 'responsi_font_footer_widget_text_alignment_mobile',
 			    'type'       => 'icheckbox',
@@ -356,12 +333,10 @@ class Responsi_Customize_Layout
 			)
 		);
 
-		$layout_controls_settings['layout_labels1'] = array(
+		$layout_controls_settings['lblayout5'] = array(
 			'control' => array(
 			    'label'      => __('Site Vertical Gutter', 'responsi'),
-			    'description' => '',
 			    'section'    => 'site_structure',
-			    'settings'    => 'layout_labels1',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -370,7 +345,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_layout_gutter'] = array(
 			'control' => array(
 			    'label'      => __('Gutter Width %', 'responsi'),
-			    'description' => "",
 				'section'    => 'site_structure',
 			    'settings'   => 'responsi_layout_gutter',
 			    'type'       => 'iselect',
@@ -395,12 +369,10 @@ class Responsi_Customize_Layout
 			)
 		);
 
-		$layout_controls_settings['layout_label02'] = array(
+		$layout_controls_settings['lblayout6'] = array(
 			'control' => array(
 			    'label'      => __('Site Content Width', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
-			    'settings'    => 'layout_label02',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -426,12 +398,10 @@ class Responsi_Customize_Layout
 			)
 		);
 
-		$layout_controls_settings['layout_label2'] = array(
+		$layout_controls_settings['lblayout7'] = array(
 			'control' => array(
 			    'label'      => __('Stretched or Boxed Layout', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
-			    'settings'    => 'layout_label2',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -440,7 +410,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_layout_boxed'] = array(
 			'control' => array(
 			    'label'      => __('Site Layout', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'responsi_layout_boxed',
 			    'type'       => 'iswitcher',
@@ -461,7 +430,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_header_outside_boxed'] = array(
 			'control' => array(
 			    'label'      => __('Stretched Header with Boxed Content', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'responsi_header_outside_boxed',
 			    'type'       => 'icheckbox',
@@ -495,7 +463,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_footer_outside_boxed'] = array(
 			'control' => array(
 			    'label'      => __('Stretched Footer with Boxed Content', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'responsi_footer_outside_boxed',
 			    'type'       => 'icheckbox',
@@ -526,12 +493,10 @@ class Responsi_Customize_Layout
 			)
 		);
 
-		$layout_controls_settings['layout_label3'] = array(
+		$layout_controls_settings['lblayout8'] = array(
 			'control' => array(
 			    'label'      => __('Boxed Content Border', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
-			    'settings'    => 'layout_label3',
 			    'type'       => 'ilabel',
 			    'input_attrs' => array(
 			    	'class' => 'for-box-mode'
@@ -543,7 +508,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_enable_boxed_style'] = array(
 			'control' => array(
 			    'label'      => __('Border Settings', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'responsi_enable_boxed_style',
 			    'type'       => 'icheckbox',
@@ -561,7 +525,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_box_border_lr'] = array(
 			'control' => array(
 			    'label'      => __('Border - Left / Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -579,7 +542,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_box_border_tb'] = array(
 			'control' => array(
 			    'label'      => __('Border - Top / Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -597,7 +559,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_box_border_radius'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius',
@@ -615,7 +576,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow',
@@ -633,7 +593,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_box_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -662,7 +621,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_box_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -688,12 +646,10 @@ class Responsi_Customize_Layout
 			)
 		);
 
-		$layout_controls_settings['layout_labeli3'] = array(
+		$layout_controls_settings['lblayout9'] = array(
 			'control' => array(
 			    'label'      => __('Boxed Content Inner Border', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
-			    'settings'    => 'layout_labeli3',
 			    'type'       => 'ilabel',
 			    'input_attrs' => array(
 			    	'class' => 'for-box-mode'
@@ -705,7 +661,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_box_inner_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground',
@@ -723,7 +678,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_box_inner_border_left'] = array(
 			'control' => array(
 			    'label'      => __('Border - Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -741,7 +695,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_box_inner_border_right'] = array(
 			'control' => array(
 			    'label'      => __('Border - Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -760,7 +713,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_box_inner_border_top'] = array(
 			'control' => array(
 			    'label'      => __('Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -778,7 +730,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_box_inner_border_bottom'] = array(
 			'control' => array(
 			    'label'      => __('Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -796,7 +747,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_box_inner_border_radius'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius',
@@ -814,7 +764,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_box_inner_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow',
@@ -832,7 +781,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_box_inner_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -861,7 +809,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_box_inner_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'layout_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -887,12 +834,10 @@ class Responsi_Customize_Layout
 			)
 		);
 
-		$layout_controls_settings['layout_label4'] = array(
+		$layout_controls_settings['lblayout10'] = array(
 			'control' => array(
 			    'label'      => __('Theme Background', 'responsi'),
-			    'description' => "",
 			    'section'    => 'background_theme',
-			    'settings'    => 'layout_label4',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -901,7 +846,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_style_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'background_theme',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -915,12 +859,11 @@ class Responsi_Customize_Layout
 
 		if( class_exists('Responsi_Backgrounds_Addon')){
 
-			$layout_controls_settings['layout_label5'] = array(
+			$layout_controls_settings['lblayout11'] = array(
 				'control' => array(
 				    'label'      => __('Tile or Pattern Background ', 'responsi'),
-				    'description' => "",
+
 				    'section'    => 'background_theme',
-				    'settings'    => 'layout_label5',
 				    'type'       => 'ilabel'
 				),
 				'setting' => array(
@@ -930,7 +873,7 @@ class Responsi_Customize_Layout
 			$layout_controls_settings['responsi_disable_background_style_img'] = array(
 				'control' => array(
 				    'label'      => __('Background Tiles and Patterns', 'responsi'),
-				    'description' => "",
+
 				    'section'    => 'background_theme',
 				    'settings'   => 'responsi_disable_background_style_img',
 				    'type'       => 'icheckbox',
@@ -947,7 +890,7 @@ class Responsi_Customize_Layout
 			$layout_controls_settings['responsi_background_style_img'] = array(
 				'control' => array(
 				    'label'      => __('Tiles and Patterns', 'responsi'),
-				    'description' => "",
+
 				    'section'    => 'background_theme',
 				    'settings'   => 'responsi_background_style_img',
 				    'type'       => 'background_patterns',
@@ -963,12 +906,10 @@ class Responsi_Customize_Layout
 			);
 		}
 
-		$layout_controls_settings['layout_label6'] = array(
+		$layout_controls_settings['lblayout12'] = array(
 			'control' => array(
 			    'label'      => __('Background Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'background_theme',
-			    'settings'    => 'layout_label6',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -977,7 +918,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_use_style_bg_image'] = array(
 			'control' => array(
 			    'label'      => __('Background Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'background_theme',
 			    'settings'   => 'responsi_use_style_bg_image',
 			    'type'       => 'icheckbox',
@@ -995,7 +935,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_style_bg_image'] = array(
 			'control' => array(
 			    'label'      => __('Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'background_theme',
 			    'settings'   => 'responsi_style_bg_image',
 			    'type'       => 'iupload',
@@ -1013,7 +952,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_use_bg_size'] = array(
 			'control' => array(
 			    'label'      => __('Image Resizer', 'responsi'),
-			    'description' => "",
 			    'section'    => 'background_theme',
 			    'settings'   => 'responsi_use_bg_size',
 			    'type'       => 'icheckbox',
@@ -1056,7 +994,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_style_bg_image_attachment'] = array(
 			'control' => array(
 			    'label'      => __('Image Attachment', 'responsi'),
-			    'description' => "",
 			    'section'    => 'background_theme',
 			    'settings'   => 'responsi_style_bg_image_attachment',
 			    'type'       => 'iswitcher',
@@ -1106,7 +1043,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_style_bg_image_repeat'] = array(
 			'control' => array(
 			    'label'      => __('Image Repeat', 'responsi'),
-			    'description' => "",
 			    'section'    => 'background_theme',
 			    'settings'   => 'responsi_style_bg_image_repeat',
 			    'type'       => 'iradio',
@@ -1130,12 +1066,10 @@ class Responsi_Customize_Layout
 			)
 		);
 
-		$layout_controls_settings['layout_label8'] = array(
+		$layout_controls_settings['lblayout13'] = array(
 			'control' => array(
 			    'label'      => __('Body Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'content_body_style',
-			    'settings'    => 'layout_label8',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -1156,12 +1090,10 @@ class Responsi_Customize_Layout
 			)
 		);
 
-		$layout_controls_settings['layout_label8888'] = array(
+		$layout_controls_settings['lblayout14'] = array(
 			'control' => array(
 			    'label'      => __('Body Content', 'responsi'),
-			    'description' => "",
 			    'section'    => 'content_body_style',
-			    'settings'    => 'layout_label8888',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -1185,7 +1117,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_wrapper_border_top'] = array(
 			'control' => array(
 			    'label'      => __('Container Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'content_body_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -1200,7 +1131,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_wrapper_border_bottom'] = array(
 			'control' => array(
 			    'label'      => __('Container Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'content_body_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -1215,7 +1145,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_wrapper_border_left_right'] = array(
 			'control' => array(
 			    'label'      => __('Container Border - Left / Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'content_body_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -1230,7 +1159,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_wrapper_border_radius'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner', 'responsi'),
-			    'description' => "",
 			    'section'    => 'content_body_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -1245,7 +1173,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_wrapper_border_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'content_body_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -1260,7 +1187,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_wrapper_margin'] = array(
 			'control' => array(
 			    'label'      => __('Border Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'content_body_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -1286,7 +1212,6 @@ class Responsi_Customize_Layout
 		$layout_controls_settings['responsi_wrapper_padding'] = array(
 			'control' => array(
 			    'label'      => __('Border Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'content_body_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',

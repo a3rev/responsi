@@ -18,7 +18,6 @@ class Responsi_Customize_Navigation
 		$navigation_panels = array();
 		$navigation_panels['navigation_settings_panel'] = array(
 		    'title' => __('Navigation Bars', 'responsi'),
-		    'description' => '',
 		    'priority' => 3,
 		);
 		$panels = array_merge($panels, $navigation_panels);
@@ -53,12 +52,10 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings = array();
 
 		//Navi Primary
-		$navigation_controls_settings['navigation_label2'] = array(
+		$navigation_controls_settings['lbnav1'] = array(
 			'control' => array(
 			    'label'      => __('Primary Nav Bar (PNB) Container', 'responsi'),
-			    //'description' => sprintf( __( '<strong>Conditionals:</strong><br/>1. Go to <a href="%s">Menus</a> to activate and manage the Primary Nav Bar (PNB).<br/>2. The PNB Container is NOT the PNB but the container the PNB sits in.<br/>3. The actual PBN is always the wide of the site content - that is the Background - Content LESS left and right padding.<br/>4. Use the PNB Container to create any number of PNB designs.<br/>5. PNB Container Background colour / image sit behind the PNB / PNB Tabs.<br/>6. Stretched Site layout - The PNB Container is stretched with the header.<br/>7. Boxed Site Layout - Use the PBN Container to make PBN appear to be full wide of the content including the left and right content padding.<br/>8. Stretched Header with Boxed Content - The PBN Container is stretched with the header.', 'responsi' ), admin_url( 'nav-menus.php' )),
 			    'section'    => 'navigation_primary',
-			    'settings'    => 'navigation_label2',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -67,7 +64,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_container_nav_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Color', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -82,7 +78,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_enable_container_nav_bg_image'] = array(
 			'control' => array(
 			    'label'      => __('Background Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'responsi_enable_container_nav_bg_image',
 			    'type'       => 'icheckbox',
@@ -100,7 +95,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_container_bg_image'] = array(
 			'control' => array(
 			    'label'      => __('Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'responsi_container_bg_image',
 			    'type'       => 'iupload',
@@ -143,7 +137,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_container_bg_image_repeat'] = array(
 			'control' => array(
 			    'label'      => __('Image Repeat', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'responsi_container_bg_image_repeat',
 			    'type'       => 'iradio',
@@ -169,7 +162,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_container_nav_border_top'] = array(
 			'control' => array(
 			    'label' => __('Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -183,7 +175,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_container_nav_border_bottom'] = array(
 			'control' => array(
 			    'label' => __('Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -197,7 +188,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_container_nav_border_lr'] = array(
 			'control' => array(
 			    'label' => __('Border - Left / Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -211,7 +201,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -226,7 +215,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_container_nav_margin'] = array(
 			'control' => array(
 			    'label'      => __('Border Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -252,7 +240,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_container_nav_padding'] = array(
 			'control' => array(
 			    'label'      => __('Border Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -275,12 +262,10 @@ class Responsi_Customize_Navigation
 			)
 		);
 
-		$navigation_controls_settings['navigation_label3'] = array(
+		$navigation_controls_settings['lbnav2'] = array(
 			'control' => array(
 			    'label'      => __('PNB Tabs Container', 'responsi'),
-			    //'description' => __( '<strong>Conditionals:</strong><br/>1. All PBN settings take priority in browsers above PNB Container settings.<br/>2. PBN is always the wide of the site content - that is the Background - Content LESS left and right padding.', 'responsi' ),
 			    'section'    => 'navigation_primary',
-			    'settings'    => 'navigation_label3',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -288,7 +273,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -303,7 +287,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_border_top'] = array(
 			'control' => array(
 			    'label'      => __('Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -317,7 +300,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_border_bot'] = array(
 			'control' => array(
 			    'label'      => __('Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -331,7 +313,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_border_lr'] = array(
 			'control' => array(
 			    'label'      => __('Border - Left / Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -345,7 +326,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_border_radius_tl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -359,7 +339,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_border_radius_tr'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -373,7 +352,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_border_radius_bl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -387,7 +365,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_border_radius_br'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -401,7 +378,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -415,7 +391,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_margin'] = array(
 			'control' => array(
 			    'label'      => __('Border Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -441,7 +416,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_padding'] = array(
 			'control' => array(
 			    'label'      => __('Border Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -464,12 +438,10 @@ class Responsi_Customize_Navigation
 			)
 		);
 
-		$navigation_controls_settings['navigation_label4'] = array(
+		$navigation_controls_settings['lbnav3'] = array(
 			'control' => array(
 			    'label'      => __('PNB Tabs Style', 'responsi'),
-			    //'description' => sprintf( __( '<strong>Conditionals:</strong><br/>1. Go to <a href="%s">Menus</a> to activate and manage the Primary Nav Bar (PNB).<br/>2. The PNB Container is NOT the PNB but the container the PNB sits in.<br/>3. The actual PBN is always the wide of the site content - that is the Background - Content LESS left and right padding.<br/>4. Use the PNB Container to create any number of PNB designs.<br/>5. PNB Container Background colour / image sit behind the PNB / PNB Tabs.<br/>6. Stretched Site layout - The PNB Container is stretched with the header.<br/>7. Boxed Site Layout - Use the PBN Container to make PBN appear to be full wide of the content including the left and right content padding.<br/>8. Stretched Header with Boxed Content - The PBN Container is stretched with the header.', 'responsi' ), admin_url( 'nav-menus.php' )),
 			    'section'    => 'navigation_primary',
-			    'settings'    => 'navigation_label4',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -478,7 +450,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_navi_background'] = array(
 			'control' => array(
 			    'label'      => __('Tab Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -493,7 +464,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_hover_bg'] = array(
 			'control' => array(
 			    'label'      => __('Tab Hover Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -508,7 +478,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_currentitem_bg'] = array(
 			'control' => array(
 			    'label'      => __('Open Tab Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -523,7 +492,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_position'] = array(
 			'control' => array(
 			    'label'      => __('Tabs Alignment', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'responsi_nav_position',
 			    'type'       => 'iradio',
@@ -544,7 +512,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_divider_border'] = array(
 			'control' => array(
 			    'label'      => __('Tabs Vertical Separator', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -556,11 +523,10 @@ class Responsi_Customize_Navigation
 			)
 		);
 
-		$navigation_controls_settings['navigation_label423'] = array(
+		$navigation_controls_settings['lbnav4'] = array(
 			'control' => array(
 			    'label'      => __('PNB Tabs Border Style', 'responsi'),
 			    'section'    => 'navigation_primary',
-			    'settings'    => 'navigation_label423',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -569,7 +535,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_navi_border_top'] = array(
 			'control' => array(
 			    'label' => __('Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -583,7 +548,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_navi_border_bottom'] = array(
 			'control' => array(
 			    'label' => __('Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -597,7 +561,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_navi_border_left'] = array(
 			'control' => array(
 			    'label' => __('Border - Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -611,7 +574,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_navi_border_right'] = array(
 			'control' => array(
 			    'label' => __('Border - Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -625,7 +587,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_navi_border_radius_tl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -639,7 +600,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_navi_border_radius_tr'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -653,7 +613,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_navi_border_radius_bl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -667,7 +626,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_navi_border_radius_br'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -681,7 +639,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_navi_border_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -707,7 +664,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_navi_border_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -730,11 +686,10 @@ class Responsi_Customize_Navigation
 			)
 		);
 
-		$navigation_controls_settings['navigation_label4223'] = array(
+		$navigation_controls_settings['lbnav5'] = array(
 			'control' => array(
 			    'label'      => __('Nav Bar Font', 'responsi'),
 			    'section'    => 'navigation_primary',
-			    'settings'    => 'navigation_label4223',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -743,7 +698,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_font'] = array(
 			'control' => array(
 			    'label' => __('Menu Item Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -757,7 +711,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_font_transform'] = array(
 			'control' => array(
 			    'label'      => __('Font Transformation', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'responsi_nav_font_transform',
 			    'type'       => 'iradio',
@@ -777,7 +730,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_hover'] = array(
 			'control' => array(
 			    'label'      => __('Font on Hover', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'responsi_nav_hover',
 			    'type'       => 'icolor'
@@ -792,7 +744,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_currentitem'] = array(
 			'control' => array(
 			    'label'      => __('Open Item Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary',
 			    'settings'   => 'responsi_nav_currentitem',
 			    'type'       => 'icolor'
@@ -805,11 +756,10 @@ class Responsi_Customize_Navigation
 		);
 		
 		//Dropdown
-		$navigation_controls_settings['navigation_label5'] = array(
+		$navigation_controls_settings['lbnav6'] = array(
 			'control' => array(
 			    'label'      => __('Nav Bar Dropdown Container', 'responsi'),
 			    'section'    => 'navigation_primary_dropdown',
-			    'settings'    => 'navigation_label5',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -817,7 +767,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_background'] = array(
 			'control' => array(
 			    'label'      => __('Background Color', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -831,7 +780,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_border_top'] = array(
 			'control' => array(
 			    'label' => __('Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -845,7 +793,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_border_bottom'] = array(
 			'control' => array(
 			    'label' => __('Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -859,7 +806,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_border_left'] = array(
 			'control' => array(
 			    'label' => __('Border - Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -873,7 +819,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_border_right'] = array(
 			'control' => array(
 			    'label' => __('Border - Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -887,7 +832,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_border_radius_tl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -901,7 +845,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_border_radius_tr'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -915,7 +858,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_border_radius_bl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -929,7 +871,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_border_radius_br'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -943,7 +884,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -957,7 +897,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -980,11 +919,10 @@ class Responsi_Customize_Navigation
 			)
 		);
 
-		$navigation_controls_settings['navigation_label522'] = array(
+		$navigation_controls_settings['lbnav7'] = array(
 			'control' => array(
 			    'label'      => __('Dropdown Item Containers', 'responsi'),
 			    'section'    => 'navigation_primary_dropdown',
-			    'settings'    => 'navigation_label522',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -993,7 +931,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_item_background'] = array(
 			'control' => array(
 			    'label'      => __('Container Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -1007,7 +944,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_hover_background'] = array(
 			'control' => array(
 			    'label'      => __('Container Hover Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -1022,7 +958,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_item_padding'] = array(
 			'control' => array(
 			    'label'      => __('Item Container Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -1048,7 +983,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_separator'] = array(
 			'control' => array(
 			    'label' => __('Item Horizontal Separator', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -1060,12 +994,10 @@ class Responsi_Customize_Navigation
 			)
 		);
 
-		$navigation_controls_settings['navigation_label533'] = array(
+		$navigation_controls_settings['lbnav8'] = array(
 			'control' => array(
 			    'label'      => __('Dropdown Menu Item Font', 'responsi'),
-			    //'description' => __( '<strong>Conditionals:</strong><br/>1. All PBN settings take priority in browsers above PNB Container settings.<br/>2. PBN is always the wide of the site content - that is the Background - Content LESS left and right padding.', 'responsi' ),
 			    'section'    => 'navigation_primary_dropdown',
-			    'settings'    => 'navigation_label533',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -1074,7 +1006,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_font'] = array(
 			'control' => array(
 			    'label' => __('Menu Item Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography',
@@ -1088,7 +1019,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_hover_color'] = array(
 			'control' => array(
 			    'label'      => __('Font on Hover', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'responsi_nav_dropdown_hover_color',
 			    'type'       => 'icolor'
@@ -1102,7 +1032,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_dropdown_font_transform'] = array(
 			'control' => array(
 			    'label'      => __('Font Transformation', 'responsi'),
-			    'description' => "",
 			    'section'    => 'navigation_primary_dropdown',
 			    'settings'   => 'responsi_nav_dropdown_font_transform',
 			    'type'       => 'iradio',
@@ -1121,11 +1050,10 @@ class Responsi_Customize_Navigation
 		);
 
 		//Navbar in Mobile
-		$navigation_controls_settings['navigation_mobile_label'] = array(
+		$navigation_controls_settings['lbnav9'] = array(
 			'control' => array(
 			    'label'      => __('Mobile and Tablet Nav Bar', 'responsi'),
 			    'section'    => 'navigation_primary_mobile',
-			    'settings'    => 'navigation_mobile_label',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -1133,7 +1061,6 @@ class Responsi_Customize_Navigation
 		$navigation_controls_settings['responsi_nav_mobile_type'] = array(
 			'control' => array(
 			    'label'      => __( 'Nav Bar - Mobile Type', 'responsi' ),
-			    'description' => "",
 			    'section'    => 'navigation_primary_mobile',
 			    'settings'   => 'responsi_nav_mobile_type',
 			    'type'       => 'iswitcher',

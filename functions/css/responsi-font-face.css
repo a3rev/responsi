@@ -108,7 +108,7 @@ span.icon-password { }
 .lost_password-link a:after { content: "a"; }
 .register-link a:after { content: "@"; }
 .login-remember #rememberme { margin-left: 0 !important; }
-#back-top { bottom: 17px; margin: 0; position: fixed; right: 17px; z-index: 100000; }
+#back-top { bottom: 17px; margin: 0; position: fixed; right: 17px; z-index: 100000;display: none }
 #back-top a { text-align: center; text-decoration: none; transition: 1s; text-decoration: none !important; position: relative; }
 #back-top span { display: block; opacity: 0.3; position: relative; transition: 1s; text-decoration: none !important; }
 #back-top a:hover span { opacity: 0.7; }

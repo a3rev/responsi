@@ -60,7 +60,9 @@ if ( !function_exists( 'responsi_load_styles' ) ){
         wp_enqueue_style( 'responsi-layout' );
         wp_enqueue_style( 'responsi-framework' );
         wp_enqueue_style( 'responsi-theme' );
-        wp_enqueue_style( 'google-fonts' );
+        if( !is_customize_preview() ){
+        	wp_enqueue_style( 'google-fonts' );
+        }
     }
 }
 add_action( 'wp_head', 'responsi_load_styles', 0 );
@@ -105,6 +107,7 @@ if ( ! function_exists( 'responsi_load_javascript' ) ){
 	        'responsi_loading_text_end'     => apply_filters( 'responsi_infinitescroll_loading_text_end', __( "No more Posts to load.", "responsi" ) ),
 	        'responsi_loading_text'      	=> apply_filters( 'responsi_infinitescroll_loading_text', __( "Loading the next set of post...", "responsi" ) ),
 	        'responsi_loading_icon'      	=> apply_filters( 'responsi_infinitescroll_loading_icon', esc_url( get_template_directory_uri().'/functions/js/masonry/loading-black.gif' ) ),
+	        'responsi_google_webfonts'      => is_customize_preview() ? esc_url( responsi_google_webfonts() ) : false,
 		);
 
 		wp_localize_script( 'jquery-masonry', 'responsi_paramaters', $responsi_paramaters );

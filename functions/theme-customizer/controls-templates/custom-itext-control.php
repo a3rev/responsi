@@ -7,6 +7,8 @@ if ( ! class_exists( 'Customize_iText_Control' ) && class_exists('WP_Customize_C
 
 		public $type = 'itext';
 
+		public $notifications = array();
+
 		/**
 		 * Constructor.
 		 *
@@ -38,8 +40,10 @@ if ( ! class_exists( 'Customize_iText_Control' ) && class_exists('WP_Customize_C
 		 */
 		public function to_json() {
 			parent::to_json();
+			$this->json['setting_id']      = $this->id;
 			$this->json['value'] = $this->setting->default;
 			$this->json['input_attrs'] = $this->input_attrs;
+			$this->json['notifications'] = $this->notifications;
 		}
 
 		protected function render() {
@@ -50,7 +54,7 @@ if ( ! class_exists( 'Customize_iText_Control' ) && class_exists('WP_Customize_C
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -73,19 +77,17 @@ if ( ! class_exists( 'Customize_iText_Control' ) && class_exists('WP_Customize_C
 		 */
 		public function content_template() {
 			?>
-			<# var setting_id = data.settings['default']; #>
+			<# 
+			if( 'undefined' === typeof data.input_attrs ){ data.input_attrs = {}; }
+			var setting_id = data.setting_id ? data.setting_id : 'itext'; after_input = data.input_attrs.after_input ? data.input_attrs.after_input : ''; #>
 			<div class="customize-control-container">
-				<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
+				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="clear itext-clear"></div>
 				<div class="itext-container">
-					<input class="responsi-itext" name="{{ setting_id }}" id="{{ setting_id }}" data-customize-setting-link="{{ setting_id }}" type="text" value="{{ data.value }}" /><span class="after_iinput ">{{{ data.input_attrs['after_input'] }}}</span>
+					<input class="responsi-itext" name="{{ setting_id }}" id="{{ setting_id }}" type="text" value="{{ data.value }}" /><span class="after_iinput ">{{{ after_input }}}</span>
 				</div>
 				<div class="clear itext-clear itext-clear-last"></div>
-				<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
+				<# if( data.description ){ #><span class="customize-control-description">{{{ data.description }}}</span><# } #>
 			</div>
 			<?php
 		}

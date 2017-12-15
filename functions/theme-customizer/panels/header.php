@@ -18,7 +18,6 @@ class Responsi_Customize_Header
 		$header_panels = array();
 		$header_panels['header_settings_panel'] = array(
 		    'title' => __('Header', 'responsi'),
-		    'description' => '',
 		    'priority' => 2.5,
 		);
 		$panels = array_merge($panels, $header_panels);
@@ -47,12 +46,10 @@ class Responsi_Customize_Header
 
 		$header_controls_settings = array();
 
-		$header_controls_settings['header_label2'] = array(
+		$header_controls_settings['lbheader1'] = array(
 			'control' => array(
 			    'label'      => __('Header Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
-			    'settings'    => 'header_label2',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -61,7 +58,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Color', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -76,7 +72,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_enable_header_bg_image'] = array(
 			'control' => array(
 			    'label'      => __('Background Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'responsi_enable_header_bg_image',
 			    'type'       => 'icheckbox',
@@ -94,7 +89,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_bg_image'] = array(
 			'control' => array(
 			    'label'      => __('Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'responsi_header_bg_image',
 			    'type'       => 'iupload',
@@ -112,7 +106,7 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_bg_header_position'] = array(
 			'control' => array(
 			    'label'      => __('Image Alignment', 'responsi'),
-			    'description' => __( 'Supports absolute values left, right, center, top, bottom or pixel values e.g. 20px for inner container positioning of image.', 'responsi' ),
+			    //'description' => __( 'Supports absolute values left, right, center, top, bottom or pixel values e.g. 20px for inner container positioning of image.', 'responsi' ),
 			    'section'    => 'header_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -137,7 +131,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_bg_image_repeat'] = array(
 			'control' => array(
 			    'label'      => __('Image Repeat', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'responsi_header_bg_image_repeat',
 			    'type'       => 'iradio',
@@ -164,7 +157,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_border_top'] = array(
 			'control' => array(
 			    'label'      => __('Container Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -179,7 +171,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_border_bottom'] = array(
 			'control' => array(
 			    'label'      => __('Container Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -194,7 +185,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_border_lr'] = array(
 			'control' => array(
 			    'label'      => __('Border - Left / Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -209,7 +199,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -224,7 +213,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -250,7 +238,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -273,12 +260,10 @@ class Responsi_Customize_Header
 			)
 		);
 
-		$header_controls_settings['header_label1232'] = array(
+		$header_controls_settings['lbheader2'] = array(
 			'control' => array(
 			    'label'      => __('Header Content Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
-			    'settings'    => 'header_label1232',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -287,7 +272,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_inner_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Color', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -302,7 +286,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_enable_header_inner_bg_image'] = array(
 			'control' => array(
 			    'label'      => __('Background Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'responsi_enable_header_inner_bg_image',
 			    'type'       => 'icheckbox',
@@ -320,7 +303,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_inner_bg_image'] = array(
 			'control' => array(
 			    'label'      => __('Image', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'responsi_header_inner_bg_image',
 			    'type'       => 'iupload',
@@ -338,7 +320,7 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_bg_header_inner_position'] = array(
 			'control' => array(
 			    'label'      => __('Image Alignment', 'responsi'),
-			    'description' => __( 'Supports absolute values left, right, center, top, bottom or pixel values e.g. 20px for inner container positioning of image.', 'responsi' ),
+			    //'description' => __( 'Supports absolute values left, right, center, top, bottom or pixel values e.g. 20px for inner container positioning of image.', 'responsi' ),
 			    'section'    => 'header_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -363,7 +345,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_inner_bg_image_repeat'] = array(
 			'control' => array(
 			    'label'      => __('Image Repeat', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'responsi_header_inner_bg_image_repeat',
 			    'type'       => 'iradio',
@@ -390,7 +371,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_inner_border_top'] = array(
 			'control' => array(
 			    'label'      => __('Container Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -405,7 +385,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_inner_border_bottom'] = array(
 			'control' => array(
 			    'label'      => __('Container Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -420,7 +399,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_inner_border_lr'] = array(
 			'control' => array(
 			    'label'      => __('Border - Left / Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -435,7 +413,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_inner_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -450,7 +427,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_inner_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -476,7 +452,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_inner_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -499,12 +474,10 @@ class Responsi_Customize_Header
 			)
 		);
 
-		$header_controls_settings['header_label4'] = array(
+		$header_controls_settings['lbheader3'] = array(
 			'control' => array(
 			    'label'      => __('Header Widget Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_widgets',
-			    'settings'    => 'header_label4',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -513,7 +486,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_font_header_widget_title'] = array(
 			'control' => array(
 			    'label' => __('Title Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_widgets',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography',
@@ -528,7 +500,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_font_header_widget_text'] = array(
 			'control' => array(
 			    'label' => __('Content Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_widgets',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography',
@@ -543,7 +514,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_font_header_widget_link'] = array(
 			'control' => array(
 			    'label' => __('Linked Text Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_widgets',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography',
@@ -558,7 +528,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_font_header_widget_link_hover'] = array(
 			'control' => array(
 			    'label'      => __('Text Link Hover', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_widgets',
 			    'settings'   => 'responsi_font_header_widget_link_hover',
 			    'type'       => 'icolor'
@@ -573,7 +542,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_font_header_widget_text_alignment'] = array(
 			'control' => array(
 			    'label'      => __('Content Alignment', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_widgets',
 			    'settings'   => 'responsi_font_header_widget_text_alignment',
 			    'type'       => 'iradio',
@@ -591,12 +559,11 @@ class Responsi_Customize_Header
 			)
 		);
 
-		$header_controls_settings['header_label234'] = array(
+		$header_controls_settings['lbheader4'] = array(
 			'control' => array(
 			    'label'      => __('Multi Widget Margin', 'responsi'),
 			    'description' =>  __('Horizontal margin between multiple widgets in the same header widget area', 'responsi'),
 			    'section'    => 'header_widgets',
-			    'settings'    => 'header_label234',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -605,7 +572,6 @@ class Responsi_Customize_Header
 		$header_controls_settings['responsi_header_widget_mobile_margin'] = array(
 			'control' => array(
 			    'label'      => __('Widget Horizontal Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'header_widgets',
 			    'settings'   => 'responsi_header_widget_mobile_margin',
 			    'type'       => 'icheckbox',
@@ -622,8 +588,6 @@ class Responsi_Customize_Header
 
 		$header_controls_settings['responsi_header_widget_mobile_margin_between'] = array(
 			'control' => array(
-			    'label'      => "",
-			    'description' => "",
 			    'section'    => 'header_widgets',
 			    'settings'    => 'responsi_header_widget_mobile_margin_between',
 			    'type'       => 'itext',

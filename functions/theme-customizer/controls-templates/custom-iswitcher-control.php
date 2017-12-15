@@ -9,6 +9,8 @@ if ( ! class_exists( 'Customize_iSwitcher_Control' ) && class_exists('Customize_
 
 		public $ui_class = 'responsi-ui-iswitcher';
 
+		public $notifications = array();
+
 	}
 }
 ?>

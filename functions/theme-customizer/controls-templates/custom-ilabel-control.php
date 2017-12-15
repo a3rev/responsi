@@ -7,6 +7,14 @@ if ( ! class_exists( 'Customize_iLabel_Control' ) && class_exists('WP_Customize_
 
 		public $type = 'ilabel';
 
+		public $notifications = array();
+
+		public function to_json() {
+			parent::to_json();
+			$this->json['setting_id']   = $this->id;
+			$this->json['notifications'] = $this->notifications;
+		}
+
 		protected function render() {
 			
 			$custom_class = '';
@@ -15,7 +23,7 @@ if ( ! class_exists( 'Customize_iLabel_Control' ) && class_exists('WP_Customize_
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -38,13 +46,9 @@ if ( ! class_exists( 'Customize_iLabel_Control' ) && class_exists('WP_Customize_
 		 */
 		public function content_template() {
 			?>
-			<div class="ilabel-container">
-				<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
-				<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
+			<div class="customize-control-container ilabel">
+				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
+				<# if( data.description ){ #><span class="customize-control-description">{{{ data.description }}}</span><# } #>
 			</div>
 			<?php
 		}

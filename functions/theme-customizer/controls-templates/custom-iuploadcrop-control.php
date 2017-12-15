@@ -7,6 +7,7 @@ if ( ! class_exists( 'Customize_iUploadCrop_Control' ) && class_exists('WP_Custo
 		
 		public $type = 'iuploadcrop';
 		public $mime_type = 'image';
+		public $notifications = array();
 
 		public function __construct( $manager, $id, $args = array() ) {
 			parent::__construct( $manager, $id, $args );
@@ -35,8 +36,12 @@ if ( ! class_exists( 'Customize_iUploadCrop_Control' ) && class_exists('WP_Custo
 		 */
 		public function to_json() {
 			parent::to_json();
+			$this->json['setting_id']      = $this->id;
 			$this->json['width'] = isset($this->input_attrs['width']) ? $this->input_attrs['width'] : 250;
 			$this->json['height'] = isset($this->input_attrs['height']) ? $this->input_attrs['height'] : 250;
+			$this->json['flex_width']  = absint( $this->flex_width );
+			$this->json['flex_height'] = absint( $this->flex_height );
+			$this->json['notifications'] = $this->notifications;
 		}
 
 		protected function render() {
@@ -47,7 +52,7 @@ if ( ! class_exists( 'Customize_iUploadCrop_Control' ) && class_exists('WP_Custo
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -63,10 +68,23 @@ if ( ! class_exists( 'Customize_iUploadCrop_Control' ) && class_exists('WP_Custo
 		 */
 		public function content_template() {
 			?>
+			<# var setting_id = data.setting_id ? data.setting_id : 'iupload';
+			if( 'undefined' === typeof data.button_labels ){
+				data.button_labels = {
+					'select'       : '<?php echo __( 'Add Image', 'responsi' );?>',
+					'change'       : '<?php echo __( 'Change Image', 'responsi' );?>',
+					'default'      : '<?php echo __( 'Default', 'responsi' );?>',
+					'remove'       : '<?php echo __( 'Remove', 'responsi' );?>',
+					'placeholder'  : '<?php echo __( 'No image set', 'responsi' );?>',
+					'frame_title'  : '<?php echo __( 'Select Image', 'responsi' );?>',
+					'frame_button' : '<?php echo __( 'Choose Image', 'responsi' );?>',
+				};
+			}
+			#>
 			<div class="customize-control-container">
-			<label for="{{ data.settings['default'] }}-button">
+			<label for="{{ setting_id }}-button">
 				<# if ( data.label ) {  #>
-					<span for="{{ data.settings['default'] }}-button" class="customize-control-title customize-icolor-title">{{{ data.label }}}</span>
+					<span for="{{ setting_id }}-button" class="customize-control-title customize-icolor-title">{{{ data.label }}}</span>
 				<# } #>
 			</label>
 
@@ -108,7 +126,7 @@ if ( ! class_exists( 'Customize_iUploadCrop_Control' ) && class_exists('WP_Custo
 					<div class="actions">
 						<# if ( data.canUpload ) { #>
 						<button type="button" class="button remove-button">{{ data.button_labels.remove }}</button>
-						<button type="button" class="button upload-button control-focus" id="{{ data.settings['default'] }}-button">{{ data.button_labels.change }}</button>
+						<button type="button" class="button upload-button control-focus" id="{{ setting_id }}-button">{{ data.button_labels.change }}</button>
 						<div class="clear"></div>
 						<# } #>
 					</div>
@@ -123,7 +141,7 @@ if ( ! class_exists( 'Customize_iUploadCrop_Control' ) && class_exists('WP_Custo
 							<button type="button" class="button default-button">{{ data.button_labels['default'] }}</button>
 						<# } #>
 						<# if ( data.canUpload ) { #>
-						<button type="button" class="button upload-button" id="{{ data.settings['default'] }}-button">{{ data.button_labels.select }}</button>
+						<button type="button" class="button upload-button" id="{{ setting_id }}-button">{{ data.button_labels.select }}</button>
 						<# } #>
 						<div class="clear"></div>
 					</div>
@@ -131,7 +149,7 @@ if ( ! class_exists( 'Customize_iUploadCrop_Control' ) && class_exists('WP_Custo
 			<# } #>
 
 			<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
+				<span class="customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 			</div>
 			<?php

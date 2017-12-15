@@ -27,7 +27,6 @@ class Responsi_Customize_Widget_Sidebar
 		$sidebar_panels = array();
 		$sidebar_panels['sidebar_widget_settings_panel'] = array(
 		    'title' => __('Sidebars and Widgets', 'responsi'),
-		    'description' => '',
 		    'priority' => 3.5,
 		    'active_callback' => array( $this, 'is_panel_widgets_active' )
 		);
@@ -57,12 +56,10 @@ class Responsi_Customize_Widget_Sidebar
 
 		$widget_controls_settings = array();
 
-		$widget_controls_settings['sidebar_container_label'] = array(
+		$widget_controls_settings['lbwidget1'] = array(
             'control' => array(
                 'label'      => __('Sidebar Container', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_container_settings',
-                'settings'    => 'sidebar_container_label',
                 'type'       => 'ilabel'
             ),
             'setting' => array()
@@ -71,7 +68,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_widget_container_bg'] = array(
             'control' => array(
                 'label'      => __('Background Colour', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_container_settings',
                 'settings'   => 'multiple',
                 'type'       => 'ibackground'
@@ -85,7 +81,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_enable_widget_container_bg_image'] = array(
             'control' => array(
                 'label'      => __('Background Image', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_container_settings',
                 'settings'   => 'responsi_enable_widget_container_bg_image',
                 'type'       => 'icheckbox',
@@ -103,7 +98,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_widget_container_bg_image'] = array(
             'control' => array(
                 'label'      => __('Image', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_container_settings',
                 'settings'   => 'responsi_widget_container_bg_image',
                 'type'       => 'iupload',
@@ -146,7 +140,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_widget_container_bg_image_repeat'] = array(
             'control' => array(
                 'label'      => __('Image Repeat', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_container_settings',
                 'settings'   => 'responsi_widget_container_bg_image_repeat',
                 'type'       => 'iradio',
@@ -172,7 +165,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_widget_container_border_top'] = array(
             'control' => array(
                 'label' => __('Border - Top', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_container_settings',
                 'settings'   => 'multiple',
                 'type'       => 'border'
@@ -186,7 +178,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_widget_container_border_bottom'] = array(
             'control' => array(
                 'label' => __('Border - Bottom', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_container_settings',
                 'settings'   => 'multiple',
                 'type'       => 'border'
@@ -200,7 +191,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_widget_container_border_lr'] = array(
             'control' => array(
                 'label' => __('Border - Left / Right', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_container_settings',
                 'settings'   => 'multiple',
                 'type'       => 'border'
@@ -214,7 +204,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_widget_container_border_radius_tl'] = array(
             'control' => array(
                 'label'      => __('Border Corner - Top Left', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_container_settings',
                 'settings'   => 'multiple',
                 'type'       => 'border_radius'
@@ -228,7 +217,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_widget_container_border_radius_tr'] = array(
             'control' => array(
                 'label'      => __('Border Corner - Top Right', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_container_settings',
                 'settings'   => 'multiple',
                 'type'       => 'border_radius'
@@ -242,7 +230,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_widget_container_border_radius_bl'] = array(
             'control' => array(
                 'label'      => __('Border Corner - Bottom Left', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_container_settings',
                 'settings'   => 'multiple',
                 'type'       => 'border_radius'
@@ -256,7 +243,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_widget_container_border_radius_br'] = array(
             'control' => array(
                 'label'      => __('Border Corner - Bottom Right', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_container_settings',
                 'settings'   => 'multiple',
                 'type'       => 'border_radius'
@@ -271,7 +257,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_widget_container_box_shadow'] = array(
             'control' => array(
                 'label'      => __('Border Shadow', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_container_settings',
                 'settings'   => 'multiple',
                 'type'       => 'box_shadow'
@@ -286,7 +271,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_widget_container_margin'] = array(
             'control' => array(
                 'label'      => __('Margin', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_container_settings',
                 'settings'   => 'multitext',
                 'type'       => 'multitext',
@@ -312,7 +296,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_widget_container_padding'] = array(
             'control' => array(
                 'label'      => __('Padding', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_container_settings',
                 'settings'   => 'multitext',
                 'type'       => 'multitext',
@@ -335,12 +318,10 @@ class Responsi_Customize_Widget_Sidebar
             )
         );
 
-		$widget_controls_settings['widget_label1'] = array(
+		$widget_controls_settings['lbwidget2'] = array(
 			'control' => array(
 			    'label'      => __('Sidebar Widget Style', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
-			    'settings'    => 'widget_label1',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -348,7 +329,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Color', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -362,7 +342,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_border'] = array(
 			'control' => array(
 			    'label' => __('Border', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -376,7 +355,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_border_radius'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -390,7 +368,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -404,7 +381,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_margin_between'] = array(
 			'control' => array(
 			    'label'      => __('Widget Horizontal Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'    => 'responsi_widget_margin_between',
 			    'type'       => 'itext',
@@ -422,7 +398,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -444,12 +419,10 @@ class Responsi_Customize_Widget_Sidebar
 			    'transport'	=> 'postMessage',
 			)
 		);
-		$widget_controls_settings['widget_title_label'] = array(
+		$widget_controls_settings['lbwidget3'] = array(
 			'control' => array(
 			    'label'      => __('Widget Title Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
-			    'settings'    => 'widget_title_label',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -457,7 +430,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_font_title'] = array(
 			'control' => array(
 			    'label' => __('Title Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -471,7 +443,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_title_text_alignment'] = array(
 			'control' => array(
 			    'label'      => __('Title Alignment', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'responsi_widget_title_text_alignment',
 			    'type'       => 'iradio',
@@ -491,7 +462,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_title_transform'] = array(
 			'control' => array(
 			    'label'      => __('Title Transformation', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'responsi_widget_title_transform',
 			    'type'       => 'iradio',
@@ -508,12 +478,10 @@ class Responsi_Customize_Widget_Sidebar
                 'transport'	=> 'postMessage'
 			)
 		);
-		$widget_controls_settings['widget_label1111'] = array(
+		$widget_controls_settings['lbwidget4'] = array(
 			'control' => array(
 			    'label'      => __('Widget Title Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
-			    'settings'    => 'widget_label1111',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -522,7 +490,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_title_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Color', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -536,7 +503,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_title_border_top'] = array(
 			'control' => array(
 			    'label' => __('Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -550,7 +516,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_title_border_bottom'] = array(
 			'control' => array(
 			    'label' => __('Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -564,7 +529,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_title_border_left'] = array(
 			'control' => array(
 			    'label' => __('Border - Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -578,7 +542,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_title_border_right'] = array(
 			'control' => array(
 			    'label' => __('Border - Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -592,7 +555,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_title_border_radius_tl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -606,7 +568,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_title_border_radius_tr'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -620,7 +581,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_title_border_radius_bl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -634,7 +594,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_title_border_radius_br'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -648,7 +607,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_title_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -662,7 +620,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_title_align'] = array(
 			'control' => array(
 			    'label'      => __('Title Container Align', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'responsi_widget_title_align',
 			    'type'       => 'iradio',
@@ -682,7 +639,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_widget_title_margin'] = array(
             'control' => array(
                 'label'      => __('Margin', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_settings',
                 'settings'   => 'multitext',
                 'type'       => 'multitext',
@@ -707,7 +663,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_title_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -729,12 +684,10 @@ class Responsi_Customize_Widget_Sidebar
 			    'transport'	=> 'postMessage',
 			)
 		);
-		$widget_controls_settings['widget_label2'] = array(
+		$widget_controls_settings['lbwidget5'] = array(
 			'control' => array(
 			    'label'      => __('Widget Content Styling', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
-			    'settings'    => 'widget_label2',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -742,7 +695,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_font_text'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -756,7 +708,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_widget_link_color'] = array(
             'control' => array(
                 'label'      => __('Text Link', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_settings',
                 'settings'   => 'responsi_widget_link_color',
                 'type'       => 'icolor'
@@ -770,7 +721,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_widget_link_hover_color'] = array(
             'control' => array(
                 'label'      => __('Text Link Hover', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_settings',
                 'settings'   => 'responsi_widget_link_hover_color',
                 'type'       => 'icolor'
@@ -784,7 +734,6 @@ class Responsi_Customize_Widget_Sidebar
         $widget_controls_settings['responsi_widget_link_visited_color'] = array(
             'control' => array(
                 'label'      => __('Text Link Clicked', 'responsi'),
-                'description' => "",
                 'section'    => 'widget_settings',
                 'settings'   => 'responsi_widget_link_visited_color',
                 'type'       => 'icolor'
@@ -798,7 +747,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_font_text_alignment'] = array(
 			'control' => array(
 			    'label'      => __('Alignment', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'responsi_widget_font_text_alignment',
 			    'type'       => 'iradio',
@@ -818,7 +766,6 @@ class Responsi_Customize_Widget_Sidebar
 		$widget_controls_settings['responsi_widget_content_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',

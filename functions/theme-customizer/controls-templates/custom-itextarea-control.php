@@ -7,6 +7,8 @@ if ( ! class_exists( 'Customize_iTextarea_Control' ) && class_exists('WP_Customi
 
 		public $type = 'itextarea';
 
+		public $notifications = array();
+
 		/**
 		 * Constructor.
 		 *
@@ -38,7 +40,9 @@ if ( ! class_exists( 'Customize_iTextarea_Control' ) && class_exists('WP_Customi
 		 */
 		public function to_json() {
 			parent::to_json();
+			$this->json['setting_id']      = $this->id;
 			$this->json['value'] = $this->setting->default;
+			$this->json['notifications'] = $this->notifications;
 		}
 
 		protected function render() {
@@ -49,7 +53,7 @@ if ( ! class_exists( 'Customize_iTextarea_Control' ) && class_exists('WP_Customi
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -72,17 +76,13 @@ if ( ! class_exists( 'Customize_iTextarea_Control' ) && class_exists('WP_Customi
 		 */
 		public function content_template() {
 			?>
-			<# var setting_id = data.settings['default']; #>
+			<# var setting_id = data.setting_id ? data.setting_id : 'itextarea'; #>
 			<div class="customize-control-container">
-				<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
+				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="itextarea-container">
-					<textarea class="responsi-itextarea" name="{{ setting_id }}" id="{{ setting_id }}" data-customize-setting-link="{{ setting_id }}">{{{ data.value }}}</textarea>
+					<textarea class="responsi-itextarea" name="{{ setting_id }}" id="{{ setting_id }}">{{{ data.value }}}</textarea>
 				</div>
-				<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
+				<# if( data.description ){ #><span class="customize-control-description">{{{ data.description }}}</span><# } #>
 			</div>
 			<?php
 		}

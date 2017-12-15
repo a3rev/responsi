@@ -6,7 +6,16 @@ if ( ! class_exists( 'Customize_iColor_Control' ) && class_exists('WP_Customize_
 	class Customize_iColor_Control extends WP_Customize_Color_Control {
 		public $type = 'icolor';
 
+		public $notifications = array();
+
+		public function to_json() {
+			parent::to_json();
+			$this->json['notifications'] = $this->notifications;
+		}
+
 		public function enqueue() {
+			wp_enqueue_script( 'wp-color-picker' );
+			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_script( 'responsi-customize-controls' );
 		}
 
@@ -16,10 +25,7 @@ if ( ! class_exists( 'Customize_iColor_Control' ) && class_exists('WP_Customize_
 		 * @since 3.4.0
 		 * @uses WP_Customize_Control::to_json()
 		 */
-		public function to_json() {
-			parent::to_json();
-			$this->json['defaultValue'] = $this->setting->default;
-		}
+
 
 		protected function render() {
 			
@@ -29,7 +35,7 @@ if ( ! class_exists( 'Customize_iColor_Control' ) && class_exists('WP_Customize_
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -52,16 +58,20 @@ if ( ! class_exists( 'Customize_iColor_Control' ) && class_exists('WP_Customize_
 		 */
 		public function content_template() {
 			?>
+			<# var defaultValue = '#RRGGBB',defaultValueAttr = '',isHueSlider = data.mode === 'hue';
+			if (data.defaultValue && _.isString( data.defaultValue ) && ! isHueSlider){
+				if ( '#' !== data.defaultValue.substring( 0, 1 ) ) {defaultValue = '#' + data.defaultValue;}else{defaultValue = data.defaultValue;}
+				defaultValueAttr = ' data-default-color=' + defaultValue;
+			} #>
 			<div class="customize-control-container">
-				<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
-				<div class="icolor-container">
-					<input class="color-picker-hex icolor-picker" type="text" value="{{ data.defaultValue }}" data-default-color="{{ data.defaultValue }}" />
+				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
+				<div class="customize-control-content icolor-container">
+					<label><span class="screen-reader-text">{{{ data.label }}}</span>
+					<# if(isHueSlider){ #><input class="color-picker-hue icolor-picker-hue" type="text" data-type="hue" />
+					<# }else{ #><input class="color-picker-hex icolor-picker" type="text" maxlength="7" placeholder="{{ defaultValue }}" {{ defaultValueAttr }} /><# } #>
+					</label>
 				</div>
-				<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
+				<# if( data.description ){ #><span class="customize-control-description">{{{ data.description }}}</span><# } #>
 			</div>
 			<?php
 		}

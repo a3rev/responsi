@@ -8,6 +8,8 @@ if ( ! class_exists( 'Customize_iUpload_Control' ) && class_exists('WP_Customize
 		public $type = 'iupload';
 		public $mime_type = 'image';
 
+		public $notifications = array();
+
 		public function __construct( $manager, $id, $args = array() ) {
 			parent::__construct( $manager, $id, $args );
 			if ( ( $this instanceof WP_Customize_Image_Control ) ) {
@@ -23,6 +25,12 @@ if ( ! class_exists( 'Customize_iUpload_Control' ) && class_exists('WP_Customize
 			}
 		}
 
+		public function to_json() {
+			parent::to_json();
+			$this->json['setting_id']      = $this->id;
+			$this->json['notifications'] = $this->notifications;
+		}
+
 		public function enqueue() {
 			wp_enqueue_script( 'responsi-customize-controls' );
 		}
@@ -35,7 +43,7 @@ if ( ! class_exists( 'Customize_iUpload_Control' ) && class_exists('WP_Customize
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -51,10 +59,23 @@ if ( ! class_exists( 'Customize_iUpload_Control' ) && class_exists('WP_Customize
 		 */
 		public function content_template() {
 			?>
+			<# var setting_id = data.setting_id ? data.setting_id : 'iupload';
+			if( 'undefined' === typeof data.button_labels ){
+				data.button_labels = {
+					'select'       : '<?php echo __( 'Add Image', 'responsi' );?>',
+					'change'       : '<?php echo __( 'Change Image', 'responsi' );?>',
+					'default'      : '<?php echo __( 'Default', 'responsi' );?>',
+					'remove'       : '<?php echo __( 'Remove', 'responsi' );?>',
+					'placeholder'  : '<?php echo __( 'No image set', 'responsi' );?>',
+					'frame_title'  : '<?php echo __( 'Select Image', 'responsi' );?>',
+					'frame_button' : '<?php echo __( 'Choose Image', 'responsi' );?>',
+				};
+			}
+			#>
 			<div class="customize-control-container">
-			<label for="{{ data.settings['default'] }}-button">
+			<label for="{{ setting_id }}-button">
 				<# if ( data.label ) {  #>
-					<span for="{{ data.settings['default'] }}-button" class="customize-control-title customize-icolor-title">{{{ data.label }}}</span>
+					<span for="{{ setting_id }}-button" class="customize-control-title customize-icolor-title">{{{ data.label }}}</span>
 				<# } #>
 			</label>
 
@@ -96,7 +117,7 @@ if ( ! class_exists( 'Customize_iUpload_Control' ) && class_exists('WP_Customize
 					<div class="actions">
 						<# if ( data.canUpload ) { #>
 						<button type="button" class="button remove-button">{{ data.button_labels.remove }}</button>
-						<button type="button" class="button upload-button control-focus" id="{{ data.settings['default'] }}-button">{{ data.button_labels.change }}</button>
+						<button type="button" class="button upload-button control-focus" id="{{ setting_id }}-button">{{ data.button_labels.change }}</button>
 						<div class="clear"></div>
 						<# } #>
 					</div>
@@ -111,7 +132,7 @@ if ( ! class_exists( 'Customize_iUpload_Control' ) && class_exists('WP_Customize
 							<button type="button" class="button default-button">{{ data.button_labels['default'] }}</button>
 						<# } #>
 						<# if ( data.canUpload ) { #>
-						<button type="button" class="button upload-button" id="{{ data.settings['default'] }}-button">{{ data.button_labels.select }}</button>
+						<button type="button" class="button upload-button" id="{{ setting_id }}-button">{{ data.button_labels.select }}</button>
 						<# } #>
 						<div class="clear"></div>
 					</div>
@@ -119,7 +140,7 @@ if ( ! class_exists( 'Customize_iUpload_Control' ) && class_exists('WP_Customize
 			<# } #>
 
 			<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
+				<span class="customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 			</div>
 			<?php

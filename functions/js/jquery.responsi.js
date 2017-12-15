@@ -1202,6 +1202,18 @@ jQuery(document).ready(function(){
             }
         }
 
+        if( typeof wp.customize != "undefined" ){
+            setTimeout(function(){
+                if( responsi_paramaters.responsi_google_webfonts != '' ){
+                    if ($('#responsi-google-webfonts').length > 0) {
+                        $('#responsi-google-webfonts').attr( 'href', responsi_paramaters.responsi_google_webfonts );
+                    } else {
+                        $('head').append('<link id="responsi-google-webfonts" href="'+responsi_paramaters.responsi_google_webfonts+'" rel="stylesheet">');
+                    }
+                }
+            }, 250 );
+        }
+
         jQuery( window ).on( 'resize newElements lazyload', function() {
 	        var content_column = responsi_paramaters.responsi_content_column_grid;
 	        var screen_width = jQuery('html').width();
@@ -1271,9 +1283,6 @@ jQuery(document).ready(function(){
 	/* Add back-top first */
 	/*-----------------------------------------------------------------------------------*/
 
-	// hide #back-top first
-	jQuery("#back-top").hide();
-
 	// fade in #back-top
 	jQuery(function () {
 		jQuery(window).scroll(function () {
@@ -1294,3 +1303,5 @@ jQuery(document).ready(function(){
 	});
 
 }); // End jQuery()
+
+

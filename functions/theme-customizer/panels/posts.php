@@ -18,7 +18,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_panels = array();
 		$posts_panels['posts_settings_panel'] = array(
 		    'title' => __('Blog Posts', 'responsi'),
-		    'description' => '',
 		    'priority' => 4.5,
 		);
 		$panels = array_merge($panels, $posts_panels);
@@ -48,12 +47,10 @@ class Responsi_Customize_Blog_Posts
 
 		$posts_controls_settings = array();
 
-		$posts_controls_settings['post_label1'] = array(
+		$posts_controls_settings['lbpost1'] = array(
 			'control' => array(
 			    'label'      => __('Post Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
-			    'settings'    => 'post_label1',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -61,7 +58,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_box_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Color', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -75,7 +71,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_box_border'] = array(
 			'control' => array(
 			    'label' => __('Container Border', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -89,7 +84,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_box_border_radius'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -103,7 +97,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -117,7 +110,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_box_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -142,7 +134,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_box_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -164,12 +155,10 @@ class Responsi_Customize_Blog_Posts
 			    'transport'	=> 'postMessage',
 			)
 		);
-		$posts_controls_settings['post_label2'] = array(
+		$posts_controls_settings['lbpost2'] = array(
 			'control' => array(
 			    'label'      => __('Post Title', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
-			    'settings'    => 'post_label2',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -177,7 +166,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_font_post_title'] = array(
 			'control' => array(
 			    'label' => __('Title Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -191,7 +179,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_title_font_transform'] = array(
 			'control' => array(
 			    'label'      => __('Title Transformation', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'responsi_post_title_font_transform',
 			    'type'       => 'iradio',
@@ -211,7 +198,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_title_margin'] = array(
 			'control' => array(
 			    'label'      => __('Title Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -233,12 +219,10 @@ class Responsi_Customize_Blog_Posts
 			    'transport'	=> 'postMessage',
 			)
 		);
-		$posts_controls_settings['post_label1222'] = array(
+		$posts_controls_settings['lbpost3'] = array(
 			'control' => array(
 			    'label'      => __('Post Content Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
-			    'settings'    => 'post_label1222',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -246,7 +230,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_font_post_text'] = array(
 			'control' => array(
 			    'label' => __('Content Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -258,12 +241,10 @@ class Responsi_Customize_Blog_Posts
 			)
 		);
 
-		$posts_controls_settings['post_label4'] = array(
+		$posts_controls_settings['lbpost4'] = array(
 			'control' => array(
 			    'label'      => __('Categories Meta Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
-			    'settings'    => 'post_label4',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -271,7 +252,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_font_post_cat_tag'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -285,7 +265,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_font_post_cat_tag_transform'] = array(
 			'control' => array(
 			    'label'      => __('Transformation', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'responsi_font_post_cat_tag_transform',
 			    'type'       => 'iradio',
@@ -305,7 +284,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_font_post_cat_tag_link'] = array(
 			'control' => array(
 			    'label'      => __('Text Link Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'responsi_font_post_cat_tag_link',
 			    'type'       => 'icolor'
@@ -320,7 +298,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_font_post_cat_tag_link_hover'] = array(
 			'control' => array(
 			    'label'      => __('Text Link Hover', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'responsi_font_post_cat_tag_link_hover',
 			    'type'       => 'icolor'
@@ -332,12 +309,10 @@ class Responsi_Customize_Blog_Posts
 			)
 		);
 
-		$posts_controls_settings['post_labelz4'] = array(
+		$posts_controls_settings['lbpost5'] = array(
 			'control' => array(
 			    'label'      => __('Categories Meta Icon', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
-			    'settings'    => 'post_labelz4',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -346,7 +321,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_enable_font_post_cat_tag_icon'] = array(
 			'control' => array(
 			    'label'      => __('Meta Icon', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'responsi_enable_font_post_cat_tag_icon',
 			    'type'       => 'icheckbox',
@@ -368,7 +342,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_font_post_cat_tag_icon'] = array(
 			'control' => array(
 			    'label'      => __('Icon Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'responsi_font_post_cat_tag_icon',
 			    'type'       => 'icolor',
@@ -383,12 +356,10 @@ class Responsi_Customize_Blog_Posts
 			)
 		);
 
-		$posts_controls_settings['post_labelz14'] = array(
+		$posts_controls_settings['lbpost6'] = array(
 			'control' => array(
 			    'label'      => __('Categories Meta Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
-			    'settings'    => 'post_labelz14',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -397,7 +368,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_cat_tag_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Color', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -411,7 +381,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_cat_tag_border_top'] = array(
 			'control' => array(
 			    'label' => __('Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -425,7 +394,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_cat_tag_border_bottom'] = array(
 			'control' => array(
 			    'label' => __('Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -439,7 +407,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_cat_tag_border_lr'] = array(
 			'control' => array(
 			    'label' => __('Border - Left / Righ', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -453,7 +420,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_cat_tag_border_radius'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -467,7 +433,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_cat_tag_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -492,7 +457,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_cat_tag_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -515,12 +479,10 @@ class Responsi_Customize_Blog_Posts
 			)
 		);
 
-		$posts_controls_settings['post_label411'] = array(
+		$posts_controls_settings['lbpost7'] = array(
 			'control' => array(
 			    'label'      => __('Tag Meta Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
-			    'settings'    => 'post_label411',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -528,7 +490,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_font_post_utility_tag'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -542,7 +503,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_font_post_utility_tag_transform'] = array(
 			'control' => array(
 			    'label'      => __('Transformation', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'responsi_font_post_utility_tag_transform',
 			    'type'       => 'iradio',
@@ -562,7 +522,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_font_post_utility_tag_link'] = array(
 			'control' => array(
 			    'label'      => __('Text Link Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'responsi_font_post_utility_tag_link',
 			    'type'       => 'icolor'
@@ -577,7 +536,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_font_post_utility_tag_link_hover'] = array(
 			'control' => array(
 			    'label'      => __('Text Link Hover', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'responsi_font_post_utility_tag_link_hover',
 			    'type'       => 'icolor'
@@ -589,12 +547,10 @@ class Responsi_Customize_Blog_Posts
 			)
 		);
 
-		$posts_controls_settings['post_labelv4'] = array(
+		$posts_controls_settings['lbpost8'] = array(
 			'control' => array(
 			    'label'      => __('Tag Meta Icon', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
-			    'settings'    => 'post_labelv4',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -603,7 +559,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_enable_font_post_utility_tag_icon'] = array(
 			'control' => array(
 			    'label'      => __('Meta Icon', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'responsi_enable_font_post_utility_tag_icon',
 			    'type'       => 'icheckbox',
@@ -625,7 +580,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_font_post_utility_tag_icon'] = array(
 			'control' => array(
 			    'label'      => __('Icon Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'responsi_font_post_utility_tag_icon',
 			    'type'       => 'icolor',
@@ -640,12 +594,10 @@ class Responsi_Customize_Blog_Posts
 			)
 		);
 
-		$posts_controls_settings['post_labelv45'] = array(
+		$posts_controls_settings['lbpost9'] = array(
 			'control' => array(
 			    'label'      => __('Tag Meta Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
-			    'settings'    => 'post_labelv45',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -654,7 +606,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_utility_tag_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Color', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -668,7 +619,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_utility_tag_border_top'] = array(
 			'control' => array(
 			    'label' => __('Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -682,7 +632,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_utility_tag_border_bottom'] = array(
 			'control' => array(
 			    'label' => __('Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -696,7 +645,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_utility_tag_border_lr'] = array(
 			'control' => array(
 			    'label' => __('Border - Left / Righ', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -710,7 +658,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_utility_tag_border_radius'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -724,7 +671,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_utility_tag_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -749,7 +695,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_utility_tag_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -772,12 +717,10 @@ class Responsi_Customize_Blog_Posts
 			)
 		);
 
-		$posts_controls_settings['post_layout_label1'] = array(
+		$posts_controls_settings['lbpost10'] = array(
 			'control' => array(
 			    'label'      => __('Post Title Meta', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
-			    'settings'    => 'post_layout_label1',
 			    'type'       => 'ilabel',
 			    'priority' => 3,
 			),
@@ -787,7 +730,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_disable_post_meta_author'] = array(
 			'control' => array(
 			    'label'      => __('Post Author', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
 			    'settings'   => 'responsi_disable_post_meta_author',
 			    'type'       => 'icheckbox'
@@ -802,7 +744,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_disable_post_meta_date'] = array(
 			'control' => array(
 			    'label'      => __('Post Date', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
 			    'settings'   => 'responsi_disable_post_meta_date',
 			    'type'       => 'icheckbox'
@@ -817,7 +758,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_disable_post_meta_comment'] = array(
 			'control' => array(
 			    'label'      => __('Post Comment Count', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
 			    'settings'   => 'responsi_disable_post_meta_comment',
 			    'type'       => 'icheckbox'
@@ -829,12 +769,10 @@ class Responsi_Customize_Blog_Posts
 			)
 		);
 
-		$posts_controls_settings['post_label3'] = array(
+		$posts_controls_settings['lbpost11'] = array(
 			'control' => array(
 			    'label'      => __('Post Title Meta Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
-			    'settings'    => 'post_label3',
 			    'type'       => 'ilabel',
 			    'input_attrs' => array(
 			    	'class' => 'single-post-meta'
@@ -845,7 +783,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_font_post_meta'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography',
@@ -862,7 +799,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_transform'] = array(
 			'control' => array(
 			    'label'      => __('Transformation', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
 			    'settings'   => 'responsi_post_meta_transform',
 			    'type'       => 'iradio',
@@ -884,7 +820,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_link'] = array(
 			'control' => array(
 			    'label'      => __('Text Link Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
 			    'settings'   => 'responsi_post_meta_link',
 			    'type'       => 'icolor',
@@ -902,7 +837,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_link_hover'] = array(
 			'control' => array(
 			    'label'      => __('Text Link Hover', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
 			    'settings'   => 'responsi_post_meta_link_hover',
 			    'type'       => 'icolor',
@@ -917,12 +851,10 @@ class Responsi_Customize_Blog_Posts
 			)
 		);
 
-		$posts_controls_settings['post_labelvv3'] = array(
+		$posts_controls_settings['lbpost12'] = array(
 			'control' => array(
 			    'label'      => __('Post Title Meta Icons', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
-			    'settings'    => 'post_labelvv3',
 			    'type'       => 'ilabel',
 			    'input_attrs' => array(
 			    	'class' => 'single-post-meta'
@@ -934,7 +866,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_enable_post_meta_icon'] = array(
 			'control' => array(
 			    'label'      => __('Meta Icons', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
 			    'settings'   => 'responsi_enable_post_meta_icon',
 			    'type'       => 'icheckbox',
@@ -956,7 +887,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_icon'] = array(
 			'control' => array(
 			    'label'      => __('Icon Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
 			    'settings'   => 'responsi_post_meta_icon',
 			    'type'       => 'icolor',
@@ -971,12 +901,10 @@ class Responsi_Customize_Blog_Posts
 			)
 		);
 
-		$posts_controls_settings['post_label355'] = array(
+		$posts_controls_settings['lbpost13'] = array(
 			'control' => array(
 			    'label'      => __('Post Title Meta Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
-			    'settings'    => 'post_label355',
 			    'type'       => 'ilabel',
 			    'input_attrs' => array(
 			    	'class' => 'single-post-meta'
@@ -988,7 +916,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Color', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground',
@@ -1005,7 +932,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_border_top'] = array(
 			'control' => array(
 			    'label' => __('Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -1022,7 +948,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_border_bottom'] = array(
 			'control' => array(
 			    'label' => __('Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -1039,7 +964,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_border_lr'] = array(
 			'control' => array(
 			    'label' => __('Border - Left / Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -1056,7 +980,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -1084,7 +1007,6 @@ class Responsi_Customize_Blog_Posts
 		$posts_controls_settings['responsi_post_meta_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'posts_layout',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',

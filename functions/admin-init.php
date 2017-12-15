@@ -822,7 +822,7 @@ function responsi_default_options( $type = 'options' )
                     break;
 
                     default:
-                        if ( 'ilabel' !== $type && 'ihtml' !== $type && isset( $default['setting']['default']) ) {
+                        if ( 'ilabel' !== $type && isset( $default['setting']['default']) ) {
                             $options[$option_id] = $default['setting']['default'];
                         }
                     break;
@@ -966,8 +966,7 @@ if ( is_array( $responsi_includes ) && count( $responsi_includes ) > 0 ) {
 /*-----------------------------------------------------------------------------------*/
 
 $responsi_includes_customizer = array(
-    'functions/theme-customizer/customizer-functions.php',
-    'functions/theme-customizer/customizer.php',
+    'functions/theme-customizer/responsi-customize.php',
     'functions/theme-customizer/panels/layout.php',
     'functions/theme-customizer/panels/header.php',
     'functions/theme-customizer/panels/navigation.php',
@@ -979,7 +978,15 @@ $responsi_includes_customizer = array(
     'functions/theme-customizer/panels/pages.php'
 );
 
-$responsi_includes_customizer = apply_filters( 'responsi_includes_customizer', $responsi_includes_customizer );
+$responsi_customize_disabled_addon = false;
+if( isset( $_GET['disabled-addon'] ) && 'disabled' === $_GET['disabled-addon'] ) {
+    $responsi_customize_disabled_addon = true;
+}
+
+if( !$responsi_customize_disabled_addon ){
+    $responsi_includes_customizer = apply_filters( 'responsi_includes_customizer', $responsi_includes_customizer );
+}
+
 foreach ( $responsi_includes_customizer as $i ) {
     $located = locate_template( $i, true );
     if ( '' === $located ) {

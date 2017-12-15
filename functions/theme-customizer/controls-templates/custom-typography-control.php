@@ -7,6 +7,8 @@ if ( ! class_exists( 'Customize_Typography_Control' ) && class_exists('WP_Custom
 
 		public $type = 'typography';
 
+		public $notifications = array();
+
 		/**
 		 * Constructor.
 		 *
@@ -58,6 +60,7 @@ if ( ! class_exists( 'Customize_Typography_Control' ) && class_exists('WP_Custom
 			$this->json['setting_id']   = $this->id;
 			$this->json['values']       = $values;
 			$this->json['custom_class'] = $custom_class;
+			$this->json['notifications'] = $this->notifications;
 		}
 
 		protected function render() {
@@ -68,7 +71,7 @@ if ( ! class_exists( 'Customize_Typography_Control' ) && class_exists('WP_Custom
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -91,29 +94,22 @@ if ( ! class_exists( 'Customize_Typography_Control' ) && class_exists('WP_Custom
 		 */
 		public function content_template() {
 			?>
-			<#
-			var setting_id  = data.setting_id;
-			var color_value = data.values.color;
-			#>
+			<# if( 'undefined' === typeof data.values ){ data.values = {'size':'14' , 'line_height':'1.4' , 'face':'Open Sans', 'style':'normal' , 'color':'#555555'}; }
+			var setting_id = data.setting_id,defaultValue = '#RRGGBB',defaultValueAttr = '',isHueSlider = data.mode === 'hue';
+			if( data.values.color && _.isString( data.values.color ) && ! isHueSlider ){
+				if ( '#' !== data.values.color.substring( 0, 1 ) ) {defaultValue = '#' + data.values.color;}else{defaultValue = data.values.color;}
+				defaultValueAttr = ' data-default-color=' + defaultValue;
+			} #>
 			<div class="customize-control-container {{ data.custom_class }}">
-				<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
+				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="typography-container">
-					<select data-customize-setting-link="{{ setting_id }}[size]" name="{{ setting_id }}[size]" class="responsi-typography responsi-typography-size" >
-					</select>
-					<select data-customize-setting-link="{{ setting_id }}[line_height]" name="{{ setting_id }}[line_height]" class="responsi-typography responsi-typography-line-height" >
-					</select>
-					<select data-customize-setting-link="{{ setting_id }}[face]" name="{{ setting_id }}[face]" class="responsi-typography responsi-typography-face" >
-					</select>
-					<div class="clear"></div>
-					<select data-customize-setting-link="{{ setting_id }}[style]" name="{{ setting_id }}[style]" class="responsi-typography responsi-typography-style" >
-					</select>
-					<input type="text" data-customize-setting-link="{{ setting_id }}[color]" name="{{ setting_id }}[color]" value="{{ color_value }}" data-default-color="{{ color_value }}" class="color-picker-hex icolor-picker"  />
+					<select name="{{ setting_id }}[size]" class="responsi-typography responsi-typography-size"></select>
+					<select name="{{ setting_id }}[line_height]" class="responsi-typography responsi-typography-line-height"></select>
+					<select name="{{ setting_id }}[face]" class="responsi-typography responsi-typography-face"></select>
+					<select name="{{ setting_id }}[style]" class="responsi-typography responsi-typography-style"></select>
+					<input class="color-picker-hex icolor-picker" type="text" maxlength="7" placeholder="{{ defaultValue }}" {{ defaultValueAttr }} />
 				</div>
-				<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
+				<# if( data.description ){ #><span class="customize-control-description">{{{ data.description }}}</span><# } #>
 			</div>
 			<?php
 		}

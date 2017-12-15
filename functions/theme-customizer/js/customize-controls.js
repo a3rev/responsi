@@ -2,6 +2,400 @@
 
 	var api = wp.customize;
 
+	responsiCustomizeBase = {
+
+		setup_ui_unhide_visible: function(groupID) {
+
+			$('#' + groupID + ' .collapsed2').each(function() {
+				$(this).find('input:checked').parent().parent().parent().parent().nextAll().each(function() {
+					if ($(this).hasClass('last')) {
+						$(this).removeClass('visible').addClass('hide');
+						return false;
+					}
+					$(this).filter('.visible').removeClass('visible').addClass('hide');
+				});
+			});
+		},
+
+		setup_ui_unhide_hidden: function(groupID) {
+
+			$('#' + groupID + ' .collapsed').each(function() {
+				$(this).find('input:checked').parent().parent().parent().parent().nextAll().each(function() {
+					if ($(this).hasClass('last')) {
+						$(this).removeClass('hide');
+						return false;
+					}
+					$(this).filter('.hide').removeClass('hide');
+				});
+			});
+		},
+
+		setup_ui_unhide_hidden_custom: function(groupID) {
+
+			$('#' + groupID + ' .collapsed-custom').each(function() {
+				$(this).find('input:checked').parent().parent().parent().parent().nextAll().each(function() {
+					if ($(this).hasClass('hide-custom-last')) {
+						$(this).removeClass('hide-custom');
+						return false;
+					}
+					$(this).filter('.hide-custom').removeClass('hide-custom');
+				});
+			});
+		},
+
+		setup_ui_unhide_hidden_custom_sub: function(groupID) {
+
+			$('#' + groupID + ' .collapsed-custom-sub').each(function() {
+				$(this).find('input:checked').parent().parent().parent().parent().nextAll().each(function() {
+					if ($(this).hasClass('hide-custom-sub-last')) {
+						$(this).removeClass('hide-custom-sub');
+						return false;
+					}
+					$(this).filter('.hide-custom-sub').removeClass('hide-custom-sub');
+				});
+			});
+		},
+
+		setup_ui_custom_logic: function(groupID) {
+
+			//Logic Layout
+			$('#' + groupID + ' .customize-control-layout.layout-logic input.responsi-radio-img-radio:checked').siblings('img').trigger('click');
+			$('#' + groupID + ' .customize-control-layout.post-thumb-type input.responsi-radio-img-radio:checked').siblings('img').trigger('click');
+
+			//Logic Boxed layout
+			if ($('#' + groupID + ' #responsi_layout_boxed').prop('checked')) {
+				$('.for-wide-mode').addClass('hide-custom');
+				$('.for-box-mode').removeClass('hide-custom');
+			} else {
+				$('.for-box-mode').addClass('hide-custom');
+				$('.for-wide-mode').removeClass('hide-custom');
+			}
+			// end Logic Boxed layout
+
+			//Logic Background Theme
+			if ($('#' + groupID + ' #responsi_disable_background_style_img').prop('checked')) {
+				$('#' + groupID + ' #responsi_use_style_bg_image').removeAttr('checked').iphoneStyle("refresh");
+			}
+			if ($('#' + groupID + ' #responsi_use_style_bg_image').prop('checked')) {
+				$('#' + groupID + ' #responsi_disable_background_style_img').removeAttr('checked').iphoneStyle("refresh");
+			}
+			//end Logic Background Theme
+
+			//Header Mobile
+			var widget_num = $('#' + groupID + ' .header_sidebars_logical').find('input:checked').val();
+			if (widget_num == 0) {
+				$('#' + groupID + ' .header-widgets-logic').hide();
+			} else {
+				$('#' + groupID + ' .header-widgets-logic').show();
+			}
+			$('#' + groupID + ' .header-widgets-logic .responsi-imulticheckbox-item').hide();
+			for (var i = 1; i <= widget_num; i++) {
+				$('#' + groupID + ' .imulticheckbox-' + i).show();
+			}
+
+			//Sidebar Widget Mobile
+			var sidebar_widget_logical = $('#' + groupID + ' .sidebar_widget_logical').find('input:checked').val();
+			if (sidebar_widget_logical == 'one-col') {
+				$('#' + groupID + ' .sidebar-widgets-logic').hide();
+			} else {
+				$('#' + groupID + ' .sidebar-widgets-logic').show();
+			}
+
+			//Footer Mobile
+			var footer_widget_logical = $('#' + groupID + ' .footer_widget_logical').find('input:checked').val();
+			if (footer_widget_logical == 0) {
+				$('#' + groupID + ' .footer-widgets-logic').hide();
+			} else {
+				$('#' + groupID + ' .footer-widgets-logic').show();
+			}
+
+			//Logic Comments
+			var responsi_comments = $('input[name="responsi_comments"]:checked');
+			if (responsi_comments.val() == 'none') {
+				$('li#customize-control-responsi_post_comments_bg, li#customize-control-post_label126').addClass('hide');
+			} else {
+				$('li#customize-control-responsi_post_comments_bg, li#customize-control-post_label126').removeClass('hide');
+			}
+
+			//Logic Footer Cell
+			var footer_cell_1;
+			var footer_cell_2;
+			if ($('input#responsi_disable_ext_cat_author').prop('checked')) {
+				footer_cell_1 = true;
+			} else {
+				footer_cell_1 = false;
+			}
+
+			if ($('input#responsi_disable_ext_tags_comment').prop('checked')) {
+				footer_cell_2 = true;
+			} else {
+				footer_cell_2 = false;
+			}
+
+			if (footer_cell_1 == true && footer_cell_2 == true) {
+				$('.footer-cell-both').removeClass('hide');
+			}
+
+			if (footer_cell_1 == false && footer_cell_2 == false) {
+				$('.footer-cell-both').addClass('hide');
+			}
+
+			if (footer_cell_1 == true && footer_cell_2 == false) {
+				$('.footer-cell-1, .footer-cell-both').removeClass('hide');
+				$('.footer-cell-2').addClass('hide');
+			}
+
+			if (footer_cell_1 == false && footer_cell_2 == true) {
+				$('.footer-cell-2, .footer-cell-both').removeClass('hide');
+				$('.footer-cell-1').addClass('hide');
+			}
+
+			var _post_meta_date = false;
+			var _post_meta_comment = false;
+			var _post_meta_author = false;
+			if ($('input#responsi_disable_post_meta_date').prop('checked')) {
+				_post_meta_date = true;
+			} else {
+				_post_meta_date = false;
+			}
+			if ($('input#responsi_disable_post_meta_comment').prop('checked')) {
+				_post_meta_comment = true;
+			} else {
+				_post_meta_comment = false;
+			}
+			if ($('input#responsi_disable_post_meta_author').prop('checked')) {
+				_post_meta_author = true;
+			} else {
+				_post_meta_author = false;
+			}
+			if (_post_meta_date == false && _post_meta_comment == false && _post_meta_author == false) {
+				$('.single-post-meta').addClass('hide');
+			} else {
+				$('.single-post-meta').removeClass('hide');
+			}
+		},
+
+		handleEvents: function() {
+			$(document).on('responsi-ui-iradio-switch', '.customize-control input[name="responsi_comments"]', function(elem, status) {
+				if ($(this).prop("checked")) {
+					if ($(this).val() == 'none') {
+						$('li#customize-control-responsi_post_comments_bg, li#customize-control-post_label126').addClass('hide');
+					} else {
+						$('li#customize-control-responsi_post_comments_bg, li#customize-control-post_label126').removeClass('hide');
+					}
+				}
+			});
+
+			// Off for show
+			$(document).on('responsi-ui-icheckbox-switch', '.customize-control.collapsed2 input.responsi-ui-icheckbox', function(event, elem, status) {
+				if ($(this).prop('checked')) {
+					$(this).parent().parent().parent().parent('.collapsed2').nextAll().each(function() {
+						if ($(this).filter('.last').length) {
+							$(this).slideUp("fast").removeClass('visible').addClass('hide');
+							return false;
+						}
+						$(this).slideUp("fast").removeClass('visible').addClass('hide');
+					});
+				} else {
+					$(this).parent().parent().parent().parent('.collapsed2').nextAll().each(function() {
+						if ($(this).filter('.last').length) {
+							$(this).slideDown("fast").addClass('visible').removeClass('hide');
+							return false;
+						}
+						$(this).slideDown("fast").addClass('visible').removeClass('hide');
+					});
+				}
+			});
+
+			// Off for hide
+			$(document).on('responsi-ui-icheckbox-switch', '.customize-control.collapsed input.responsi-ui-icheckbox', function(event, elem, status) {
+				if ($(this).prop('checked')) {
+					$(this).parent().parent().parent().parent('.collapsed').nextAll().each(function() {
+						if ($(this).filter('.last').length) {
+							$(this).slideDown("fast").removeClass('hide').addClass('visible');
+							return false;
+						}
+						$(this).slideDown("fast").removeClass('hide').addClass('visible');
+					});
+				} else {
+					$(this).parent().parent().parent().parent('.collapsed').nextAll().each(function() {
+						if ($(this).filter('.last').length) {
+							$(this).slideUp("fast").addClass('hide');
+							return false;
+						}
+						$(this).slideUp("fast").addClass('hide');
+					});
+				}
+			});
+
+			// Off for hide custom
+			$(document).on('responsi-ui-icheckbox-switch', '.customize-control.collapsed-custom input.responsi-ui-icheckbox', function(event, elem, status) {
+				if ($(this).prop('checked')) {
+					$(this).parent().parent().parent().parent('.collapsed-custom').nextAll().each(function() {
+						if ($(this).filter('.hide-custom-last').length) {
+							$(this).slideDown("fast").removeClass('hide-custom').addClass('visible_custom');
+							return false;
+						}
+						$(this).slideDown("fast").removeClass('hide-custom').addClass('visible_custom');
+					});
+				} else {
+					$(this).parent().parent().parent().parent('.collapsed-custom').nextAll().each(function() {
+						if ($(this).filter('.hide-custom-last').length) {
+							$(this).slideUp("fast").addClass('hide-custom');
+							return false;
+						}
+						$(this).slideUp("fast").addClass('hide-custom');
+					});
+				}
+			});
+
+			// Off for hide custom sub
+			$(document).on('responsi-ui-icheckbox-switch', '.customize-control.collapsed-custom-sub input.responsi-ui-icheckbox', function(event, elem, status) {
+				if ($(this).prop('checked')) {
+					$(this).parent().parent().parent().parent('.collapsed-custom-sub').nextAll().each(function() {
+						if ($(this).filter('.hide-custom-sub-last').length) {
+							$(this).slideDown("fast").removeClass('hide-custom-sub').addClass('visible_custom_sub');
+							return false;
+						}
+						$(this).slideDown("fast").removeClass('hide-custom-sub').addClass('visible_custom_sub');
+					});
+				} else {
+					$(this).parent().parent().parent().parent('.collapsed-custom-sub').nextAll().each(function() {
+						if ($(this).filter('.hide-custom-sub-last').length) {
+							$(this).slideUp("fast").addClass('hide-custom-sub');
+							return false;
+						}
+						$(this).slideUp("fast").addClass('hide-custom-sub');
+					});
+				}
+			});
+
+			//Logic Boxed layout
+			$(document).on('responsi-ui-icheckbox-switch', '#responsi_layout_boxed', function(event, elem, status) {
+				if (elem.prop('checked')) {
+					$('.for-wide-mode').addClass('hide-custom');
+					$('.for-box-mode').removeClass('hide-custom');
+				} else {
+					$('.for-box-mode').addClass('hide-custom');
+					$('.for-wide-mode').removeClass('hide-custom');
+				}
+			});
+			// end Logic Boxed layout
+
+			//Logic Background Theme
+			$(document).on('responsi-ui-icheckbox-switch', '.customize-control-icheckbox input.responsi-ui-icheckbox', function(event, elem, status) {
+				if (elem.attr('id') == 'responsi_disable_background_style_img') {
+					if (elem.prop('checked')) {
+						$('#responsi_use_style_bg_image').removeAttr('checked').iphoneStyle("refresh");
+					}
+				}
+				if (elem.attr('id') == 'responsi_use_style_bg_image') {
+					if (elem.prop('checked')) {
+						$('#responsi_disable_background_style_img').removeAttr('checked').iphoneStyle("refresh");
+					}
+				}
+			});
+			//end Logic Background Theme
+
+			//Header Mobile
+			$(document).on('click', '.header_sidebars_logical img.responsi-radio-img-img', function() {
+				var w_num = $(this).parent().parent('.customize-control-container').find('input:checked').val();
+				if (w_num == 0) {
+					$('.header-widgets-logic').slideUp();
+				} else {
+					$('.header-widgets-logic').slideDown();
+				}
+				$('.header-widgets-logic .responsi-imulticheckbox-item').hide();
+				for (var i = 1; i <= w_num; i++) {
+					$('.imulticheckbox-' + i).slideDown();
+				}
+			});
+
+			//Sidebar Mobile
+			$(document).on('click', '.sidebar_widget_logical img.responsi-radio-img-img', function() {
+				var sidebar_widget_logical = $(this).parent().parent('.customize-control-container').find('input:checked').val();
+				if (sidebar_widget_logical == 'one-col') {
+					$('.sidebar-widgets-logic').slideUp();
+				} else {
+					$('.sidebar-widgets-logic').slideDown();
+				}
+			});
+
+			//Footer Mobile
+			$(document).on('click', '.footer_widget_logical img.responsi-radio-img-img', function() {
+				var footer_widget_logical = $(this).parent().parent('.customize-control-container').find('input:checked').val();
+				if (footer_widget_logical == 0) {
+					$('.footer-widgets-logic').slideUp();
+				} else {
+					$('.footer-widgets-logic').slideDown();
+				}
+			});
+
+			//Footer Cell
+			$(document).on('responsi-ui-icheckbox-switch', '.customize-control-icheckbox input#responsi_disable_ext_cat_author, .customize-control-icheckbox input#responsi_disable_ext_tags_comment', function(event, elem, status) {
+				var footer_cell_1;
+				var footer_cell_2;
+
+				if ($('input#responsi_disable_ext_cat_author').prop('checked')) {
+					footer_cell_1 = true;
+				} else {
+					footer_cell_1 = false;
+				}
+
+				if ($('input#responsi_disable_ext_tags_comment').prop('checked')) {
+					footer_cell_2 = true;
+				} else {
+					footer_cell_2 = false;
+				}
+
+				if (footer_cell_1 == true && footer_cell_2 == true) {
+					$('.footer-cell-both').removeClass('hide');
+				}
+
+				if (footer_cell_1 == false && footer_cell_2 == false) {
+					$('.footer-cell-both').addClass('hide');
+				}
+
+				if (footer_cell_1 == true && footer_cell_2 == false) {
+					$('.footer-cell-1, .footer-cell-both').removeClass('hide');
+					$('.footer-cell-2').addClass('hide');
+				}
+
+				if (footer_cell_1 == false && footer_cell_2 == true) {
+					$('.footer-cell-2, .footer-cell-both').removeClass('hide');
+					$('.footer-cell-1').addClass('hide');
+				}
+
+			});
+
+			$(document).on('responsi-ui-icheckbox-switch', '.customize-control-icheckbox input#responsi_disable_post_meta_date, .customize-control-icheckbox input#responsi_disable_post_meta_comment, .customize-control-icheckbox input#responsi_disable_post_meta_author', function(event, elem, status) {
+				var _post_meta_date = false;
+				var _post_meta_comment = false;
+				var _post_meta_author = false;
+				if ($('input#responsi_disable_post_meta_date').prop('checked')) {
+					_post_meta_date = true;
+				} else {
+					_post_meta_date = false;
+				}
+				if ($('input#responsi_disable_post_meta_comment').prop('checked')) {
+					_post_meta_comment = true;
+				} else {
+					_post_meta_comment = false;
+				}
+				if ($('input#responsi_disable_post_meta_author').prop('checked')) {
+					_post_meta_author = true;
+				} else {
+					_post_meta_author = false;
+				}
+				if (_post_meta_date == false && _post_meta_comment == false && _post_meta_author == false) {
+					$('.single-post-meta').addClass('hide');
+				} else {
+					$('.single-post-meta').removeClass('hide');
+				}
+			});
+		}
+	};
+
 	api.sectionContainer = function( control ){
 		var sectionContainer = control.container.parent('ul.accordion-section-content').parent('li.accordion-section');
 		if( sectionContainer.length == 0 ){
@@ -20,7 +414,7 @@
 
 				event.preventDefault();
 
-				var picker = control.container.find('.color-picker-hex'),
+				var picker,
 				size_select = control.container.find('select.responsi-typography-size'),
 				line_height_select = control.container.find('select.responsi-typography-line-height'),
 				face_select = control.container.find('select.responsi-typography-face'),
@@ -34,16 +428,48 @@
 					control.container.addClass('applied_typography');
 
 					// Color Picker
-					picker.val(control.params.values.color).wpColorPicker({
+					picker = control.container.find( '.color-picker-hex' );
+					picker.val( control.params.values.color ).wpColorPicker({
 						change: function() {
-							control.settings[control.id + '[color]'].set(picker.wpColorPicker('color'));
+							updating = true;
+							if( 'undefined' !== typeof control.settings[control.id + '[color]'] ){
+								control.settings[control.id + '[color]'].set( picker.wpColorPicker( 'color' ) );
+							}
+							updating = false;
 						},
 						clear: function() {
-							control.settings[control.id + '[color]'].set('');
+							updating = true;
+							if( 'undefined' !== typeof control.settings[control.id + '[color]'] ){
+								control.settings[control.id + '[color]'].set( '' );
+							}
+							updating = false;
 						}
-					}).bind('change keyup', function( event ) {
-						control.settings[control.id + '[color]'].set($(this).val());
 					});
+
+					if( 'undefined' !== typeof control.settings[control.id + '[color]'] ){
+						control.settings[control.id + '[color]'].bind( function ( value ) {
+							// Bail if the update came from the control itself.
+							if ( updating ) {
+								return;
+							}
+							picker.val( value );
+							picker.wpColorPicker( 'color', value );
+						} );
+					}
+
+					// Collapse color picker when hitting Esc instead of collapsing the current section.
+					control.container.on( 'keydown', function( event ) {
+						var pickerContainer;
+						if ( 27 !== event.which ) { // Esc.
+							return;
+						}
+						pickerContainer = control.container.find( '.wp-picker-container' );
+						if ( pickerContainer.hasClass( 'wp-picker-active' ) ) {
+							picker.wpColorPicker( 'close' );
+							control.container.find( '.wp-color-result' ).focus();
+							event.stopPropagation();
+						}
+					} );
 
 					for (var i = _wpCustomTypographyControl.size.min; i <= _wpCustomTypographyControl.size.max; i++) {
 						size_selected = '';
@@ -76,6 +502,30 @@
 						}
 						face_select.append('<option value="' + index + '" ' + face_selected + ' >' + font_name.name + '</option>');
 					});
+
+					size_select.on('change', function( event ) {
+						if( 'undefined' !== typeof control.settings[control.id + '[size]'] ){
+							control.settings[control.id + '[size]'].set($(this).val());
+						}
+					});
+
+					line_height_select.on('change', function( event ) {
+						if( 'undefined' !== typeof control.settings[control.id + '[line_height]'] ){
+							control.settings[control.id + '[line_height]'].set($(this).val());
+						}
+					});
+
+					face_select.on('change', function( event ) {
+						if( 'undefined' !== typeof control.settings[control.id + '[face]'] ){
+							control.settings[control.id + '[face]'].set($(this).val());
+						}
+					});
+
+					style_select.on('change', function( event ) {
+						if( 'undefined' !== typeof control.settings[control.id + '[style]'] ){
+							control.settings[control.id + '[style]'].set($(this).val());
+						}
+					});
 				}
 			});
 		}
@@ -91,7 +541,7 @@
 
 				event.preventDefault();
 
-				var picker = control.container.find('.color-picker-hex'),
+				var picker,
 				size_select = control.container.find('select.responsi-border-width'),
 				style_select = control.container.find('select.responsi-border-style'),
 				size_selected,
@@ -100,17 +550,49 @@
 				if (!control.container.hasClass('applied_border')) {
 					control.container.addClass('applied_border');
 
-						// Color Picker
-					picker.val(control.params.values.color).wpColorPicker({
+					// Color Picker
+					picker = control.container.find( '.color-picker-hex' );
+					picker.val( control.params.values.color ).wpColorPicker({
 						change: function() {
-							control.settings[control.id + '[color]'].set(picker.wpColorPicker('color'));
+							updating = true;
+							if( 'undefined' !== typeof control.settings[control.id + '[color]'] ){
+								control.settings[control.id + '[color]'].set( picker.wpColorPicker( 'color' ) );
+							}
+							updating = false;
 						},
 						clear: function() {
-							control.settings[control.id + '[color]'].set('');
+							updating = true;
+							if( 'undefined' !== typeof control.settings[control.id + '[color]'] ){
+								control.settings[control.id + '[color]'].set( '' );
+							}
+							updating = false;
 						}
-					}).bind('change keyup', function( event ) {
-						control.settings[control.id + '[color]'].set($(this).val());
 					});
+					
+					if( 'undefined' !== typeof control.settings[control.id + '[color]'] ){
+						control.settings[control.id + '[color]'].bind( function ( value ) {
+							// Bail if the update came from the control itself.
+							if ( updating ) {
+								return;
+							}
+							picker.val( value );
+							picker.wpColorPicker( 'color', value );
+						} );
+					}
+
+					// Collapse color picker when hitting Esc instead of collapsing the current section.
+					control.container.on( 'keydown', function( event ) {
+						var pickerContainer;
+						if ( 27 !== event.which ) { // Esc.
+							return;
+						}
+						pickerContainer = control.container.find( '.wp-picker-container' );
+						if ( pickerContainer.hasClass( 'wp-picker-active' ) ) {
+							picker.wpColorPicker( 'close' );
+							control.container.find( '.wp-color-result' ).focus();
+							event.stopPropagation();
+						}
+					} );
 				
 					for (var i = _wpCustomBorderControl.width.min; i <= _wpCustomBorderControl.width.max; i++) {
 						size_selected = '';
@@ -126,6 +608,18 @@
 							style_selected = 'selected="select"';
 						}
 						style_select.append('<option value="' + index + '" ' + style_selected + ' >' + style_name + '</option>');
+					});
+
+					size_select.on('change', function( event ) {
+						if( 'undefined' !== typeof control.settings[control.id + '[width]'] ){
+							control.settings[control.id + '[width]'].set($(this).val());
+						}
+					});
+
+					style_select.on('change', function( event ) {
+						if( 'undefined' !== typeof control.settings[control.id + '[style]'] ){
+							control.settings[control.id + '[style]'].set($(this).val());
+						}
 					});
 
 				}
@@ -189,7 +683,9 @@
 								var val = unchecked_value;
 								control.container.find('.responsi-range-slider').hide();
 							}
-							control.settings[control.id + '[corner]'].set(val);
+							if( 'undefined' !== typeof control.settings[control.id + '[corner]'] ){
+								control.settings[control.id + '[corner]'].set(val);
+							}
 							switcher.trigger("responsi-ui-icheckbox-switch", [elem, status]);
 						},
 						onEnd: function(elem, value) {
@@ -210,7 +706,9 @@
 							ui_slide_input.val(ui.value).trigger('keyup');
 						},
 						change: function(event, ui) {
-							control.settings[control.id + '[rounded_value]'].set(ui.value);
+							if( 'undefined' !== typeof control.settings[control.id + '[rounded_value]'] ){
+								control.settings[control.id + '[rounded_value]'].set(ui.value);
+							}
 						}
 					});
 
@@ -229,7 +727,7 @@
 
 				event.preventDefault();
 
-				var picker = control.container.find('.color-picker-hex'),
+				var picker,
 					onoff_switcher = control.container.find('.responsi-box-shadow-onoff'),
 					inset_switcher = control.container.find('.responsi-box-shadow-inset'),
 					h_shadow_select = control.container.find('select.responsi-box-shadow_h_shadow'),
@@ -281,7 +779,9 @@
 								var val = onoff_unchecked_value;
 								control.container.find('.responsi-box-shadow-container').hide();
 							}
-							control.settings[control.id + '[onoff]'].set(val);
+							if( 'undefined' !== typeof control.settings[control.id + '[onoff]'] ){
+								control.settings[control.id + '[onoff]'].set(val);
+							}
 							onoff_switcher.trigger("responsi-ui-icheckbox-switch", [elem, status]);
 						},
 						onEnd: function(elem, value) {
@@ -308,7 +808,9 @@
 							} else {
 								var val = inset_unchecked_value;
 							}
-							control.settings[control.id + '[inset]'].set(val);
+							if( 'undefined' !== typeof control.settings[control.id + '[inset]'] ){
+								control.settings[control.id + '[inset]'].set(val);
+							}
 							inset_switcher.trigger("responsi-ui-icheckbox-switch", [elem, status]);
 						},
 						onEnd: function(elem, value) {
@@ -319,16 +821,48 @@
 					});
 
 					// Color Picker
-					picker.val(control.params.values.color).wpColorPicker({
+					picker = control.container.find( '.color-picker-hex' );
+					picker.val( control.params.values.color ).wpColorPicker({
 						change: function() {
-							control.settings[control.id + '[color]'].set(picker.wpColorPicker('color'));
+							updating = true;
+							if( 'undefined' !== typeof control.settings[control.id + '[color]'] ){
+								control.settings[control.id + '[color]'].set( picker.wpColorPicker( 'color' ) );
+							}
+							updating = false;
 						},
 						clear: function() {
-							control.settings[control.id + '[color]'].set('');
+							updating = true;
+							if( 'undefined' !== typeof control.settings[control.id + '[color]'] ){
+								control.settings[control.id + '[color]'].set( '' );
+							}
+							updating = false;
 						}
-					}).bind('change keyup', function( event ) {
-						control.settings[control.id + '[color]'].set($(this).val());
 					});
+		
+					if( 'undefined' !== typeof control.settings[control.id + '[color]'] ){
+						control.settings[control.id + '[color]'].bind( function ( value ) {
+							// Bail if the update came from the control itself.
+							if ( updating ) {
+								return;
+							}
+							picker.val( value );
+							picker.wpColorPicker( 'color', value );
+						} );
+					}
+
+					// Collapse color picker when hitting Esc instead of collapsing the current section.
+					control.container.on( 'keydown', function( event ) {
+						var pickerContainer;
+						if ( 27 !== event.which ) { // Esc.
+							return;
+						}
+						pickerContainer = control.container.find( '.wp-picker-container' );
+						if ( pickerContainer.hasClass( 'wp-picker-active' ) ) {
+							picker.wpColorPicker( 'close' );
+							control.container.find( '.wp-color-result' ).focus();
+							event.stopPropagation();
+						}
+					} );
 
 					for (var i = _wpCustomBoxShadowControl.size.min; i <= _wpCustomBoxShadowControl.size.max; i++) {
 						h_shadow_selected = '';
@@ -356,6 +890,29 @@
 						spread_select.append('<option value="' + i + 'px" ' + spread_selected + ' >' + i + 'px</option>');
 					}
 
+					h_shadow_select.on('change', function( event ) {
+						if( 'undefined' !== typeof control.settings[control.id + '[h_shadow]'] ){
+							control.settings[control.id + '[h_shadow]'].set($(this).val());
+						}
+					});
+
+					v_shadow_select.on('change', function( event ) {
+						if( 'undefined' !== typeof control.settings[control.id + '[v_shadow]'] ){
+							control.settings[control.id + '[v_shadow]'].set($(this).val());
+						}
+					});
+
+					blur_select.on('change', function( event ) {
+						if( 'undefined' !== typeof control.settings[control.id + '[blur]'] ){
+							control.settings[control.id + '[blur]'].set($(this).val());
+						}
+					});
+					spread_select.on('change', function( event ) {
+						if( 'undefined' !== typeof control.settings[control.id + '[spread]'] ){
+							control.settings[control.id + '[spread]'].set($(this).val());
+						}
+					});
+
 				}
 			});
 		}
@@ -372,20 +929,11 @@
 				event.preventDefault();
 
 				var switcher = control.container.find('.responsi-ui-icheckbox'),
-				setting_id = switcher.siblings('input[type="hidden"]').data('customize-setting-link'),
-				checked_value = control.params.checked_value,
-				unchecked_value = control.params.unchecked_value,
-				checked_label = control.params.checked_label,
-				unchecked_label = control.params.unchecked_label,
-				container_width = parseInt(control.params.container_width);
-
-				/*switcher.on(control.id, function() {
-					if (null === control.setting) {
-						control.settings[setting_id].set($(this).val());
-					} else {
-						control.setting.set($(this).val());
-					}
-				});*/
+				checked_value = control.params.checked_value ? control.params.checked_value : _wpCustomIRadioControl.onoff.checked_value,
+				unchecked_value = control.params.unchecked_value ? control.params.unchecked_value : _wpCustomIRadioControl.onoff.unchecked_value,
+				checked_label = control.params.checked_label ? control.params.checked_label : _wpCustomIRadioControl.onoff.checked_label,
+				unchecked_label = control.params.unchecked_label ? control.params.unchecked_label : _wpCustomIRadioControl.onoff.unchecked_label,
+				container_width = control.params.container_width ? parseInt(control.params.container_width) : _wpCustomIRadioControl.onoff.container_width;
 
 				if (!control.container.hasClass('applied_icheckbox')) {
 					control.container.addClass('applied_icheckbox');
@@ -407,11 +955,14 @@
 							} else {
 								var val = unchecked_value;
 							}
-							if (null === control.setting) {
-								control.settings[setting_id].set(val.toString());
-							} else {
-								control.setting.set(val.toString());
+							if( 'undefined' !== typeof control.settings[control.id] ){
+								control.settings[control.id].set(val.toString());
+							}else{
+								if( null !== control.setting ){
+									control.setting.set(val.toString());
+								}
 							}
+
 							switcher.trigger("responsi-ui-icheckbox-switch", [elem, status]);
 						},
 						onEnd: function(elem, value) {
@@ -446,8 +997,7 @@
 
 					control.container.find('input.responsi-ui-imulticheckbox').each(function(i) {
 
-						var input_name = $(this).siblings('input[type="hidden"]').attr('name');
-						var setting_id = $(this).siblings('input[type="hidden"]').data('customize-setting-link');
+						var setting_id = $(this).data('setting-link');
 
 						$(this).iphoneStyle({
 							duration: 50,
@@ -466,12 +1016,14 @@
 								} else {
 									var val = unchecked_value;
 								}
-								control.settings[setting_id].set(val.toString());
-								$('input[name="' + input_name + '"]').trigger("responsi-ui-icheckbox-switch", [elem, status]);
+								if( 'undefined' !== typeof control.settings[setting_id] ){
+									control.settings[setting_id].set(val.toString());
+								}
+								$('input[name="' + setting_id + '"]').trigger("responsi-ui-icheckbox-switch", [elem, status]);
 							},
 							onEnd: function(elem, value) {
 								var status = value.toString();
-								$('input[name="' + input_name + '"]').trigger("responsi-ui-icheckbox-switch-end", [elem, status]);
+								$('input[name="' + setting_id + '"]').trigger("responsi-ui-icheckbox-switch-end", [elem, status]);
 							}
 						});
 					});
@@ -516,7 +1068,9 @@
 								var status = value.toString();
 								if (elem.prop('checked')) {
 									$('input[name="' + input_name + '"]').not(current_item).removeAttr('checked').removeAttr('checkbox-disabled').iphoneStyle("refresh");
-									control.setting.set(current_item.val());
+									if( null !== control.setting ){
+										control.setting.set(current_item.val());
+									}
 								}
 								$('input[name="' + input_name + '"]').trigger("responsi-ui-iradio-switch", [elem, status]);
 							},
@@ -547,8 +1101,7 @@
 
 				event.preventDefault();
 
-				var setting_id = control.params.setting_id,
-					ui_slide = control.container.find('.ui-slide'),
+				var ui_slide = control.container.find('.ui-slide'),
 					ui_slide_input = control.container.find('.islide-value'),
 					min = parseInt(control.params.min),
 					max = parseInt(control.params.max),
@@ -569,10 +1122,12 @@
 							ui_slide_input.val(ui.value).trigger('keyup');
 						},
 						change: function(event, ui) {
-							if (null === control.setting) {
-								control.settings[setting_id].set(ui.value);
+							if( 'undefined' !== typeof control.settings[control.id] ){
+								control.settings[control.id].set(ui.value);
 							} else {
-								control.setting.set(ui.value);
+								if( null !== control.setting ){
+									control.setting.set(ui.value);
+								}
 							}
 						}
 					});
@@ -591,7 +1146,7 @@
 
 				event.preventDefault();
 
-				var picker = control.container.find('.color-picker-hex'),
+				var picker,
 					onoff_switcher = control.container.find('.responsi-ibackground-onoff'),
 					onoff_checked_value = _wpCustomiBackgroundControl.onoff.checked_value,
 					onoff_unchecked_value = _wpCustomiBackgroundControl.onoff.unchecked_value,
@@ -629,7 +1184,9 @@
 								var val = onoff_unchecked_value;
 								control.container.find('.responsi-ibackground-container').hide();
 							}
-							control.settings[control.id + '[onoff]'].set(val);
+							if( 'undefined' !== typeof control.settings[control.id + '[onoff]'] ){
+								control.settings[control.id + '[onoff]'].set(val);
+							}
 							onoff_switcher.trigger("responsi-ui-icheckbox-switch", [elem, status]);
 						},
 						onEnd: function(elem, value) {
@@ -639,16 +1196,48 @@
 					});
 
 					// Color Picker
-					picker.val(control.params.values.color).wpColorPicker({
+					picker = control.container.find( '.color-picker-hex' );
+					picker.val( control.params.values.color ).wpColorPicker({
 						change: function() {
-							control.settings[control.id + '[color]'].set(picker.wpColorPicker('color'));
+							updating = true;
+							if( 'undefined' !== typeof control.settings[control.id + '[color]'] ){
+								control.settings[control.id + '[color]'].set( picker.wpColorPicker( 'color' ) );
+							}
+							updating = false;
 						},
 						clear: function() {
-							control.settings[control.id + '[color]'].set('');
+							updating = true;
+							if( 'undefined' !== typeof control.settings[control.id + '[color]'] ){
+								control.settings[control.id + '[color]'].set( '' );
+							}
+							updating = false;
 						}
-					}).bind('change keyup', function( event ) {
-						control.settings[control.id + '[color]'].set($(this).val());
 					});
+		
+					if( 'undefined' !== typeof control.settings[control.id + '[color]'] ){
+						control.settings[control.id + '[color]'].bind( function ( value ) {
+							// Bail if the update came from the control itself.
+							if ( updating ) {
+								return;
+							}
+							picker.val( value );
+							picker.wpColorPicker( 'color', value );
+						} );
+					}
+
+					// Collapse color picker when hitting Esc instead of collapsing the current section.
+					control.container.on( 'keydown', function( event ) {
+						var pickerContainer;
+						if ( 27 !== event.which ) { // Esc.
+							return;
+						}
+						pickerContainer = control.container.find( '.wp-picker-container' );
+						if ( pickerContainer.hasClass( 'wp-picker-active' ) ) {
+							picker.wpColorPicker( 'close' );
+							control.container.find( '.wp-color-result' ).focus();
+							event.stopPropagation();
+						}
+					} );
 
 				}
 			});
@@ -659,27 +1248,83 @@
 		ready: function() {
 
 			var control = this,
-				sectionContainer = api.sectionContainer( this );
+				sectionContainer = api.sectionContainer( this ),
+				picker,
+				isHueSlider = this.params.mode === 'hue',
+				updating = false,color;
 
 			sectionContainer.on('expanded', function( event ) {
 
 				event.preventDefault();
 
-				var picker = control.container.find('.icolor-picker');
-
 				if (!control.container.hasClass('applied_icolor')) {
+
 					control.container.addClass('applied_icolor');
 
-					picker.val(control.params.defaultValue).wpColorPicker({
-						change: function() {
-							control.setting.set(picker.wpColorPicker('color'));
-						},
-						clear: function() {
-							control.setting.set('');
+					// Color Picker
+					if ( isHueSlider ) {
+						color = 250;
+						if( null !== control.setting ){
+							color = control.setting();
 						}
-					}).bind('change keyup', function( event ) {
-						control.setting.set($(this).val());
-					});
+						picker = control.container.find( '.color-picker-hue' );
+						picker.val( color ).wpColorPicker({
+							change: function( event, ui ) {
+								updating = true;
+								if( null !== control.setting ){
+									control.setting( ui.color.h() );
+								}
+								updating = false;
+							}
+						});
+					} else {
+						color = '#RRGGBB';
+						if( null !== control.setting ){
+							color = control.setting();
+						}
+						picker = control.container.find( '.color-picker-hex' );
+						picker.val( color ).wpColorPicker({
+							change: function() {
+								updating = true;
+								if( null !== control.setting ){
+									control.setting.set( picker.wpColorPicker( 'color' ) );
+								}
+								updating = false;
+							},
+							clear: function() {
+								updating = true;
+								if( null !== control.setting ){
+									control.setting.set( '' );
+								}
+								updating = false;
+							}
+						});
+					}
+
+					if( null !== control.setting ){
+						control.setting.bind( function ( value ) {
+							// Bail if the update came from the control itself.
+							if ( updating ) {
+								return;
+							}
+							picker.val( value );
+							picker.wpColorPicker( 'color', value );
+						} );
+					}
+
+					// Collapse color picker when hitting Esc instead of collapsing the current section.
+					control.container.on( 'keydown', function( event ) {
+						var pickerContainer;
+						if ( 27 !== event.which ) { // Esc.
+							return;
+						}
+						pickerContainer = control.container.find( '.wp-picker-container' );
+						if ( pickerContainer.hasClass( 'wp-picker-active' ) ) {
+							picker.wpColorPicker( 'close' );
+							control.container.find( '.wp-color-result' ).focus();
+							event.stopPropagation(); // Prevent section from being collapsed.
+						}
+					} );
 
 				}
 			});
@@ -692,7 +1337,9 @@
 			var control = this;
 
 			control.container.find('select.responsi-iselect').on('change', function( event ) {
-				control.setting.set($(this).val());
+				if( null !== control.setting ){
+					control.setting.set($(this).val());
+				}
 			});
 		}
 	});
@@ -703,7 +1350,9 @@
 			var control = this;
 
 			control.container.find('input.responsi-itext').on('change keyup', function( event ) {
-				control.setting.set($(this).val());
+				if( null !== control.setting ){
+					control.setting.set($(this).val());
+				}
 			});
 		}
 	});
@@ -714,7 +1363,9 @@
 			var control = this;
 
 			control.container.find('textarea.responsi-itextarea').on('change keyup', function( event ) {
-				control.setting.set($(this).val());
+				if( null !== control.setting ){
+					control.setting.set($(this).val());
+				}
 			});
 		}
 	});
@@ -723,9 +1374,12 @@
 		ready: function() {
 
 			var control = this;
+
 			control.container.find('input.responsi-multitext').on('change keyup', function( event ) {
-				var setting_id = $(this).data('customize-setting-link');
-				control.settings[setting_id].set($(this).val());
+				var setting_id = $(this).data('setting-link');
+				if( 'undefined' !== typeof control.settings[setting_id] ){
+					control.settings[setting_id].set($(this).val());
+				}
 			});
 		}
 	});
@@ -742,7 +1396,9 @@
 			});
 
 			control.container.find('input.bp-radio').on('change', function( event ) {
-				control.setting.set($(this).val());
+				if( null !== control.setting ){
+					control.setting.set($(this).val());
+				}
 			});
 
 			
@@ -781,6 +1437,10 @@
 				if (!control.container.hasClass('applied_layout')) {
 					control.container.addClass('applied_layout');
 
+					control.container.find('img.responsi-radio-img-img').each( function( index ) {
+						$(this).attr( 'src', $(this).data( 'src' ) );
+					});
+
 					control.container.find('img.responsi-radio-img-img').on('click', function( event ) {
 						$(this).parent('.layout-item').siblings('.layout-item').children('img.responsi-radio-img-img').removeClass('responsi-radio-img-selected');
 						$(this).addClass('responsi-radio-img-selected');
@@ -790,7 +1450,9 @@
 					});
 
 					control.container.find('input.responsi-radio-img-radio').on('change', function( event ) {
-						control.setting.set($(this).val());
+						if( null !== control.setting ){
+							control.setting.set($(this).val());
+						}
 					});
 
 				}
@@ -879,9 +1541,11 @@
 						return false;
 					});
 
-					control.setting.bind(function() {
-						control.renderContent();
-					});
+					if( null !== control.setting ){
+						control.setting.bind(function() {
+							control.renderContent();
+						});
+					}
 				}
 
 			});
@@ -902,9 +1566,8 @@
 		 * Create a media modal select frame, and store it so the instance can be reused when needed.
 		 */
 		initFrame: function() {
-			var control = this,
-			setting_id = control.id;
-			this.frame = this.showEditor(control, setting_id);
+			var control = this;
+			this.frame = this.showEditor(control, control.id);
 		},
 
 		showEditor: function(control, contentId) {
@@ -926,7 +1589,10 @@
 
 		setEditorContent: function(control, contentId) {
 			var editor = tinyMCE.EditorManager.get('wpeditorcustomize');
-			var content = control.setting._value;
+			var content = '';
+			if( null !== control.setting ){
+				content = control.setting._value;
+			}
 			$('#wpeditor_customize_title').html(control.params.label);
 			$('a.update-editor-button').attr('data-id', control.id);
 			if ($('#wp-wpeditorcustomize-wrap').hasClass('html-active')) {
@@ -951,7 +1617,9 @@
 			} else {
 				var content = editor.getContent();
 			}
-			control.setting.set(content);
+			if( null !== control.setting ){
+				control.setting.set(content);
+			}
 			this.hideEditor();
 		},
 
@@ -975,27 +1643,422 @@
 
 	api.Customize_iUploadCrop_Control = api.CroppedImageControl.extend({});
 
-	$.extend(api.controlConstructor, {
-		typography 			: api.Customize_Typography_Control,
-		border 				: api.Customize_Border_Control,
-		border_radius 		: api.Customize_BorderRadius_Control,
-		box_shadow 			: api.Customize_BoxShadow_Control,
-		icheckbox 			: api.Customize_iCheckbox_Control,
-		iswitcher 			: api.Customize_iCheckbox_Control,
-		imulticheckbox 		: api.Customize_iMultiCheckbox_Control,
-		iradio 				: api.Customize_iRadio_Control,
-		slider 				: api.Customize_Slider_Control,
-		ibackground 		: api.Customize_iBackground_Control,
-		icolor 				: api.Customize_iColor_Control,
-		iselect 			: api.Customize_iSelect_Control,
-		itext 				: api.Customize_iText_Control,
-		itextarea 			: api.Customize_iTextarea_Control,
-		multitext 			: api.Customize_Multiple_Text_Control,
-		background_patterns : api.Customize_Background_Patterns_Control,
-		layout 				: api.Customize_Layout_Control,		
-		ieditor 			: api.Customize_iEditor_Control,
-		iupload 			: api.Customize_iUpload_Control,
-		iuploadcrop 		: api.Customize_iUploadCrop_Control
+	api.bind( 'ready', function() {
+		
+	})( jQuery );
+
+	$(window).on( 'load', function() {
+	
+		/*var control = new api.Customize_Background_Patterns_Control( 'background_patterns_control', {
+		    section 	: 'custom_css',
+		    label 		: 'Background Patterns Control',
+		    type 		: 'background_patterns',
+		    setting_id 	: 'border_control',
+		    //setting 	: new wp.customize.Value('http://localhost/responsi/wp-content/plugins/responsi-backgrounds-addon/picker/backgrounds/foggy_birds.jpg'),
+		    //settings    : { default : 'background_patterns_control' },
+		} );
+
+		var control = new api.Customize_Border_Control( 'border_control', {
+		    section 	: 'custom_css',
+		    label 		: 'Border Control',
+		    type 		: 'border',
+		    setting_id 	: 'border_control',
+		    //setting: new wp.customize.Values({width : '1', style : 'solid', color : '#ffffff'}),
+		    //settings    : { 'border_control[width]' : 'border_control[width]', 'border_control[style]' : 'border_control[style]', 'border_control[color]' : 'border_control[color]' },
+		    //values: { width : '1', style : 'solid', color : '#000000' }
+		} );
+
+		var control = new api.Customize_BorderRadius_Control( 'border_radius_control', {
+		    section 	: 'custom_css',
+		    label 		: 'Border Radius Control',
+		    type 		: 'border_radius',
+		    setting_id 	: 'border_radius_control',
+		    //setting: new wp.customize.Values({width : '1', style : 'solid', color : '#ffffff'}),
+		    //settings    : { 'border_radius_control[corner]' : 'border_radius_control[corner]', 'border_radius_control[rounded_value]' : 'border_radius_control[rounded_value]'},
+		    //values: {'corner': 'square', 'rounded_value': '0'};
+		} );
+
+		var control = new api.Customize_BoxShadow_Control( 'box_shadow_control', {
+		    section 	: 'custom_css',
+		    label 		: 'Boxshadow Control',
+		    type 		: 'box_shadow',
+		    setting_id 	: 'box_shadow_control',
+		    //setting: new wp.customize.Values({'onoff':'false' , 'h_shadow':'0px' , 'v_shadow':'0px', 'blur':'8px' , 'spread':'0px', 'color':'#DBDBDB', 'inset':''}),
+		    //settings    : { 'box_shadow_control[onoff]' : 'box_shadow_control[onoff]', 'box_shadow_control[h_shadow]' : 'box_shadow_control[h_shadow]', 'box_shadow_control[v_shadow]' : 'box_shadow_control[v_shadow]', 'box_shadow_control[blur]' : 'box_shadow_control[blur]', 'box_shadow_control[spread]' : 'box_shadow_control[spread]', 'box_shadow_control[color]' : 'box_shadow_control[color]', 'box_shadow_control[inset]' : 'box_shadow_control[inset]'},
+		    //values: {'onoff':'false' , 'h_shadow':'0px' , 'v_shadow':'0px', 'blur':'8px' , 'spread':'0px', 'color':'#DBDBDB', 'inset':''};
+		} );
+
+		var control = new api.Customize_iBackground_Control( 'ibackground_control', {
+		    section 	: 'custom_css',
+		    label 		: 'iBackground Control',
+		    type 		: 'ibackground',
+		    setting_id 	: 'ibackground_control',
+		    //setting: new wp.customize.Values({onoff : 'false', color : '#ffffff'}),
+		    //settings    : { 'ibackground_control[onoff]' : 'ibackground_control[onoff]', 'ibackground_control[color]' : 'ibackground_control[color]'},
+		    //values: {onoff : 'false', color : '#ffffff'};
+		} );
+
+		var control = new api.Customize_iCheckbox_Control( 'icheckbox_control', {
+		    section 	: 'custom_css',
+		    label 		: 'iCheckox Control',
+		    type 		: 'icheckbox',
+		    setting_id 	: 'icheckbox_control',
+		    //setting 	: new wp.customize.Value('true'),
+		    //settings    : { default : 'icheckbox_control' },
+		} );
+
+		var control = new api.Customize_iColor_Control( 'icolor_control', {
+		    section: 'custom_css',
+		    label: 'iColor',
+		    type: 'icolor',
+		    setting_id 	: 'icolor_control',
+		    //mode: 'hue',
+		    //settings: { 'default': 'icolor_control' },
+		} );
+
+		var control = new api.Customize_iColor_Control( 'icolor_hue_control', {
+		    section: 'custom_css',
+		    label: 'iColor Hue',
+		    type: 'icolor',
+		    setting_id 	: 'icolor_hue_control',
+		    mode: 'hue',
+		    //settings: { 'default': 'icolor_hue_control' },
+		} );
+
+		var control = new api.Customize_iEditor_Control( 'ieditor_control', {
+		    section: 'custom_css',
+		    label: 'iEditor',
+		    type: 'ieditor',
+		    setting_id 	: 'ieditor_control',
+		    //settings: { 'default': 'ieditor_control' },
+		} );
+
+		var control = new api.Control( 'ilabel_control', {
+		    section: 'custom_css',
+		    label: 'iLabel',
+		    type: 'ilabel'
+		} );
+
+		var control = new api.Customize_iMultiCheckbox_Control( 'imulticheckbox_control', {
+		    section: 'custom_css',
+		    label: 'iMulticheckbox',
+		    type: 'imulticheckbox',
+		    choices : { "1":"Checkbox 1","2":"Checkbox 2" },
+		    defaultValue : [ "true", "false" ],
+		    setting_id 	: 'imulticheckbox_control',
+		    //settings: { 'default': 'imulticheckbox_control' },
+		} );
+
+		var control = new api.Customize_iRadio_Control( 'iradio_control', {
+		    section: 'custom_css',
+		    label: 'iRadio',
+		    type: 'iradio',
+		    choices : { "1":"Radio 1","2":"Radio 2" },
+		    value : '1',
+		    setting_id 	: 'iradio_control',
+		    //settings: { 'default': 'iradio_control' },
+		} );
+
+		var control = new api.Customize_iSelect_Control( 'iselect_control', {
+		    section: 'custom_css',
+		    label: 'iSelect',
+		    type: 'iselect',
+		    choices : { "1":"Select 1","2":"Select 2" },
+		    value : '1',
+		    setting_id 	: 'iselect_control',
+		    input_attrs : { 'min':1,"step":1,"max":2 }
+		    //settings: { 'default': 'iselect_control' },
+		} );
+
+		var control = new api.Customize_iCheckbox_Control( 'iswitcher_control', {
+		    section 	: 'custom_css',
+		    label 		: 'iSwitcher Control',
+		    type 		: 'iswitcher',
+		    setting_id 	: 'iswitcher_control',
+		    checked_value:'enable',
+		    unchecked_value:'disable',
+		    checked_label:'Enable',
+		    unchecked_label:'Disable',
+		    container_width:115
+		    //setting 	: new wp.customize.Value('true'),
+		    //settings    : { default : 'iswitcher_control' },
+		} );
+
+		var control = new api.Customize_iText_Control( 'itext_control', {
+		    section 	: 'custom_css',
+		    label 		: 'itext Control',
+		    type 		: 'itext',
+		    setting_id 	: 'itext_control',
+		    value 		: 250,
+		    //setting 	: new wp.customize.Value('250'),
+		    //settings    : { default : 'itext_control' },
+		} );
+
+		var control = new api.Customize_iTextarea_Control( 'itextarea_control', {
+		    section 	: 'custom_css',
+		    label 		: 'iTextarea Control',
+		    type 		: 'itextarea',
+		    setting_id 	: 'itextarea_control',
+		    value 		: "Textarea",
+		    //setting 	: new wp.customize.Value('250'),
+		    //settings    : { default : 'itextarea_control' },
+		} );
+
+		var control = new api.Customize_iUpload_Control( 'iupload_control', {
+		    section 	: 'custom_css',
+		    label 		: 'iUpload Control',
+		    type 		: 'iupload',
+		    setting_id 	: 'iupload_control',
+		    setting 	: new wp.customize.Value(''),
+		    canUpload 	: 'Remove', 
+		    //settings    : { default : 'iupload_control' },
+		} );
+
+		var control = new api.Customize_iUploadCrop_Control( 'iuploadcrop_control', {
+		    section 	: 'custom_css',
+		    label 		: 'iUploadcrop Control',
+		    type 		: 'iuploadcrop',
+		    setting_id 	: 'iuploadcrop_control',
+		    canUpload 	: 'Remove', 
+		    width 		: 250,
+		    height 		: 250,
+		    flex_width 	: false,
+		    flex_height : false,
+		    setting 	: new wp.customize.Value(''),
+		   	//settings    : { default : 'iuploadcrop_control' },
+		} );
+
+		var control = new api.Customize_Layout_Control( 'layout_control', {
+		    section: 'custom_css',
+		    label: 'Layout',
+		    type: 'layout',
+		    choices : { 
+				'1' : 'http://localhost/responsi/wp-content/themes/responsi/functions/images/header-widgets-1.png',
+				'2' : 'http://localhost/responsi/wp-content/themes/responsi/functions/images/header-widgets-2.png',
+				'3' : 'http://localhost/responsi/wp-content/themes/responsi/functions/images/header-widgets-3.png',
+				'4' : 'http://localhost/responsi/wp-content/themes/responsi/functions/images/header-widgets-4.png',
+				'5' : 'http://localhost/responsi/wp-content/themes/responsi/functions/images/header-widgets-5.png',
+				'6' : 'http://localhost/responsi/wp-content/themes/responsi/functions/images/header-widgets-6.png'
+		    },
+		    value : '1',
+		    setting_id 	: 'layout_control',
+		    //settings: { 'default': 'layout_control' },
+		} );
+
+		var control = new api.Customize_Multiple_Text_Control( 'multitext_control', {
+		    section: 'custom_css',
+		    label: 'Multi Text Control',
+		    type: 'multitext',
+		    choices : { 'top':'Top',
+					'bottom':'Bottom',
+					'left':'Left',
+					'right':'Right',},
+		    defaultValue : [ 0, 0, 0, 0 ],
+		    setting_id 	: 'multitext_control',
+		    //settings: { 'default': 'multitext_control' },
+		} );
+
+		var control = new api.Customize_Slider_Control( 'slider_control', {
+		    section: 'custom_css',
+		    label: 'Slider Control',
+		    type: 'slider',
+			value : '10',
+		    'min':1,"step":1,"max":20 ,
+		    setting_id 	: 'slider_control',
+		    //settings: { 'default': 'slider_control' },
+		} );
+
+		$.each( {'size':'13' , 'line_height':'1.4' , 'face':'Open Sans', 'style':'normal' , 'color':'#555555' }, function( id, value){
+			var setting = new api.Setting( 'typography_control['+id+']', value, {transport: 'postMessage'} );
+			api.add( setting )
+		});
+
+		var control = new api.Customize_Typography_Control( 'typography_control', {
+		    section 	: 'custom_css',
+		    label 		: 'Typography Control',
+		    type 		: 'typography',
+		    setting_id 	: 'typography_control',
+		    //setting: new wp.customize.Values({'size':'13' , 'line_height':'1.4' , 'face':'Open Sans', 'style':'normal' , 'color':'#555555' }),
+		    settings    : { 'typography_control[size]' : 'typography_control[size]', 'typography_control[line_height]' : 'typography_control[line_height]', 'typography_control[face]' : 'typography_control[face]', 'typography_control[style]' : 'typography_control[style]', 'typography_control[color]' : 'typography_control[color]'},
+		    //values: {'size':'13' , 'line_height':'1.4' , 'face':'Open Sans', 'style':'normal' , 'color':'#555555' };
+		} );*/
+
+		setTimeout( function(){
+			// Create Controls
+			$.each( window._responsiCustomizeSettings.controls, function( id, data ) {
+				
+				options = _.extend( { params: data }, data ); // Inclusion of params alias is for back-compat for custom controls that expect to augment this property.
+				
+				var control;
+			
+				switch( data.type ) {
+				    
+				    case 'typography':
+				        control = new api.Customize_Typography_Control( id, options );
+				        break;
+
+				    case 'border':
+				        control = new api.Customize_Border_Control( id, options );
+				        break;
+
+				    case 'border_radius':
+				        control = new api.Customize_BorderRadius_Control( id, options );
+				        break;
+
+				    case 'box_shadow':
+				        control = new api.Customize_BoxShadow_Control( id, options );
+				        break;
+
+				    case 'icheckbox':
+				        control = new api.Customize_iCheckbox_Control( id, options );
+				        break;
+
+				    case 'iswitcher':
+				        control = new api.Customize_iCheckbox_Control( id, options );
+				        break;
+
+				    case 'imulticheckbox':
+				        control = new api.Customize_iMultiCheckbox_Control( id, options );
+				        break;
+
+				    case 'iradio':
+				        control = new api.Customize_iRadio_Control( id, options );
+				        break;
+
+				    case 'slider':
+				        control = new api.Customize_Slider_Control( id, options );
+				        break;
+
+				    case 'ibackground':
+				        control = new api.Customize_iBackground_Control( id, options );
+				        break;
+
+				    case 'icolor':
+				        control = new api.Customize_iColor_Control( id, options );
+				        break;
+
+				    case 'iselect':
+				        control = new api.Customize_iSelect_Control( id, options );
+				        break;
+
+				    case 'itext':
+				        control = new api.Customize_iText_Control( id, options );
+				        break;
+
+				    case 'itextarea':
+				        control = new api.Customize_iTextarea_Control( id, options );
+				        break;
+
+				    case 'multitext':
+				        control = new api.Customize_Multiple_Text_Control( id, options );
+				        break;
+
+				    case 'background_patterns':
+				        control = new api.Customize_Background_Patterns_Control( id, options );
+				        break;
+
+				    case 'layout':
+				        control = new api.Customize_Layout_Control( id, options );
+				        break;
+
+				    case 'ieditor':
+				        control = new api.Customize_iEditor_Control( id, options );
+				        break;
+
+				    case 'iupload':
+				        control = new api.Customize_iUpload_Control( id, options );
+				        break;
+
+				    case 'iuploadcrop':
+				        control = new api.Customize_iUploadCrop_Control( id, options );
+				        break;
+				    
+				    default:
+				    	control = new api.Control( id, options );
+				    	break;
+				}
+
+				wp.customize.control.add( control );
+
+				if( data.notifications && ( data.notifications.type == 'none'
+					|| data.notifications.type == 'success'
+					|| data.notifications.type == 'info'
+					|| data.notifications.type == 'warning'
+					|| data.notifications.type == 'error' ) ){
+
+			        var code = 'responsi-notifications-' + data.notifications.type;
+			        wp.customize.control( id ).notifications.add( code, new wp.customize.Notification( code, {
+			                dismissible: data.notifications.dismissible,
+			                message: data.notifications.message,
+			                type: data.notifications.type
+			        } ) );
+				
+				}
+
+			});
+
+			$.each(  window._responsiCustomizeSettings.panels, function( id, data ) {
+				if( data.notifications && ( data.notifications.type == 'none'
+					|| data.notifications.type == 'success'
+					|| data.notifications.type == 'info'
+					|| data.notifications.type == 'warning'
+					|| data.notifications.type == 'error' ) ){
+
+			        var code = 'responsi-notifications-' + data.notifications.type;
+			        wp.customize.panel( id ).notifications.add( code, new wp.customize.Notification( code, {
+			                dismissible: data.notifications.dismissible,
+			                message: data.notifications.message,
+			                type: data.notifications.type
+			        } ) );
+				}
+			});
+
+			$.each(  window._responsiCustomizeSettings.sections, function( id, data ) {
+				if( data.notifications && ( data.notifications.type == 'none'
+					|| data.notifications.type == 'success'
+					|| data.notifications.type == 'info'
+					|| data.notifications.type == 'warning'
+					|| data.notifications.type == 'error' ) ){
+
+			        var code = 'responsi-notifications-' + data.notifications.type;
+			        wp.customize.section( id ).notifications.add( code, new wp.customize.Notification( code, {
+			                dismissible: data.notifications.dismissible,
+			                message: data.notifications.message,
+			                type: data.notifications.type
+			        } ) );
+				}
+			});
+
+			responsiCustomizeBase.handleEvents();
+
+			// Customize Responsi Focus
+			api.previewer.bind('focus-panel-for-setting', function(panelId) {
+				api.panel(panelId).expand();
+			});
+
+			api.previewer.bind('focus-section-for-setting', function(sectionId) {
+				api.section(sectionId).expand();
+			});
+
+			$('li.control-section-default, ul.customize-pane-child').on('expanded', function() {
+				
+				var groupID = $(this).attr('id');
+				responsiCustomizeBase.setup_ui_custom_logic(groupID);
+				if (!$(this).hasClass('controls-added')) {
+					
+					responsiCustomizeBase.setup_ui_unhide_hidden_custom(groupID);
+					responsiCustomizeBase.setup_ui_unhide_hidden_custom_sub(groupID);
+					responsiCustomizeBase.setup_ui_unhide_hidden(groupID);
+					responsiCustomizeBase.setup_ui_unhide_visible(groupID);
+
+					$(this).addClass('controls-added');
+				}
+			});
+
+			api.trigger( 'responsi-customize-ready' );
+
+		}, 200 );
+
 	});
 
 })(window.wp, jQuery);

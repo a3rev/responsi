@@ -18,7 +18,6 @@ class Responsi_Customize_Blogs
 		$blogs_panels = array();
 		$blogs_panels['blogs_settings_panel'] = array(
 		    'title' => __('Blog Cards', 'responsi'),
-		    'description' => '',
 		    'priority' => 5,
 		);
 		$panels = array_merge($panels, $blogs_panels);
@@ -47,12 +46,10 @@ class Responsi_Customize_Blogs
 
 		$blogs_controls_settings = array();
 
-		$blogs_controls_settings['blog_label6'] = array(
+		$blogs_controls_settings['lbblog1'] = array(
 			'control' => array(
 			    'label'      => __('Blog Card Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
-			    'settings'    => 'blog_label6',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -61,7 +58,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_box_bg'] = array(
 			'control' => array(
 			    'label'      => __('Card Background Color', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -76,7 +72,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_box_border'] = array(
 			'control' => array(
 			    'label'      => __('Card Borders', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -90,7 +85,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_box_border_radius'] = array(
 			'control' => array(
 			    'label'      => __( 'Border Corner', 'responsi' ),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -104,7 +98,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -116,12 +109,10 @@ class Responsi_Customize_Blogs
 			)
 		);
 		
-		$blogs_controls_settings['blog_label1'] = array(
+		$blogs_controls_settings['lbblog2'] = array(
 			'control' => array(
 			    'label'      => __('Card Layout', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
-			    'settings'    => 'blog_label1',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -129,7 +120,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_post_thumbnail_type'] = array(
 			'control' => array(
 			    'label'      => __('Image | Content Layout', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'responsi_post_thumbnail_type',
 			    'type'       => 'layout',
@@ -151,7 +141,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_post_thumbnail_type_wide'] = array(
 			'control' => array(
 			    'label'      => __('Image Wide set as a % of Card Wide', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'    => 'responsi_post_thumbnail_type_wide',
 			    'type'       => 'slider',
@@ -173,7 +162,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_fixed_thumbnail'] = array(
 			'control' => array(
 			    'label'      => __('Image Display Height', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'responsi_fixed_thumbnail',
 			    'type'       => 'iswitcher',
@@ -199,7 +187,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_fixed_thumbnail_tall'] = array(
 			'control' => array(
 			    'label'      => __('Image Height as a % of Width', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'    => 'responsi_fixed_thumbnail_tall',
 			    'type'       => 'slider',
@@ -216,12 +203,10 @@ class Responsi_Customize_Blogs
 			    //'transport'	=> 'postMessage'
 			)
 		);
-		$blogs_controls_settings['blog_label7'] = array(
+		$blogs_controls_settings['lbblog3'] = array(
 			'control' => array(
 			    'label'      => __('Blog Card Image Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
-			    'settings'    => 'blog_label7',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -229,7 +214,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_thumbnail_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground'
@@ -243,7 +227,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_thumbnail_border'] = array(
 			'control' => array(
 			    'label'      => __('Border', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'border'
@@ -257,7 +240,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_thumbnail_border_radius_tl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -271,7 +253,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_thumbnail_border_radius_tr'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Top Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -285,7 +266,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_thumbnail_border_radius_bl'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Left', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -299,7 +279,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_thumbnail_border_radius_br'] = array(
 			'control' => array(
 			    'label'      => __('Border Corner - Bottom Right', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'border_radius'
@@ -313,7 +292,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_thumbnail_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'box_shadow'
@@ -327,7 +305,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_thumbnail_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -352,7 +329,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_thumbnail_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -374,12 +350,10 @@ class Responsi_Customize_Blogs
 			    'transport'	=> 'postMessage',
 			)
 		);
-		$blogs_controls_settings['blog_label4'] = array(
+		$blogs_controls_settings['lbblog4'] = array(
 			'control' => array(
 			    'label'      => __('Footer Cell #1 Features', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
-			    'settings'    => 'blog_label4',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -387,7 +361,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_disable_ext_cat_author'] = array(
 			'control' => array(
 			    'label'      => __('Footer Cell #1', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'responsi_disable_ext_cat_author',
 			    'type'       => 'icheckbox',
@@ -404,7 +377,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_disable_ext_author_cell'] = array(
             'control' => array(
                 'label'      => __('Show Post Author Name', 'responsi'),
-                'description' => "",
                 'section'    => 'blogs_layout',
                 'settings'   => 'responsi_disable_ext_author_cell',
                 'type'       => 'icheckbox',
@@ -421,7 +393,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_disable_ext_categories_cell'] = array(
 			'control' => array(
 			    'label'      => __('Post Categories', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'responsi_disable_ext_categories_cell',
 			    'type'       => 'icheckbox',
@@ -441,7 +412,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_enable_fix_ext_cat_author'] = array(
 			'control' => array(
 			    'label'      => __('Cell #1 Line Wrap', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'responsi_enable_fix_ext_cat_author',
 			    'type'       => 'iradio',
@@ -458,12 +428,10 @@ class Responsi_Customize_Blogs
 			    'sanitize_callback' => 'responsi_sanitize_choices',
 			)
 		);
-		$blogs_controls_settings['blog_label5'] = array(
+		$blogs_controls_settings['lbblog5'] = array(
 			'control' => array(
 			    'label'      => __('Footer Cell #2 Features', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
-			    'settings'    => 'blog_label5',
 			    'type'       => 'ilabel',
 			),
 			'setting' => array()
@@ -471,7 +439,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_disable_ext_tags_comment'] = array(
 			'control' => array(
 			    'label'      => __('Footer Cell #2', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'responsi_disable_ext_tags_comment',
 			    'type'       => 'icheckbox',
@@ -487,7 +454,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_disable_ext_comments_cell'] = array(
 			'control' => array(
 			    'label'      => __('Post Comment Count', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'responsi_disable_ext_comments_cell',
 			    'type'       => 'icheckbox',
@@ -503,7 +469,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_disable_ext_tags_cell'] = array(
 			'control' => array(
 			    'label'      => __('Post Tags', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'responsi_disable_ext_tags_cell',
 			    'type'       => 'icheckbox',
@@ -523,7 +488,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_enable_fix_ext_tags_comment'] = array(
 			'control' => array(
 			    'label'      => __('Cell #2 Line Wrap', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'responsi_enable_fix_ext_tags_comment',
 			    'type'       => 'iradio',
@@ -541,12 +505,10 @@ class Responsi_Customize_Blogs
 			)
 		);
 
-		$blogs_controls_settings['blog_label11'] = array(
+		$blogs_controls_settings['lbblog6'] = array(
 			'control' => array(
 			    'label'      => __('Card Footer Container', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
-			    'settings'    => 'blog_label11',
 			    'type'       => 'ilabel',
 			    'input_attrs' => array(
 					'class' => 'footer-cell-both'
@@ -557,7 +519,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_ext_font'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography',
@@ -574,7 +535,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_ext_alignment'] = array(
 			'control' => array(
 			    'label'      => __('Alignment', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'responsi_blog_ext_alignment',
 			    'type'       => 'iradio',
@@ -595,7 +555,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_post_author_archive_bg'] = array(
 			'control' => array(
 			    'label'      => __('Background Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'ibackground',
@@ -612,7 +571,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_post_author_archive_border_top'] = array(
 			'control' => array(
 			    'label'      => __('Cells #1 Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -629,7 +587,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_post_author_archive_border_bottom'] = array(
 			'control' => array(
 			    'label'      => __('Cells #1 Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -646,7 +603,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_post_tags_comment_border_top'] = array(
 			'control' => array(
 			    'label'      => __('Cells #2 Border - Top', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -663,7 +619,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_post_tags_comment_border_bottom'] = array(
 			'control' => array(
 			    'label'      => __('Cells #2 Border - Bottom', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
 			    'type'       => 'border',
@@ -681,7 +636,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_enable_post_author_archive_icon'] = array(
 			'control' => array(
 			    'label'      => __('Cells Icons', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'responsi_enable_post_author_archive_icon',
 			    'type'       => 'icheckbox',
@@ -703,7 +657,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_post_author_archive_icon'] = array(
 			'control' => array(
 			    'label'      => __('Icon Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'responsi_post_author_archive_icon',
 			    'type'       => 'icolor',
@@ -720,7 +673,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blogext_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -746,12 +698,10 @@ class Responsi_Customize_Blogs
 			)
 		);
 		
-		$blogs_controls_settings['blog_label8'] = array(
+		$blogs_controls_settings['lbblog7'] = array(
 			'control' => array(
 			    'label'      => __('Post Title Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
-			    'settings'    => 'blog_label8',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -760,7 +710,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_font_title'] = array(
 			'control' => array(
 			    'label' => __('Title Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography'
@@ -774,7 +723,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_font_title_transform'] = array(
 			'control' => array(
 			    'label'      => __('Title Transformation', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'responsi_blog_post_font_title_transform',
 			    'type'       => 'iradio',
@@ -794,7 +742,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_title_alignment'] = array(
 			'control' => array(
 			    'label'      => __('Title Alignment', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'responsi_blog_post_title_alignment',
 			    'type'       => 'iradio',
@@ -815,7 +762,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_enable_fix_tall_title_grid'] = array(
 			'control' => array(
 			    'label'      => __('Post Title Line Wrap', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'responsi_enable_fix_tall_title_grid',
 			    'type'       => 'iradio',
@@ -835,7 +781,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_title_padding'] = array(
 			'control' => array(
 			    'label'      => __('Title Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -858,12 +803,10 @@ class Responsi_Customize_Blogs
 			)
 		);
 
-		$blogs_controls_settings['blog_label9'] = array(
+		$blogs_controls_settings['lbblog8'] = array(
 			'control' => array(
 			    'label'      => __('Post Published Date', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
-			    'settings'    => 'blog_label9',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -872,7 +815,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_enable_post_date_blog'] = array(
 			'control' => array(
 			    'label'      => __('Post Date', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'responsi_enable_post_date_blog',
 			    'type'       => 'icheckbox',
@@ -889,7 +831,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_font_date'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography',
@@ -906,7 +847,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_font_date_transform'] = array(
 			'control' => array(
 			    'label'      => __('Transformation', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'responsi_blog_post_font_date_transform',
 			    'type'       => 'iradio',
@@ -927,7 +867,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_date_alignment'] = array(
 			'control' => array(
 			    'label'      => __('Alignment', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'responsi_blog_post_date_alignment',
 			    'type'       => 'iradio',
@@ -948,7 +887,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_enable_blog_post_date_icon'] = array(
 			'control' => array(
 			    'label'      => __('Date Icon', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'responsi_enable_blog_post_date_icon',
 			    'type'       => 'icheckbox',
@@ -969,7 +907,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_date_icon'] = array(
 			'control' => array(
 			    'label'      => __('Icon Colour', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'responsi_blog_post_date_icon',
 			    'type'       => 'icolor',
@@ -986,7 +923,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_date_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -1011,12 +947,10 @@ class Responsi_Customize_Blogs
 			    'transport'	=> 'postMessage',
 			)
 		);
-		$blogs_controls_settings['blog_label10'] = array(
+		$blogs_controls_settings['lbblog9'] = array(
 			'control' => array(
 			    'label'      => __('Post Extract Text', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
-			    'settings'    => 'blog_label10',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -1025,7 +959,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_disable_blog_content'] = array(
 			'control' => array(
 			    'label'      => __('Post Description', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'responsi_disable_blog_content',
 			    'type'       => 'icheckbox',
@@ -1042,7 +975,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_font_content'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography',
@@ -1059,7 +991,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_content_alignment'] = array(
 			'control' => array(
 			    'label'      => __('Alignment', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'responsi_blog_post_content_alignment',
 			    'type'       => 'iradio',
@@ -1080,7 +1011,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_enable_fix_tall_des_grid'] = array(
 			'control' => array(
 			    'label'      => __('Post Description Line Wrap', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'responsi_enable_fix_tall_des_grid',
 			    'type'       => 'iradio',
@@ -1100,7 +1030,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_post_description_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'multitext',
 			    'type'       => 'multitext',
@@ -1126,12 +1055,10 @@ class Responsi_Customize_Blogs
 			)
 		);
 
-		$blogs_controls_settings['blog_label3'] = array(
+		$blogs_controls_settings['lbblog10'] = array(
 			'control' => array(
 			    'label'      => __('Read More Link', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
-			    'settings'    => 'blog_label3',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
@@ -1139,7 +1066,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_disable_blog_morelink'] = array(
 			'control' => array(
 			    'label'      => __('Read More Feature', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'responsi_disable_blog_morelink',
 			    'type'       => 'icheckbox',
@@ -1156,7 +1082,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_morelink_type'] = array(
 			'control' => array(
 			    'label'      => __('Button or Linked Text', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'responsi_blog_morelink_type',
 			    'type'       => 'iswitcher',
@@ -1180,7 +1105,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_morelink_text'] = array(
 			'control' => array(
 			    'label'      => __('Custom Text', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'responsi_blog_morelink_text',
 			    'type'       => 'itext',
@@ -1197,7 +1121,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_morelink_font'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'multiple',
 			    'type'       => 'typography',
@@ -1215,7 +1138,6 @@ class Responsi_Customize_Blogs
 		$blogs_controls_settings['responsi_blog_morelink_alignment'] = array(
 			'control' => array(
 			    'label'      => __('Alignment', 'responsi'),
-			    'description' => "",
 			    'section'    => 'blogs_style',
 			    'settings'   => 'responsi_blog_morelink_alignment',
 			    'type'       => 'iradio',

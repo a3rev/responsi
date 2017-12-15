@@ -7,6 +7,8 @@ if ( ! class_exists( 'Customize_Layout_Control' ) && class_exists('WP_Customize_
 
 		public $type = 'layout';
 
+		public $notifications = array();
+
 		/**
 		 * Constructor.
 		 *
@@ -38,8 +40,10 @@ if ( ! class_exists( 'Customize_Layout_Control' ) && class_exists('WP_Customize_
 		 */
 		public function to_json() {
 			parent::to_json();
+			$this->json['setting_id']      = $this->id;
 			$this->json['value']   = $this->setting->default;
 			$this->json['choices'] = $this->choices;
+			$this->json['notifications'] = $this->notifications;
 		}
 
 		protected function render() {
@@ -50,7 +54,7 @@ if ( ! class_exists( 'Customize_Layout_Control' ) && class_exists('WP_Customize_
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -73,36 +77,20 @@ if ( ! class_exists( 'Customize_Layout_Control' ) && class_exists('WP_Customize_
 		 */
 		public function content_template() {
 			?>
-			<# 
-				var setting_id = data.settings['default']; 
-				var choices    = data.choices;
-			#>
+			<# var setting_id = data.setting_id ? data.setting_id : 'layout',choices = data.choices,checked = '',selected = '',i = 0; #>
 			<div class="customize-control-container">
-				<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
-				<# 
-				var checked = '';
-				var selected = '';
-				var i = 0;
-				_.each(choices, function(  val, key ){
+				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
+				<# _.each(choices, function(  val, key ){
 					i++;
-					checked = '';
-					selected = '';
-					if ( data.value == key ) {
-						checked = 'checked="checked"';
-						selected = 'responsi-radio-img-selected';
-					}
-					#>
+					checked = '';selected = '';
+					if(data.value == key){checked = 'checked="checked"';selected = 'responsi-radio-img-selected';} #>
 					<span class="layout-item layout-item-{{ i }}">
-					<input data-customize-setting-link="{{ setting_id }}" type="radio" id="responsi-radio-img-{{ setting_id }}{{ i }}" class="checkbox responsi-radio-img-radio" value="{{key}}" name="{{ setting_id }}" {{{ checked }}} />
+					<input type="radio" id="responsi-radio-img-{{ setting_id }}{{ i }}" class="checkbox responsi-radio-img-radio" value="{{key}}" name="{{ setting_id }}" {{{ checked }}} />
 					<span class="responsi-radio-img-label">{{ key }}</span>
-					<img id="{{ setting_id }}_{{ i }}" src="{{ val }}" alt="" data-value="{{ key }}" class="responsi-radio-img-img {{ selected }}" onClick="document.getElementById('responsi-radio-img-{{ setting_id }}{{ i }}').click();" />
+					<img id="{{ setting_id }}_{{ i }}" data-src="{{ val }}" alt="" data-value="{{ key }}" class="responsi-radio-img-img {{ selected }}" onClick="document.getElementById('responsi-radio-img-{{ setting_id }}{{ i }}').click();" />
 					</span>
 				<# }); #>
-				<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
+				<# if( data.description ){ #><span class="customize-control-description">{{{ data.description }}}</span><# } #>
 			</div>
 			<?php
 		}

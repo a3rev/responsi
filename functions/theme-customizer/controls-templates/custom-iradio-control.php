@@ -7,6 +7,8 @@ if ( ! class_exists( 'Customize_iRadio_Control' ) && class_exists('WP_Customize_
 
 		public $type = 'iradio';
 
+		public $notifications = array();
+
 		/**
 		 * Constructor.
 		 *
@@ -38,9 +40,11 @@ if ( ! class_exists( 'Customize_iRadio_Control' ) && class_exists('WP_Customize_
 		 */
 		public function to_json() {
 			parent::to_json();
+			$this->json['setting_id']   = $this->id;
 			$this->json['value']   = $this->setting->default;
 			$this->json['std']     = isset($this->input_attrs['std']) ? $this->input_attrs['std'] : '';
 			$this->json['choices'] = $this->choices;
+			$this->json['notifications'] = $this->notifications;
 		}
 
 		protected function render() {
@@ -51,7 +55,7 @@ if ( ! class_exists( 'Customize_iRadio_Control' ) && class_exists('WP_Customize_
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -74,35 +78,17 @@ if ( ! class_exists( 'Customize_iRadio_Control' ) && class_exists('WP_Customize_
 		 */
 		public function content_template() {
 			?>
-			<# 
-				var setting_id = data.settings['default'];
-				var choices    = data.choices;
-			#>
+			<# var setting_id = data.setting_id ? data.setting_id : 'iradio',choices = data.choices,checked = ''; #>
 			<div class="customize-control-container">
-				<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
+				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="responsi-iphone-checkbox">
-					<# var checked = '';
-					_.each(choices, function(  val, key ){
+					<# _.each(choices, function(  val, key ){
 						checked = '';
-						if ( data.value != '' ) {
-							if ( data.value == key ) {
-								checked = 'checked="checked" checkbox-disabled="true"';
-							}
-						} else {
-							if ( data.std != '' && data.std == key ) {
-								checked = 'checked="checked" checkbox-disabled="true"';
-							}
-						}
-						#>
-						<input data-customize-setting-link="{{ setting_id }}" name="{{ setting_id }}" id="{{ setting_id }}_{{ key }}_iradio" value="{{ key }}" {{{ checked }}} class="responsi-input responsi-radio responsi-ui-iradio" type="radio" /><label>{{ val }}</label>
-						<div class="clear"></div>
+						if(data.value != ''){if(data.value == key){checked = 'checked="checked" checkbox-disabled="true"';}}else{if(data.std != '' && data.std == key){checked = 'checked="checked" checkbox-disabled="true"';}} #>
+					<input name="{{ setting_id }}" id="{{ setting_id }}_{{ key }}_iradio" value="{{ key }}" {{{ checked }}} class="responsi-input responsi-radio responsi-ui-iradio" type="radio" /><label>{{ val }}</label><div class="clear"></div>
 					<# }); #>
 				</div>
-				<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
+				<# if( data.description ){ #><span class="customize-control-description">{{{ data.description }}}</span><# } #>
 			</div>
 			<?php
 		}

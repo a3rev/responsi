@@ -7,6 +7,8 @@ if ( ! class_exists( 'Customize_Multiple_Text_Control' ) && class_exists('WP_Cus
 
 		public $type = 'multitext';
 
+		public $notifications = array();
+
 		/**
 		 * Constructor.
 		 *
@@ -45,6 +47,7 @@ if ( ! class_exists( 'Customize_Multiple_Text_Control' ) && class_exists('WP_Cus
 			$this->json['setting_id']   = $this->id;
 			$this->json['choices']      = $this->choices;
 			$this->json['defaultValue'] = $defaultValue;
+			$this->json['notifications'] = $this->notifications;
 		}
 
 		protected function render() {
@@ -55,7 +58,7 @@ if ( ! class_exists( 'Customize_Multiple_Text_Control' ) && class_exists('WP_Cus
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -78,27 +81,15 @@ if ( ! class_exists( 'Customize_Multiple_Text_Control' ) && class_exists('WP_Cus
 		 */
 		public function content_template() {
 			?>
-	
-			<# 
-				var choices      = data.choices;
-				var defaultValue = data.defaultValue;
-			#>
+			<# var setting_id = data.setting_id ? data.setting_id : 'multitext';choices = data.choices,defaultValue = data.defaultValue,i = 0; #>
 			<div class="customize-control-container">
-				<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
-				<#
-				var i = 0;
-				_.each(data.choices, function(  val, key ){
-					#>
-					<div class="responsi-multitext-item"><input name="{{ data.setting_id }}_{{ key }}" id="{{ data.setting_id }}_{{ key }}" data-customize-setting-link="{{ data.setting_id }}_{{ key }}" value="{{defaultValue[i]}}" type="text" class="responsi-text responsi-multitext" /><span class="ilabel-multitext ilabel-multitext-{{{key}}}">{{{val}}}</span></div>
-					<#
+				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
+				<# _.each(data.choices, function(  val, key ){
+					#><div class="responsi-multitext-item"><input name="{{ setting_id }}_{{ key }}" id="{{ setting_id }}_{{ key }}" data-setting-link="{{ setting_id }}_{{ key }}" value="{{defaultValue[i]}}" type="text" class="responsi-text responsi-multitext" /><span class="ilabel-multitext ilabel-multitext-{{{key}}}">{{{val}}}</span></div><#
 					i++;
 				});
 				#>
-				<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
+				<# if( data.description ){ #><span class="customize-control-description">{{{ data.description }}}</span><# } #>
 			</div>
 			<?php
 		}

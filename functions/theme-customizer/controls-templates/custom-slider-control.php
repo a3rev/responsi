@@ -7,6 +7,8 @@ if ( ! class_exists( 'Customize_Slider_Control' ) && class_exists('WP_Customize_
 
 		public $type = 'slider';
 
+		public $notifications = array();
+
 		/**
 		 * Constructor.
 		 *
@@ -43,6 +45,7 @@ if ( ! class_exists( 'Customize_Slider_Control' ) && class_exists('WP_Customize_
 			$this->json['min']        = $this->input_attrs['min'];
 			$this->json['max']        = $this->input_attrs['max'];
 			$this->json['step']       = $this->input_attrs['step'];
+			$this->json['notifications'] = $this->notifications;
 		}
 
 		protected function render() {
@@ -53,7 +56,7 @@ if ( ! class_exists( 'Customize_Slider_Control' ) && class_exists('WP_Customize_
 			}
 
 			$id    = 'customize-control-' . str_replace( '[', '-', str_replace( ']', '', $this->id ) );
-			$class = 'customize-control customize-control-responsi customize-control-' . $this->type;
+			$class = 'customize-control customize-control-' . $this->type;
 
 			$class .= $custom_class;
 
@@ -78,16 +81,12 @@ if ( ! class_exists( 'Customize_Slider_Control' ) && class_exists('WP_Customize_
 			?>
 			<# var setting_id = data.setting_id; #>
 			<div class="customize-control-container">
-				<# if ( data.label ) { #>
-				<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
+				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="responsi-range-slider">
 					<div class="ui-slide" id="{{ setting_id }}_div"></div>
-					<input type="text" readonly="readonly" data-customize-setting-link="{{ setting_id }}" id="{{ setting_id }}" name="{{ setting_id }}" value="{{ data.value }}" class="responsi-input regular-text islide-value" />
+					<input type="text" readonly="readonly" id="{{ setting_id }}" name="{{ setting_id }}" value="{{ data.value }}" class="responsi-input regular-text islide-value" />
 				</div>
-				<# if ( data.description ) { #>
-				<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
+				<# if( data.description ){ #><span class="customize-control-description">{{{ data.description }}}</span><# } #>
 			</div>
 			<?php
 		}
