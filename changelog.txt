@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 6.8.3 - 2018/02/05 =
+* Tweak - Tested for compatibility with WordPress 4.9.3
+* Tweak - Test for compatibility with WooCommerce 3.3.1
+* Tweak - Add theme support for WooCommerce v 3.3.X new product grid layout
+
 = 6.8.2 - 2017/12/15 =
 * Major maintenance update. Completely rewrite of the framework customizer controls in Customizer JS API
 * Tweak - Refactor of customize controls from using PHP API to use Customizer JS API WP 4.9

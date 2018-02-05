@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 
 	function responsi_framework_upgrade_version(){
-	    if( version_compare(get_option('responsi_framework_version'), '6.8.2', '<') ){
+	    if( version_compare(get_option('responsi_framework_version'), '6.8.3', '<') ){
 	        if( get_theme_mods() != false && get_option( 'responsi_framework_version' ) != false ){
 	            $version = str_replace('.', '_', get_option( 'responsi_framework_version' ));
 	            $theme = get_option( 'stylesheet' );
@@ -19,7 +19,7 @@ if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 		        responsi_dynamic_css( 'framework' );
 		    }
 	    }
-	    update_option( 'responsi_framework_version', '6.8.2' );
+	    update_option( 'responsi_framework_version', '6.8.3' );
 	}
 }
 
@@ -45,6 +45,19 @@ if ( ! function_exists( 'responsi_setup' ) ){
 		/*-----------------------------------------------------------------------------------*/
 
 	    add_theme_support( 'woocommerce' );
+
+	    add_theme_support( 'woocommerce', array(
+		    // Product grid theme settings
+		    'product_grid'          => array(
+		        'default_rows'    => 1,
+		        'min_rows'        => 1,
+		        'max_rows'        => '',
+		        'default_columns' => 1,
+		        'min_columns'     => 1,
+		        'max_columns'     => 6,
+		    ),
+		) );
+
 	    add_theme_support( 'title-tag' );
 
 	    register_nav_menus( array(
@@ -58,6 +71,7 @@ if ( ! function_exists( 'responsi_setup' ) ){
 	        'gallery',
 	        'caption'
 	    ));
+
 	    add_theme_support( 'custom-logo' );
 	    add_theme_support( 'post-thumbnails' );
 	    add_theme_support( 'automatic-feed-links' );

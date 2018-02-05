@@ -1210,6 +1210,9 @@ jQuery(document).ready(function(){
                     } else {
                         $('head').append('<link id="responsi-google-webfonts" href="'+responsi_paramaters.responsi_google_webfonts+'" rel="stylesheet">');
                     }
+                    setTimeout(function(){
+                        $( document.body ).trigger('newElements');
+                    }, 250 );
                 }
             }, 250 );
         }
