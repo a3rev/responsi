@@ -33,7 +33,7 @@ iframe .demo_store{display:none;}
 }*/
 .customize-control-container{opacity:0;}
 .controls-added .customize-control-container{opacity: 1;}
-.customize-control:hover{position:relative;z-index:1;}
+.customize-control{position:relative;z-index:1;}
 .customize-control-container{overflow:hidden;zoom:1;min-width:258px;}
 .customize-control-notifications-container li.notice{padding:9px;}
 .customize-control-container:before,.customize-control-container:after,.customize-control-title:before,.customize-control-title:after,.customize-control-description:before,.customize-control-description:after,.clearfix:before,.clearfix:after{clear:both;content:".";display:block;height:0;visibility:hidden;width:100%;line-height:0;overflow:hidden;}
