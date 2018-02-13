@@ -1,5 +1,5 @@
 === Responsi ===
-Contributors: the a3Themes and the a3rev team
+Contributors: a3rev, a3rev Software
 Requires at least: WordPress 4.5
 Tested up to: WordPress 4.5.2
 Version: 1.0

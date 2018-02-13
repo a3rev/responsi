@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 6.9.0 - 2018/02/13 =
+* Feature Upgrade - This upgrade features full integration with newly launched a3rev Dashboard plus compatibility with WordPress 4.9.4
+* Framework - Update Check Now feature for compatibility with a3rev Dashboard 2.3.0
+* Tweak - Test for compatibility with WordPress 4.9.4
+
 = 6.8.3 - 2018/02/05 =
 * Tweak - Tested for compatibility with WordPress 4.9.3
 * Tweak - Test for compatibility with WooCommerce 3.3.1

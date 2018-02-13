@@ -722,4 +722,5 @@ add_action( 'admin_enqueue_scripts', 'responsi_metabox_load_javascripts', 10, 1 
 add_action( 'admin_print_styles', 'responsi_metabox_load_styles', 10 );
 add_action( 'edit_post', 'responsi_metabox_handle', 10 );
 add_action( 'admin_menu', 'responsi_metabox_add', 10 );
+
 ?>

@@ -767,13 +767,8 @@ $google_fonts = $new_google_fonts;
 /* Responsi Version */
 /*-----------------------------------------------------------------------------------*/
 
-global $wp_version, $responsi_version;
-
-if( get_option( 'responsi_framework_version', false ) ){
-    $responsi_version = get_option( 'responsi_framework_version' );
-}else{
-    $responsi_version = $wp_version;
-}
+global $responsi_version;
+$responsi_version = RESPONSI_FRAMEWORK_VERSION;
 
 /*-----------------------------------------------------------------------------------*/
 /* Shift click */
@@ -995,4 +990,5 @@ foreach ( $responsi_includes_customizer as $i ) {
         }
     }
 }
+
 ?>

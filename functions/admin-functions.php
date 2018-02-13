@@ -3849,4 +3849,5 @@ function responsi_build_dynamic_css( $preview = false ) {
     
     return $dynamic_css;
 }
+
 ?>

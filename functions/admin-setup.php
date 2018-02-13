@@ -19,7 +19,8 @@ if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 		        responsi_dynamic_css( 'framework' );
 		    }
 	    }
-	    update_option( 'responsi_framework_version', '6.8.3' );
+	    
+	    update_option( 'responsi_framework_version', RESPONSI_FRAMEWORK_VERSION );
 	}
 }
 
@@ -112,4 +113,5 @@ if ( is_admin() && isset( $_GET['activated'] ) && ( true === $_GET['activated'] 
 	// Custom action for theme-setup (redirect is at priority 10).
 	do_action( 'responsi_theme_activate' );
 }
+
 ?>

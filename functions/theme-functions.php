@@ -2255,4 +2255,5 @@ if ( ! function_exists( 'responsi_sanitize_textarea_esc_html' ) ) {
         return $value;
     }
 }
+
 ?>
