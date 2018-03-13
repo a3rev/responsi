@@ -87,8 +87,7 @@ body.ie .box-item .entry-item .thumbnail img { display: block !important; }
 .custom_box_post .post, .custom_box_post .post-entries, .custom_box_post #comments, .custom_box_post #respond { margin-bottom: 0; margin-top: 0; }
 p.pvc_stats { margin-bottom: 0; background-position: left center !important; }
 .masonry_widget_footer { display: inline-block; width: 100%; }
-#footer #credit img { max-width: 50%; vertical-align: middle; }
-#footer #credit a { vertical-align: middle; }
+#footer #credit a { vertical-align: middle;display: inline-block; }
 #footer-widgets { clear: both; position: relative; }
 .infinite-scroll.masonry { transition-property: none; }
 .mobile-navigation { display: none; }

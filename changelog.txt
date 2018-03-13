@@ -1,5 +1,11 @@
 *** Responsi Framework Changelog ***
 
+= 6.9.1 - 2018/03/13 =
+* Maintenance Update  Small footer and widget element style tweaks and review of Framework Security in line with security hardening of all Responsi plugins
+* Tweak - Footer image alignment with text
+* Tweak - Widgets update ordered and unordered lists CSS style 
+* Tweak - Review Framework sanitizing and escaping 
+
 = 6.9.0 - 2018/02/13 =
 * Feature Upgrade - This upgrade features full integration with newly launched a3rev Dashboard plus compatibility with WordPress 4.9.4
 * Framework - Update Check Now feature for compatibility with a3rev Dashboard 2.3.0
