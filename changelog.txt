@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 6.9.2 - 2018/04/18 =
+* Maintenance Update that fixes 2 small bugs
+* Fix - Options Logic for customizer menu background control
+* Fix - Read more button not showing when Blog Card description is switched OFF
+
 = 6.9.1 - 2018/03/13 =
 * Maintenance Update  Small footer and widget element style tweaks and review of Framework Security in line with security hardening of all Responsi plugins
 * Tweak - Footer image alignment with text

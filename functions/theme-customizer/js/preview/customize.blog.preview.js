@@ -306,8 +306,12 @@
         value.bind(function(to) {
             if( to == 'true' ){
                 $( '.blogs-more' ).addClass('show-more-link').removeClass('hide-more-link');
+                $( '.blogs-more' ).parent().parent().parent('.entry-content').show();
             }else{
                 $( '.blogs-more' ).addClass('hide-more-link').removeClass('show-more-link');
+                if( 'false' === wp.customize.value('responsi_disable_blog_content')() ){
+                    $( '.blogs-more' ).parent().parent().parent('.entry-content').hide();
+                }
             }
             $(window).trigger('resize');
         });

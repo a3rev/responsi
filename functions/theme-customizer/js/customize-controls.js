@@ -654,14 +654,15 @@
 					container_width = parseInt(_wpCustomBorderRadiusControl.corner.container_width),
 					corner_value = control.params.values.corner;
 
-				if (corner_value == checked_value) {
-					control.container.find('.responsi-range-slider').show();
-				} else {
-					control.container.find('.responsi-range-slider').hide();
-				}
 
 				if (!control.container.hasClass('applied_border_radius')) {
 					control.container.addClass('applied_border_radius');
+
+					if (corner_value == checked_value) {
+						control.container.find('.responsi-range-slider').show();
+					} else {
+						control.container.find('.responsi-range-slider').hide();
+					}
 
 					// Switcher
 					switcher.iphoneStyle({
@@ -750,14 +751,15 @@
 					blur_selected,
 					spread_selected;
 
-				if (onoff_value == onoff_checked_value) {
-					control.container.find('.responsi-box-shadow-container').show();
-				} else {
-					control.container.find('.responsi-box-shadow-container').hide();
-				}
 
 				if (!control.container.hasClass('applied_box_shadow')) {
 					control.container.addClass('applied_box_shadow');
+
+					if (onoff_value == onoff_checked_value) {
+						control.container.find('.responsi-box-shadow-container').show();
+					} else {
+						control.container.find('.responsi-box-shadow-container').hide();
+					}
 
 					// OnOff Switcher
 					onoff_switcher.iphoneStyle({
@@ -1155,14 +1157,16 @@
 					onoff_container_width = parseInt(_wpCustomiBackgroundControl.onoff.container_width),
 					onoff_value = control.params.values.onoff;
 
-				if (onoff_value == onoff_checked_value) {
-					control.container.find('.responsi-ibackground-container').show();
-				} else {
-					control.container.find('.responsi-ibackground-container').hide();
-				}
 				
-				if (!control.container.hasClass('applied_box_shadow')) {
+				
+				if (!control.container.hasClass('applied_ibackground')) {
 					control.container.addClass('applied_ibackground');
+
+					if (onoff_value == onoff_checked_value) {
+						control.container.find('.responsi-ibackground-container').show();
+					} else {
+						control.container.find('.responsi-ibackground-container').hide();
+					}
 
 					// OnOff Switcher
 					onoff_switcher.iphoneStyle({

@@ -3765,6 +3765,9 @@ function responsi_build_dynamic_css( $preview = false ) {
     $dynamic_css .= '.show-more-link{display:block;box-sizing:border-box;text-align:' . $responsi_blog_morelink_alignment . ';}';
     $dynamic_css .= 'div.box-content .box-item div.entry-item .entry-content a.more-link,body #wrapper #content div.box-content .box-item div.entry-item .entry-content a.button{' . responsi_generate_fonts($responsi_blog_morelink_font, true) . '}';
     if ( !isset( $disable_blog_content ) ||  'false' === $disable_blog_content || '' === $disable_blog_content ) {
+        $dynamic_css .= 'div.box-content .box-item div.entry-item.blog-post-item .entry-content .gird_descriptions{display:none !important;}';
+    }
+    if( 'false' === $disable_blog_content && isset( $responsi_options['responsi_disable_blog_morelink'] ) && 'false' === $responsi_options['responsi_disable_blog_morelink'] ){
         $dynamic_css .= 'div.box-content .box-item div.entry-item.blog-post-item .entry-content{display:none;}';
     }
     if ( 'false' === $disable_ext_cat_author ) {
