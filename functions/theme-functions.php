@@ -1776,14 +1776,13 @@ if ( !function_exists( 'responsi_comment_form_field_comment' ) ) {
 
 if ( !function_exists( 'responsi_comment_form_default_fields' ) ) {
     function responsi_comment_form_default_fields( $fields ) {
+
         $commenter = wp_get_current_commenter();
-        $req       = get_option( 'require_name_email' );
-        $aria_req  = ( $req ? " aria-required='true'" : '' );
-        $fields = array(
-            'author' => '<p class="comment-form-author"><input id="author" name="author" type="text" class="txt" tabindex="1" value="' . sanitize_text_field(esc_attr($commenter['comment_author'])) . '" size="30"' . $aria_req . ' />' . '<label for="author">' . __('Name', 'responsi') . ($req ? ' <span class="required">(' . __('required', 'responsi') . ')</span>' : '') . '</label> ' . '</p>',
-            'email' => '<p class="comment-form-email"><input id="email" name="email" type="text" class="txt" tabindex="2" value="' . sanitize_email(esc_attr($commenter['comment_author_email'])) . '" size="30"' . $aria_req . ' />' . '<label for="email">' . __('Email (will not be published)', 'responsi') . ($req ? ' <span class="required">(' . __('required', 'responsi') . ')</span>' : '') . '</label> ' . '</p>',
-            'url' => '<p class="comment-form-url"><input id="url" name="url" type="text" class="txt" tabindex="3" value="' . esc_url($commenter['comment_author_url']) . '" size="30" />' . '<label for="url">' . __('Website', 'responsi') . '</label></p>'
-        );
+        $req      = get_option( 'require_name_email' );
+        $html_req = ( $req ? " required='required'" : '' );
+        $fields['author']   = '<p class="comment-form-author"><input id="author" name="author" type="text" class="txt" tabindex="1" value="' . sanitize_text_field(esc_attr($commenter['comment_author'])) . '" size="30" maxlength="245"' . $html_req . ' />' . '<label for="author">' . __('Name', 'responsi') . ($req ? ' <span class="required">(' . __('required', 'responsi') . ')</span>' : '') . '</label> ' . '</p>';
+        $fields['email']    = '<p class="comment-form-email"><input id="email" name="email" type="text" class="txt" tabindex="2" value="' . sanitize_email(esc_attr($commenter['comment_author_email'])) . '" size="30" maxlength="100" aria-describedby="email-notes"' . $html_req . ' />' . '<label for="email">' . __('Email', 'responsi') . ($req ? ' <span class="required">(' . __('required', 'responsi') . ')</span>' : '') . '</label> ' . '</p>';
+        $fields['url']      = '<p class="comment-form-url"><input id="url" name="url" type="text" class="txt" tabindex="3" value="' . esc_url($commenter['comment_author_url']) . '" size="30" maxlength="200" />' . '<label for="url">' . __('Website', 'responsi') . '</label></p>';
 
         return $fields;
 

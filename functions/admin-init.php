@@ -928,7 +928,8 @@ $responsi_requires = array(
     'functions/theme-hooks.php',
     'functions/theme-actions.php',
     'functions/theme-extension.php',
-    'functions/theme-sidebar-init.php'
+    'functions/theme-sidebar-init.php',
+    'functions/theme-privacy.php'
 );
 
 foreach ( $responsi_requires as $i ) {
