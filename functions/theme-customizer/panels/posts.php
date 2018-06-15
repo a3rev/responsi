@@ -73,24 +73,11 @@ class Responsi_Customize_Blog_Posts
 			    'label' => __('Container Border', 'responsi'),
 			    'section'    => 'posts_style',
 			    'settings'   => 'multiple',
-			    'type'       => 'border'
+			    'type'       => 'border_boxes'
 			),
 			'setting' => array(
-			    'default'		=> isset($responsi_options['responsi_post_box_border']) ? $responsi_options['responsi_post_box_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB'),
-			    'sanitize_callback' => 'responsi_sanitize_border',
-			    'transport'	=> 'postMessage'
-			)
-		);
-		$posts_controls_settings['responsi_post_box_border_radius'] = array(
-			'control' => array(
-			    'label'      => __('Border Corner', 'responsi'),
-			    'section'    => 'posts_style',
-			    'settings'   => 'multiple',
-			    'type'       => 'border_radius'
-			),
-			'setting' => array(
-			    'default'		=> isset($responsi_options['responsi_post_box_border_radius']) ? $responsi_options['responsi_post_box_border_radius'] : array('corner' => 'square','rounded_value' => '3'),
-			    'sanitize_callback' => 'responsi_sanitize_border_radius',
+			    'default'		=> isset($responsi_options['responsi_post_box_border']) ? $responsi_options['responsi_post_box_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB','corner' => 'square', 'topleft' => '0', 'topright' => '0', 'bottomright' => '0', 'bottomleft' => '0'),
+			    'sanitize_callback' => 'responsi_sanitize_border_boxes',
 			    'transport'	=> 'postMessage'
 			)
 		);

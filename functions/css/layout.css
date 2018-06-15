@@ -43,7 +43,7 @@ ul.nav li:hover > ul { visibility: visible; display: block; }
 ul.nav ul li.current_page_item a, ul.nav ul li.current_page_parent a, ul.nav ul li.current-menu-ancestor a, ul.nav ul li.current-cat a, ul.nav ul li.current-menu-item a { color: #5d88b3; }
 .sub-menu li a, #navigation .children li a { white-space: nowrap; }
 .sub-menu li ul { width: auto !important; }
-#wrapper-footer-top .widget ul li { padding: 4px 0 0 !important; display: block; margin-top: 5px; }
+#wrapper-footer-top .widget ul li { padding: 4px 0 0 !important; margin-top: 5px; }
 #wrapper-footer-top .widget ul li:first-child { border-top: 0 dotted #bbb; margin-top: 0; }
 #footer p:first-child, #footer p:last-child { padding: 0; margin: 0; }
 #footer-top-content .box.col-item { margin-bottom: 0 !important; }

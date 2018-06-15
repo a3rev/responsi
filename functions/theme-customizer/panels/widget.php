@@ -344,24 +344,11 @@ class Responsi_Customize_Widget_Sidebar
 			    'label' => __('Border', 'responsi'),
 			    'section'    => 'widget_settings',
 			    'settings'   => 'multiple',
-			    'type'       => 'border'
+			    'type'       => 'border_boxes'
 			),
 			'setting' => array(
-			    'default'		=> isset($responsi_options['responsi_widget_border']) ? $responsi_options['responsi_widget_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB'),
-			    'sanitize_callback' => 'responsi_sanitize_border',
-                'transport'	=> 'postMessage'
-			)
-		);
-		$widget_controls_settings['responsi_widget_border_radius'] = array(
-			'control' => array(
-			    'label'      => __('Border Corner', 'responsi'),
-			    'section'    => 'widget_settings',
-			    'settings'   => 'multiple',
-			    'type'       => 'border_radius'
-			),
-			'setting' => array(
-			    'default'		=> isset($responsi_options['responsi_widget_border_radius']) ? $responsi_options['responsi_widget_border_radius'] : array('corner' => 'square','rounded_value' => '0'),
-			    'sanitize_callback' => 'responsi_sanitize_border_radius',
+			    'default'		=> isset($responsi_options['responsi_widget_border']) ? $responsi_options['responsi_widget_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB','corner' => 'square', 'topleft' => '0', 'topright' => '0', 'bottomright' => '0', 'bottomleft' => '0'),
+			    'sanitize_callback' => 'responsi_sanitize_border_boxes',
                 'transport'	=> 'postMessage'
 			)
 		);

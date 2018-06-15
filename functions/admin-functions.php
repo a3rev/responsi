@@ -1318,6 +1318,62 @@ if (!function_exists('responsi_generate_border')) {
 }
 
 /*-----------------------------------------------------------------------------------*/
+/* responsi_generate_border_boxes() */
+/*-----------------------------------------------------------------------------------*/
+
+if (!function_exists('responsi_generate_border_boxes')) {
+    function responsi_generate_border_boxes( $option, $important = false ) {
+
+        $border_boxes = '';
+        
+        $border_style = '';
+
+        $border_corner = '';
+
+        if ( $important ) {
+            $ipt = ' !important';
+        } else {
+            $ipt = '';
+        }
+
+        if ( is_array( $option ) ){
+            if ( isset( $option['width'] ) && $option['width'] >= 0 && isset( $option['style'] ) && isset( $option['color'] ) && '' !== trim( $option['color'] ) ) {
+                $border_style = 'border:' . esc_attr( $option['width']) . 'px ' . esc_attr( $option['style'] ) . ' ' . esc_attr( $option['color'] ) . $ipt . ';';
+            }else{
+                $border_style = 'border:none' . $ipt . ';';
+            }
+            if ( isset( $option['corner'] ) && 'rounded' == $option['corner'] ){
+                if ( isset( $option['topleft'] ) && $option['topleft'] >= 0 ){
+                    $border_corner .= 'border-top-left-radius: '.esc_attr( $option['topleft']).'px' . $ipt . ';';
+                }
+                if ( isset( $option['topright'] ) && $option['topright'] >= 0 ){
+                    $border_corner .= 'border-top-right-radius: '.esc_attr( $option['topright']).'px' . $ipt . ';';
+                }
+                if ( isset( $option['bottomright'] ) && $option['bottomright'] >= 0 ){
+                    $border_corner .= 'border-bottom-right-radius: '.esc_attr( $option['bottomright']).'px' . $ipt . ';';
+                }
+                if ( isset( $option['bottomleft'] ) && $option['bottomleft'] >= 0 ){
+                    $border_corner .= 'border-bottom-left-radius: '.esc_attr( $option['bottomleft']).'px' . $ipt . ';';
+                }
+            }else{
+                $border_corner = 'border-top-left-radius: 0px' . $ipt . '; border-top-right-radius: 0px' . $ipt . '; border-bottom-right-radius: 0px' . $ipt . '; border-bottom-left-radius: 0px' . $ipt . ';';
+            }
+
+        }else{
+            $border_style = 'border:none' . $ipt . ';';
+            $border_corner = 'border-top-left-radius: 0px' . $ipt . '; border-top-right-radius: 0px' . $ipt . '; border-bottom-right-radius: 0px' . $ipt . '; border-bottom-left-radius: 0px' . $ipt . ';';
+        }
+
+
+        $border_boxes .= $border_style;
+
+        $border_boxes .= $border_corner;
+
+        return $border_boxes;
+    }
+}
+
+/*-----------------------------------------------------------------------------------*/
 /* responsi_generate_background_color() */
 /*-----------------------------------------------------------------------------------*/
 
@@ -2663,10 +2719,8 @@ function responsi_build_dynamic_css( $preview = false ) {
     $post_box_margin_left                           = isset( $responsi_options['responsi_post_box_margin_left'] ) ? esc_attr( $responsi_options['responsi_post_box_margin_left'] ) : 0;
     $post_box_margin_right                          = isset( $responsi_options['responsi_post_box_margin_right'] ) ? esc_attr( $responsi_options['responsi_post_box_margin_right'] ) : 0;
     $post_box_bg                                    = isset( $responsi_options['responsi_post_box_bg'] ) ? $responsi_options['responsi_post_box_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
-    $post_box_border                                = isset( $responsi_options['responsi_post_box_border'] ) ? $responsi_options['responsi_post_box_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB');
-    $post_box_border_radius_option                  = isset( $responsi_options['responsi_post_box_border_radius'] ) ? $responsi_options['responsi_post_box_border_radius'] : array( 'corner' => 'square','rounded_value' => '0' );
+    $post_box_border                                = isset( $responsi_options['responsi_post_box_border'] ) ? $responsi_options['responsi_post_box_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB','corner' => 'square', 'topleft' => '0', 'topright' => '0', 'bottomright' => '0', 'bottomleft' => '0');
     $post_box_shadow_option                         = isset( $responsi_options['responsi_post_box_shadow'] ) ? $responsi_options['responsi_post_box_shadow'] : array( 'onoff' => 'false' , 'h_shadow' => '0px' , 'v_shadow' => '0px', 'blur' => '5px' , 'spread' => '0px', 'color' => '#DBDBDB', 'inset' => '' );
-    $post_box_border_radius                         = responsi_generate_border_radius( $post_box_border_radius_option, true );
     $post_box_shadow                                = responsi_generate_box_shadow( $post_box_shadow_option, true );
     
     $post_box_css = '';
@@ -2675,8 +2729,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $post_box_css .= 'padding-top:' . $post_box_padding_top . 'px !important;padding-bottom:' . $post_box_padding_bottom . 'px !important;';
     $post_box_css .= 'padding-left:' . $post_box_padding_left . 'px !important;padding-right:' . $post_box_padding_right . 'px !important;';
     $post_box_css .= responsi_generate_background_color( $post_box_bg, true );
-    $post_box_css .= responsi_generate_border( $post_box_border, 'border', true );
-    $post_box_css .= $post_box_border_radius;
+    $post_box_css .= responsi_generate_border_boxes( $post_box_border, true );
     $post_box_css .= $post_box_shadow;
     
     $dynamic_css .= '.main-wrap-post{' . $post_box_css . '}';
@@ -2707,10 +2760,8 @@ function responsi_build_dynamic_css( $preview = false ) {
     $page_box_margin_left                           = isset( $responsi_options['responsi_page_box_margin_left'] ) ? esc_attr( $responsi_options['responsi_page_box_margin_left'] ) : 0;
     $page_box_margin_right                          = isset( $responsi_options['responsi_page_box_margin_right'] ) ? esc_attr( $responsi_options['responsi_page_box_margin_right'] ) : 0;
     $page_box_bg                                    = isset( $responsi_options['responsi_page_box_bg'] ) ? $responsi_options['responsi_page_box_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
-    $page_box_border                                = isset( $responsi_options['responsi_page_box_border'] ) ? $responsi_options['responsi_page_box_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB');
-    $page_box_border_radius_option                  = isset( $responsi_options['responsi_page_box_border_radius'] ) ? $responsi_options['responsi_page_box_border_radius'] : array( 'corner' => 'square','rounded_value' => '0' );
+    $page_box_border                                = isset( $responsi_options['responsi_page_box_border'] ) ? $responsi_options['responsi_page_box_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB','corner' => 'square', 'topleft' => '0', 'topright' => '0', 'bottomright' => '0', 'bottomleft' => '0');
     $page_box_shadow_option                         = isset( $responsi_options['responsi_page_box_shadow'] ) ? $responsi_options['responsi_page_box_shadow'] : array( 'onoff' => 'false' , 'h_shadow' => '0px' , 'v_shadow' => '0px', 'blur' => '5px' , 'spread' => '0px', 'color' => '#DBDBDB', 'inset' => '' );
-    $page_box_border_radius                         = responsi_generate_border_radius( $page_box_border_radius_option, true );
     $page_box_shadow                                = responsi_generate_box_shadow( $page_box_shadow_option, true );
     
     $page_box_css = '';
@@ -2719,8 +2770,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $page_box_css .= 'padding-top:' . $page_box_padding_top . 'px !important;padding-bottom:' . $page_box_padding_bottom . 'px !important;';
     $page_box_css .= 'padding-left:' . $page_box_padding_left . 'px !important;padding-right:' . $page_box_padding_right . 'px !important;';
     $page_box_css .= responsi_generate_background_color( $page_box_bg, true );
-    $page_box_css .= responsi_generate_border( $page_box_border, 'border', true );
-    $page_box_css .= $page_box_border_radius;
+    $page_box_css .= responsi_generate_border_boxes( $page_box_border, true );
     $page_box_css .= $page_box_shadow;
     
     $dynamic_css .= '.main-wrap-page{' . $page_box_css . '}';
@@ -2736,10 +2786,8 @@ function responsi_build_dynamic_css( $preview = false ) {
     $archive_box_margin_left                         = isset( $responsi_options['responsi_archive_box_margin_left'] ) ? esc_attr( $responsi_options['responsi_archive_box_margin_left'] ) : 0;
     $archive_box_margin_right                        = isset( $responsi_options['responsi_archive_box_margin_right'] ) ? esc_attr( $responsi_options['responsi_archive_box_margin_right'] ) : 0;
     $archive_box_bg                                  = isset( $responsi_options['responsi_archive_box_bg'] ) ? $responsi_options['responsi_archive_box_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
-    $archive_box_border                              = isset( $responsi_options['responsi_archive_box_border'] ) ? $responsi_options['responsi_archive_box_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB');
-    $archive_box_border_radius_option                = isset( $responsi_options['responsi_archive_box_border_radius'] ) ? $responsi_options['responsi_archive_box_border_radius'] : array( 'corner' => 'square','rounded_value' => '0' );
+    $archive_box_border                              = isset( $responsi_options['responsi_archive_box_border'] ) ? $responsi_options['responsi_archive_box_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB','corner' => 'square', 'topleft' => '0', 'topright' => '0', 'bottomright' => '0', 'bottomleft' => '0');
     $archive_box_shadow_option                       = isset( $responsi_options['responsi_archive_box_shadow'] ) ? $responsi_options['responsi_archive_box_shadow'] : array( 'onoff' => 'false' , 'h_shadow' => '0px' , 'v_shadow' => '0px', 'blur' => '5px' , 'spread' => '0px', 'color' => '#DBDBDB', 'inset' => '' );
-    $archive_box_border_radius                       = responsi_generate_border_radius( $archive_box_border_radius_option, true );
     $archive_box_shadow                              = responsi_generate_box_shadow( $archive_box_shadow_option, true );
     
 
@@ -2749,8 +2797,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $archive_box_css .= 'padding-top:' . $archive_box_padding_top . 'px !important;padding-bottom:' . $archive_box_padding_bottom . 'px !important;';
     $archive_box_css .= 'padding-left:' . $archive_box_padding_left . 'px !important;padding-right:' . $archive_box_padding_right . 'px !important;';
     $archive_box_css .= responsi_generate_background_color( $archive_box_bg, true );
-    $archive_box_css .= responsi_generate_border( $archive_box_border, 'border', true );
-    $archive_box_css .= $archive_box_border_radius;
+    $archive_box_css .= responsi_generate_border_boxes( $archive_box_border, true );
     $archive_box_css .= $archive_box_shadow;
 
     $dynamic_css .= '.main-wrap-archive{' . $archive_box_css . '}';
@@ -2869,14 +2916,12 @@ function responsi_build_dynamic_css( $preview = false ) {
     $widget_link_visited_color                      = isset( $responsi_options['responsi_widget_link_visited_color'] ) ? esc_attr( $responsi_options['responsi_widget_link_visited_color'] ) : '#009ee0';
     $widget_text_alignment                          = isset( $responsi_options['responsi_widget_font_text_alignment'] ) ? esc_attr( $responsi_options['responsi_widget_font_text_alignment'] ) : 'left';
     $widget_bg                                      = isset( $responsi_options['responsi_widget_bg'] ) ? $responsi_options['responsi_widget_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );  
-    $widget_border                                  = isset( $responsi_options['responsi_widget_border'] ) ? $responsi_options['responsi_widget_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB');
+    $widget_border                                  = isset( $responsi_options['responsi_widget_border'] ) ? $responsi_options['responsi_widget_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB','corner' => 'square', 'topleft' => '0', 'topright' => '0', 'bottomright' => '0', 'bottomleft' => '0');
     $widget_padding_top                             = isset( $responsi_options['responsi_widget_padding_top'] ) ? esc_attr( $responsi_options['responsi_widget_padding_top'] ) : 0;
     $widget_padding_bottom                          = isset( $responsi_options['responsi_widget_padding_bottom'] ) ? esc_attr( $responsi_options['responsi_widget_padding_bottom'] ) : 0;
     $widget_padding_left                            = isset( $responsi_options['responsi_widget_padding_left'] ) ? esc_attr( $responsi_options['responsi_widget_padding_left'] ) : 0;
     $widget_padding_right                           = isset( $responsi_options['responsi_widget_padding_right'] ) ? esc_attr( $responsi_options['responsi_widget_padding_right'] ) : 0;
     $widget_margin_between                          = isset( $responsi_options['responsi_widget_margin_between'] ) ? esc_attr( $responsi_options['responsi_widget_margin_between'] ) : 0;
-    $widget_border_radius_option                    = isset( $responsi_options['responsi_widget_border_radius'] ) ? $responsi_options['responsi_widget_border_radius'] : array( 'corner' => 'square','rounded_value' => '0' );
-    $widget_border_radius                           = responsi_generate_border_radius( $widget_border_radius_option );
     $widget_box_shadow_option                       = isset( $responsi_options['responsi_widget_box_shadow'] ) ? $responsi_options['responsi_widget_box_shadow'] : array( 'onoff' => 'false' , 'h_shadow' => '0px' , 'v_shadow' => '0px', 'blur' => '5px' , 'spread' => '0px', 'color' => '#DBDBDB', 'inset' => '' );
     $widget_box_shadow                              = responsi_generate_box_shadow( $widget_box_shadow_option );
 
@@ -2885,13 +2930,12 @@ function responsi_build_dynamic_css( $preview = false ) {
     $widget_css .= responsi_generate_fonts( $widget_font_text );
     $widget_css .= 'text-align:' . $widget_text_alignment . ';';
     $widget_css .= responsi_generate_background_color( $widget_bg );
-    $widget_css .= responsi_generate_border( $widget_border, 'border' );
+    $widget_css .= responsi_generate_border_boxes( $widget_border );
     $widget_css .= 'padding-top:' . $widget_padding_top . 'px;';
     $widget_css .= 'padding-bottom:' . $widget_padding_bottom . 'px;';
     $widget_css .= 'padding-left:' . $widget_padding_left . 'px;';
     $widget_css .= 'padding-right:' . $widget_padding_right . 'px;';
     $widget_css .= 'margin-bottom:' . $widget_margin_between . 'px;';
-    $widget_css .= $widget_border_radius;
     $widget_css .= $widget_box_shadow;
 
     $dynamic_css .= '#sidebar .widget, #sidebar-alt .widget{' . $widget_css . '}';
@@ -3352,7 +3396,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $footer_widget_padding_left           = isset($responsi_options['responsi_footer_widget_padding_left']) ? esc_attr( $responsi_options['responsi_footer_widget_padding_left'] ) : '0';
     $footer_widget_padding_right          = isset($responsi_options['responsi_footer_widget_padding_right']) ? esc_attr( $responsi_options['responsi_footer_widget_padding_right'] ) : '0';
     $footer_widget_bg                     = isset($responsi_options['responsi_footer_widget_bg']) ? $responsi_options['responsi_footer_widget_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff');
-    $footer_widget_border                 = isset($responsi_options['responsi_footer_widget_border']) ? $responsi_options['responsi_footer_widget_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB');
+    $footer_widget_border                 = isset($responsi_options['responsi_footer_widget_border']) ? $responsi_options['responsi_footer_widget_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB','corner' => 'square', 'topleft' => '0', 'topright' => '0', 'bottomright' => '0', 'bottomleft' => '0');
     $font_footer_widget_title             = isset($responsi_options['responsi_font_footer_widget_title']) ? $responsi_options['responsi_font_footer_widget_title'] : array('size' => '15','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#ffffff');
     $footer_widget_title_bg               = isset($responsi_options['responsi_footer_widget_title_bg']) ? $responsi_options['responsi_footer_widget_title_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff');
     $footer_widget_title_border_top       = isset($responsi_options['responsi_footer_widget_title_border_top']) ? $responsi_options['responsi_footer_widget_title_border_top'] : array('width' => '0','style' => 'solid','color' => '#ffffff');
@@ -3367,8 +3411,6 @@ function responsi_build_dynamic_css( $preview = false ) {
     $widget_title_border_radius_tr        = responsi_generate_border_radius_value( $widget_title_border_radius_tr_option );
     $widget_title_border_radius_bl        = responsi_generate_border_radius_value( $widget_title_border_radius_bl_option );
     $widget_title_border_radius_br        = responsi_generate_border_radius_value( $widget_title_border_radius_br_option );
-    $footer_widget_border_radius_option   = isset($responsi_options['responsi_footer_widget_border_radius']) ? $responsi_options['responsi_footer_widget_border_radius'] : array('corner' => 'square','rounded_value' => '0');
-    $footer_widget_border_radius          = responsi_generate_border_radius( $footer_widget_border_radius_option );
     $footer_widget_box_shadow_option      = isset($responsi_options['responsi_footer_widget_box_shadow']) ? $responsi_options['responsi_footer_widget_box_shadow'] : array( 'onoff' => 'false' , 'h_shadow' => '0px' , 'v_shadow' => '0px', 'blur' => '8px' , 'spread' => '0px', 'color' => '#DBDBDB', 'inset' => '' );
     $footer_widget_box_shadow             = responsi_generate_box_shadow( $footer_widget_box_shadow_option );
     
@@ -3412,8 +3454,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $footer_widget_css .= 'padding-left:' . $footer_widget_padding_left . 'px;';
     $footer_widget_css .= 'padding-right:' . $footer_widget_padding_right . 'px;';
     $footer_widget_css .= responsi_generate_background_color($footer_widget_bg);
-    $footer_widget_css .= responsi_generate_border($footer_widget_border, 'border');
-    $footer_widget_css .= $footer_widget_border_radius;
+    $footer_widget_css .= responsi_generate_border_boxes($footer_widget_border);
     $footer_widget_css .= $footer_widget_box_shadow;
     $footer_widget_css .= 'text-align:' . $footer_widget_text_alignment . ';';
     $footer_widget_css .= 'margin-bottom:' . $footer_widget_margin_between . 'px;';
@@ -3585,9 +3626,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     
     /* Blog Items */
     $blog_box_bg                                    = isset($responsi_options['responsi_blog_box_bg']) ? $responsi_options['responsi_blog_box_bg'] : array('onoff' => 'true', 'color' => '#ffffff');    
-    $blog_box_border                                = isset($responsi_options['responsi_blog_box_border']) ? $responsi_options['responsi_blog_box_border'] : array('width' => '1','style' => 'solid','color' => '#DBDBDB');
-    $blog_box_border_radius_option                  = isset($responsi_options['responsi_blog_box_border_radius']) ? $responsi_options['responsi_blog_box_border_radius'] : array('corner' => 'rounded','rounded_value' => '3');
-    $blog_box_border_radius                         = responsi_generate_border_radius($blog_box_border_radius_option, true);
+    $blog_box_border                                = isset($responsi_options['responsi_blog_box_border']) ? $responsi_options['responsi_blog_box_border'] : array('width' => '1','style' => 'solid','color' => '#DBDBDB','corner' => 'square', 'topleft' => '0', 'topright' => '0', 'bottomright' => '0', 'bottomleft' => '0');
     $blog_box_shadow_option                         = isset($responsi_options['responsi_blog_box_shadow']) ? $responsi_options['responsi_blog_box_shadow'] : array( 'onoff' => 'true' , 'h_shadow' => '0px' , 'v_shadow' => '0px', 'blur' => '8px' , 'spread' => '0px', 'color' => '#DBDBDB', 'inset' => '' );
     $blog_box_shadow                                = responsi_generate_box_shadow($blog_box_shadow_option);
     $post_thumbnail_type                            = isset($responsi_options['responsi_post_thumbnail_type']) ? esc_attr( $responsi_options['responsi_post_thumbnail_type'] ) : 'top';
@@ -3609,15 +3648,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $_blog_post_thumbnail_padding_left              = isset($responsi_options['responsi_blog_post_thumbnail_padding_left']) ? esc_attr( $responsi_options['responsi_blog_post_thumbnail_padding_left'] ) : '0';
     $_blog_post_thumbnail_padding_right             = isset($responsi_options['responsi_blog_post_thumbnail_padding_right']) ? esc_attr( $responsi_options['responsi_blog_post_thumbnail_padding_right'] ) : '0';
     $_blog_post_thumbnail_bg                        = isset($responsi_options['responsi_blog_post_thumbnail_bg']) ? $responsi_options['responsi_blog_post_thumbnail_bg'] : array('onoff' => 'true', 'color' => '#ffffff');
-    $_blog_post_thumbnail_border                    = isset($responsi_options['responsi_blog_post_thumbnail_border']) ? $responsi_options['responsi_blog_post_thumbnail_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB');
-    $_blog_post_thumbnail_border_radius_tl_option   = isset( $responsi_options['responsi_blog_post_thumbnail_border_radius_tl'] ) ? $responsi_options['responsi_blog_post_thumbnail_border_radius_tl'] : array( 'corner' => 'square','rounded_value' => '0' );
-    $_blog_post_thumbnail_border_radius_tr_option   = isset( $responsi_options['responsi_blog_post_thumbnail_border_radius_tr'] ) ? $responsi_options['responsi_blog_post_thumbnail_border_radius_tr'] : array( 'corner' => 'square','rounded_value' => '0' );
-    $_blog_post_thumbnail_border_radius_bl_option   = isset( $responsi_options['responsi_blog_post_thumbnail_border_radius_bl'] ) ? $responsi_options['responsi_blog_post_thumbnail_border_radius_bl'] : array( 'corner' => 'square','rounded_value' => '0' );
-    $_blog_post_thumbnail_border_radius_br_option   = isset( $responsi_options['responsi_blog_post_thumbnail_border_radius_br'] ) ? $responsi_options['responsi_blog_post_thumbnail_border_radius_br'] : array( 'corner' => 'square','rounded_value' => '0' );
-    $_blog_post_thumbnail_border_radius_tl          = responsi_generate_border_radius_value( $_blog_post_thumbnail_border_radius_tl_option );
-    $_blog_post_thumbnail_border_radius_tr          = responsi_generate_border_radius_value( $_blog_post_thumbnail_border_radius_tr_option );
-    $_blog_post_thumbnail_border_radius_bl          = responsi_generate_border_radius_value( $_blog_post_thumbnail_border_radius_bl_option );
-    $_blog_post_thumbnail_border_radius_br          = responsi_generate_border_radius_value( $_blog_post_thumbnail_border_radius_br_option );
+    $_blog_post_thumbnail_border                    = isset($responsi_options['responsi_blog_post_thumbnail_border']) ? $responsi_options['responsi_blog_post_thumbnail_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB','corner' => 'square', 'topleft' => '0', 'topright' => '0', 'bottomright' => '0', 'bottomleft' => '0');
     $_blog_post_thumbnail_shadow                    = isset($responsi_options['responsi_blog_post_thumbnail_shadow']) ? $responsi_options['responsi_blog_post_thumbnail_shadow'] : array( 'onoff' => 'false' , 'h_shadow' => '0px' , 'v_shadow' => '0px', 'blur' => '8px' , 'spread' => '0px', 'color' => '#DBDBDB', 'inset' => 'inset' );
     $responsi_blog_post_title_padding_top           = isset($responsi_options['responsi_blog_post_title_padding_top']) ? esc_attr( $responsi_options['responsi_blog_post_title_padding_top'] ) : '0';
     $responsi_blog_post_title_padding_bottom        = isset($responsi_options['responsi_blog_post_title_padding_bottom']) ? esc_attr( $responsi_options['responsi_blog_post_title_padding_bottom'] ) : '0';
@@ -3688,16 +3719,14 @@ function responsi_build_dynamic_css( $preview = false ) {
     $blog_box_css = '';
     $blog_box_css .= 'padding:0px !important;';
     $blog_box_css .= responsi_generate_background_color($blog_box_bg, true);
-    $blog_box_css .= responsi_generate_border($blog_box_border, 'border', true);
-    $blog_box_css .= $blog_box_border_radius;
+    $blog_box_css .= responsi_generate_border_boxes($blog_box_border, true);
     $blog_box_css .= $blog_box_shadow;
     
     $dynamic_css .= '.box-item .entry-item.blog-post-item,.box-item .entry-item.blog-post-item,.box-item .entry-item{' . $blog_box_css . '}';
 
     $blog_thumbnail_css = 'float: none !important;text-align: center !important;width: auto !important;display:block !important;overflow: hidden;';
     $blog_thumbnail_css .= responsi_generate_background_color($_blog_post_thumbnail_bg, true);
-    $blog_thumbnail_css .= responsi_generate_border($_blog_post_thumbnail_border);
-    $blog_thumbnail_css .= 'border-radius:' . $_blog_post_thumbnail_border_radius_tl . ' ' . $_blog_post_thumbnail_border_radius_tr . ' ' . $_blog_post_thumbnail_border_radius_br . ' ' . $_blog_post_thumbnail_border_radius_bl . ';';
+    $blog_thumbnail_css .= responsi_generate_border_boxes($_blog_post_thumbnail_border);
     $blog_thumbnail_css .= responsi_generate_box_shadow($_blog_post_thumbnail_shadow);
     $blog_thumbnail_css .= 'margin-top:' . $_blog_post_thumbnail_margin_top . 'px !important;';
     $blog_thumbnail_css .= 'margin-bottom:' . $_blog_post_thumbnail_margin_bottom . 'px !important;';
@@ -3851,6 +3880,130 @@ function responsi_build_dynamic_css( $preview = false ) {
     }
     
     return $dynamic_css;
+}
+
+function responsi_framework_upgrade(){
+
+    global $responsi_options;
+
+    $upgrade = get_option('upgrade_responsi_693_to_694' );
+    
+    if( $upgrade != 'done' ){
+       
+        $theme_mods = get_theme_mods();
+
+        $list_options = array( 
+            'responsi_widget_border'                => 'responsi_widget_border_radius',
+            'responsi_page_box_border'              => 'responsi_page_box_border_radius',
+            'responsi_archive_box_border'           => 'responsi_archive_box_border_radius',
+            'responsi_post_box_border'              => 'responsi_post_box_border_radius',
+            'responsi_blog_box_border'              => 'responsi_blog_box_border_radius',
+            'responsi_blog_post_thumbnail_border'   =>  array(
+                                                            'responsi_blog_post_thumbnail_border_radius_tl',
+                                                            'responsi_blog_post_thumbnail_border_radius_tr',
+                                                            'responsi_blog_post_thumbnail_border_radius_br',
+                                                            'responsi_blog_post_thumbnail_border_radius_bl'
+                                                        ),
+            'responsi_footer_widget_border'         => 'responsi_footer_widget_border_radius',
+
+        );
+
+        foreach ( $list_options as $border => $corner ) {
+            
+            if( !is_array( $corner ) ){
+
+                $corners = array();
+
+                if ( isset( $theme_mods[ $corner ] ) && isset( $theme_mods[ $border ] ) ){
+                
+                    if( isset( $theme_mods[ $corner ]['corner'] ) && $theme_mods[ $corner ]['corner'] == 'rounded' && isset( $theme_mods[ $corner ]['rounded_value'] ) ){
+                        $corners = array( 'corner' => 'rounded', 'topleft' => $theme_mods[ $corner ]['rounded_value'], 'topright' => $theme_mods[ $corner ]['rounded_value'], 'bottomright' => $theme_mods[ $corner ]['rounded_value'], 'bottomleft' => $theme_mods[ $corner ]['rounded_value'] );
+                        $theme_mods[$border] = array_merge( $theme_mods[ $border ], $corners );
+                        set_theme_mod( $border,  $theme_mods[$border] );
+                    }
+                    
+                    remove_theme_mod( $corner );
+                
+                }elseif ( isset( $theme_mods[ $corner ] ) && !isset( $theme_mods[ $border ] ) ){
+
+                    if( isset( $theme_mods[ $corner ]['corner'] ) && $theme_mods[ $corner ]['corner'] == 'rounded' && isset( $theme_mods[ $corner ]['rounded_value'] ) ){
+                        $corners = array( 'corner' => 'rounded', 'topleft' => $theme_mods[ $corner ]['rounded_value'], 'topright' => $theme_mods[ $corner ]['rounded_value'], 'bottomright' => $theme_mods[ $corner ]['rounded_value'], 'bottomleft' => $theme_mods[ $corner ]['rounded_value'] );
+                        set_theme_mod( $border,  $corners );
+                    }
+
+                    remove_theme_mod( $corner );
+
+                }
+                
+            }  
+
+            if( is_array( $corner ) ){
+
+                $corners = array();
+
+                foreach ( $corner as $c ) {
+
+                    if ( isset( $theme_mods[ $c ] ) && isset( $theme_mods[ $border ] ) ){
+
+                        if( isset( $theme_mods[ $c ]['corner'] ) && $theme_mods[ $c ]['corner'] == 'rounded' && isset( $theme_mods[ $c ]['rounded_value'] ) ){
+                            
+                            $corners['corner'] = 'rounded';
+
+                            if( $c == 'responsi_blog_post_thumbnail_border_radius_tl' ){
+                                $corners['topleft'] = $theme_mods[ $c ]['rounded_value'];
+                            }
+                            if( $c == 'responsi_blog_post_thumbnail_border_radius_tr' ){
+                                $corners['topright'] = $theme_mods[ $c ]['rounded_value'];
+                            }
+                            if( $c == 'responsi_blog_post_thumbnail_border_radius_br' ){
+                                $corners['bottomright'] =  $theme_mods[ $c ]['rounded_value'];
+                            }
+                            if( $c == 'responsi_blog_post_thumbnail_border_radius_bl' ){
+                                $corners['bottomleft'] =  $theme_mods[ $c ]['rounded_value'];
+                            }
+
+                            $theme_mods[$border] = array_merge( $theme_mods[ $border ], $corners );
+                            set_theme_mod( $border,  $theme_mods[$border] );
+                        }
+
+                        remove_theme_mod( $c );
+                    
+                    }elseif ( isset( $theme_mods[ $c ] ) && !isset( $theme_mods[ $border ] ) ){
+
+                        if( isset( $theme_mods[ $c ]['corner'] ) && $theme_mods[ $c ]['corner'] == 'rounded' && isset( $theme_mods[ $c ]['rounded_value'] ) ){
+                            
+                            $corners['corner'] = 'rounded';
+
+                            if( $c == 'responsi_blog_post_thumbnail_border_radius_tl' ){
+                                $corners['topleft'] = $theme_mods[ $c ]['rounded_value'];
+                            }
+                            if( $c == 'responsi_blog_post_thumbnail_border_radius_tr' ){
+                                $corners['topright'] = $theme_mods[ $c ]['rounded_value'];
+                            }
+                            if( $c == 'responsi_blog_post_thumbnail_border_radius_br' ){
+                                $corners['bottomright'] =  $theme_mods[ $c ]['rounded_value'];
+                            }
+                            if( $c == 'responsi_blog_post_thumbnail_border_radius_bl' ){
+                                $corners['bottomleft'] =  $theme_mods[ $c ]['rounded_value'];
+                            }
+
+                            $theme_mods[$border] = $corners ;
+
+                            set_theme_mod( $border,  $theme_mods[$border] );
+                        }
+
+                        remove_theme_mod( $c );
+
+                    }
+
+                }
+            }  
+            
+        }
+
+        $upgrade = update_option('upgrade_responsi_693_to_694', 'done' );
+    }
+
 }
 
 ?>

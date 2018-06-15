@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 6.9.4 - 2018/06/15 =
+* This maintenance update is a code refactor that rewrites single border radius controls to a group control for improved customizer menu UI and UX
+* Refactor - Add new Group Container Border corner controls for Framework customizer.
+* Tweak - Applied new Group Container Border corner controls to any single option border and border radius options on the Framework customizer
+
 = 6.9.3 - 2018/05/26 =
 * Tweak - GDPR: Added privacy snippet which works with the new privacy page functionality in WordPress 4.9.6
 * Tweak - Tested for compatibility with WordPress 4.9.6

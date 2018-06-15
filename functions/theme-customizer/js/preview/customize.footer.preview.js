@@ -198,8 +198,7 @@
         css += '.masonry_widget_footer .widget{';
         css += responsiCustomize.build_background('responsi_footer_widget_bg');
         css += responsiCustomize.build_padding_margin('responsi_footer_widget_padding', 'padding');
-        css += responsiCustomize.build_border('responsi_footer_widget_border');
-        css += responsiCustomize.build_border_radius('responsi_footer_widget_border_radius');
+        css += responsiCustomize.build_border_boxes('responsi_footer_widget_border');
         css += responsiCustomize.build_box_shadow('responsi_footer_widget_box_shadow', true);
         css += 'text-align:' + wp.customize.value('responsi_font_footer_widget_text_alignment')() + ' !important;float: none !important';
         css += '}';
@@ -314,7 +313,6 @@
     ];
 
     var border_fields = [
-        'responsi_footer_widget_border',
         'responsi_footer_widget_title_border_top',
         'responsi_footer_widget_title_border_bottom',
         'responsi_footer_widget_title_border_left',
@@ -322,8 +320,11 @@
         'responsi_before_footer_border_list',
     ];
 
+    var border_boxes_fields = [
+        'responsi_footer_widget_border',
+    ]
+
     var border_radius_fields = [
-        'responsi_footer_widget_border_radius',
         'responsi_footer_widget_title_border_radius_tl',
         'responsi_footer_widget_title_border_radius_tr',
         'responsi_footer_widget_title_border_radius_bl',
@@ -354,6 +355,16 @@
 
     $.each(border_fields, function(inx, val) {
         $.each(typeborder, function(i, v) {
+            wp.customize(val + '[' + v + ']', function(value) {
+                value.bind(function(to) {
+                    responsi_preview_footer_widget_items();
+                });
+            });
+        });
+    });
+
+    $.each(border_boxes_fields, function(inx, val) {
+        $.each(typeborderboxes, function(i, v) {
             wp.customize(val + '[' + v + ']', function(value) {
                 value.bind(function(to) {
                     responsi_preview_footer_widget_items();

@@ -95,6 +95,10 @@ label.iPhoneCheckLabelOn span,label.iOSCheckLabelOn span{padding-left:10px;displ
 .wp-color-result{margin-right:0!important;min-width:85px;margin-bottom:3px!important;}
 .icolor-container .wp-color-result{margin-left:6px!important;}
 
+/*Control Border Boxes*/
+.border-boxes-container .responsi-iswitcher-checkbox{margin-top:3px;}
+.border-boxes-container .responsi-range-slider input{margin-top:1px;margin-bottom:1px;}
+
 /*
 .border-container .wp-picker-container .iris-picker {
     border-color: #dfdfdf;

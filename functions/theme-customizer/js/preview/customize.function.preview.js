@@ -11,6 +11,7 @@ var typefonts = ['size', 'line_height', 'face', 'style', 'color'];
 var typeshadow = ['onoff', 'h_shadow', 'v_shadow', 'blur', 'spread', 'inset', 'color'];
 var typeradius = ['corner', 'rounded_value'];
 var typeborder = ['width', 'style', 'color'];
+var typeborderboxes = ['width', 'style', 'color','corner','topleft','topright','bottomright','bottomleft'];
 var typemp = ['_top', '_bottom', '_left', '_right'];
 var typesize = ['_width', '_height'];
 var typepos = ['_vertical', '_horizontal'];
@@ -271,6 +272,78 @@ var typebg = ['onoff', 'color'];
             }
 
             return borders;
+        },
+
+        build_border_boxes: function(id, imp) {
+
+            var border_boxes = '', border_style = '', border_corner = '', ipt = '';
+
+            imp = imp || false;
+
+            if ( imp ) {
+                ipt = ' !important';
+            } 
+
+            var width = wp.customize.value(id + '[width]')();
+            var style = wp.customize.value(id + '[style]')();
+            var color = wp.customize.value(id + '[color]')();
+            
+            if ( typeof width === 'object' ){
+                width = width.width;
+            }
+            if ( typeof width === 'object' ){
+                width = width.width;
+            }
+            if ( typeof style === 'object' ){
+                style = style.style;
+            }
+            if ( typeof color === 'object' ){
+                color = color.color;
+            }
+
+            border_style = 'border:' + width + 'px ' + style + ' ' + color + ipt + ';';
+
+            var onoff = wp.customize.value(id + '[corner]')();
+            var topleft = wp.customize.value(id + '[topleft]')();
+            var topright = wp.customize.value(id + '[topright]')();
+            var bottomright = wp.customize.value(id + '[bottomright]')();
+            var bottomleft = wp.customize.value(id + '[bottomleft]')();
+
+            if ( typeof onoff === 'object' ){
+                onoff = onoff.onoff;
+            }
+            if ( typeof topleft === 'object' ){
+                topleft = topleft.topleft;
+            }
+
+            if ( typeof topright === 'object' ){
+                topright = topright.topright;
+            }
+
+            if ( typeof bottomright === 'object' ){
+                bottomright = bottomright.bottomright;
+            }
+
+            if ( typeof bottomleft === 'object' ){
+                bottomleft = bottomleft.bottomleft;
+            }
+
+            if ( onoff == 'rounded' ) {
+                border_corner += 'border-top-left-radius:' + topleft + 'px'+ ipt +';';
+                border_corner += 'border-top-right-radius:' + topright + 'px'+ ipt +';';
+                border_corner += 'border-bottom-right-radius:' + bottomright + 'px'+ ipt +';';
+                border_corner += 'border-bottom-left-radius:' + bottomleft + 'px'+ ipt +';';
+            }else{
+                border_corner += 'border-top-left-radius:0px'+ ipt +';';
+                border_corner += 'border-top-right-radius:0px'+ ipt +';';
+                border_corner += 'border-bottom-right-radius:0px'+ ipt +';';
+                border_corner += 'border-bottom-left-radius:0px'+ ipt +';';
+            }
+            
+            border_boxes = border_style + border_corner;
+
+            return border_boxes;
+           
         },
 
         build_padding_margin: function(id, type, imp) {

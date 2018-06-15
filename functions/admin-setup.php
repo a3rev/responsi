@@ -9,17 +9,24 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 
 	function responsi_framework_upgrade_version(){
-	    if( version_compare(get_option('responsi_framework_version'), '6.8.3', '<') ){
+	    
+	    if( version_compare(get_option('responsi_framework_version'), '6.9.4', '<') ){
+	        
 	        if( get_theme_mods() != false && get_option( 'responsi_framework_version' ) != false ){
 	            $version = str_replace('.', '_', get_option( 'responsi_framework_version' ));
 	            $theme = get_option( 'stylesheet' );
 	            update_option( 'theme_mods_'.$theme.'_'.$version.'_backup', get_theme_mods() );
 	        }
+
+	        if( function_exists('responsi_framework_upgrade') ){
+	        	responsi_framework_upgrade();
+	        }
+
 	        if( function_exists('responsi_dynamic_css') ){
 		        responsi_dynamic_css( 'framework' );
 		    }
 	    }
-	    
+
 	    update_option( 'responsi_framework_version', RESPONSI_FRAMEWORK_VERSION );
 	}
 }

@@ -630,7 +630,7 @@
 		}
 	});
 
-	api.Customize_BorderRadius_Control = api.Control.extend({
+	api.Customize_Border_Radius_Control = api.Control.extend({
 		ready: function() {
 
 			var control = this,
@@ -715,6 +715,234 @@
 
 				}
 			});
+		}
+	});
+
+	api.Customize_Border_Boxes_Control = api.Control.extend({
+		ready: function() {
+
+			var control = this,
+				sectionContainer = api.sectionContainer( this );
+
+			sectionContainer.on('expanded', function( event ) {
+
+				event.preventDefault();
+
+				var picker,
+				size_select = control.container.find('select.responsi-border-width'),
+				style_select = control.container.find('select.responsi-border-style'),
+				size_selected,
+				style_selected,
+				switcher = control.container.find('.responsi-ui-icheckbox'),
+				min = parseInt(_wpCustomBorderBoxesControl.rounded.min),
+				max = parseInt(_wpCustomBorderBoxesControl.rounded.max),
+				step = parseInt(_wpCustomBorderBoxesControl.rounded.step),
+				ui_slide_topleft = control.container.find('.ui-slide-topleft'),
+				ui_slide_input_topleft = control.container.find('.islide-value-topleft'),
+				ui_slide_topright = control.container.find('.ui-slide-topright'),
+				ui_slide_input_topright = control.container.find('.islide-value-topright'),
+				ui_slide_bottomright = control.container.find('.ui-slide-bottomright'),
+				ui_slide_input_bottomright = control.container.find('.islide-value-bottomright'),
+				ui_slide_bottomleft = control.container.find('.ui-slide-bottomleft'),
+				ui_slide_input_bottomleft = control.container.find('.islide-value-bottomleft'),
+				topleft = parseInt(control.params.values.topleft),
+				topright = parseInt(control.params.values.topright),
+				bottomright = parseInt(control.params.values.bottomright),
+				bottomleft = parseInt(control.params.values.bottomleft),
+				checked_value = _wpCustomBorderBoxesControl.corner.checked_value,
+				unchecked_value = _wpCustomBorderBoxesControl.corner.unchecked_value,
+				checked_label = _wpCustomBorderBoxesControl.corner.checked_label,
+				unchecked_label = _wpCustomBorderBoxesControl.corner.unchecked_label,
+				container_width = parseInt(_wpCustomBorderBoxesControl.corner.container_width),
+				corner_value = control.params.values.corner;
+
+				if (!control.container.hasClass('applied_border_boxes')) {
+					control.container.addClass('applied_border_boxes');
+
+					if (corner_value == checked_value) {
+						control.container.find('.responsi-range-slider').show();
+					} else {
+						control.container.find('.responsi-range-slider').hide();
+					}
+
+					// Color Picker
+					picker = control.container.find( '.color-picker-hex' );
+					picker.val( control.params.values.color ).wpColorPicker({
+						change: function() {
+							updating = true;
+							if( 'undefined' !== typeof control.settings[control.id + '[color]'] ){
+								control.settings[control.id + '[color]'].set( picker.wpColorPicker( 'color' ) );
+							}
+							updating = false;
+						},
+						clear: function() {
+							updating = true;
+							if( 'undefined' !== typeof control.settings[control.id + '[color]'] ){
+								control.settings[control.id + '[color]'].set( '' );
+							}
+							updating = false;
+						}
+					});
+					
+					if( 'undefined' !== typeof control.settings[control.id + '[color]'] ){
+						control.settings[control.id + '[color]'].bind( function ( value ) {
+							// Bail if the update came from the control itself.
+							if ( updating ) {
+								return;
+							}
+							picker.val( value );
+							picker.wpColorPicker( 'color', value );
+						} );
+					}
+
+					// Collapse color picker when hitting Esc instead of collapsing the current section.
+					control.container.on( 'keydown', function( event ) {
+						var pickerContainer;
+						if ( 27 !== event.which ) { // Esc.
+							return;
+						}
+						pickerContainer = control.container.find( '.wp-picker-container' );
+						if ( pickerContainer.hasClass( 'wp-picker-active' ) ) {
+							picker.wpColorPicker( 'close' );
+							control.container.find( '.wp-color-result' ).focus();
+							event.stopPropagation();
+						}
+					} );
+				
+					for (var i = _wpCustomBorderBoxesControl.width.min; i <= _wpCustomBorderBoxesControl.width.max; i++) {
+						size_selected = '';
+						if (i == control.params.values.width) {
+							size_selected = 'selected="select"';
+						}
+						size_select.append('<option value="' + i + '" ' + size_selected + ' >' + i + 'px</option>');
+					}
+
+					_.each(_wpCustomBorderBoxesControl.styles, function(style_name, index) {
+						style_selected = '';
+						if (index == control.params.values.style) {
+							style_selected = 'selected="select"';
+						}
+						style_select.append('<option value="' + index + '" ' + style_selected + ' >' + style_name + '</option>');
+					});
+
+
+					// Switcher
+					switcher.iphoneStyle({
+						duration: 50,
+						resizeContainer: true,
+						containerWidth: container_width,
+						resizeHandle: false,
+						handleMargin: 10,
+						handleRadius: 5,
+						containerRadius: 0,
+						checkedLabel: checked_label,
+						uncheckedLabel: unchecked_label,
+						onChange: function(elem, value) {
+							var status = value.toString();
+							if (elem.prop('checked')) {
+								var val = checked_value;
+								control.container.find('.responsi-range-slider').show();
+							} else {
+								var val = unchecked_value;
+								control.container.find('.responsi-range-slider').hide();
+							}
+							if( 'undefined' !== typeof control.settings[control.id + '[corner]'] ){
+								control.settings[control.id + '[corner]'].set(val);
+							}
+							switcher.trigger("responsi-ui-icheckbox-switch", [elem, status]);
+						},
+						onEnd: function(elem, value) {
+							var status = value.toString();
+							switcher.trigger("responsi-ui-icheckbox-switch-end", [elem, status]);
+						}
+					});
+
+					// Slider
+					ui_slide_topleft.slider({
+						isRTL: true,
+						range: "min",
+						min: min,
+						max: max,
+						value: topleft,
+						step: step,
+						slide: function(event, ui) {
+							ui_slide_input_topleft.val(ui.value).trigger('keyup');
+						},
+						change: function(event, ui) {
+							if( 'undefined' !== typeof control.settings[control.id + '[topleft]'] ){
+								control.settings[control.id + '[topleft]'].set(ui.value);
+							}
+						}
+					});
+
+					ui_slide_topright.slider({
+						isRTL: true,
+						range: "min",
+						min: min,
+						max: max,
+						value: topright,
+						step: step,
+						slide: function(event, ui) {
+							ui_slide_input_topright.val(ui.value).trigger('keyup');
+						},
+						change: function(event, ui) {
+							if( 'undefined' !== typeof control.settings[control.id + '[topright]'] ){
+								control.settings[control.id + '[topright]'].set(ui.value);
+							}
+						}
+					});
+
+					ui_slide_bottomright.slider({
+						isRTL: true,
+						range: "min",
+						min: min,
+						max: max,
+						value: bottomright,
+						step: step,
+						slide: function(event, ui) {
+							ui_slide_input_bottomright.val(ui.value).trigger('keyup');
+						},
+						change: function(event, ui) {
+							if( 'undefined' !== typeof control.settings[control.id + '[bottomright]'] ){
+								control.settings[control.id + '[bottomright]'].set(ui.value);
+							}
+						}
+					});
+
+					ui_slide_bottomleft.slider({
+						isRTL: true,
+						range: "min",
+						min: min,
+						max: max,
+						value: bottomleft,
+						step: step,
+						slide: function(event, ui) {
+							ui_slide_input_bottomleft.val(ui.value).trigger('keyup');
+						},
+						change: function(event, ui) {
+							if( 'undefined' !== typeof control.settings[control.id + '[bottomleft]'] ){
+								control.settings[control.id + '[bottomleft]'].set(ui.value);
+							}
+						}
+					});
+
+					size_select.on('change', function( event ) {
+						if( 'undefined' !== typeof control.settings[control.id + '[width]'] ){
+							control.settings[control.id + '[width]'].set($(this).val());
+						}
+					});
+
+					style_select.on('change', function( event ) {
+						if( 'undefined' !== typeof control.settings[control.id + '[style]'] ){
+							control.settings[control.id + '[style]'].set($(this).val());
+						}
+					});
+
+				}
+			});
+
+			
+
 		}
 	});
 
@@ -1652,8 +1880,39 @@
 	})( jQuery );
 
 	$(window).on( 'load', function() {
-	
-		/*var control = new api.Customize_Background_Patterns_Control( 'background_patterns_control', {
+
+		/*wp.customize.control.add( new wp.customize.DateTimeControl( 'special_datetime', {
+		    label: 'Special Datetime',
+		    description: 'There are incrementing digits in this datetime!',
+		    section: 'custom_css',
+		    includeTime: true,
+		    twelveHourFormat: false,
+		    allowPastDate: true,
+		    setting: new wp.customize.Value( '2018-02-03 13:57' )
+		} ) );
+
+		wp.customize.control.add( new wp.customize.Customize_Border_Boxes_Control( 'border_boxes_control', {
+		    section 	: 'custom_css',
+		    label 		: 'Border Boxes Control',
+		    type 		: 'border_boxes',
+		    setting_id 	: 'border_boxes_control',
+		    //setting: new wp.customize.Values({width : '1', style : 'solid', color : '#ffffff', corner : 'square', topleft : '0', topright : '0', bottomright : '0', bottomleft : '0'}),
+		    // settings    : { 'border_control[width]' : 'border_control[width]', 'border_control[style]' : 'border_control[style]', 'border_control[color]' : 'border_control[color]', 'border_control[corner]' : 'border_control[corner]', 'border_control[topleft]' : 'border_control[topleft]', 'border_control[topright]' : 'border_control[topright]', 'border_control[bottomright]' : 'border_control[bottomright]', 'border_control[bottomleft]' : 'border_control[bottomleft]' },
+		    values: { width : '1', style : 'solid', color : '#000000', corner : 'square', topleft : '10', topright : '10', bottomright : '10', bottomleft : '10' }
+		} ) );*/
+
+		/*var control = new api.Customize_Border_Boxes_Control( 'border_boxes_control', {
+		    section 	: 'custom_css',
+		    label 		: 'Border Boxes Control',
+		    type 		: 'border_boxes',
+		    //setting_id 	: 'border_boxes_control',
+		    setting: new wp.customize.Values({width : '1', style : 'solid', color : '#ffffff', corner : 'square', topleft : '0', topright : '0', bottomright : '0', bottomleft : '0'}),
+		    settings    : { 'border_control[width]' : 'border_control[width]', 'border_control[style]' : 'border_control[style]', 'border_control[color]' : 'border_control[color]', 'border_control[corner]' : 'border_control[corner]', 'border_control[topleft]' : 'border_control[topleft]', 'border_control[topright]' : 'border_control[topright]', 'border_control[bottomright]' : 'border_control[bottomright]', 'border_control[bottomleft]' : 'border_control[bottomleft]' },
+		    values: { width : '1', style : 'solid', color : '#000000', corner : 'square', topleft : '10', topright : '10', bottomright : '10', bottomleft : '10' }
+		} );*/
+
+		/*
+		var control = new api.Customize_Background_Patterns_Control( 'background_patterns_control', {
 		    section 	: 'custom_css',
 		    label 		: 'Background Patterns Control',
 		    type 		: 'background_patterns',
@@ -1672,7 +1931,7 @@
 		    //values: { width : '1', style : 'solid', color : '#000000' }
 		} );
 
-		var control = new api.Customize_BorderRadius_Control( 'border_radius_control', {
+		var control = new api.Customize_Border_Radius_Control( 'border_radius_control', {
 		    section 	: 'custom_css',
 		    label 		: 'Border Radius Control',
 		    type 		: 'border_radius',
@@ -1680,6 +1939,16 @@
 		    //setting: new wp.customize.Values({width : '1', style : 'solid', color : '#ffffff'}),
 		    //settings    : { 'border_radius_control[corner]' : 'border_radius_control[corner]', 'border_radius_control[rounded_value]' : 'border_radius_control[rounded_value]'},
 		    //values: {'corner': 'square', 'rounded_value': '0'};
+		} );
+
+		var control = new api.Customize_Border_Boxes_Control( 'border_boxes_control', {
+		    section 	: 'custom_css',
+		    label 		: 'Border Boxes Control',
+		    type 		: 'border_boxes',
+		    setting_id 	: 'border_boxes_control',
+		    //setting: new wp.customize.Values({width : '1', style : 'solid', color : '#ffffff'}),
+		    //settings    : { 'border_control[width]' : 'border_control[width]', 'border_control[style]' : 'border_control[style]', 'border_control[color]' : 'border_control[color]' },
+		    //values: { width : '1', style : 'solid', color : '#000000' }
 		} );
 
 		var control = new api.Customize_BoxShadow_Control( 'box_shadow_control', {
@@ -1906,7 +2175,11 @@
 				        break;
 
 				    case 'border_radius':
-				        control = new api.Customize_BorderRadius_Control( id, options );
+				        control = new api.Customize_Border_Radius_Control( id, options );
+				        break;
+
+				    case 'border_boxes':
+				        control = new api.Customize_Border_Boxes_Control( id, options );
 				        break;
 
 				    case 'box_shadow':

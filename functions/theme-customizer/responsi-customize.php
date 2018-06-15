@@ -101,6 +101,7 @@ final class Responsi_Customize {
 			'functions/theme-customizer/'.$controls_template.'/custom-ibackground-control.php',
 			'functions/theme-customizer/'.$controls_template.'/custom-border-control.php',
 			'functions/theme-customizer/'.$controls_template.'/custom-border-radius-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-border-boxes-control.php',
 			'functions/theme-customizer/'.$controls_template.'/custom-box-shadow-control.php',
 			'functions/theme-customizer/'.$controls_template.'/custom-typography-control.php'
 		);
@@ -148,6 +149,7 @@ final class Responsi_Customize {
 		$this->manager->register_control_type( 'Customize_iBackground_Control' );
 		$this->manager->register_control_type( 'Customize_Border_Control' );
 		$this->manager->register_control_type( 'Customize_Border_Radius_Control' );
+		$this->manager->register_control_type( 'Customize_Border_Boxes_Control' );
 		$this->manager->register_control_type( 'Customize_Box_Shadow_Control' );
 		$this->manager->register_control_type( 'Customize_iEditor_Control' );
 
@@ -229,6 +231,9 @@ final class Responsi_Customize {
 				                    break;
 				                case "border_radius":
 				                    $value['setting']['default'] = array('corner' => 'square','rounded_value' => '0');
+				                    break;
+				                case "border_boxes":
+				                	$value['setting']['default'] = array('width' => '0','style' => 'solid','color' => '#DBDBDB','corner' => 'square', 'topleft' => '0', 'topright' => '0', 'bottomright' => '0', 'bottomleft' => '0');
 				                    break;
 				                case "box_shadow":
 				                    $value['setting']['default'] = array( 'onoff' => 'false' , 'h_shadow' => '0px' , 'v_shadow' => '0px', 'blur' => '8px' , 'spread' => '0px', 'color' => '#DBDBDB', 'inset' => 'inset' );
@@ -360,6 +365,9 @@ final class Responsi_Customize {
 					        break;
 					    case "border_radius":
 					    	$this->add_control( new Customize_Border_Radius_Control( $this->manager, $key, $value['control']) );
+					        break;
+					    case "border_boxes":
+					    	$this->add_control( new Customize_Border_Boxes_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "box_shadow":
 					    	$this->add_control( new Customize_Box_Shadow_Control( $this->manager, $key, $value['control']) );
@@ -738,6 +746,36 @@ final class Responsi_Customize {
 		);
 		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomBorderControl', $border_control_parameters );
 
+		$border_boxes_control_parameters = array(
+			'width' => array(
+				'min' => 0,
+				'max' => 20,
+			),
+			'styles' => array(
+				'solid' 	=> __( 'Solid', 'responsi' ),
+				'dashed' 	=> __( 'Dashed', 'responsi' ),
+				'dotted' 	=> __( 'Dotted', 'responsi' ),
+				'double' 	=> __( 'Double', 'responsi' ),
+				'groove' 	=> __( 'Groove', 'responsi' ),
+				'ridge' 	=> __( 'Ridge', 'responsi' ) ,
+				'inset' 	=> __( 'Inset', 'responsi' ) ,
+				'outset' 	=> __( 'Outset', 'responsi' )
+			),
+			'rounded' => array(
+				'min' => 0,
+				'max' => 100,
+				'step'=> 1,
+			),
+			'corner' => array(
+				'checked_value'   => 'rounded',
+				'unchecked_value' => 'square',
+				'checked_label'   => __( 'ROUNDED', 'responsi' ),
+				'unchecked_label' => __( 'SQUARE', 'responsi' ),
+				'container_width' => 120,
+			)
+		);
+		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomBorderBoxesControl', $border_boxes_control_parameters );
+
 		$_panelIds = apply_filters( 'responsi_focus_panels', array( array( 'selector' => '', 'settings' => '' )) ) ;
 		did_action( 'init' ) && $scripts->localize( 'responsi-customize-focus', '_panelIds', $_panelIds );
 		
@@ -789,6 +827,9 @@ final class Responsi_Customize {
                     break;
                 case "box_shadow":
                     $settings = array( $id.'[onoff]' => $id.'[onoff]', $id.'[h_shadow]' => $id.'[h_shadow]', $id.'[v_shadow]' => $id.'[v_shadow]', $id.'[blur]' => $id.'[blur]', $id.'[spread]' => $id.'[spread]', $id.'[color]' => $id.'[color]', $id.'[inset]' => $id.'[inset]');
+                    break;
+                case "border_boxes":
+                    $settings = array( $id.'[width]' => $id.'[width]', $id.'[style]' => $id.'[style]', $id.'[color]' => $id.'[color]', $id.'[corner]' => $id.'[corner]', $id.'[topleft]' => $id.'[topleft]', $id.'[topright]' => $id.'[topright]', $id.'[bottomright]' => $id.'[bottomright]', $id.'[bottomleft]' => $id.'[bottomleft]' );
                     break;
                 case "typography":
                     $settings = array( $id.'[size]' => $id.'[size]', $id.'[line_height]' => $id.'[line_height]', $id.'[face]' => $id.'[face]', $id.'[style]' => $id.'[style]', $id.'[color]' => $id.'[color]');

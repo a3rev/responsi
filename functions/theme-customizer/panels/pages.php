@@ -82,27 +82,15 @@ class Responsi_Customize_Pages
 			    'label' => __('Content Container Border', 'responsi'),
 			    'section'    => 'page_style',
 			    'settings'   => 'multiple',
-			    'type'       => 'border'
+			    'type'       => 'border_boxes'
 			),
 			'setting' => array(
-			    'default'		=> isset($responsi_options['responsi_page_box_border']) ? $responsi_options['responsi_page_box_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB'),
-			    'sanitize_callback' => 'responsi_sanitize_border',
+			    'default'		=> isset($responsi_options['responsi_page_box_border']) ? $responsi_options['responsi_page_box_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB','corner' => 'square', 'topleft' => '0', 'topright' => '0', 'bottomright' => '0', 'bottomleft' => '0'),
+			    'sanitize_callback' => 'responsi_sanitize_border_boxes',
 			    'transport'	=> 'postMessage'
 			)
 		);
-		$pages_controls_settings['responsi_page_box_border_radius'] = array(
-			'control' => array(
-			    'label'      => __('Border Corners', 'responsi'),
-			    'section'    => 'page_style',
-			    'settings'   => 'multiple',
-			    'type'       => 'border_radius'
-			),
-			'setting' => array(
-			    'default'		=> isset($responsi_options['responsi_page_box_border_radius']) ? $responsi_options['responsi_page_box_border_radius'] : array( 'corner' => 'square' , 'rounded_value' => 3 ),
-			    'sanitize_callback' => 'responsi_sanitize_border_radius',
-			    'transport'	=> 'postMessage'
-			)
-		);
+
 		$pages_controls_settings['responsi_page_box_shadow'] = array(
 			'control' => array(
 			    'label'      => __('Border Shadow', 'responsi'),
@@ -278,24 +266,11 @@ class Responsi_Customize_Pages
 			    'label' => __('Border', 'responsi'),
 			    'section'    => 'page_archive',
 			    'settings'   => 'multiple',
-			    'type'       => 'border'
+			    'type'       => 'border_boxes'
 			),
 			'setting' => array(
-			    'default'		=> isset($responsi_options['responsi_archive_box_border']) ? $responsi_options['responsi_archive_box_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB'),
-			    'sanitize_callback' => 'responsi_sanitize_border',
-			    'transport'	=> 'postMessage'
-			)
-		);
-		$pages_controls_settings['responsi_archive_box_border_radius'] = array(
-			'control' => array(
-			    'label'      => __('Border Corner', 'responsi'),
-			    'section'    => 'page_archive',
-			    'settings'   => 'multiple',
-			    'type'       => 'border_radius'
-			),
-			'setting' => array(
-			    'default'		=> isset($responsi_options['responsi_archive_box_border_radius']) ? $responsi_options['responsi_archive_box_border_radius'] : array('corner' => 'square','rounded_value' => '0'),
-			    'sanitize_callback' => 'responsi_sanitize_border_radius',
+			    'default'		=> isset($responsi_options['responsi_archive_box_border']) ? $responsi_options['responsi_archive_box_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB','corner' => 'square', 'topleft' => '0', 'topright' => '0', 'bottomright' => '0', 'bottomleft' => '0'),
+			    'sanitize_callback' => 'responsi_sanitize_border_boxes',
 			    'transport'	=> 'postMessage'
 			)
 		);

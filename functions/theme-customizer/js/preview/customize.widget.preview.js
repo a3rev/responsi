@@ -40,8 +40,7 @@
         css += '#sidebar .widget, #sidebar-alt .widget{';
         css += responsiCustomize.build_background('responsi_widget_bg');
         css += responsiCustomize.build_padding_margin('responsi_widget_padding', 'padding');
-        css += responsiCustomize.build_border('responsi_widget_border');
-        css += responsiCustomize.build_border_radius('responsi_widget_border_radius');
+        css += responsiCustomize.build_border_boxes('responsi_widget_border');
         css += responsiCustomize.build_box_shadow('responsi_widget_box_shadow', true);
         css += 'text-align:' + wp.customize.value('responsi_widget_font_text_alignment')() + ';float: none; ';
         css += '}';
@@ -137,7 +136,6 @@
     ];
 
     var border_fields = [
-        'responsi_widget_border',
         'responsi_widget_title_border_top',
         'responsi_widget_title_border_bottom',
         'responsi_widget_title_border_left',
@@ -147,8 +145,11 @@
         'responsi_widget_container_border_lr',
     ];
 
+    var border_boxes_fields = [
+        'responsi_widget_border',
+    ]
+
     var border_radius_fields = [
-        'responsi_widget_border_radius',
         'responsi_widget_title_border_radius_tl',
         'responsi_widget_title_border_radius_tr',
         'responsi_widget_title_border_radius_bl',
@@ -197,6 +198,18 @@
             });
         });
     });
+
+    $.each(border_boxes_fields, function(inx, val) {
+        $.each(typeborderboxes, function(i, v) {
+            wp.customize(val + '[' + v + ']', function(value) {
+                value.bind(function(to) {
+                    responsi_preview_widgets();
+                });
+            });
+        });
+    });
+
+    
 
     $.each(border_radius_fields, function(inx, val) {
         $.each(typeradius, function(i, v) {

@@ -74,24 +74,11 @@ class Responsi_Customize_Blogs
 			    'label'      => __('Card Borders', 'responsi'),
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
-			    'type'       => 'border'
+			    'type'       => 'border_boxes'
 			),
 			'setting' => array(
-			    'default'		=> isset($responsi_options['responsi_blog_box_border']) ? $responsi_options['responsi_blog_box_border'] : array('width' => '1','style' => 'solid','color' => '#DBDBDB'),
-			    'sanitize_callback' => 'responsi_sanitize_border',
-			    'transport'	=> 'postMessage'
-			)
-		);
-		$blogs_controls_settings['responsi_blog_box_border_radius'] = array(
-			'control' => array(
-			    'label'      => __( 'Border Corner', 'responsi' ),
-			    'section'    => 'blogs_layout',
-			    'settings'   => 'multiple',
-			    'type'       => 'border_radius'
-			),
-			'setting' => array(
-			    'default'		=> isset($responsi_options['responsi_blog_box_border_radius']) ? $responsi_options['responsi_blog_box_border_radius'] : array('corner' => 'rounded','rounded_value' => '3'),
-			    'sanitize_callback' => 'responsi_sanitize_border_radius',
+			    'default'		=> isset($responsi_options['responsi_blog_box_border']) ? $responsi_options['responsi_blog_box_border'] : array('width' => '1','style' => 'solid','color' => '#DBDBDB','corner' => 'square', 'topleft' => '0', 'topright' => '0', 'bottomright' => '0', 'bottomleft' => '0'),
+			    'sanitize_callback' => 'responsi_sanitize_border_boxes',
 			    'transport'	=> 'postMessage'
 			)
 		);
@@ -229,63 +216,11 @@ class Responsi_Customize_Blogs
 			    'label'      => __('Border', 'responsi'),
 			    'section'    => 'blogs_layout',
 			    'settings'   => 'multiple',
-			    'type'       => 'border'
+			    'type'       => 'border_boxes'
 			),
 			'setting' => array(
-			    'default'		=> isset($responsi_options['responsi_blog_post_thumbnail_border']) ? $responsi_options['responsi_blog_post_thumbnail_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB'),
-			    'sanitize_callback' => 'responsi_sanitize_border',
-			    'transport'	=> 'postMessage'
-			)
-		);
-		$blogs_controls_settings['responsi_blog_post_thumbnail_border_radius_tl'] = array(
-			'control' => array(
-			    'label'      => __('Border Corner - Top Left', 'responsi'),
-			    'section'    => 'blogs_layout',
-			    'settings'   => 'multiple',
-			    'type'       => 'border_radius'
-			),
-			'setting' => array(
-			    'default'		=> isset($responsi_options['responsi_blog_post_thumbnail_border_radius_tl']) ? $responsi_options['responsi_blog_post_thumbnail_border_radius_tl'] : array('corner' => 'square','rounded_value' => '0'),
-			    'sanitize_callback' => 'responsi_sanitize_border_radius',
-			    'transport'	=> 'postMessage'
-			)
-		);
-		$blogs_controls_settings['responsi_blog_post_thumbnail_border_radius_tr'] = array(
-			'control' => array(
-			    'label'      => __('Border Corner - Top Right', 'responsi'),
-			    'section'    => 'blogs_layout',
-			    'settings'   => 'multiple',
-			    'type'       => 'border_radius'
-			),
-			'setting' => array(
-			    'default'		=> isset($responsi_options['responsi_blog_post_thumbnail_border_radius_tr']) ? $responsi_options['responsi_blog_post_thumbnail_border_radius_tr'] : array('corner' => 'square','rounded_value' => '0'),
-			    'sanitize_callback' => 'responsi_sanitize_border_radius',
-			    'transport'	=> 'postMessage'
-			)
-		);
-		$blogs_controls_settings['responsi_blog_post_thumbnail_border_radius_bl'] = array(
-			'control' => array(
-			    'label'      => __('Border Corner - Bottom Left', 'responsi'),
-			    'section'    => 'blogs_layout',
-			    'settings'   => 'multiple',
-			    'type'       => 'border_radius'
-			),
-			'setting' => array(
-			    'default'		=> isset($responsi_options['responsi_blog_post_thumbnail_border_radius_bl']) ? $responsi_options['responsi_blog_post_thumbnail_border_radius_bl'] : array('corner' => 'square','rounded_value' => '0'),
-			    'sanitize_callback' => 'responsi_sanitize_border_radius',
-			    'transport'	=> 'postMessage'
-			)
-		);
-		$blogs_controls_settings['responsi_blog_post_thumbnail_border_radius_br'] = array(
-			'control' => array(
-			    'label'      => __('Border Corner - Bottom Right', 'responsi'),
-			    'section'    => 'blogs_layout',
-			    'settings'   => 'multiple',
-			    'type'       => 'border_radius'
-			),
-			'setting' => array(
-			    'default'		=> isset($responsi_options['responsi_blog_post_thumbnail_border_radius_br']) ? $responsi_options['responsi_blog_post_thumbnail_border_radius_br'] : array('corner' => 'square','rounded_value' => '0'),
-			    'sanitize_callback' => 'responsi_sanitize_border_radius',
+			    'default'		=> isset($responsi_options['responsi_blog_post_thumbnail_border']) ? $responsi_options['responsi_blog_post_thumbnail_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB','corner' => 'square', 'topleft' => '0', 'topright' => '0', 'bottomright' => '0', 'bottomleft' => '0'),
+			    'sanitize_callback' => 'responsi_sanitize_border_boxes',
 			    'transport'	=> 'postMessage'
 			)
 		);

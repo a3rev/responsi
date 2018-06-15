@@ -5,7 +5,7 @@
  */
 (function($) {
     function responsi_preview_posts() {
-        var css = '.main-wrap-post{ ' + responsiCustomize.build_background('responsi_post_box_bg', true) + responsiCustomize.build_border('responsi_post_box_border', '', true) + responsiCustomize.build_border_radius('responsi_post_box_border_radius', '', true) + responsiCustomize.build_box_shadow('responsi_post_box_shadow', true) + responsiCustomize.build_padding_margin('responsi_post_box_margin', 'margin', true) + responsiCustomize.build_padding_margin('responsi_post_box_padding', 'padding', true) + '}';
+        var css = '.main-wrap-post{ ' + responsiCustomize.build_background('responsi_post_box_bg', true) + responsiCustomize.build_border_boxes('responsi_post_box_border', true) + responsiCustomize.build_box_shadow('responsi_post_box_shadow', true) + responsiCustomize.build_padding_margin('responsi_post_box_margin', 'margin', true) + responsiCustomize.build_padding_margin('responsi_post_box_padding', 'padding', true) + '}';
 
         var responsi_post_title_font_transform = wp.customize.value('responsi_post_title_font_transform')();
         css += '#main .custom_box.custom_box_post h1.title, .custom_box.custom_box_post h1.title, #main .custom_box.custom_box_post h1.title a:link, #main .custom_box.custom_box_post h1.title a:visited{' + responsiCustomize.build_typography('responsi_font_post_title', true) + responsiCustomize.build_padding_margin('responsi_post_title_margin', 'margin', true) + 'text-transform: ' + responsi_post_title_font_transform + ' !important;}';
@@ -143,7 +143,6 @@
     ];
 
     var border_fields = [
-        'responsi_post_box_border',
         'responsi_post_meta_border_top',
         'responsi_post_meta_border_bottom',
         'responsi_post_meta_border_lr',
@@ -155,8 +154,11 @@
         'responsi_post_meta_utility_tag_border_lr',
     ];
 
+    var border_boxes_fields = [
+        'responsi_post_box_border',
+    ]
+
     var border_radius_fields = [
-        'responsi_post_box_border_radius',
         'responsi_post_meta_cat_tag_border_radius',
         'responsi_post_meta_utility_tag_border_radius',
     ];
@@ -189,6 +191,16 @@
 
     $.each(border_fields, function(inx, val) {
         $.each(typeborder, function(i, v) {
+            wp.customize(val + '[' + v + ']', function(value) {
+                value.bind(function(to) {
+                    responsi_preview_posts();
+                });
+            });
+        });
+    });
+
+    $.each(border_boxes_fields, function(inx, val) {
+        $.each(typeborderboxes, function(i, v) {
             wp.customize(val + '[' + v + ']', function(value) {
                 value.bind(function(to) {
                     responsi_preview_posts();

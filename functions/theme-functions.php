@@ -2126,6 +2126,28 @@ if ( ! function_exists( 'responsi_sanitize_border_radius' ) ) {
     }
 }
 
+if ( ! function_exists( 'responsi_sanitize_border_boxes' ) ) {
+    function responsi_sanitize_border_boxes( $value, $setting ) {
+        $keys = preg_split( '/\[/', str_replace( ']', '', $setting->id ) );
+
+        if ( is_array($keys) && count($keys) > 0 && isset($keys[1]) ){
+            if( 'color' === $keys[1] ){
+                return sanitize_hex_color( $value );
+            }elseif(  'style' === $keys[1] ){
+                return sanitize_text_field( $value );
+            }elseif( 'width' === $keys[1] ){
+                return sanitize_text_field( $value );
+            }elseif( 'corner' === $keys[1] ){
+                return sanitize_text_field( $value );
+            }elseif( 'topleft' === $keys[1] || 'topright' === $keys[1] || 'bottomright' === $keys[1] || 'bottomleft' === $keys[1] ){
+                if ( is_numeric( $value ) ) {
+                    return sanitize_text_field( $value );
+                }
+            }
+        }
+    }
+}
+
 if ( ! function_exists( 'responsi_sanitize_box_shadow' ) ) {
     function responsi_sanitize_box_shadow( $value, $setting ) {
         $keys = preg_split( '/\[/', str_replace( ']', '', $setting->id ) );
