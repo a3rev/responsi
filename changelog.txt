@@ -1,5 +1,8 @@
 *** Responsi Framework Changelog ***
 
+= 6.9.5 - 2018/06/16 =
+* Fix - Remove post type 'framework' fixed media upload.  
+
 = 6.9.4 - 2018/06/15 =
 * This maintenance update is a code refactor that rewrites single border radius controls to a group control for improved customizer menu UI and UX
 * Refactor - Add new Group Container Border corner controls for Framework customizer.

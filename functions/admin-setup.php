@@ -10,7 +10,7 @@ if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 
 	function responsi_framework_upgrade_version(){
 	    
-	    if( version_compare(get_option('responsi_framework_version'), '6.9.4', '<') ){
+	    if( version_compare(get_option('responsi_framework_version'), '6.9.5', '<') ){
 	        
 	        if( get_theme_mods() != false && get_option( 'responsi_framework_version' ) != false ){
 	            $version = str_replace('.', '_', get_option( 'responsi_framework_version' ));
