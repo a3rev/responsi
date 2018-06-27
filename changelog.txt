@@ -1,5 +1,11 @@
 *** Responsi Framework Changelog ***
 
+= 6.9.6 - 2018/06/27 =
+* This Maintenance update is a continuation of the framework customizer code refactor to group controls plus now full support for partial saves for improved XU when editing themes in customizer. 
+* Refactor - Continue with conversion of single border and border radius controls to a group control for improved customizer menu UI and UX
+* Refactor - The framework for customizer for Partial save. Only save what has been changed not save all. 
+* Fix - Default options save in customizer.
+
 = 6.9.5 - 2018/06/16 =
 * Fix - Remove post type 'framework' fixed media upload.  
 

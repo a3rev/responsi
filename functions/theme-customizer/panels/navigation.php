@@ -47,7 +47,13 @@ class Responsi_Customize_Navigation
 
 	public function responsi_controls_settings( $controls_settings ){
 
-		global $responsi_options;
+		$_default = apply_filters( 'default_settings_options', false );
+		
+		if( $_default ){
+			$responsi_options = array();
+		}else{
+			global $responsi_options;
+		}
 
 		$navigation_controls_settings = array();
 

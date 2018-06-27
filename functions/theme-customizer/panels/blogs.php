@@ -42,7 +42,13 @@ class Responsi_Customize_Blogs
 
 	public function responsi_controls_settings( $controls_settings ){
 
-		global $responsi_options;
+		$_default = apply_filters( 'default_settings_options', false );
+		
+		if( $_default ){
+			$responsi_options = array();
+		}else{
+			global $responsi_options;
+		}
 
 		$blogs_controls_settings = array();
 

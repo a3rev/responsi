@@ -327,9 +327,9 @@
     wp.customize('responsi_blog_morelink_type',function( value ) {
         value.bind(function(to) {
             if( to == 'button' ){
-                $( '.blogs-more' ).addClass('button').removeClass('more-link');
+                $( '.blogs-more a' ).addClass('button').removeClass('more-link');
             }else{
-                $( '.blogs-more' ).addClass('more-link').removeClass('button');
+                $( '.blogs-more a' ).addClass('more-link').removeClass('button');
             }
             $(window).trigger('resize');
         });

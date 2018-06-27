@@ -30,7 +30,7 @@
         var responsi_enable_archive_title_box = wp.customize.value('responsi_enable_archive_title_box')();
 
         if (responsi_enable_archive_title_box == 'true') {
-            css += '#main .custom_box.custom_box_archive, .custom_box.custom_box_archive,.custom_box_archive{' + responsiCustomize.build_background('responsi_archive_title_box_bg', true) + responsiCustomize.build_border('responsi_archive_title_box_border', '', true) + responsiCustomize.build_padding_margin('responsi_archive_title_box_padding', 'padding', true) + responsiCustomize.build_padding_margin('responsi_archive_title_box_margin', 'margin', true) + responsiCustomize.build_border_radius('responsi_archive_title_box_border_radius', '', true) + responsiCustomize.build_box_shadow('responsi_archive_title_box_shadow', true) + '}';
+            css += '#main .custom_box.custom_box_archive, .custom_box.custom_box_archive,.custom_box_archive{' + responsiCustomize.build_background('responsi_archive_title_box_bg', true) + responsiCustomize.build_border_boxes('responsi_archive_title_box_border', true) + responsiCustomize.build_padding_margin('responsi_archive_title_box_padding', 'padding', true) + responsiCustomize.build_padding_margin('responsi_archive_title_box_margin', 'margin', true) + responsiCustomize.build_box_shadow('responsi_archive_title_box_shadow', true) + '}';
         } else {
             css += '#main .custom_box.custom_box_archive, .custom_box.custom_box_archive,.custom_box_archive{padding:0px !important;border-width:0px !important;background-color:transparent !important;box-shadow: 0 0 0px #ffffff !important;border-radius: 0px !important;}';
         }
@@ -97,18 +97,17 @@
         'responsi_scroll_box_border_top',
         'responsi_scroll_box_border_bottom',
         'responsi_scroll_box_border_lr',
-        'responsi_archive_title_box_border',
         'responsi_archive_title_border_bottom'
     ];
 
     var border_boxes_fields = [
         'responsi_page_box_border',
         'responsi_archive_box_border',
+        'responsi_archive_title_box_border',
     ]
 
     var border_radius_fields = [
         'responsi_scroll_box_border_radius',
-        'responsi_archive_title_box_border_radius'
     ];
 
     var shadow_fields = [

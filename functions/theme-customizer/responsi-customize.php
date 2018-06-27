@@ -988,12 +988,40 @@ final class Responsi_Customize {
 
 		if( is_array( $responsi_options ) && count( $responsi_options ) > 0 && is_array( $post_value ) && count( $post_value ) > 0 ){
 
+			add_filter( 'default_settings_options', create_function( '', 'return true;') );
+			
 			$_default_options = responsi_default_options();
+
+			if ( function_exists('default_option_child_theme') ){
+				$_default_options = array_replace_recursive( $_default_options, default_option_child_theme() );
+			}
+
+			$theme_mods = get_theme_mods();
 
 			$build_dynamic_css = false;
 			foreach( $post_value as $key=>$value ){
 				if( array_key_exists( $key, $_default_options )){
 					$build_dynamic_css = true;
+				}
+			}
+
+			$_customize_options = array_replace_recursive( $theme_mods, $post_value );
+			if( is_array( $_customize_options ) ){
+				foreach( $_customize_options as $key => $value ){
+					if( array_key_exists( $key, $_default_options )){
+						if( is_array( $value ) && is_array( $_default_options[$key] ) ){
+							$new_opt = array_diff_assoc( $value, $_default_options[$key] );
+							if( is_array( $new_opt ) && count( $new_opt ) > 0 ){
+								set_theme_mod( $key,  $new_opt );
+							}else{
+								remove_theme_mod( $key );
+							}
+						}else{
+							if( !is_array( $value ) && !is_array($_default_options[$key]) && $value == $_default_options[$key] ){
+								remove_theme_mod( $key );
+							}
+						}
+					}
 				}
 			}
 

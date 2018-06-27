@@ -32,7 +32,7 @@ iframe .demo_store{display:none;}
   font-weight: lighter;
 }*/
 .customize-control-container{opacity:0;}
-.controls-added .customize-control-container{opacity: 1;}
+.controls-added .customize-control-container{opacity:1;}
 .customize-control{position:relative;z-index:1;}
 .customize-control-container{overflow:hidden;zoom:1;min-width:258px;}
 .customize-control-notifications-container li.notice{padding:9px;}
@@ -137,7 +137,7 @@ label.iPhoneCheckLabelOn span,label.iOSCheckLabelOn span{padding-left:10px;displ
 
 /*iUpload*/
 #customize-controls .thumbnail-image img{width:auto;max-width:100%;}
-.customize-control-cropped_image .thumbnail.thumbnail-image,.customize-control-iupload .thumbnail.thumbnail-image {text-align:center;}
+.customize-control-cropped_image .thumbnail.thumbnail-image,.customize-control-iupload .thumbnail.thumbnail-image{text-align:center;}
 .attachment-media-view .actions{margin-top:8px;}
 
 /**/

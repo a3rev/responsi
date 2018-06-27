@@ -2834,10 +2834,8 @@ function responsi_build_dynamic_css( $preview = false ) {
     $archive_title_box_margin_left                  = isset( $responsi_options['responsi_archive_title_box_margin_left'] ) ? esc_attr( $responsi_options['responsi_archive_title_box_margin_left'] ) : 0;
     $archive_title_box_margin_right                 = isset( $responsi_options['responsi_archive_title_box_margin_right'] ) ? esc_attr( $responsi_options['responsi_archive_title_box_margin_right'] ) : 0;
     $archive_title_box_bg                           = isset( $responsi_options['responsi_archive_title_box_bg'] ) ? $responsi_options['responsi_archive_title_box_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
-    $archive_title_box_border                       = isset( $responsi_options['responsi_archive_title_box_border'] ) ? $responsi_options['responsi_archive_title_box_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB');
-    $archive_title_box_border_radius_option         = isset( $responsi_options['responsi_archive_title_box_border_radius'] ) ? $responsi_options['responsi_archive_title_box_border_radius'] : array( 'corner' => 'square','rounded_value' => '0' );
+    $archive_title_box_border                       = isset( $responsi_options['responsi_archive_title_box_border'] ) ? $responsi_options['responsi_archive_title_box_border'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB','corner' => 'square', 'topleft' => '0', 'topright' => '0', 'bottomright' => '0', 'bottomleft' => '0');
     $archive_title_box_shadow_option                = isset( $responsi_options['responsi_archive_title_box_shadow'] ) ? $responsi_options['responsi_archive_title_box_shadow'] : array( 'onoff' => 'false' , 'h_shadow' => '0px' , 'v_shadow' => '0px', 'blur' => '5px' , 'spread' => '0px', 'color' => '#DBDBDB', 'inset' => '' );
-    $archive_title_box_border_radius                = responsi_generate_border_radius( $archive_title_box_border_radius_option, true );
     $archive_title_box_shadow                       = responsi_generate_box_shadow( $archive_title_box_shadow_option, true );
     
 
@@ -2847,8 +2845,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $archive_title_box_css .= 'padding-top:' . $archive_title_box_padding_top . 'px !important;padding-bottom:' . $archive_title_box_padding_bottom . 'px !important;';
     $archive_title_box_css .= 'padding-left:' . $archive_title_box_padding_left . 'px !important;padding-right:' . $archive_title_box_padding_right . 'px !important;';
     $archive_title_box_css .= responsi_generate_background_color( $archive_title_box_bg, true );
-    $archive_title_box_css .= responsi_generate_border( $archive_title_box_border, 'border', true );
-    $archive_title_box_css .= $archive_title_box_border_radius;
+    $archive_title_box_css .= responsi_generate_border_boxes( $archive_title_box_border, true );
     $archive_title_box_css .= $archive_title_box_shadow;
     
     if ( 'true' === $enable_archive_title_box ) {
@@ -3893,18 +3890,20 @@ function responsi_framework_upgrade(){
         $theme_mods = get_theme_mods();
 
         $list_options = array( 
-            'responsi_widget_border'                => 'responsi_widget_border_radius',
-            'responsi_page_box_border'              => 'responsi_page_box_border_radius',
-            'responsi_archive_box_border'           => 'responsi_archive_box_border_radius',
-            'responsi_post_box_border'              => 'responsi_post_box_border_radius',
-            'responsi_blog_box_border'              => 'responsi_blog_box_border_radius',
-            'responsi_blog_post_thumbnail_border'   =>  array(
+            'responsi_widget_border'                    => 'responsi_widget_border_radius',
+            'responsi_page_box_border'                  => 'responsi_page_box_border_radius',
+            'responsi_archive_box_border'               => 'responsi_archive_box_border_radius',
+            'responsi_post_box_border'                  => 'responsi_post_box_border_radius',
+            'responsi_blog_box_border'                  => 'responsi_blog_box_border_radius',
+            'responsi_archive_title_box_border'         => 'responsi_archive_title_box_border_radius',
+            'responsi_blog_post_thumbnail_border'       =>  array(
                                                             'responsi_blog_post_thumbnail_border_radius_tl',
                                                             'responsi_blog_post_thumbnail_border_radius_tr',
                                                             'responsi_blog_post_thumbnail_border_radius_br',
                                                             'responsi_blog_post_thumbnail_border_radius_bl'
                                                         ),
-            'responsi_footer_widget_border'         => 'responsi_footer_widget_border_radius',
+            'responsi_footer_widget_border'             => 'responsi_footer_widget_border_radius',
+            'responsi_top_widget_area_container_border' => 'responsi_top_widget_area_container_border_corner'
 
         );
 
