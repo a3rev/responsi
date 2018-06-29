@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 6.9.7 - 2018/06/29 =
+* Tweak - Style CSS for select input
+* Fix - Layout CSS fixed scroll in customize preview
+
 = 6.9.6 - 2018/06/27 =
 * This Maintenance update is a continuation of the framework customizer code refactor to group controls plus now full support for partial saves for improved XU when editing themes in customizer. 
 * Refactor - Continue with conversion of single border and border radius controls to a group control for improved customizer menu UI and UX
