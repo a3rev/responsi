@@ -405,6 +405,38 @@
  		}
  	}, // End setup_colourpickers()
 
+ 	setup_rand_slider: function () {
+ 		if ( jQuery().slider() && $( '.responsi-range-slider' ).length ) {
+
+ 			$( '.responsi-range-slider' ).each( function () {
+
+ 				var ui_slide = $(this).find('.ui-slide'),
+					ui_slide_input = $(this).find('.islide-value'),
+					min = (ui_slide_input.data('min')),
+					max = (ui_slide_input.data('max')),
+					step = (ui_slide_input.data('step')),
+					value = (ui_slide_input.val());
+
+				if (!$(this).hasClass('applied_slider')) {
+					$(this).addClass('applied_slider');
+
+					ui_slide.slider({
+						isRTL: true,
+						range: "min",
+						min: min,
+						max: max,
+						value: value,
+						step: step,
+						slide: function(event, ui) {
+							ui_slide_input.val(ui.value).trigger('keyup');
+						}
+					});
+				}
+				
+ 			});
+ 		}
+ 	}, // End setup_rand_slider()
+
 /**
  * setup_field_tabber()
  *
@@ -447,7 +479,7 @@
 		responsiCustomFields.setup_meta_image_selectors_click();
 		responsiCustomFields.setup_upload_titletest();
 		responsiCustomFields.setup_field_tabber();
-
+		responsiCustomFields.setup_rand_slider();
 	});
 
 })(jQuery);

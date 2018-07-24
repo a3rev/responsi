@@ -3,6 +3,7 @@
 #wrapper-header-content{position:relative;}
 #wrapper-top-fixed{position:relative;width:100%;left:0;transform:translateZ(0);}
 .site-loaded #wrapper-top-fixed{position:fixed}
+.responsi-frontend #wrapper-content{overflow-x: hidden;}
 #wrapper-top-container{position:relative;left:0;z-index:99999;}
 #header{clear:both;position:relative;}
 .header-widget-1 a{margin:0;}

@@ -245,7 +245,7 @@ class Responsi_Customize_General_Settings
 					'unchecked_label' => 'OFF',
 					'container_width' => 80
 		        ),
-			    'choices' => array( "none" => "None","uppercase" => "Uppercase", "lowercase" => "Lowercase")
+			    'choices' => array( "none" => __('None', 'responsi'),"uppercase" => __('Uppercase', 'responsi'), "lowercase" => __('Lowercase', 'responsi'))
 			),
 			'setting' => array(
 			    'default'		=> isset($responsi_options['responsi_button_text_transform']) ? $responsi_options['responsi_button_text_transform'] : 'uppercase',

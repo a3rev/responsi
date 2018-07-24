@@ -3,17 +3,65 @@
 if ( !is_admin() ) {
     add_filter( 'the_content', 'responsi_remove_wpautop', 99 );
     add_filter( 'get_the_excerpt', 'responsi_remove_shortcode_get_the_excerpt', 99 );
+    add_filter( 'wp_trim_excerpt', 'responsi_wpshout_excerpt');
+}
+
+function responsi_wpshout_excerpt($text = '') {
+    $raw_excerpt = $text;
+
+    if ( '' == $text || '&nbsp;' == $text ) {
+        $text = get_the_content();
+        //$text = strip_shortcodes( $text );
+        $text = apply_filters( 'the_content', $text );
+        $text = str_replace(']]>', ']]&gt;', $text);
+        $text = substr( $text, 0, strpos( $text, '</p>' ) + 4 );
+        $text = strip_tags( $text );
+    }
+    return $text;
 }
 
 if ( !function_exists( 'responsi_remove_shortcode_get_the_excerpt' ) ) {
     function responsi_remove_shortcode_get_the_excerpt( $content ) {
+
+        global $shortcode_tags;
+
         // Strip tags and shortcodes
         $content = strip_tags( strip_shortcodes( $content ), apply_filters( 'responsi_get_the_content_allowedtags', '<script>,<style>' ) );
         // Inline styles/scripts
         $content = trim( preg_replace('#<(s(cript|tyle)).*?</\1>#si', '', $content ) );
 
+
+
         $exclude_codes = 'remove_all_miss_shortcode';
         $content       = preg_replace("~(?:\[/?)(?!(?:$exclude_codes))[^/\]]+/?\]~s", '', $content );
+
+        if ( false === strpos( $content, '[' ) ) {
+            return $content;
+        }
+
+        //Check for active shortcodes
+        $active_shortcodes = ( is_array( $shortcode_tags ) && !empty( $shortcode_tags ) ) ? array_keys( $shortcode_tags ) : array();
+        
+        //Avoid "/" chars in content breaks preg_replace
+        $str1 = md5( microtime(true) );
+        $content = str_replace( "[/", $str1, $content );
+        $str2 = md5( microtime( true ) + 1 );
+        $content = str_replace( "/", $str2, $content ); 
+        $content = str_replace( $str1, "[/", $content );
+        
+        if(!empty($active_shortcodes)){
+            //Be sure to keep active shortcodes
+            $keep_active = implode("|", $active_shortcodes);
+            $content= preg_replace( "~(?:\[/?)(?!(?:$keep_active))[^/\]]+/?\]~s", '', $content );
+        } else {
+            //Strip all shortcodes
+            //$content = preg_replace('#\[[^\]]+\]#', '',$content);
+            $content = preg_replace("~(?:\[/?)[^/\]]+/?\]~s", '', $content);            
+        }
+        
+        //Set "/" back to its place
+        $content = str_replace($str2,"/",$content); 
+
         return $content;
     }
 }
@@ -103,7 +151,7 @@ if ( !function_exists( 'responsi_admin_bar_menu_style' ) ) {
         @media screen and (max-width:782px){
             #wp-admin-bar-responsithemes > a{width:35px!important;overflow:hidden;}
             #wp-admin-bar-responsithemes > a.ab-item:before{font-size:28px!important;top:5px!important;}
-        ';
+        }';
         wp_add_inline_style( 'admin-bar', responsi_minify_css( $css ) );
         //wp_add_inline_script( 'jquery-migrate', 'jQuery(document).ready(function(){jQuery(window).on( "load", function() {jQuery("#wpadminbar #wp-admin-bar-responsithemes-responsi-changelog a").addClass("thickbox");});});' );
     }

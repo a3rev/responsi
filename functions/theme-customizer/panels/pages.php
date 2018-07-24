@@ -191,10 +191,29 @@ class Responsi_Customize_Pages
 					'unchecked_label' => 'OFF',
 					'container_width' => 80
 		        ),
-			    'choices' => array( "none" => "None","uppercase" => "Uppercase", "lowercase" => "Lowercase")
+			    'choices' => array( "none" => __('None', 'responsi'),"uppercase" => __('Uppercase', 'responsi'), "lowercase" => __('Lowercase', 'responsi'))
 			),
 			'setting' => array(
 			    'default'		=> isset($responsi_options['responsi_page_title_font_transform']) ? $responsi_options['responsi_page_title_font_transform'] : 'none',
+			    'sanitize_callback' => 'responsi_sanitize_choices',
+			    'transport'	=> 'postMessage'
+			)
+		);
+		$pages_controls_settings['responsi_page_title_position'] = array(
+			'control' => array(
+			    'label'      => __('Title Alignment', 'responsi'),
+			    'section'    => 'page_style',
+			    'settings'   => 'responsi_page_title_position',
+			    'type'       => 'iradio',
+			    'input_attrs' => array(
+					'checked_label' => 'ON',
+					'unchecked_label' => 'OFF',
+					'container_width' => 80
+		        ),
+			    'choices' => array( "left" => __('Left', 'responsi'),"center" => __('Center', 'responsi'), "right" => __('Right', 'responsi'))
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_page_title_position']) ? $responsi_options['responsi_page_title_position'] : 'left',
 			    'sanitize_callback' => 'responsi_sanitize_choices',
 			    'transport'	=> 'postMessage'
 			)
@@ -374,10 +393,29 @@ class Responsi_Customize_Pages
 					'unchecked_label' => 'OFF',
 					'container_width' => 80
 		        ),
-			    'choices' => array( "none" => "None","uppercase" => "Uppercase", "lowercase" => "Lowercase")
+			    'choices' => array( "none" => __('None', 'responsi'),"uppercase" => __('Uppercase', 'responsi'), "lowercase" => __('Lowercase', 'responsi'))
 			),
 			'setting' => array(
 			    'default'		=> isset($responsi_options['responsi_archive_title_font_transform']) ? $responsi_options['responsi_archive_title_font_transform'] : 'none',
+			    'sanitize_callback' => 'responsi_sanitize_choices',
+			    'transport'	=> 'postMessage'
+			)
+		);
+		$pages_controls_settings['responsi_archive_title_position'] = array(
+			'control' => array(
+			    'label'      => __('Title Alignment', 'responsi'),
+			    'section'    => 'page_archive',
+			    'settings'   => 'responsi_archive_title_position',
+			    'type'       => 'iradio',
+			    'input_attrs' => array(
+					'checked_label' => 'ON',
+					'unchecked_label' => 'OFF',
+					'container_width' => 80
+		        ),
+			    'choices' => array( "left" => __('Left', 'responsi'),"center" => __('Center', 'responsi'), "right" => __('Right', 'responsi'))
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_archive_title_position']) ? $responsi_options['responsi_archive_title_position'] : 'left',
 			    'sanitize_callback' => 'responsi_sanitize_choices',
 			    'transport'	=> 'postMessage'
 			)

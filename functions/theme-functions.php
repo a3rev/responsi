@@ -231,6 +231,7 @@ if ( !function_exists( 'responsi_body_class' ) ) {
         $width = apply_filters( 'responsi_layout_width', $width );
 
         // Add classes to body_class() output
+        $classes[] = 'responsi-frontend';
         $classes[] = $layout;
         $classes[] = 'width-' . $width;
         $classes[] = $layout . '-' . $width;
@@ -1889,32 +1890,68 @@ if ( !function_exists( 'responsi_scrolltop' ) ) {
 }
 
 /*-----------------------------------------------------------------------------------*/
-/* responsi_custom_display_title(). */
+/* responsi_custom_content_metabox(). */
 /*-----------------------------------------------------------------------------------*/
+if ( !function_exists( 'responsi_custom_content_metabox' ) ) {
+    function responsi_custom_content_metabox(){
 
-function responsi_custom_display_title() {
-    global $responsi_custom_meta_type;
+        if ( is_home() || is_admin() ) {
+            return;
+        }
 
-    if ( is_home() || is_admin() ) {
-        return;
-    }
+        global $wp_query, $responsi_options, $post, $responsi_custom_meta_type;
 
-    $responsi_custom_meta = array(
-        'hide_title' => 0
-    );
+        $is_layout_boxed        = isset( $responsi_options['responsi_layout_boxed'] ) ? esc_attr( $responsi_options['responsi_layout_boxed'] ) : 'true';
+        $is_enable_boxed_style  = isset( $responsi_options['responsi_enable_boxed_style'] ) ? esc_attr( $responsi_options['responsi_enable_boxed_style'] ) : 'false';
+        $box_border_lr          = isset( $responsi_options['responsi_box_border_lr'] ) ? $responsi_options['responsi_box_border_lr'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB');
+        $border_width_boxed = 0;
 
-    if( is_array($responsi_custom_meta_type) && isset($responsi_custom_meta_type['meta_type']) && 'responsi_custom_meta' === $responsi_custom_meta_type['meta_type'] && isset($responsi_custom_meta_type['post_id']) && $responsi_custom_meta_type['post_id'] >= 1 ){
-        $responsi_custom_meta = get_post_meta( $responsi_custom_meta_type['post_id'] , $responsi_custom_meta_type['meta_type'], true );
-    }elseif(is_array($responsi_custom_meta_type) && isset($responsi_custom_meta_type['meta_type']) && 'responsi_custom_meta_term' === $responsi_custom_meta_type['meta_type'] && isset($responsi_custom_meta_type['post_id']) && $responsi_custom_meta_type['post_id'] >= 1){
-        $responsi_custom_meta = get_term_meta( $responsi_custom_meta_type['post_id'] , $responsi_custom_meta_type['meta_type'], true );
-    }
-    if ( !is_array( $responsi_custom_meta ) ) {
-        return;
-    }
-    if ( 1 === $responsi_custom_meta['hide_title'] ) {
-        ?>
-        <style type="text/css">.responsi_title, .custom_box .title.entry-title,body .responsi_title, body .custom_box .title.entry-title,.custom_box .product_title.entry-title{display:none !important;}</style>
-        <?php
+        if ( 'true' === $is_layout_boxed ) {
+            if ( 'true' === $is_enable_boxed_style ) {
+                if ( is_array( $box_border_lr ) && isset( $box_border_lr['width'] ) && $box_border_lr['width'] >= 0) {
+                    $border_width_boxed = ( (int) esc_attr( $box_border_lr['width'] ) ) * 2;
+                }
+            } 
+        }
+
+        $custom_max_width = false;
+
+        $content_max_width = isset( $responsi_options['responsi_layout_width'] ) ? esc_attr( $responsi_options['responsi_layout_width'] ) : 1024;
+
+        if( is_array($responsi_custom_meta_type) && isset($responsi_custom_meta_type['meta_type']) && 'responsi_custom_meta' === $responsi_custom_meta_type['meta_type'] && isset($responsi_custom_meta_type['post_id']) && $responsi_custom_meta_type['post_id'] >= 1 ){
+            $responsi_custom_meta = get_post_meta( $responsi_custom_meta_type['post_id'] , $responsi_custom_meta_type['meta_type'], true );
+            if( is_array($responsi_custom_meta) && isset($responsi_custom_meta['content_max_width']) ){
+                $content_max_width = $responsi_custom_meta['content_max_width'];
+                if( $content_max_width > 0 ){
+                    $custom_max_width = true;
+                }
+            }
+        }elseif(is_array($responsi_custom_meta_type) && isset($responsi_custom_meta_type['meta_type']) && 'responsi_custom_meta_term' === $responsi_custom_meta_type['meta_type'] && isset($responsi_custom_meta_type['post_id']) && $responsi_custom_meta_type['post_id'] >= 1){
+            $responsi_custom_meta = get_term_meta( $responsi_custom_meta_type['post_id'] , $responsi_custom_meta_type['meta_type'], true );
+            if( is_array($responsi_custom_meta) && isset($responsi_custom_meta['content_max_width']) ){
+                $content_max_width = $responsi_custom_meta['content_max_width'];
+                if( $content_max_width > 0 ){
+                    $custom_max_width = true;
+                }
+            }
+            
+        }
+
+        $css = '';
+
+        if ( isset($responsi_custom_meta['hide_title'] ) && 1 === $responsi_custom_meta['hide_title'] ) {
+            $css .= '.responsi_title, .custom_box .title.entry-title,body .responsi_title, body .custom_box .title.entry-title,.custom_box .product_title.entry-title{display:none !important;}';
+        }
+
+        if ( $custom_max_width ) {
+            $width = $content_max_width + $border_width_boxed;
+            $css .= '@media only screen and (min-width: 783px){.site-width{ max-width:' . $width . 'px !important; }}';
+            add_filter( 'responsi_layout_width', create_function('', 'return '.$width.';') );
+        }
+
+        if( '' != $css ){
+            echo '<style type="text/css">'.$css.'</style>';
+        }    
     }
 }
 

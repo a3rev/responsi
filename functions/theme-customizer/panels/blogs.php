@@ -672,7 +672,7 @@ class Responsi_Customize_Blogs
 					'unchecked_label' => 'OFF',
 					'container_width' => 80
 		        ),
-			    'choices' => array( "none" => "None","uppercase" => "Uppercase", "lowercase" => "Lowercase")
+			    'choices' => array( "none" => __('None', 'responsi'),"uppercase" => __('Uppercase', 'responsi'), "lowercase" => __('Lowercase', 'responsi'))
 			),
 			'setting' => array(
 			    'default'		=> isset($responsi_options['responsi_blog_post_font_title_transform']) ? $responsi_options['responsi_blog_post_font_title_transform'] : 'none',
@@ -797,7 +797,7 @@ class Responsi_Customize_Blogs
 					'container_width' => 80,
 					'class' => 'hide-custom'
 		        ),
-			    'choices' => array( "none" => "None","uppercase" => "Uppercase", "lowercase" => "Lowercase")
+			    'choices' => array( "none" => __('None', 'responsi'),"uppercase" => __('Uppercase', 'responsi'), "lowercase" => __('Lowercase', 'responsi'))
 			),
 			'setting' => array(
 			    'default'		=> isset($responsi_options['responsi_blog_post_font_date_transform']) ? $responsi_options['responsi_blog_post_font_date_transform'] : 'none',

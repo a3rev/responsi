@@ -22,6 +22,7 @@ function responsi_register_styles( $styles ){
 	$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 	$group_styles = array();
     $styles->add( 'responsi-custom-fields', get_template_directory_uri() . '/functions/css/custom-fields'.$suffix.'.css', array(), $responsi_version, 'screen' );
+    $styles->add( 'responsi-custom-fields-rtl', get_template_directory_uri() . '/functions/css/custom-fields.rtl'.$suffix.'.css', array(), $responsi_version, 'screen' );
     $styles->add( 'responsi-icon', get_template_directory_uri() . '/functions/css/responsi-icon'.$suffix.'.css', array(), $responsi_version, 'screen' );
     $styles->add( 'responsi-font-face', get_template_directory_uri() . '/functions/css/responsi-font-face' . $suffix . '.css', $group_styles, $responsi_version, 'screen' );
     $styles->add( 'responsi-layout', get_template_directory_uri() . '/functions/css/layout' . $suffix . '.css', array( 'responsi-font-face' ), $responsi_version, 'screen' );

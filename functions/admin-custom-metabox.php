@@ -6,6 +6,8 @@ if ( !function_exists('responsi_metabox_options') ){
 
     function responsi_metabox_options(){
 
+        global $responsi_options;
+
         $responsi_images_directory =  get_template_directory_uri() . '/functions/images/';
 
         $responsi_metaboxe_options = array();
@@ -57,6 +59,32 @@ if ( !function_exists('responsi_metabox_options') ){
                     '5'                 => $responsi_images_directory . 'bc5.png',
                     '6'                 => $responsi_images_directory . 'bc6.png'
                 )
+            );
+
+            /*$responsi_metaboxe_options[] = array(
+                'name' => 'content_max_width',
+                'label' => __( 'Maximun Content Width', 'responsi' ),
+                'type' => 'number',
+                'desc' => __( 'Maximum content width in pixels in large screens.', 'responsi' ),
+                'options' => array( 
+                    'min'                 => 600,
+                    'max'                 => 3000,
+                    'step'                => 1
+                )
+            );*/
+
+            $responsi_metaboxe_options[] = array(
+                'name' => 'content_max_width',
+                'label' => __( 'Maximun Content Width', 'responsi' ),
+                'type' => 'slider',
+                'desc' => __( 'Maximum content width in pixels in large screens.', 'responsi' ),
+                'options' => array( 
+                    'min'                   => 600,
+                    'max'                   => 3000,
+                    'step'                  => 1,
+                ),
+                'std'                       => isset($responsi_options['responsi_layout_width']) ? $responsi_options['responsi_layout_width'] : 1024,
+                'place_holder'              => isset($responsi_options['responsi_layout_width']) ? $responsi_options['responsi_layout_width'] : 1024,
             );
 
             if ( get_option( 'responsi_metaboxe_options' ) != $responsi_metaboxe_options ) {
@@ -181,7 +209,83 @@ function responsi_metabox_create_fields( $metaboxes, $callback, $token = 'genera
     	        $output .= '<td style="font-size:11px;">' . $metabox['desc'] . '</td>';
     	        $output .= '</tr>';
 
-    	    } elseif( 'text' === $metabox['type'] ) {
+    	    }elseif( 'slider' === $metabox['type'] ) {
+
+                if( $metabox['name'] == 'content_max_width' ){
+                    $metaboxvalue = $metabox['std'];
+                    $responsi_custom_meta = get_post_meta( $post->ID , 'responsi_custom_meta', true );
+                    if( is_array( $responsi_custom_meta ) && isset( $responsi_custom_meta['content_max_width'] ) )
+                    $metaboxvalue = $responsi_custom_meta['content_max_width'];
+                }
+
+                $min = '';
+                $max = '';
+                $step = '';
+                $place_holder = '';
+
+                $array = $metabox['options'];
+
+                if( $array ) {
+                    if( isset( $array['min'] ) && $array['min'] >= 0 ){
+                        $min = ' data-min="'.(int)$array['min'].'"';
+                    }
+                    if( isset( $array['max'] ) && $array['max'] >= 0 ){
+                        $max = ' data-max="'.(int)$array['max'].'"';
+                    }
+                    if( isset( $array['step'] ) && $array['step'] >= 0 ){
+                        $step = ' data-step="'.(int)$array['step'].'"';
+                    }
+                }
+
+                $add_class = ''; 
+                $add_counter = '';
+                if( 'seo' === $template_to_show ){
+                    $add_class = 'words-count';
+                    $add_counter = '<span class="counter">0 characters, 0 words</span>';
+                }
+                $output .= '<tr class="' . esc_attr( $row_css_class ) . '">';
+                $output .= '<th class="responsi-metabox-name"><label for="' . esc_attr( $metaboxid ) . '">'.$metabox['label'].'</label></th>';
+                $output .= '<td>
+                    <div class="responsi-range-slider">
+                        <div class="ui-slide" id="'.esc_attr( $metaboxid ).'_div"></div>
+                        <input type="text" readonly="readonly" id="'.esc_attr( $metaboxid ).'" name="'.esc_attr( $metaboxname ).'" value="'.$metaboxvalue.'" class="responsi-input regular-text islide-value" '.$min.' '.$max.' '.$step.' />
+                    </div>';
+                $output .= '<span class="responsi-metabox-desc">' . $metabox['desc'] . ' ' . $add_counter . '</span></td>';
+                $output .= '</tr>';
+
+            }elseif( 'number' === $metabox['type'] ) {
+
+                $min = '';
+                $max = '';
+                $step = '';
+
+                $array = $metabox['options'];
+
+                if( $array ) {
+                    if( isset( $array['min'] ) && $array['min'] >= 0 ){
+                        $min = ' min="'.(int)$array['min'].'"';
+                    }
+                    if( isset( $array['max'] ) && $array['max'] >= 0 ){
+                        $max = ' max="'.(int)$array['max'].'"';
+                    }
+                    if( isset( $array['step'] ) && $array['step'] >= 0 ){
+                        $step = ' step="'.(int)$array['step'].'"';
+                    }
+                }
+
+                $add_class = ''; 
+                $add_counter = '';
+                if( 'seo' === $template_to_show ){
+                    $add_class = 'words-count';
+                    $add_counter = '<span class="counter">0 characters, 0 words</span>';
+                }
+                $output .= '<tr class="' . esc_attr( $row_css_class ) . '">';
+                $output .= '<th class="responsi-metabox-name"><label for="' . esc_attr( $metaboxid ) . '">'.$metabox['label'].'</label></th>';
+                $output .= '<td><input class="responsi-metabox-input-text ' . esc_attr( $add_class ) . '" type="'.$metabox['type'].'" value="' . esc_attr( $metaboxvalue ) . '" name="'.$metaboxname.'" id="' . esc_attr( $metaboxid ) . '" '.$min.' '.$max.' '.$step.'/>';
+                $output .= '<span class="responsi-metabox-desc">' . $metabox['desc'] . ' ' . $add_counter . '</span></td>';
+                $output .= '</tr>';
+
+            }elseif( 'text' === $metabox['type'] ) {
 
     	    	$add_class = ''; 
                 $add_counter = '';
@@ -404,19 +508,16 @@ function responsi_metabox_handle( $post_id = '' ) {
 
     $upload_tracking = array();
 
+    $responsi_custom_meta = array();
+
     if ( isset( $_POST['action'] ) && $_POST['action'] === 'editpost' ) {
         if ( ( get_post_type() !== '' ) && ( get_post_type() !== 'nav_menu_item' ) ) {
 
+
             if( isset($_POST['responsi_custom_meta']) ){
                 if( isset( $_POST['responsi_custom_meta']['hide_title'] ) ) {
-                    $hide_title = 1;
-                } else {
-                    $hide_title = 0;
+                    $responsi_custom_meta['hide_title'] = 1;
                 }
-                $responsi_custom_meta = array( 'hide_title' => $hide_title );
-                update_post_meta( $pid, 'responsi_custom_meta', $responsi_custom_meta );
-            } else {
-                delete_post_meta( $pid, 'responsi_custom_meta', get_post_meta( $pid, 'responsi_custom_meta', true ) );
             }
 
             foreach ( $responsi_metaboxe_options as $k => $metabox ) {
@@ -428,13 +529,26 @@ function responsi_metabox_handle( $post_id = '' ) {
     					$posted_value = '';
     					$posted_value = $_POST[$var];
 
-    					if( get_post_meta( $pid, $var ) === '' ) {
-    						add_post_meta( $pid, $var, $posted_value, true );
-    					} elseif( $posted_value != get_post_meta( $pid, $var, true ) ) {
-    						update_post_meta( $pid, $var, $posted_value );
-    					} elseif( $posted_value === '' ) {
-    						delete_post_meta( $pid, $var, get_post_meta( $pid, $var, true ) );
-    					}
+                        if( 'content_max_width' == $var ){
+                            if( isset( $metabox['std'] ) && $metabox['std'] == $posted_value ){
+                            }else{
+                                if( get_post_meta( $pid, $var ) === '' ) {
+                                    $responsi_custom_meta['content_max_width'] = $posted_value;
+                                } elseif( $posted_value != get_post_meta( $pid, $var, true ) ) {
+                                    $responsi_custom_meta['content_max_width'] = $posted_value;
+                                } elseif( $posted_value === '' ) {
+                                }
+                            }
+                            
+                        }else{
+        					if( get_post_meta( $pid, $var ) === '' ) {
+        						add_post_meta( $pid, $var, $posted_value, true );
+        					} elseif( $posted_value != get_post_meta( $pid, $var, true ) ) {
+        						update_post_meta( $pid, $var, $posted_value );
+        					} elseif( $posted_value === '' ) {
+        						delete_post_meta( $pid, $var, get_post_meta( $pid, $var, true ) );
+        					}
+                        }
     				} elseif ( ! isset( $_POST[$var] ) && $metabox['type'] === 'checkbox' ) {
     					update_post_meta( $pid, $var, 'false' );
     				} else {
@@ -487,6 +601,12 @@ function responsi_metabox_handle( $post_id = '' ) {
 
                 update_option( 'responsi_metabox_custom_upload_tracking', $upload_tracking );
             }
+
+            if( count( $responsi_custom_meta ) > 0 ){
+                update_post_meta( $pid, 'responsi_custom_meta', $responsi_custom_meta );
+            } else {
+                delete_post_meta( $pid, 'responsi_custom_meta', get_post_meta( $pid, 'responsi_custom_meta', true ) );
+            }
         }
     }
 }
@@ -537,7 +657,7 @@ function responsi_metabox_add() {
  * @return void
  */
 function responsi_metabox_fieldtypes() {
-	return apply_filters( 'responsi_metabox_fieldtypes', array( 'text', 'calendar', 'time', 'time_masked', 'select', 'select2', 'radio', 'checkbox', 'textarea', 'images' ) );
+	return apply_filters( 'responsi_metabox_fieldtypes', array( 'text', 'calendar', 'time', 'time_masked', 'select', 'select2', 'radio', 'checkbox', 'textarea', 'images', 'slider' ) );
 }
 
 if ( ! function_exists( 'responsi_metabox_load_javascripts' ) ) {
@@ -552,7 +672,16 @@ if ( ! function_exists( 'responsi_metabox_load_javascripts' ) ) {
      * @return void
      */
     function responsi_metabox_load_javascripts( $hook ) {
-      	if ( in_array( $hook, array( 'post.php', 'post-new.php', 'page-new.php', 'page.php' ) ) ) {
+        if ( in_array( $hook, array( 'post.php', 'post-new.php', 'page-new.php', 'page.php', 'edit-tags.php','term.php', 'customize.php' ) ) ) {
+            if ( is_rtl() ){
+                global $responsi_version;
+                wp_deregister_script('jquery-ui-slider');
+                $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+                wp_enqueue_script( 'jquery-ui-slider',          get_template_directory_uri() . '/functions/js/jquery.ui.slider.rtl' .$suffix . '.js',                                   array( 'jquery' ), $responsi_version, true );
+        
+            } else {
+                wp_enqueue_script( 'jquery-ui-slider' );
+            }
       		wp_enqueue_script( 'responsi-custom-fields' );
       	}
     }
@@ -573,7 +702,12 @@ if ( ! function_exists( 'responsi_metabox_load_styles' ) ) {
     	global $pagenow;
     	if ( in_array( $pagenow, array( 'post.php', 'post-new.php', 'page-new.php', 'page.php', 'edit-tags.php','term.php', 'customize.php' ) ) ) {
     		wp_enqueue_style( 'responsi-icon' );
-            wp_enqueue_style( 'responsi-custom-fields' );
+            if ( is_rtl() ){
+                wp_enqueue_style( 'responsi-custom-fields-rtl' );
+            }else{
+                wp_enqueue_style( 'responsi-custom-fields' );
+            }
+           
     	}
     }
 }
@@ -587,7 +721,7 @@ function responsi_title_custom_field_tab_content( $post ){
     }
 
     $checked = '';
-    if( 1 === $responsi_custom_meta['hide_title'] ){
+    if( isset( $responsi_custom_meta['hide_title'] ) && 1 === $responsi_custom_meta['hide_title'] ){
         $checked = 'checked="checked" ';
     }
 
@@ -605,7 +739,53 @@ add_action( 'edit_form_before_permalink', 'responsi_title_custom_field_tab_conte
 /*-----------------------------------------------------------------------------------*/
 
 function responsi_taxonomy_add_new_meta_field(){
+    global $responsi_options;
+
+    $min = ' data-min="600"';
+    $max = ' data-max="3000"';
+    $step = ' data-step="1"';
+    $content_max_width = isset($responsi_options['content_max_width']) ? $responsi_options['content_max_width'] : 1204;
+
+    $responsi_metaboxe_options = get_option( 'responsi_metaboxe_options', array() );
+
+    $metabox_content_max_width = array();
+
+    if( is_array( $responsi_metaboxe_options ) ){
+        foreach ($responsi_metaboxe_options as $key => $value) {
+            if( is_array( $value ) && isset( $value['name'] ) && $value['name'] == 'content_max_width' ) {
+                $metabox_content_max_width = $value;
+            }
+        }
+    }
+
+    if( is_array( $metabox_content_max_width ) ) {
+
+        $array = $metabox_content_max_width['options'];
+
+        if( isset( $array['min'] ) && $array['min'] >= 0 ){
+            $min = ' data-min="'.(int)$array['min'].'"';
+        }
+        if( isset( $array['max'] ) && $array['max'] >= 0 ){
+            $max = ' data-max="'.(int)$array['max'].'"';
+        }
+        if( isset( $array['step'] ) && $array['step'] >= 0 ){
+            $step = ' data-step="'.(int)$array['step'].'"';
+        }
+        if( isset( $metabox_content_max_width['std'] ) && $metabox_content_max_width['std'] >= 0 ){
+            $content_max_width = (int)$metabox_content_max_width['std'];
+        }
+    }
     ?>
+    <div class="form-field">
+        <label><strong><?php _e('Maximun Content Width', 'responsi'); ?></strong></label>
+        <div class="responsi-range-slider">
+            <div class="ui-slide" id="<?php echo $metabox_content_max_width['name'];?>_div"></div>
+            <input type="text" readonly="readonly" id="responsi_custom_meta_term_content_max_width" name="responsi_custom_meta_term[<?php echo $metabox_content_max_width['name'];?>]" value="<?php echo $content_max_width;?>" class="responsi-input regular-text islide-value" <?php echo $min.$max.$step;?> />
+        </div>
+        <div style="clear: both;"></div>
+        <p class="description"><?php _e( 'Maximum content width in pixels in large screens.', 'responsi' );?></p>
+    </div>
+    <div style="clear: both;"></div>
     <div class="form-field">
         <label><strong><?php _e('Custom Title', 'responsi'); ?></strong></label>
         <label><input type="checkbox" name="responsi_custom_meta_term[hide_title]" value="1" /> <?php _e('Check to hide Title of this Category Page.', 'responsi'); ?></label>
@@ -620,10 +800,65 @@ function responsi_taxonomy_add_new_meta_field(){
 function responsi_taxonomy_edit_meta_field( $term ){
     $responsi_custom_meta_term = get_term_meta( $term->term_id, 'responsi_custom_meta_term', true );
     $checked = '';
-    if ( $responsi_custom_meta_term && 1 === $responsi_custom_meta_term['hide_title'] ) {
+    if ( $responsi_custom_meta_term && isset( $responsi_custom_meta_term['hide_title'] ) && 1 === $responsi_custom_meta_term['hide_title'] ) {
         $checked = 'checked="checked" ';
     }
+
+    global $responsi_options;
+
+    $min = ' data-min="600"';
+    $max = ' data-max="3000"';
+    $step = ' data-step="1"';
+    $content_max_width = isset($responsi_options['content_max_width']) ? $responsi_options['content_max_width'] : 1204;
+
+    $responsi_metaboxe_options = get_option( 'responsi_metaboxe_options', array() );
+
+    $metabox_content_max_width = array();
+
+    if( is_array( $responsi_metaboxe_options ) ){
+        foreach ($responsi_metaboxe_options as $key => $value) {
+            if( is_array( $value ) && isset( $value['name'] ) && $value['name'] == 'content_max_width' ) {
+                $metabox_content_max_width = $value;
+            }
+        }
+    }
+
+    if( is_array( $metabox_content_max_width ) ) {
+
+        $array = $metabox_content_max_width['options'];
+
+        if( isset( $array['min'] ) && $array['min'] >= 0 ){
+            $min = ' data-min="'.(int)$array['min'].'"';
+        }
+        if( isset( $array['max'] ) && $array['max'] >= 0 ){
+            $max = ' data-max="'.(int)$array['max'].'"';
+        }
+        if( isset( $array['step'] ) && $array['step'] >= 0 ){
+            $step = ' data-step="'.(int)$array['step'].'"';
+        }
+        if( isset( $metabox_content_max_width['std'] ) && $metabox_content_max_width['std'] >= 0 ){
+            $content_max_width = (int)$metabox_content_max_width['std'];
+        }
+    }
+
+    if ( $responsi_custom_meta_term && isset( $responsi_custom_meta_term['content_max_width']) && $responsi_custom_meta_term['content_max_width'] >= 0 && $content_max_width != $responsi_custom_meta_term['content_max_width'] ) {
+        $content_max_width = $responsi_custom_meta_term['content_max_width'];
+    }
+
     ?>
+    
+    <tr class="form-field">
+    <th scope="row" valign="top"><label for="responsi_custom_meta_term_content_max_width"><?php _e('Maximun Content Width', 'responsi'); ?></label></th>
+        <td>
+        <div class="responsi-range-slider">
+            <div class="ui-slide" id="<?php echo $metabox_content_max_width['name'];?>_div"></div>
+            <input type="text" readonly="readonly" id="responsi_custom_meta_term_content_max_width" name="responsi_custom_meta_term[<?php echo $metabox_content_max_width['name'];?>]" value="<?php echo $content_max_width;?>" class="responsi-input regular-text islide-value" <?php echo $min.$max.$step;?> />
+        </div>
+        <div style="clear: both;"></div>
+        <p class="description"><?php _e( 'Maximum content width in pixels in large screens.', 'responsi' );?></p>
+        </td>
+    </tr>
+
     <tr class="form-field">
     <th scope="row" valign="top"><label for="responsi_custom_meta_term"><?php _e('Custom Title', 'responsi'); ?></label></th>
         <td>
@@ -638,16 +873,37 @@ function responsi_taxonomy_edit_meta_field( $term ){
 /*-----------------------------------------------------------------------------------*/
 
 function responsi_save_taxonomy_custom_meta( $term_id ){
+
     if ( isset( $_POST['responsi_custom_meta_term'] ) ) {
+
+        $responsi_custom_meta_term = array();
+
         if ( isset( $_POST['responsi_custom_meta_term']['hide_title'] ) ) {
-            $hide_title = 1;
-        } else {
-            $hide_title = 0;
+            $responsi_custom_meta_term['hide_title'] = 1;
         }
-        $responsi_custom_meta_term = array(
-            'hide_title' => $hide_title
-        );
-        update_term_meta( $term_id, 'responsi_custom_meta_term', $responsi_custom_meta_term );
+
+        $responsi_metaboxe_options = get_option( 'responsi_metaboxe_options', array() );
+
+        $metabox_content_max_width = array();
+
+        if( is_array( $responsi_metaboxe_options ) ){
+            foreach ($responsi_metaboxe_options as $key => $value) {
+                if( is_array( $value ) && isset( $value['name'] ) && $value['name'] == 'content_max_width' ) {
+                    $metabox_content_max_width = $value;
+                }
+            }
+        }
+
+        if ( isset( $_POST['responsi_custom_meta_term']['content_max_width'] ) && isset( $metabox_content_max_width['std'] ) && $metabox_content_max_width['std'] != $_POST['responsi_custom_meta_term']['content_max_width'] ) {
+            $responsi_custom_meta_term['content_max_width'] = $_POST['responsi_custom_meta_term']['content_max_width'];
+        }
+
+        if( count( $responsi_custom_meta_term ) > 0 ){
+            update_term_meta( $term_id, 'responsi_custom_meta_term', $responsi_custom_meta_term );
+        }else{
+            delete_term_meta( $term_id, 'responsi_custom_meta_term' );
+        }
+
     }else{
         delete_term_meta( $term_id, 'responsi_custom_meta_term' );
     }
@@ -685,30 +941,39 @@ function responsi_add_all_action_for_custom_taxonomy(){
 
 add_action( 'init', 'responsi_add_all_action_for_custom_taxonomy' );
 
-function responsi_title_custom_page_post_tax_id(){
-    global $wp_query, $responsi_custom_meta_type;
+function responsi_custom_meta_post(){
 
-    if ( !is_admin() ) {
-        $responsi_custom_meta_type = array(
-            'post_id' => 0,
-            'meta_type' => ''
-        );
-        if ( isset( $wp_query->queried_object_id ) && $wp_query->queried_object_id > 0 ) {
-            $id = $wp_query->queried_object_id;
-            if ( isset( $wp_query->queried_object->term_id ) ) {
-                $type = 'responsi_custom_meta_term';
-            } else {
-                $type = 'responsi_custom_meta';
-            }
-            $responsi_custom_meta_type = array(
-                'post_id' => $id,
-                'meta_type' => $type
-            );
+    if ( is_admin() ) {
+        return;
+    }
+    
+    global $wp_query, $responsi_custom_meta_type, $post;
+
+    $post_id = 0;
+
+    $meta_type = 'responsi_custom_meta';
+
+    if ( isset( $wp_query->queried_object_id ) && $wp_query->queried_object_id > 0 ) {
+        if ( isset( $wp_query->queried_object->term_id ) ) {
+            $post_id = $wp_query->queried_object->term_id;
+            $meta_type = 'responsi_custom_meta_term';
         }
     }
+
+    if( is_singular() && $post->ID ){
+        $post_id = $post->ID;
+    }
+
+    $post_id = apply_filters( 'responsi_custom_meta_post_id' , $post_id );
+
+    $responsi_custom_meta_type = array(
+        'post_id' => $post_id,
+        'meta_type' => $meta_type
+    );
+
 }
 
-add_action( 'wp_head', 'responsi_title_custom_page_post_tax_id', 1 );
+add_action( 'wp_head', 'responsi_custom_meta_post', 1 );
 
 /**
  * Specify action hooks for the functions above.
@@ -721,6 +986,6 @@ add_action( 'admin_init', 'responsi_metabox_options', 1 );
 add_action( 'admin_enqueue_scripts', 'responsi_metabox_load_javascripts', 10, 1 );
 add_action( 'admin_print_styles', 'responsi_metabox_load_styles', 10 );
 add_action( 'edit_post', 'responsi_metabox_handle', 10 );
-add_action( 'admin_menu', 'responsi_metabox_add', 10 );
+add_action( 'admin_init', 'responsi_metabox_add', 10 );
 
 ?>

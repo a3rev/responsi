@@ -180,10 +180,29 @@ class Responsi_Customize_Blog_Posts
 					'unchecked_label' => 'OFF',
 					'container_width' => 80
 		        ),
-			    'choices' => array( "none" => "None","uppercase" => "Uppercase", "lowercase" => "Lowercase")
+			    'choices' => array( "none" => __('None', 'responsi'),"uppercase" => __('Uppercase', 'responsi'), "lowercase" => __('Lowercase', 'responsi'))
 			),
 			'setting' => array(
 			    'default'		=> isset($responsi_options['responsi_post_title_font_transform']) ? $responsi_options['responsi_post_title_font_transform'] : 'none',
+			    'sanitize_callback' => 'responsi_sanitize_choices',
+			    'transport'	=> 'postMessage'
+			)
+		);
+		$posts_controls_settings['responsi_post_title_position'] = array(
+			'control' => array(
+			    'label'      => __('Title Alignment', 'responsi'),
+			    'section'    => 'posts_style',
+			    'settings'   => 'responsi_post_title_position',
+			    'type'       => 'iradio',
+			    'input_attrs' => array(
+					'checked_label' => 'ON',
+					'unchecked_label' => 'OFF',
+					'container_width' => 80
+		        ),
+			    'choices' => array( "left" => __('Left', 'responsi'),"center" => __('Center', 'responsi'), "right" => __('Right', 'responsi'))
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_post_title_position']) ? $responsi_options['responsi_post_title_position'] : 'left',
 			    'sanitize_callback' => 'responsi_sanitize_choices',
 			    'transport'	=> 'postMessage'
 			)
@@ -266,7 +285,7 @@ class Responsi_Customize_Blog_Posts
 					'unchecked_label' => 'OFF',
 					'container_width' => 80
 		        ),
-			    'choices' => array( "none" => "None","uppercase" => "Uppercase", "lowercase" => "Lowercase")
+			    'choices' => array( "none" => __('None', 'responsi'),"uppercase" => __('Uppercase', 'responsi'), "lowercase" => __('Lowercase', 'responsi'))
 			),
 			'setting' => array(
 			    'default'		=> isset($responsi_options['responsi_font_post_cat_tag_transform']) ? $responsi_options['responsi_font_post_cat_tag_transform'] : 'none',
@@ -504,7 +523,7 @@ class Responsi_Customize_Blog_Posts
 					'unchecked_label' => 'OFF',
 					'container_width' => 80
 		        ),
-			    'choices' => array( "none" => "None","uppercase" => "Uppercase", "lowercase" => "Lowercase")
+			    'choices' => array( "none" => __('None', 'responsi'),"uppercase" => __('Uppercase', 'responsi'), "lowercase" => __('Lowercase', 'responsi'))
 			),
 			'setting' => array(
 			    'default'		=> isset($responsi_options['responsi_font_post_utility_tag_transform']) ? $responsi_options['responsi_font_post_utility_tag_transform'] : 'none',
@@ -801,7 +820,7 @@ class Responsi_Customize_Blog_Posts
 					'container_width' => 80,
 					'class' => 'single-post-meta'
 		        ),
-			    'choices' => array( "none" => "None","uppercase" => "Uppercase", "lowercase" => "Lowercase")
+			    'choices' => array( "none" => __('None', 'responsi'),"uppercase" => __('Uppercase', 'responsi'), "lowercase" => __('Lowercase', 'responsi'))
 			),
 			'setting' => array(
 			    'default'		=> isset($responsi_options['responsi_post_meta_transform']) ? $responsi_options['responsi_post_meta_transform'] : 'none',

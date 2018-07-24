@@ -725,7 +725,7 @@ class Responsi_Customize_Navigation
 					'unchecked_label' => 'OFF',
 					'container_width' => 80
 		        ),
-			    'choices' => array( "none" => "None","uppercase" => "Uppercase", "lowercase" => "Lowercase")
+			    'choices' => array( "none" => __('None', 'responsi'),"uppercase" => __('Uppercase', 'responsi'), "lowercase" => __('Lowercase', 'responsi'))
 			),
 			'setting' => array(
 			    'default'		=> isset($responsi_options['responsi_nav_font_transform']) ? $responsi_options['responsi_nav_font_transform'] : 'uppercase',
@@ -1046,7 +1046,7 @@ class Responsi_Customize_Navigation
 					'unchecked_label' => 'OFF',
 					'container_width' => 80
 		        ),
-			    'choices' => array( "none" => "None","uppercase" => "Uppercase", "lowercase" => "Lowercase")
+			    'choices' => array( "none" => __('None', 'responsi'),"uppercase" => __('Uppercase', 'responsi'), "lowercase" => __('Lowercase', 'responsi'))
 			),
 			'setting' => array(
 			    'default'		=> isset($responsi_options['responsi_nav_dropdown_font_transform']) ? $responsi_options['responsi_nav_dropdown_font_transform'] : 'uppercase',

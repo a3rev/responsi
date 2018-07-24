@@ -2695,6 +2695,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     /* Post */
     $_font_post_title                               = isset( $responsi_options['responsi_font_post_title'] ) ? $responsi_options['responsi_font_post_title'] : array('size' => '26','line_height' => '1.2','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
     $_post_title_font_transform                     = isset( $responsi_options['responsi_post_title_font_transform'] ) ? esc_attr( $responsi_options['responsi_post_title_font_transform'] ) : 'none';
+    $_post_title_position                           = isset( $responsi_options['responsi_post_title_position'] ) ? esc_attr( $responsi_options['responsi_post_title_position'] ) : 'left';
     $_post_title_margin_top                         = isset( $responsi_options['responsi_post_title_margin_top'] ) ? esc_attr( $responsi_options['responsi_post_title_margin_top'] ) : 0;
     $_post_title_margin_bottom                      = isset( $responsi_options['responsi_post_title_margin_bottom'] ) ? esc_attr( $responsi_options['responsi_post_title_margin_bottom'] ) : 0;
     $_post_title_margin_left                        = isset( $responsi_options['responsi_post_title_margin_left'] ) ? esc_attr( $responsi_options['responsi_post_title_margin_left'] ) : 0;
@@ -2704,6 +2705,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $post_title_css = '';
     $post_title_css .= responsi_generate_fonts( $_font_post_title, true );
     $post_title_css .= 'text-transform:' . $_post_title_font_transform . ' !important;';
+    $post_title_css .= 'text-align:' . $_post_title_position . ';';
     $post_title_css .= 'margin-top:' . $_post_title_margin_top . 'px !important;margin-bottom:' . $_post_title_margin_bottom . 'px !important;';
     $post_title_css .= 'margin-left:' . $_post_title_margin_left . 'px !important;margin-right:' . $_post_title_margin_right . 'px !important;';
     
@@ -2737,6 +2739,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     /* Page */
     $_page_title_font                               = isset( $responsi_options['responsi_page_title_font'] ) ? $responsi_options['responsi_page_title_font'] : array('size' => '26','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
     $_page_title_font_transform                     = isset( $responsi_options['responsi_page_title_font_transform'] ) ? esc_attr( $responsi_options['responsi_page_title_font_transform'] ) : 'none';
+    $_page_title_position                           = isset( $responsi_options['responsi_page_title_position'] ) ? esc_attr( $responsi_options['responsi_page_title_position'] ) : 'left';
     $_page_title_margin_top                         = isset( $responsi_options['responsi_page_title_margin_top'] ) ? esc_attr( $responsi_options['responsi_page_title_margin_top'] ) : 0;
     $_page_title_margin_bottom                      = isset( $responsi_options['responsi_page_title_margin_bottom'] ) ? esc_attr( $responsi_options['responsi_page_title_margin_bottom'] ) : 0;
     $_page_title_margin_left                        = isset( $responsi_options['responsi_page_title_margin_left'] ) ? esc_attr( $responsi_options['responsi_page_title_margin_left'] ) : 0;
@@ -2748,6 +2751,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $page_title_css .= 'margin-top:' . $_page_title_margin_top . 'px !important;margin-bottom:' . $_page_title_margin_bottom . 'px !important;';
     $page_title_css .= 'margin-left:' . $_page_title_margin_left . 'px !important;margin-right:' . $_page_title_margin_right . 'px !important;';
     $page_title_css .= 'text-transform:' . $_page_title_font_transform . ' !important;';
+    $page_title_css .= 'text-align:' . $_page_title_position . ';';
     $dynamic_css .= '#main .custom_box.custom_box_page h1.title, .custom_box.custom_box_page h1.title, #main .custom_box.custom_box_page h1.title a:link, #main .custom_box.custom_box_page h1.title a:visited{' . $page_title_css . '}';
     $dynamic_css .= '.custom_box.custom_box_page{' . responsi_generate_fonts( $_page_content_font ) . '}';
 
@@ -2804,6 +2808,7 @@ function responsi_build_dynamic_css( $preview = false ) {
 
     $_archive_title_font                            = isset( $responsi_options['responsi_archive_title_font'] ) ? $responsi_options['responsi_archive_title_font'] : array('size' => '26','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
     $_archive_title_font_transform                  = isset( $responsi_options['responsi_archive_title_font_transform'] ) ? esc_attr( $responsi_options['responsi_archive_title_font_transform'] ) : 'none';
+    $_archive_title_position                        = isset( $responsi_options['responsi_archive_title_position'] ) ? esc_attr( $responsi_options['responsi_archive_title_position'] ) : 'left';
     $_archive_title_margin_top                      = isset( $responsi_options['responsi_archive_title_margin_top'] ) ? esc_attr( $responsi_options['responsi_archive_title_margin_top'] ) : 0;
     $_archive_title_margin_bottom                   = isset( $responsi_options['responsi_archive_title_margin_bottom'] ) ? esc_attr( $responsi_options['responsi_archive_title_margin_bottom'] ) : 0;
     $_archive_title_margin_left                     = isset( $responsi_options['responsi_archive_title_margin_left'] ) ? esc_attr( $responsi_options['responsi_archive_title_margin_left'] ) : 0;
@@ -2814,6 +2819,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $archive_title_css = '';
     $archive_title_css .= responsi_generate_fonts( $_archive_title_font, true );
     $archive_title_css .= 'text-transform:' . $_archive_title_font_transform . ' !important;';
+    $archive_title_css .= 'text-align:' . $_archive_title_position . ';';
     $archive_title_css .= 'margin-top:' . $_archive_title_margin_top . 'px !important;margin-bottom:' . $_archive_title_margin_bottom . 'px !important;';
     $archive_title_css .= 'margin-left:' . $_archive_title_margin_left . 'px !important;margin-right:' . $_archive_title_margin_right . 'px !important;';
     

@@ -44,9 +44,9 @@ add_filter( 'responsi_blog_template_query_args', 'responsi_categories_blogtempla
 add_filter( 'responsi_post_author_posts_card_link', 'responsi_post_author_posts_link', 10, 2 );
 
 add_action( 'wp', 'responsi_404_redirect', 1 );
+add_action( 'wp_head', 'responsi_custom_content_metabox' );
 add_action( 'init', 'responsi_get_post_types' );
 add_action( 'init', 'responsi_filter_image_rss' );
-add_action( 'wp_head', 'responsi_custom_display_title' );
 add_action( 'responsi_meta', 'responsi_meta_tags', 1 );
 add_action( 'responsi_head', 'responsi_layout_class' );
 add_action( 'responsi_head', 'is_blog_template', 10 );

@@ -386,8 +386,8 @@ class Responsi_Customize_Layout
 
 		$layout_controls_settings['responsi_layout_width'] = array(
 			'control' => array(
-			    'label'      => __('Maxium Content Width', 'responsi'),
-			    'description' => __( 'Maxium content width in pixels in large screens.', 'responsi' ),
+			    'label'      => __('Maximum Content Width', 'responsi'),
+			    'description' => __( 'Maximum content width in pixels in large screens.', 'responsi' ),
 			    'section'    => 'layout_style',
 			    'settings'    => 'responsi_layout_width',
 			    'type'       => 'slider',

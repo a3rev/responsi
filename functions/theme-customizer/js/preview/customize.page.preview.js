@@ -12,11 +12,13 @@
         css += '.main-wrap-page{' + responsiCustomize.build_background('responsi_page_box_bg', true) + responsiCustomize.build_border_boxes('responsi_page_box_border', true) + responsiCustomize.build_padding_margin('responsi_page_box_margin', 'margin', true) + responsiCustomize.build_padding_margin('responsi_page_box_padding', 'padding', true) + responsiCustomize.build_box_shadow('responsi_page_box_shadow', true) + '}';
 
         var responsi_page_title_font_transform = wp.customize.value('responsi_page_title_font_transform')();
-        css += '#main .custom_box.custom_box_page h1.title, .custom_box.custom_box_page h1.title, #main .custom_box.custom_box_page h1.title a:link, #main .custom_box.custom_box_page h1.title a:visited{' + responsiCustomize.build_typography('responsi_page_title_font', true) + responsiCustomize.build_padding_margin('responsi_page_title_margin', 'margin', true) + 'text-transform:' + responsi_page_title_font_transform + ' !important;}';
+        var responsi_page_title_position = wp.customize.value('responsi_page_title_position')();
+        css += '#main .custom_box.custom_box_page h1.title, .custom_box.custom_box_page h1.title, #main .custom_box.custom_box_page h1.title a:link, #main .custom_box.custom_box_page h1.title a:visited{' + responsiCustomize.build_typography('responsi_page_title_font', true) + responsiCustomize.build_padding_margin('responsi_page_title_margin', 'margin', true) + 'text-transform:' + responsi_page_title_font_transform + ' !important;text-align:' + responsi_page_title_position + ';}';
         css += '.custom_box.custom_box_page{' + responsiCustomize.build_typography('responsi_page_content_font', true) + '}';
 
         var responsi_archive_title_font_transform = wp.customize.value('responsi_archive_title_font_transform')();
-        css += '#main .custom_box.custom_box_archive h1.title, .custom_box.custom_box_archive h1.title, #main .custom_box.custom_box_archive h1.title a:link, #main .custom_box.custom_box_archive h1.title a:visited{' + responsiCustomize.build_typography('responsi_archive_title_font', true) + responsiCustomize.build_padding_margin('responsi_archive_title_margin', 'margin', true) + 'text-transform:' + responsi_archive_title_font_transform + ' !important;}';
+        var responsi_archive_title_position = wp.customize.value('responsi_archive_title_position')();
+        css += '#main .custom_box.custom_box_archive h1.title, .custom_box.custom_box_archive h1.title, #main .custom_box.custom_box_archive h1.title a:link, #main .custom_box.custom_box_archive h1.title a:visited{' + responsiCustomize.build_typography('responsi_archive_title_font', true) + responsiCustomize.build_padding_margin('responsi_archive_title_margin', 'margin', true) + 'text-transform:' + responsi_archive_title_font_transform + ' !important;text-align:' + responsi_archive_title_position + ';}';
         css += '.custom_box.custom_box_archive,.archive_header .catrss{' + responsiCustomize.build_typography('responsi_archive_content_font', true) + '}';
 
         var responsi_archive_title_border_bottom_width = wp.customize.value('responsi_archive_title_border_bottom[width]')();
@@ -83,7 +85,9 @@
         'responsi_showmore_text',
         'responsi_enable_archive_title_box',
         'responsi_archive_title_font_transform',
-        'responsi_page_title_font_transform'
+        'responsi_archive_title_position',
+        'responsi_page_title_font_transform',
+        'responsi_page_title_position'
     ];
 
     var bg_fields = [

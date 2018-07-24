@@ -1,5 +1,13 @@
 *** Responsi Framework Changelog ***
 
+= 7.0.0 - 2018/07/24 =
+* This Major Feature upgrade adds set individual page, post, category, tag and custom post, custom taxonomy Maximum Content width in widescreens plus post and page title alignment option.
+* Feature - Add set Maximum Content Width option for individual Pages, Posts, Custom Post types, Taxonomies and custom taxonomies. Overrides framework global setting. 
+* Feature - Add set Maximum Content Width slider to Framework Custom Settings on posts and pages and custom post types.
+* Feature - Add Maximum Content Width slider to Category and Tag taxonomy and custom taxonomies  
+* Feature - Add Post and Page title alignment option, Left, Center and Right
+* Tweak - Remove all settings options backup. Now only keep latest backup version - not all.
+
 = 6.9.7 - 2018/06/29 =
 * Tweak - Style CSS for select input
 * Fix - Layout CSS fixed scroll in customize preview

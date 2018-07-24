@@ -94,5 +94,21 @@ TABLE OF CONTENTS
 
 /*-----------------------------------------------------------------------------------*/
 
-.responsi-metabox-field-type-timestamp .responsi-metabox-desc { margin-top: 5px; }
+.responsi-metabox-field-type-timestamp .responsi-metabox-desc{margin-top:5px;}
 .responsi-metabox-field-type-timestamp .responsi-metabox-timestamp-at { position: relative; top: 2px; }
+
+/*-----------------------------------------------------------------------------------*/
+
+/* 7. "Slider" Fields */
+
+/*-----------------------------------------------------------------------------------*/
+.responsi-metabox-field-type-slider .responsi-metabox-desc{clear: both;}
+.responsi-range-slider .ui-slider,.responsi-range-slider .ui-slider{background:#EDEDED!important;border:1px solid #666!important;border-radius:3px;box-shadow:none!important;height:10px;width:175px;position:relative;text-align:left;margin-top:0;margin-left:10px;float:left;top:7px;}
+.responsi-range-slider .ui-slider .ui-slider-handle,.responsi-range-slider .ui-slider .ui-slider-handle{position:absolute;z-index:2;width:16px;height:18px;cursor:pointer;font-weight:bold;color:#1c94c4;outline:0;top:-6px;margin-left:-11px;background:#666!important;border:1px solid #666!important;border-radius:3px;box-shadow:none!important;}
+.responsi-range-slider .ui-slider .ui-slider-range,.responsi-range-slider .ui-slider-range{box-shadow:none!important;border:none!important;background:#569aef!important;border-radius:2px;position:absolute;top:0;height:100%;}
+.responsi-range-slider .responsi-input{float:left;width:56px!important;margin-left:13px!important}
+
+@media only screen and (max-width:782px){
+  .responsi-range-slider .ui-slider,.responsi-range-slider .ui-slider{height:20px!important;}
+  .responsi-range-slider .ui-slider .ui-slider-handle,.responsi-range-slider .ui-slider .ui-slider-handle{height:28px!important;}
+}

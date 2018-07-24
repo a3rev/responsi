@@ -1325,11 +1325,11 @@ msgid "Site Content Width"
 msgstr ""
 
 #: functions/theme-customizer/panels/layout.php:411
-msgid "Maxium Content Width"
+msgid "Maximum Content Width"
 msgstr ""
 
 #: functions/theme-customizer/panels/layout.php:412
-msgid "Maxium content width in pixels in large screens."
+msgid "Maximum content width in pixels in large screens."
 msgstr ""
 
 #: functions/theme-customizer/panels/layout.php:431
