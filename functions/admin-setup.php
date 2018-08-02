@@ -61,6 +61,12 @@ if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 
 	    }
 
+	    if( version_compare(get_option('responsi_framework_version'), '7.0.1', '<') ){
+	        if( function_exists('responsi_dynamic_css') ){
+		        responsi_dynamic_css( 'framework' );
+		    }
+	    }
+
 	    update_option( 'responsi_framework_version', RESPONSI_FRAMEWORK_VERSION );
 	}
 }
