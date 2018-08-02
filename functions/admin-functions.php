@@ -505,6 +505,17 @@ function responsi_get_image_attribute( $url ) {
 }
 
 /*-----------------------------------------------------------------------------------*/
+/* responsi_send_no_xss_protection_header() */
+/*-----------------------------------------------------------------------------------*/
+
+function responsi_send_no_xss_protection_header( $headers, $object ) {
+    if ( is_customize_preview() ){
+        $headers['X-XSS-Protection'] = 0;
+    }
+    return $headers;
+}
+
+/*-----------------------------------------------------------------------------------*/
 /* responsi_pagination() - Custom loop pagination function  */
 /*-----------------------------------------------------------------------------------*/
 
@@ -1548,6 +1559,91 @@ function responsi_autoembed_media( $content = '' ){
     return apply_filters( 'responsi_autoembed_media', $content );
 }
 
+function responsi_autoembed_media_replace_iframe( $content = '' ){
+    //$content = wp_unslash( $content );
+    $content = str_replace('frameeditor', 'iframe', $content );
+    return $content;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* responsi_exclude_button_lists()  */
+/*-----------------------------------------------------------------------------------*/
+
+function responsi_button_none_css_lists(){
+    
+
+    $responsi_button_none_css_lists = '.mejs-button button';
+
+    $responsi_button_none_css_lists = apply_filters( 'responsi_button_none_css_lists', $responsi_button_none_css_lists );
+
+    $exclude_button_css = '';
+
+    if( '' != trim( $responsi_button_none_css_lists ) ){
+        $responsi_button_none_css_lists = explode( ',', $responsi_button_none_css_lists );
+        
+        if( is_array( $responsi_button_none_css_lists ) && count( $responsi_button_none_css_lists ) > 0 ){
+
+            $exclude_button_css = '';
+            $comma = '';
+
+            foreach( $responsi_button_none_css_lists as $element ){
+                if( !empty($element) ){
+                    $exclude_button_css .= $comma.trim($element);
+                    $comma = ',';
+                }
+            }
+        }
+
+    }
+
+    return $exclude_button_css;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* responsi_exclude_button_css()  */
+/*-----------------------------------------------------------------------------------*/
+
+function responsi_exclude_button_css(){
+
+    global $responsi_options;
+
+    $_exclude_lists = '.customize-partial-edit-shortcut-button, .bfwc-googlepay-button, .close, .none-button-css';
+
+    if( isset( $responsi_options['responsi_exclude_button_lists'] ) && '' != trim( $responsi_options['responsi_exclude_button_lists'] ) ){
+        $_exclude_lists .= ',' . trim( $responsi_options['responsi_exclude_button_lists'] );
+    }
+
+    $_exclude_lists = apply_filters( 'responsi_exclude_button_css', $_exclude_lists );
+
+    $css_excludes = responsi_build_exclude_button_css( $_exclude_lists );
+    
+    return $css_excludes;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* responsi_build_exclude_button_css()  */
+/*-----------------------------------------------------------------------------------*/
+
+function responsi_build_exclude_button_css( $lists = '' ){
+
+    $exclude_button_css = '';
+
+    if( '' != trim( $lists ) ){
+        if( trim( $lists ) != '' ){
+            $lists = explode( ',', $lists );
+            if( is_array( $lists ) && count( $lists ) > 0 ){
+                foreach( $lists as $element ){
+                    if( !empty($element) ){
+                        $exclude_button_css .= ':not(' . trim($element) . ')';
+                    }
+                }
+            }
+        }
+    }
+
+    return $exclude_button_css;
+}
+
 /*-----------------------------------------------------------------------------------*/
 /* responsi_dynamic_gutter */
 /*-----------------------------------------------------------------------------------*/
@@ -2134,7 +2230,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     /* Body Background */
     $responsi_use_style_bg_image                = isset($responsi_options['responsi_use_style_bg_image']) ? esc_attr( $responsi_options['responsi_use_style_bg_image'] ) : 'false';
     $responsi_style_bg                          = isset($responsi_options['responsi_style_bg']) ? $responsi_options['responsi_style_bg'] : array( 'onoff' => 'true', 'color' => '#ffffff' );
-    $responsi_style_bg_image                    = isset($responsi_options['responsi_style_bg_image']) ? esc_url( $responsi_options['responsi_style_bg_image'] ) : '';
+    $responsi_style_bg_image                    = isset($responsi_options['responsi_style_bg_image']) ? str_replace( array( 'https:', 'http:' ), '', esc_url( $responsi_options['responsi_style_bg_image'] ) ) : '';
     $responsi_style_bg_image_repeat             = isset($responsi_options['responsi_style_bg_image_repeat']) ? esc_attr( $responsi_options['responsi_style_bg_image_repeat'] ) : 'repeat';
     $responsi_style_bg_image_attachment         = isset($responsi_options['responsi_style_bg_image_attachment']) ? esc_attr( $responsi_options['responsi_style_bg_image_attachment'] ) : 'inherit';
     $responsi_bg_position_vertical              = isset($responsi_options['responsi_bg_position_vertical']) ? esc_attr( $responsi_options['responsi_bg_position_vertical'] ) : 'center';
@@ -2367,7 +2463,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $bt_css .= 'padding-left:' . $button_padding_left . 'px;';
     $bt_css .= 'padding-right:' . $button_padding_right . 'px;';
     $bt_css .= responsi_generate_fonts( $button_text );
-    $bt_css .= 'color:' . esc_attr( $button_text['color'] ) . ';';
+    $bt_css .= 'line-height: normal !important;';
     $bt_css .= 'text-transform: ' . $button_text_transform . ';';
     $bt_css .= 'text-shadow: ' . $button_text_shadow_value . ';';
     $bt_css .= 'background-color: ' . $button . ';';
@@ -2379,9 +2475,35 @@ function responsi_build_dynamic_css( $preview = false ) {
     $bt_css .= 'border-radius:' . $button_border_radius_tl . ' ' . $button_border_radius_tr . ' ' . $button_border_radius_br . ' ' . $button_border_radius_bl . ';';
     $bt_css .= $button_border_box_shadow;
 
-    $dynamic_css .= 'a.button, a.button:visited, button, .button, body #wrapper #content .button, body #wrapper #content .button:visited, body #wrapper #content .comment-entry div.reply a, body #wrapper #content #respond .form-submit input#submit, .custom_contact_popup input[type="submit"], input[type="submit"], input[type="button"],input[type="reset"] {'.$bt_css.'}';
-    $dynamic_css .= 'a.button, html body a.button{padding-top:' . $a_button_padding_top . 'px;padding-bottom:' . $a_button_padding_bottom . 'px;padding-left:' . $button_padding_left . 'px;padding-right:' . $button_padding_right . 'px;}';
-    $dynamic_css .= 'body #wrapper #content .button:hover, body #wrapper #content .comment-entry div.reply a:hover, body #wrapper #content #respond .form-submit input#submit:hover,button:hover, .button:hover, body #wrapper #content .button:hover, body #wrapper #content .comment-entry div.reply a:hover, body #wrapper #content #respond .form-submit input#submit:hover, input[type="submit"]:hover, input[type="button"]:hover {color:' . esc_attr( $button_text['color'] ) . ' !important;text-decoration:none !important;}';
+    $button_excludes = responsi_exclude_button_css();
+
+    $dynamic_css .= '
+    button'.$button_excludes.',
+    button:visited'.$button_excludes.',
+    input[type=button]'.$button_excludes.',
+    input[type=button]:visited'.$button_excludes.',
+    input[type=reset]'.$button_excludes.',
+    input[type=reset]:visited'.$button_excludes.',
+    input[type=submit]'.$button_excludes.',
+    input[type=submit]:visited'.$button_excludes.',
+    input#submit'.$button_excludes.',
+    input#submit:visited'.$button_excludes.',
+    .button'.$button_excludes.',
+    .button:visited'.$button_excludes.'{'.$bt_css.'}';
+
+    $dynamic_css .= '
+    button'.$button_excludes.':hover,
+    button:visited'.$button_excludes.':hover,
+    input[type=button]'.$button_excludes.':hover,
+    input[type=button]:visited'.$button_excludes.':hover,
+    input[type=reset]'.$button_excludes.':hover,
+    input[type=reset]:visited'.$button_excludes.':hover,
+    input[type=submit]'.$button_excludes.':hover,
+    input[type=submit]:visited'.$button_excludes.':hover,
+    input#submit'.$button_excludes.':hover,
+    input#submit:visited'.$button_excludes.':hover,
+    .button'.$button_excludes.':hover,
+    .button:visited'.$button_excludes.':hover {color:' . esc_attr( $button_text['color'] ) . ' !important;}';
 
     /* Typography */
     $font_text                              = isset( $responsi_options['responsi_font_text'] ) ? $responsi_options['responsi_font_text'] : array('size' => '14','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#555555');
@@ -2444,7 +2566,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     /* Header */
     $header_bg                              = isset( $responsi_options['responsi_header_bg'] ) ? $responsi_options['responsi_header_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
     $enable_header_bg_image                 = isset( $responsi_options['responsi_enable_header_bg_image'] ) ? esc_attr( $responsi_options['responsi_enable_header_bg_image'] ) : 'false';
-    $header_bg_image                        = isset( $responsi_options['responsi_header_bg_image'] ) ? esc_url( $responsi_options['responsi_header_bg_image'] ) : '';
+    $header_bg_image                        = isset( $responsi_options['responsi_header_bg_image'] ) ? str_replace( array( 'https:', 'http:' ), '', esc_url( $responsi_options['responsi_header_bg_image'] ) ) : '';
     $header_bg_image_repeat                 = isset( $responsi_options['responsi_header_bg_image_repeat'] ) ? esc_attr( $responsi_options['responsi_header_bg_image_repeat'] ) : 'repeat';
     $header_border_top                      = isset( $responsi_options['responsi_header_border_top'] ) ? $responsi_options['responsi_header_border_top'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB');
     $header_border_bottom                   = isset( $responsi_options['responsi_header_border_bottom'] ) ? $responsi_options['responsi_header_border_bottom'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB');
@@ -2487,7 +2609,7 @@ function responsi_build_dynamic_css( $preview = false ) {
 
     $header_inner_bg                              = isset( $responsi_options['responsi_header_inner_bg'] ) ? $responsi_options['responsi_header_inner_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
     $enable_header_inner_bg_image                 = isset( $responsi_options['responsi_enable_header_inner_bg_image'] ) ? esc_attr( $responsi_options['responsi_enable_header_inner_bg_image'] ) : 'false';
-    $header_inner_bg_image                        = isset( $responsi_options['responsi_header_inner_bg_image'] ) ? esc_url( $responsi_options['responsi_header_inner_bg_image'] ) : '';
+    $header_inner_bg_image                        = isset( $responsi_options['responsi_header_inner_bg_image'] ) ? str_replace( array( 'https:', 'http:' ), '', esc_url( $responsi_options['responsi_header_inner_bg_image'] ) ) : '';
     $header_inner_bg_image_repeat                 = isset( $responsi_options['responsi_header_inner_bg_image_repeat'] ) ? esc_attr( $responsi_options['responsi_header_inner_bg_image_repeat'] ) : 'repeat';
     $responsi_bg_header_inner_position_vertical   = isset( $responsi_options['responsi_bg_header_inner_position_vertical'] ) ? esc_attr( $responsi_options['responsi_bg_header_inner_position_vertical'] ) : 'center';
     $responsi_bg_header_inner_position_horizontal = isset( $responsi_options['responsi_bg_header_inner_position_horizontal'] ) ? esc_attr( $responsi_options['responsi_bg_header_inner_position_horizontal'] ) : 'center';
@@ -2863,7 +2985,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     /* Widgets */
     $responsi_widget_container_bg                    = isset( $responsi_options['responsi_widget_container_bg'] ) ? $responsi_options['responsi_widget_container_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
     $responsi_enable_widget_container_bg_image       = isset( $responsi_options['responsi_enable_widget_container_bg_image'] ) ? esc_attr( $responsi_options['responsi_enable_widget_container_bg_image'] ) : 'false';
-    $responsi_widget_container_bg_image              = isset( $responsi_options['responsi_widget_container_bg_image'] ) ? esc_url( $responsi_options['responsi_widget_container_bg_image'] ) : '';
+    $responsi_widget_container_bg_image              = isset( $responsi_options['responsi_widget_container_bg_image'] ) ? str_replace( array( 'https:', 'http:' ), '', esc_url( $responsi_options['responsi_widget_container_bg_image'] ) ) : '';
     $responsi_widget_container_bg_position_vertical  = isset( $responsi_options['responsi_widget_container_bg_position_vertical'] ) ? esc_attr( $responsi_options['responsi_widget_container_bg_position_vertical'] ) : 'center';
     $responsi_widget_container_bg_position_horizontal = isset( $responsi_options['responsi_widget_container_bg_position_horizontal'] ) ? esc_attr( $responsi_options['responsi_widget_container_bg_position_horizontal'] ) : 'center';
     $responsi_widget_container_bg_image_repeat       = isset( $responsi_options['responsi_widget_container_bg_image_repeat'] ) ? esc_attr( $responsi_options['responsi_widget_container_bg_image_repeat'] ) : 'repeat';
@@ -3026,7 +3148,7 @@ function responsi_build_dynamic_css( $preview = false ) {
 
     $container_nav_bg                               = isset( $responsi_options['responsi_container_nav_bg'] ) ? $responsi_options['responsi_container_nav_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
     $enable_container_nav_bg_image                  = isset( $responsi_options['responsi_enable_container_nav_bg_image'] ) ? esc_attr( $responsi_options['responsi_enable_container_nav_bg_image'] ) : 'false';
-    $responsi_container_bg_image                    = isset( $responsi_options['responsi_container_bg_image'] ) ? esc_url( $responsi_options['responsi_container_bg_image'] ) : '';
+    $responsi_container_bg_image                    = isset( $responsi_options['responsi_container_bg_image'] ) ? str_replace( array( 'https:', 'http:' ), '', esc_url( $responsi_options['responsi_container_bg_image'] ) ) : '';
     $responsi_container_bg_position_vertical        = isset( $responsi_options['responsi_container_bg_position_vertical'] ) ? esc_attr( $responsi_options['responsi_container_bg_position_vertical'] ) : 'center';
     $responsi_container_bg_position_horizontal      = isset( $responsi_options['responsi_container_bg_position_horizontal'] ) ? esc_attr( $responsi_options['responsi_container_bg_position_horizontal'] ) : 'center';
     $responsi_container_bg_image_repeat             = isset( $responsi_options['responsi_container_bg_image_repeat'] ) ? esc_attr( $responsi_options['responsi_container_bg_image_repeat'] ) : 'repeat';
@@ -3292,7 +3414,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     /* Footer Widgets */
     $before_footer_bg                                = isset( $responsi_options['responsi_before_footer_bg'] ) ? $responsi_options['responsi_before_footer_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
     $enable_before_footer_bg_image                   = isset( $responsi_options['responsi_enable_before_footer_bg_image'] ) ? esc_attr( $responsi_options['responsi_enable_before_footer_bg_image'] ) : 'false';
-    $before_footer_bg_image                          = isset( $responsi_options['responsi_before_footer_bg_image'] ) ? esc_url( $responsi_options['responsi_before_footer_bg_image'] ) : '';
+    $before_footer_bg_image                          = isset( $responsi_options['responsi_before_footer_bg_image'] ) ? str_replace( array( 'https:', 'http:' ), '', esc_url( $responsi_options['responsi_before_footer_bg_image'] ) ) : '';
     $before_footer_bg_position_vertical              = isset( $responsi_options['responsi_before_footer_bg_position_vertical'] ) ? esc_attr( $responsi_options['responsi_before_footer_bg_position_vertical'] ) : 'center';
     $before_footer_bg_position_horizontal            = isset( $responsi_options['responsi_before_footer_bg_position_horizontal'] ) ? esc_attr( $responsi_options['responsi_before_footer_bg_position_horizontal'] ) : 'center';
     $before_footer_bg_image_repeat                   = isset( $responsi_options['responsi_before_footer_bg_image_repeat'] ) ? esc_attr( $responsi_options['responsi_before_footer_bg_image_repeat'] ) : 'repeat';
@@ -3342,7 +3464,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     
     $before_footer_content_bg                                 = isset( $responsi_options['responsi_before_footer_content_bg'] ) ? $responsi_options['responsi_before_footer_content_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
     $enable_before_footer_content_bg_image                    = isset( $responsi_options['responsi_enable_before_footer_content_bg_image'] ) ? esc_attr( $responsi_options['responsi_enable_before_footer_content_bg_image'] ) : 'false';
-    $responsi_before_footer_content_bg_image                  = isset( $responsi_options['responsi_before_footer_content_bg_image'] ) ? esc_url( $responsi_options['responsi_before_footer_content_bg_image'] ) : '';
+    $responsi_before_footer_content_bg_image                  = isset( $responsi_options['responsi_before_footer_content_bg_image'] ) ? str_replace( array( 'https:', 'http:' ), '', esc_url( $responsi_options['responsi_before_footer_content_bg_image'] ) ) : '';
     $responsi_before_footer_content_bg_position_vertical      = isset( $responsi_options['responsi_before_footer_content_bg_position_vertical'] ) ? esc_attr( $responsi_options['responsi_before_footer_content_bg_position_vertical'] ) : 'center';
     $responsi_before_footer_content_bg_position_horizontal    = isset( $responsi_options['responsi_before_footer_content_bg_position_horizontal'] ) ? esc_attr( $responsi_options['responsi_before_footer_content_bg_position_horizontal'] ) : 'center';
     $responsi_before_footer_content_bg_image_repeat           = isset( $responsi_options['responsi_before_footer_content_bg_image_repeat'] ) ? esc_attr( $responsi_options['responsi_before_footer_content_bg_image_repeat'] ) : 'repeat';
@@ -3540,7 +3662,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $responsi_footer_box_shadow_option          = isset($responsi_options['responsi_footer_box_shadow']) ? $responsi_options['responsi_footer_box_shadow'] : array( 'onoff' => 'false' , 'h_shadow' => '0px' , 'v_shadow' => '0px', 'blur' => '8px' , 'spread' => '0px', 'color' => '#DBDBDB', 'inset' => '' );
     $responsi_footer_box_shadow                 = responsi_generate_box_shadow($responsi_footer_box_shadow_option);
     $enable_footer_bg_image                     = isset($responsi_options['responsi_enable_footer_bg_image']) ? esc_attr( $responsi_options['responsi_enable_footer_bg_image'] ) : 'false';
-    $responsi_footer_bg_image                   = isset($responsi_options['responsi_footer_bg_image']) ? esc_url( $responsi_options['responsi_footer_bg_image'] ) : '';
+    $responsi_footer_bg_image                   = isset($responsi_options['responsi_footer_bg_image']) ? str_replace( array( 'https:', 'http:' ), '', esc_url( $responsi_options['responsi_footer_bg_image'] ) ) : '';
     $responsi_footer_bg_position_vertical       = isset($responsi_options['responsi_footer_bg_position_vertical']) ? esc_attr( $responsi_options['responsi_footer_bg_position_vertical'] ) : 'center';
     $responsi_footer_bg_position_horizontal     = isset($responsi_options['responsi_footer_bg_position_horizontal']) ? esc_attr( $responsi_options['responsi_footer_bg_position_horizontal'] ) : 'center';
     $responsi_footer_bg_image_repeat            = isset($responsi_options['responsi_footer_bg_image_repeat']) ? esc_attr( $responsi_options['responsi_footer_bg_image_repeat'] ) : 'repeat';
@@ -3600,7 +3722,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $responsi_footer_content_box_shadow_option      = isset($responsi_options['responsi_footer_content_box_shadow']) ? $responsi_options['responsi_footer_content_box_shadow'] : array( 'onoff' => 'false' , 'h_shadow' => '0px' , 'v_shadow' => '0px', 'blur' => '8px' , 'spread' => '0px', 'color' => '#DBDBDB', 'inset' => '' );
     $responsi_footer_content_box_shadow             = responsi_generate_box_shadow($responsi_footer_content_box_shadow_option);
     $enable_footer_content_bg_image                 = isset($responsi_options['responsi_enable_footer_content_bg_image']) ? esc_attr( $responsi_options['responsi_enable_footer_content_bg_image'] ) : 'false';
-    $responsi_footer_content_bg_image               = isset($responsi_options['responsi_footer_content_bg_image']) ? esc_url( $responsi_options['responsi_footer_content_bg_image'] ) : '';
+    $responsi_footer_content_bg_image               = isset($responsi_options['responsi_footer_content_bg_image']) ? str_replace( array( 'https:', 'http:' ), '', esc_url( $responsi_options['responsi_footer_content_bg_image'] ) ) : '';
     $responsi_footer_content_bg_position_vertical   = isset($responsi_options['responsi_footer_content_bg_position_vertical']) ? esc_attr( $responsi_options['responsi_footer_content_bg_position_vertical'] ) : 'center';
     $responsi_footer_content_bg_position_horizontal = isset($responsi_options['responsi_footer_content_bg_position_horizontal']) ? esc_attr( $responsi_options['responsi_footer_content_bg_position_horizontal'] ) : 'center';
     $responsi_footer_content_bg_image_repeat        = isset($responsi_options['responsi_footer_content_bg_image_repeat']) ? esc_attr( $responsi_options['responsi_footer_content_bg_image_repeat'] ) : 'repeat';

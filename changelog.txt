@@ -1,5 +1,14 @@
 *** Responsi Framework Changelog ***
 
+= 7.0.1 - 2018/08/02 =
+* This maintenance update adds support for excluding 3rd Party Button styles from the Framework style, a Refactor of the Customizer editor with support for iframe embeds and a mixed content bug fix. 
+* Tweak - General Settings > Site Button Style. Exclude Buttons by class or id from Framework Button style.
+* Tweak - Exclude Google Pay button from Responsi Button style by default
+* Tweak - Max Content Width new feature typo corrections
+* Refactor - Rewrite Customizer content editor as selective refresh to support iframe embedded content example Youtube videos
+* Fix - Blocking mixed content, HTTP and HTTPS in customizer upload control.
+* Credit – Thanks to Frank Ugolini for the Exclude Button style suggestion.
+
 = 7.0.0 - 2018/07/24 =
 * This Major Feature upgrade adds set individual page, post, category, tag and custom post, custom taxonomy Maximum Content width in widescreens plus post and page title alignment option.
 * Feature - Add set Maximum Content Width option for individual Pages, Posts, Custom Post types, Taxonomies and custom taxonomies. Overrides framework global setting. 

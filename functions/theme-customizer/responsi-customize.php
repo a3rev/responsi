@@ -606,7 +606,7 @@ final class Responsi_Customize {
 		}
 
 		// Registry main responsi customize script
-		$scripts->add( 'responsi-customize-function', 	get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.function.preview' .$suffix . '.js', 	array( 'jquery', 'customize-preview' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-function', 	get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.function.preview' .$suffix . '.js', 	array( 'jquery', 'customize-preview', 'customize-selective-refresh' ), $responsi_version, true );
 
 		// Registry script libs
 		$scripts->add( 'jquery-ui-slider-rtl', 			get_template_directory_uri() . '/functions/js/jquery.ui.slider.rtl' .$suffix . '.js', 									array( 'jquery' ), $responsi_version, true );

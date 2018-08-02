@@ -937,6 +937,14 @@ jQuery(document).ready(function(){
    		};
    	};
 
+    jQuery(document).ready( function() {
+        jQuery(responsi_paramaters.responsi_button_none_css_lists).addClass('none-button-css');
+    });
+
+    jQuery(document).on( 'responsi-partial-content-rendered responsi-exclude-button-css', function() {
+        jQuery(responsi_paramaters.responsi_button_none_css_lists).addClass('none-button-css');
+    });
+
 	/* Parallax for edge slider */
 	/* -------------------------------------------------------------------- */
 
@@ -1036,10 +1044,52 @@ jQuery(document).ready(function(){
 	});
 
 	// Find all YouTube videos
-	var $allVideos = jQuery("iframe[src^='https://www.youtube.com'],iframe[data-src],iframe[src^='//www.youtube.com'], iframe[src^='http://www.youtube.com'], iframe[src^='http://player.vimeo.com'], iframe[src^='//player.vimeo.com'], iframe[src^='http://www.kickstarter.com'], iframe[src^='//www.kickstarter.com'], object:not('.object-exclude'), embed:not('.object-exclude'), video:not('.object-exclude,.wp-video-shortcode'),.mejs-inner");
+	
+    function responsi_apply_video_container(){
+        
+        var $allVideos = jQuery("iframe[src^='https://www.youtube.com'],iframe[data-src],iframe[src^='//www.youtube.com'], iframe[src^='http://www.youtube.com'], iframe[src^='http://player.vimeo.com'], iframe[src^='//player.vimeo.com'], iframe[src^='http://www.kickstarter.com'], iframe[src^='//www.kickstarter.com'], object:not('.object-exclude'), embed:not('.object-exclude'), video:not('.object-exclude,.wp-video-shortcode')");
+
+        if( $allVideos.length > 0 ){ 
+            $allVideos.each(function() {
+
+                var video_ojbect = jQuery(this); 
+
+                if( !video_ojbect.parent().hasClass( 'video_ojbect_container' ) ){
+
+                    video_ojbect.wrap('<div class="video_ojbect_container" />');
+                    video_ojbect
+                    // jQuery .data does not work on object/embed elements
+                    .attr('data-aspectRatio', this.height / this.width)
+                    .css('max-width',this.width+'px')
+                    .css({ "max-width": this.width + 'px' })
+                    .css({ maxWidth: this.width + 'px' })
+                    .css('max-height',this.height+'px')
+                    .css({ "max-height": this.height + 'px' })
+                    .css({ maxHeight: this.height + 'px' })
+                    .removeAttr('height')
+                    .removeAttr('width').addClass('video_ojbect');
+                    $fluidEl = video_ojbect.parent('.video_ojbect_container');
+                    var newWidth = $fluidEl.width();
+                    var $el = video_ojbect;
+                    $el.width(newWidth).height(newWidth * $el.attr('data-aspectRatio'));
+                }else{
+                    $fluidEl = video_ojbect.parent('.video_ojbect_container');
+                    var newWidth = $fluidEl.width();
+                    var $el = video_ojbect;
+                    $el.width(newWidth).height(newWidth * $el.attr('data-aspectRatio'));
+                }
+            });
+            /*var $video = jQuery('div.video video');
+            var vidWidth = $video.attr('width');
+            var vidHeight = $video.attr('height');
+            var targetWidth = jQuery(window).width();
+            jQuery('div.video, div.video .mejs-container').css('height', Math.ceil(vidHeight * (targetWidth / vidWidth)));
+            jQuery('.mejs-overlay-loading').closest('.mejs-overlay').addClass('load');*/
+        }
+    }
 
 	jQuery.ajaxSetup({ cache: false });
-	
+
 	jQuery(window).on( 'load', function() {
 
 		jQuery('body').addClass('site-loaded');
@@ -1077,27 +1127,7 @@ jQuery(document).ready(function(){
         	}
         });
 
-        if( $allVideos.length > 0 ){ 
-	        $allVideos.each(function() {
-				jQuery(this).wrap('<div class="video_ojbect_container" />');
-				jQuery(this)
-			    // jQuery .data does not work on object/embed elements
-			    .attr('data-aspectRatio', this.height / this.width)
-				.css('max-width',this.width+'px')
-				.css({ "max-width": this.width + 'px' })
-				.css({ maxWidth: this.width + 'px' })
-				.css('max-height',this.height+'px')
-				.css({ "max-height": this.height + 'px' })
-				.css({ maxHeight: this.height + 'px' })
-			    .removeAttr('height')
-			    .removeAttr('width').addClass('video_ojbect');
-			    $fluidEl = jQuery(this).parent('.video_ojbect_container');
-				var newWidth = $fluidEl.width();
-				var $el = jQuery(this);
-				$el.width(newWidth).height(newWidth * $el.attr('data-aspectRatio'));
-			});
-			jQuery('.mejs-overlay-loading').closest('.mejs-overlay').addClass('load'); //just a helper class
-		}
+        responsi_apply_video_container();
 
 		/*-----------------------------------------------------------------------------------*/
 		/* Responsi Masonry */
@@ -1128,7 +1158,7 @@ jQuery(document).ready(function(){
         }).trigger('newElements');
 
         var enable_infinitescroll = true;
-        var nextPage = true;
+        var nextPage = false;
         var currentPage = jQuery('div.pagination span.current').html();
         var maxPageNumber = 1;
         var pageNumbers = jQuery('div.pagination').find('a.page-numbers');
@@ -1246,24 +1276,10 @@ jQuery(document).ready(function(){
 
 	});
 
+
 	jQuery(window).on( 'resize', function() {
-		
 		responsi_header_height();
-
-        if( $allVideos.length > 0 ){ 
-	        $allVideos.each(function() {
-				$fluidEl = jQuery(this).parent('.video_ojbect_container');
-				var newWidth = $fluidEl.width();
-				var $el = jQuery(this);
-				$el.width(newWidth).height(newWidth * $el.attr('data-aspectRatio'));
-			});
-			var $video = jQuery('div.video video');
-			var vidWidth = $video.attr('width');
-			var vidHeight = $video.attr('height');
-			var targetWidth = jQuery(this).width(); //using window width here will proportion the video to be full screen; adjust as needed
-			jQuery('div.video, div.video .mejs-container').css('height', Math.ceil(vidHeight * (targetWidth / vidWidth)));
-		}
-
+        responsi_apply_video_container();
 	});
 
 	jQuery(window).on( 'load resize', function() {

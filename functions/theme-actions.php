@@ -11,6 +11,9 @@ if ( !is_admin() ) {
     }
 }
 
+add_filter( 'responsi_autoembed_media', 'wp_make_content_images_responsive', 8 );
+add_filter( 'responsi_autoembed_media', 'responsi_autoembed_media_replace_iframe' );
+
 add_filter( 'responsi_autoembed_media', array( 
 	$wp_embed, 
 	'run_shortcode' 
@@ -31,6 +34,7 @@ add_filter( 'widget_text', array(
 	'autoembed' 
 ), 8 );
 
+add_filter( 'wp_headers', 'responsi_send_no_xss_protection_header', 10, 2 );
 add_filter( 'extra_theme_headers', 'responsi_extra_theme_headers' );
 add_filter( 'body_class', 'responsi_body_class', 10 );
 add_filter( 'get_custom_logo', 'responsi_filter_get_custom_logo', 10, 2 );

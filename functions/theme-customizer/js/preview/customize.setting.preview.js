@@ -18,7 +18,10 @@
             button_text_shadow = '0 -1px 1px rgba(0, 0, 0, 0.25)';
         }
 
-        css += 'a.button, a.button:visited, button:not(.customize-partial-edit-shortcut-button), .button, body #wrapper #content .button, body #wrapper #content .button:visited, body #wrapper #content .comment-entry div.reply a, body #wrapper #content #respond .form-submit input#submit, .custom_contact_popup input[type="submit"], input[type="submit"], input[type="button"],input[type="reset"]{text-shadow: ' + button_text_shadow + ' !important;' + responsiCustomize.build_padding_margin('responsi_button_padding', 'padding') + responsiCustomize.build_typography('responsi_button_text') + 'text-transform: ' + responsi_button_text_transform + ';' + responsiCustomize.build_border('responsi_button_border_top', 'top') + responsiCustomize.build_border('responsi_button_border_bottom', 'bottom') + responsiCustomize.build_border('responsi_button_border_left', 'left') + responsiCustomize.build_border('responsi_button_border_right', 'right') + 'background-color: ' + responsi_button_color + ';background: ' + responsi_button_color + ';background: linear-gradient( ' + responsi_button_gradient_from + ' , ' + responsi_button_gradient_to + ' );' + responsiCustomize.build_border_radius('responsi_button_border_radius_tl', 'top-left') + responsiCustomize.build_border_radius('responsi_button_border_radius_tr', 'top-right') + responsiCustomize.build_border_radius('responsi_button_border_radius_bl', 'bottom-left') + responsiCustomize.build_border_radius('responsi_button_border_radius_br', 'bottom-right') + responsiCustomize.build_box_shadow('responsi_button_border_box_shadow') + '}';
+        var bt_exclude_css = responsi_paramaters.responsi_exclude_button_css;
+
+        css += 'button'+bt_exclude_css+',button:visited'+bt_exclude_css+',input[type=button]'+bt_exclude_css+',input[type=button]:visited'+bt_exclude_css+',input[type=reset]'+bt_exclude_css+',input[type=reset]:visited'+bt_exclude_css+',input[type=submit]'+bt_exclude_css+',input[type=submit]:visited'+bt_exclude_css+',input#submit'+bt_exclude_css+',input#submit:visited'+bt_exclude_css+',.button'+bt_exclude_css+',.button:visited'+bt_exclude_css+'{text-shadow: ' + button_text_shadow + ' !important;' + responsiCustomize.build_padding_margin('responsi_button_padding', 'padding') + responsiCustomize.build_typography('responsi_button_text') + 'text-transform: ' + responsi_button_text_transform + ';' + responsiCustomize.build_border('responsi_button_border_top', 'top') + responsiCustomize.build_border('responsi_button_border_bottom', 'bottom') + responsiCustomize.build_border('responsi_button_border_left', 'left') + responsiCustomize.build_border('responsi_button_border_right', 'right') + 'background-color: ' + responsi_button_color + ';background: ' + responsi_button_color + ';background: linear-gradient( ' + responsi_button_gradient_from + ' , ' + responsi_button_gradient_to + ' );' + responsiCustomize.build_border_radius('responsi_button_border_radius_tl', 'top-left') + responsiCustomize.build_border_radius('responsi_button_border_radius_tr', 'top-right') + responsiCustomize.build_border_radius('responsi_button_border_radius_bl', 'bottom-left') + responsiCustomize.build_border_radius('responsi_button_border_radius_br', 'bottom-right') + responsiCustomize.build_box_shadow('responsi_button_border_box_shadow') + '}';
+        css += 'button'+bt_exclude_css+':hover,button:visited'+bt_exclude_css+':hover,input[type=button]'+bt_exclude_css+':hover,input[type=button]:visited'+bt_exclude_css+':hover,input[type=reset]'+bt_exclude_css+':hover,input[type=reset]:visited'+bt_exclude_css+':hover,input[type=submit]'+bt_exclude_css+':hover,input[type=submit]:visited'+bt_exclude_css+':hover,input#submit'+bt_exclude_css+':hover,input#submit:visited'+bt_exclude_css+':hover,.button'+bt_exclude_css+':hover,.button:visited'+bt_exclude_css+':hover {color:' +wp.customize.value('responsi_button_text[color]')()+ ' !important;}';
 
         var responsi_link_color = wp.customize.value('responsi_link_color')();
         var responsi_link_hover_color = wp.customize.value('responsi_link_hover_color')();
@@ -64,6 +67,9 @@
         } else {
             $('head').append('<style id="custom_setting_style">' + css + '</style>');
         }
+
+        $(document.body).trigger('rebuild_qty');
+
     }
 
     var fonts_fields = [

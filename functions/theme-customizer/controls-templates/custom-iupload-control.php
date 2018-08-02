@@ -83,14 +83,14 @@ if ( ! class_exists( 'Customize_iUpload_Control' ) && class_exists('WP_Customize
 				<div class="attachment-media-view attachment-media-view-{{ data.attachment.type }} {{ data.attachment.orientation }}">
 					<div class="thumbnail thumbnail-{{ data.attachment.type }}">
 						<# if ( 'image' === data.attachment.type && data.attachment.sizes && data.attachment.sizes.medium ) { #>
-							<img class="attachment-thumb" src="{{ data.attachment.sizes.medium.url }}" draggable="false" alt="" />
+							<img class="attachment-thumb" src="{{ data.attachment.sizes.medium.url.replace(/^https:/i, 'https://').replace(/^http:/i, '') }}" draggable="false" alt="" />
 						<# } else if ( 'image' === data.attachment.type && data.attachment.sizes && data.attachment.sizes.full ) { #>
-							<img class="attachment-thumb" src="{{ data.attachment.sizes.full.url }}" draggable="false" alt="" />
+							<img class="attachment-thumb" src="{{ data.attachment.sizes.full.url.replace(/^https:/i, 'https://').replace(/^http:/i, '') }}" draggable="false" alt="" />
 						<# } else if ( 'audio' === data.attachment.type ) { #>
 							<# if ( data.attachment.image && data.attachment.image.src && data.attachment.image.src !== data.attachment.icon ) { #>
-								<img src="{{ data.attachment.image.src }}" class="thumbnail" draggable="false" alt="" />
+								<img src="{{ data.attachment.image.src.replace(/^https:/i, 'https://').replace(/^http:/i, '') }}" class="thumbnail" draggable="false" alt="" />
 							<# } else { #>
-								<img src="{{ data.attachment.icon }}" class="attachment-thumb type-icon" draggable="false" alt="" />
+								<img src="{{ data.attachment.icon.replace(/^https:/i, 'https://').replace(/^http:/i, '') }}" class="attachment-thumb type-icon" draggable="false" alt="" />
 							<# } #>
 							<p class="attachment-meta attachment-meta-title">&#8220;{{ data.attachment.title }}&#8221;</p>
 							<# if ( data.attachment.album || data.attachment.meta.album ) { #>
@@ -100,17 +100,17 @@ if ( ! class_exists( 'Customize_iUpload_Control' ) && class_exists('WP_Customize
 							<p class="attachment-meta">{{ data.attachment.artist || data.attachment.meta.artist }}</p>
 							<# } #>
 							<audio style="visibility: hidden" controls class="wp-audio-shortcode" width="100%" preload="none">
-								<source type="{{ data.attachment.mime }}" src="{{ data.attachment.url }}"/>
+								<source type="{{ data.attachment.mime }}" src="{{ data.attachment.url.replace(/^https:/i, 'https://').replace(/^http:/i, '') }}"/>
 							</audio>
 						<# } else if ( 'video' === data.attachment.type ) { #>
 							<div class="wp-media-wrapper wp-video">
 								<video controls="controls" class="wp-video-shortcode" preload="metadata"
 									<# if ( data.attachment.image && data.attachment.image.src !== data.attachment.icon ) { #>poster="{{ data.attachment.image.src }}"<# } #>>
-									<source type="{{ data.attachment.mime }}" src="{{ data.attachment.url }}"/>
+									<source type="{{ data.attachment.mime }}" src="{{ data.attachment.url.replace(/^https:/i, 'https://').replace(/^http:/i, '') }}"/>
 								</video>
 							</div>
 						<# } else { #>
-							<img class="attachment-thumb type-icon icon" src="{{ data.attachment.icon }}" draggable="false" alt="" />
+							<img class="attachment-thumb type-icon icon" src="{{ data.attachment.icon.replace(/^https:/i, 'https://').replace(/^http:/i, '') }}" draggable="false" alt="" />
 							<p class="attachment-title">{{ data.attachment.title }}</p>
 						<# } #>
 					</div>

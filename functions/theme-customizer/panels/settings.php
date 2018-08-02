@@ -433,6 +433,33 @@ class Responsi_Customize_General_Settings
 			    'transport'	=> 'postMessage',
 			)
 		);
+
+		$settings_controls_settings['lbsettings7plus'] = array(
+			'control' => array(
+			    'label'      => __('Exclude Buttons by class or id from Framework Button style', 'responsi'),
+			    'section'    => 'settings_buttons',
+			    'type'       => 'ilabel'
+			),
+			'setting' => array()
+		);
+
+		$settings_controls_settings['responsi_exclude_button_lists'] = array(
+			'control' => array(
+			    'label'      => "",
+			    'description' => __('Enter button class (eg: .button-class) or ID (eg: .button-id) that you want excluded, comma separated if more than 1.', 'responsi'),
+			    'section'    => 'settings_buttons',
+			    'settings'   => 'responsi_exclude_button_lists',
+			    'type'       => 'itext',
+			    'input_attrs' => array(
+		        )
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_exclude_button_lists']) ? $responsi_options['responsi_exclude_button_lists'] : '',
+			    'sanitize_callback' => 'sanitize_text_field',
+			    //'transport'	=> 'postMessage'
+			)
+		);
+
 		$settings_controls_settings['lbsettings7'] = array(
 			'control' => array(
 			    'label'      => __('Site Link Colours', 'responsi'),

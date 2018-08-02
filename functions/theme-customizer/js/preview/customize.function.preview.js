@@ -17,7 +17,7 @@ var typesize = ['_width', '_height'];
 var typepos = ['_vertical', '_horizontal'];
 var typebg = ['onoff', 'color'];
 
-(function($) {
+(function( wp, $ ) {
 
     $.fn.setFixedStyle = function() {
         responsiCustomize.override_important_css($(this));
@@ -373,4 +373,12 @@ var typebg = ['onoff', 'color'];
             return mps;
         }
     };
-})(jQuery);
+
+    if (wp.customize.selectiveRefresh){
+        wp.customize.selectiveRefresh.bind( 'partial-content-rendered', function( placement ) {
+            $(window).trigger('load');
+            $(document).trigger('responsi-partial-content-rendered');
+        } );
+    }
+
+})(window.wp, jQuery);

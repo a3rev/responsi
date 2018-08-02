@@ -944,7 +944,7 @@ if ( !function_exists( 'responsi_build_credit' ) ) {
                 $text_before = $footer_right_text_before;
             }
 
-            $footer_right_logo     = $responsi_options['responsi_footer_right_logo'];
+            $footer_right_logo     = str_replace( array( 'https:', 'http:' ), '', esc_url( $responsi_options['responsi_footer_right_logo'] ) );
             $footer_right_logo_url = $responsi_options['responsi_footer_right_logo_url'];
             $right_logo = '';
             if ( '' !== trim($footer_right_logo_url) && '' !== trim($footer_right_logo) ) {
@@ -1189,7 +1189,7 @@ function responsi_custom_excerpt_more( $output ){
 function responsi_get_placeholder_image( $file = 'no-image.png' ) {
     global $responsi_options;
     if ( isset( $responsi_options['responsi_default_image'] ) && '' !== $responsi_options['responsi_default_image'] ) {
-        $file_url = trim($responsi_options['responsi_default_image']);
+        $file_url = str_replace( array( 'https:', 'http:' ), '', esc_url( $responsi_options['responsi_default_image'] ) );
     } else {
         // If we're not looking for a file, do not proceed
         if ( empty( $file ) )
@@ -1206,6 +1206,9 @@ function responsi_get_placeholder_image( $file = 'no-image.png' ) {
     }
     if ( is_ssl() )
         $file_url = str_replace( 'http://', 'https://', esc_url( $file_url ) );
+
+    $file_url = str_replace( array( 'https:', 'http:' ), '', esc_url( $file_url ) );
+
     return apply_filters( 'responsi_get_placeholder_image', esc_url( $file_url ) );
 }
 
@@ -2272,7 +2275,7 @@ if ( ! function_exists( 'responsi_sanitize_layout_width' ) ) {
 
 if ( ! function_exists( 'responsi_sanitize_ieditor' ) ) {
     function responsi_sanitize_ieditor( $value, $setting ) {
-        return wp_kses_post( $value );
+        return wp_unslash( sanitize_post_field( 'post_content', $value, 0, 'db' ) );
     }
 }
 

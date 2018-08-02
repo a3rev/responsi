@@ -1825,6 +1825,9 @@
 			if( null !== control.setting ){
 				content = control.setting._value;
 			}
+
+			content = content.replace('<frameeditor','<iframe').replace('/frameeditor>','/iframe>');
+
 			$('#wpeditor_customize_title').html(control.params.label);
 			$('a.update-editor-button').attr('data-id', control.id);
 			if ($('#wp-wpeditorcustomize-wrap').hasClass('html-active')) {
@@ -1850,7 +1853,7 @@
 				var content = editor.getContent();
 			}
 			if( null !== control.setting ){
-				control.setting.set(content);
+				control.setting.set(content.replace('<iframe', '<frameeditor').replace('/iframe>','/frameeditor>'));
 			}
 			this.hideEditor();
 		},
@@ -1871,7 +1874,37 @@
 
 	});
 
-	api.Customize_iUpload_Control = api.ImageControl.extend({});
+	api.Customize_iUpload_Control = api.ImageControl.extend({
+
+		select: function() {
+			// Get the attachment from the modal frame.
+			var node,
+				attachment = this.frame.state().get( 'selection' ).first().toJSON(),
+				mejsSettings = window._wpmejsSettings || {};
+
+			this.params.attachment = attachment;
+
+			// Set the Customizer setting; the callback takes care of rendering.
+
+			this.setting( attachment.url.replace(/^https:/i, 'https://').replace(/^http:/i, '') );
+
+			node = this.container.find( 'audio, video' ).get(0);
+
+			// Initialize audio/video previews.
+			if ( node ) {
+				this.player = new MediaElementPlayer( node, mejsSettings );
+			} else {
+				this.cleanupPlayer();
+			}
+		},
+
+		// @deprecated
+		success: function() {},
+
+		// @deprecated
+		removerVisibility: function() {}
+
+	});
 
 	api.Customize_iUploadCrop_Control = api.CroppedImageControl.extend({});
 

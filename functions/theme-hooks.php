@@ -95,20 +95,22 @@ if ( ! function_exists( 'responsi_load_javascript' ) ){
 		wp_enqueue_script( 'jquery-masonry' );
         wp_enqueue_script( 'responsi-infinitescroll' );
         $responsi_paramaters =  array(
-        	'responsi_is_customized'        => is_customize_preview() ? true : false,
-        	'responsi_is_search'        	=> is_search() ? true : false,
-        	'responsi_is_permalinks'        => get_option('permalink_structure') ? true : false,
-			'responsi_layout'      			=> $layout,
-			'responsi_content_column'   	=> $content_column,
-			'responsi_content_column_grid' 	=> $content_column_grid,
-			'responsi_showmore'      		=> isset( $responsi_options['responsi_showmore'] ) ? $responsi_options['responsi_showmore'] : 'click_showmore',
-	        'responsi_showmore_text'      	=> isset( $responsi_options['responsi_showmore_text'] ) ? trim( $responsi_options['responsi_showmore_text'] ) : __( 'Show more', 'responsi' ),
-	        'responsi_fixed_thumbnail'  	=> isset( $responsi_options['responsi_fixed_thumbnail'] ) ? $responsi_options['responsi_fixed_thumbnail'] : 'false',
-	        'responsi_fixed_thumbnail_tall'	=> isset( $responsi_options['responsi_fixed_thumbnail_tall'] ) ? $responsi_options['responsi_fixed_thumbnail_tall'] : 63,
-	        'responsi_loading_text_end'     => apply_filters( 'responsi_infinitescroll_loading_text_end', __( "No more Posts to load.", "responsi" ) ),
-	        'responsi_loading_text'      	=> apply_filters( 'responsi_infinitescroll_loading_text', __( "Loading the next set of post...", "responsi" ) ),
-	        'responsi_loading_icon'      	=> apply_filters( 'responsi_infinitescroll_loading_icon', esc_url( get_template_directory_uri().'/functions/js/masonry/loading-black.gif' ) ),
-	        'responsi_google_webfonts'      => is_customize_preview() ? esc_url( responsi_google_webfonts() ) : false,
+        	'responsi_is_customized'        	=> is_customize_preview() ? true : false,
+        	'responsi_is_search'        		=> is_search() ? true : false,
+        	'responsi_is_permalinks'        	=> get_option('permalink_structure') ? true : false,
+			'responsi_layout'      				=> $layout,
+			'responsi_content_column'   		=> $content_column,
+			'responsi_content_column_grid' 		=> $content_column_grid,
+			'responsi_showmore'      			=> isset( $responsi_options['responsi_showmore'] ) ? $responsi_options['responsi_showmore'] : 'click_showmore',
+	        'responsi_showmore_text'      		=> isset( $responsi_options['responsi_showmore_text'] ) ? trim( $responsi_options['responsi_showmore_text'] ) : __( 'Show more', 'responsi' ),
+	        'responsi_fixed_thumbnail'  		=> isset( $responsi_options['responsi_fixed_thumbnail'] ) ? $responsi_options['responsi_fixed_thumbnail'] : 'false',
+	        'responsi_fixed_thumbnail_tall'		=> isset( $responsi_options['responsi_fixed_thumbnail_tall'] ) ? $responsi_options['responsi_fixed_thumbnail_tall'] : 63,
+	        'responsi_loading_text_end'     	=> apply_filters( 'responsi_infinitescroll_loading_text_end', __( "No more Posts to load.", "responsi" ) ),
+	        'responsi_loading_text'      		=> apply_filters( 'responsi_infinitescroll_loading_text', __( "Loading the next set of post...", "responsi" ) ),
+	        'responsi_loading_icon'      		=> apply_filters( 'responsi_infinitescroll_loading_icon', esc_url( get_template_directory_uri().'/functions/js/masonry/loading-black.gif' ) ),
+	        'responsi_google_webfonts'      	=> is_customize_preview() ? esc_url( responsi_google_webfonts() ) : false,
+	        'responsi_exclude_button_css'   	=> responsi_exclude_button_css(),
+	        'responsi_button_none_css_lists'	=> responsi_button_none_css_lists()
 		);
 
 		wp_localize_script( 'jquery-masonry', 'responsi_paramaters', $responsi_paramaters );
