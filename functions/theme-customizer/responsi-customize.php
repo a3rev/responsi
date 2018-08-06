@@ -975,6 +975,10 @@ final class Responsi_Customize {
 		return $changeset_data;
 	}
 
+	public function responsi_add_filter_default_settings_options(){
+		return true;
+	}
+
 	public function responsi_customize_save_options( $settings ) {
 		global $responsi_options;
 		$post_value = array();
@@ -988,7 +992,7 @@ final class Responsi_Customize {
 
 		if( is_array( $responsi_options ) && count( $responsi_options ) > 0 && is_array( $post_value ) && count( $post_value ) > 0 ){
 
-			add_filter( 'default_settings_options', create_function( '', 'return true;') );
+			add_filter( 'default_settings_options', array( $this, 'responsi_add_filter_default_settings_options' ) );
 			
 			$_default_options = responsi_default_options();
 

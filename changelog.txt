@@ -1,5 +1,12 @@
 *** Responsi Framework Changelog ***
 
+= 7.0.2 - 2018/08/06 =
+* This maintenance update is for compatibility with WordPress 4.9.8, Gutenberg 3.4.0, PHP 7.1.0 and 7.2.0
+* Tweak - Tested for compatibility with WordPress 4.9.8
+* Tweak - Tested for compatibility with PHP 7.1.0 and PHP 7.2.0
+* Tweak - Tested for compatibility with Gutenberg 3.4.0
+* Tweak - Replace create_function deprecated in PHP 7.2.0
+
 = 7.0.1 - 2018/08/02 =
 * This maintenance update adds support for excluding 3rd Party Button styles from the Framework style, a Refactor of the Customizer editor with support for iframe embeds and a mixed content bug fix. 
 * Tweak - General Settings > Site Button Style. Exclude Buttons by class or id from Framework Button style.

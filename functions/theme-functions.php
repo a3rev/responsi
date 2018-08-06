@@ -8,7 +8,8 @@ if ( !function_exists( 'responsi_layout_class' ) ) {
         global 
         $post, 
         $responsi_options, 
-        $responsi_layout_boxed, 
+        $responsi_layout_boxed,
+        $responsi_layout_width,
         $responsi_header_is_inside, 
         $responsi_header_is_outside, 
         $responsi_footer_is_outside,
@@ -200,7 +201,7 @@ if ( !function_exists( 'responsi_layout_class' ) ) {
 
 if ( !function_exists( 'responsi_body_class' ) ) {
     function responsi_body_class( $classes ) {
-        global $responsi_options, $post, $wp_query, $wp_version, $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
+        global $responsi_options, $post, $wp_query, $wp_version, $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone,$responsi_layout_width;
 
         $layout = '';
         // Set main layout
@@ -228,13 +229,13 @@ if ( !function_exists( 'responsi_body_class' ) ) {
 
         $width = intval( str_replace('px', '', $responsi_options['responsi_layout_width'] ) );
 
-        $width = apply_filters( 'responsi_layout_width', $width );
+        $responsi_layout_width = apply_filters( 'responsi_layout_width', $width );
 
         // Add classes to body_class() output
         $classes[] = 'responsi-frontend';
         $classes[] = $layout;
-        $classes[] = 'width-' . $width;
-        $classes[] = $layout . '-' . $width;
+        $classes[] = 'width-' . $responsi_layout_width;
+        $classes[] = $layout . '-' . $responsi_layout_width;
         if ( isset( $responsi_options['responsi_enable_header_widget'] ) && 'true' === $responsi_options['responsi_enable_header_widget'] && $responsi_options['responsi_header_sidebars'] > 0) {
             if ( 'false' === $responsi_options['responsi_on_header_1'] )
                 $classes[] = 'mobile-header-1';
@@ -1893,6 +1894,16 @@ if ( !function_exists( 'responsi_scrolltop' ) ) {
 }
 
 /*-----------------------------------------------------------------------------------*/
+/* responsi_custom_layout_width(). */
+/*-----------------------------------------------------------------------------------*/
+if ( !function_exists( 'responsi_custom_layout_width' ) ) {
+    function responsi_custom_layout_width(){
+        global $responsi_layout_width;
+        return $responsi_layout_width;
+    }
+}
+
+/*-----------------------------------------------------------------------------------*/
 /* responsi_custom_content_metabox(). */
 /*-----------------------------------------------------------------------------------*/
 if ( !function_exists( 'responsi_custom_content_metabox' ) ) {
@@ -1902,7 +1913,7 @@ if ( !function_exists( 'responsi_custom_content_metabox' ) ) {
             return;
         }
 
-        global $wp_query, $responsi_options, $post, $responsi_custom_meta_type;
+        global $wp_query, $responsi_options, $post, $responsi_custom_meta_type, $responsi_layout_width;
 
         $is_layout_boxed        = isset( $responsi_options['responsi_layout_boxed'] ) ? esc_attr( $responsi_options['responsi_layout_boxed'] ) : 'true';
         $is_enable_boxed_style  = isset( $responsi_options['responsi_enable_boxed_style'] ) ? esc_attr( $responsi_options['responsi_enable_boxed_style'] ) : 'false';
@@ -1947,9 +1958,9 @@ if ( !function_exists( 'responsi_custom_content_metabox' ) ) {
         }
 
         if ( $custom_max_width ) {
-            $width = $content_max_width + $border_width_boxed;
-            $css .= '@media only screen and (min-width: 783px){.site-width{ max-width:' . $width . 'px !important; }}';
-            add_filter( 'responsi_layout_width', create_function('', 'return '.$width.';') );
+            $responsi_layout_width = $content_max_width + $border_width_boxed;
+            $css .= '@media only screen and (min-width: 783px){.site-width{ max-width:' . $responsi_layout_width . 'px !important; }}';
+            add_filter( 'responsi_layout_width', 'responsi_custom_layout_width' );
         }
 
         if( '' != $css ){

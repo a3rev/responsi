@@ -12,6 +12,7 @@ if (!defined('ABSPATH'))
 
 global $responsi_options, 
     $responsi_layout_boxed, 
+    $responsi_layout_width, 
     $responsi_header_is_inside, 
     $responsi_header_is_outside, 
     $responsi_footer_is_outside,
