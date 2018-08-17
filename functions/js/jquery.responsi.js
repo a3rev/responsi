@@ -1047,7 +1047,7 @@ jQuery(document).ready(function(){
 	
     function responsi_apply_video_container(){
         
-        var $allVideos = jQuery("iframe[src^='https://www.youtube.com'],iframe[data-src],iframe[src^='//www.youtube.com'], iframe[src^='http://www.youtube.com'], iframe[src^='http://player.vimeo.com'], iframe[src^='//player.vimeo.com'], iframe[src^='http://www.kickstarter.com'], iframe[src^='//www.kickstarter.com'], object:not('.object-exclude'), embed:not('.object-exclude'), video:not('.object-exclude,.wp-video-shortcode')");
+        var $allVideos = jQuery("iframe[src*='youtube.com'], iframe[data-src*='youtube.com'], iframe[src*='player.vimeo.com'], iframe[data-src*='player.vimeo.com'], iframe[src*='kickstarter.com'], iframe[data-src*='kickstarter.com'], object:not('.object-exclude'), embed:not('.object-exclude'), video:not('.object-exclude,.wp-video-shortcode')");
 
         if( $allVideos.length > 0 ){ 
             $allVideos.each(function() {
