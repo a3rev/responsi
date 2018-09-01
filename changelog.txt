@@ -1,5 +1,11 @@
 *** Responsi Framework Changelog ***
 
+= 7.0.4 - 2018/09/01 =
+* This maintenance update is focused on tweaks and fixes for mobile and tablet navigation menus
+* Tweak - Various CSS, JavaScript and UI tweaks for mobile and tablet navigation menus
+* Tweak - Mobile and tablet (portrait view) Dropdown sub-menu toggle with icon click
+* Fix - Tablet Landscape Full nav bar with submenus opening the item link when tap. Now must double tap on an item that has a submenu to open that item. 1 tap opens the dropdown as it should.
+
 = 7.0.3 - 2018/08/17 =
 * This maintenance update resolves a JS conflict when loading iframes 
 * Fix - Responsi JavaScript to resolve a lazyload conflict when loading iframes
