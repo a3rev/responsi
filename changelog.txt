@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 7.0.5 - 2018/09/04 =
+* Maintenance update to resolve column layouts breaking due to larger (than Mac OS) vertical sidebar scroll on Windows operating systems.
+* Fix - responsi.js to resolve masonry breaking column layout on Windows OS. 
+* Fix - layout.css to resolve masonry breaking column layout on Windows OS.
+
 = 7.0.4 - 2018/09/01 =
 * This maintenance update is focused on tweaks and fixes for mobile and tablet navigation menus
 * Tweak - Various CSS, JavaScript and UI tweaks for mobile and tablet navigation menus
