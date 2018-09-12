@@ -92,7 +92,7 @@ p.pvc_stats{margin-bottom:0;background-position:left center!important;}
 .mobile-navigation{display:none;}
 .hide-more-link{display:none!important;}
 .box-content{overflow:hidden;}
-.box-content.masonry{overflow:initial;}
+.box-content.masonry{overflow:visible;}
 html body.ie9 .box-content .masonry-brick{margin-left:0!important;margin-right:0!important;}
 #main.box .box-content.col1{width:100%!important;box-sizing:border-box;}
 #main.box .box-content.col1 .box-item{width:100%!important;margin-left:0!important;margin-right:0!important;box-sizing:border-box;}

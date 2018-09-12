@@ -1,5 +1,8 @@
 *** Responsi Framework Changelog ***
 
+= 7.0.6 - 2018/09/12 =
+* Fix - layout.css to resolve cut off of social share icons on hover in IE11 on Windows 7, 8.1 and 10 OS.
+
 = 7.0.5 - 2018/09/04 =
 * Maintenance update to resolve column layouts breaking due to larger (than Mac OS) vertical sidebar scroll on Windows operating systems.
 * Fix - responsi.js to resolve masonry breaking column layout on Windows OS. 
