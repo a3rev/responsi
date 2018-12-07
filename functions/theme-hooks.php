@@ -61,6 +61,12 @@ if ( !function_exists( 'responsi_load_styles' ) ){
         wp_enqueue_style( 'responsi-layout' );
         wp_enqueue_style( 'responsi-framework' );
         wp_enqueue_style( 'responsi-theme' );
+
+        // Load the dark colorscheme.
+		if ( 'dark' === get_theme_mod( 'colorscheme', 'light' ) || is_customize_preview() ) {
+			wp_enqueue_style( 'responsi-colors-dark', get_theme_file_uri( '/functions/css/colors-dark.css' ), array( 'responsi-framework' ) );
+		}
+
         if( !is_customize_preview() ){
         	wp_enqueue_style( 'google-fonts' );
         }

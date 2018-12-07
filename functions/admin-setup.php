@@ -118,11 +118,36 @@ if ( ! function_exists( 'responsi_setup' ) ){
 	        'caption'
 	    ));
 
+	    
+
 	    add_theme_support( 'custom-logo' );
 	    add_theme_support( 'post-thumbnails' );
 	    add_theme_support( 'automatic-feed-links' );
 	    add_theme_support( 'customize-selective-refresh-widgets' );
-		add_editor_style();
+
+	    // Add theme support for selective refresh for widgets.
+		add_theme_support( 'customize-selective-refresh-widgets' );
+
+		add_theme_support( 'align-wide' );
+		add_theme_support( 'dark-editor-style' );
+
+		/*
+		 * This theme styles the visual editor to resemble the theme style,
+		 * specifically font, colors, and column width.
+	 	 */
+		//add_editor_style( array( 'functions/css/editor-style.css' ) );
+
+		// Load regular editor styles into the new block-based editor.
+		add_theme_support( 'editor-styles' );
+
+	 	// Load default block styles.
+		add_theme_support( 'wp-block-styles' );
+
+		// Add support for responsive embeds.
+		add_theme_support( 'responsive-embeds' );
+
+
+
 	}
 }
 

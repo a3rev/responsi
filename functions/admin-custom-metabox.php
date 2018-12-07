@@ -118,12 +118,12 @@ function responsi_metabox_create( $post, $callback ){
     
     if ( $callback['id'] === 'responsi-metabox-settings' ) {
 	    $output .= '<div class="responsi-metabox-tabs">';
-	    $output .= '<ul class="tabber hide-if-no-js">';
+	    //$output .= '<ul class="tabber hide-if-no-js">';
     	if ( $display_general_fields ) {
-            $output .= '<li class="wf-tab-general"><a href="#wf-tab-general">' . __( 'Custom Layout', 'responsi' ) . '</a></li>';
+            //$output .= '<li class="wf-tab-general"><a href="#wf-tab-general">' . __( 'Custom Layout', 'responsi' ) . '</a></li>';
         }
     	$output .= apply_filters( 'responsi_metaboxe_custom_field_tab_headings', '' );
-	    $output .= '</ul>';
+	    //$output .= '</ul>';
     }
 
     if ( $display_general_fields ) {
@@ -205,8 +205,11 @@ function responsi_metabox_create_fields( $metaboxes, $callback, $token = 'genera
 			if( 'info' === $metabox['type'] ) {
 
     	        $output .= '<tr class="' . esc_attr( $row_css_class ) . '" style="background:#f8f8f8; font-size:11px; line-height:1.5em;">';
-    	        $output .= '<th class="responsi-metabox-name"><label for="' . esc_attr( $metaboxid ) . '">' . $metabox['label'] . '</label></th>';
-    	        $output .= '<td style="font-size:11px;">' . $metabox['desc'] . '</td>';
+    	        //$output .= '<th class="responsi-metabox-name"></th>';
+    	        $output .= '<td style="font-size:11px;">
+                                <label class="responsi-metabox-name" for="' . esc_attr( $metaboxid ) . '">' . $metabox['label'] . '</label>
+                                ' . $metabox['desc'] . '
+                            </td>';
     	        $output .= '</tr>';
 
     	    }elseif( 'slider' === $metabox['type'] ) {
@@ -244,8 +247,9 @@ function responsi_metabox_create_fields( $metaboxes, $callback, $token = 'genera
                     $add_counter = '<span class="counter">0 characters, 0 words</span>';
                 }
                 $output .= '<tr class="' . esc_attr( $row_css_class ) . '">';
-                $output .= '<th class="responsi-metabox-name"><label for="' . esc_attr( $metaboxid ) . '">'.$metabox['label'].'</label></th>';
+                //$output .= '<th class="responsi-metabox-name"></th>';
                 $output .= '<td>
+                    <label class="responsi-metabox-name" for="' . esc_attr( $metaboxid ) . '">'.$metabox['label'].'</label>
                     <div class="responsi-range-slider">
                         <div class="ui-slide" id="'.esc_attr( $metaboxid ).'_div"></div>
                         <input type="text" readonly="readonly" id="'.esc_attr( $metaboxid ).'" name="'.esc_attr( $metaboxname ).'" value="'.$metaboxvalue.'" class="responsi-input regular-text islide-value" '.$min.' '.$max.' '.$step.' />
@@ -280,8 +284,8 @@ function responsi_metabox_create_fields( $metaboxes, $callback, $token = 'genera
                     $add_counter = '<span class="counter">0 characters, 0 words</span>';
                 }
                 $output .= '<tr class="' . esc_attr( $row_css_class ) . '">';
-                $output .= '<th class="responsi-metabox-name"><label for="' . esc_attr( $metaboxid ) . '">'.$metabox['label'].'</label></th>';
-                $output .= '<td><input class="responsi-metabox-input-text ' . esc_attr( $add_class ) . '" type="'.$metabox['type'].'" value="' . esc_attr( $metaboxvalue ) . '" name="'.$metaboxname.'" id="' . esc_attr( $metaboxid ) . '" '.$min.' '.$max.' '.$step.'/>';
+                //$output .= '<th class="responsi-metabox-name"></th>';
+                $output .= '<td><label class="responsi-metabox-name" for="' . esc_attr( $metaboxid ) . '">'.$metabox['label'].'</label><input class="responsi-metabox-input-text ' . esc_attr( $add_class ) . '" type="'.$metabox['type'].'" value="' . esc_attr( $metaboxvalue ) . '" name="'.$metaboxname.'" id="' . esc_attr( $metaboxid ) . '" '.$min.' '.$max.' '.$step.'/>';
                 $output .= '<span class="responsi-metabox-desc">' . $metabox['desc'] . ' ' . $add_counter . '</span></td>';
                 $output .= '</tr>';
 
@@ -294,8 +298,8 @@ function responsi_metabox_create_fields( $metaboxes, $callback, $token = 'genera
                     $add_counter = '<span class="counter">0 characters, 0 words</span>';
                 }
     	        $output .= '<tr class="' . esc_attr( $row_css_class ) . '">';
-    	        $output .= '<th class="responsi-metabox-name"><label for="' . esc_attr( $metaboxid ) . '">'.$metabox['label'].'</label></th>';
-    	        $output .= '<td><input class="responsi-metabox-input-text ' . esc_attr( $add_class ) . '" type="'.$metabox['type'].'" value="' . esc_attr( $metaboxvalue ) . '" name="'.$metaboxname.'" id="' . esc_attr( $metaboxid ) . '"/>';
+    	        //$output .= '<th class="responsi-metabox-name"></th>';
+    	        $output .= '<td><label class="responsi-metabox-name" for="' . esc_attr( $metaboxid ) . '">'.$metabox['label'].'</label><input class="responsi-metabox-input-text ' . esc_attr( $add_class ) . '" type="'.$metabox['type'].'" value="' . esc_attr( $metaboxvalue ) . '" name="'.$metaboxname.'" id="' . esc_attr( $metaboxid ) . '"/>';
     	        $output .= '<span class="responsi-metabox-desc">' . $metabox['desc'] . ' ' . $add_counter . '</span></td>';
     	        $output .= '</tr>';
 
@@ -308,16 +312,16 @@ function responsi_metabox_create_fields( $metaboxes, $callback, $token = 'genera
                     $add_counter = '<span class="counter">0 characters, 0 words</span>';
                 }
     	        $output .= '<tr class="' . esc_attr( $row_css_class ) . '">';
-    	        $output .= '<th class="responsi-metabox-name"><label for="' . $metabox . '">' . $metabox['label'] . '</label></th>';
-    	        $output .= '<td><textarea class="responsi-metabox-input-textarea ' . esc_attr( $add_class ) . '" name="' . $metaboxname . '" id="' . esc_attr( $metaboxid ) . '">' . esc_textarea( stripslashes($metaboxvalue) ) . '</textarea>';
+    	        //$output .= '<th class="responsi-metabox-name"></th>';
+    	        $output .= '<td><label class="responsi-metabox-name" for="' . $metabox . '">' . $metabox['label'] . '</label><textarea class="responsi-metabox-input-textarea ' . esc_attr( $add_class ) . '" name="' . $metaboxname . '" id="' . esc_attr( $metaboxid ) . '">' . esc_textarea( stripslashes($metaboxvalue) ) . '</textarea>';
     	        $output .= '<span class="responsi-metabox-desc">'.$metabox['desc'] .' '. $add_counter.'</span></td>';
     	        $output .= '</tr>';
 
     	    } elseif ( 'select' === $metabox['type'] ) {
 
     	        $output .= '<tr class="' . esc_attr( $row_css_class ) . '">';
-    	        $output .= '<th class="responsi-metabox-name"><label for="' . esc_attr( $metaboxid ) . '">' . $metabox['label'] . '</label></th>';
-    	        $output .= '<td><select class="responsi-metabox-select" id="' . esc_attr( $metaboxid ) . '" name="' . esc_attr( $metaboxname ) . '">';
+    	        //$output .= '<th class="responsi-metabox-name"></th>';
+    	        $output .= '<td><label class="responsi-metabox-name" for="' . esc_attr( $metaboxid ) . '">' . $metabox['label'] . '</label><select class="responsi-metabox-select" id="' . esc_attr( $metaboxid ) . '" name="' . esc_attr( $metaboxname ) . '">';
     	        $output .= '<option value="">' . __( 'Select to return to default', 'responsi' ) . '</option>';
 
     	        $array = $metabox['options'];
@@ -351,8 +355,8 @@ function responsi_metabox_create_fields( $metaboxes, $callback, $token = 'genera
     	    } elseif ( 'select2' === $metabox['type'] ) {
 
     	        $output .= '<tr class="' . esc_attr( $row_css_class ) . '">';
-    	        $output .= '<th class="responsi-metabox-name"><label for="' . esc_attr( $metaboxid ) . '">' . $metabox['label'] . '</label></th>';
-    	        $output .= '<td><select class="responsi-metabox-select" id="' . esc_attr( $metaboxid ) . '" name="' . esc_attr( $metaboxname ) . '">';
+    	        //$output .= '<th class="responsi-metabox-name"></th>';
+    	        $output .= '<td><label class="responsi-metabox-name" for="' . esc_attr( $metaboxid ) . '">' . $metabox['label'] . '</label><select class="responsi-metabox-select" id="' . esc_attr( $metaboxid ) . '" name="' . esc_attr( $metaboxname ) . '">';
     	        $output .= '<option value="">' . __( 'Select to return to default', 'responsi' ) . '</option>';
 
     	        $array = $metabox['options'];
@@ -392,8 +396,8 @@ function responsi_metabox_create_fields( $metaboxes, $callback, $token = 'genera
                 }
 
     	        $output .= '<tr class="' . esc_attr( $row_css_class ) . '">';
-    	        $output .= '<th class="responsi-metabox-name"><label for="' . esc_attr( $metaboxid ) . '">' . $metabox['label'] . '</label></th>';
-    	        $output .= '<td><input type="checkbox" '.$checked.' class="responsi-metabox-checkbox" value="true"  id="'.esc_attr( $metaboxid ).'" name="'. esc_attr( $metaboxname ) .'" />';
+    	        //$output .= '<th class="responsi-metabox-name"></th>';
+    	        $output .= '<td><label class="responsi-metabox-name" for="' . esc_attr( $metaboxid ) . '">' . $metabox['label'] . '</label><input type="checkbox" '.$checked.' class="responsi-metabox-checkbox" value="true"  id="'.esc_attr( $metaboxid ).'" name="'. esc_attr( $metaboxname ) .'" />';
     	        $output .= '<span class="responsi-metabox-desc" style="display:inline">' . $metabox['desc'] . '</span></td>';
     	        $output .= '</tr>';
     	    
@@ -403,8 +407,8 @@ function responsi_metabox_create_fields( $metaboxes, $callback, $token = 'genera
 
         	    if( $array ) {
             	    $output .= '<tr class="' . esc_attr( $row_css_class ) . '">';
-            	    $output .= '<th class="responsi-metabox-name"><label for="' . esc_attr( $metaboxid ) . '">' . $metabox['label'] . '</label></th>';
-            	    $output .= '<td>';
+            	    //$output .= '<th class="responsi-metabox-name"></th>';
+            	    $output .= '<td><label class="responsi-metabox-name" for="' . esc_attr( $metaboxid ) . '">' . $metabox['label'] . '</label>';
 
         	        foreach ( $array as $id => $option ) {
         	            if( $metaboxvalue == $id ) {
@@ -452,8 +456,8 @@ function responsi_metabox_create_fields( $metaboxes, $callback, $token = 'genera
     			}
 
     			$output .= '<tr class="' . esc_attr( $row_css_class ) . '">';
-    			$output .= '<th class="responsi-metabox-name"><label for="' . esc_attr( $metaboxid ) . '">' . $metabox['label'] . '</label></th>';
-    			$output .= '<td class="responsi-metabox-fields">';
+    			//$output .= '<th class="responsi-metabox-name"></th>';
+    			$output .= '<td class="responsi-metabox-fields"><label class="responsi-metabox-name" for="' . esc_attr( $metaboxid ) . '">' . $metabox['label'] . '</label>';
     			$output .= $layout;
     			$output .= '<span class="responsi-metabox-desc">' . $metabox['desc'] . '</span></td>';
         	    $output .= '</tr>';
@@ -633,16 +637,27 @@ function responsi_metabox_add() {
 					'title'            => __( 'Framework Custom Settings', 'responsi' ),
 					'callback'         => 'responsi_metabox_create',
 					'page'             => $type,
-					'priority'         => 'normal',
-					'callback_args'    => ''
+                    'context'          => 'advanced',
+					'priority'         => 'high',
+					'callback_args'    => array(
+                        '__block_editor_compatible_meta_box'    => true,
+                        '__back_compat_meta_box'                => false,
+                    )
 				);
 
 				$settings = apply_filters( 'responsi_metaboxe_metabox_settings', $settings, $type, $settings['id'] );
-				add_meta_box( $settings['id'], $settings['title'], $settings['callback'], $settings['page'], $settings['priority'], $settings['callback_args'] );
+				
+                add_meta_box( 
+                    $settings['id'], 
+                    $settings['title'], 
+                    $settings['callback'], 
+                    $settings['page'], 
+                    $settings['context'], 
+                    $settings['priority'], 
+                    $settings['callback_args']
+                );
+                
 			}
-    	} else {
-    		add_meta_box( 'responsi-metabox-settings', __( 'Framework Custom Settings', 'responsi' ), 'responsi_metabox_create', 'post', 'normal' );
-        	add_meta_box( 'responsi-metabox-settings', __( 'Framework Custom Settings', 'responsi' ), 'responsi_metabox_create', 'page', 'normal' );
     	}
     }
 }

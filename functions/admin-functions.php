@@ -4,62 +4,6 @@ if (!defined('ABSPATH'))
     exit;
 
 /*-----------------------------------------------------------------------------------*/
-/* responsi_format_css() */
-/*-----------------------------------------------------------------------------------*/
-function responsi_format_css( $content ) {
-    $content = str_replace( ':;', ': transparent;', $content );
-    $content = str_replace( ': ;', ': transparent;', $content );
-    $content = str_replace( ': !important', ': transparent !important', $content );
-    $content = str_replace( ':px', ':0px', $content );
-    $content = str_replace( ': px', ': 0px', $content );
-    $content = str_replace( "){", "){\n", $content );
-    $content = str_replace( "(.lazy-hidden){\n", "(.lazy-hidden){", $content );
-    $content = preg_replace( "/\s*}/", "}\n", $content );
-    return $content;
-}
-
-/*-----------------------------------------------------------------------------------*/
-/* responsi_minify_css() */
-/*-----------------------------------------------------------------------------------*/
-function responsi_minify_css( $content )
-{
-    $content = responsi_format_css( $content );
-    $content = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $content );
-    $content = str_replace( ["\r\n","\r","\n","\t",'  ','    ','     '], '', $content );
-    $content = str_replace( " !important", '!important', $content );
-    $content = preg_replace( ['(( )+{)','({( )+)'], '{', $content );
-    $content = preg_replace( ['(( )+})','(}( )+)','(;( )*})'], '}', $content );
-    $content = preg_replace( ['(;( )+)','(( )+;)'], ';', $content );
-    $content = str_replace( " : ", ':', $content );
-    $content = str_replace( ": ", ':', $content );
-    $content = str_replace( " :", ':', $content );
-    $content = str_replace( "( ", '(', $content );
-    $content = str_replace( " )", ')', $content );
-    return $content;
-}
-
-/*-----------------------------------------------------------------------------------*/
-/* responsi_unminify_css() */
-/*-----------------------------------------------------------------------------------*/
-function responsi_unminify_css( $content ) {
-    $comments = array(
-        "`^([\t\s]+)`ism" => '',
-        "`^\/\*(.+?)\*\/`ism" => "",
-        "`([\n\A;]+)\/\*(.+?)\*\/`ism" => "$1",
-        "`([\n\A;\s]+)//(.+?)[\n\r]`ism" => "$1\n",
-        "`(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+`ism" => "\n"
-    );
-    $content = preg_replace( array_keys( $comments ), $comments, $content );
-    // add a space before opening braces and a tab after
-    $content = preg_replace( "/\s*{\s*/", " {\n\t", $content );
-    // add a newline and a tab after each colon
-    $content = preg_replace( "/;\s*/", ";\n\t", $content );
-    // add a newline before and after closing braces
-    $content = preg_replace( "/\s*}/", "\n}\n", $content );
-    return $content;
-}
-
-/*-----------------------------------------------------------------------------------*/
 /* responsi_get_template */
 /*-----------------------------------------------------------------------------------*/
 
@@ -132,6 +76,62 @@ if ( ! function_exists( 'responsi_active_sidebar' ) ) {
         }
         return false;
     }
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* responsi_format_css() */
+/*-----------------------------------------------------------------------------------*/
+function responsi_format_css( $content ) {
+    $content = str_replace( ':;', ': transparent;', $content );
+    $content = str_replace( ': ;', ': transparent;', $content );
+    $content = str_replace( ': !important', ': transparent !important', $content );
+    $content = str_replace( ':px', ':0px', $content );
+    $content = str_replace( ': px', ': 0px', $content );
+    $content = str_replace( "){", "){\n", $content );
+    $content = str_replace( "(.lazy-hidden){\n", "(.lazy-hidden){", $content );
+    $content = preg_replace( "/\s*}/", "}\n", $content );
+    return $content;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* responsi_minify_css() */
+/*-----------------------------------------------------------------------------------*/
+function responsi_minify_css( $content )
+{
+    $content = responsi_format_css( $content );
+    $content = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $content );
+    $content = str_replace( ["\r\n","\r","\n","\t",'  ','    ','     '], '', $content );
+    $content = str_replace( " !important", '!important', $content );
+    $content = preg_replace( ['(( )+{)','({( )+)'], '{', $content );
+    $content = preg_replace( ['(( )+})','(}( )+)','(;( )*})'], '}', $content );
+    $content = preg_replace( ['(;( )+)','(( )+;)'], ';', $content );
+    $content = str_replace( " : ", ':', $content );
+    $content = str_replace( ": ", ':', $content );
+    $content = str_replace( " :", ':', $content );
+    $content = str_replace( "( ", '(', $content );
+    $content = str_replace( " )", ')', $content );
+    return $content;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* responsi_unminify_css() */
+/*-----------------------------------------------------------------------------------*/
+function responsi_unminify_css( $content ) {
+    $comments = array(
+        "`^([\t\s]+)`ism" => '',
+        "`^\/\*(.+?)\*\/`ism" => "",
+        "`([\n\A;]+)\/\*(.+?)\*\/`ism" => "$1",
+        "`([\n\A;\s]+)//(.+?)[\n\r]`ism" => "$1\n",
+        "`(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+`ism" => "\n"
+    );
+    $content = preg_replace( array_keys( $comments ), $comments, $content );
+    // add a space before opening braces and a tab after
+    $content = preg_replace( "/\s*{\s*/", " {\n\t", $content );
+    // add a newline and a tab after each colon
+    $content = preg_replace( "/;\s*/", ";\n\t", $content );
+    // add a newline before and after closing braces
+    $content = preg_replace( "/\s*}/", "\n}\n", $content );
+    return $content;
 }
 
 /*-----------------------------------------------------------------------------------*/
