@@ -74,7 +74,7 @@
             css += '.box-item .entry-bottom .i_author:before, .box-item .entry-bottom .i_cat:before, .box-item .entry-bottom .i_comment:before, .box-item .entry-bottom .i_tag:before{display:inherit !important;}';
         }
         css += 'div.box-content .box-item div.entry-item .entry-content a.more-link,body #wrapper #content div.box-content .box-item div.entry-item .entry-content a.button{';
-            css += responsiCustomize.build_typography('responsi_blog_morelink_font',true);
+            css += responsiCustomize.build_typography('responsi_blog_morelink_font',false);
         css += '}';
 
         var enable_fix_tall_title_grid = wp.customize.value('responsi_enable_fix_tall_title_grid')();

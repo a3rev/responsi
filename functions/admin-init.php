@@ -830,6 +830,73 @@ function responsi_default_options( $type = 'options' )
 }
 
 /*-----------------------------------------------------------------------------------*/
+/* Global $responsi_options for theme blank-child-theme */
+/*-----------------------------------------------------------------------------------*/
+function _blank_child_customize_options( $slug = '', $_customize_options = array(), $_default_options = array() )
+{  
+    if( '' === $slug ) return $_customize_options;
+            
+    $responsi_blank_child =  get_option( $slug . '_responsi-blank-child', array() );
+
+    $_is_blank = ( is_array($responsi_blank_child) && isset($responsi_blank_child['_is_blank'] ) && $responsi_blank_child['_is_blank'] === true ? true : false ) ;
+
+    if( !$_is_blank ){
+        $responsi_mods = get_option( $slug .'_responsi', array() );
+
+        if( is_array($responsi_mods) ){
+            $_customize_options = array_replace_recursive( $_customize_options, $responsi_mods );
+        }
+
+        if( is_array( $responsi_mods ) ){
+        
+            foreach( $responsi_mods as $key => $value ){
+
+                if( !array_key_exists( $key, $responsi_blank_child ) ){
+
+                    $responsi_blank_child[$key] = $value ;
+                    $_is_blank = true;
+
+                }
+            }
+
+        }
+
+        if( $_is_blank ){
+
+            if( is_array( $responsi_blank_child ) ){
+                foreach( $responsi_blank_child as $key => $value ){
+                    if( array_key_exists( $key, $_default_options )){
+                        if( is_array( $value ) && is_array( $_default_options[$key] ) ){
+                            $new_opt = array_diff_assoc( $value, $_default_options[$key] );
+                            if( is_array( $new_opt ) && count( $new_opt ) > 0 ){
+                                $responsi_blank_child[$key] = $value;
+                            }else{
+                                unset($responsi_blank_child[$key]);
+                            }
+                        }else{
+                            if( !is_array( $value ) && !is_array($_default_options[$key]) && $value == $_default_options[$key] ){
+                                unset($responsi_blank_child[$key]);
+                            }
+                        }
+                    }
+                }
+            }
+
+            $responsi_blank_child['_is_blank'] = true;
+            update_option( $slug . '_responsi-blank-child',  $responsi_blank_child );
+
+        }
+    }
+
+    if( is_array($responsi_blank_child) ){
+        $_customize_options = array_replace_recursive( $_customize_options, $responsi_blank_child );
+    }
+
+    return $_customize_options;
+
+}
+
+/*-----------------------------------------------------------------------------------*/
 /* Global $responsi_options for theme and Addon added on Customize */
 /*-----------------------------------------------------------------------------------*/
 
@@ -848,12 +915,63 @@ function responsi_options()
     }
 
     $_childthemes = get_option('stylesheet');
+
     if( 'responsi-blank-child' === $_childthemes ){
-        $theme_mods_responsi = get_option( 'theme_mods_responsi' );
+
         $responsi_blank_child = $responsi_theme_mods;
-        if( is_array( $theme_mods_responsi ) ){
-            $responsi_options = array_replace_recursive( $responsi_options, $theme_mods_responsi );
+
+        $_is_blank = ( is_array($responsi_blank_child) && isset($responsi_blank_child['_is_blank'] ) && $responsi_blank_child['_is_blank'] === true ? true : false ) ;
+
+        if( !$_is_blank ){
+
+            $theme_mods_responsi = get_option( 'theme_mods_responsi' );
+            
+            if( is_array( $theme_mods_responsi ) ){
+                $responsi_options = array_replace_recursive( $responsi_options, $theme_mods_responsi );
+            }
+
+            if( is_array( $theme_mods_responsi ) ){
+                
+                foreach( $theme_mods_responsi as $key => $value ){
+
+                    if( !array_key_exists( $key, $responsi_blank_child ) ){
+
+                        $responsi_blank_child[$key] = $value ;
+                        $_is_blank = true;
+
+                    }
+                }
+
+            }
+
+            if( $_is_blank ){
+
+                if( is_array( $responsi_blank_child ) ){
+                    foreach( $responsi_blank_child as $key => $value ){
+                        if( array_key_exists( $key, $responsi_default_options )){
+                            if( is_array( $value ) && is_array( $responsi_default_options[$key] ) ){
+                                $new_opt = array_diff_assoc( $value, $responsi_default_options[$key] );
+                                if( is_array( $new_opt ) && count( $new_opt ) > 0 ){
+                                    $responsi_blank_child[$key] = $value;
+                                }else{
+                                    unset($responsi_blank_child[$key]);
+                                }
+                            }else{
+                                if( !is_array( $value ) && !is_array($responsi_default_options[$key]) && $value == $responsi_default_options[$key] ){
+                                    unset($responsi_blank_child[$key]);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                $responsi_blank_child['_is_blank'] = true;
+                update_option( 'theme_mods_responsi-blank-child',  $responsi_blank_child );
+
+            }
+
         }
+
         if( is_array( $responsi_blank_child ) ){
             $responsi_options = array_replace_recursive( $responsi_options, $responsi_blank_child );
         }

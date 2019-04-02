@@ -2463,7 +2463,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $bt_css .= 'padding-left:' . $button_padding_left . 'px;';
     $bt_css .= 'padding-right:' . $button_padding_right . 'px;';
     $bt_css .= responsi_generate_fonts( $button_text );
-    $bt_css .= 'line-height: normal !important;';
+    $bt_css .= 'line-height: normal';
     $bt_css .= 'text-transform: ' . $button_text_transform . ';';
     $bt_css .= 'text-shadow: ' . $button_text_shadow_value . ';';
     $bt_css .= 'background-color: ' . $button . ';';
@@ -3916,7 +3916,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     }
     $dynamic_css .= '.box-item .entry-item .entry-content .bottom-bg{margin-bottom:0px;}.entry p.gird_descriptions{margin-bottom:10px;}';
     $dynamic_css .= '.show-more-link{display:block;box-sizing:border-box;text-align:' . $responsi_blog_morelink_alignment . ';}';
-    $dynamic_css .= 'div.box-content .box-item div.entry-item .entry-content a.more-link,body #wrapper #content div.box-content .box-item div.entry-item .entry-content a.button{' . responsi_generate_fonts($responsi_blog_morelink_font, true) . '}';
+    $dynamic_css .= 'div.box-content .box-item div.entry-item .entry-content a.more-link,body #wrapper #content div.box-content .box-item div.entry-item .entry-content a.button{' . responsi_generate_fonts($responsi_blog_morelink_font, false) . '}';
     if ( !isset( $disable_blog_content ) ||  'false' === $disable_blog_content || '' === $disable_blog_content ) {
         $dynamic_css .= 'div.box-content .box-item div.entry-item.blog-post-item .entry-content .gird_descriptions{display:none !important;}';
     }
