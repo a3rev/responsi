@@ -110,6 +110,108 @@ class Responsi_Customize_Layout
 			)
 		);
 
+		$layout_controls_settings['responsi_header_animation_1'] = array(
+			'control' => array(
+			    'label' => __('Header Widgets 1 animation ', 'responsi'),
+			    'section'    => 'site_structure',
+			    'settings'   => 'multiple',
+			    'type'       => 'animation',
+			    'input_attrs' => array(
+					'class' => 'hide header_sidebars_logical header-animation header-animation-1'
+		        ),
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_header_animation_1']) ? $responsi_options['responsi_header_animation_1'] : array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1'),
+			    'sanitize_callback' => 'responsi_sanitize_animation',
+			    'transport'	=> 'postMessage'
+			)
+		);
+
+		$layout_controls_settings['responsi_header_animation_2'] = array(
+			'control' => array(
+			    'label' => __('Header Widgets 2 animation ', 'responsi'),
+			    'section'    => 'site_structure',
+			    'settings'   => 'multiple',
+			    'type'       => 'animation',
+			    'input_attrs' => array(
+					'class' => 'hide header_sidebars_logical header-animation header-animation-2'
+		        ),
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_header_animation_2']) ? $responsi_options['responsi_header_animation_2'] : array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1'),
+			    'sanitize_callback' => 'responsi_sanitize_animation',
+			    'transport'	=> 'postMessage'
+			)
+		);
+
+		$layout_controls_settings['responsi_header_animation_3'] = array(
+			'control' => array(
+			    'label' => __('Header Widgets 3 animation ', 'responsi'),
+			    'section'    => 'site_structure',
+			    'settings'   => 'multiple',
+			    'type'       => 'animation',
+			    'input_attrs' => array(
+					'class' => 'hide header_sidebars_logical header-animation header-animation-3'
+		        ),
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_header_animation_3']) ? $responsi_options['responsi_header_animation_3'] : array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1'),
+			    'sanitize_callback' => 'responsi_sanitize_animation',
+			    'transport'	=> 'postMessage'
+			)
+		);
+
+		$layout_controls_settings['responsi_header_animation_4'] = array(
+			'control' => array(
+			    'label' => __('Header Widgets 4 animation ', 'responsi'),
+			    'section'    => 'site_structure',
+			    'settings'   => 'multiple',
+			    'type'       => 'animation',
+			    'input_attrs' => array(
+					'class' => 'hide header_sidebars_logical header-animation header-animation-4'
+		        ),
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_header_animation_4']) ? $responsi_options['responsi_header_animation_4'] : array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1'),
+			    'sanitize_callback' => 'responsi_sanitize_animation',
+			    'transport'	=> 'postMessage'
+			)
+		);
+
+		$layout_controls_settings['responsi_header_animation_5'] = array(
+			'control' => array(
+			    'label' => __('Header Widgets 5 animation ', 'responsi'),
+			    'section'    => 'site_structure',
+			    'settings'   => 'multiple',
+			    'type'       => 'animation',
+			    'input_attrs' => array(
+					'class' => 'hide header_sidebars_logical header-animation header-animation-5'
+		        ),
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_header_animation_5']) ? $responsi_options['responsi_header_animation_5'] : array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1'),
+			    'sanitize_callback' => 'responsi_sanitize_animation',
+			    'transport'	=> 'postMessage'
+			)
+		);
+
+		$layout_controls_settings['responsi_header_animation_6'] = array(
+			'control' => array(
+			    'label' => __('Header Widgets 6 animation ', 'responsi'),
+			    'section'    => 'site_structure',
+			    'settings'   => 'multiple',
+			    'type'       => 'animation',
+			    'input_attrs' => array(
+					'class' => 'hide header_sidebars_logical header-animation header-animation-6'
+		        ),
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_header_animation_6']) ? $responsi_options['responsi_header_animation_6'] : array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1'),
+			    'sanitize_callback' => 'responsi_sanitize_animation',
+			    'transport'	=> 'postMessage'
+			)
+		);
+
 		$layout_controls_settings['responsi_on_header'] = array(
 			'control' => array(
 			    'label'      => __('Header Widget Display in Mobile Phones', 'responsi'),
@@ -319,6 +421,108 @@ class Responsi_Customize_Layout
 			'setting' => array(
 			    'default'		=> isset($responsi_options['responsi_footer_sidebars']) ? $responsi_options['responsi_footer_sidebars'] : '4',
 			    'sanitize_callback' => 'responsi_sanitize_choices',
+			)
+		);
+
+		$layout_controls_settings['responsi_footer_animation_1'] = array(
+			'control' => array(
+			    'label' => __('Footer Widgets 1 animation ', 'responsi'),
+			    'section'    => 'site_structure',
+			    'settings'   => 'multiple',
+			    'type'       => 'animation',
+			    'input_attrs' => array(
+					'class' => 'hide footer_widget_logical footer-animation footer-animation-1'
+		        ),
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_footer_animation_1']) ? $responsi_options['responsi_footer_animation_1'] : array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1'),
+			    'sanitize_callback' => 'responsi_sanitize_animation',
+			    'transport'	=> 'postMessage'
+			)
+		);
+
+		$layout_controls_settings['responsi_footer_animation_2'] = array(
+			'control' => array(
+			    'label' => __('Footer Widgets 2 animation ', 'responsi'),
+			    'section'    => 'site_structure',
+			    'settings'   => 'multiple',
+			    'type'       => 'animation',
+			    'input_attrs' => array(
+					'class' => 'hide footer_widget_logical footer-animation footer-animation-2'
+		        ),
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_footer_animation_2']) ? $responsi_options['responsi_footer_animation_2'] : array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1'),
+			    'sanitize_callback' => 'responsi_sanitize_animation',
+			    'transport'	=> 'postMessage'
+			)
+		);
+
+		$layout_controls_settings['responsi_footer_animation_3'] = array(
+			'control' => array(
+			    'label' => __('Footer Widgets 3 animation ', 'responsi'),
+			    'section'    => 'site_structure',
+			    'settings'   => 'multiple',
+			    'type'       => 'animation',
+			    'input_attrs' => array(
+					'class' => 'hide footer_widget_logical footer-animation footer-animation-3'
+		        ),
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_footer_animation_3']) ? $responsi_options['responsi_footer_animation_3'] : array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1'),
+			    'sanitize_callback' => 'responsi_sanitize_animation',
+			    'transport'	=> 'postMessage'
+			)
+		);
+
+		$layout_controls_settings['responsi_footer_animation_4'] = array(
+			'control' => array(
+			    'label' => __('Footer Widgets 4 animation ', 'responsi'),
+			    'section'    => 'site_structure',
+			    'settings'   => 'multiple',
+			    'type'       => 'animation',
+			    'input_attrs' => array(
+					'class' => 'hide footer_widget_logical footer-animation footer-animation-4'
+		        ),
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_footer_animation_4']) ? $responsi_options['responsi_footer_animation_4'] : array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1'),
+			    'sanitize_callback' => 'responsi_sanitize_animation',
+			    'transport'	=> 'postMessage'
+			)
+		);
+
+		$layout_controls_settings['responsi_footer_animation_5'] = array(
+			'control' => array(
+			    'label' => __('Footer Widgets 5 animation ', 'responsi'),
+			    'section'    => 'site_structure',
+			    'settings'   => 'multiple',
+			    'type'       => 'animation',
+			    'input_attrs' => array(
+					'class' => 'hide footer_widget_logical footer-animation footer-animation-5'
+		        ),
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_footer_animation_5']) ? $responsi_options['responsi_footer_animation_5'] : array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1'),
+			    'sanitize_callback' => 'responsi_sanitize_animation',
+			    'transport'	=> 'postMessage'
+			)
+		);
+
+		$layout_controls_settings['responsi_footer_animation_6'] = array(
+			'control' => array(
+			    'label' => __('Footer Widgets 6 animation ', 'responsi'),
+			    'section'    => 'site_structure',
+			    'settings'   => 'multiple',
+			    'type'       => 'animation',
+			    'input_attrs' => array(
+					'class' => 'hide footer_widget_logical footer-animation footer-animation-6'
+		        ),
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_footer_animation_6']) ? $responsi_options['responsi_footer_animation_6'] : array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1'),
+			    'sanitize_callback' => 'responsi_sanitize_animation',
+			    'transport'	=> 'postMessage'
 			)
 		);
 

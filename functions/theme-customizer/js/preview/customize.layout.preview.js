@@ -410,4 +410,85 @@
         });
     });
 
+
+    $.each(single_fields, function(inx, val) {
+        wp.customize(val, function(value) {
+            value.bind(function(to) {
+                responsi_preview_style_content();
+            });
+        });
+    });
+
+    var responsi_header_animation = {
+        'responsi_header_animation_1' : '#header_animation_1',
+        'responsi_header_animation_2' : '#header_animation_2',
+        'responsi_header_animation_3' : '#header_animation_3',
+        'responsi_header_animation_4' : '#header_animation_4',
+        'responsi_header_animation_5' : '#header_animation_5',
+        'responsi_header_animation_6' : '#header_animation_6'
+    };
+
+    $.each( responsi_header_animation, function(inx, val) {
+
+        wp.customize(inx+'[type]', function(value) {
+            value.bind(function(to) {
+                responsiCustomize.build_animation( val,inx );
+            });
+        });
+
+        wp.customize(inx+'[duration]', function(value) {
+            value.bind(function(to) {
+                responsiCustomize.build_animation( val,inx );
+            });
+        });
+
+        wp.customize(inx+'[delay]', function(value) {
+            value.bind(function(to) {
+                responsiCustomize.build_animation( val,inx );
+            });
+        });
+
+        wp.customize(inx+'[direction]', function(value) {
+            value.bind(function(to) {
+                responsiCustomize.build_animation( val,inx );
+            });
+        });
+    });
+
+    var responsi_footer_animation = {
+        'responsi_footer_animation_1' : '#footer_animation_1',
+        'responsi_footer_animation_2' : '#footer_animation_2',
+        'responsi_footer_animation_3' : '#footer_animation_3',
+        'responsi_footer_animation_4' : '#footer_animation_4',
+        'responsi_footer_animation_5' : '#footer_animation_5',
+        'responsi_footer_animation_6' : '#footer_animation_6'
+    };
+
+    $.each( responsi_footer_animation, function(inx, val) {
+
+        wp.customize(inx+'[type]', function(value) {
+            value.bind(function(to) {
+                responsiCustomize.build_animation( val,inx );
+            });
+        });
+
+        wp.customize(inx+'[duration]', function(value) {
+            value.bind(function(to) {
+                responsiCustomize.build_animation( val,inx );
+            });
+        });
+
+        wp.customize(inx+'[delay]', function(value) {
+            value.bind(function(to) {
+                responsiCustomize.build_animation( val,inx );
+            });
+        });
+
+        wp.customize(inx+'[direction]', function(value) {
+            value.bind(function(to) {
+                responsiCustomize.build_animation( val,inx );
+            });
+        });
+    });
+
 })(jQuery);

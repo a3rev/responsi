@@ -8,12 +8,29 @@ if ( !function_exists('responsi_widgets_init') ) {
 	        return;
 	    }
 
+	    global $responsi_options;
+	    
+	    $widget_animation_class = '';
+        $widget_animation_data = '';
+        $widget_animation_style = '';
+
+	    if( is_array($responsi_options) && isset( $responsi_options['responsi_widget_animation'] ) ){
+
+	    	$widget_animation = responsi_generate_animation($responsi_options['responsi_widget_animation']);
+
+            if( false !== $widget_animation ){
+                $widget_animation_class = ' '.$widget_animation['class'];
+                $widget_animation_data = ' data-animation="'.$widget_animation['data'].'"';
+                $widget_animation_style = ' style="'.$widget_animation['style'].'"';
+            }
+        }
+
 	    do_action('responsi_widgets_init_before');
 
 		//Sidebars
 		do_action( 'the_widgets_sidebar_init_before' );
-		register_sidebar( array( 'name' => __( 'Primary', 'responsi' ),'id' => 'primary', 'description' => __( 'Normal full width Sidebar', 'responsi' ), 'before_widget' => '<div id="%1$s" class="masonry_widget"><div class="widget widget_content %2$s"><div class="fw_widget_content clearfix">', 'after_widget' => '</div></div></div>', 'before_title' => '</div><div class="fw_widget_title clearfix">', 'after_title' => '</div><div class="fw_widget_content clearfix">' ) );
-	    register_sidebar( array( 'name' => __( 'Secondary', 'responsi' ), 'id' => 'secondary', 'description' => __( 'Secondary sidebar for use in three column layout', 'responsi' ), 'before_widget' => '<div id="%1$s" class="masonry_widget"><div class="widget widget_content %2$s"><div class="fw_widget_content clearfix">', 'after_widget' => '</div></div></div>', 'before_title' => '</div><div class="fw_widget_title clearfix">', 'after_title' => '</div><div class="fw_widget_content clearfix">' ) );
+		register_sidebar( array( 'name' => __( 'Primary', 'responsi' ),'id' => 'primary', 'description' => __( 'Normal full width Sidebar', 'responsi' ), 'before_widget' => '<div id="%1$s" class="masonry_widget'.$widget_animation_class.'"'.$widget_animation_data . $widget_animation_style.'><div class="widget widget_content %2$s"><div class="fw_widget_content clearfix">', 'after_widget' => '</div></div></div>', 'before_title' => '</div><div class="fw_widget_title clearfix">', 'after_title' => '</div><div class="fw_widget_content clearfix">' ) );
+	    register_sidebar( array( 'name' => __( 'Secondary', 'responsi' ), 'id' => 'secondary', 'description' => __( 'Secondary sidebar for use in three column layout', 'responsi' ), 'before_widget' => '<div id="%1$s" class="masonry_widget'.$widget_animation_class.'"'.$widget_animation_data . $widget_animation_style.'><div class="widget widget_content %2$s"><div class="fw_widget_content clearfix">', 'after_widget' => '</div></div></div>', 'before_title' => '</div><div class="fw_widget_title clearfix">', 'after_title' => '</div><div class="fw_widget_content clearfix">' ) );
 
 	    do_action( 'the_widgets_sidebar_init_after' );
 

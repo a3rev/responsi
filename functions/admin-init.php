@@ -1034,6 +1034,7 @@ function responsi_options()
 }
 
 add_action( 'init', 'responsi_options', 1 );
+add_action( 'widgets_init', 'responsi_options', 1 );
 
 /*-----------------------------------------------------------------------------------*/
 /* ResponsiFramework */

@@ -640,4 +640,77 @@
             });
         });
     });
+
+    wp.customize('responsi_additional_animation[type]', function(value) {
+        value.bind(function(to) {
+            responsiCustomize.build_animation( '#additional_animation', 'responsi_additional_animation' );
+        });
+    });
+
+    wp.customize('responsi_additional_animation[duration]', function(value) {
+        value.bind(function(to) {
+            responsiCustomize.build_animation( '#additional_animation', 'responsi_additional_animation' );
+        });
+    });
+
+    wp.customize('responsi_additional_animation[delay]', function(value) {
+        value.bind(function(to) {
+            responsiCustomize.build_animation( '#additional_animation', 'responsi_additional_animation' );
+        });
+    });
+
+    wp.customize('responsi_additional_animation[direction]', function(value) {
+        value.bind(function(to) {
+            responsiCustomize.build_animation( '#additional_animation', 'responsi_additional_animation' );
+        });
+    });
+
+    wp.customize('responsi_footer_left_animation[type]', function(value) {
+        value.bind(function(to) {
+            responsiCustomize.build_animation( '#footer_copyright_animation', 'responsi_footer_left_animation' );
+        });
+    });
+
+    wp.customize('responsi_footer_left_animation[duration]', function(value) {
+        value.bind(function(to) {
+            responsiCustomize.build_animation( '#footer_copyright_animation', 'responsi_footer_left_animation' );
+        });
+    });
+
+    wp.customize('responsi_footer_left_animation[delay]', function(value) {
+        value.bind(function(to) {
+            responsiCustomize.build_animation( '#footer_copyright_animation', 'responsi_footer_left_animation' );
+        });
+    });
+
+    wp.customize('responsi_footer_left_animation[direction]', function(value) {
+        value.bind(function(to) {
+            responsiCustomize.build_animation( '#footer_copyright_animation', 'responsi_footer_left_animation' );
+        });
+    });
+
+    wp.customize('responsi_footer_link_animation[type]', function(value) {
+        value.bind(function(to) {
+            responsiCustomize.build_animation( '#footer_credit_animation', 'responsi_footer_link_animation' );
+        });
+    });
+
+    wp.customize('responsi_footer_link_animation[duration]', function(value) {
+        value.bind(function(to) {
+            responsiCustomize.build_animation( '#footer_credit_animation', 'responsi_footer_link_animation' );
+        });
+    });
+
+    wp.customize('responsi_footer_link_animation[delay]', function(value) {
+        value.bind(function(to) {
+            responsiCustomize.build_animation( '#footer_credit_animation', 'responsi_footer_link_animation' );
+        });
+    });
+
+    wp.customize('responsi_footer_link_animation[direction]', function(value) {
+        value.bind(function(to) {
+            responsiCustomize.build_animation( '#footer_credit_animation', 'responsi_footer_link_animation' );
+        });
+    });
+
 })(jQuery);

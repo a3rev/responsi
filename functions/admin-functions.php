@@ -1461,7 +1461,51 @@ if ( !function_exists( 'responsi_generate_background_transparent_color' ) ) {
     }
 }
 
+if ( !function_exists( 'responsi_generate_animation' ) ) {
 
+    function responsi_generate_animation( $options = array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1') ) {
+
+        $defaults = array(
+            'type'      => 'none', 
+            'direction' => '', 
+            'duration'  => '1',
+            'delay'     => '1'
+        ) ;
+
+        if( is_array( $options ) ) {
+            $options = array_merge( $defaults, $options );
+        }
+
+        if( !is_array($options) ) 
+            return false;
+
+        if( !isset($options['type']) || !isset($options['direction']) || !isset($options['duration']) || !isset($options['delay']) ) 
+            return false;
+
+        if( 'none' === $options['type'] ) 
+            return false;
+
+        $special_types =  array( 'bounce', 'fade', 'slide', 'zoom' );
+
+        $class_attr = 'animateMe';
+        if( 'slide' === $options['type'] && $options['direction'] === '' ){
+            $data_attr =  'slideInLeft';
+        }else{
+            $data_attr =  in_array( $options['type'] , $special_types) ? $options['type'].'In'.ucfirst($options['direction']) : $options['type'];
+        }
+
+        $style_attr = 'animation-delay:'.$options['delay'].'s;animation-duration:'.$options['duration'].'s';
+
+        $animation_attributes = array(
+            'class' => $class_attr,
+            'data'  => $data_attr,
+            'style' => $style_attr
+        );
+       
+        return $animation_attributes;
+
+    }
+}
 
 /*-----------------------------------------------------------------------------------*/
 /* responsi_generate_border_radius_value() */

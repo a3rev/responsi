@@ -103,7 +103,8 @@ final class Responsi_Customize {
 			'functions/theme-customizer/'.$controls_template.'/custom-border-radius-control.php',
 			'functions/theme-customizer/'.$controls_template.'/custom-border-boxes-control.php',
 			'functions/theme-customizer/'.$controls_template.'/custom-box-shadow-control.php',
-			'functions/theme-customizer/'.$controls_template.'/custom-typography-control.php'
+			'functions/theme-customizer/'.$controls_template.'/custom-typography-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-animation-control.php',
 		);
 		$_custom_customizer_control = apply_filters( '_custom_customizer_control', $_custom_customizer_control );
 		foreach ( $_custom_customizer_control as $i ) {
@@ -152,6 +153,7 @@ final class Responsi_Customize {
 		$this->manager->register_control_type( 'Customize_Border_Boxes_Control' );
 		$this->manager->register_control_type( 'Customize_Box_Shadow_Control' );
 		$this->manager->register_control_type( 'Customize_iEditor_Control' );
+		$this->manager->register_control_type( 'Customize_Animation_Control' );
 
 		//Register Panels
 		$panels = apply_filters( 'responsi_customize_register_panels', array() );
@@ -240,6 +242,9 @@ final class Responsi_Customize {
 				                    break;
 				                case "typography":
 				                    $value['setting']['default'] = array('size' => '13','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#555555');
+				                    break;
+				                case "animation":
+				                    $value['setting']['default'] = array('type' => 'none','direction' => '', 'duration' => '1','delay' => '1');
 				                    break;
 				            }
 				        }
@@ -375,6 +380,9 @@ final class Responsi_Customize {
 					    case "typography":
 					    	$this->add_control( new Customize_Typography_Control( $this->manager, $key, $value['control']) );
 					        break;
+					    case "animation":
+		                    $this->add_control( new Customize_Animation_Control( $this->manager, $key, $value['control']) );
+		                    break;
 					    case "multitext":
 					    	$this->add_control( new Customize_Multiple_Text_Control( $this->manager, $key, $value['control']) );
 					        break;
@@ -776,6 +784,52 @@ final class Responsi_Customize {
 		);
 		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomBorderBoxesControl', $border_boxes_control_parameters );
 
+		$animation_control_parameters = array(
+
+			'type' => array(
+				'none'   		=> __( 'None', 'responsi' ),
+				'flash'   		=> __( 'Flash', 'responsi' ),
+				'pulse'   		=> __( 'Pulse', 'responsi' ),
+				'rubberBand'   	=> __( 'Rubber Band', 'responsi' ),
+				'shake'  		=> __( 'Shake', 'responsi' ),
+				'swing'   		=> __( 'Swing', 'responsi' ),
+				'tada'   		=> __( 'Tada', 'responsi' ),
+				'wobble'   		=> __( 'Wobble', 'responsi' ),
+				'jello'   		=> __( 'Jello', 'responsi' ),
+				'heartBeat'   	=> __( 'Heart Beat', 'responsi' ),
+				'hinge'   		=> __( 'Hinge', 'responsi' ),
+				'jackInTheBox'  => __( 'Jack In The Box', 'responsi' ),
+				'rollIn'   		=> __( 'Roll', 'responsi' ),
+				'lightSpeedIn'  => __( 'Light Speed', 'responsi' ),
+				'flip'   		=> __( 'Flip', 'responsi' ),
+				'flipInX'   	=> __( 'Flip X', 'responsi' ),
+				'flipInY'   	=> __( 'Flip Y', 'responsi' ),
+				'rotateIn'   	=> __( 'Rotate', 'responsi' ),
+				'bounce'   		=> __( 'Bounce', 'responsi' ),
+				'fade'   		=> __( 'Fade', 'responsi' ),
+				'slide'   		=> __( 'Slide', 'responsi' ),
+				'zoom'   		=> __( 'Zoom', 'responsi' ),
+			),
+			'direction' => array(
+				'left'   		=> __( 'Left', 'responsi' ),
+				'right'   		=> __( 'Right', 'responsi' ),
+				''   			=> __( 'Center', 'responsi' ),
+				'up'   		=> __( 'Top', 'responsi' ),
+				'down'   		=> __( 'Bottom', 'responsi' ),
+			),
+			'duration' => array(
+				'min' => 1,
+				'max' => 5,
+				'step'=> 1,
+			),
+			'delay' => array(
+				'min' => 0,
+				'max' => 5,
+				'step'=> 1,
+			)
+		);
+		did_action( 'init' ) && $scripts->localize( 'responsi-customize-controls', '_wpCustomAnimationControl', $animation_control_parameters );
+
 		$_panelIds = apply_filters( 'responsi_focus_panels', array( array( 'selector' => '', 'settings' => '' )) ) ;
 		did_action( 'init' ) && $scripts->localize( 'responsi-customize-focus', '_panelIds', $_panelIds );
 		
@@ -833,6 +887,9 @@ final class Responsi_Customize {
                     break;
                 case "typography":
                     $settings = array( $id.'[size]' => $id.'[size]', $id.'[line_height]' => $id.'[line_height]', $id.'[face]' => $id.'[face]', $id.'[style]' => $id.'[style]', $id.'[color]' => $id.'[color]');
+                    break;
+                case "animation":
+                    $settings = array( $id.'[type]' => $id.'[type]', $id.'[direction]' => $id.'[direction]', $id.'[duration]' => $id.'[duration]', $id.'[delay]' => $id.'[delay]');
                     break;
                 case "multitext":
                     foreach ( $options['choices'] as $key => $value) {

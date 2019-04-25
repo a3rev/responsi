@@ -208,6 +208,7 @@ class Responsi_Customize_General_Settings
 			),
 			'setting' => array()
 		);
+
 		$settings_controls_settings['responsi_button_text'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
@@ -409,6 +410,7 @@ class Responsi_Customize_General_Settings
 			    'transport'	=> 'postMessage'
 			)
 		);
+
 		$settings_controls_settings['responsi_button_padding'] = array(
 			'control' => array(
 			    'label'      => __('Padding', 'responsi'),

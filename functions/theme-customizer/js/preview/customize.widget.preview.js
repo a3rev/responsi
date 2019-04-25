@@ -269,4 +269,63 @@
         });
     });
 
+    function build_animation_widget( container, option_name ){
+        
+            var _container = $('body').find(container),
+            type = wp.customize.value(option_name+'[type]')(),
+            duration = wp.customize.value(option_name+'[duration]')(),
+            delay = wp.customize.value(option_name+'[delay]')(),
+            direction = wp.customize.value(option_name+'[direction]')(),
+            old_type = _container.data('animation'),
+            animationHaveDirection = [ 'bounce', 'fade', 'slide', 'zoom' ],
+            animation_type = ( animationHaveDirection.indexOf( type ) > -1 ) ? type+'In'+direction.charAt( 0 ).toUpperCase() + direction.substring( 1 ): type;
+            if( 'slide' === type && direction === '' ){
+                animation_type = type+'InLeft';
+            }
+
+            _container.attr('class','masonry_widget animateMe').attr('data',animation_type);
+
+            setTimeout(function(){
+                _container.attr( 'style', 'animation-delay:'+delay+'s;animation-duration:'+duration+'s');
+                _container.removeClass(old_type).addClass( animation_type ).data('animation', animation_type );
+            },10);
+            
+
+            setTimeout(function(){
+                scrollWaypointInit(_container);
+            },50);
+
+        }
+
+    var responsi_widget_animation = {
+        'responsi_widget_animation' : '#content #sidebar .masonry_widget, #content #sidebar-alt .masonry_widget',
+    };
+
+    $.each( responsi_widget_animation, function(inx, val) {
+
+        wp.customize(inx+'[type]', function(value) {
+            value.bind(function(to) {
+                build_animation_widget( val,inx );
+            });
+        });
+
+        wp.customize(inx+'[duration]', function(value) {
+            value.bind(function(to) {
+                build_animation_widget( val,inx );
+            });
+        });
+
+        wp.customize(inx+'[delay]', function(value) {
+            value.bind(function(to) {
+                build_animation_widget( val,inx );
+            });
+        });
+
+        wp.customize(inx+'[direction]', function(value) {
+            value.bind(function(to) {
+                build_animation_widget( val,inx );
+            });
+        });
+    });
+
 })(jQuery);

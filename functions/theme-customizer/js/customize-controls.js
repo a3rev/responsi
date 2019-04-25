@@ -88,9 +88,13 @@
 			} else {
 				$('#' + groupID + ' .header-widgets-logic').show();
 			}
+
+
 			$('#' + groupID + ' .header-widgets-logic .responsi-imulticheckbox-item').hide();
+			$('#' + groupID + ' .header-animation').hide();
 			for (var i = 1; i <= widget_num; i++) {
 				$('#' + groupID + ' .imulticheckbox-' + i).show();
+				$('#' + groupID + ' .header-animation-' + i).show();
 			}
 
 			//Sidebar Widget Mobile
@@ -103,11 +107,18 @@
 
 			//Footer Mobile
 			var footer_widget_logical = $('#' + groupID + ' .footer_widget_logical').find('input:checked').val();
+
 			if (footer_widget_logical == 0) {
 				$('#' + groupID + ' .footer-widgets-logic').hide();
 			} else {
 				$('#' + groupID + ' .footer-widgets-logic').show();
+				$('#' + groupID + ' .footer-animation').hide();
+				for (var i = 1; i <= footer_widget_logical; i++) {
+					$('#' + groupID + ' .footer-animation-' + i).show();
+				}
 			}
+
+			
 
 			//Logic Comments
 			var responsi_comments = $('input[name="responsi_comments"]:checked');
@@ -306,8 +317,11 @@
 					$('.header-widgets-logic').slideDown();
 				}
 				$('.header-widgets-logic .responsi-imulticheckbox-item').hide();
+				$('.header-animation').hide();
+	
 				for (var i = 1; i <= w_num; i++) {
 					$('.imulticheckbox-' + i).slideDown();
+					$('.header-animation-' + i).slideDown();
 				}
 			});
 
@@ -324,10 +338,15 @@
 			//Footer Mobile
 			$(document).on('click', '.footer_widget_logical img.responsi-radio-img-img', function() {
 				var footer_widget_logical = $(this).parent().parent('.customize-control-container').find('input:checked').val();
+			
 				if (footer_widget_logical == 0) {
 					$('.footer-widgets-logic').slideUp();
 				} else {
 					$('.footer-widgets-logic').slideDown();
+					$('.footer-animation').hide();
+					for (var i = 1; i <= footer_widget_logical; i++) {
+						$('.footer-animation-' + i).show();
+					}
 				}
 			});
 
@@ -1874,6 +1893,159 @@
 
 	});
 
+	api.Customize_Animation_Control = api.Control.extend({
+		ready: function() {
+
+			var control = this,
+				sectionContainer = api.sectionContainer( this );
+
+			sectionContainer.on('expanded', function( event ) {
+
+				event.preventDefault();
+
+				var type_select = control.container.find('select.responsi-animation-type'),
+				direction_select = control.container.find('select.responsi-animation-direction'),
+				
+				min_duration = parseInt(_wpCustomAnimationControl.duration.min),
+				max_duration = parseInt(_wpCustomAnimationControl.duration.max),
+				step_duration = parseInt(_wpCustomAnimationControl.duration.step),
+				ui_slide_input_duration = control.container.find('.islide-value-duration'),
+				ui_slide_duration = control.container.find('.ui-slide-duration'),
+
+				min_delay = parseInt(_wpCustomAnimationControl.delay.min),
+				max_delay = parseInt(_wpCustomAnimationControl.delay.max),
+				step_delay = parseInt(_wpCustomAnimationControl.delay.step),
+				ui_slide_input_delay = control.container.find('.islide-value-delay'),
+				ui_slide_delay = control.container.find('.ui-slide-delay'),
+				
+				type = control.params.values.type,
+				direction = control.params.values.direction,
+				duration = parseInt(control.params.values.duration),
+				delay = parseInt(control.params.values.delay);
+
+				if (!control.container.hasClass('applied_animation')) {
+					control.container.addClass('applied_animation');
+
+					if (type !== 'none') {
+						control.container.find('.animation-inner-container').show();
+					} else {
+						control.container.find('.animation-inner-container').hide();
+					}
+
+					if ( type === 'bounce' || type === 'fade' || type === 'slide'  || type === 'zoom' ) {
+						control.container.find('.responsi-direction-container').show();
+					}else{
+						control.container.find('.responsi-direction-container').hide();
+					}
+
+					_.each(_wpCustomAnimationControl.type, function(type, index) {
+						type_selected = '';
+
+						if (index == control.params.values.type) {
+							type_selected = 'selected="select"';
+						}
+						
+						type_select.append('<option value="' + index + '" ' + type_selected + '>' + type + '</option>');
+					});
+
+					_.each(_wpCustomAnimationControl.direction, function(direction, index) {
+						var direction_selected = '',
+						disable_option = '';
+						
+						if ( type === 'slide' && index == '' ) {
+							disable_option = 'disabled="true"';
+							if( control.params.values.direction == '' ){
+								control.settings[control.id + '[direction]'].set('left');
+								control.params.values.direction = 'left';
+							}
+						}
+
+						if (index == control.params.values.direction) {
+							direction_selected = 'selected="select"';
+						}
+
+						direction_select.append('<option value="' + index + '" ' + direction_selected + ' ' + disable_option + '>' + direction + '</option>');
+					});
+
+					type_select.on('change', function( event ) {
+						if( 'undefined' !== typeof control.settings[control.id + '[type]'] ){
+
+							var change_value = $(this).val();
+
+							if ( change_value === 'slide' ) {
+
+								direction_select.find('option[value=""]').attr('disabled','true').removeAttr('selected');
+
+								if( control.params.values.direction == '' ){
+									control.settings[control.id + '[direction]'].set('left');
+									control.params.values.direction = 'left';
+								}
+							
+							}else{
+								direction_select.find('option[value=""]').removeAttr('disabled');
+							}
+
+							if (change_value !== 'none' ) {
+								control.container.find('.animation-inner-container').show();
+							} else {
+								control.container.find('.animation-inner-container').hide();
+							}
+
+							if ( change_value === 'bounce' || change_value === 'fade' || change_value === 'slide'  || change_value === 'zoom' ) {
+								control.container.find('.responsi-direction-container').show();
+							}else{
+								control.container.find('.responsi-direction-container').hide();
+							}
+
+							control.settings[control.id + '[type]'].set(change_value);
+						}
+					});
+
+					direction_select.on('change', function( event ) {
+						if( 'undefined' !== typeof control.settings[control.id + '[direction]'] ){
+							control.settings[control.id + '[direction]'].set($(this).val());
+						}
+					});
+
+					ui_slide_duration.slider({
+						isRTL: true,
+						range: "min",
+						min: min_duration,
+						max: max_duration,
+						value: duration,
+						step: step_duration,
+						slide: function(event, ui) {
+							ui_slide_input_duration.val(ui.value).trigger('keyup');
+						},
+						change: function(event, ui) {
+							if( 'undefined' !== typeof control.settings[control.id + '[duration]'] ){
+								control.settings[control.id + '[duration]'].set(ui.value);
+							}
+						}
+					});
+
+					ui_slide_delay.slider({
+						isRTL: true,
+						range: "min",
+						min: min_delay,
+						max: max_delay,
+						value: delay,
+						step: step_delay,
+						slide: function(event, ui) {
+							ui_slide_input_delay.val(ui.value).trigger('keyup');
+						},
+						change: function(event, ui) {
+							if( 'undefined' !== typeof control.settings[control.id + '[delay]'] ){
+								control.settings[control.id + '[delay]'].set(ui.value);
+							}
+						}
+					});
+
+				}
+			});
+		}
+	});
+
 	api.Customize_iUpload_Control = api.ImageControl.extend({
 
 		select: function() {
@@ -2198,6 +2370,10 @@
 				var control;
 			
 				switch( data.type ) {
+
+					case 'animation':
+				        control = new api.Customize_Animation_Control( id, options );
+				        break;
 				    
 				    case 'typography':
 				        control = new api.Customize_Typography_Control( id, options );

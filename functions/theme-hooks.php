@@ -21,6 +21,8 @@ function responsi_register_styles( $styles ){
 	global $responsi_version;
 	$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 	$group_styles = array();
+
+    $styles->add( 'animate', get_template_directory_uri() . '/functions/css/animate/animate.min.css', array(), $responsi_version, 'screen' );    
     $styles->add( 'responsi-custom-fields', get_template_directory_uri() . '/functions/css/custom-fields'.$suffix.'.css', array(), $responsi_version, 'screen' );
     $styles->add( 'responsi-custom-fields-rtl', get_template_directory_uri() . '/functions/css/custom-fields.rtl'.$suffix.'.css', array(), $responsi_version, 'screen' );
     $styles->add( 'responsi-icon', get_template_directory_uri() . '/functions/css/responsi-icon'.$suffix.'.css', array(), $responsi_version, 'screen' );
@@ -31,6 +33,7 @@ function responsi_register_styles( $styles ){
 	    $styles->add( 'responsi-theme', get_bloginfo('stylesheet_url'), array( 'responsi-framework' ), $responsi_version, 'screen' );
 	}
 }
+
 
 add_action( 'wp_default_styles', 'responsi_register_styles', 1 );
 
@@ -61,6 +64,7 @@ if ( !function_exists( 'responsi_load_styles' ) ){
         wp_enqueue_style( 'responsi-layout' );
         wp_enqueue_style( 'responsi-framework' );
         wp_enqueue_style( 'responsi-theme' );
+        wp_enqueue_style( 'animate' );
 
         // Load the dark colorscheme.
 		if ( 'dark' === get_theme_mod( 'colorscheme', 'light' ) || is_customize_preview() ) {
@@ -81,6 +85,8 @@ add_action( 'wp_head', 'responsi_load_styles', 0 );
 function responsi_framework_default_scripts( &$scripts ){
 	global $responsi_version;
 	$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+    $scripts->add( 'waypoints', get_template_directory_uri() . '/functions/js/waypoints/jquery.waypoints.min.js', array('jquery' ), $responsi_version, true );
+	$scripts->add( 'a3-blockpress-animation', get_template_directory_uri() . '/functions/js/front/js/animation-on-scroll.js', array('waypoints' ), $responsi_version, true );
 	$scripts->add( 'responsi-mobile-custom', get_template_directory_uri() . '/functions/js/jquery.mobile.custom'.$suffix.'.js', array('jquery' ), $responsi_version, true );
 	$scripts->add( 'responsi-custom-fields', get_template_directory_uri() . '/functions/js/custom-fields'.$suffix.'.js', array( 'jquery', 'jquery-ui-tabs' ), $responsi_version, true );
 	$scripts->add( 'responsi-main-script', get_template_directory_uri() . '/functions/js/jquery.responsi'.$suffix.'.js', array('jquery', 'responsi-mobile-custom' ), $responsi_version, true );
@@ -100,6 +106,7 @@ if ( ! function_exists( 'responsi_load_javascript' ) ){
 		wp_enqueue_script( 'responsi-main-script' );
 		wp_enqueue_script( 'jquery-masonry' );
         wp_enqueue_script( 'responsi-infinitescroll' );
+        wp_enqueue_script( 'a3-blockpress-animation' );
         $responsi_paramaters =  array(
         	'responsi_is_customized'        	=> is_customize_preview() ? true : false,
         	'responsi_is_search'        		=> is_search() ? true : false,

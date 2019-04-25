@@ -371,6 +371,28 @@ var typebg = ['onoff', 'color'];
             }
 
             return mps;
+        },
+
+        build_animation: function( container, option_name ){
+        
+            var _container = $('body').find(container),
+            type = wp.customize.value(option_name+'[type]')(),
+            duration = wp.customize.value(option_name+'[duration]')(),
+            delay = wp.customize.value(option_name+'[delay]')(),
+            direction = wp.customize.value(option_name+'[direction]')(),
+            old_type = _container.data('animation'),
+            animationHaveDirection = [ 'bounce', 'fade', 'slide', 'zoom' ],
+            animation_type = ( animationHaveDirection.indexOf( type ) > -1 ) ? type+'In'+direction.charAt( 0 ).toUpperCase() + direction.substring( 1 ): type;
+            if( 'slide' === type && direction === '' ){
+                animation_type = type+'InLeft';
+            }
+            _container.attr( 'style', 'animation-delay:'+delay+'s;animation-duration:'+duration+'s');
+            _container.removeClass(old_type).data('animation', animation_type ).addClass( animation_type );
+
+            setTimeout(function(){
+                scrollWaypointInit(_container);
+            },10);
+
         }
     };
 
@@ -378,6 +400,7 @@ var typebg = ['onoff', 'color'];
         wp.customize.selectiveRefresh.bind( 'partial-content-rendered', function( placement ) {
             $(window).trigger('load');
             $(document).trigger('responsi-partial-content-rendered');
+            scrollWaypointInit(jQuery(".animateMe"));
         } );
     }
 

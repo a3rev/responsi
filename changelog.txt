@@ -1,5 +1,13 @@
 *** Responsi Framework Changelog ***
 
+= 7.2.0 - 2019/04/25 =
+* Feature - Add new Controls Animation
+* Feature - Add animation for Header Widgets
+* Feature - Add animation for Sidebar Widgets
+* Feature - Add animation for Footer Widgets
+* Feature - Add animation for Footer
+* Tweak - Tested for compatibility with WordPress 5.1 +
+
 = 7.1.1 - 2019/04/01 =
 * This maintenance update is for compatibility with WordPress Major version 5.1 + plus a customizer menu bug fix when using blank child theme.
 * Tweak - Tested for compatibility with WordPress 5.1 +

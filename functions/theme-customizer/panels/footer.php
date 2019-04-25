@@ -1673,6 +1673,23 @@ class Responsi_Customize_Footer
 			)
 		);
 
+		$footer_controls_settings['responsi_additional_animation'] = array(
+			'control' => array(
+			    'label' => __('Animation', 'responsi'),
+			    'section'    => 'footer_cusstom_content',
+			    'settings'   => 'multiple',
+			    'type'       => 'animation',
+			    'input_attrs' => array(
+			    	'class' => 'hide'
+		        )
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_additional_animation']) ? $responsi_options['responsi_additional_animation'] : array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1'),
+			    'sanitize_callback' => 'responsi_sanitize_animation',
+			    'transport'	=> 'postMessage'
+			)
+		);
+
 		$footer_controls_settings['lbfooter11'] = array(
 			'control' => array(
 			    'label'      => __('Footer - Content Font', 'responsi'),
@@ -1765,12 +1782,29 @@ class Responsi_Customize_Footer
 			    'settings'   => 'responsi_footer_left_text',
 			    'type'       => 'itext',
 			    'input_attrs' => array(
-			    	'class' => 'hide last'
+			    	'class' => 'hide'
 		        )
 			),
 			'setting' => array(
 			    'default'		=> isset($responsi_options['responsi_footer_left_text']) ? $responsi_options['responsi_footer_left_text'] : 'Content &copy; '.date( 'Y' ).' to Business Owners name',
 			    'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
+
+		$footer_controls_settings['responsi_footer_left_animation'] = array(
+			'control' => array(
+			    'label' => __('Animation', 'responsi'),
+			    'section'    => 'footer_content',
+			    'settings'   => 'multiple',
+			    'type'       => 'animation',
+			    'input_attrs' => array(
+			    	'class' => 'hide last'
+		        )
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_footer_left_animation']) ? $responsi_options['responsi_footer_left_animation'] : array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1'),
+			    'sanitize_callback' => 'responsi_sanitize_animation',
+			    'transport'	=> 'postMessage'
 			)
 		);
 
@@ -1964,6 +1998,21 @@ class Responsi_Customize_Footer
 			    'transport'	=> 'postMessage'
 			)
 		);
+
+		$footer_controls_settings['responsi_footer_link_animation'] = array(
+			'control' => array(
+			    'label' => __('Animation', 'responsi'),
+			    'section'    => 'footer_content',
+			    'settings'   => 'multiple',
+			    'type'       => 'animation',
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_footer_link_animation']) ? $responsi_options['responsi_footer_link_animation'] : array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1'),
+			    'sanitize_callback' => 'responsi_sanitize_animation',
+			    'transport'	=> 'postMessage'
+			)
+		);
+
 		$footer_controls_settings = apply_filters( 'responsi_footer_controls_settings', $footer_controls_settings );
 		$controls_settings = array_merge($controls_settings, $footer_controls_settings);
 		return  $controls_settings ;

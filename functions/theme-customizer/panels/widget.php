@@ -412,6 +412,21 @@ class Responsi_Customize_Widget_Sidebar
 			    'transport'	=> 'postMessage',
 			)
 		);
+
+        $widget_controls_settings['responsi_widget_animation'] = array(
+            'control' => array(
+                'label' => __('Animation ', 'responsi'),
+                'section'    => 'widget_settings',
+                'settings'   => 'multiple',
+                'type'       => 'animation',
+            ),
+            'setting' => array(
+                'default'       => isset($responsi_options['responsi_widget_animation']) ? $responsi_options['responsi_widget_animation'] : array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1'),
+                'sanitize_callback' => 'responsi_sanitize_animation',
+                'transport' => 'postMessage'
+            )
+        );
+
 		$widget_controls_settings['lbwidget3'] = array(
 			'control' => array(
 			    'label'      => __('Widget Title Font', 'responsi'),

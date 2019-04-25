@@ -862,7 +862,20 @@ if ( !function_exists( 'responsi_build_copyright' ) ) {
         $output   = '';
 
         if ( 'true' === $responsi_options['responsi_footer_left'] && '' !== trim( $responsi_options['responsi_footer_left_text'] ) ) {
-            $output = sprintf('%1$s%3$s%2$s', $atts['before'], $atts['after'], wpautop( strip_tags($responsi_options['responsi_footer_left_text']) ) );
+            
+            $footer_copyright_animation = responsi_generate_animation($responsi_options['responsi_footer_left_animation']);
+
+            $footer_copyright_class = '';
+            $footer_copyright_data = '';
+            $footer_copyright_style = '';
+
+            if( false !== $footer_copyright_animation ){
+                $footer_copyright_class = ' '.$footer_copyright_animation['class'];
+                $footer_copyright_data = ' data-animation="'.$footer_copyright_animation['data'].'"';
+                $footer_copyright_style = ' style="'.$footer_copyright_animation['style'].'"';
+            }
+
+            $output = '<div id="footer_copyright_animation" class="clearfix'.$footer_copyright_class.'"'.$footer_copyright_data . $footer_copyright_style.'>'.sprintf('%1$s%3$s%2$s', $atts['before'], $atts['after'], wpautop( strip_tags($responsi_options['responsi_footer_left_text']) ) ).'</div>';
         }
 
         return apply_filters( 'responsi_build_copyright', $output, $atts );
@@ -890,10 +903,25 @@ if ( !function_exists( 'responsi_build_additional' ) ) {
         );
 
         $atts     = array_merge( $defaults, $atts );
-        $output   = '';
 
+        $additional_animation = responsi_generate_animation($responsi_options['responsi_additional_animation']);
+
+        $additional_class = '';
+        $additional_data = '';
+        $additional_style = '';
+
+        if( false !== $additional_animation ){
+            $additional_class = ' '.$additional_animation['class'];
+            $additional_data = ' data-animation="'.$additional_animation['data'].'"';
+            $additional_style = ' style="'.$additional_animation['style'].'"';
+        }
+
+        $output   = '';
+        
         if( isset( $responsi_options['responsi_footer_below']) && 'true' === $responsi_options['responsi_footer_below'] ){
-            $output = sprintf('%1$s%3$s%2$s', $atts['before'], $atts['after'], do_shortcode(apply_filters( 'a3_lazy_load_html', wpautop(responsi_autoembed_media($responsi_options['responsi_footer_below_text'])))));
+            $output     .= '<div id="additional_animation" class="clearfix'.$additional_class.'"'.$additional_data . $additional_style.'>';
+            $output     .= sprintf('%1$s%3$s%2$s', $atts['before'], $atts['after'], do_shortcode(apply_filters( 'a3_lazy_load_html', wpautop(responsi_autoembed_media($responsi_options['responsi_footer_below_text'])))));
+            $output     .= '</div>';
         }
         return apply_filters( 'responsi_build_additional', $output, $atts );
 
@@ -971,6 +999,25 @@ if ( !function_exists( 'responsi_build_credit' ) ) {
         $html .= $loginout;
 
         $output = sprintf( '%1$s%3$s%2$s', $atts['before'], $atts['after'], $html );
+
+        if( '' !== $output && isset($responsi_options['responsi_footer_link_animation']) ){
+        
+            $footer_credit_animation = responsi_generate_animation($responsi_options['responsi_footer_link_animation']);
+
+            $footer_credit_class = '';
+            $footer_credit_data = '';
+            $footer_credit_style = '';
+
+            if( false !== $footer_credit_animation ){
+                $footer_credit_class = ' '.$footer_credit_animation['class'];
+                $footer_credit_data = ' data-animation="'.$footer_credit_animation['data'].'"';
+                $footer_credit_style = ' style="'.$footer_credit_animation['style'].'"';
+            }
+
+            $output_footer_credit = '<div id="footer_credit_animation" class="clearfix'.$footer_credit_class.'"'.$footer_credit_data . $footer_credit_style.'>'.$output.'</div>';
+            $output = $output_footer_credit;
+
+        }
 
         return apply_filters( 'responsi_build_credit', $output, $atts );
     }
@@ -1135,7 +1182,7 @@ function responsi_archive_post_date()
     if ( is_array($responsi_options) && isset($responsi_options['responsi_enable_post_date_blog']) && 'true' === $responsi_options['responsi_enable_post_date_blog'] ) {
         ?>
         <div class="blogpostinfo"><span class="i_date date published time"><?php the_time('M j, Y'); ?></span> </div>
-       <?php
+        <?php
     }
 }
 
@@ -1325,21 +1372,56 @@ if ( !function_exists( 'responsi_wrapper_header_content' ) ) {
                 if ( 1 === $i ) {
                     if ( responsi_active_sidebar( 'header-' . $i ) ) {
                         ?>
-                    <div class="box<?php echo esc_attr( $box_last ); ?> col-item header-widget-<?php echo $i; ?>"><?php  responsi_dynamic_sidebar('header-' . $i); ?></div>
+                    <div class="box<?php echo esc_attr( $box_last ); ?> col-item header-widget-<?php echo $i; ?>">
+
+                        <?php
+                        $header_animation = responsi_generate_animation($responsi_options['responsi_header_animation_'.$i]);
+                        $header_class = '';
+                        $header_data = '';
+                        $header_style = '';
+
+                        if( false !== $header_animation ){
+                            $header_class = ' '.$header_animation['class'];
+                            $header_data = ' data-animation="'.$header_animation['data'].'"';
+                            $header_style = ' style="'.$header_animation['style'].'"';
+                        }
+
+                        echo '<div id="header_animation_'.$i.'" class="clearfix'.$header_class.'"'.$header_data . $header_style.'>';
+                   
+                        ?>
+
+                        <?php  responsi_dynamic_sidebar('header-' . $i); ?>
+                            
+                        <?php echo '</div>';?>    
+
+                        </div>
                         <?php
                     } else {
                         ?>
                     <div class="box<?php echo esc_attr( $box_last ); ?> col-item header-widget-1">
-                        <div class="widget widget_text">
                         <?php
-                        echo '<div class="site-logo-container">';
-                        responsi_site_logo();
-                        echo '</div>';
-                        echo '<div class="site-description-container">';
-                        responsi_site_description();
-                         echo '</div>';
+                        $header_animation = responsi_generate_animation($responsi_options['responsi_header_animation_1']);
+                        $header_class = '';
+                        $header_data = '';
+                        $header_style = '';
+                        if( false !== $header_animation ){
+                            $header_class = ' '.$header_animation['class'];
+                            $header_data = ' data-animation="'.$header_animation['data'].'"';
+                            $header_style = ' style="'.$header_animation['style'].'"';
+                        }
+                        echo '<div id="header_animation_1" class="clearfix'.$header_class.'"'.$header_data . $header_style.'>';
                         ?>
-                        </div>
+                            <div class="widget widget_text">
+                                <?php
+                                echo '<div class="site-logo-container">';
+                                responsi_site_logo();
+                                echo '</div>';
+                                echo '<div class="site-description-container">';
+                                responsi_site_description();
+                                echo '</div>';
+                                ?>
+                            </div>
+                        <?php echo '</div>';?>    
                     </div>
                         <?php
 
@@ -1348,7 +1430,20 @@ if ( !function_exists( 'responsi_wrapper_header_content' ) ) {
                     if ( responsi_active_sidebar( 'header-' . $i ) ) {
                         ?>
                         <div class="box<?php echo esc_attr( $box_last ); ?> col-item header-widget-<?php echo $i; ?> shiftclick_container">
+                        <?php
+                        $header_animation = responsi_generate_animation($responsi_options['responsi_header_animation_'.$i]);
+                        $header_class = '';
+                        $header_data = '';
+                        $header_style = '';
+                        if( false !== $header_animation ){
+                            $header_class = ' '.$header_animation['class'];
+                            $header_data = ' data-animation="'.$header_animation['data'].'"';
+                            $header_style = ' style="'.$header_animation['style'].'"';
+                        }
+                        echo '<div id="header_animation_'.$i.'" class="clearfix'.$header_class.'"'.$header_data . $header_style.'>';
+                        ?>
                         <?php responsi_dynamic_sidebar( 'header-' . $i ); ?>
+                        <?php echo '</div>';?> 
                         <?php echo $shiftclick; ?>
                         </div>
                         <?php
@@ -1368,19 +1463,32 @@ if ( !function_exists( 'responsi_wrapper_header_content' ) ) {
             <header id="header" class="clearfix col-full col-1">
             <?php do_action( 'responsi_header_widget_before' ); ?>
                 <div class="clear"></div>
-                    <div class="box box-last col-item  header-widget-1">
+                <div class="box box-last col-item  header-widget-1">
+                    <?php
+                    $header_animation = responsi_generate_animation($responsi_options['responsi_header_animation_1']);
+                    $header_class = '';
+                    $header_data = '';
+                    $header_style = '';
+                    if( false !== $header_animation ){
+                        $header_class = ' '.$header_animation['class'];
+                        $header_data = ' data-animation="'.$header_animation['data'].'"';
+                        $header_style = ' style="'.$header_animation['style'].'"';
+                    }
+                    echo '<div id="header_animation_1" class="clearfix'.$header_class.'"'.$header_data . $header_style.'>';
+                    ?>
                         <div class="widget widget_text">
-                        <?php
-                        echo '<div class="site-logo-container">';
-                        responsi_site_logo();
-                        echo '</div>';
-                        echo '<div class="site-description-container">';
-                        responsi_site_description();
-                        echo '</div>';
-                        ?>
-                    </div>
+                            <?php
+                            echo '<div class="site-logo-container">';
+                            responsi_site_logo();
+                            echo '</div>';
+                            echo '<div class="site-description-container">';
+                            responsi_site_description();
+                            echo '</div>';
+                            ?>
+                        </div>
+                    <?php echo '</div>';?> 
                 </div>
-              <div class="clear"></div>
+                <div class="clear"></div>
             <?php do_action( 'responsi_header_widget_after' ); ?>
             </header>
             <div class="clear"></div>
@@ -1554,7 +1662,21 @@ if ( !function_exists( 'responsi_footer_sidebars' ) ) {
                     if ( responsi_active_sidebar( 'footer-' . $i ) ) {
                         ?>
                     <div class="box<?php echo esc_attr( $box_last );?> col-item footer-widget-<?php echo $i; ?> shiftclick_container">
+                    
+                    <?php
+                    $footer_animation = responsi_generate_animation($responsi_options['responsi_footer_animation_'.$i]);
+                    $footer_class = '';
+                    $footer_data = '';
+                    $footer_style = '';
+                    if( false !== $footer_animation ){
+                        $footer_class = ' '.$footer_animation['class'];
+                        $footer_data = ' data-animation="'.$footer_animation['data'].'"';
+                        $footer_style = ' style="'.$footer_animation['style'].'"';
+                    }
+                    echo '<div id="footer_animation_'.$i.'" class="clearfix'.$footer_class.'"'.$footer_data . $footer_style.'>';
+                    ?>
                     <?php responsi_dynamic_sidebar( 'footer-' . $i ); ?>
+                    <?php echo '</div>';?>
                     <?php echo $shiftclick; ?>
                     </div>
                     <?php
@@ -2217,6 +2339,24 @@ if ( ! function_exists( 'responsi_sanitize_typography' ) ) {
             }elseif( 'color' === $keys[1] ){
                 return sanitize_hex_color( $value );
             }
+        }
+    }
+}
+
+if ( ! function_exists( 'responsi_sanitize_animation' ) ) {
+    function responsi_sanitize_animation( $value, $setting ) {
+        $keys = preg_split( '/\[/', str_replace( ']', '', $setting->id ) );
+        if ( is_array($keys) && count($keys) > 0 && isset($keys[1]) ){
+            if( 'type' === $keys[1] ){
+                return sanitize_text_field( $value );
+            }elseif( 'direction' === $keys[1] ){
+                return sanitize_text_field( $value );
+            }elseif( 'duration' === $keys[1] ){
+                return sanitize_text_field( $value );
+            }elseif( 'delay' === $keys[1] ){
+                return sanitize_text_field( $value );
+            }
+            
         }
     }
 }
