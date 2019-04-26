@@ -327,7 +327,7 @@ if ( !function_exists( 'responsi_header' ) ) {
         <?php do_action( 'responsi_head' ); ?>
         <?php wp_head(); ?>
         </head>
-        <body <?php body_class(); ?>>
+        <body <?php body_class(); ?> <?php wp_body_open();?>>
         <?php do_action( 'responsi_wrapper_container_before' ); ?>
         <div id="wrapper-container" class="site-container clearfix">
         <?php do_action( 'responsi_wrapper_container_content_before' ); ?>
