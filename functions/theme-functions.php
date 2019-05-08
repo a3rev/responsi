@@ -2158,6 +2158,54 @@ if ( !function_exists( 'responsi_custom_comment' ) ) {
     }
 }
 
+/*-----------------------------------------------------------------------------------*/
+/* responsi_animation_html_open(). */
+/*-----------------------------------------------------------------------------------*/
+
+if ( !function_exists( 'responsi_blog_animation_html_open' ) ) {
+    function responsi_blog_animation_html_open(){
+
+        global $is_blog_template;
+
+        //if( is_category() || $is_blog_template || is_archive() ){
+
+            global $responsi_blog_animation;
+
+            $html = '';
+
+            $animation_class = '';
+            $animation_data = '';
+            $animation_style = '';
+
+            if( false !== $responsi_blog_animation ){
+                $animation_class = ' '.$responsi_blog_animation['class'];
+                $animation_data = ' data-animation="'.$responsi_blog_animation['data'].'"';
+                $animation_style = ' style="'.$responsi_blog_animation['style'].'"';
+            }
+
+            $html = '<div class="clearfix'.$animation_class.'"'.$animation_data . $animation_style.'>';        
+            
+            echo $html;
+        //}
+    }
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* responsi_animation_html_close(). */
+/*-----------------------------------------------------------------------------------*/
+
+if ( !function_exists( 'responsi_blog_animation_html_close' ) ) {
+    function responsi_blog_animation_html_close(){
+        global $is_blog_template;
+
+        //if( is_category() || $is_blog_template || is_archive() ){
+            $html = '</div>';
+            echo $html;
+       //}
+    }
+}
+
+
 if ( ! function_exists( 'responsi_list_pings' ) ) {
     function responsi_list_pings( $comment, $args, $depth ) {
 

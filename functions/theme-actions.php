@@ -66,6 +66,8 @@ add_action( 'responsi_wrapper_header_content', 'responsi_wrapper_header_content'
 add_action( 'responsi_post_meta', 'responsi_single_post_meta' );
 add_action( 'responsi_post_after', 'responsi_comments_template' );
 add_action( 'responsi_blog_item_content_before', 'responsi_blog_item_content_shiftclick', 10 );
+add_action( 'responsi_blog_item_before', 'responsi_blog_animation_html_open', 1 );
+add_action( 'responsi_blog_item_after', 'responsi_blog_animation_html_close', 99 );
 add_action( 'responsi_archive_post_title_item_after', 'responsi_archive_post_date');
 add_action( 'responsi_single_post_content_after', 'responsi_single_post_meta_categories_default', 10 );
 add_action( 'responsi_single_post_content_after', 'responsi_single_post_meta_tags_default', 10 );

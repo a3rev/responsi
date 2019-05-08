@@ -340,5 +340,64 @@
             $(window).trigger('resize');
         });
     });
+
+    function build_animation_blog( container, option_name ){
+        
+        var _container = $('body').find(container),
+        type = wp.customize.value(option_name+'[type]')(),
+        duration = wp.customize.value(option_name+'[duration]')(),
+        delay = wp.customize.value(option_name+'[delay]')(),
+        direction = wp.customize.value(option_name+'[direction]')(),
+        old_type = _container.data('animation'),
+        animationHaveDirection = [ 'bounce', 'fade', 'slide', 'zoom' ],
+        animation_type = ( animationHaveDirection.indexOf( type ) > -1 ) ? type+'In'+direction.charAt( 0 ).toUpperCase() + direction.substring( 1 ): type;
+        if( 'slide' === type && direction === '' ){
+            animation_type = type+'InLeft';
+        }
+
+        _container.attr('class','animateMe').attr('data',animation_type);
+
+        setTimeout(function(){
+            _container.attr( 'style', 'animation-delay:'+delay+'s;animation-duration:'+duration+'s');
+            _container.removeClass(old_type).addClass( animation_type ).data('animation', animation_type );
+        },10);
+        
+
+        setTimeout(function(){
+            scrollWaypointInit(_container);
+        },50);
+
+    }
+
+    var responsi_blog_animation = {
+        'responsi_blog_animation' : '.box-content .blog-post .animateMe',
+    };
+
+    $.each( responsi_blog_animation, function(inx, val) {
+
+        wp.customize(inx+'[type]', function(value) {
+            value.bind(function(to) {
+                build_animation_blog( val,inx );
+            });
+        });
+
+        wp.customize(inx+'[duration]', function(value) {
+            value.bind(function(to) {
+                build_animation_blog( val,inx );
+            });
+        });
+
+        wp.customize(inx+'[delay]', function(value) {
+            value.bind(function(to) {
+                build_animation_blog( val,inx );
+            });
+        });
+
+        wp.customize(inx+'[direction]', function(value) {
+            value.bind(function(to) {
+                build_animation_blog( val,inx );
+            });
+        });
+    });
     
 } )( jQuery );

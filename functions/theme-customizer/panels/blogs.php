@@ -101,6 +101,22 @@ class Responsi_Customize_Blogs
 			    'transport'	=> 'postMessage'
 			)
 		);
+
+		$blogs_controls_settings['responsi_blog_animation'] = array(
+			'control' => array(
+			    'label' => __('Animation', 'responsi'),
+			    'section'    => 'blogs_layout',
+			    'settings'   => 'multiple',
+			    'type'       => 'animation',
+			    'input_attrs' => array(
+		        )
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_blog_animation']) ? $responsi_options['responsi_blog_animation'] : array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1'),
+			    'sanitize_callback' => 'responsi_sanitize_animation',
+			    'transport'	=> 'postMessage'
+			)
+		);
 		
 		$blogs_controls_settings['lbblog2'] = array(
 			'control' => array(

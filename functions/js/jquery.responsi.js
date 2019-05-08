@@ -1364,6 +1364,9 @@ jQuery(document).ready(function($) {
                 });
             }
         }
+
+        scrollWaypointInit(jQuery(".animateMe"));
+        
     });
 
     $(window).on('resize', function() {

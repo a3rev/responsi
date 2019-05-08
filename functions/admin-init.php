@@ -26,7 +26,8 @@ global $responsi_options,
     $sidebar_box, 
     $sidebar_alt_box,
     $wrapper_content, 
-    $wrapper_content_top;
+    $wrapper_content_top,
+    $blog_animation;
 
 /*-----------------------------------------------------------------------------------*/
 /* Google Webfonts */
@@ -902,7 +903,7 @@ function _blank_child_customize_options( $slug = '', $_customize_options = array
 
 function responsi_options()
 {
-    global $wp_customize, $responsi_options;
+    global $wp_customize, $responsi_options, $responsi_blog_animation;
 
     $responsi_default_options = responsi_default_options();
 
@@ -1030,8 +1031,14 @@ function responsi_options()
 
     $responsi_options = apply_filters( 'responsi_options_after', $responsi_options );
 
+    if( is_array($responsi_options) && isset($responsi_options['responsi_blog_animation']) ){
+        $responsi_blog_animation = responsi_generate_animation($responsi_options['responsi_blog_animation']);
+    }
+
     return $responsi_options;
 }
+
+
 
 add_action( 'init', 'responsi_options', 1 );
 add_action( 'widgets_init', 'responsi_options', 1 );

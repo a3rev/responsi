@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 7.3.0 - 2019/05/08 =
+* This feature update adds animation effects options for WordPress Blog Cards and Related post cards, plus full compatibility with WordPress major version 5.2
+* Feature - Add animation effects option for Blog Cards and related Post Cards
+* Tweak - Tested for compatibility with WordPress 5.2.0
+
 = 7.2.0 - 2019/04/26 =
 * This feature upgrade adds animation effects options for Header, footer and sidebars plus upgrade and Tweaks for WordPress Major version 5.2.0
 * Feature - Add animation effects option for Header Widgets
