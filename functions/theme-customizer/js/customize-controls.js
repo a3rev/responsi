@@ -1675,6 +1675,203 @@
 		}
 	});
 
+	api.Customize_Column_Control = api.Control.extend({
+		ready: function() {
+
+			var control = this,
+				sectionContainer = api.sectionContainer( this );
+			
+			sectionContainer.on('expanded', function( event ) {
+
+				event.preventDefault();
+
+				var column_val = control.params.values.col;
+
+				control.container.find('.column-item-input input[type="number"]').addClass('hide-col-inp');
+
+				_.each(control.params.choices, function(val, key) {
+
+					if( column_val != 1 ){
+						if( column_val >= key ){
+							control.container.find('.column-item-input input[type="number"].column-input-'+key ).removeClass('hide-col-inp');
+						}
+					}
+					
+				});
+
+				if (!control.container.hasClass('applied_column')) {
+					control.container.addClass('applied_column');
+
+					control.container.find('img.responsi-radio-img-img').each( function( index ) {
+						$(this).attr( 'src', $(this).data( 'src' ) );
+					});
+
+					control.container.find('img.responsi-radio-img-img').on('click', function( event ) {
+						$(this).parent('.column-item').siblings('.column-item').children('img.responsi-radio-img-img').removeClass('responsi-radio-img-selected');
+						$(this).addClass('responsi-radio-img-selected');
+						column_val = $(this).data('value');
+
+						control.container.find('.column-item-input').attr('class', 'column-item-input column-item-input'+column_val);
+						
+						_.each(control.params.choices, function(val, key) {
+
+							if( column_val != 1 ){
+								if( column_val >= key ){
+									control.container.find('.column-item-input input[type="number"].column-input-'+key ).removeClass('hide-col-inp');
+								}else{
+									control.container.find('.column-item-input input[type="number"].column-input-'+key ).addClass('hide-col-inp');
+								}
+							}else{
+								control.container.find('.column-item-input input[type="number"].responsi-input-input').addClass('hide-col-inp');
+							}
+
+						});
+
+					});
+
+					control.container.find('input.responsi-radio-img-radio').on('change', function( event ) {
+
+						var col = $(this).val();
+
+						if( control.params.validate){
+
+							if( col == 1 ){
+								//control.settings[control.id + '[col1]'].set('100');
+								control.container.find('.column-item-input input[type="number"].column-input-1' ).val(100).trigger('change');
+							}
+
+							if( col == 2 ){
+								//control.settings[control.id + '[col1]'].set('50');
+								control.container.find('.column-item-input input[type="number"].column-input-1' ).val(50).trigger('change');
+								//control.settings[control.id + '[col2]'].set('50');
+								control.container.find('.column-item-input input[type="number"].column-input-2' ).val(50).trigger('change');
+							}
+
+							if( col == 3 ){
+								//control.settings[control.id + '[col1]'].set('33');
+								control.container.find('.column-item-input input[type="number"].column-input-1' ).val(33).trigger('change');
+								//control.settings[control.id + '[col2]'].set('34');
+								control.container.find('.column-item-input input[type="number"].column-input-2' ).val(34).trigger('change');
+								//control.settings[control.id + '[col3]'].set('33');
+								control.container.find('.column-item-input input[type="number"].column-input-3' ).val(33).trigger('change');
+							}
+
+							if( col == 4 ){
+								//control.settings[control.id + '[col1]'].set('25');
+								control.container.find('.column-item-input input[type="number"].column-input-1' ).val(25).trigger('change');
+								//control.settings[control.id + '[col2]'].set('25');
+								control.container.find('.column-item-input input[type="number"].column-input-2' ).val(25).trigger('change');
+								//control.settings[control.id + '[col3]'].set('25');
+								control.container.find('.column-item-input input[type="number"].column-input-3' ).val(25).trigger('change');
+								//control.settings[control.id + '[col4]'].set('25');
+								control.container.find('.column-item-input input[type="number"].column-input-4' ).val(25).trigger('change');
+							}
+
+							if( col == 5 ){
+								//control.settings[control.id + '[col1]'].set('20');
+								control.container.find('.column-item-input input[type="number"].column-input-1' ).val(20).trigger('change');
+								//control.settings[control.id + '[col2]'].set('20');
+								control.container.find('.column-item-input input[type="number"].column-input-2' ).val(20).trigger('change');
+								//control.settings[control.id + '[col3]'].set('20');
+								control.container.find('.column-item-input input[type="number"].column-input-3' ).val(20).trigger('change');
+								//control.settings[control.id + '[col4]'].set('20');
+								control.container.find('.column-item-input input[type="number"].column-input-4' ).val(20).trigger('change');
+								//control.settings[control.id + '[col5]'].set('20');
+								control.container.find('.column-item-input input[type="number"].column-input-5' ).val(20).trigger('change');
+							}
+
+							if( col == 6 ){
+								//control.settings[control.id + '[col1]'].set('16.6666666');
+								control.container.find('.column-item-input input[type="number"].column-input-1' ).val(16.6666666).trigger('change');
+								//control.settings[control.id + '[col2]'].set('16.6666666');
+								control.container.find('.column-item-input input[type="number"].column-input-2' ).val(16.6666666).trigger('change');
+								//control.settings[control.id + '[col3]'].set('16.6666666');
+								control.container.find('.column-item-input input[type="number"].column-input-3' ).val(16.6666666).trigger('change');
+								//control.settings[control.id + '[col4]'].set('16.6666666');
+								control.container.find('.column-item-input input[type="number"].column-input-4' ).val(16.6666666).trigger('change');
+								//control.settings[control.id + '[col5]'].set('16.6666666');
+								control.container.find('.column-item-input input[type="number"].column-input-5' ).val(16.6666666).trigger('change');
+								//control.settings[control.id + '[col6]'].set('16.6666666');
+								control.container.find('.column-item-input input[type="number"].column-input-6' ).val(16.6666666).trigger('change');
+							}
+
+						}
+
+						control.settings[control.id + '[col]'].set(col);
+
+					});
+
+					if( control.params.validate ){
+
+						var total,
+						totalCol,
+						
+						min,
+						max,
+
+						current_id,
+						current_new_value,
+
+						next_id,
+						next_new_value;
+
+						control.container.find('.responsi-input-input').on('change keyup', function( event ) {
+
+							totalCol = control.container.find('.column-item input[type="radio"]:checked').val();
+							current_id = $(this).data('id');
+
+							if( totalCol == current_id ){
+								next_id = $(this).prev().data('id');
+							}else{
+								next_id = $(this).next().data('id');
+							}
+
+							current_new_value = $(this).val();
+
+							min = 1;
+							max = 100;
+
+							if( totalCol >= 1 ){
+								
+								for (var i = 1; i <= totalCol; i++) {
+									if( i != current_id && i != next_id ){
+										max = max - parseFloat(control.container.find('.column-input-'+i).val() );
+									}
+								}
+								
+							}
+
+							next_new_value = max - current_new_value;
+
+							total = parseFloat(next_new_value) + parseFloat(current_new_value);
+
+							if( current_new_value >= 1 && next_new_value >= 1 && total <= max ){
+								control.container.find('.column-input-'+next_id).val(next_new_value);
+								control.settings[control.id + '[col'+next_id+']'].set(next_new_value);
+								control.settings[control.id + '[col'+current_id+']'].set(current_new_value);
+							}else{
+								control.container.find('.column-input-'+current_id).val(control.settings[control.id + '[col'+current_id+']'].get('value'));
+							}
+							
+						});
+
+					}else{
+						control.container.find('.responsi-input-input').on('change keyup', function( event ) {
+							var key = $(this).data('id');
+							control.settings[control.id + '[col'+key+']'].set($(this).val());
+						});
+					}
+
+				}
+
+				
+
+			});
+
+		}
+
+	});
+
 	api.Customize_Layout_Control = api.Control.extend({
 		ready: function() {
 
@@ -2445,6 +2642,10 @@
 
 				    case 'layout':
 				        control = new api.Customize_Layout_Control( id, options );
+				        break;
+
+				    case 'column':
+				        control = new api.Customize_Column_Control( id, options );
 				        break;
 
 				    case 'ieditor':

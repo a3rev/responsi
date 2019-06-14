@@ -63,6 +63,22 @@ iframe .demo_store{display:none;}
 .customize-control-layout span.layout-item-1 img.responsi-radio-img-img{margin-right:0!important;}
 .customize-control-layout img.responsi-radio-img-img.responsi-radio-img-selected{border-color:#468be0!important;}
 
+/*Column*/
+.customize-control-column .hide-col-inp{display:none!important}
+.customize-control-column span input,.customize-control-column span > span{display:none;}
+.customize-control-column span.column-item{display:inline-block;float:left;}
+.customize-control-column img.responsi-radio-img-img{border:2px solid #d5d5d5;border-radius:3px;cursor:pointer;margin:0 0px 1px 1px;width:38px;display:block;}
+.customize-control-column span.column-item-1 img.responsi-radio-img-img{margin-left:0!important;}
+.customize-control-column img.responsi-radio-img-img.responsi-radio-img-selected{border-color:#468be0!important;}
+.customize-control-column .column-item-input{display:flex;clear:both;margin-top:2px;float:right;}
+.customize-control-column .column-item-input input{display:table-column;}
+.customize-control-column .column-item-input1 input{width:100%;}
+.customize-control-column .column-item-input2 input{width:129px;}
+.customize-control-column .column-item-input3 input{width:86px;}
+.customize-control-column .column-item-input4 input{width:64px;}
+.customize-control-column .column-item-input5 input{width:51px;}
+.customize-control-column .column-item-input6 input{width:43px;}
+
 /*iPhone Checker*/
 .iPhoneCheckContainer{margin-left:10px;margin-top:0!important}
 .iPhoneCheckContainer,.iOSCheckContainer{position:relative;height:24px;cursor:pointer;margin-left:0;float:right;margin:0 0px 3px 5px;}
@@ -159,7 +175,7 @@ li.ilabel3 .customize-control-container.ilabel{background-color:#fff;border-colo
 li.ilabel3 .customize-control-container.ilabel .customize-control-title{color:#009ee0;}
 .customize-control-ilabel .customize-control-description{font-style:normal;color:#666!important;font-size:11px;}
 .responsi-itextarea{min-height:100px;}
-.iselect-container select,.itext-container input,.itextarea-container .responsi-itextarea,.customize-control-text input{max-width:none!important;width:100%;box-sizing:border-box; margin-right: 0;margin-left: 0;}
+.iselect-container select,.itext-container input,.itextarea-container .responsi-itextarea,.customize-control-text input{max-width:none!important;width:100%;box-sizing:border-box;margin-right:0;margin-left:0;}
 
 /*TextEditor*/
 .ieditor-container{text-align:center;box-sizing:border-box;}
@@ -172,15 +188,15 @@ li.ilabel3 .customize-control-container.ilabel .customize-control-title{color:#0
 #wp-editor-customize-container .editor{margin:20px;}
 
 /*Animation*/
-.animation-container { }
-.animation-container select { margin-right: 0; margin-left: 0; }
-.animation-container .animation-inner-container:before, .animation-container .animation-inner-container:after { content: ""; display: block; clear: both; }
-.animation-container .animation-inner-container { padding: 8px; background-color: rgba(0, 0, 0, 0.05); border-radius: 5px; margin-top: 5px; }
-.animation-container .animation-inner-container label { font-size: 11px; display: block; clear: both; line-height: 1; padding-top: 7px; padding-bottom: 3px; }
-.animation-container .animation-inner-container label:first-child { padding-top: 0; }
-.animation-container .responsi-direction-container { }
-.animation-container .responsi-direction-container select { width: auto; }
-.animation-container .responsi-range-slider { }
+.animation-container{}
+.animation-container select{margin-right:0;margin-left:0;}
+.animation-container .animation-inner-container:before,.animation-container .animation-inner-container:after{content:"";display:block;clear:both;}
+.animation-container .animation-inner-container{padding:8px;background-color:rgba(0,0,0,0.05);border-radius:5px;margin-top:5px;}
+.animation-container .animation-inner-container label{font-size:11px;display:block;clear:both;line-height:1;padding-top:7px;padding-bottom:3px;}
+.animation-container .animation-inner-container label:first-child{padding-top:0;}
+.animation-container .responsi-direction-container{}
+.animation-container .responsi-direction-container select{width:auto;}
+.animation-container .responsi-range-slider{}
 
 /**
  * HiDPI Displays

@@ -64,8 +64,11 @@ jQuery.exists = function(selector) {
 };
 
 function responsi_header_height() {
-    var header_height = document.querySelector("#wrapper-top-fixed").offsetHeight;
-    document.querySelector("#wrapper-top-container").style.height = header_height + 'px';
+    var header_height = 0;
+    if( jQuery('#wrapper-top-fixed').length > 0 ){
+        header_height = document.querySelector("#wrapper-top-fixed").offsetHeight;
+        document.querySelector("#wrapper-top-container").style.height = header_height + 'px';
+    }
 }
 
 function browser() {

@@ -1505,7 +1505,7 @@ function responsi_wrapper_nav() {
     global $shiftclick;
     do_action( 'responsi_wrapper_nav_before' );
     ?>
-    <div id="wrapper-nav-content" class="clearfix">
+    <div id="wrapper-nav-content" class="wrapper-nav-content clearfix">
       <div id="wrapper-nav" class="site-width clearfix">
         <?php do_action( 'responsi_wrapper_nav_content' ); ?>
       </div>
@@ -2491,5 +2491,23 @@ if ( ! function_exists( 'responsi_sanitize_textarea_esc_html' ) ) {
         return $value;
     }
 }
+
+if ( ! function_exists( 'responsi_sanitize_columns' ) ) {
+    function responsi_sanitize_columns( $value, $setting ) {
+        $keys = preg_split( '/\[/', str_replace( ']', '', $setting->id ) );
+        if ( is_array($keys) && count($keys) > 0 && isset($keys[1]) ){
+            if( 'col' === $keys[1] ){
+                return sanitize_text_field( $value );
+            }else{
+                if ( is_numeric( $value ) ) {
+                    return sanitize_text_field( $value );
+                }else{
+                    return false;
+                }
+            }
+        }
+    }
+}
+
 
 ?>

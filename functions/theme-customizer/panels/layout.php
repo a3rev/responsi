@@ -61,6 +61,7 @@ class Responsi_Customize_Layout
 		}
 		
 		$layout_controls_settings = array();
+
 		$layout_controls_settings['lblayout1'] = array(
 			'control' => array(
 			    'label'      => __('Site Header', 'responsi'),

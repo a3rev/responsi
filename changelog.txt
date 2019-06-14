@@ -1,5 +1,15 @@
 *** Responsi Framework Changelog ***
 
+= 7.4.0 - 2019/06/14 =
+* This is a milestone feature release. We have built in a customizer menu control that enables the setting of custom column widths within a row. Content is added to columns via Widgets.
+* Enhancement - Add new Column width controls to Customizer menu.
+* Enhancement - Add up to 4 columns within a supported row
+* Enhancement - Use the new controls to set the width of the columns as a percentage of the full width
+* Enhancement - Selection of preset column layouts for Tablets
+* Enhancement - Selection of preset column layouts for mobile.
+* Note - This release coincides with the release of the Responsi Above Header Widgets plugin that adds a row above the header with 1 to 4 columns.
+* Roadmap - Rows with columns will be rolled out to other areas of the Framework including a new Row Header plugin, Footer widgets, Home Builder Template Home Widget row plus more to come.
+
 = 7.3.0 - 2019/05/08 =
 * This feature update adds animation effects options for WordPress Blog Cards and Related post cards, plus full compatibility with WordPress major version 5.2
 * Feature - Add animation effects option for Blog Cards and related Post Cards

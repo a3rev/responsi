@@ -105,6 +105,7 @@ final class Responsi_Customize {
 			'functions/theme-customizer/'.$controls_template.'/custom-box-shadow-control.php',
 			'functions/theme-customizer/'.$controls_template.'/custom-typography-control.php',
 			'functions/theme-customizer/'.$controls_template.'/custom-animation-control.php',
+			'functions/theme-customizer/'.$controls_template.'/custom-column-control.php',
 		);
 		$_custom_customizer_control = apply_filters( '_custom_customizer_control', $_custom_customizer_control );
 		foreach ( $_custom_customizer_control as $i ) {
@@ -154,6 +155,7 @@ final class Responsi_Customize {
 		$this->manager->register_control_type( 'Customize_Box_Shadow_Control' );
 		$this->manager->register_control_type( 'Customize_iEditor_Control' );
 		$this->manager->register_control_type( 'Customize_Animation_Control' );
+		$this->manager->register_control_type( 'Customize_Column_Control' );
 
 		//Register Panels
 		$panels = apply_filters( 'responsi_customize_register_panels', array() );
@@ -222,7 +224,7 @@ final class Responsi_Customize {
 
 					}elseif( isset($value['control']['settings']) && $value['control']['settings'] == 'multiple' ){
 
-						if( !is_array($value['setting']['default']) || count( $value['setting']['default']) <= 0 ){
+						if( !isset($value['setting']['default']) || !is_array($value['setting']['default']) || count( $value['setting']['default']) <= 0 ){
 							
 							switch ($value['control']['type']) {
 								case "ibackground":
@@ -246,10 +248,21 @@ final class Responsi_Customize {
 				                case "animation":
 				                    $value['setting']['default'] = array('type' => 'none','direction' => '', 'duration' => '1','delay' => '1');
 				                    break;
+				                case "column":
+				                	$columns =  array( 'col' => '1' );
+				                	if( isset( $value['control']['choices']) && is_array($value['control']['choices']) && count($value['control']['choices']) > 0 ){
+				                		$i = 0;
+				                		foreach ($value['control']['choices'] as $k => $val) {
+				                			$i++;
+				                			$columns['col'.$i] = round(100/count($value['control']['choices']));
+				                		}
+				                	}
+				                    $value['setting']['default'] = $columns;
+				                    break;
 				            }
 				        }
 
-						$value['control']['settings'] = $this->responsi_custom_control_settings( $key, $value['control']['type'] );
+						$value['control']['settings'] = $this->responsi_custom_control_settings( $key, $value['control']['type'], $value['control'] );
 
         				$setting = $value['setting'];
         				
@@ -327,7 +340,7 @@ final class Responsi_Customize {
 
 				if( isset($value['control']) ){
 					if( isset($value['control']['settings']) && $value['control']['settings'] == 'multiple' ){
-						$value['control']['settings'] = $this->responsi_custom_control_settings( $key, $value['control']['type'] );
+						$value['control']['settings'] = $this->responsi_custom_control_settings( $key, $value['control']['type'], $value['control'] );
 					}
 					if( isset($value['control']['settings']) && $value['control']['settings'] == 'multitext' ){
 						$value['control']['settings'] = $this->responsi_custom_control_settings( $key, $value['control']['type'], $value['control'] );
@@ -382,6 +395,9 @@ final class Responsi_Customize {
 					        break;
 					    case "animation":
 		                    $this->add_control( new Customize_Animation_Control( $this->manager, $key, $value['control']) );
+		                    break;
+		                case "column":
+		                    $this->add_control( new Customize_Column_Control( $this->manager, $key, $value['control']) );
 		                    break;
 					    case "multitext":
 					    	$this->add_control( new Customize_Multiple_Text_Control( $this->manager, $key, $value['control']) );
@@ -890,6 +906,18 @@ final class Responsi_Customize {
                     break;
                 case "animation":
                     $settings = array( $id.'[type]' => $id.'[type]', $id.'[direction]' => $id.'[direction]', $id.'[duration]' => $id.'[duration]', $id.'[delay]' => $id.'[delay]');
+                    break;
+                case "column":
+                	$custom_settings = array( $id.'[col]' => $id.'[col]' );
+                	if( isset( $options['choices']) && is_array($options['choices']) && count($options['choices']) > 0 ){
+                		$i = 0;
+                		foreach ($options['choices'] as $k => $val) {
+                			$i++;
+                			$custom_settings[$id.'[col'.$i.']'] = $id.'[col'.$i.']';
+                		}
+                	}
+
+                    $settings = $custom_settings;
                     break;
                 case "multitext":
                     foreach ( $options['choices'] as $key => $value) {
