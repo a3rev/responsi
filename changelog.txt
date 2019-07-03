@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 7.4.1 - 2019/07/03 =
+* This maintenance update is for compatibility with fontawesome 5.9.0
+* Fix - Arrow SVG icon display with new fontawesome 5.9.0 version which was causing a fatal error in some cases.
+
 = 7.4.0 - 2019/06/14 =
 * This is a milestone feature release. We have built in a customizer menu control that enables the setting of custom column widths within a row. Content is added to columns via Widgets.
 * Enhancement - Add new Column width controls to Customizer menu.
