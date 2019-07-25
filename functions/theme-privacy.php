@@ -26,9 +26,9 @@ class Responsi_Theme_Privacy {
 		
 		$content = '
 			<div class="wp-suggested-text">'.
-				'<p class="privacy-policy-tutorial">' . __( 'Responsi Theme Framework uses fonts from <a href="https://fonts.google.com/" target="_blank">google fonts</a>, you should list in privacy page.', 'responsi' ) . '</p>' .
+				'<p class="privacy-policy-tutorial">' . __( 'Responsi Theme Framework uses fonts from <a href="https://fonts.google.com/" target="_blank" rel="noopener">google fonts</a>, you should list in privacy page.', 'responsi' ) . '</p>' .
 				'<p>' . $suggested_text .__( 'Links on this site may use Google fonts. Google may collect data about you, use cookies, IP, embed additional third-party tracking.', 'responsi' ).'</p>'.
-				'<p>' . __( 'Please see the <a href="https://policies.google.com/privacy/" target="_blank">Google Privacy Policy</a> for more details.', 'responsi' ) . '</p>'.
+				'<p>' . __( 'Please see the <a href="https://policies.google.com/privacy/" target="_blank" rel="noopener">Google Privacy Policy</a> for more details.', 'responsi' ) . '</p>'.
 			'</div>';
 		
 		return apply_filters( 'responsi_privacy_policy_content', $content );

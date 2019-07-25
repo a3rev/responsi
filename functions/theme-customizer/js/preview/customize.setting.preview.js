@@ -28,7 +28,7 @@
         var responsi_link_visited_color = wp.customize.value('responsi_link_visited_color')();
         css += 'a,a:link {color:' + responsi_link_color + '}';
         css += 'a:visited {color:' + responsi_link_visited_color + '}';
-        css += 'a:hover, .post-meta a:hover, .post p.tags a:hover,.post-entries a:hover,.responsi-pagination a:hover, .responsi-pagination a:hover,.click_showmore a:hover,.click_showmore a:hover,#header .widget a:hover,#wrapper-footer-top .widget ul li a:hover,body.category #main .box-item .entry-item h3 a:hover,body.tag #main .box-item .entry-item h3 a:hover,body.page-template-template-blog-php #main .box-item .entry-item h3 a:hover, .box-item .entry-item h3 a:hover,#main .blog-post.box-item .entry-item h3 a:link:hover, #main .blog-post.box-item .entry-item h3 a:visited:hover {color:' + responsi_link_hover_color + '}';
+        css += 'a:hover, .post-meta a:hover, .post p.tags a:hover,.post-entries a:hover,.responsi-pagination a:hover, .responsi-pagination a:hover,.click_showmore a:hover,.click_showmore a:hover,.responsi-header .widget a:hover,.responsi-footer-before-wrapper .widget ul li a:hover,body.category .responsi-content-main .box-item .entry-item h3 a:hover,body.tag .responsi-content-main .box-item .entry-item h3 a:hover,body.page-template-template-blog-php .responsi-content-main .box-item .entry-item h3 a:hover, .box-item .entry-item h3 a:hover,.responsi-content-main .blog-post.box-item .entry-item h3 a:link:hover, .responsi-content-main .blog-post.box-item .entry-item h3 a:visited:hover {color:' + responsi_link_hover_color + '}';
 
         css += 'body{' + responsiCustomize.build_typography('responsi_font_text') + '}';
         css += 'h1{' + responsiCustomize.build_typography('responsi_font_h1') + '}';

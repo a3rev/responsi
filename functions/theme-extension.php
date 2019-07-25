@@ -123,7 +123,7 @@ if ( !function_exists( 'responsi_admin_bar_menu' ) ) {
     }
 }
 
-add_action( 'admin_bar_menu', 'responsi_admin_bar_menu', 20 );
+//add_action( 'admin_bar_menu', 'responsi_admin_bar_menu', 20 );
 
 if ( !function_exists( 'responsi_admin_bar_menu_items' ) ) {
     function responsi_admin_bar_menu_items(){

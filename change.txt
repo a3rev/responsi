@@ -1,0 +1,122 @@
+#wrapper-container | .responsi-site-container
+#wrapper-top-container | .responsi-top-container
+#wrapper-top-fixed | .responsi-top-fixed
+#wrapper-center | .responsi-center
+#wrapper-boxes | .responsi-boxes
+#wrapper-boxes-content | .responsi-boxes-content
+#wrapper-header-content | .responsi-header-container
+#wrapper-header | .responsi-header-wrapper
+#header-content | .responsi-header-content
+#header | .responsi-header 
+#wrapper-nav-content | .responsi-nav-container
+#wrapper-nav | .responsi-nav-wrapper
+#navigation-content | .responsi-nav-content
+#navigation | .responsi-nav
+#wrapper-content | .responsi-content-container
+#wrapper | .responsi-content-wrapper
+#wrapper-article | .responsi-content-article
+#content | .responsi-content-content
+#main | .responsi-content-main
+#sidebar | .responsi-content-sidebar
+#sidebar-alt | .responsi-content-sidebar-alt
+#sidebar-login | removed
+#wrapper-footer-content | .responsi-footer-container
+#wrapper-footer | .responsi-footer-wrapper
+#footer-content | .responsi-footer-content
+#footer | .responsi-footer
+#additional | .responsi-footer-additional
+#copyright | .responsi-footer-copyright
+#credit | .responsi-footer-credit
+#additional_animation | .responsi-additional-animation
+#footer_copyright_animation | .responsi-copyright-animation
+#footer_credit_animation | .responsi-credit-animation
+#wrapper-footer-top-content | .responsi-footer-before-container
+#wrapper-footer-top | .responsi-footer-before-wrapper
+#footer-top-content | .responsi-footer-before-content
+#footer-widgets | .responsi-footer-before-widgets
+#back-top | .responsi-scrolltop
+.custom_box_archive | responsi-area-archive
+.custom_box_post | responsi-area-post
+.custom_box_page | responsi-area-page
+.custom_box | responsi-area
+.full_container | .responsi-area-full
+.shiftclick_container | .responsi-shiftclick
+.fw_widget_title | .responsi-widget-title
+.fw_widget_content | .responsi-widget-content
+.masonry_widget_blank | .widget-blank
+
+Cladded
+#header_top_container | #cladded-tw-conatainer | .cladded-tw-conatainer
+#header_top | #cladded-tw-wrapper | .cladded-tw-wrapper
+#wrapper-header | #cladded-tw-content | .cladded-tw-content
+
+Home Builder
+#sidebar | #hb-top-sidebar | .responsi-content-sidebar
+#sidebar-alt | #hb-top-sidebar-alt | .responsi-content-sidebar-alt
+#wrapper_home_full | #hb-gallery-container | .hb-gallery-container
+#wrapper_home | #hb-gallery-wrapper | .hb-gallery-wrapper
+#wrapper_home_contain | #hb-gallery-content | .hb-gallery-content
+.my_home | .hb-gallery
+#home | #hb-top-gallery | .hb-top-gallery
+.home-slider-before | .hb-content-before
+.home-slider-after | .hb-content-after
+.responsi_homebuilder_slider_gallery_blank | .hb-img-blank
+#widgetized-area-title-home | hb-top-widgetized-container | .hb-top-widgetized-container
+.widgetized_title_home | .hb-top-widgetized-wrapper
+.text_show_above_widget | .hb-top-widgetized-content
+#widgetized_full_container | #hb-widgetized-container | .hb-widgetized-container
+.full_container_content | .hb-widgetized-wrapper
+.widgetized_container | .hb-widgetized-content
+.widgetized_content | hb-widgetized
+.masonry_widget_under_home | .masonry-widgetizedcontent_title_home
+.under_home_widget_content | .widget-widgetized
+#home-content-title | #hb-top-content-contaner | .hb-top-content-contaner
+.content_title_home | .hb-top-content-wrapper
+.text_show_above_content | .hb-top-content-content
+#home_title_section1 | #hb-title-section1 | .hb-title-section1
+#home_title_section2 | #hb-title-section2 | .hb-title-section2
+#home_title_section3 | #hb-title-section3 | .hb-title-section3
+#home_title_section4 | #hb-title-section4 | .hb-title-section4
+#home_section1 | #hb-section1 | .hb-section1
+#home_section2 | #hb-section2 | .hb-section2
+#home_section3 | #hb-section3 | .hb-section3
+#home_section4 | #hb-section4 | .hb-section4
+
+WC Template
+#wrapper-top-content | #rwc-top-container | .rwc-top-container
+.custom_box_product | .rwc-area-product
+
+Responsi Feature Content
+#wrapper-responsi-top-areas | #rfca-container | .rfca-container
+#wrapper-top-areas | #rfca-wrapper | .rfca-wrapper
+#responsi-top-areas | #rfca-content | .rfca-content
+.responsi-top-areas-content | .rfca-content-content
+
+Responsi Top Navbar
+.top-nav-bar-wrapper | .rtnb-layout
+.top-nav-bar-container | .rtnb-container
+.top-nav-bar-site-width | .rtnb-wrapper
+.top-nav-bar-content | .rtnb-content
+.top-nav-bar | .rtnb-content-content
+.top-nav-bar-navigation | .rtnb-navigation
+#responsi-top-nav-bar | #rtnb-menu
+.responsi-top-nav-bar-menu | .rtnb-menu
+.responsi-icon-mobile-menu | .rtnb-icon-menu
+
+Post Enhancer
+#single-recent-posts | .single-recent-posts
+#post-author | .post-author
+
+Background Addons
+.transparent_layout | .transparent-container
+
+
+
+
+
+
+
+
+
+
+

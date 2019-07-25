@@ -14,7 +14,7 @@
 <?php get_header(); ?> 
 <?php global $main_box; ?>
 <?php do_action( 'responsi_content_before' ); ?>
-<div id="content" class="col-full clearfix">
+<div id="content" class="responsi-content-content col-full clearfix">
     <?php do_action( 'responsi_main_before' ); ?>
     <div id="main" class="box<?php echo esc_attr( $main_box ) ;?>">
         <?php do_action( 'responsi_main_content_before' ); ?>

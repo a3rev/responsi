@@ -192,6 +192,10 @@ if ( !function_exists( 'responsi_layout_class' ) ) {
             $main_box           = ' box-last';
             $sidebar_alt_box    = '';
         }
+
+        $main_box           = ' responsi-content-main'.$main_box;
+        $sidebar_box        = ' responsi-content-sidebar'.$sidebar_box;
+        $sidebar_alt_box    = ' responsi-content-sidebar-alt'.$sidebar_alt_box;
     }
 }
 
@@ -255,6 +259,14 @@ if ( !function_exists( 'responsi_body_class' ) ) {
             $classes[] = 'layout-box-mode';
         } else {
             $classes[] = 'layout-wide-mode';
+        }
+
+        if ( wp_style_is( 'fontawesome', 'enqueued' ) ){
+            $classes[] = 'has-fontawesome';
+        }
+
+        if ( wp_style_is( 'font-awesome', 'enqueued' ) ){
+            $classes[] = 'has-fontawesome';
         }
 
         if ( $is_lynx )
@@ -329,11 +341,11 @@ if ( !function_exists( 'responsi_header' ) ) {
         </head>
         <body <?php body_class(); ?> <?php wp_body_open();?>>
         <?php do_action( 'responsi_wrapper_container_before' ); ?>
-        <div id="wrapper-container" class="site-container clearfix">
+        <div id="wrapper-container" class="responsi-site-container site-container clearfix">
         <?php do_action( 'responsi_wrapper_container_content_before' ); ?>
-        <div id="wrapper-top-container" class="clearfix">
+        <div id="wrapper-top-container" class="responsi-top-container clearfix">
         <?php do_action( 'responsi_wrapper_top_before' ); ?>
-        <div id="wrapper-top-fixed" class="clearfix">
+        <div id="wrapper-top-fixed" class="responsi-top-fixed clearfix">
         <?php do_action( 'responsi_wrapper_top_content_before' ); ?>
         <?php
         if( $responsi_header_is_inside ){
@@ -352,21 +364,21 @@ if ( !function_exists( 'responsi_header' ) ) {
         }
         ?>
         <?php do_action( 'responsi_wrapper_center_before' ); ?>
-        <div id="wrapper-center" class="clearfix<?php if( 'true' === $responsi_layout_boxed ){echo ' site-width';}?>">
-        <div id="wrapper-boxes" class="clearfix">
+        <div id="wrapper-center" class="responsi-center clearfix<?php if( 'true' === $responsi_layout_boxed ){echo ' site-width';}?>">
+        <div id="wrapper-boxes" class="responsi-boxes clearfix">
         <?php do_action( 'responsi_wrapper_boxes_before' ); ?>
-        <div id="wrapper-boxes-content" class="clearfix">
+        <div id="wrapper-boxes-content" class="responsi-boxes-content clearfix">
         <?php if( true !== $responsi_header_is_inside && true !== $responsi_header_is_outside ){
             responsi_wrapper_header();
             responsi_wrapper_nav();
         }
         ?>
         <?php do_action( 'responsi_wrapper_content_before' ); ?>
-        <div id="wrapper-content" class="clearfix col-<?php echo esc_attr( $layout_column );?>-<?php echo esc_attr( $wrapper_content );?>">
+        <div id="wrapper-content" class="responsi-content-container clearfix col-<?php echo esc_attr( $layout_column );?>-<?php echo esc_attr( $wrapper_content );?>">
         <?php do_action( 'responsi_wrapper_content_content_before' ); ?>
-        <div id="wrapper" class="site-width clearfix">
+        <div id="wrapper" class="responsi-content-wrapper site-width clearfix">
         <?php do_action( 'responsi_wrapper_article_before' ); ?>
-        <article id="wrapper-article" class="clearfix">
+        <article id="wrapper-article" class="responsi-content-article clearfix">
         <?php global $shiftclick; echo $shiftclick;?>
         <?php do_action( 'responsi_wrapper_article_content_before' ); ?>
         <?php
@@ -400,11 +412,11 @@ if ( !function_exists( 'responsi_footer' ) ) {
         }
         ?>
         <?php do_action( 'responsi_wrapper_footer_before' ); ?>
-        <div id="wrapper-footer-content" class="clearfix">
-          <div id="wrapper-footer" class="site-width clearfix">
-            <div id="footer-content" class="clearfix">
-            <footer id="footer" class="col-full lv0 clearfix">
-              <div id="additional" class="col-below clearfix">
+        <div id="wrapper-footer-content" class="responsi-footer-container clearfix">
+          <div id="wrapper-footer" class="responsi-footer-wrapper site-width clearfix">
+            <div id="footer-content" class="responsi-footer-content clearfix">
+            <footer id="footer" class="responsi-footer col-full lv0 clearfix">
+              <div id="additional" class="responsi-footer-additional col-below clearfix">
                 <?php do_action( 'responsi_wrapper_footer_additional' ); ?>
               </div>
               <div class="clear"></div>
@@ -451,7 +463,7 @@ if ( !function_exists( 'responsi_sidebar' ) ) {
                 if ( responsi_active_sidebar( esc_attr( $sidebar_args['sidebar_id'] ) ) ) {
                     ?>
                     <?php do_action( 'responsi_sidebar_before' ); ?>
-                    <div id="sidebar" class="box<?php echo esc_attr( $sidebar_box ).' '. esc_attr( $sidebar_args['class'] );?>">
+                    <div id="<?php echo $sidebar_args['sidebar_id'];?>" class="box<?php echo esc_attr( $sidebar_box ).' '. esc_attr( $sidebar_args['class'] );?>">
                         <?php do_action( 'responsi_sidebar_wrap_before' ); ?>
                         <div class="sidebar-wrap clearfix">
                         <div class="sidebar-wrap-content">
@@ -467,14 +479,14 @@ if ( !function_exists( 'responsi_sidebar' ) ) {
                     if( $sidebar_args['blank_sidebar'] ){
                         ?>
                         <?php do_action( 'responsi_sidebar_before' ); ?>
-                        <div id="sidebar" class="box<?php echo esc_attr( $sidebar_box ).' '. esc_attr( $sidebar_args['class'] );?>">
+                        <div id="<?php echo $sidebar_args['sidebar_id'];?>" class="box<?php echo esc_attr( $sidebar_box ).' '. esc_attr( $sidebar_args['class'] );?>">
                             <?php do_action( 'responsi_sidebar_wrap_before' ); ?>
                             <div class="sidebar-wrap clearfix">
                             <div class="sidebar-wrap-content">
-                            <div class="masonry_widget masonry_widget_blank <?php echo 'blank-'. esc_attr( $sidebar_args['sidebar_id'] );?>">
+                            <div class="masonry_widget widget-blank <?php echo 'blank-'. esc_attr( $sidebar_args['sidebar_id'] );?>">
                             <div class="widget widget_text">
-                            <div class="fw_widget_title clearfix"><h3><?php echo $sidebar_args['blank_sidebar_title']; ?></h3></div>
-                            <div class="fw_widget_content clearfix"><div class="textwidget"><?php echo $sidebar_args['blank_sidebar_content']; ?></div></div>
+                            <div class="responsi-widget-title clearfix"><h3><?php echo $sidebar_args['blank_sidebar_title']; ?></h3></div>
+                            <div class="responsi-widget-content clearfix"><div class="textwidget"><?php echo $sidebar_args['blank_sidebar_content']; ?></div></div>
                             </div>
                             </div>
                             </div>
@@ -506,7 +518,7 @@ if ( !function_exists( 'responsi_sidebar_alt' ) ) {
                 if ( responsi_active_sidebar( esc_attr( $sidebar_alt_args['sidebar_id'] ) ) ) {
                     ?>
                     <?php do_action('responsi_sidebar_before'); ?>
-                    <div id="sidebar-alt" class="box<?php echo esc_attr( $sidebar_alt_box ) . ' ' . esc_attr( $sidebar_alt_args['class'] );?>">
+                    <div id="<?php echo $sidebar_alt_args['sidebar_id'];?>" class="box<?php echo esc_attr( $sidebar_alt_box ) . ' ' . esc_attr( $sidebar_alt_args['class'] );?>">
                         <?php do_action( 'responsi_sidebar_wrap_before' ); ?>
                         <div class="sidebar-wrap clearfix">
                         <div class="sidebar-wrap-content">
@@ -522,14 +534,14 @@ if ( !function_exists( 'responsi_sidebar_alt' ) ) {
                     if( $sidebar_alt_args['blank_sidebar'] ){
                         ?>
                         <?php do_action( 'responsi_sidebar_before' ); ?>
-                        <div id="sidebar-alt" class="box<?php echo esc_attr( $sidebar_alt_box ) . ' ' . esc_attr( $sidebar_alt_args['class'] );?>">
+                        <div id="<?php echo $sidebar_alt_args['sidebar_id'];?>" class="box<?php echo esc_attr( $sidebar_alt_box ) . ' ' . esc_attr( $sidebar_alt_args['class'] );?>">
                             <?php do_action( 'responsi_sidebar_wrap_before' ); ?>
                             <div class="sidebar-wrap clearfix">
                             <div class="sidebar-wrap-content">
-                            <div class="masonry_widget masonry_widget_blank <?php echo 'blank-' . esc_attr( $sidebar_alt_args['sidebar_id'] );?>">
+                            <div class="masonry_widget widget-blank <?php echo 'blank-' . esc_attr( $sidebar_alt_args['sidebar_id'] );?>">
                             <div class="widget widget_text">
-                            <div class="fw_widget_title clearfix"><h3><?php echo $sidebar_alt_args['blank_sidebar_title']; ?></h3></div>
-                            <div class="fw_widget_content clearfix"><div class="textwidget"><?php echo $sidebar_alt_args['blank_sidebar_content']; ?></div></div>
+                            <div class="responsi-widget-title clearfix"><h3><?php echo $sidebar_alt_args['blank_sidebar_title']; ?></h3></div>
+                            <div class="responsi-widget-content clearfix"><div class="textwidget"><?php echo $sidebar_alt_args['blank_sidebar_content']; ?></div></div>
                             </div>
                             </div>
                             </div>
@@ -875,7 +887,7 @@ if ( !function_exists( 'responsi_build_copyright' ) ) {
                 $footer_copyright_style = ' style="'.$footer_copyright_animation['style'].'"';
             }
 
-            $output = '<div id="footer_copyright_animation" class="clearfix'.$footer_copyright_class.'"'.$footer_copyright_data . $footer_copyright_style.'>'.sprintf('%1$s%3$s%2$s', $atts['before'], $atts['after'], wpautop( strip_tags($responsi_options['responsi_footer_left_text']) ) ).'</div>';
+            $output = '<div id="footer_copyright_animation" class="responsi-copyright-animation clearfix'.$footer_copyright_class.'"'.$footer_copyright_data . $footer_copyright_style.'>'.sprintf('%1$s%3$s%2$s', $atts['before'], $atts['after'], wpautop( strip_tags($responsi_options['responsi_footer_left_text']) ) ).'</div>';
         }
 
         return apply_filters( 'responsi_build_copyright', $output, $atts );
@@ -919,7 +931,7 @@ if ( !function_exists( 'responsi_build_additional' ) ) {
         $output   = '';
         
         if( isset( $responsi_options['responsi_footer_below']) && 'true' === $responsi_options['responsi_footer_below'] ){
-            $output     .= '<div id="additional_animation" class="clearfix'.$additional_class.'"'.$additional_data . $additional_style.'>';
+            $output     .= '<div id="additional_animation" class="responsi-additional-animation clearfix'.$additional_class.'"'.$additional_data . $additional_style.'>';
             $output     .= sprintf('%1$s%3$s%2$s', $atts['before'], $atts['after'], do_shortcode(apply_filters( 'a3_lazy_load_html', wpautop(responsi_autoembed_media($responsi_options['responsi_footer_below_text'])))));
             $output     .= '</div>';
         }
@@ -968,7 +980,7 @@ if ( !function_exists( 'responsi_build_credit' ) ) {
             $footer_right_text_before_url = $responsi_options['responsi_footer_right_text_before_url'];
 
             if ( '' !== trim($footer_right_text_before_url) ) {
-                $text_before = '<a href="' . esc_url( $footer_right_text_before_url ) . '" target="_blank">' . $footer_right_text_before . '</a>';
+                $text_before = '<a href="' . esc_url( $footer_right_text_before_url ) . '" target="_blank" rel="noopener">' . $footer_right_text_before . '</a>';
             } else {
                 $text_before = $footer_right_text_before;
             }
@@ -978,7 +990,7 @@ if ( !function_exists( 'responsi_build_credit' ) ) {
             $right_logo = '';
             if ( '' !== trim($footer_right_logo_url) && '' !== trim($footer_right_logo) ) {
                 $width_height_attr = responsi_get_image_attribute( $footer_right_logo );
-                $right_logo = '<a href="' . esc_url( $footer_right_logo_url ) . '" target="_blank"><img src="' .  esc_url( $footer_right_logo ) . '" alt="'.__( 'Logo', 'responsi' ).'"'.$width_height_attr.'></a>';
+                $right_logo = '<a href="' . esc_url( $footer_right_logo_url ) . '" target="_blank" rel="noopener"><img src="' .  esc_url( $footer_right_logo ) . '" alt="'.__( 'Logo', 'responsi' ).'"'.$width_height_attr.'></a>';
             } elseif( '' !== trim( $footer_right_logo ) ) {
                 $width_height_attr = responsi_get_image_attribute( $footer_right_logo );
                 $right_logo = '<img src="' . esc_url( $footer_right_logo ) . '" alt="'.__( 'Logo', 'responsi' ).'"'.$width_height_attr.'>';
@@ -988,7 +1000,7 @@ if ( !function_exists( 'responsi_build_credit' ) ) {
             $footer_right_text_after_url = $responsi_options['responsi_footer_right_text_after_url'];
 
             if ( '' !== trim($footer_right_text_after_url) ) {
-                $text_after = '<a href="' . esc_url( $footer_right_text_after_url ) . '" target="_blank">' . $footer_right_text_after . '</a>';
+                $text_after = '<a href="' . esc_url( $footer_right_text_after_url ) . '" target="_blank" rel="noopener">' . $footer_right_text_after . '</a>';
             } else {
                 $text_after = $footer_right_text_after;
             }
@@ -1014,7 +1026,7 @@ if ( !function_exists( 'responsi_build_credit' ) ) {
                 $footer_credit_style = ' style="'.$footer_credit_animation['style'].'"';
             }
 
-            $output_footer_credit = '<div id="footer_credit_animation" class="clearfix'.$footer_credit_class.'"'.$footer_credit_data . $footer_credit_style.'>'.$output.'</div>';
+            $output_footer_credit = '<div id="footer_credit_animation" class="responsi-credit-animation clearfix'.$footer_credit_class.'"'.$footer_credit_data . $footer_credit_style.'>'.$output.'</div>';
             $output = $output_footer_credit;
 
         }
@@ -1312,10 +1324,10 @@ function responsi_wrapper_header() {
     global $shiftclick;
     do_action( 'responsi_wrapper_header_before' );
     ?>
-    <div id="wrapper-header-content" class="clearfix">
+    <div id="wrapper-header-content" class="responsi-header-container clearfix">
       <?php do_action( 'responsi_wrapper_header_content_before' ); ?>
-      <div id="wrapper-header" class="site-width clearfix">
-        <div id="header-content" class="clearfix">
+      <div id="wrapper-header" class="responsi-header-wrapper site-width clearfix">
+        <div id="header-content" class="responsi-header-content clearfix">
         <?php do_action( 'responsi_wrapper_header_content' ); ?>
         </div>
       </div>
@@ -1354,7 +1366,7 @@ if ( !function_exists( 'responsi_wrapper_header_content' ) ) {
         if ( $has_header_sidebars && $total > 0 ) {
             ?>
             <div class="clear"></div>
-            <header id="header" class="clearfix col-full col-<?php echo esc_attr( $total ); ?>">
+            <header id="header" class="responsi-header clearfix col-full col-<?php echo esc_attr( $total ); ?>">
             <?php do_action( 'responsi_header_widget_before' ); ?>
             <div class="clear"></div>
             <?php
@@ -1429,7 +1441,7 @@ if ( !function_exists( 'responsi_wrapper_header_content' ) ) {
                 } else {
                     if ( responsi_active_sidebar( 'header-' . $i ) ) {
                         ?>
-                        <div class="box<?php echo esc_attr( $box_last ); ?> col-item header-widget-<?php echo $i; ?> shiftclick_container">
+                        <div class="box<?php echo esc_attr( $box_last ); ?> col-item header-widget-<?php echo $i; ?> responsi-shiftclick">
                         <?php
                         $header_animation = responsi_generate_animation($responsi_options['responsi_header_animation_'.$i]);
                         $header_class = '';
@@ -1460,7 +1472,7 @@ if ( !function_exists( 'responsi_wrapper_header_content' ) ) {
         } else {
             ?>
             <div class="clear"></div>
-            <header id="header" class="clearfix col-full col-1">
+            <header id="header" class="responsi-header clearfix col-full col-1">
             <?php do_action( 'responsi_header_widget_before' ); ?>
                 <div class="clear"></div>
                 <div class="box box-last col-item  header-widget-1">
@@ -1505,8 +1517,8 @@ function responsi_wrapper_nav() {
     global $shiftclick;
     do_action( 'responsi_wrapper_nav_before' );
     ?>
-    <div id="wrapper-nav-content" class="wrapper-nav-content clearfix">
-      <div id="wrapper-nav" class="site-width clearfix">
+    <div id="wrapper-nav-content" class="responsi-nav-container clearfix">
+      <div id="wrapper-nav" class="responsi-nav-wrapper site-width clearfix">
         <?php do_action( 'responsi_wrapper_nav_content' ); ?>
       </div>
       <?php echo $shiftclick;?>
@@ -1524,8 +1536,8 @@ if ( !function_exists( 'responsi_navigation' ) ) {
         global $responsi_options;
         do_action( 'responsi_navigation_before' );
         ?>
-        <div id="navigation-content" class="clearfix">
-          <nav id="navigation" class="clearfix">
+        <div id="navigation-content" class="responsi-nav-content clearfix">
+          <nav id="navigation" class="responsi-nav clearfix">
             <?php do_action( 'responsi_navigation' ); ?>
             <?php
             $nav_ctr = '';
@@ -1543,14 +1555,14 @@ if ( !function_exists( 'responsi_navigation' ) ) {
                 @wp_nav_menu(array(
                     'sort_column'       => 'menu_order',
                     'menu_id'           => 'main-nav',
-                    'menu_class'        => 'responsi-menu nav fl',
+                    'menu_class'        => 'responsi-menu menu nav',
                     'theme_location'    => 'primary-menu',
                     'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                     'container'         => 'ul',
                 ));
             } else {
                 ?>
-            <ul id="main-nav" class="nav fl">
+            <ul id="main-nav" class="responsi-menu menu nav">
                 <?php
                 if ( is_page() ){
                     $highlight = "page_item";
@@ -1630,11 +1642,11 @@ if ( !function_exists( 'responsi_footer_sidebars' ) ) {
         }
 
         $footer_widget_container_before = '
-        <div id="wrapper-footer-top-content" class="clearfix">
+        <div id="wrapper-footer-top-content" class="responsi-footer-before-container clearfix">
             <div class="clear"></div> 
-            <div id="wrapper-footer-top" class="site-width clearfix lv0">
+            <div id="wrapper-footer-top" class="responsi-footer-before-wrapper site-width clearfix lv0">
                 <div class="clear"></div> 
-                <div id="footer-top-content" class="clearfix">';
+                <div id="footer-top-content" class="responsi-footer-before-content clearfix">';
         $footer_widget_container_after = '
                 </div>
                 <div class="clear"></div>
@@ -1648,7 +1660,7 @@ if ( !function_exists( 'responsi_footer_sidebars' ) ) {
         if ( $has_footer_sidebars && $total > 0) {
             echo $footer_widget_container_before;
             ?>
-            <div id="footer-widgets" class="col-full col-<?php echo esc_attr( $total ); ?> clearfix">
+            <div id="footer-widgets" class="responsi-footer-before-widgets col-full col-<?php echo esc_attr( $total ); ?> clearfix">
             <?php do_action( 'responsi_footer_widget_before' ); ?>
               <div class="clear"></div>
                 <?php
@@ -1661,7 +1673,7 @@ if ( !function_exists( 'responsi_footer_sidebars' ) ) {
                     }
                     if ( responsi_active_sidebar( 'footer-' . $i ) ) {
                         ?>
-                    <div class="box<?php echo esc_attr( $box_last );?> col-item footer-widget-<?php echo $i; ?> shiftclick_container">
+                    <div class="box<?php echo esc_attr( $box_last );?> col-item footer-widget-<?php echo $i; ?> responsi-shiftclick">
                     
                     <?php
                     $footer_animation = responsi_generate_animation($responsi_options['responsi_footer_animation_'.$i]);
@@ -1698,10 +1710,10 @@ if ( !function_exists( 'responsi_footer_sidebars' ) ) {
 if ( !function_exists( 'responsi_wrapper_footer_content' ) ) {
     function responsi_wrapper_footer_content(){
         ?>
-        <div id="copyright" class="col-left">
+        <div id="copyright" class="responsi-footer-copyright col-left">
             <?php do_action( 'responsi_wrapper_footer_content_copyright' ); ?>
         </div>
-        <div id="credit" class="col-right">
+        <div id="credit" class="responsi-footer-credit col-right">
             <?php do_action( 'responsi_wrapper_footer_content_credit' ); ?>
         </div>
         <?php
@@ -2010,7 +2022,7 @@ if ( !function_exists( 'responsi_blog_template_list_post' ) ) {
 if ( !function_exists( 'responsi_scrolltop' ) ) {
     function responsi_scrolltop() {
         ?>
-        <p id="back-top"><a href="#wrap"><span class="responsi-icon-up"></span></a></p>
+        <p id="back-top" class="responsi-scrolltop"><a href="#wrap"><span class="responsi-icon-up"></span></a></p>
         <?php
     }
 }
@@ -2076,7 +2088,7 @@ if ( !function_exists( 'responsi_custom_content_metabox' ) ) {
         $css = '';
 
         if ( isset($responsi_custom_meta['hide_title'] ) && 1 === $responsi_custom_meta['hide_title'] ) {
-            $css .= '.responsi_title, .custom_box .title.entry-title,body .responsi_title, body .custom_box .title.entry-title,.custom_box .product_title.entry-title{display:none !important;}';
+            $css .= '.responsi_title, .responsi-area .title.entry-title,body .responsi_title, body .responsi-area .title.entry-title,.responsi-area .product_title.entry-title{display:none !important;}';
         }
 
         if ( $custom_max_width ) {

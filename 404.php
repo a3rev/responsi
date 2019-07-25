@@ -9,12 +9,12 @@
 <?php get_header(); ?>
 <?php global $main_box; ?>
 <?php do_action('responsi_content_before'); ?>
-<div id="content" class="col-full clearfix">
+<div id="content" class="responsi-content-content col-full clearfix">
     <?php do_action( 'responsi_main_before' ); ?>
     <div id="main" class="box<?php echo esc_attr( $main_box ); ?>">
     <?php do_action( 'responsi_main_content_before' ); ?>
         <div id="single-content" <?php esc_attr( post_class() ); ?>>
-            <div class="single_content custom_box custom_box_page">
+            <div class="single_content responsi-area responsi-area-page">
                 <?php do_action( 'responsi_loop_before' ); ?>
                 <?php do_action( 'responsi_post_before' ); ?>
                 <?php do_action( 'responsi_page_title_before' ); ?>

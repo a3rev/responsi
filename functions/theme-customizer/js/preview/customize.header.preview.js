@@ -8,7 +8,7 @@
     function responsi_preview_headers() {
         var css = '';
 
-        css += '.site-logo-container a.site-title, .site-logo-container a.site-title:hover, .site-logo-container a:link:hover, .site-title, a.site-title:link, a.site-title:hover, a.site-title:link:hover, .header-widget-1 a, .header-widget-1 a:hover, #header .header-widget-1 .widget a, #header .header-widget-1 .widget a:link, #header .header-widget-1 .widget a:link:hover {';
+        css += '.site-logo-container a.site-title, .site-logo-container a.site-title:hover, .site-logo-container a:link:hover, .site-title, a.site-title:link, a.site-title:hover, a.site-title:link:hover, .header-widget-1 a, .header-widget-1 a:hover, .responsi-header .header-widget-1 .widget a, .responsi-header .header-widget-1 .widget a:link, .responsi-header .header-widget-1 .widget a:link:hover {';
         css += responsiCustomize.build_typography('responsi_font_logo', true);
         css += '}';
         css += '.site-description {';
@@ -21,7 +21,7 @@
         var responsi_bg_header_position_horizontal = wp.customize.value('responsi_bg_header_position_horizontal')();
         var responsi_header_bg_image_repeat = wp.customize.value('responsi_header_bg_image_repeat')();
 
-        css += '#wrapper-header-content{';
+        css += '.responsi-header-container{';
         css += 'z-index:0;';
         css += responsiCustomize.build_background('responsi_header_bg');
         if (responsi_enable_header_bg_image == 'true') {
@@ -47,7 +47,7 @@
         var responsi_bg_header_inner_position_horizontal = wp.customize.value('responsi_bg_header_inner_position_horizontal')();
         var responsi_header_inner_bg_image_repeat = wp.customize.value('responsi_header_inner_bg_image_repeat')();
 
-        css += '#header-content{';
+        css += '.responsi-header-content{';
         css += responsiCustomize.build_background('responsi_header_inner_bg');
         if (responsi_enable_header_inner_bg_image == 'true') {
             css += 'background-image: url(' + responsi_header_inner_bg_image + ');';
@@ -65,19 +65,19 @@
         css += responsiCustomize.build_box_shadow('responsi_header_inner_box_shadow', true);
         css += '}';
 
-        css += '.masonry_widget_header .fw_widget_title h3 {';
+        css += '.masonry_widget_header .responsi-widget-title h3 {';
         css += responsiCustomize.build_typography('responsi_font_header_widget_title');
         css += '}';
-        css += '#header .widget .textwidget, #header .widget:not(div), #header .widget p,#header .widget label,#header .widget .textwidget,#header .login-username label, #header .login-password label, #header .widget .textwidget .tel, #header .widget .textwidget .tel a, #header .widget .textwidget a[href^=tel], #header .widget * a[href^=tel], #header .widget a[href^=tel]{';
+        css += '.responsi-header .widget .textwidget, .responsi-header .widget:not(div), .responsi-header .widget p,.responsi-header .widget label,.responsi-header .widget .textwidget,.responsi-header .login-username label, .responsi-header .login-password label, .responsi-header .widget .textwidget .tel, .responsi-header .widget .textwidget .tel a, .responsi-header .widget .textwidget a[href^=tel], .responsi-header .widget * a[href^=tel], .responsi-header .widget a[href^=tel]{';
         css += responsiCustomize.build_typography('responsi_font_header_widget_text');
         css += 'text-decoration: none;';
         css += '}';
-        css += '#header .widget a,#header .widget ul li a,#header .widget ul li{';
+        css += '.responsi-header .widget a,.responsi-header .widget ul li a,.responsi-header .widget ul li{';
         css += responsiCustomize.build_typography('responsi_font_header_widget_link');
         css += 'text-decoration: none;';
         css += '}';
         var responsi_font_header_widget_link_hover = wp.customize.value('responsi_font_header_widget_link_hover')();
-        css += '#header .widget a:hover{color:' + responsi_font_header_widget_link_hover + ';}';
+        css += '.responsi-header .widget a:hover{color:' + responsi_font_header_widget_link_hover + ';}';
         
         css += '.masonry_widget_header .widget{text-align:' + wp.customize.value('responsi_font_header_widget_text_alignment')() + ';}';
 
@@ -87,13 +87,13 @@
         }
 
         if (wp.customize.value('responsi_font_header_widget_text_alignment_mobile')() == 'true') {
-            var center_header_widget_mobile = '.masonry_widget_header .widget, .masonry_widget_header * .widget, .masonry_widget_header .widget *, .masonry_widget_header .widget .fw_widget_title h3 {text-align:center !important;}.logo.site-logo,.site-logo-container,.site-description-container{margin:auto;}';
+            var center_header_widget_mobile = '.masonry_widget_header .widget, .masonry_widget_header * .widget, .masonry_widget_header .widget *, .masonry_widget_header .widget .responsi-widget-title h3 {text-align:center !important;}.logo.site-logo,.site-logo-container,.site-description-container{margin:auto;}';
         } else {
-            var center_header_widget_mobile = '.masonry_widget_header .widget, .masonry_widget_header * .widget, .masonry_widget_header .widget *, .masonry_widget_header .widget .fw_widget_title h3 {text-align:' + wp.customize.value('responsi_font_header_widget_text_alignment')() + ' !important;}.logo.site-logo,.site-logo-container,.site-description-container{margin:auto;}';
+            var center_header_widget_mobile = '.masonry_widget_header .widget, .masonry_widget_header * .widget, .masonry_widget_header .widget *, .masonry_widget_header .widget .responsi-widget-title h3 {text-align:' + wp.customize.value('responsi_font_header_widget_text_alignment')() + ' !important;}.logo.site-logo,.site-logo-container,.site-description-container{margin:auto;}';
         }
 
         css += '@media only screen and (max-width: 782px) {';
-        css += 'body #header .widget{ margin-bottom:' + header_widgets_margin + 'px !important;}';
+        css += 'body .responsi-header .widget{ margin-bottom:' + header_widgets_margin + 'px !important;}';
         css += center_header_widget_mobile;
         css += '}';
 

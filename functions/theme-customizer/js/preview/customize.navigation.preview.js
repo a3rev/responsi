@@ -9,7 +9,7 @@
 
         var css = '';
 
-        css += '#wrapper-nav-content{';
+        css += '.responsi-nav-container{';
         css += responsiCustomize.build_background('responsi_container_nav_bg');
         if (wp.customize.value('responsi_enable_container_nav_bg_image')() == 'true') {
 
@@ -35,11 +35,11 @@
 
         css += '}';
 
-        css += '#navigation, #secondary{';
+        css += '.responsi-nav{';
         css += 'text-align: ' + wp.customize.value('responsi_nav_position')() + ' !important;';
         css += '}';
 
-        css += '#navigation{';
+        css += '.responsi-nav{';
         css += responsiCustomize.build_background('responsi_nav_bg', true);
         css += responsiCustomize.build_padding_margin('responsi_nav_padding_tb', 'padding', true);
         css += responsiCustomize.build_padding_margin('responsi_nav_padding_lr', 'padding', true);
@@ -55,7 +55,7 @@
         css += responsiCustomize.build_box_shadow('responsi_nav_shadow', true);
         css += '}';
 
-        css += '#navigation > ul.nav > li, #navigation .partial-refresh-menu-container ul.nav > li{';
+        css += '.responsi-nav-content nav > ul.menu > li,.responsi-nav-content div > ul.menu > li , .responsi-nav-content .partial-refresh-menu-container ul.menu > li{';
         css += responsiCustomize.build_border('responsi_nav_divider_border', 'left', true);
         css += '}';
 
@@ -67,8 +67,8 @@
         var responsi_nav_hover = wp.customize.value('responsi_nav_hover')();
         var responsi_nav_currentitem = wp.customize.value('responsi_nav_currentitem')();
 
-        css += '#navigation ul.nav > li.menu-item-has-children > a:after{border-color:' + responsi_nav_font_color + ' transparent transparent !important;}';
-        css += '#navigation > ul.nav > li > a,#navigation > ul > li:first-child > a, #navigation .partial-refresh-menu-container ul.nav > li > a,#navigation #navigation .partial-refresh-menu-container ul > li:first-child > a{';
+        css += '.responsi-nav-content ul.menu > li.menu-item-has-children > a:after{border-color:' + responsi_nav_font_color + ' transparent transparent !important;}';
+        css += '.responsi-nav-content nav > ul.menu > li > a,.responsi-nav-content div > ul.menu > li > a ,.responsi-nav-content nav > ul > li:first-child > a,.responsi-nav-content div > ul > li:first-child > a , .responsi-nav-content .partial-refresh-menu-container ul.menu > li > a,.responsi-nav-content .responsi-nav-content .partial-refresh-menu-container ul > li:first-child > a{';
         css += responsiCustomize.build_typography('responsi_nav_font', true);
         css += 'text-transform:' + wp.customize.value('responsi_nav_font_transform')() + ' !important;';
         css += responsiCustomize.build_border('responsi_navi_border_top', 'top', true);
@@ -82,26 +82,26 @@
         css += responsiCustomize.build_padding_margin('responsi_navi_border_padding', 'padding', true);
         css += responsiCustomize.build_padding_margin('responsi_navi_border_margin', 'margin', true);
         css += '}';
-        css += '#navigation ul.nav > li.current-menu-item > a{' + responsiCustomize.build_background('responsi_nav_currentitem_bg', true) + 'color:' + responsi_nav_currentitem + ' !important;}';
-        css += '#navigation ul.nav > li > a:hover,#navigation ul.nav > li:hover > a,#navigation .nav > li.menu-item-has-children:hover > a,.mobile-navigation .responsi-icon-menu:hover,.mobile-navigation .responsi-icon-cancel:hover,#navigation ul.nav > li.current-menu-item > a:hover{color:' + responsi_nav_hover + ' !important;}';
-        css += '#navigation ul.nav > li a:hover, #navigation ul.nav > li.menu-item-has-children:hover > a,#navigation ul.nav > li:hover > a {' + responsiCustomize.build_background('responsi_nav_hover_bg', true) + '}';
-        css += '#navigation ul.nav > li.menu-item-has-children:hover > a:after,#navigation ul.nav > li.menu-item-has-children.current-menu-item:hover > a:after{border-color:' + responsi_nav_hover + ' transparent transparent !important;}';
-        css += '#navigation ul.nav > li.menu-item-has-children.current-menu-item > a:after{border-color:' + responsi_nav_hover + ' transparent transparent !important;}';
+        css += '.responsi-nav-content ul.menu > li.current-menu-item > a{' + responsiCustomize.build_background('responsi_nav_currentitem_bg', true) + 'color:' + responsi_nav_currentitem + ' !important;}';
+        css += '.responsi-nav-content ul.menu > li > a:hover,.responsi-nav-content ul.menu > li:hover > a,.responsi-nav-content .menu > li.menu-item-has-children:hover > a,.mobile-navigation .responsi-icon-menu:hover,.mobile-navigation .responsi-icon-cancel:hover,.responsi-nav-content ul.menu > li.current-menu-item > a:hover{color:' + responsi_nav_hover + ' !important;}';
+        css += '.responsi-nav-content ul.menu > li a:hover, .responsi-nav-content ul.menu > li.menu-item-has-children:hover > a,.responsi-nav-content ul.menu > li:hover > a {' + responsiCustomize.build_background('responsi_nav_hover_bg', true) + '}';
+        css += '.responsi-nav-content ul.menu > li.menu-item-has-children:hover > a:after,.responsi-nav-content ul.menu > li.menu-item-has-children.current-menu-item:hover > a:after{border-color:' + responsi_nav_hover + ' transparent transparent !important;}';
+        css += '.responsi-nav-content ul.menu > li.menu-item-has-children.current-menu-item > a:after{border-color:' + responsi_nav_hover + ' transparent transparent !important;}';
 
-        css += '#navigation > ul.nav > li > a, #navigation > ul > li:first-child > a, #navigation .partial-refresh-menu-container ul.nav > li > a, #navigation #navigation .partial-refresh-menu-container ul > li:first-child > a{';
+        css += '.responsi-nav-content nav > ul.menu > li > a, .responsi-nav-content div > ul.menu > li > a, .responsi-nav-content nav > ul > li:first-child > a, .responsi-nav-content div > ul > li:first-child > a, .responsi-nav-content .partial-refresh-menu-container ul.menu > li > a, .responsi-nav-content .responsi-nav-content .partial-refresh-menu-container ul > li:first-child > a{';
         css += responsiCustomize.build_background('responsi_navi_background', true);
         css += '}';
 
         //Dropdown
 
-        css += '#navigation ul.nav ul li a{' + responsiCustomize.build_background('responsi_nav_dropdown_item_background') + '}';
-        css += '#navigation ul.nav > li ul li a:hover,#navigation ul.nav > li ul li:hover{' + responsiCustomize.build_background('responsi_nav_dropdown_hover_background', true) + '}';
-        css += '#navigation ul.nav > li.menu-item-has-children:hover ul li a{color:' + wp.customize.value('responsi_nav_dropdown_font[color]')() + ' !important;}';
-        css += '#navigation ul.nav li.menu-item-has-children ul li a:hover{color:' + wp.customize.value('responsi_nav_dropdown_hover_color')() + ' !important;}';
-        css += '#navigation ul.nav > li > ul > li.menu-item-has-children a:after { border-color:transparent transparent transparent ' + wp.customize.value('responsi_nav_dropdown_font[color]')() + ';}';
-        css += '#navigation ul.nav > li > ul li.menu-item-has-children:hover > a:hover:after{ border-color:transparent transparent transparent ' + wp.customize.value('responsi_nav_dropdown_hover_color')() + ' !important;}';
+        css += '.responsi-nav-content ul.menu ul li a{' + responsiCustomize.build_background('responsi_nav_dropdown_item_background') + '}';
+        css += '.responsi-nav-content ul.menu > li ul li a:hover,.responsi-nav-content ul.menu > li ul li:hover{' + responsiCustomize.build_background('responsi_nav_dropdown_hover_background', true) + '}';
+        css += '.responsi-nav-content ul.menu > li.menu-item-has-children:hover ul li a{color:' + wp.customize.value('responsi_nav_dropdown_font[color]')() + ' !important;}';
+        css += '.responsi-nav-content ul.menu li.menu-item-has-children ul li a:hover{color:' + wp.customize.value('responsi_nav_dropdown_hover_color')() + ' !important;}';
+        css += '.responsi-nav-content ul.menu > li > ul > li.menu-item-has-children a:after { border-color:transparent transparent transparent ' + wp.customize.value('responsi_nav_dropdown_font[color]')() + ';}';
+        css += '.responsi-nav-content ul.menu > li > ul li.menu-item-has-children:hover > a:hover:after{ border-color:transparent transparent transparent ' + wp.customize.value('responsi_nav_dropdown_hover_color')() + ' !important;}';
 
-        css += '#navigation ul.nav ul{';
+        css += '.responsi-nav-content ul.menu ul{';
         css += responsiCustomize.build_background('responsi_nav_dropdown_background', true);
         css += responsiCustomize.build_padding_margin('responsi_nav_dropdown_padding', 'padding', true);
         css += responsiCustomize.build_border('responsi_nav_dropdown_border_top', 'top', true);
@@ -113,17 +113,17 @@
         css += responsiCustomize.build_box_shadow('responsi_nav_dropdown_shadow', true);
         css += '}';
 
-        css += '#navigation ul.nav ul,#navigation ul.sub-menu > li:first-child,#navigation ul.sub-menu > li:first-child > a{';
+        css += '.responsi-nav-content ul.menu ul,.responsi-nav-content ul.sub-menu > li:first-child,.responsi-nav-content ul.sub-menu > li:first-child > a{';
         css += responsiCustomize.build_border_radius('responsi_nav_dropdown_border_radius_tl', 'top-left', true);
         css += responsiCustomize.build_border_radius('responsi_nav_dropdown_border_radius_tr', 'top-right', true);
         css += '}';
 
-        css += '#navigation ul.nav ul li{';
+        css += '.responsi-nav-content ul.menu ul li{';
         css += responsiCustomize.build_border('responsi_nav_dropdown_separator', 'top', true);
         css += '}';
 
-        css += 'ul.nav ul li a {' + responsiCustomize.build_typography('responsi_nav_dropdown_font', true) + '}';
-        css += '#navigation ul.nav li ul li a{';
+        css += '.responsi-nav-content ul.menu ul li a {' + responsiCustomize.build_typography('responsi_nav_dropdown_font', true) + '}';
+        css += '.responsi-nav-content ul.menu li ul li a{';
         css += responsiCustomize.build_padding_margin('responsi_nav_dropdown_item_padding', 'padding', true);
         css += 'text-transform:' + wp.customize.value('responsi_nav_dropdown_font_transform')() + ' !important;';
         css += responsiCustomize.build_typography('responsi_nav_dropdown_font', true);

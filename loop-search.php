@@ -10,7 +10,7 @@
 ?>
 
 <?php global $content_column_grid; ?>
-<div class="custom_box custom_box_archive responsi_title">
+<div class="responsi-area responsi-area-archive responsi_title">
 	<?php do_action( 'responsi_loop_before' );?>
 	<?php echo '<span class="archive_header"><h1 class="title entry-title">' . sprintf( __( 'Search results for &quot;%s&quot;', 'responsi' ), get_search_query() ) . '</h1></span>'; ?>
 </div>

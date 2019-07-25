@@ -14,7 +14,7 @@
         var responsi_widget_container_bg_position_vertical = wp.customize.value('responsi_widget_container_bg_position_vertical')();
         var responsi_widget_container_bg_image_repeat = wp.customize.value('responsi_widget_container_bg_image_repeat')();
 
-        css += '#sidebar .sidebar-wrap, #sidebar-alt .sidebar-wrap{';
+        css += '.responsi-content-sidebar .sidebar-wrap, .responsi-content-sidebar-alt .sidebar-wrap{';
         if (responsi_enable_widget_container_bg_image == 'true') {
             css += 'background-image: url(' + responsi_widget_container_bg_image + ') !important;';
             css += 'background-position:' + responsi_widget_container_bg_position_horizontal + ' ' + responsi_widget_container_bg_position_vertical + ';';
@@ -37,7 +37,7 @@
         css += 'box-sizing: border-box;';
         css += '}';
 
-        css += '#sidebar .widget, #sidebar-alt .widget{';
+        css += '.responsi-content-sidebar .widget, .responsi-content-sidebar-alt .widget{';
         css += responsiCustomize.build_background('responsi_widget_bg');
         css += responsiCustomize.build_padding_margin('responsi_widget_padding', 'padding');
         css += responsiCustomize.build_border_boxes('responsi_widget_border');
@@ -49,7 +49,7 @@
         var responsi_widget_title_transform = wp.customize.value('responsi_widget_title_transform')();
         var responsi_widget_title_align = wp.customize.value('responsi_widget_title_align')();
 
-        css += '#sidebar .fw_widget_title h3, #sidebar-alt .fw_widget_title h3 {';
+        css += '.responsi-content-sidebar .responsi-widget-title h3, .responsi-content-sidebar-alt .responsi-widget-title h3 {';
         css += responsiCustomize.build_background('responsi_widget_title_bg');
         css += responsiCustomize.build_typography('responsi_widget_font_title', true);
         css += 'text-align:' + responsi_widget_title_text_alignment + ' !important;';
@@ -79,27 +79,27 @@
         }
         css += '}';
 
-        css += '#sidebar .widget, #sidebar-alt .widget{';
+        css += '.responsi-content-sidebar .widget, .responsi-content-sidebar-alt .widget{';
         css += 'margin-bottom:' + wp.customize.value('responsi_widget_margin_between')() + 'px;';
         css += '}';
 
-        css += '#sidebar .fw_widget_content, #sidebar-alt .fw_widget_content {';
+        css += '.responsi-content-sidebar .responsi-widget-content, .responsi-content-sidebar-alt .responsi-widget-content {';
         css += responsiCustomize.build_padding_margin('responsi_widget_content_padding', 'padding', true);
         css += '}';
 
-        css += '#sidebar .widget ul li, #sidebar .widget ol li, #sidebar .widget p, #sidebar .widget .textwidget, #sidebar .widget:not(div), #sidebar .widget .textwidget .tel, #sidebar .widget .textwidget .tel a, #sidebar .widget .textwidget a[href^=tel], #sidebar .widget * a[href^=tel], #sidebar .widget a[href^=tel], #sidebar-alt .widget ul li, #sidebar-alt .widget ol li, #sidebar-alt .widget p, #sidebar-alt .widget .textwidget, #sidebar-alt .widget:not(div), #sidebar-alt .widget .textwidget .tel, #sidebar-alt .widget .textwidget .tel a, #sidebar-alt .widget .textwidget a[href^=tel], #sidebar-alt .widget * a[href^=tel], #sidebar-alt .widget a[href^=tel] {';
+        css += '.responsi-content-sidebar .widget ul li, .responsi-content-sidebar .widget ol li, .responsi-content-sidebar .widget p, .responsi-content-sidebar .widget .textwidget, .responsi-content-sidebar .widget:not(div), .responsi-content-sidebar .widget .textwidget .tel, .responsi-content-sidebar .widget .textwidget .tel a, .responsi-content-sidebar .widget .textwidget a[href^=tel], .responsi-content-sidebar .widget * a[href^=tel], .responsi-content-sidebar .widget a[href^=tel], .responsi-content-sidebar-alt .widget ul li, .responsi-content-sidebar-alt .widget ol li, .responsi-content-sidebar-alt .widget p, .responsi-content-sidebar-alt .widget .textwidget, .responsi-content-sidebar-alt .widget:not(div), .responsi-content-sidebar-alt .widget .textwidget .tel, .responsi-content-sidebar-alt .widget .textwidget .tel a, .responsi-content-sidebar-alt .widget .textwidget a[href^=tel], .responsi-content-sidebar-alt .widget * a[href^=tel], .responsi-content-sidebar-alt .widget a[href^=tel] {';
         css += responsiCustomize.build_typography('responsi_widget_font_text');
         css += '}';
 
-        css += '#sidebar .widget a,#sidebar-alt .widget a, #sidebar .widget a:link,#sidebar-alt .widget a:link {';
+        css += '.responsi-content-sidebar .widget a,.responsi-content-sidebar-alt .widget a, .responsi-content-sidebar .widget a:link,.responsi-content-sidebar-alt .widget a:link {';
         css += 'color: ' + wp.customize.value('responsi_widget_link_color')() + ' !important;';
         css += '}';
 
-        css += '#sidebar .widget a:visited,#sidebar-alt .widget a:visited {';
+        css += '.responsi-content-sidebar .widget a:visited,.responsi-content-sidebar-alt .widget a:visited {';
         css += 'color: ' + wp.customize.value('responsi_widget_link_visited_color')() + ' !important;';
         css += '}';
 
-        css += '#sidebar .widget a:hover,#sidebar-alt .widget a:hover {';
+        css += '.responsi-content-sidebar .widget a:hover,.responsi-content-sidebar-alt .widget a:hover {';
         css += 'color: ' + wp.customize.value('responsi_widget_link_hover_color')() + ' !important;';
         css += '}';
 
@@ -298,7 +298,7 @@
     }
 
     var responsi_widget_animation = {
-        'responsi_widget_animation' : '#content #sidebar .masonry_widget, #content #sidebar-alt .masonry_widget',
+        'responsi_widget_animation' : '.responsi-content-content .responsi-content-sidebar .masonry_widget, .responsi-content-content .responsi-content-sidebar-alt .masonry_widget',
     };
 
     $.each( responsi_widget_animation, function(inx, val) {

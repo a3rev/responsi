@@ -13,13 +13,13 @@
 
         var responsi_page_title_font_transform = wp.customize.value('responsi_page_title_font_transform')();
         var responsi_page_title_position = wp.customize.value('responsi_page_title_position')();
-        css += '#main .custom_box.custom_box_page h1.title, .custom_box.custom_box_page h1.title, #main .custom_box.custom_box_page h1.title a:link, #main .custom_box.custom_box_page h1.title a:visited{' + responsiCustomize.build_typography('responsi_page_title_font', true) + responsiCustomize.build_padding_margin('responsi_page_title_margin', 'margin', true) + 'text-transform:' + responsi_page_title_font_transform + ' !important;text-align:' + responsi_page_title_position + ';}';
-        css += '.custom_box.custom_box_page{' + responsiCustomize.build_typography('responsi_page_content_font', true) + '}';
+        css += '.responsi-content-main .responsi-area.responsi-area-page h1.title, .responsi-area.responsi-area-page h1.title, .responsi-content-main .responsi-area.responsi-area-page h1.title a:link, .responsi-content-main .responsi-area.responsi-area-page h1.title a:visited{' + responsiCustomize.build_typography('responsi_page_title_font', true) + responsiCustomize.build_padding_margin('responsi_page_title_margin', 'margin', true) + 'text-transform:' + responsi_page_title_font_transform + ' !important;text-align:' + responsi_page_title_position + ';}';
+        css += '.responsi-area.responsi-area-page{' + responsiCustomize.build_typography('responsi_page_content_font', true) + '}';
 
         var responsi_archive_title_font_transform = wp.customize.value('responsi_archive_title_font_transform')();
         var responsi_archive_title_position = wp.customize.value('responsi_archive_title_position')();
-        css += '#main .custom_box.custom_box_archive h1.title, .custom_box.custom_box_archive h1.title, #main .custom_box.custom_box_archive h1.title a:link, #main .custom_box.custom_box_archive h1.title a:visited{' + responsiCustomize.build_typography('responsi_archive_title_font', true) + responsiCustomize.build_padding_margin('responsi_archive_title_margin', 'margin', true) + 'text-transform:' + responsi_archive_title_font_transform + ' !important;text-align:' + responsi_archive_title_position + ';}';
-        css += '.custom_box.custom_box_archive,.archive_header .catrss{' + responsiCustomize.build_typography('responsi_archive_content_font', true) + '}';
+        css += '.responsi-content-main .responsi-area.responsi-area-archive h1.title, .responsi-area.responsi-area-archive h1.title, .responsi-content-main .responsi-area.responsi-area-archive h1.title a:link, .responsi-content-main .responsi-area.responsi-area-archive h1.title a:visited{' + responsiCustomize.build_typography('responsi_archive_title_font', true) + responsiCustomize.build_padding_margin('responsi_archive_title_margin', 'margin', true) + 'text-transform:' + responsi_archive_title_font_transform + ' !important;text-align:' + responsi_archive_title_position + ';}';
+        css += '.responsi-area.responsi-area-archive,.archive_header .catrss{' + responsiCustomize.build_typography('responsi_archive_content_font', true) + '}';
 
         var responsi_archive_title_border_bottom_width = wp.customize.value('responsi_archive_title_border_bottom[width]')();
         css += '.archive_header{' + responsiCustomize.build_border('responsi_archive_title_border_bottom', 'bottom', true) + '}';
@@ -32,9 +32,9 @@
         var responsi_enable_archive_title_box = wp.customize.value('responsi_enable_archive_title_box')();
 
         if (responsi_enable_archive_title_box == 'true') {
-            css += '#main .custom_box.custom_box_archive, .custom_box.custom_box_archive,.custom_box_archive{' + responsiCustomize.build_background('responsi_archive_title_box_bg', true) + responsiCustomize.build_border_boxes('responsi_archive_title_box_border', true) + responsiCustomize.build_padding_margin('responsi_archive_title_box_padding', 'padding', true) + responsiCustomize.build_padding_margin('responsi_archive_title_box_margin', 'margin', true) + responsiCustomize.build_box_shadow('responsi_archive_title_box_shadow', true) + '}';
+            css += '.responsi-content-main .responsi-area.responsi-area-archive, .responsi-area.responsi-area-archive,.responsi-area-archive{' + responsiCustomize.build_background('responsi_archive_title_box_bg', true) + responsiCustomize.build_border_boxes('responsi_archive_title_box_border', true) + responsiCustomize.build_padding_margin('responsi_archive_title_box_padding', 'padding', true) + responsiCustomize.build_padding_margin('responsi_archive_title_box_margin', 'margin', true) + responsiCustomize.build_box_shadow('responsi_archive_title_box_shadow', true) + '}';
         } else {
-            css += '#main .custom_box.custom_box_archive, .custom_box.custom_box_archive,.custom_box_archive{padding:0px !important;border-width:0px !important;background-color:transparent !important;box-shadow: 0 0 0px #ffffff !important;border-radius: 0px !important;}';
+            css += '.responsi-content-main .responsi-area.responsi-area-archive, .responsi-area.responsi-area-archive,.responsi-area-archive{padding:0px !important;border-width:0px !important;background-color:transparent !important;box-shadow: 0 0 0px #ffffff !important;border-radius: 0px !important;}';
         }
 
         var responsi_showmore = wp.customize.value('responsi_showmore')();
@@ -43,7 +43,7 @@
             var responsi_scroll_font_text_alignment = wp.customize.value('responsi_scroll_font_text_alignment')();
             if (responsi_showmore_text == '') responsi_showmore_text = 'Show more';
             $('.click_showmore a.showmore').html(responsi_showmore_text);
-            css += 'body #main .click_showmore_container,.nav-entries{';
+            css += 'body .responsi-content-main .click_showmore_container,.nav-entries{';
             css += responsiCustomize.build_typography('responsi_scroll_font', true);
             css += 'text-align: ' + responsi_scroll_font_text_alignment + ' !important;';
             css += responsiCustomize.build_padding_margin('responsi_scroll_box_margin', 'margin', true);

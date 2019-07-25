@@ -17,7 +17,7 @@
  */
 ?>
 <?php global $content_column_grid, $count; ?>
-<div class="custom_box custom_box_archive responsi_title">
+<div class="responsi-area responsi-area-archive responsi_title">
 	<?php do_action( 'responsi_loop_before' ); ?>
 	<?php responsi_archive_title( '<span class="archive_header"><h1 class="title entry-title">', '</h1></span>', true ); ?>
 	<?php if ( category_description() ) : ?>

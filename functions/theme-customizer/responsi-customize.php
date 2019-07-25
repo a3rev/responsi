@@ -499,7 +499,7 @@ final class Responsi_Customize {
 	    				$this->manager->get_setting( $value )->transport = 'postMessage';
 	    		}
 	    		$this->manager->selective_refresh->add_partial( 'responsi_site_before_footer_selective_refresh', array(
-			        'selector' => '#footer #additional',
+			        'selector' => '.responsi-footer .responsi-footer-additional',
 			        'settings' => $responsi_site_before_footer_selective_refresh,
 			        'render_callback' => 'responsi_footer_additional'
 			    ) );
@@ -513,7 +513,7 @@ final class Responsi_Customize {
 	    				$this->manager->get_setting( $value )->transport = 'postMessage';
 	    		}
 	    		$this->manager->selective_refresh->add_partial( 'responsi_site_footer_copyright_selective_refresh', array(
-			        'selector' => '#footer #copyright',
+			        'selector' => '.responsi-footer .responsi-footer-copyright',
 			        'settings' => $responsi_site_footer_copyright_selective_refresh,
 			        'render_callback' => 'responsi_footer_copyright'
 			    ) );
@@ -527,7 +527,7 @@ final class Responsi_Customize {
 	    				$this->manager->get_setting( $value )->transport = 'postMessage';
 	    		}
 	    		$this->manager->selective_refresh->add_partial( 'responsi_site_footer_credit_selective_refresh', array(
-			        'selector' => '#footer #credit',
+			        'selector' => '.responsi-footer .responsi-footer-credit',
 			        'settings' => $responsi_site_footer_credit_selective_refresh,
 			        'render_callback' => 'responsi_footer_credit'
 			    ) );
@@ -958,25 +958,25 @@ final class Responsi_Customize {
 	public function responsi_focus_sections( $_sectionIds ) {
 
 		$focusSection =  array( 
-			'sidebar-widgets-primary' => '#sidebar .masonry_widget_blank',
-			'sidebar-widgets-secondary' => '#sidebar-alt .masonry_widget_blank',
-			'header_style' => '#wrapper-header-content > .shiftclick',
-			'header_widgets' => '#wrapper-header-content .shiftclick_container > .shiftclick',
-			'navigation_primary' => '#wrapper-nav-content > .shiftclick',
-			'footer_widget' => '#wrapper-footer-top-content > .shiftclick',
-			'footer_widget_content' => '#wrapper-footer-top > .shiftclick',
-			'footer_widget_style' => '#footer-widgets .shiftclick_container > .shiftclick',
-			'footer_style' => '#wrapper-footer-content > .shiftclick',
-			'footer_content_style' => '#footer > .shiftclick',
-			'content_body_style' => '#wrapper-article > .shiftclick',
+			'sidebar-widgets-primary' => '.responsi-content-sidebar .widget-blank',
+			'sidebar-widgets-secondary' => '.responsi-content-sidebar-alt .widget-blank',
+			'header_style' => '.responsi-header-container > .shiftclick',
+			'header_widgets' => '.responsi-header-container .responsi-shiftclick > .shiftclick',
+			'navigation_primary' => '.responsi-nav-container > .shiftclick',
+			'footer_widget' => '.responsi-footer-before-container > .shiftclick',
+			'footer_widget_content' => '.responsi-footer-before-wrapper > .shiftclick',
+			'footer_widget_style' => '.responsi-footer-before-widgets .responsi-shiftclick > .shiftclick',
+			'footer_style' => '.responsi-footer-container > .shiftclick',
+			'footer_content_style' => '.responsi-footer > .shiftclick',
+			'content_body_style' => '.responsi-content-article > .shiftclick',
 		);
 
 		for( $i = 1 ; $i <= 6 ; $i ++ ){
-			$focusSection['sidebar-widgets-footer-'.$i] = '.footer-widget-'.$i.' .masonry_widget_blank';
+			$focusSection['sidebar-widgets-footer-'.$i] = '.footer-widget-'.$i.' .widget-blank';
 		}
 
 		for( $i = 2 ; $i <= 6 ; $i ++ ){
-			$focusSection['sidebar-widgets-header-'.$i] = '.header-widget-'.$i.' .masonry_widget_blank';
+			$focusSection['sidebar-widgets-header-'.$i] = '.header-widget-'.$i.' .widget-blank';
 		}
 
 		$sectionIds = apply_filters( 'responsi_focus_sections_selector', $focusSection );

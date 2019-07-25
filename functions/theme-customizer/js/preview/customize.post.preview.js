@@ -9,8 +9,8 @@
 
         var responsi_post_title_font_transform = wp.customize.value('responsi_post_title_font_transform')();
         var responsi_post_title_position = wp.customize.value('responsi_post_title_position')();
-        css += '#main .custom_box.custom_box_post h1.title, .custom_box.custom_box_post h1.title, #main .custom_box.custom_box_post h1.title a:link, #main .custom_box.custom_box_post h1.title a:visited{' + responsiCustomize.build_typography('responsi_font_post_title', true) + responsiCustomize.build_padding_margin('responsi_post_title_margin', 'margin', true) + 'text-transform: ' + responsi_post_title_font_transform + ' !important; text-align: ' + responsi_post_title_position + ';}';
-        css += '.custom_box.custom_box_post{' + responsiCustomize.build_typography('responsi_font_post_text', true) + '}';
+        css += '.responsi-content-main .responsi-area.responsi-area-post h1.title, .responsi-area.responsi-area-post h1.title, .responsi-content-main .responsi-area.responsi-area-post h1.title a:link, .responsi-content-main .responsi-area.responsi-area-post h1.title a:visited{' + responsiCustomize.build_typography('responsi_font_post_title', true) + responsiCustomize.build_padding_margin('responsi_post_title_margin', 'margin', true) + 'text-transform: ' + responsi_post_title_font_transform + ' !important; text-align: ' + responsi_post_title_position + ';}';
+        css += '.responsi-area.responsi-area-post{' + responsiCustomize.build_typography('responsi_font_post_text', true) + '}';
 
         var responsi_post_meta_transform = wp.customize.value('responsi_post_meta_transform')();
         var responsi_post_meta_link = wp.customize.value('responsi_post_meta_link')();
@@ -19,22 +19,22 @@
 
         var meta_box = '';
         meta_box = responsiCustomize.build_border('responsi_post_meta_border_top', 'top', true) + responsiCustomize.build_border('responsi_post_meta_border_bottom', 'bottom', true) + responsiCustomize.build_border('responsi_post_meta_border_lr', 'left', true) + responsiCustomize.build_border('responsi_post_meta_border_lr', 'right', true) + responsiCustomize.build_background('responsi_post_meta_bg', true);
-        css += '.single .custom_box_post .post-meta{' + responsiCustomize.build_typography('responsi_font_post_meta', true) + 'text-transform: ' + responsi_post_meta_transform + ' !important;' + responsiCustomize.build_padding_margin('responsi_post_meta_margin', 'margin', true) + responsiCustomize.build_padding_margin('responsi_post_meta_padding', 'padding', true) + meta_box + '}';
-        css += '.single .custom_box_post .post-meta a {text-transform:' + responsi_post_meta_transform + ';color:' + responsi_post_meta_link + ' !important;}';
-        css += '.single .custom_box_post .post-meta a:hover {color:' + responsi_post_meta_link_hover + ' !important;}';
-        css += '.single .custom_box_post .post-meta .i_author:before, .single .custom_box_post .post-meta .i_comment:before, .single .custom_box_post .post-meta .i_authors span.author .fn:before, .single .i_dates time.i_date:before {color:' + responsi_post_meta_icon + ' !important;}';
+        css += '.single .responsi-area-post .post-meta{' + responsiCustomize.build_typography('responsi_font_post_meta', true) + 'text-transform: ' + responsi_post_meta_transform + ' !important;' + responsiCustomize.build_padding_margin('responsi_post_meta_margin', 'margin', true) + responsiCustomize.build_padding_margin('responsi_post_meta_padding', 'padding', true) + meta_box + '}';
+        css += '.single .responsi-area-post .post-meta a {text-transform:' + responsi_post_meta_transform + ';color:' + responsi_post_meta_link + ' !important;}';
+        css += '.single .responsi-area-post .post-meta a:hover {color:' + responsi_post_meta_link_hover + ' !important;}';
+        css += '.single .responsi-area-post .post-meta .i_author:before, .single .responsi-area-post .post-meta .i_comment:before, .single .responsi-area-post .post-meta .i_authors span.author .fn:before, .single .i_dates time.i_date:before {color:' + responsi_post_meta_icon + ' !important;}';
         var responsi_enable_post_meta_icon = wp.customize.value('responsi_enable_post_meta_icon')();
         if (responsi_enable_post_meta_icon != 'true') {
-            css += '.single .custom_box_post .post-meta .i_author:before, .single .custom_box_post .post-meta .i_comment:before, .single .custom_box_post .post-meta .i_authors span.author .fn:before, .single .i_dates time.i_date:before{display:none !important;}';
+            css += '.single .responsi-area-post .post-meta .i_author:before, .single .responsi-area-post .post-meta .i_comment:before, .single .responsi-area-post .post-meta .i_authors span.author .fn:before, .single .i_dates time.i_date:before{display:none !important;}';
         } else {
-            css += '.single .custom_box_post .post-meta .i_author:before, .single .custom_box_post .post-meta .i_comment:before, .single .custom_box_post .post-meta .i_authors span.author .fn:before, .single .i_dates time.i_date:before{display:inherit !important;}';
+            css += '.single .responsi-area-post .post-meta .i_author:before, .single .responsi-area-post .post-meta .i_comment:before, .single .responsi-area-post .post-meta .i_authors span.author .fn:before, .single .i_dates time.i_date:before{display:inherit !important;}';
         }
 
         var responsi_enable_post_meta_icon = wp.customize.value('responsi_enable_post_meta_icon')();
         if (responsi_enable_post_meta_icon != 'true') {
-            css += '.single .custom_box_post .post-meta .i_author:before, .single .custom_box_post .post-meta .i_comment:before, .single .custom_box_post .post-meta .i_authors span.author .fn:before, .single .i_dates time.i_date:before{display:none !important;}';
+            css += '.single .responsi-area-post .post-meta .i_author:before, .single .responsi-area-post .post-meta .i_comment:before, .single .responsi-area-post .post-meta .i_authors span.author .fn:before, .single .i_dates time.i_date:before{display:none !important;}';
         } else {
-            css += '.single .custom_box_post .post-meta .i_author:before, .single .custom_box_post .post-meta .i_comment:before, .single .custom_box_post .post-meta .i_authors span.author .fn:before, .single .i_dates time.i_date:before{display:inherit !important;}';
+            css += '.single .responsi-area-post .post-meta .i_author:before, .single .responsi-area-post .post-meta .i_comment:before, .single .responsi-area-post .post-meta .i_authors span.author .fn:before, .single .i_dates time.i_date:before{display:inherit !important;}';
         }
 
         var responsi_disable_post_meta_author = wp.customize.value('responsi_disable_post_meta_author')();
@@ -42,19 +42,19 @@
         var responsi_disable_post_meta_comment = wp.customize.value('responsi_disable_post_meta_comment')();
 
         if ( responsi_disable_post_meta_author != 'true' ) {
-            css += '.single .custom_box_post .post-meta .i_authors{display:none !important;}';
+            css += '.single .responsi-area-post .post-meta .i_authors{display:none !important;}';
         }else{
-            css += '.single .custom_box_post .post-meta .i_authors{display:initial !important;}';
+            css += '.single .responsi-area-post .post-meta .i_authors{display:initial !important;}';
         }
         if ( responsi_disable_post_meta_date != 'true' ) {
-            css += '.single .custom_box_post .post-meta .i_dates{display:none !important;}';
+            css += '.single .responsi-area-post .post-meta .i_dates{display:none !important;}';
         }else{
-            css += '.single .custom_box_post .post-meta .i_dates{display:initial !important;}';
+            css += '.single .responsi-area-post .post-meta .i_dates{display:initial !important;}';
         }
         if ( responsi_disable_post_meta_comment != 'true' ) {
-            css += '.single .custom_box_post .post-meta .post-comments{display:none !important;}';
+            css += '.single .responsi-area-post .post-meta .post-comments{display:none !important;}';
         }else{
-            css += '.single .custom_box_post .post-meta .post-comments{display:initial !important;}';
+            css += '.single .responsi-area-post .post-meta .post-comments{display:initial !important;}';
         }
         if ( responsi_disable_post_meta_author != 'true' && responsi_disable_post_meta_date != 'true' && responsi_disable_post_meta_comment != 'true' ) {
             css += '.single .single_content .post-meta{display:none !important;}';

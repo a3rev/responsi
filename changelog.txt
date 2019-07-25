@@ -1,5 +1,11 @@
 *** Responsi Framework Changelog ***
 
+= 7.5.0 - 2019/07/24 =
+* This is a major developer upgrade and is Phase 1 of a complete refactor of the framework code
+* Refactor - All framework CSS and JS from Class ID to Class name
+* Refactor - Add some new HTML Class names
+* Tweak - Add rel="noopener" for a tags
+
 = 7.4.1 - 2019/07/03 =
 * This maintenance update is for compatibility with fontawesome 5.9.0
 * Fix - Arrow SVG icon display with new fontawesome 5.9.0 version which was causing a fatal error in some cases.
