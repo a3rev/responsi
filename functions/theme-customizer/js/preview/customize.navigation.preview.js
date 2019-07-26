@@ -68,7 +68,7 @@
         var responsi_nav_currentitem = wp.customize.value('responsi_nav_currentitem')();
 
         css += '.responsi-nav-content ul.menu > li.menu-item-has-children > a:after{border-color:' + responsi_nav_font_color + ' transparent transparent !important;}';
-        css += '.responsi-nav-content nav > ul.menu > li > a,.responsi-nav-content div > ul.menu > li > a ,.responsi-nav-content nav > ul > li:first-child > a,.responsi-nav-content div > ul > li:first-child > a , .responsi-nav-content .partial-refresh-menu-container ul.menu > li > a,.responsi-nav-content .responsi-nav-content .partial-refresh-menu-container ul > li:first-child > a{';
+        css += '.responsi-nav-content nav > ul.menu > li > a,.responsi-nav-content div > ul.menu > li > a ,.responsi-nav-content nav > ul.menu > li:first-child > a,.responsi-nav-content div > ul.menu > li:first-child > a , .responsi-nav-content .partial-refresh-menu-container ul.menu > li > a,.responsi-nav-content .responsi-nav-content .partial-refresh-menu-container ul > li:first-child > a{';
         css += responsiCustomize.build_typography('responsi_nav_font', true);
         css += 'text-transform:' + wp.customize.value('responsi_nav_font_transform')() + ' !important;';
         css += responsiCustomize.build_border('responsi_navi_border_top', 'top', true);
@@ -88,7 +88,7 @@
         css += '.responsi-nav-content ul.menu > li.menu-item-has-children:hover > a:after,.responsi-nav-content ul.menu > li.menu-item-has-children.current-menu-item:hover > a:after{border-color:' + responsi_nav_hover + ' transparent transparent !important;}';
         css += '.responsi-nav-content ul.menu > li.menu-item-has-children.current-menu-item > a:after{border-color:' + responsi_nav_hover + ' transparent transparent !important;}';
 
-        css += '.responsi-nav-content nav > ul.menu > li > a, .responsi-nav-content div > ul.menu > li > a, .responsi-nav-content nav > ul > li:first-child > a, .responsi-nav-content div > ul > li:first-child > a, .responsi-nav-content .partial-refresh-menu-container ul.menu > li > a, .responsi-nav-content .responsi-nav-content .partial-refresh-menu-container ul > li:first-child > a{';
+        css += '.responsi-nav-content nav > ul.menu > li > a, .responsi-nav-content div > ul.menu > li > a, .responsi-nav-content nav > ul.menu > li:first-child > a, .responsi-nav-content div > ul.menu > li:first-child > a, .responsi-nav-content .partial-refresh-menu-container ul.menu > li > a, .responsi-nav-content .responsi-nav-content .partial-refresh-menu-container ul > li:first-child > a{';
         css += responsiCustomize.build_background('responsi_navi_background', true);
         css += '}';
 

@@ -971,8 +971,7 @@ jQuery(document).ready(function($) {
     });
 
     window.responsi_top_container = document.getElementsByClassName("responsi-top-container")[0], 
-    window.responsi_site_container = document.getElementsByClassName("responsi-site-container")[0], 
-    window.topFixSticky = window.responsi_site_container.offsetTop;
+    window.responsi_site_container = document.getElementsByClassName("responsi-site-container")[0];
 
     $(window).on('scroll resize', function() {
         window.responsiTopCtn();
@@ -1002,15 +1001,21 @@ jQuery(document).ready(function($) {
         if( ( window.adminBarHeight + window.ahwHeight ) > window.topCtnScroll ){
             document.getElementsByTagName('body')[0].classList.add('responsi-top-sticky');
             if( window.responsiGetStyle(document.querySelector( '.ahw-header' ), 'position') != 'fixed' ){
-                document.querySelector(".responsi-top-fixed").style.top = window.adminBarHeight + 'px';
+                if( document.getElementsByClassName("responsi-top-fixed")[0] != undefined ){
+                    document.querySelector(".responsi-top-fixed").style.top = window.adminBarHeight + 'px';
+                }
             }else{
-                document.querySelector(".responsi-top-fixed").style.removeProperty("top");
+                if( document.getElementsByClassName("responsi-top-fixed")[0] != undefined ){
+                    document.querySelector(".responsi-top-fixed").style.removeProperty("top");
+                }
             }
 
         }else{
             document.getElementsByTagName('body')[0].classList.remove('responsi-top-sticky');
             if( window.responsiGetStyle(document.querySelector( '.ahw-header' ), 'position') != 'fixed' ){
-                document.querySelector(".responsi-top-fixed").style.removeProperty("top");
+                if( document.getElementsByClassName("responsi-top-fixed")[0] != undefined ){
+                    document.querySelector(".responsi-top-fixed").style.removeProperty("top");
+                }
             }
         }
 
@@ -1019,12 +1024,6 @@ jQuery(document).ready(function($) {
         if( document.getElementsByClassName("responsi-top-fixed")[0] != undefined ){
             window.topCtnHeight = document.querySelector(".responsi-top-fixed").offsetHeight;
             document.querySelector(".responsi-top-container").style.height = window.topCtnHeight + 'px';
-        }
-
-        if (window.pageYOffset >= window.topFixSticky ) {
-            //document.getElementsByTagName('body')[0].classList.add('responsi-top-sticky');
-        } else {
-            //document.getElementsByTagName('body')[0].classList.remove('responsi-top-sticky');
         }
 
     }
