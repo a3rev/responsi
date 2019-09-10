@@ -63,7 +63,7 @@ if ( ! class_exists( 'Customize_iColor_Control' ) && class_exists('WP_Customize_
 				if ( '#' !== data.defaultValue.substring( 0, 1 ) ) {defaultValue = '#' + data.defaultValue;}else{defaultValue = data.defaultValue;}
 				defaultValueAttr = ' data-default-color=' + defaultValue;
 			} #>
-			<div class="customize-control-container">
+			<div class="customize-ctrl">
 				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="customize-control-content icolor-container">
 					<label><span class="screen-reader-text">{{{ data.label }}}</span>

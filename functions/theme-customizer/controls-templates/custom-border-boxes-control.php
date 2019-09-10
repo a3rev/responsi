@@ -106,7 +106,7 @@ if ( ! class_exists( 'Customize_Border_Boxes_Control' ) && class_exists('WP_Cust
 				if ( '#' !== data.values.color.substring( 0, 1 ) ) {defaultValue = '#' + data.values.color;}else{defaultValue = data.values.color;}
 				defaultValueAttr = ' data-default-color=' + defaultValue;
 			} #>
-			<div class="customize-control-container {{ data.custom_class }}">
+			<div class="customize-ctrl {{ data.custom_class }}">
 				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="border-container border-boxes-container">
 					<select class="responsi-border responsi-border-width" name="{{ setting_id }}[width]"></select>

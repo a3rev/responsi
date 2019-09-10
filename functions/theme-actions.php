@@ -76,6 +76,6 @@ add_action( 'responsi_wrapper_footer_content', 'responsi_wrapper_footer_content'
 add_action( 'responsi_wrapper_footer_additional', 'responsi_footer_additional' );
 add_action( 'responsi_wrapper_footer_content_copyright', 'responsi_footer_copyright' );
 add_action( 'responsi_wrapper_footer_content_credit', 'responsi_footer_credit' );
-add_action( 'wp_footer', 'responsi_scrolltop', 99 );
+add_action( 'wp_footer', 'responsi_scrolltop', 1 );
 
 ?>

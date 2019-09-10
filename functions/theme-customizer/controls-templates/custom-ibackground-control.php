@@ -103,7 +103,7 @@ if ( ! class_exists( 'Customize_iBackground_Control' ) && class_exists('WP_Custo
 				if ( '#' !== data.values.color.substring( 0, 1 ) ) {defaultValue = '#' + data.values.color;}else{defaultValue = data.values.color;}
 				defaultValueAttr = ' data-default-color=' + defaultValue;
 			} #>
-			<div class="customize-control-container {{ data.custom_class }}">
+			<div class="customize-ctrl {{ data.custom_class }}">
 				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="ibackground-container">
 					<div class="responsi-iphone-checkbox"><input type="checkbox" {{{ onoff_checked }}} id="{{ setting_id }}_onoff" class="checkbox responsi-input responsi-ibackground-onoff responsi-ui-icheckbox" /></div>

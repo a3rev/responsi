@@ -182,7 +182,7 @@ if ( !function_exists( 'responsi_register_webfonts' ) ) {
 /*-----------------------------------------------------------------------------------*/
 if ( !function_exists('responsi_google_webfonts') ) {
     function responsi_google_webfonts() {
-        global $responsi_options, $google_fonts;
+        global $responsi_options, $google_fonts, $gFonts;
 
         $fonts  = '';
         $urls = '';
@@ -196,7 +196,7 @@ if ( !function_exists('responsi_google_webfonts') ) {
         $responsi_options_webfonts = apply_filters( 'responsi_google_webfonts', $responsi_options_webfonts );
 
         $list_fonts = array();
-
+        
         // Go through the options
         if ( !empty( $responsi_options_webfonts ) ) {
             foreach ( $responsi_options_webfonts as $option ) {
@@ -217,6 +217,9 @@ if ( !function_exists('responsi_google_webfonts') ) {
                 $urls = str_replace( '|"', '"', $urls );
             }
         }
+
+        $gFonts = $list_fonts;
+
         return $urls;
     }
 }
@@ -1762,8 +1765,8 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                 }';
 
             $output .= '
-                .col-2-2 .responsi-content-sidebar.box,
-                .col-2-2 .responsi-content-sidebar-alt.box {
+                .col-2-2 .sidebar.box,
+                .col-2-2 .sidebar-alt.box {
                     float: left;
                     width: '.( (100 - ($gutter))/2 ).'%;
                 }
@@ -1772,8 +1775,8 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                     width: '.( (100 - ($gutter))/2 ).'%;
                 }
 
-                .col-2-3 .responsi-content-sidebar.box,
-                .col-2-3 .responsi-content-sidebar-alt.box {
+                .col-2-3 .sidebar.box,
+                .col-2-3 .sidebar-alt.box {
                     float: left;
                     width: 32%;
                     width: '.( (100 - ($gutter*2))/3 ).'%;
@@ -1783,8 +1786,8 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                     width: '. ( (( (100 - ($gutter*2))/3 ) * 2 ) + ( $gutter ) ) .'%;
                 }
 
-                .col-2-4 .responsi-content-sidebar.box,
-                .col-2-4 .responsi-content-sidebar-alt.box{
+                .col-2-4 .sidebar.box,
+                .col-2-4 .sidebar-alt.box{
                     float: left;
                     width: '.( (100 - ($gutter*3))/4 ).'%;
                 }
@@ -1793,8 +1796,8 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                     width: '. ( (( (100 - ($gutter*3))/4 ) * 3 ) + ( $gutter*2 ) ) .'%;
                 }
 
-                .col-2-5 .responsi-content-sidebar.box,
-                .col-2-5 .responsi-content-sidebar-alt.box{
+                .col-2-5 .sidebar.box,
+                .col-2-5 .sidebar-alt.box{
                     float: left;
                     width: '.( (100 - ($gutter*4))/5 ).'%;
                 }
@@ -1803,8 +1806,8 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                     width: '. ( (( (100 - ($gutter*4))/5 ) * 4 ) + ( $gutter*3 ) ) .'%;
                 }
 
-                .col-2-6 .responsi-content-sidebar.box,
-                .col-2-6 .responsi-content-sidebar-alt.box{
+                .col-2-6 .sidebar.box,
+                .col-2-6 .sidebar-alt.box{
                     float: left;
                     width: '.( (100 - ($gutter*5))/6 ).'%;
                 }
@@ -1813,8 +1816,8 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                     width: '. ( (( (100 - ($gutter*5))/6 ) * 5 ) + ( $gutter*4 ) ) .'%;
                 }
 
-                .col-3-3 .responsi-content-sidebar.box,
-                .col-3-3 .responsi-content-sidebar-alt.box {
+                .col-3-3 .sidebar.box,
+                .col-3-3 .sidebar-alt.box {
                     float: left;
                     width: '.( (100 - ($gutter*2))/3 ).'%;
                 }
@@ -1823,8 +1826,8 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                     width: '.( (100 - ($gutter*2))/3 ).'%;
                 }
 
-                .col-3-4 .responsi-content-sidebar.box,
-                .col-3-4 .responsi-content-sidebar-alt.box {
+                .col-3-4 .sidebar.box,
+                .col-3-4 .sidebar-alt.box {
                     float: left;
                     width: '.( (100 - ($gutter*3))/4 ).'%;
                 }
@@ -1833,8 +1836,8 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                     width: '. ( (( (100 - ($gutter*3))/4 ) * 2 ) + $gutter ) .'%;
                 }
 
-                .col-3-5 .responsi-content-sidebar.box,
-                .col-3-5 .responsi-content-sidebar-alt.box {
+                .col-3-5 .sidebar.box,
+                .col-3-5 .sidebar-alt.box {
                     float: left;
                     width: '.( (100 - ($gutter*4))/5 ).'%;
                 }
@@ -1843,8 +1846,8 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                     width: '. ( (( (100 - ($gutter*4))/5 ) * 3 ) + ( $gutter*2 ) ) .'%;
                 }
 
-                .col-3-6 .responsi-content-sidebar.box,
-                .col-3-6 .responsi-content-sidebar-alt.box {
+                .col-3-6 .sidebar.box,
+                .col-3-6 .sidebar-alt.box {
                     float: left;
                     width: '.( (100 - ($gutter*5))/6 ).'%;
                 }
@@ -2169,7 +2172,7 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
         $output .= '@media only screen and (min-width:480px) and (max-width:782px) {';
             $output .= '
       
-            .responsi-header .box.col-item:not(.col-1){
+            .header .box.col-item:not(.col-1){
                 display: inline-block;
                 float: left;
                 margin-left: 0 !important;
@@ -2177,13 +2180,13 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                 width: '.( (100 - ($gutter))/2 ).'% !important;
             }
 
-            .responsi-header .box.col-item.header-widget-1:not(.box-last),
-            .responsi-header .box.col-item.header-widget-3,
-            .responsi-header .box.col-item.header-widget-5 {
+            .header .box.col-item.header-widget-1:not(.box-last),
+            .header .box.col-item.header-widget-3,
+            .header .box.col-item.header-widget-5 {
                 margin-right: '.$gutter.'% !important;
             }
 
-            .responsi-footer-before-widgets .box.col-item:not(.col-1){
+            .footer-widgets .box.col-item:not(.col-1){
                 display: inline-block;
                 float: left;
                 margin-left: 0 !important;
@@ -2191,19 +2194,19 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                 width: '.( (100 - ($gutter))/2 ).'% !important;
             }
 
-            .responsi-footer-before-widgets .box.col-item.footer-widget-1:not(.box-last),
-            .responsi-footer-before-widgets .box.col-item.footer-widget-3,
-            .responsi-footer-before-widgets .box.col-item.footer-widget-5 {
+            .footer-widgets .box.col-item.footer-widget-1:not(.box-last),
+            .footer-widgets .box.col-item.footer-widget-3,
+            .footer-widgets .box.col-item.footer-widget-5 {
                 margin-right: '.$gutter.'% !important;
             }
 
-            .responsi-content-content .responsi-content-main .box-content {
+            .content .main .box-content {
                 width: '.$box_content_2.'% !important;
             }
-            .responsi-content-content .responsi-content-main .box-content .box-item {
+            .content .main .box-content .box-item {
                 width: '.$box_item_2.'% !important;
             }
-            .responsi-content-content .responsi-content-main .box.col-item {
+            .content .main .box.col-item {
                 display: inline-block;
                 float: left;
                 margin-left: 0 !important;
@@ -2221,12 +2224,12 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                 margin-right: '.$gutter.'% !important;
             }
 
-            .responsi-content-content .responsi-content-sidebar .sidebar-wrap-content,
-            .responsi-content-content .responsi-content-sidebar-alt .sidebar-wrap-content {
+            .content .sidebar .sidebar-in,
+            .content .sidebar-alt .sidebar-in {
                 width: '.$box_content_2.'% !important;
             }
-            .responsi-content-content .responsi-content-sidebar .masonry_widget,
-            .responsi-content-content .responsi-content-sidebar-alt .masonry_widget {
+            .content .sidebar .msr-wg,
+            .content .sidebar-alt .msr-wg {
                 margin-left: auto !important;
                 margin-right: auto !important;
                 width: '.$box_item_2.'% !important;
@@ -2418,14 +2421,14 @@ function responsi_build_dynamic_css( $preview = false ) {
                 $border_width_boxed = ( (int) esc_attr( $box_border_lr['width'] ) ) * 2;
             }
             $boxes_width = $boxes_width + $border_width_boxed;
-            $dynamic_css .= '.layout-box-mode .responsi-boxes{' . $wrapper . '}';
-            $dynamic_css .= '.responsi-boxes-content{' . $box_inner_css . '}';
+            $dynamic_css .= '.layout-box-mode .wrapper-ctn{' . $wrapper . '}';
+            $dynamic_css .= '.wrapper-in{' . $box_inner_css . '}';
             
         } else {
-            $dynamic_css .= '.responsi-boxes-content,.layout-box-mode .responsi-boxes{padding:0 !important;margin:0 !important;border:none !important;border-radius:0px !important;box-shadow:none !important;background-color:transparent !important;}';
+            $dynamic_css .= '.wrapper-in,.layout-box-mode .wrapper-ctn{padding:0 !important;margin:0 !important;border:none !important;border-radius:0px !important;box-shadow:none !important;background-color:transparent !important;}';
         }
     } else {
-        $dynamic_css .= '.responsi-boxes-content,.layout-box-mode .responsi-boxes{padding:0 !important;margin:0 !important;border:none !important;border-radius:0px !important;box-shadow:none !important;background-color:transparent !important;}';
+        $dynamic_css .= '.wrapper-in,.layout-box-mode .wrapper-ctn{padding:0 !important;margin:0 !important;border:none !important;border-radius:0px !important;box-shadow:none !important;background-color:transparent !important;}';
     }
 
     $dynamic_css .= '@media only screen and (min-width: 783px){.site-width{ max-width:' . $boxes_width . 'px; margin:auto; padding:0 !important; }}';
@@ -2466,8 +2469,8 @@ function responsi_build_dynamic_css( $preview = false ) {
     $content_inside .= $_wrapper_border_radius;
     $content_inside .= $_wrapper_border_box_shadow;
 
-    $dynamic_css .= '.responsi-content-article{' . $content_inside . '}';
-    $dynamic_css .= '.responsi-content-container{position:relative;z-index:0;' . responsi_generate_background_color( $responsi_wrap_container_background ) . '}';
+    $dynamic_css .= '.content-in{' . $content_inside . '}';
+    $dynamic_css .= '.responsi-content{position:relative;z-index:0;' . responsi_generate_background_color( $responsi_wrap_container_background ) . '}';
     
     /* Settings */
     $link                                   = isset( $responsi_options['responsi_link_color'] ) ? esc_attr( $responsi_options['responsi_link_color'] ) : '#009ee0';
@@ -2658,7 +2661,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $header_css .= responsi_generate_border($header_border_lr, 'border-left');
     $header_css .= responsi_generate_border($header_border_lr, 'border-right');
     $header_css .= $header_box_shadow;
-    $dynamic_css .= '.responsi-header-container{' . $header_css . '}';
+    $dynamic_css .= '.responsi-header{' . $header_css . '}';
 
     $header_inner_bg                              = isset( $responsi_options['responsi_header_inner_bg'] ) ? $responsi_options['responsi_header_inner_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
     $enable_header_inner_bg_image                 = isset( $responsi_options['responsi_enable_header_inner_bg_image'] ) ? esc_attr( $responsi_options['responsi_enable_header_inner_bg_image'] ) : 'false';
@@ -2695,14 +2698,14 @@ function responsi_build_dynamic_css( $preview = false ) {
     $header_inner_css .= responsi_generate_border($header_inner_border_lr, 'border-right');
     $header_inner_css .= $header_inner_box_shadow;
 
-    $dynamic_css .= '.responsi-header-content{' . $header_inner_css . '}';
-    $dynamic_css .= '.site-logo-container a.site-title, .site-logo-container a.site-title:hover, .site-logo-container a:link:hover, .site-title, a.site-title:link, a.site-title:hover, a.site-title:link:hover, .header-widget-1 a, .header-widget-1 a:hover, .responsi-header .header-widget-1 .widget a, .responsi-header .header-widget-1 .widget a:link, .responsi-header .header-widget-1 .widget a:link:hover{' . responsi_generate_fonts( $font_logo, true ) . '}';
+    $dynamic_css .= '.header-in{' . $header_inner_css . '}';
+    $dynamic_css .= '.logo-ctn a.site-title, .logo-ctn a.site-title:hover, .logo-ctn a:link:hover, .site-title, a.site-title:link, a.site-title:hover, a.site-title:link:hover, .header-widget-1 a, .header-widget-1 a:hover, .header .header-widget-1 .widget a, .header .header-widget-1 .widget a:link, .header .header-widget-1 .widget a:link:hover{' . responsi_generate_fonts( $font_logo, true ) . '}';
     $dynamic_css .= '.site-description {' . responsi_generate_fonts($font_desc) . '}';
-    $dynamic_css .= '.masonry_widget_header .responsi-widget-title h3 {' . responsi_generate_fonts($font_header_widget_title) . '}';
-    $dynamic_css .= '.responsi-header .widget .textwidget, .responsi-header .widget:not(div), .responsi-header .widget p,.responsi-header .widget label,.responsi-header .widget .textwidget,.responsi-header .login-username label, .responsi-header .login-password label, .responsi-header .widget .textwidget .tel, .responsi-header .widget .textwidget .tel a, .responsi-header .widget .textwidget a[href^=tel], .responsi-header .widget * a[href^=tel], .responsi-header .widget a[href^=tel]{' . responsi_generate_fonts($responsi_font_header_widget_text) . ' text-decoration: none;}';
-    $dynamic_css .= '.responsi-header .widget a,.responsi-header .widget ul li a,.responsi-header .widget ul li{' . responsi_generate_fonts($responsi_font_header_widget_link) . '}';
-    $dynamic_css .= '.responsi-header .widget a:hover{color:' . $responsi_font_header_widget_link_hover . ';}';
-    $dynamic_css .= '.masonry_widget_header .widget{text-align:' . $responsi_header_widget_text_alignment . '}';
+    $dynamic_css .= '.msr-wg-header .widget-title h3 {' . responsi_generate_fonts($font_header_widget_title) . '}';
+    $dynamic_css .= '.header .widget .textwidget, .header .widget:not(div), .header .widget p,.header .widget label,.header .widget .textwidget,.header .login-username label, .header .login-password label, .header .widget .textwidget .tel, .header .widget .textwidget .tel a, .header .widget .textwidget a[href^=tel], .header .widget * a[href^=tel], .header .widget a[href^=tel]{' . responsi_generate_fonts($responsi_font_header_widget_text) . ' text-decoration: none;}';
+    $dynamic_css .= '.header .widget a,.header .widget ul li a,.header .widget ul li{' . responsi_generate_fonts($responsi_font_header_widget_link) . '}';
+    $dynamic_css .= '.header .widget a:hover{color:' . $responsi_font_header_widget_link_hover . ';}';
+    $dynamic_css .= '.msr-wg-header .widget{text-align:' . $responsi_header_widget_text_alignment . '}';
     
     $header_widget_alignment_mobile               = isset( $responsi_options['responsi_font_header_widget_text_alignment_mobile'] ) ? esc_attr( $responsi_options['responsi_font_header_widget_text_alignment_mobile'] ) : 'true';
     $header_widget_mobile_margin                  = isset( $responsi_options['responsi_header_widget_mobile_margin'] ) ? esc_attr( $responsi_options['responsi_header_widget_mobile_margin'] ) : 'true';
@@ -2711,14 +2714,14 @@ function responsi_build_dynamic_css( $preview = false ) {
     $header_widget_mobile_css = '';
 
     if ( 'true' === $header_widget_alignment_mobile ) {
-        $header_widget_mobile_css .= '.masonry_widget_header .widget, .masonry_widget_header * .widget, .masonry_widget_header .widget *, .masonry_widget_header .widget .responsi-widget-title h3, .header-widget-1 .widget .site-logo-container {text-align:center !important;}';
-        $header_widget_mobile_css .= '.logo.site-logo,.site-logo-container,.site-description-container{margin:auto;}';
+        $header_widget_mobile_css .= '.msr-wg-header .widget, .msr-wg-header * .widget, .msr-wg-header .widget *, .msr-wg-header .widget .widget-title h3, .header-widget-1 .widget .logo-ctn {text-align:center !important;}';
+        $header_widget_mobile_css .= '.logo.site-logo,.logo-ctn,.desc-ctn{margin:auto;}';
     }
 
     if ( 'true' === $header_widget_mobile_margin && $header_widget_mobile_margin_between >= 0) {
-        $header_widget_mobile_css .= 'body .responsi-header .widget{margin-bottom:' . $header_widget_mobile_margin_between . 'px !important;}';
+        $header_widget_mobile_css .= '.header .widget{margin-bottom:' . $header_widget_mobile_margin_between . 'px !important;}';
     }else{
-        $header_widget_mobile_css .= 'body .responsi-header .widget{margin-bottom:0px !important;}';
+        $header_widget_mobile_css .= '.header .widget{margin-bottom:0px !important;}';
     }
     $dynamic_css .= '@media only screen and (max-width: 782px){'.$header_widget_mobile_css.'}';
     
@@ -2778,7 +2781,7 @@ function responsi_build_dynamic_css( $preview = false ) {
         $dynamic_css .= '.single .responsi-area-post .post-meta .post-comments{display:none;}';
     }
     if ( $disable_post_meta_author != 'true' && 'true' !== $disable_post_meta_date && 'true' !== $disable_post_meta_comment ) {
-        $dynamic_css .= '.single .single_content .post-meta{display:none;}';
+        $dynamic_css .= '.single .single-ct .post-meta{display:none;}';
     }
     
     $post_meta_cat_tag_bg                       = isset( $responsi_options['responsi_post_meta_cat_tag_bg'] ) ? $responsi_options['responsi_post_meta_cat_tag_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
@@ -2815,12 +2818,12 @@ function responsi_build_dynamic_css( $preview = false ) {
     $post_cat_tag_css .= responsi_generate_border($post_meta_cat_tag_border_lr, 'border-right');
     $post_cat_tag_css .= $post_meta_cat_tag_border_radius;
     $post_cat_tag_css .= 'text-transform:' . $font_post_cat_tag_transform . ';';
-    $dynamic_css .= '.post-utility-cat .categories{display:block;' . $post_cat_tag_css . '}';
-    $dynamic_css .= '.post-utility-cat .categories a{color:' . $font_post_cat_tag_link . ' !important;}';
-    $dynamic_css .= '.post-utility-cat .categories a:hover{color:' . $font_post_cat_tag_link_hover . ' !important;}';
-    $dynamic_css .= '.post-utility-cat .categories .i_cat:before{color:' . $font_post_cat_tag_icon . ' !important;}';
+    $dynamic_css .= '.categories .categories{display:block;' . $post_cat_tag_css . '}';
+    $dynamic_css .= '.categories .categories a{color:' . $font_post_cat_tag_link . ' !important;}';
+    $dynamic_css .= '.categories .categories a:hover{color:' . $font_post_cat_tag_link_hover . ' !important;}';
+    $dynamic_css .= '.categories .categories .i_cat:before{color:' . $font_post_cat_tag_icon . ' !important;}';
     if ( 'true' !== $enable_font_post_cat_tag_icon ) {
-        $dynamic_css .= '.post-utility-cat .categories .i_cat:before{display:none !important;}';
+        $dynamic_css .= '.categories .categories .i_cat:before{display:none !important;}';
     }
 
     $post_meta_utility_tag_bg                       = isset( $responsi_options['responsi_post_meta_utility_tag_bg'] ) ? $responsi_options['responsi_post_meta_utility_tag_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
@@ -2857,15 +2860,15 @@ function responsi_build_dynamic_css( $preview = false ) {
     $post_utility_tag_css .= responsi_generate_border($post_meta_utility_tag_border_lr, 'border-right');
     $post_utility_tag_css .= $post_meta_utility_tag_border_radius;
     $post_utility_tag_css .= 'text-transform:' . $font_post_utility_tag_transform . ';';
-    $dynamic_css .= '.post-utility-tag .posts-tags{display:block;' . $post_utility_tag_css . '}';
-    $dynamic_css .= '.post-utility-tag .posts-tags a{color:' . $font_post_utility_tag_link . ' !important;}';
-    $dynamic_css .= '.post-utility-tag .posts-tags a:hover{color:' . $font_post_utility_tag_link_hover . ' !important;}';
-    $dynamic_css .= '.post-utility-tag .posts-tags .i_tag:before{color:' . $font_post_utility_tag_icon . ' !important;}';
+    $dynamic_css .= '.tags .posts-tags{display:block;' . $post_utility_tag_css . '}';
+    $dynamic_css .= '.tags .posts-tags a{color:' . $font_post_utility_tag_link . ' !important;}';
+    $dynamic_css .= '.tags .posts-tags a:hover{color:' . $font_post_utility_tag_link_hover . ' !important;}';
+    $dynamic_css .= '.tags .posts-tags .i_tag:before{color:' . $font_post_utility_tag_icon . ' !important;}';
     if ( 'true' !== $enable_font_post_utility_tag_icon ) {
-        $dynamic_css .= '.post-utility-tag .posts-tags .i_tag:before{display:none !important;}';
+        $dynamic_css .= '.tags .posts-tags .i_tag:before{display:none !important;}';
     }
     $dynamic_css .= '#comments .comment.thread-even{' . responsi_generate_background_color( $post_comments_bg ) . '}';
-    $dynamic_css .= 'body .responsi-content-main .box-item .entry-item.blog-post-item .entry-bottom .postinfo,.responsi-content-main .box-item .entry-item .entry-bottom .postinfo,body .responsi-content-main .box-item .entry-item.blog-post-item .entry-bottom .posttags,.responsi-content-main .box-item .entry-item .entry-bottom .posttags, .responsi-content-main .box-item .entry-item .entry-bottom .postinfo{' . responsi_generate_background_color( $post_author_archive_bg ) . '}';
+    $dynamic_css .= 'body .main .box-item .entry-item.card-item .card-meta .postinfo,.main .box-item .entry-item .card-meta .postinfo,body .main .box-item .entry-item.card-item .card-meta .posttags,.main .box-item .entry-item .card-meta .posttags, .main .box-item .entry-item .card-meta .postinfo{' . responsi_generate_background_color( $post_author_archive_bg ) . '}';
     
     /* Post */
     $_font_post_title                               = isset( $responsi_options['responsi_font_post_title'] ) ? $responsi_options['responsi_font_post_title'] : array('size' => '26','line_height' => '1.2','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
@@ -2884,7 +2887,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $post_title_css .= 'margin-top:' . $_post_title_margin_top . 'px !important;margin-bottom:' . $_post_title_margin_bottom . 'px !important;';
     $post_title_css .= 'margin-left:' . $_post_title_margin_left . 'px !important;margin-right:' . $_post_title_margin_right . 'px !important;';
     
-    $dynamic_css .= '.responsi-content-main .responsi-area.responsi-area-post h1.title, .responsi-area.responsi-area-post h1.title, .responsi-content-main .responsi-area.responsi-area-post h1.title a:link, .responsi-content-main .responsi-area.responsi-area-post h1.title a:visited{' . $post_title_css . '}';
+    $dynamic_css .= '.main .responsi-area.responsi-area-post h1.title, .responsi-area.responsi-area-post h1.title, .main .responsi-area.responsi-area-post h1.title a:link, .main .responsi-area.responsi-area-post h1.title a:visited{' . $post_title_css . '}';
     $dynamic_css .= '.responsi-area.responsi-area-post{' . responsi_generate_fonts( $_font_post_text ) . '}';
 
     $post_box_padding_top                           = isset( $responsi_options['responsi_post_box_padding_top'] ) ? esc_attr( $responsi_options['responsi_post_box_padding_top'] ) : 0;
@@ -2909,7 +2912,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $post_box_css .= responsi_generate_border_boxes( $post_box_border, true );
     $post_box_css .= $post_box_shadow;
     
-    $dynamic_css .= '.main-wrap-post{' . $post_box_css . '}';
+    $dynamic_css .= '.main-post{' . $post_box_css . '}';
 
     /* Page */
     $_page_title_font                               = isset( $responsi_options['responsi_page_title_font'] ) ? $responsi_options['responsi_page_title_font'] : array('size' => '26','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
@@ -2927,7 +2930,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $page_title_css .= 'margin-left:' . $_page_title_margin_left . 'px !important;margin-right:' . $_page_title_margin_right . 'px !important;';
     $page_title_css .= 'text-transform:' . $_page_title_font_transform . ' !important;';
     $page_title_css .= 'text-align:' . $_page_title_position . ';';
-    $dynamic_css .= '.responsi-content-main .responsi-area.responsi-area-page h1.title, .responsi-area.responsi-area-page h1.title, .responsi-content-main .responsi-area.responsi-area-page h1.title a:link, .responsi-content-main .responsi-area.responsi-area-page h1.title a:visited{' . $page_title_css . '}';
+    $dynamic_css .= '.main .responsi-area.responsi-area-page h1.title, .responsi-area.responsi-area-page h1.title, .main .responsi-area.responsi-area-page h1.title a:link, .main .responsi-area.responsi-area-page h1.title a:visited{' . $page_title_css . '}';
     $dynamic_css .= '.responsi-area.responsi-area-page{' . responsi_generate_fonts( $_page_content_font ) . '}';
 
     $page_box_padding_top                           = isset( $responsi_options['responsi_page_box_padding_top'] ) ? esc_attr( $responsi_options['responsi_page_box_padding_top'] ) : 0;
@@ -2952,7 +2955,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $page_box_css .= responsi_generate_border_boxes( $page_box_border, true );
     $page_box_css .= $page_box_shadow;
     
-    $dynamic_css .= '.main-wrap-page{' . $page_box_css . '}';
+    $dynamic_css .= '.main-page{' . $page_box_css . '}';
     
     /* Archive */
 
@@ -2979,7 +2982,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $archive_box_css .= responsi_generate_border_boxes( $archive_box_border, true );
     $archive_box_css .= $archive_box_shadow;
 
-    $dynamic_css .= '.main-wrap-archive{' . $archive_box_css . '}';
+    $dynamic_css .= '.main-archive{' . $archive_box_css . '}';
 
     $_archive_title_font                            = isset( $responsi_options['responsi_archive_title_font'] ) ? $responsi_options['responsi_archive_title_font'] : array('size' => '26','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
     $_archive_title_font_transform                  = isset( $responsi_options['responsi_archive_title_font_transform'] ) ? esc_attr( $responsi_options['responsi_archive_title_font_transform'] ) : 'none';
@@ -2998,7 +3001,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $archive_title_css .= 'margin-top:' . $_archive_title_margin_top . 'px !important;margin-bottom:' . $_archive_title_margin_bottom . 'px !important;';
     $archive_title_css .= 'margin-left:' . $_archive_title_margin_left . 'px !important;margin-right:' . $_archive_title_margin_right . 'px !important;';
     
-    $dynamic_css .= '.responsi-content-main .responsi-area.responsi-area-archive h1.title, .responsi-area.responsi-area-archive h1.title, .responsi-content-main .responsi-area.responsi-area-archive h1.title a:link, .responsi-content-main .responsi-area.responsi-area-archive h1.title a:visited{' . $archive_title_css . '}';
+    $dynamic_css .= '.main .responsi-area.responsi-area-archive h1.title, .responsi-area.responsi-area-archive h1.title, .main .responsi-area.responsi-area-archive h1.title a:link, .main .responsi-area.responsi-area-archive h1.title a:visited{' . $archive_title_css . '}';
     $dynamic_css .= '.responsi-area.responsi-area-archive,.archive_header .catrss{' . responsi_generate_fonts($_archive_content_font) . '}';
     $dynamic_css .= '.archive_header {' . responsi_generate_border( $_archive_title_border_bottom, 'border-bottom' ) . '}';
     if ( isset( $_archive_title_border_bottom['width'] ) && $_archive_title_border_bottom['width'] > 0 ) {
@@ -3030,9 +3033,9 @@ function responsi_build_dynamic_css( $preview = false ) {
     $archive_title_box_css .= $archive_title_box_shadow;
     
     if ( 'true' === $enable_archive_title_box ) {
-        $dynamic_css .= '.responsi-content-main .responsi-area.responsi-area-archive, .responsi-area.responsi-area-archive,.responsi-area-archive{' . $archive_title_box_css . '}';
+        $dynamic_css .= '.main .responsi-area.responsi-area-archive, .responsi-area.responsi-area-archive,.responsi-area-archive{' . $archive_title_box_css . '}';
     } else {
-        $dynamic_css .= '.responsi-content-main .responsi-area.responsi-area-archive, .responsi-area.responsi-area-archive,.responsi-area-archive{padding:0px !important;border-width:0px !important;background-color:transparent !important;box-shadow: 0 0 0px #ffffff !important;border-radius: 0px !important;}';
+        $dynamic_css .= '.main .responsi-area.responsi-area-archive, .responsi-area.responsi-area-archive,.responsi-area-archive{padding:0px !important;border-width:0px !important;background-color:transparent !important;box-shadow: 0 0 0px #ffffff !important;border-radius: 0px !important;}';
     }
     
     /* Widgets */
@@ -3086,7 +3089,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $widget_container_css .= $responsi_widget_container_box_shadow;
     $widget_container_css .= 'box-sizing: border-box;';
     
-    $dynamic_css .= '.responsi-content-sidebar .sidebar-wrap, .responsi-content-sidebar-alt .sidebar-wrap{' . $widget_container_css . ';}';
+    $dynamic_css .= '.sidebar .sidebar-ctn, .sidebar-alt .sidebar-ctn{' . $widget_container_css . ';}';
 
     $widget_font_text                               = isset( $responsi_options['responsi_widget_font_text'] ) ? $responsi_options['responsi_widget_font_text'] : array('size' => '14','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#555555');
     $widget_link_color                              = isset( $responsi_options['responsi_widget_link_color'] ) ? esc_attr( $responsi_options['responsi_widget_link_color'] ) : '#009ee0';
@@ -3116,11 +3119,11 @@ function responsi_build_dynamic_css( $preview = false ) {
     $widget_css .= 'margin-bottom:' . $widget_margin_between . 'px;';
     $widget_css .= $widget_box_shadow;
 
-    $dynamic_css .= '.responsi-content-sidebar .widget, .responsi-content-sidebar-alt .widget{' . $widget_css . '}';
-    $dynamic_css .= '.responsi-content-sidebar .widget ul li, .responsi-content-sidebar .widget ol li, .responsi-content-sidebar .widget p, .responsi-content-sidebar .widget .textwidget, .responsi-content-sidebar .widget:not(div), .responsi-content-sidebar .widget .textwidget .tel, .responsi-content-sidebar .widget .textwidget .tel a, .responsi-content-sidebar .widget .textwidget a[href^=tel], .responsi-content-sidebar .widget * a[href^=tel], .responsi-content-sidebar .widget a[href^=tel], .responsi-content-sidebar-alt .widget ul li, .responsi-content-sidebar-alt .widget ol li, .responsi-content-sidebar-alt .widget p, .responsi-content-sidebar-alt .widget .textwidget, .responsi-content-sidebar-alt .widget:not(div), .responsi-content-sidebar-alt .widget .textwidget .tel, .responsi-content-sidebar-alt .widget .textwidget .tel a, .responsi-content-sidebar-alt .widget .textwidget a[href^=tel], .responsi-content-sidebar-alt .widget * a[href^=tel], .responsi-content-sidebar-alt .widget a[href^=tel]{text-decoration: none; ' . responsi_generate_fonts( $widget_font_text ) . '}';
-    $dynamic_css .= '.responsi-content-sidebar .widget a,.responsi-content-sidebar-alt .widget a, .responsi-content-sidebar .widget a:link,.responsi-content-sidebar-alt .widget a:link{color:' . $widget_link_color . '}';
-    $dynamic_css .= '.responsi-content-sidebar .widget a:visited,.responsi-content-sidebar-alt .widget a:visited{color:' . $widget_link_visited_color . '}';
-    $dynamic_css .= '.responsi-content-sidebar .widget a:hover,.responsi-content-sidebar-alt .widget a:hover{color:' . $widget_link_hover_color . '}';
+    $dynamic_css .= '.sidebar .widget, .sidebar-alt .widget{' . $widget_css . '}';
+    $dynamic_css .= '.sidebar .widget ul li, .sidebar .widget ol li, .sidebar .widget p, .sidebar .widget .textwidget, .sidebar .widget:not(div), .sidebar .widget .textwidget .tel, .sidebar .widget .textwidget .tel a, .sidebar .widget .textwidget a[href^=tel], .sidebar .widget * a[href^=tel], .sidebar .widget a[href^=tel], .sidebar-alt .widget ul li, .sidebar-alt .widget ol li, .sidebar-alt .widget p, .sidebar-alt .widget .textwidget, .sidebar-alt .widget:not(div), .sidebar-alt .widget .textwidget .tel, .sidebar-alt .widget .textwidget .tel a, .sidebar-alt .widget .textwidget a[href^=tel], .sidebar-alt .widget * a[href^=tel], .sidebar-alt .widget a[href^=tel]{text-decoration: none; ' . responsi_generate_fonts( $widget_font_text ) . '}';
+    $dynamic_css .= '.sidebar .widget a,.sidebar-alt .widget a, .sidebar .widget a:link,.sidebar-alt .widget a:link{color:' . $widget_link_color . '}';
+    $dynamic_css .= '.sidebar .widget a:visited,.sidebar-alt .widget a:visited{color:' . $widget_link_visited_color . '}';
+    $dynamic_css .= '.sidebar .widget a:hover,.sidebar-alt .widget a:hover{color:' . $widget_link_hover_color . '}';
 
     $widget_font_title                              = isset( $responsi_options['responsi_widget_font_title'] ) ? $responsi_options['responsi_widget_font_title'] : array('size' => '14','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#555555');
     $widget_title_bg                                = isset( $responsi_options['responsi_widget_title_bg'] ) ? $responsi_options['responsi_widget_title_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );  
@@ -3180,9 +3183,9 @@ function responsi_build_dynamic_css( $preview = false ) {
             $widget_title_css .= 'float:none !important;display:block;';
         }
     }
-    $dynamic_css .= '.responsi-content-sidebar .responsi-widget-title h3, .responsi-content-sidebar-alt .responsi-widget-title h3{' . $widget_title_css . '}';
+    $dynamic_css .= '.sidebar .widget-title h3, .sidebar-alt .widget-title h3{' . $widget_title_css . '}';
     if ( 'true' === $widget_text_alignment_mobile ) {
-        $dynamic_css .= '@media only screen and (max-width: 782px){.responsi-content-sidebar .responsi-widget-title, .responsi-content-sidebar .responsi-widget-title h3, .responsi-content-sidebar .responsi-widget-title *, .responsi-content-sidebar .responsi-widget-content, .responsi-content-sidebar .responsi-widget-content *,  .responsi-content-sidebar-alt .responsi-widget-title, .responsi-content-sidebar-alt .responsi-widget-title h3, .responsi-content-sidebar-alt .responsi-widget-title *, .responsi-content-sidebar-alt .responsi-widget-content, .responsi-content-sidebar-alt .responsi-widget-content * {text-align:center !important;}}';
+        $dynamic_css .= '@media only screen and (max-width: 782px){.sidebar .widget-title, .sidebar .widget-title h3, .sidebar .widget-title *, .sidebar .widget-content, .sidebar .widget-content *,  .sidebar-alt .widget-title, .sidebar-alt .widget-title h3, .sidebar-alt .widget-title *, .sidebar-alt .widget-content, .sidebar-alt .widget-content * {text-align:center !important;}}';
     }
 
     $widget_content_padding_top                     = isset( $responsi_options['responsi_widget_content_padding_top'] ) ? esc_attr( $responsi_options['responsi_widget_content_padding_top'] ) : 0;
@@ -3195,7 +3198,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $widget_content_css .= 'padding-bottom:' . $widget_content_padding_bottom . 'px !important;';
     $widget_content_css .= 'padding-left:' . $widget_content_padding_left . 'px !important;';
     $widget_content_css .= 'padding-right:' . $widget_content_padding_right . 'px !important;';
-    $dynamic_css .= '.responsi-content-sidebar .responsi-widget-content, .responsi-content-sidebar-alt .responsi-widget-content{' . $widget_content_css . '}';
+    $dynamic_css .= '.sidebar .widget-content, .sidebar-alt .widget-content{' . $widget_content_css . '}';
     
     /* Navigation */
 
@@ -3238,7 +3241,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $nav_container_css .= 'margin-right:' . $responsi_container_nav_margin_right . 'px;';
     $nav_container_css .= $responsi_nav_box_shadow;
     
-    $dynamic_css .= '.responsi-nav-container{' . $nav_container_css . '}';
+    $dynamic_css .= '.responsi-navigation{' . $nav_container_css . '}';
     
     $nav_bg                                         = isset( $responsi_options['responsi_nav_bg'] ) ? $responsi_options['responsi_nav_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
     $responsi_nav_margin_left                       = isset( $responsi_options['responsi_nav_margin_left'] ) ? esc_attr( $responsi_options['responsi_nav_margin_left'] ) : 0;
@@ -3310,14 +3313,14 @@ function responsi_build_dynamic_css( $preview = false ) {
     $nav_content_css .= responsi_generate_border( $nav_border_lr, 'border-right' );
     $nav_content_css .= 'border-radius:' . $responsi_nav_border_radius_tl . ' ' . $responsi_nav_border_radius_tr . ' ' . $responsi_nav_border_radius_br . ' ' . $responsi_nav_border_radius_bl . ';';
     $nav_content_css .= $responsi_nav_shadow;
-    $dynamic_css .= '.responsi-nav{' . $nav_content_css . '}';
+    $dynamic_css .= '.navigation{' . $nav_content_css . '}';
     if ( isset($responsi_options['responsi_nav_mobile_type']) && 'click' === $responsi_options['responsi_nav_mobile_type'] ) {
         $dynamic_css .= '#mobileMenu_main-nav{display:none !important;}';
     }
     if ( isset( $nav_divider_border['width'] ) && $nav_divider_border['width'] >= 0 ) {
-        $dynamic_css .= '.responsi-nav-content nav > ul.menu > li, .responsi-nav-content div > ul.menu > li, .responsi-nav-content .partial-refresh-menu-container ul.menu > li { '.responsi_generate_border( $nav_divider_border, 'border-left' ).'}';
-        $dynamic_css .= 'body .responsi-nav-content nav > ul.menu > li:first-child, body .responsi-nav-content div > ul.menu > li:first-child , body .responsi-nav-content .partial-refresh-menu-container ul.menu > li:first-child { border-left: 0px !important; }';
-        $dynamic_css .= '.responsi-nav-content ul.menu > li > ul  { left: ' . $responsi_navi_border_margin_left . 'px !important; }';
+        $dynamic_css .= '.navigation-in nav > ul.menu > li, .navigation-in div > ul.menu > li, .navigation-in .partial-refresh-menu-container ul.menu > li { '.responsi_generate_border( $nav_divider_border, 'border-left' ).'}';
+        $dynamic_css .= '.navigation-in nav > ul.menu > li:first-child, .navigation-in div > ul.menu > li:first-child, .navigation-in .partial-refresh-menu-container ul.menu > li:first-child { border-left: 0px !important; }';
+        $dynamic_css .= '.navigation-in ul.menu > li > ul  { left: ' . $responsi_navi_border_margin_left . 'px !important; }';
     }
     
     $nav_item_css = '';
@@ -3338,19 +3341,19 @@ function responsi_build_dynamic_css( $preview = false ) {
     $nav_item_css .= responsi_generate_fonts( $nav_font, false );
     $nav_item_css .= 'color:' . esc_attr( $nav_font['color'] ) . ';';
     $nav_item_css .= 'text-transform:' . $nav_font_transform . ';';
-    $dynamic_css .= '.responsi-nav-content nav > ul.menu > li > a,.responsi-nav-content div > ul.menu > li > a ,.responsi-nav-content nav > ul.menu > li:first-child > a,.responsi-nav-content div > ul.menu > li:first-child > a , .responsi-nav-content .partial-refresh-menu-container ul.menu > li > a,.responsi-nav-content .responsi-nav-content .partial-refresh-menu-container ul > li:first-child > a {'.$nav_item_css.'}';
-    $dynamic_css .= 'body .responsi-nav-content ul.menu li.menu-item-account a:before{ top: -1px !important;vertical-align: top !important;}';
-    $dynamic_css .= '.mobile-navigation{color:' . esc_attr( $nav_font['color'] ) . ';}';
-    $dynamic_css .= '.mobile-navigation .responsi-icon-menu:before,.mobile-navigation .responsi-icon-cancel:before{box-shadow: 1px 0 0 ' . esc_attr( $nav_font['color'] ) . ';}';
-    $dynamic_css .= '.responsi-nav-content ul.menu > li.current-menu-item > a { ' . responsi_generate_background_color($nav_currentitem_bg) . 'color:' . $nav_currentitem . ' !important; }';
-    $dynamic_css .= '.responsi-nav-content ul.menu > li > a:hover,.responsi-nav-content ul.menu > li:hover > a,.responsi-nav-content .menu > li.menu-item-has-children:hover > a,.mobile-navigation .responsi-icon-menu:hover,.mobile-navigation .responsi-icon-cancel:hover,.responsi-nav-content ul.menu > li.current-menu-item > a:hover{ color:' . $nav_hover . '!important; }';
-    $dynamic_css .= '.responsi-nav-content ul.menu > li a:hover, .responsi-nav-content ul.menu > li.menu-item-has-children:hover > a,.responsi-nav-content ul.menu > li:hover > a {' . responsi_generate_background_color( $nav_hover_bg, true ) . '}';
-    $dynamic_css .= '.responsi-nav-content ul.menu > li.menu-item-has-children > a:after { border-color:' . esc_attr( $nav_font['color'] ) . ' transparent transparent !important;}';
-    $dynamic_css .= '.responsi-nav-content ul.menu > li.menu-item-has-children:hover > a:after,.responsi-nav-content ul.menu > li.menu-item-has-children.current-menu-item:hover > a:after{ border-color:' . $nav_hover . ' transparent transparent !important;}';
-    $dynamic_css .= '.responsi-nav-content ul.menu > li.menu-item-has-children.current-menu-item > a:after{ border-color:' . $nav_currentitem . ' transparent transparent !important;}';
-    $dynamic_css .= '.responsi-nav{text-align:left}';
-    $dynamic_css .= '.responsi-nav-content ul{text-align:left}';
-    $dynamic_css .= '.responsi-nav-content select{max-width:100%;margin-bottom:0px !important;margin-top:0px !important;width:100%;}';
+    $dynamic_css .= '.navigation-in nav > ul.menu > li > a,.navigation-in div > ul.menu > li > a ,.navigation-in nav > ul.menu > li:first-child > a,.navigation-in div > ul.menu > li:first-child > a , .navigation-in .partial-refresh-menu-container ul.menu > li > a,.navigation-in .navigation-in .partial-refresh-menu-container ul > li:first-child > a {'.$nav_item_css.'}';
+    $dynamic_css .= '.navigation-in ul.menu li.menu-item-account a:before{ top: -1px !important;vertical-align: top !important;}';
+    $dynamic_css .= '.navigation-mobile{color:' . esc_attr( $nav_font['color'] ) . ';}';
+    $dynamic_css .= '.navigation-mobile .hamburger-icon:before,.navigation-mobile .responsi-icon-cancel:before{box-shadow: 1px 0 0 ' . esc_attr( $nav_font['color'] ) . ';}';
+    $dynamic_css .= '.navigation-in ul.menu > li.current-menu-item > a { ' . responsi_generate_background_color($nav_currentitem_bg) . 'color:' . $nav_currentitem . ' !important; }';
+    $dynamic_css .= '.navigation-in ul.menu > li > a:hover,.navigation-in ul.menu > li:hover > a,.navigation-in .menu > li.menu-item-has-children:hover > a,.navigation-mobile .hamburger-icon:hover,.navigation-mobile .responsi-icon-cancel:hover,.navigation-in ul.menu > li.current-menu-item > a:hover{ color:' . $nav_hover . '!important; }';
+    $dynamic_css .= '.navigation-in ul.menu > li a:hover, .navigation-in ul.menu > li.menu-item-has-children:hover > a,.navigation-in ul.menu > li:hover > a {' . responsi_generate_background_color( $nav_hover_bg, true ) . '}';
+    $dynamic_css .= '.navigation-in ul.menu > li.menu-item-has-children > a:after { border-color:' . esc_attr( $nav_font['color'] ) . ' transparent transparent !important;}';
+    $dynamic_css .= '.navigation-in ul.menu > li.menu-item-has-children:hover > a:after,.navigation-in ul.menu > li.menu-item-has-children.current-menu-item:hover > a:after{ border-color:' . $nav_hover . ' transparent transparent !important;}';
+    $dynamic_css .= '.navigation-in ul.menu > li.menu-item-has-children.current-menu-item > a:after{ border-color:' . $nav_currentitem . ' transparent transparent !important;}';
+    $dynamic_css .= '.navigation{text-align:left}';
+    $dynamic_css .= '.navigation-in ul{text-align:left}';
+    $dynamic_css .= '.navigation-in select{max-width:100%;margin-bottom:0px !important;margin-top:0px !important;width:100%;}';
     $pri_navbar_postion = 'left';
     if ($responsi_pri_navbar_postion == 'left') {
         $pri_navbar_postion = 'left';
@@ -3359,7 +3362,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     } elseif ($responsi_pri_navbar_postion == 'center') {
         $pri_navbar_postion = 'center';
     }
-    $dynamic_css .= '@media only screen and (min-width: 783px){.responsi-nav-content ul.menu {float:none;display:inline-block;}.responsi-nav{text-align:' . $pri_navbar_postion . ';}}';
+    $dynamic_css .= '@media only screen and (min-width: 783px){.navigation-in ul.menu {float:none;display:inline-block;}.navigation{text-align:' . $pri_navbar_postion . ';}}';
     
     $responsi_nav_dropdown_background               = isset( $responsi_options['responsi_nav_dropdown_background'] ) ? $responsi_options['responsi_nav_dropdown_background'] :  array( 'onoff' => 'true', 'color' => '#ffffff');
     $responsi_nav_dropdown_padding_left             = isset( $responsi_options['responsi_nav_dropdown_padding_left'] ) ? esc_attr( $responsi_options['responsi_nav_dropdown_padding_left'] ) : 0;
@@ -3393,10 +3396,10 @@ function responsi_build_dynamic_css( $preview = false ) {
     $nav_dropdown_css .= 'padding-right:' . $responsi_nav_dropdown_padding_right . 'px;';
     $nav_dropdown_css .= 'border-radius:' . $responsi_nav_dropdown_border_radius_tl . ' ' . $responsi_nav_dropdown_border_radius_tr . ' ' . $responsi_nav_dropdown_border_radius_br . ' ' . $responsi_nav_dropdown_border_radius_bl . ';';
     $nav_dropdown_css .= $responsi_nav_dropdown_shadow;
-    $dynamic_css .= '.responsi-nav-content ul.sub-menu li:first-child > a{border-top-left-radius: ' . $responsi_nav_dropdown_border_radius_tl . ';border-top-right-radius: ' . $responsi_nav_dropdown_border_radius_tr . ';}';
-    $dynamic_css .= '.responsi-nav-content ul.sub-menu li:last-child > a{border-bottom-left-radius: ' . $responsi_nav_dropdown_border_radius_bl . ';border-bottom-right-radius: ' . $responsi_nav_dropdown_border_radius_br . ';}';
-    $dynamic_css .= '.responsi-nav-content ul.menu ul{' . $nav_dropdown_css . '}';
-    $dynamic_css .= '.responsi-nav-content ul.menu ul ul{top:-' . esc_attr( $responsi_nav_dropdown_border_top['width'] ) . 'px;}';
+    $dynamic_css .= '.navigation-in ul.sub-menu li:first-child > a{border-top-left-radius: ' . $responsi_nav_dropdown_border_radius_tl . ';border-top-right-radius: ' . $responsi_nav_dropdown_border_radius_tr . ';}';
+    $dynamic_css .= '.navigation-in ul.sub-menu li:last-child > a{border-bottom-left-radius: ' . $responsi_nav_dropdown_border_radius_bl . ';border-bottom-right-radius: ' . $responsi_nav_dropdown_border_radius_br . ';}';
+    $dynamic_css .= '.navigation-in ul.menu ul{' . $nav_dropdown_css . '}';
+    $dynamic_css .= '.navigation-in ul.menu ul ul{top:-' . esc_attr( $responsi_nav_dropdown_border_top['width'] ) . 'px;}';
 
     $responsi_nav_dropdown_item_padding_left             = isset( $responsi_options['responsi_nav_dropdown_item_padding_left'] ) ? esc_attr( $responsi_options['responsi_nav_dropdown_item_padding_left'] ) : 0;
     $responsi_nav_dropdown_item_padding_right            = isset( $responsi_options['responsi_nav_dropdown_item_padding_right'] ) ? esc_attr( $responsi_options['responsi_nav_dropdown_item_padding_right'] ) : 0;
@@ -3409,21 +3412,21 @@ function responsi_build_dynamic_css( $preview = false ) {
     $responsi_nav_dropdown_item_background               = isset( $responsi_options['responsi_nav_dropdown_item_background'] ) ? $responsi_options['responsi_nav_dropdown_item_background'] :  array( 'onoff' => 'true', 'color' => '#ffffff');
     $responsi_nav_dropdown_hover_background              = isset( $responsi_options['responsi_nav_dropdown_hover_background'] ) ? $responsi_options['responsi_nav_dropdown_hover_background'] :  array( 'onoff' => 'true', 'color' => '#ffffff');
     
-    $dynamic_css .= '.responsi-nav-content ul.menu li ul li a{padding-top:' . $responsi_nav_dropdown_item_padding_top . 'px;padding-bottom:' . $responsi_nav_dropdown_item_padding_bottom . 'px;padding-left:' . $responsi_nav_dropdown_item_padding_left . 'px;padding-right:' . $responsi_nav_dropdown_item_padding_right . 'px;}';
-    $dynamic_css .= '.responsi-nav-content ul.menu ul li {'.responsi_generate_border( $responsi_nav_dropdown_separator, 'border-top' ).'}';
-    $dynamic_css .= 'body .responsi-nav-content ul.menu ul li:first-child{border-top: 0 solid #FFFFFF !important;}';
-    $dynamic_css .= '.responsi-nav-content ul.menu ul li a, .responsi-nav-content ul.menu li ul li a{ ' . responsi_generate_fonts($responsi_nav_dropdown_font, false) . ' }';
-    $dynamic_css .= '.responsi-nav-content ul.menu li ul li a { text-transform:' . $responsi_nav_dropdown_font_transform . '; }';
-    $dynamic_css .= '.responsi-nav-content ul.menu ul li ,.responsi-nav-content ul.menu ul li a{white-space: nowrap;' . responsi_generate_background_color($responsi_nav_dropdown_item_background) . '}';
-    $dynamic_css .= 'body .responsi-nav-content ul.sub-menu li{background-color:transparent;}';
-    $dynamic_css .= '.responsi-nav-content ul.menu > li ul li a:hover,.responsi-nav-content ul.menu > li ul li:hover{' . responsi_generate_background_color($responsi_nav_dropdown_hover_background, true) . '}';
-    $dynamic_css .= '.responsi-nav-content ul.menu > li ul li:hover{background-color:transparent !important;}';
-    $dynamic_css .= '.responsi-nav-content ul.menu > li.menu-item-has-children:hover ul li a{ color:' . esc_attr( $responsi_nav_dropdown_font['color'] ) . '; }';
-    $dynamic_css .= '.responsi-nav-content ul.menu li.menu-item-has-children ul li a:hover{color:' . $responsi_nav_dropdown_hover_color . ';}';
-    $dynamic_css .= '.responsi-nav-content ul.menu > li > ul > li > ul > li > ul > li > a:hover{color:' . $responsi_nav_dropdown_hover_color . ';}';
-    $dynamic_css .= '.responsi-nav-content ul.menu > li > ul > li.menu-item-has-children a:after{ border-color:transparent transparent transparent ' . esc_attr( $responsi_nav_dropdown_font['color'] ) . ';}';
-    $dynamic_css .= '.responsi-nav-content ul.menu > li > ul li.menu-item-has-children:hover > a:hover:after{ border-color:transparent transparent transparent ' . $responsi_nav_dropdown_hover_color . ';}';
-    $dynamic_css .= '.responsi-nav-content nav > ul.menu > li, .responsi-nav-content div > ul.menu > li, .responsi-nav-content nav > ul.menu > li:hover, .responsi-nav-content div > ul.menu > li:hover, .responsi-nav-content .partial-refresh-menu-container ul.menu > li, .responsi-nav-content .partial-refresh-menu-container ul.menu > li:hover {background: none !important;}';
+    $dynamic_css .= '.navigation-in ul.menu li ul li a{padding-top:' . $responsi_nav_dropdown_item_padding_top . 'px;padding-bottom:' . $responsi_nav_dropdown_item_padding_bottom . 'px;padding-left:' . $responsi_nav_dropdown_item_padding_left . 'px;padding-right:' . $responsi_nav_dropdown_item_padding_right . 'px;}';
+    $dynamic_css .= '.navigation-in ul.menu ul li {'.responsi_generate_border( $responsi_nav_dropdown_separator, 'border-top' ).'}';
+    $dynamic_css .= '.navigation-in ul.menu ul li:first-child{border-top: 0 solid #FFFFFF !important;}';
+    $dynamic_css .= '.navigation-in ul.menu ul li a, .navigation-in ul.menu li ul li a{ ' . responsi_generate_fonts($responsi_nav_dropdown_font, false) . ' }';
+    $dynamic_css .= '.navigation-in ul.menu li ul li a { text-transform:' . $responsi_nav_dropdown_font_transform . '; }';
+    $dynamic_css .= '.navigation-in ul.menu ul li ,.navigation-in ul.menu ul li a{white-space: nowrap;' . responsi_generate_background_color($responsi_nav_dropdown_item_background) . '}';
+    $dynamic_css .= '.navigation-in ul.sub-menu li{background-color:transparent;}';
+    $dynamic_css .= '.navigation-in ul.menu > li ul li a:hover,.navigation-in ul.menu > li ul li:hover{' . responsi_generate_background_color($responsi_nav_dropdown_hover_background, true) . '}';
+    $dynamic_css .= '.navigation-in ul.menu > li ul li:hover{background-color:transparent !important;}';
+    $dynamic_css .= '.navigation-in ul.menu > li.menu-item-has-children:hover ul li a{ color:' . esc_attr( $responsi_nav_dropdown_font['color'] ) . '; }';
+    $dynamic_css .= '.navigation-in ul.menu li.menu-item-has-children ul li a:hover{color:' . $responsi_nav_dropdown_hover_color . ';}';
+    $dynamic_css .= '.navigation-in ul.menu > li > ul > li > ul > li > ul > li > a:hover{color:' . $responsi_nav_dropdown_hover_color . ';}';
+    $dynamic_css .= '.navigation-in ul.menu > li > ul > li.menu-item-has-children a:after{ border-color:transparent transparent transparent ' . esc_attr( $responsi_nav_dropdown_font['color'] ) . ';}';
+    $dynamic_css .= '.navigation-in ul.menu > li > ul li.menu-item-has-children:hover > a:hover:after{ border-color:transparent transparent transparent ' . $responsi_nav_dropdown_hover_color . ';}';
+    $dynamic_css .= '.navigation-in nav > ul.menu > li, .navigation-in div > ul.menu > li, .navigation-in nav > ul.menu > li:hover, .navigation-in div > ul.menu > li:hover, .navigation-in .partial-refresh-menu-container ul.menu > li, .navigation-in .partial-refresh-menu-container ul.menu > li:hover {background: none !important;}';
     
     /* Pagination Scroll */
     $scroll_font                                        = isset( $responsi_options['responsi_scroll_font'] ) ? $responsi_options['responsi_scroll_font'] : array('size' => '14','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#555555');
@@ -3458,10 +3461,10 @@ function responsi_build_dynamic_css( $preview = false ) {
     $pagination_css .= $scroll_box_border_radius;
     $pagination_css .= $scroll_box_shadow;
     
-    $dynamic_css .= '.click_showmore_container{text-align:center;}';
-    $dynamic_css .= 'body .responsi-content-main .click_showmore_container,.nav-entries {' . $pagination_css . '}';
-    $dynamic_css .= '.nav-entries, .responsi-pagination,.nav-entries a, .responsi-pagination a,.click_showmore a,.click_showmore { ' . responsi_generate_fonts($scroll_font) . ' }';
-    $dynamic_css .= '.responsi-pagination a:hover, .responsi-pagination a:hover,.click_showmore a:hover,.click_showmore a:hover {color:' . $scroll_link_hover_color . '!important}';
+    $dynamic_css .= '.pagination-ctrl{text-align:center;}';
+    $dynamic_css .= '.pagination-ctrl,.nav-entries {' . $pagination_css . '}';
+    $dynamic_css .= '.nav-entries, .responsi-pagination,.nav-entries a, .responsi-pagination a,.pagination-btn a,.pagination-btn { ' . responsi_generate_fonts($scroll_font) . ' }';
+    $dynamic_css .= '.responsi-pagination a:hover, .responsi-pagination a:hover,.pagination-btn a:hover,.pagination-btn a:hover {color:' . $scroll_link_hover_color . '!important}';
 
     /* Footer Widgets */
     $before_footer_bg                                = isset( $responsi_options['responsi_before_footer_bg'] ) ? $responsi_options['responsi_before_footer_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
@@ -3512,7 +3515,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $before_footer_css .= 'margin-left:' . $before_footer_margin_left . 'px;';
     $before_footer_css .= 'margin-right:' . $before_footer_margin_right . 'px;';
     
-    $dynamic_css .= '.responsi-footer-before-container{'. $before_footer_css .'}';
+    $dynamic_css .= '.responsi-footer-widgets{'. $before_footer_css .'}';
     
     $before_footer_content_bg                                 = isset( $responsi_options['responsi_before_footer_content_bg'] ) ? $responsi_options['responsi_before_footer_content_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
     $enable_before_footer_content_bg_image                    = isset( $responsi_options['responsi_enable_before_footer_content_bg_image'] ) ? esc_attr( $responsi_options['responsi_enable_before_footer_content_bg_image'] ) : 'false';
@@ -3562,7 +3565,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $before_footer_content_css .= 'margin-left:' . $responsi_before_footer_content_margin_left . 'px;';
     $before_footer_content_css .= 'margin-right:' . $responsi_before_footer_content_margin_right . 'px;';
     
-    $dynamic_css .= '.responsi-footer-before-container .responsi-footer-before-content{'. $before_footer_content_css .'}';
+    $dynamic_css .= '.responsi-footer-widgets .footer-widgets-in{'. $before_footer_content_css .'}';
 
     $font_footer_widget_text              = isset($responsi_options['responsi_font_footer_widget_text']) ? $responsi_options['responsi_font_footer_widget_text'] : array('size' => '12','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#ffffff');
     $footer_widget_link_color             = isset($responsi_options['responsi_footer_widget_link_color']) ? esc_attr( $responsi_options['responsi_footer_widget_link_color'] ) : '#ffffff';
@@ -3619,9 +3622,9 @@ function responsi_build_dynamic_css( $preview = false ) {
     $footer_widget_item_css .= 'padding-bottom:' . $footer_widget_content_padding_bottom . 'px !important;';
     $footer_widget_item_css .= 'padding-left:' . $footer_widget_content_padding_left . 'px !important;';
     $footer_widget_item_css .= 'padding-right:' . $footer_widget_content_padding_right . 'px !important;';
-    $dynamic_css .= '.masonry_widget_footer .responsi-widget-content{' . $footer_widget_item_css . '}';
+    $dynamic_css .= '.msr-wg-footer .widget-content{' . $footer_widget_item_css . '}';
     if ( isset($responsi_options['responsi_font_footer_widget_text_alignment_mobile']) && 'true' === $responsi_options['responsi_font_footer_widget_text_alignment_mobile'] ) {
-        $dynamic_css .= '@media only screen and (max-width: 782px){.masonry_widget_footer .widget .responsi-widget-title, .masonry_widget_footer .widget .responsi-widget-title *, .masonry_widget_footer .widget .responsi-widget-content, .masonry_widget_footer .widget .responsi-widget-content * {text-align:center !important;}}';
+        $dynamic_css .= '@media only screen and (max-width: 782px){.msr-wg-footer .widget .widget-title, .msr-wg-footer .widget .widget-title *, .msr-wg-footer .widget .widget-content, .msr-wg-footer .widget .widget-content * {text-align:center !important;}}';
     }
     
     $footer_widget_css = 'float: none;';
@@ -3635,7 +3638,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $footer_widget_css .= $footer_widget_box_shadow;
     $footer_widget_css .= 'text-align:' . $footer_widget_text_alignment . ';';
     $footer_widget_css .= 'margin-bottom:' . $footer_widget_margin_between . 'px;';
-    $dynamic_css .= '.masonry_widget_footer .widget{' . $footer_widget_css . '}';
+    $dynamic_css .= '.msr-wg-footer .widget{' . $footer_widget_css . '}';
     
     $footer_widget_title_css = '';
     $footer_widget_title_css .= responsi_generate_fonts($font_footer_widget_title, true);
@@ -3667,21 +3670,21 @@ function responsi_build_dynamic_css( $preview = false ) {
             $footer_widget_title_css .= 'float:none !important;display:block;';
         }
     }
-    $dynamic_css .= '.masonry_widget_footer .responsi-widget-title h3, .masonry_widget_footer .widget .responsi-widget-title h3 {' . $footer_widget_title_css . '}';
-    $dynamic_css .= '.masonry_widget_footer .widget, .masonry_widget_footer .widget ul li, .masonry_widget_footer .widget ol li,.masonry_widget_footer .widget p, .masonry_widget_footer .widget .textwidget, .masonry_widget_footer .widget:not(div), .masonry_widget_footer .widget .textwidget .tel, .masonry_widget_footer .widget .textwidget .tel a, .masonry_widget_footer .widget .textwidget a[href^=tel], .masonry_widget_footer .widget * a[href^=tel], .masonry_widget_footer .widget a[href^=tel] { text-decoration: none; ' . responsi_generate_fonts($font_footer_widget_text) . '}';
-    $dynamic_css .= '.masonry_widget_footer .widget a,.masonry_widget_footer .widget a, .masonry_widget_footer .widget a:link,.masonry_widget_footer .widget a:link {color:' . $footer_widget_link_color . '}';
-    $dynamic_css .= '.masonry_widget_footer .widget a:visited,.masonry_widget_footer .widget a:visited {color:' . $footer_widget_link_visited_color . '}';
-    $dynamic_css .= '.masonry_widget_footer .widget a:hover,.masonry_widget_footer .widget a:hover {color:' . $footer_widget_link_hover_color . '}';
-    $dynamic_css .= '.responsi-footer-before-wrapper .widget ul li a{' . responsi_generate_fonts($responsi_font_footer_widget_list, true) . '}';
-    $dynamic_css .= '.responsi-footer-before-wrapper .widget ul li a:visited{color:' . $footer_widget_link_visited_color . ' !important;}';
-    $dynamic_css .= '.responsi-footer-before-wrapper .widget ul li a:hover{color:' . $footer_widget_link_hover_color . ' !important;}';
+    $dynamic_css .= '.msr-wg-footer .widget-title h3, .msr-wg-footer .widget .widget-title h3 {' . $footer_widget_title_css . '}';
+    $dynamic_css .= '.msr-wg-footer .widget, .msr-wg-footer .widget ul li, .msr-wg-footer .widget ol li,.msr-wg-footer .widget p, .msr-wg-footer .widget .textwidget, .msr-wg-footer .widget:not(div), .msr-wg-footer .widget .textwidget .tel, .msr-wg-footer .widget .textwidget .tel a, .msr-wg-footer .widget .textwidget a[href^=tel], .msr-wg-footer .widget * a[href^=tel], .msr-wg-footer .widget a[href^=tel] { text-decoration: none; ' . responsi_generate_fonts($font_footer_widget_text) . '}';
+    $dynamic_css .= '.msr-wg-footer .widget a,.msr-wg-footer .widget a, .msr-wg-footer .widget a:link,.msr-wg-footer .widget a:link {color:' . $footer_widget_link_color . '}';
+    $dynamic_css .= '.msr-wg-footer .widget a:visited,.msr-wg-footer .widget a:visited {color:' . $footer_widget_link_visited_color . '}';
+    $dynamic_css .= '.msr-wg-footer .widget a:hover,.msr-wg-footer .widget a:hover {color:' . $footer_widget_link_hover_color . '}';
+    $dynamic_css .= '.footer-widgets-ctn .widget ul li a{' . responsi_generate_fonts($responsi_font_footer_widget_list, true) . '}';
+    $dynamic_css .= '.footer-widgets-ctn .widget ul li a:visited{color:' . $footer_widget_link_visited_color . ' !important;}';
+    $dynamic_css .= '.footer-widgets-ctn .widget ul li a:hover{color:' . $footer_widget_link_hover_color . ' !important;}';
 
     if ( isset( $before_footer_border_list['width'] ) && $before_footer_border_list['width'] > 0) {
-        $dynamic_css .= '.responsi-footer-before-wrapper .widget ul li{'.responsi_generate_border($before_footer_border_list, 'border-top').'}';
-        $dynamic_css .= '.responsi-footer-before-wrapper .widget ul li:first-child{border-top-width: 0;}';
+        $dynamic_css .= '.footer-widgets-ctn .widget ul li{'.responsi_generate_border($before_footer_border_list, 'border-top').'}';
+        $dynamic_css .= '.footer-widgets-ctn .widget ul li:first-child{border-top-width: 0;}';
     } else {
-        $dynamic_css .= '.responsi-footer-before-wrapper .widget ul li{margin-top: 0 !important;padding: 0 !important;border-top-width: 0;}';
-        $dynamic_css .= '.responsi-footer-before-wrapper .widget ul li:first-child{border-top-width: 0;}';
+        $dynamic_css .= '.footer-widgets-ctn .widget ul li{margin-top: 0 !important;padding: 0 !important;border-top-width: 0;}';
+        $dynamic_css .= '.footer-widgets-ctn .widget ul li:first-child{border-top-width: 0;}';
     }
     
     /* Footer */
@@ -3719,12 +3722,12 @@ function responsi_build_dynamic_css( $preview = false ) {
     $responsi_footer_bg_position_horizontal     = isset($responsi_options['responsi_footer_bg_position_horizontal']) ? esc_attr( $responsi_options['responsi_footer_bg_position_horizontal'] ) : 'center';
     $responsi_footer_bg_image_repeat            = isset($responsi_options['responsi_footer_bg_image_repeat']) ? esc_attr( $responsi_options['responsi_footer_bg_image_repeat'] ) : 'repeat';
 
-    $dynamic_css .= '.responsi-footer, .responsi-footer p { ' . responsi_generate_fonts($footer_font) . ' }';
-    $dynamic_css .= '.responsi-footer a, .responsi-footer * a,.responsi-footer a:active { color:' . $_footer_link_color . ' !important; }';
-    $dynamic_css .= '.responsi-footer a:hover, .responsi-footer * a:hover ,.responsi-footer a:active:hover{ color:' . $_footer_link_color_hover . ' !important; }';
-    $dynamic_css .= '.responsi-footer .responsi-footer-additional, .responsi-footer .responsi-footer-additional p { ' . responsi_generate_fonts($footer_custom_font) . ' }';
-    $dynamic_css .= '.responsi-footer .responsi-footer-additional a, .responsi-footer .responsi-footer-additional * a,.responsi-footer .responsi-footer-additional a:active { color:' . $footer_custom_link_color . ' !important; }';
-    $dynamic_css .= '.responsi-footer .responsi-footer-additional a:hover, .responsi-footer .responsi-footer-additional * a:hover ,.responsi-footer .responsi-footer-additional a:active:hover{ color:' . $footer_custom_link_color_hover . ' !important; }';
+    $dynamic_css .= '.footer, .footer p { ' . responsi_generate_fonts($footer_font) . ' }';
+    $dynamic_css .= '.footer a, .footer * a,.footer a:active { color:' . $_footer_link_color . ' !important; }';
+    $dynamic_css .= '.footer a:hover, .footer * a:hover ,.footer a:active:hover{ color:' . $_footer_link_color_hover . ' !important; }';
+    $dynamic_css .= '.footer .additional, .footer .additional p { ' . responsi_generate_fonts($footer_custom_font) . ' }';
+    $dynamic_css .= '.footer .additional a, .footer .additional * a,.footer .additional a:active { color:' . $footer_custom_link_color . ' !important; }';
+    $dynamic_css .= '.footer .additional a:hover, .footer .additional * a:hover ,.footer .additional a:active:hover{ color:' . $footer_custom_link_color_hover . ' !important; }';
     
     $footer_css = 'box-sizing: border-box;overflow: initial;';
     $footer_css .= responsi_generate_background_color($footer_bg, true);
@@ -3747,7 +3750,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $footer_css .= 'margin-left:' . $responsi_footer_margin_left . 'px !important;';
     $footer_css .= 'margin-right:' . $responsi_footer_margin_right . 'px !important;';
     
-    $dynamic_css .= '.responsi-footer-container{' . $footer_css . ';}';
+    $dynamic_css .= '.responsi-footer{' . $footer_css . ';}';
 
     $footer_content_bg                              = isset($responsi_options['responsi_footer_content_bg']) ? $responsi_options['responsi_footer_content_bg'] : array( 'onoff' => 'false', 'color' => '#000000');
     $footer_content_border_top                      = isset($responsi_options['responsi_footer_content_border_top']) ? $responsi_options['responsi_footer_content_border_top'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB');
@@ -3799,7 +3802,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $footer_content_css .= 'margin-left:' . $responsi_footer_content_margin_left . 'px !important;';
     $footer_content_css .= 'margin-right:' . $responsi_footer_content_margin_right . 'px !important;';
 
-    $dynamic_css .= 'body .responsi-footer-wrapper .responsi-footer {' . $footer_content_css . ';}';
+    $dynamic_css .= '.footer-ctn .footer {' . $footer_content_css . ';}';
     
     /* Blog Items */
     $blog_box_bg                                    = isset($responsi_options['responsi_blog_box_bg']) ? $responsi_options['responsi_blog_box_bg'] : array('onoff' => 'true', 'color' => '#ffffff');    
@@ -3877,20 +3880,20 @@ function responsi_build_dynamic_css( $preview = false ) {
     $grid_thumb_width                               = ( $post_thumbnail_type_wide - 0.5 );
     $grid_content_width                             = ( 100 - $post_thumbnail_type_wide ) - 0.5;
     
-    $dynamic_css .= '.thumbnail_container {width:100%;clear:both;display: inline-block;}';
+    $dynamic_css .= '.card-thumb {width:100%;clear:both;display: inline-block;}';
     if ( 'left' === $post_thumbnail_type ) {
-        $dynamic_css .= '.blog-post-item .thumbnail_container{width:' . $grid_thumb_width . '%;float:left;}';
-        $dynamic_css .= '.blog-post-item .content_container{width:' . $grid_content_width . '%;float:right;}';
+        $dynamic_css .= '.card-item .card-thumb{width:' . $grid_thumb_width . '%;float:left;}';
+        $dynamic_css .= '.card-item .card-content{width:' . $grid_content_width . '%;float:right;}';
     }
     if ( 'right' === $post_thumbnail_type ) {
-        $dynamic_css .= '.blog-post-item .thumbnail_container{width:' . $grid_thumb_width . '%;float:right;}';
-        $dynamic_css .= '.blog-post-item .content_container{width:' . $grid_content_width . '%;float:left;}';
+        $dynamic_css .= '.card-item .card-thumb{width:' . $grid_thumb_width . '%;float:right;}';
+        $dynamic_css .= '.card-item .card-content{width:' . $grid_content_width . '%;float:left;}';
     }
-    $dynamic_css .= '.box-item .entry-item .entry-bottom .postinfo{' . responsi_generate_border($blog_box_border, 'border', true) . 'border-left:0px !important;border-right:0px !important;}';
-    $dynamic_css .= '.box-item .entry-item.blog-post-item .entry-bottom{margin-top:0px;margin-bottom:0px !important;}';
-    $dynamic_css .= '.box-item .entry-item.blog-post-item .entry-bottom .postinfo,.box-item .entry-item.blog-post-item .entry-bottom .posttags,.box-item .entry-item .entry-bottom .posttags, .box-item .entry-item .entry-bottom .postinfo{padding-left:' . $blogext_padding_left . 'px;padding-right:' . $blogext_padding_right . 'px;padding-top:' . $blogext_padding_top . 'px;padding-bottom:' . $blogext_padding_bottom . 'px; margin :0px !important; ' . responsi_generate_border($_post_author_archive_border_top, 'border-top', true) . ' ' . responsi_generate_border($_post_author_archive_border_bottom, 'border-bottom', true) . '}';
-    $dynamic_css .= '.box-item .entry-item.blog-post-item .entry-bottom .posttags,.box-item .entry-item .entry-bottom .posttags, div.box-content .box-item div.entry-item .entry-bottom .posttags{' . responsi_generate_border($_post_tags_comment_border_top, 'border-top', true) . ' ' . responsi_generate_border($_post_tags_comment_border_bottom, 'border-bottom', true) . '}';
-    $dynamic_css .= '.box-item .entry-item.group.post .thumbnail{height:auto !important;margin-bottom:' . $blogext_padding_bottom . 'px !important;}';
+    $dynamic_css .= '.box-item .entry-item .card-meta .postinfo{' . responsi_generate_border($blog_box_border, 'border', true) . 'border-left:0px !important;border-right:0px !important;}';
+    $dynamic_css .= '.box-item .entry-item.card-item .card-meta{margin-top:0px;margin-bottom:0px !important;}';
+    $dynamic_css .= '.box-item .entry-item.card-item .card-meta .postinfo,.box-item .entry-item.card-item .card-meta .posttags,.box-item .entry-item .card-meta .posttags, .box-item .entry-item .card-meta .postinfo{padding-left:' . $blogext_padding_left . 'px;padding-right:' . $blogext_padding_right . 'px;padding-top:' . $blogext_padding_top . 'px;padding-bottom:' . $blogext_padding_bottom . 'px; margin :0px !important; ' . responsi_generate_border($_post_author_archive_border_top, 'border-top', true) . ' ' . responsi_generate_border($_post_author_archive_border_bottom, 'border-bottom', true) . '}';
+    $dynamic_css .= '.box-item .entry-item.card-item .card-meta .posttags,.box-item .entry-item .card-meta .posttags, div.box-content .box-item div.entry-item .card-meta .posttags{' . responsi_generate_border($_post_tags_comment_border_top, 'border-top', true) . ' ' . responsi_generate_border($_post_tags_comment_border_bottom, 'border-bottom', true) . '}';
+    $dynamic_css .= '.box-item .entry-item.group.post .thumb{height:auto !important;margin-bottom:' . $blogext_padding_bottom . 'px !important;}';
     $dynamic_css .= '.box-item .entry-item.group.post h3{height:auto !important;margin-bottom:0px !important;}';
     
     $blog_box_css = '';
@@ -3899,7 +3902,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $blog_box_css .= responsi_generate_border_boxes($blog_box_border, true);
     $blog_box_css .= $blog_box_shadow;
     
-    $dynamic_css .= '.box-item .entry-item.blog-post-item,.box-item .entry-item.blog-post-item,.box-item .entry-item{' . $blog_box_css . '}';
+    $dynamic_css .= '.box-item .entry-item.card-item,.box-item .entry-item.card-item,.box-item .entry-item{' . $blog_box_css . '}';
 
     $blog_thumbnail_css = 'float: none !important;text-align: center !important;width: auto !important;display:block !important;overflow: hidden;';
     $blog_thumbnail_css .= responsi_generate_background_color($_blog_post_thumbnail_bg, true);
@@ -3914,14 +3917,14 @@ function responsi_build_dynamic_css( $preview = false ) {
     $blog_thumbnail_css .= 'padding-left:' . $_blog_post_thumbnail_padding_left . 'px !important;';
     $blog_thumbnail_css .= 'padding-right:' . $_blog_post_thumbnail_padding_right . 'px !important;';
 
-    $dynamic_css .= '.box-item .entry-item.blog-post-item img.thumbnail{margin-bottom:0px !important;}';
-    $dynamic_css .= '.box-item .entry-item.blog-post-item .thumbnail{' . $blog_thumbnail_css . '}';
-    $dynamic_css .= '.box-item .entry-item.blog-post-item h3{margin:0;padding-top:' . $responsi_blog_post_title_padding_top . 'px !important;padding-bottom:' . $responsi_blog_post_title_padding_bottom . 'px !important;padding-left:' . $responsi_blog_post_title_padding_left . 'px !important;padding-right:' . $responsi_blog_post_title_padding_right . 'px !important;}';
-    $dynamic_css .= '.box-item .entry-item.blog-post-item .entry-content{margin:0px;padding-top:' . $responsi_blog_post_description_padding_top . 'px !important;padding-bottom:' . $responsi_blog_post_description_padding_bottom . 'px !important;padding-left:' . $responsi_blog_post_description_padding_left . 'px !important;padding-right:' . $responsi_blog_post_description_padding_right . 'px !important;}';
-    $dynamic_css .= 'body.category .responsi-content-main .box-item .entry-item h3 a,body.tag .responsi-content-main .box-item .entry-item h3 a,body.page-template-template-blog-php .responsi-content-main .box-item .entry-item h3 a, .box-item .entry-item h3 a, body.category .responsi-content-main .box-item .entry-item h3,body.tag .responsi-content-main .box-item .entry-item h3,body.page-template-template-blog-php .responsi-content-main .box-item .entry-item h3, .box-item .entry-item h3,body .responsi-content-main .blog-post .blog-post-item h3 a:link,.responsi-content-main .blog-post.box-item .entry-item h3 a:link, .responsi-content-main .blog-post.box-item .entry-item h3 a:visited{text-align:' . $responsi_blog_post_title_alignment . ';' . responsi_generate_fonts($responsi_blog_post_font_title) . '}';
-    $dynamic_css .= 'body.category .responsi-content-main .box-item .entry-item h3 a:hover,body.tag .responsi-content-main .box-item .entry-item h3 a:hover,body.page-template-template-blog-php .responsi-content-main .box-item .entry-item h3 a:hover, .box-item .entry-item h3 a:hover,.responsi-content-main .blog-post.box-item .entry-item h3 a:link:hover, .responsi-content-main .blog-post.box-item .entry-item h3 a:visited:hover{ color:' . $hover . ' !important;}';
-    $dynamic_css .= 'body.category .responsi-content-main .box-item .entry-item .entry-content p,body.tag .responsi-content-main .box-item .entry-item .entry-content p,body.page-template-template-blog-php .responsi-content-main .box-item .entry-item .entry-content p, .box-item .entry-item .entry-content p{text-align:' . $responsi_blog_post_content_alignment . ';' . responsi_generate_fonts($responsi_blog_post_font_content) . '}';
-    $dynamic_css .= 'body.category .responsi-content-main .box-item .entry-item .entry-bottom,body.tag .responsi-content-main .box-item .entry-item .entry-bottom,body.page-template-template-blog-php .responsi-content-main .box-item .entry-item .entry-bottom, .box-item .entry-item .entry-bottom{text-align:' . $responsi_blog_ext_alignment . ';' . responsi_generate_fonts($responsi_blog_ext_font) . '}';
+    $dynamic_css .= '.box-item .entry-item.card-item img.thumb{margin-bottom:0px !important;}';
+    $dynamic_css .= '.box-item .entry-item.card-item .thumb{' . $blog_thumbnail_css . '}';
+    $dynamic_css .= '.box-item .entry-item.card-item h3{margin:0;padding-top:' . $responsi_blog_post_title_padding_top . 'px !important;padding-bottom:' . $responsi_blog_post_title_padding_bottom . 'px !important;padding-left:' . $responsi_blog_post_title_padding_left . 'px !important;padding-right:' . $responsi_blog_post_title_padding_right . 'px !important;}';
+    $dynamic_css .= '.box-item .entry-item.card-item .card-info{margin:0px;padding-top:' . $responsi_blog_post_description_padding_top . 'px !important;padding-bottom:' . $responsi_blog_post_description_padding_bottom . 'px !important;padding-left:' . $responsi_blog_post_description_padding_left . 'px !important;padding-right:' . $responsi_blog_post_description_padding_right . 'px !important;}';
+    $dynamic_css .= 'body.category .main .box-item .entry-item h3 a,body.tag .main .box-item .entry-item h3 a,body.page-template-template-blog-php .main .box-item .entry-item h3 a, .box-item .entry-item h3 a, body.category .main .box-item .entry-item h3,body.tag .main .box-item .entry-item h3,body.page-template-template-blog-php .main .box-item .entry-item h3, .box-item .entry-item h3,body .main .card .card-item h3 a:link,.main .card.box-item .entry-item h3 a:link, .main .card.box-item .entry-item h3 a:visited{text-align:' . $responsi_blog_post_title_alignment . ';' . responsi_generate_fonts($responsi_blog_post_font_title) . '}';
+    $dynamic_css .= 'body.category .main .box-item .entry-item h3 a:hover,body.tag .main .box-item .entry-item h3 a:hover,body.page-template-template-blog-php .main .box-item .entry-item h3 a:hover, .box-item .entry-item h3 a:hover,.main .card.box-item .entry-item h3 a:link:hover, .main .card.box-item .entry-item h3 a:visited:hover{ color:' . $hover . ' !important;}';
+    $dynamic_css .= 'body.category .main .box-item .entry-item .card-info p,body.tag .main .box-item .entry-item .card-info p,body.page-template-template-blog-php .main .box-item .entry-item .card-info p, .box-item .entry-item .card-info p{text-align:' . $responsi_blog_post_content_alignment . ';' . responsi_generate_fonts($responsi_blog_post_font_content) . '}';
+    $dynamic_css .= 'body.category .main .box-item .entry-item .card-meta,body.tag .main .box-item .entry-item .card-meta,body.page-template-template-blog-php .main .box-item .entry-item .card-meta, .box-item .entry-item .card-meta{text-align:' . $responsi_blog_ext_alignment . ';' . responsi_generate_fonts($responsi_blog_ext_font) . '}';
     $dynamic_css .= '@media only screen and (min-width: 480px) {';
     if ( $enable_fix_tall_title_grid == '1' ) {
         $blog_title_height = floatval($blog_title_line_height) + 0.1;
@@ -3936,30 +3939,30 @@ function responsi_build_dynamic_css( $preview = false ) {
         $dynamic_css .= '.box-item .entry-item h3 a{display:inherit !important;height: inherit !important;overflow: inherit !important;line-height:' . floatval($blog_title_line_height) . ' !important;}';
     }
     $dynamic_css .= '}';
-    $dynamic_css .= '.box-item .entry-item p.gird_descriptions{margin-bottom:0em !important;}';
-    $dynamic_css .= '.box-item .entry-item a.more-link,body .responsi-content-main .box-item .entry-item.blog-post-item a.button{margin-top:5px !important;display:inline-block}';
+    $dynamic_css .= '.box-item .entry-item p.desc{margin-bottom:0em !important;}';
+    $dynamic_css .= '.box-item .entry-item a.more-link,body .main .box-item .entry-item.card-item a.button{margin-top:5px !important;display:inline-block}';
     
     if ( $enable_fix_tall_des_grid == '1' ) {
         $blog_des_height = floatval($blog_des_line_height);
-        $dynamic_css .= '.box-item .entry-item p.gird_descriptions{display:block !important;height: ' . $blog_des_height . 'em !important;overflow: hidden !important;line-height:' . $blog_des_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item p.desc{display:block !important;height: ' . $blog_des_height . 'em !important;overflow: hidden !important;line-height:' . $blog_des_line_height . 'em !important;}';
     } elseif ( $enable_fix_tall_des_grid == '2' ) {
         $blog_des_height = floatval($blog_des_line_height) * 2;
-        $dynamic_css .= '.box-item .entry-item p.gird_descriptions{display:block !important;height: ' . $blog_des_height . 'em !important;overflow: hidden !important;line-height:' . $blog_des_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item p.desc{display:block !important;height: ' . $blog_des_height . 'em !important;overflow: hidden !important;line-height:' . $blog_des_line_height . 'em !important;}';
     } elseif ( $enable_fix_tall_des_grid == '3' ) {
         $blog_des_height = floatval($blog_des_line_height) * 3;
-        $dynamic_css .= '.box-item .entry-item p.gird_descriptions{display:block !important;height: ' . $blog_des_height . 'em !important;overflow: hidden !important;line-height:' . $blog_des_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item p.desc{display:block !important;height: ' . $blog_des_height . 'em !important;overflow: hidden !important;line-height:' . $blog_des_line_height . 'em !important;}';
     } elseif ( $enable_fix_tall_des_grid == '4' ) {
         $blog_des_height = floatval($blog_des_line_height) * 4;
-        $dynamic_css .= '.box-item .entry-item p.gird_descriptions{display:block !important;height: ' . $blog_des_height . 'em !important;overflow: hidden !important;line-height:' . $blog_des_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item p.desc{display:block !important;height: ' . $blog_des_height . 'em !important;overflow: hidden !important;line-height:' . $blog_des_line_height . 'em !important;}';
     }
     $dynamic_css .= '.box-item .entry-item h3 a,.box-item .entry-item h3{text-transform:' . $responsi_blog_post_font_title_transform . '}';
         
     if ( 'true' === $responsi_fixed_thumbnail && $responsi_fixed_thumbnail_tall > 0 ) {
-        $dynamic_css .= '.box-item .entry-item .thumbnail > a {display: block !important;max-width: 100% !important;overflow: hidden !important;text-align: center !important;vertical-align: top !important;width: 100% !important;padding:0 !important;margin:0 !important;height: inherit;}';
-        $dynamic_css .= '.box-item.masonry-brick .entry-item .thumbnail a img {height: 100% !important;max-width: 100% !important;max-height: 100% !important;width:auto !important;}';
-        $dynamic_css .= '.box-item.masonry-brick .entry-item .thumbnail a img:not(.lazy-hidden){height:auto !important;}';
+        $dynamic_css .= '.box-item .entry-item .thumb > a {display: block !important;max-width: 100% !important;overflow: hidden !important;text-align: center !important;vertical-align: top !important;width: 100% !important;padding:0 !important;margin:0 !important;height: inherit;}';
+        $dynamic_css .= '.box-item.masonry-brick .entry-item .thumb a img {height: 100% !important;max-width: 100% !important;max-height: 100% !important;width:auto !important;}';
+        $dynamic_css .= '.box-item.masonry-brick .entry-item .thumb a img:not(.lazy-hidden){height:auto !important;}';
     } else {
-        $dynamic_css .= '.box-item .entry-item .thumbnail img:not(.lazy-hidden){height:auto;max-width: 100% !important;max-height: 100% !important;}';
+        $dynamic_css .= '.box-item .entry-item .thumb img:not(.lazy-hidden){height:auto;max-width: 100% !important;max-height: 100% !important;}';
     }
     $dynamic_css .= '.box-item .entry-item .postinfotitle{display:none !important;}';
     $dynamic_css .= '.box-item .entry-item .blogpostinfo{padding-top:' . $responsi_blog_post_date_padding_top . 'px;padding-bottom:' . $responsi_blog_post_date_padding_bottom . 'px;padding-left:' . $responsi_blog_post_date_padding_left . 'px;padding-right:' . $responsi_blog_post_date_padding_right . 'px;text-align:' . $responsi_blog_post_date_alignment . ';text-transform:' . $responsi_blog_post_font_date_transform . ';' . responsi_generate_fonts($responsi_blog_post_font_date) . '}';
@@ -3967,81 +3970,81 @@ function responsi_build_dynamic_css( $preview = false ) {
     if ( 'true' !== $responsi_enable_blog_post_date_icon ) {
         $dynamic_css .= '.box-item .entry-item .blogpostinfo .i_date:before{display:none !important;}';
     }
-    $dynamic_css .= '.box-item .entry-item .entry-content .bottom-bg{margin-bottom:0px;}.entry p.gird_descriptions{margin-bottom:10px;}';
-    $dynamic_css .= '.show-more-link{display:block;box-sizing:border-box;text-align:' . $responsi_blog_morelink_alignment . ';}';
-    $dynamic_css .= 'div.box-content .box-item div.entry-item .entry-content a.more-link,body .responsi-content-wrapper .responsi-content-content div.box-content .box-item div.entry-item .entry-content a.button{' . responsi_generate_fonts($responsi_blog_morelink_font, false) . '}';
+    $dynamic_css .= '.box-item .entry-item .card-info .info-ctn{margin-bottom:0px;}.entry p.desc{margin-bottom:10px;}';
+    $dynamic_css .= '.ctrl-open{display:block;box-sizing:border-box;text-align:' . $responsi_blog_morelink_alignment . ';}';
+    $dynamic_css .= 'div.box-content .box-item div.entry-item .card-info a.more-link,.content-ctn .content div.box-content .box-item div.entry-item .card-info a.button{' . responsi_generate_fonts($responsi_blog_morelink_font, false) . '}';
     if ( !isset( $disable_blog_content ) ||  'false' === $disable_blog_content || '' === $disable_blog_content ) {
-        $dynamic_css .= 'div.box-content .box-item div.entry-item.blog-post-item .entry-content .gird_descriptions{display:none !important;}';
+        $dynamic_css .= 'div.box-content .box-item div.entry-item.card-item .card-info .desc{display:none !important;}';
     }
     if( 'false' === $disable_blog_content && isset( $responsi_options['responsi_disable_blog_morelink'] ) && 'false' === $responsi_options['responsi_disable_blog_morelink'] ){
-        $dynamic_css .= 'div.box-content .box-item div.entry-item.blog-post-item .entry-content{display:none;}';
+        $dynamic_css .= 'div.box-content .box-item div.entry-item.card-item .card-info{display:none;}';
     }
     if ( 'false' === $disable_ext_cat_author ) {
-        $dynamic_css .= 'div.box-content .box-item div.entry-item .entry-bottom .postinfo{display:none;}';
+        $dynamic_css .= 'div.box-content .box-item div.entry-item .card-meta .postinfo{display:none;}';
     }
     if ('false' === $disable_ext_tags_comment ) {
-        $dynamic_css .= 'div.box-content .box-item div.entry-item .entry-bottom .posttags{display:none;} div.box-content .box-item div.entry-item .entry-bottom .postinfo{border-bottom:none !important;}';
+        $dynamic_css .= 'div.box-content .box-item div.entry-item .card-meta .posttags{display:none;} div.box-content .box-item div.entry-item .card-meta .postinfo{border-bottom:none !important;}';
     }
     
     if ( $responsi_enable_fix_ext_cat_author == '1' ) {
         $blog_ext_height = floatval($blog_ext_line_height);
-        $dynamic_css .= '.box-item .entry-item .entry-bottom .postinfo .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item .card-meta .postinfo .meta-lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
     } elseif ( $responsi_enable_fix_ext_cat_author == '2' ) {
         $blog_ext_height = floatval($blog_ext_line_height) * 2;
-        $dynamic_css .= '.box-item .entry-item .entry-bottom .postinfo .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item .card-meta .postinfo .meta-lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
     } elseif ( $responsi_enable_fix_ext_cat_author == '3' ) {
         $blog_ext_height = floatval($blog_ext_line_height) * 3;
-        $dynamic_css .= '.box-item .entry-item .entry-bottom .postinfo .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item .card-meta .postinfo .meta-lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
     } else {
-        $dynamic_css .= '.box-item .entry-item .entry-bottom .postinfo .custom_lines{display:inherit !important;height: auto !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . ' !important;}';
+        $dynamic_css .= '.box-item .entry-item .card-meta .postinfo .meta-lines{display:inherit !important;height: auto !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . ' !important;}';
     }
     
     if ( $responsi_enable_fix_ext_tags_comment == '1' ) {
         $blog_ext_height = floatval($blog_ext_line_height);
-        $dynamic_css .= '.box-item .entry-item .entry-bottom .posttags .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item .card-meta .posttags .meta-lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
     } elseif ( $responsi_enable_fix_ext_tags_comment == '2' ) {
         $blog_ext_height = floatval($blog_ext_line_height) * 2;
-        $dynamic_css .= '.box-item .entry-item .entry-bottom .posttags .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item .card-meta .posttags .meta-lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
     } elseif ( $responsi_enable_fix_ext_tags_comment == '3' ) {
         $blog_ext_height = floatval($blog_ext_line_height) * 3;
-        $dynamic_css .= '.box-item .entry-item .entry-bottom .posttags .custom_lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item .card-meta .posttags .meta-lines{display:block !important;height: ' . $blog_ext_height . 'em !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . 'em !important;}';
     } else {
-        $dynamic_css .= '.box-item .entry-item .entry-bottom .posttags .custom_lines{display:inherit !important;height: auto !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . ' !important;}';
+        $dynamic_css .= '.box-item .entry-item .card-meta .posttags .meta-lines{display:inherit !important;height: auto !important;overflow: hidden !important;line-height:' . $blog_ext_line_height . ' !important;}';
     }
     
     if ( 'false' === $responsi_disable_ext_author_cell ) {
-        $dynamic_css .= ".entry-bottom .i_author,.entry-bottom .i_in{display:none}";
+        $dynamic_css .= ".card-meta .i_author,.card-meta .i_in{display:none}";
     }
     if ( 'false' === $responsi_disable_ext_categories_cell ) {
-        $dynamic_css .= ".entry-bottom .i_cat,.entry-bottom .i_in{display:none}";
+        $dynamic_css .= ".card-meta .i_cat,.card-meta .i_in{display:none}";
     }
     
     if ( 'false' === $responsi_disable_ext_author_cell && 'false' === $responsi_disable_ext_categories_cell ) {
-        $dynamic_css .= 'div.box-content .box-item div.entry-item .entry-bottom .postinfo{display:none;}';
-        $dynamic_css .= 'div.box-content .box-item div.entry-item.sticky_product .entry-bottom .postinfo{display:block;}';
+        $dynamic_css .= 'div.box-content .box-item div.entry-item .card-meta .postinfo{display:none;}';
+        $dynamic_css .= 'div.box-content .box-item div.entry-item.sticky_product .card-meta .postinfo{display:block;}';
     }
     
     if ( 'false' === $responsi_disable_ext_comments_cell ) {
-        $dynamic_css .= ".entry-bottom .i_comment{display:none}";
+        $dynamic_css .= ".card-meta .i_comment{display:none}";
     }
     if ( 'false' ===  $responsi_disable_ext_tags_cell ) {
-        $dynamic_css .= ".entry-bottom .i_tag{display:none}";
+        $dynamic_css .= ".card-meta .i_tag{display:none}";
     }
     
     if ( 'false' === $responsi_disable_ext_comments_cell&& 'false' === $responsi_disable_ext_tags_cell ) {
-        $dynamic_css .= 'div.box-content .box-item div.entry-item .entry-bottom .posttags{display:none;} div.box-content .box-item div.entry-item .entry-bottom .postinfo{border-bottom:none !important;}';
+        $dynamic_css .= 'div.box-content .box-item div.entry-item .card-meta .posttags{display:none;} div.box-content .box-item div.entry-item .card-meta .postinfo{border-bottom:none !important;}';
     }
     
     if ( $responsi_post_author_archive_icon ) {
         $dynamic_css .= 'body .logout-link:after, body .profile-link:after, body .dashboard-link:after, body .lost_password-link:after, body .register-link:after{color:' . $responsi_post_author_archive_icon . ' !important;}';
         $dynamic_css .= 'span.i_tag_text, span.i_author, span.i_in,span.i_date.updated,.comment-head span.name,.comment-head span.date, .comment-head .perma{margin-right:3px !important;}';
         $dynamic_css .= '.i_author:before,.i_cat:before,.i_comment:before,.i_tag:before,.i_authors span.author .fn:before, .i_date:before {margin-right:3px;position:relative;color:' . $responsi_post_author_archive_icon . ';}';
-        $dynamic_css .= '.custom_lines .i_comment{margin-right:3px;}';
+        $dynamic_css .= '.meta-lines .i_comment{margin-right:3px;}';
         $dynamic_css .= '.post p.tags:hover:before,.post p.tags:before,.icon:before, .icon:after {color:' . $responsi_post_author_archive_icon . ';}';
     }
 
     if ( 'true' !== $responsi_enable_post_author_archive_icon ) {
-        $dynamic_css .= '.box-item .entry-bottom .i_author:before, .box-item .entry-bottom .i_cat:before, .box-item .entry-bottom .i_comment:before, .box-item .entry-bottom .i_tag:before{display:none !important;}';
+        $dynamic_css .= '.box-item .card-meta .i_author:before, .box-item .card-meta .i_cat:before, .box-item .card-meta .i_comment:before, .box-item .card-meta .i_tag:before{display:none !important;}';
     }
 
     $dynamic_css_ext = '';

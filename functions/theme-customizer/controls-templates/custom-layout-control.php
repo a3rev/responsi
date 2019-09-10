@@ -78,7 +78,7 @@ if ( ! class_exists( 'Customize_Layout_Control' ) && class_exists('WP_Customize_
 		public function content_template() {
 			?>
 			<# var setting_id = data.setting_id ? data.setting_id : 'layout',choices = data.choices,checked = '',selected = '',i = 0; #>
-			<div class="customize-control-container">
+			<div class="customize-ctrl">
 				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<# _.each(choices, function(  val, key ){
 					i++;

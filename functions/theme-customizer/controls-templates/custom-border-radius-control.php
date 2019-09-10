@@ -99,7 +99,7 @@ if ( ! class_exists( 'Customize_Border_Radius_Control' ) && class_exists('WP_Cus
 			}
 			var setting_id = data.setting_id ? data.setting_id : 'border_radius',corner_value  = data.values.corner,rounded_value = data.values.rounded_value,checked = '',value = corner_value;
 			if('rounded' == value){checked = 'checked="checked"';}else{value = 'square';} #>
-			<div class="customize-control-container {{ data.custom_class }}">
+			<div class="customize-ctrl {{ data.custom_class }}">
 				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="border-radius-container">
 					<div class="responsi-iphone-checkbox responsi-iswitcher-checkbox">

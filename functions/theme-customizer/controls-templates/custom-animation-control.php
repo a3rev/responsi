@@ -96,7 +96,7 @@ if ( ! class_exists( 'Customize_Animation_Control' ) && class_exists('WP_Customi
 			<# if( 'undefined' === typeof data.values ){ data.values = {'type':'none' ,'direction':'center', 'duration':'1' , 'delay':'1'}; }
 			var setting_id = data.setting_id;
 			#>
-			<div class="customize-control-container {{ data.custom_class }}">
+			<div class="customize-ctrl {{ data.custom_class }}">
 				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="animation-container">
 					<select name="{{ setting_id }}[type]" class="responsi-animation responsi-iselect responsi-animation-type"></select>

@@ -85,7 +85,7 @@ if ( ! class_exists( 'Customize_Background_Patterns_Control' ) && class_exists('
 				patterns = _wpCustomBackgroundPatternsControl.patterns;
 				bg_url = _wpCustomBackgroundPatternsControl.bg_url;
 			} #>
-			<div class="customize-control-container">
+			<div class="customize-ctrl">
 				<span class="customize-control-title"><?php echo __( 'Background Tiles', 'responsi' ); ?></span>
 				<# var i = 0,checked = '',selected = '',imglink; _.each( backgrounds, function( val, key ) {
 					i++; checked  = ''; selected = ''; imglink  = bg_url + '/backgrounds/' + val;

@@ -23,30 +23,29 @@ if( $title === get_the_title() ){
     $title = $title.' ...';
 }
 ?>
-<div class="blog-post entry <?php echo esc_attr( $class ); ?>">
+<div class="card entry <?php echo esc_attr( $class ); ?>">
     <?php do_action( 'responsi_blog_item_before' ); ?>
-    <div class="entry-item blog-post-item">
+    <div class="card-item entry-item">
         <?php do_action( 'responsi_blog_item_content_before' ); ?>
-        <div class="thumbnail_container">
+        <div class="card-thumb">
             <?php do_action( 'responsi_blog_item_content_thumbnail_before' ); ?>
-            <div class="thumbnail"><?php echo $image;?></div>
+            <div class="thumb"><?php echo $image;?></div>
             <?php do_action( 'responsi_blog_item_content_thumbnail_after' ); ?>
         </div>
-        <div class="content_container">
+        <div class="card-content">
             <?php do_action( 'responsi_archive_post_title_item_before' ); ?>
-            <h3><a title="<?php echo esc_html( get_the_title() ); ?>" href="<?php echo esc_url( get_permalink() ); ?>"><?php echo $title;?></a></h3>
+            <h3 class="card-title"><a title="<?php echo esc_html( get_the_title() ); ?>" href="<?php echo esc_url( get_permalink() ); ?>"><?php echo $title;?></a></h3>
             <?php do_action( 'responsi_archive_post_title_item_after' ); ?>
-            <div class="entry-content">
-              <div class="bottom-bg">
+            <div class="card-info">
+              <div class="info-ctn">
                 <div class="excerpt"><?php the_excerpt();?></div>
               </div>
             </div>
         </div>
-        <div class="clear"></div>
-        <div class="entry-bottom">
-            <div class="postinfo"><div class="custom_lines"><?php echo apply_filters( 'responsi_post_author_posts_card_link', '', array( 'before' => '<span class="i_author">By ', 'after' => '</span> <span class="i_in">in</span>' ) );?><?php if($cats) echo '<span class="i_cat">'.$cats.'</span>';?></div></div>
+        <div class="card-meta">
+            <div class="postinfo"><div class="meta-lines"><?php echo apply_filters( 'responsi_post_author_posts_card_link', '', array( 'before' => '<span class="i_author">By ', 'after' => '</span> <span class="i_in">in</span>' ) );?><?php if($cats) echo '<span class="i_cat">'.$cats.'</span>';?></div></div>
             <div class="posttags">
-                <div class="custom_lines">
+                <div class="meta-lines">
                 <?php
                 $tags = get_the_tags( get_the_ID() );
                 $html = '';

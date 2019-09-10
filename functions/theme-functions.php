@@ -193,9 +193,9 @@ if ( !function_exists( 'responsi_layout_class' ) ) {
             $sidebar_alt_box    = '';
         }
 
-        $main_box           = ' responsi-content-main'.$main_box;
-        $sidebar_box        = ' responsi-content-sidebar'.$sidebar_box;
-        $sidebar_alt_box    = ' responsi-content-sidebar-alt'.$sidebar_alt_box;
+        $main_box           = ' main'.$main_box;
+        $sidebar_box        = ' sidebar'.$sidebar_box;
+        $sidebar_alt_box    = ' sidebar-alt'.$sidebar_alt_box;
     }
 }
 
@@ -341,11 +341,11 @@ if ( !function_exists( 'responsi_header' ) ) {
         </head>
         <body <?php body_class(); ?> <?php wp_body_open();?>>
         <?php do_action( 'responsi_wrapper_container_before' ); ?>
-        <div id="wrapper-container" class="responsi-site-container site-container clearfix">
+        <div id="responsi-site" class="responsi-site clearfix">
         <?php do_action( 'responsi_wrapper_container_content_before' ); ?>
-        <div id="wrapper-top-container" class="responsi-top-container clearfix">
+        <div id="responsi-toolbar" class="responsi-toolbar clearfix">
         <?php do_action( 'responsi_wrapper_top_before' ); ?>
-        <div id="wrapper-top-fixed" class="responsi-top-fixed clearfix">
+        <div id="toolbar-ctn" class="toolbar-ctn clearfix">
         <?php do_action( 'responsi_wrapper_top_content_before' ); ?>
         <?php
         if( $responsi_header_is_inside ){
@@ -364,21 +364,21 @@ if ( !function_exists( 'responsi_header' ) ) {
         }
         ?>
         <?php do_action( 'responsi_wrapper_center_before' ); ?>
-        <div id="wrapper-center" class="responsi-center clearfix<?php if( 'true' === $responsi_layout_boxed ){echo ' site-width';}?>">
-        <div id="wrapper-boxes" class="responsi-boxes clearfix">
+        <div id="responsi-wrapper" class="responsi-wrapper clearfix<?php if( 'true' === $responsi_layout_boxed ){echo ' site-width';}?>">
+        <div id="wrapper-ctn" class="wrapper-ctn clearfix">
         <?php do_action( 'responsi_wrapper_boxes_before' ); ?>
-        <div id="wrapper-boxes-content" class="responsi-boxes-content clearfix">
+        <div id="wrapper-in" class="wrapper-in clearfix">
         <?php if( true !== $responsi_header_is_inside && true !== $responsi_header_is_outside ){
             responsi_wrapper_header();
             responsi_wrapper_nav();
         }
         ?>
         <?php do_action( 'responsi_wrapper_content_before' ); ?>
-        <div id="wrapper-content" class="responsi-content-container clearfix col-<?php echo esc_attr( $layout_column );?>-<?php echo esc_attr( $wrapper_content );?>">
+        <div id="responsi-content" class="responsi-content clearfix col-<?php echo esc_attr( $layout_column );?>-<?php echo esc_attr( $wrapper_content );?>">
         <?php do_action( 'responsi_wrapper_content_content_before' ); ?>
-        <div id="wrapper" class="responsi-content-wrapper site-width clearfix">
+        <div id="content-ctn" class="content-ctn site-width clearfix">
         <?php do_action( 'responsi_wrapper_article_before' ); ?>
-        <article id="wrapper-article" class="responsi-content-article clearfix">
+        <article id="content-in" class="content-in clearfix">
         <?php global $shiftclick; echo $shiftclick;?>
         <?php do_action( 'responsi_wrapper_article_content_before' ); ?>
         <?php
@@ -412,14 +412,13 @@ if ( !function_exists( 'responsi_footer' ) ) {
         }
         ?>
         <?php do_action( 'responsi_wrapper_footer_before' ); ?>
-        <div id="wrapper-footer-content" class="responsi-footer-container clearfix">
-          <div id="wrapper-footer" class="responsi-footer-wrapper site-width clearfix">
-            <div id="footer-content" class="responsi-footer-content clearfix">
-            <footer id="footer" class="responsi-footer col-full lv0 clearfix">
-              <div id="additional" class="responsi-footer-additional col-below clearfix">
+        <div id="responsi-footer" class="responsi-footer clearfix">
+          <div id="footer-ctn" class="footer-ctn site-width clearfix">
+            <div id="footer-in" class="footer-in clearfix">
+            <footer id="footer" class="footer col-full lv0 clearfix">
+              <div id="additional" class="additional col-below clearfix">
                 <?php do_action( 'responsi_wrapper_footer_additional' ); ?>
               </div>
-              <div class="clear"></div>
               <?php do_action( 'responsi_wrapper_footer_content' ); ?>
               <?php echo $shiftclick;?>
             </footer>
@@ -428,7 +427,6 @@ if ( !function_exists( 'responsi_footer' ) ) {
           <?php echo $shiftclick;?>
         </div>
         <?php do_action( 'responsi_wrapper_footer_after' ); ?>
-        <div class="clear"></div>
         <?php
         if( 'true' !== $responsi_options['responsi_layout_boxed'] || ( 'true' === $responsi_options['responsi_layout_boxed'] && !$responsi_footer_is_outside) ){
             ?>
@@ -463,10 +461,10 @@ if ( !function_exists( 'responsi_sidebar' ) ) {
                 if ( responsi_active_sidebar( esc_attr( $sidebar_args['sidebar_id'] ) ) ) {
                     ?>
                     <?php do_action( 'responsi_sidebar_before' ); ?>
-                    <div id="<?php echo $sidebar_args['sidebar_id'];?>" class="box<?php echo esc_attr( $sidebar_box ).' '. esc_attr( $sidebar_args['class'] );?>">
+                    <div id="<?php echo $sidebar_args['sidebar_id'];?>" class="box<?php echo esc_attr( $sidebar_box );?><?php if( isset($sidebar_args['class']) && !empty($sidebar_args['class']) ){ echo ' '.esc_attr( $sidebar_args['class'] ); } ?>">
                         <?php do_action( 'responsi_sidebar_wrap_before' ); ?>
-                        <div class="sidebar-wrap clearfix">
-                        <div class="sidebar-wrap-content">
+                        <div class="sidebar-ctn clearfix">
+                        <div class="sidebar-in">
                         <?php responsi_dynamic_sidebar( esc_attr( $sidebar_args['sidebar_id'] ) ); ?>
                         </div>
                         <?php global $shiftclick; echo $shiftclick; ?>
@@ -479,14 +477,14 @@ if ( !function_exists( 'responsi_sidebar' ) ) {
                     if( $sidebar_args['blank_sidebar'] ){
                         ?>
                         <?php do_action( 'responsi_sidebar_before' ); ?>
-                        <div id="<?php echo $sidebar_args['sidebar_id'];?>" class="box<?php echo esc_attr( $sidebar_box ).' '. esc_attr( $sidebar_args['class'] );?>">
+                        <div id="<?php echo $sidebar_args['sidebar_id'];?>" class="box<?php echo esc_attr( $sidebar_box );?><?php if( isset($sidebar_args['class']) && !empty($sidebar_args['class']) ){ echo ' '.esc_attr( $sidebar_args['class'] ); } ?>">
                             <?php do_action( 'responsi_sidebar_wrap_before' ); ?>
-                            <div class="sidebar-wrap clearfix">
-                            <div class="sidebar-wrap-content">
-                            <div class="masonry_widget widget-blank <?php echo 'blank-'. esc_attr( $sidebar_args['sidebar_id'] );?>">
+                            <div class="sidebar-ctn clearfix">
+                            <div class="sidebar-in">
+                            <div class="msr-wg widget-blank <?php echo 'blank-'. esc_attr( $sidebar_args['sidebar_id'] );?>">
                             <div class="widget widget_text">
-                            <div class="responsi-widget-title clearfix"><h3><?php echo $sidebar_args['blank_sidebar_title']; ?></h3></div>
-                            <div class="responsi-widget-content clearfix"><div class="textwidget"><?php echo $sidebar_args['blank_sidebar_content']; ?></div></div>
+                            <div class="widget-title clearfix"><h3><?php echo $sidebar_args['blank_sidebar_title']; ?></h3></div>
+                            <div class="widget-content clearfix"><div class="textwidget"><?php echo $sidebar_args['blank_sidebar_content']; ?></div></div>
                             </div>
                             </div>
                             </div>
@@ -518,10 +516,10 @@ if ( !function_exists( 'responsi_sidebar_alt' ) ) {
                 if ( responsi_active_sidebar( esc_attr( $sidebar_alt_args['sidebar_id'] ) ) ) {
                     ?>
                     <?php do_action('responsi_sidebar_before'); ?>
-                    <div id="<?php echo $sidebar_alt_args['sidebar_id'];?>" class="box<?php echo esc_attr( $sidebar_alt_box ) . ' ' . esc_attr( $sidebar_alt_args['class'] );?>">
+                    <div id="<?php echo $sidebar_alt_args['sidebar_id'];?>" class="box<?php echo esc_attr( $sidebar_alt_box );?><?php if( isset($sidebar_alt_args['class']) && !empty($sidebar_alt_args['class']) ){ echo ' '.esc_attr( $sidebar_alt_args['class'] ); } ?>">
                         <?php do_action( 'responsi_sidebar_wrap_before' ); ?>
-                        <div class="sidebar-wrap clearfix">
-                        <div class="sidebar-wrap-content">
+                        <div class="sidebar-ctn clearfix">
+                        <div class="sidebar-in">
                         <?php responsi_dynamic_sidebar( esc_attr( $sidebar_alt_args['sidebar_id'] ) ); ?>
                         </div>
                         <?php global $shiftclick; echo $shiftclick; ?>
@@ -534,14 +532,14 @@ if ( !function_exists( 'responsi_sidebar_alt' ) ) {
                     if( $sidebar_alt_args['blank_sidebar'] ){
                         ?>
                         <?php do_action( 'responsi_sidebar_before' ); ?>
-                        <div id="<?php echo $sidebar_alt_args['sidebar_id'];?>" class="box<?php echo esc_attr( $sidebar_alt_box ) . ' ' . esc_attr( $sidebar_alt_args['class'] );?>">
+                        <div id="<?php echo $sidebar_alt_args['sidebar_id'];?>" class="box<?php echo esc_attr( $sidebar_alt_box );?><?php if( isset($sidebar_alt_args['class']) && !empty($sidebar_alt_args['class']) ){ echo ' '.esc_attr( $sidebar_alt_args['class'] ); } ?>">
                             <?php do_action( 'responsi_sidebar_wrap_before' ); ?>
-                            <div class="sidebar-wrap clearfix">
-                            <div class="sidebar-wrap-content">
-                            <div class="masonry_widget widget-blank <?php echo 'blank-' . esc_attr( $sidebar_alt_args['sidebar_id'] );?>">
+                            <div class="sidebar-ctn clearfix">
+                            <div class="sidebar-in">
+                            <div class="msr-wg widget-blank <?php echo 'blank-' . esc_attr( $sidebar_alt_args['sidebar_id'] );?>">
                             <div class="widget widget_text">
-                            <div class="responsi-widget-title clearfix"><h3><?php echo $sidebar_alt_args['blank_sidebar_title']; ?></h3></div>
-                            <div class="responsi-widget-content clearfix"><div class="textwidget"><?php echo $sidebar_alt_args['blank_sidebar_content']; ?></div></div>
+                            <div class="widget-title clearfix"><h3><?php echo $sidebar_alt_args['blank_sidebar_title']; ?></h3></div>
+                            <div class="widget-content clearfix"><div class="textwidget"><?php echo $sidebar_alt_args['blank_sidebar_content']; ?></div></div>
                             </div>
                             </div>
                             </div>
@@ -887,7 +885,7 @@ if ( !function_exists( 'responsi_build_copyright' ) ) {
                 $footer_copyright_style = ' style="'.$footer_copyright_animation['style'].'"';
             }
 
-            $output = '<div id="footer_copyright_animation" class="responsi-copyright-animation clearfix'.$footer_copyright_class.'"'.$footer_copyright_data . $footer_copyright_style.'>'.sprintf('%1$s%3$s%2$s', $atts['before'], $atts['after'], wpautop( strip_tags($responsi_options['responsi_footer_left_text']) ) ).'</div>';
+            $output = '<div id="copyright-animation" class="copyright-animation clearfix'.$footer_copyright_class.'"'.$footer_copyright_data . $footer_copyright_style.'>'.sprintf('%1$s%3$s%2$s', $atts['before'], $atts['after'], wpautop( strip_tags($responsi_options['responsi_footer_left_text']) ) ).'</div>';
         }
 
         return apply_filters( 'responsi_build_copyright', $output, $atts );
@@ -931,7 +929,7 @@ if ( !function_exists( 'responsi_build_additional' ) ) {
         $output   = '';
         
         if( isset( $responsi_options['responsi_footer_below']) && 'true' === $responsi_options['responsi_footer_below'] ){
-            $output     .= '<div id="additional_animation" class="responsi-additional-animation clearfix'.$additional_class.'"'.$additional_data . $additional_style.'>';
+            $output     .= '<div id="additional-animation" class="additional-animation clearfix'.$additional_class.'"'.$additional_data . $additional_style.'>';
             $output     .= sprintf('%1$s%3$s%2$s', $atts['before'], $atts['after'], do_shortcode(apply_filters( 'a3_lazy_load_html', wpautop(responsi_autoembed_media($responsi_options['responsi_footer_below_text'])))));
             $output     .= '</div>';
         }
@@ -1026,7 +1024,7 @@ if ( !function_exists( 'responsi_build_credit' ) ) {
                 $footer_credit_style = ' style="'.$footer_credit_animation['style'].'"';
             }
 
-            $output_footer_credit = '<div id="footer_credit_animation" class="responsi-credit-animation clearfix'.$footer_credit_class.'"'.$footer_credit_data . $footer_credit_style.'>'.$output.'</div>';
+            $output_footer_credit = '<div id="credit-animation" class="credit-animation clearfix'.$footer_credit_class.'"'.$footer_credit_data . $footer_credit_style.'>'.$output.'</div>';
             $output = $output_footer_credit;
 
         }
@@ -1207,16 +1205,16 @@ if ( !function_exists( 'responsi_continue_reading_link' ) ) {
         global $responsi_options;
 
         if ( 'true' === $responsi_options['responsi_disable_blog_morelink'] ) {
-            $showhide = 'blogs-more show-more-link';
+            $showhide = 'ctrl ctrl-open';
         } else {
-            $showhide = 'blogs-more hide-more-link';
+            $showhide = 'ctrl ctrl-close';
         }
 
         $more_link_text = $responsi_options['responsi_blog_morelink_text'];
 
         $class = 'more-link';
         if ( 'button' === $responsi_options['responsi_blog_morelink_type'] ) {
-            $class = 'button more-link-button';
+            $class = 'button ctrl-button';
         }
 
         // More Link?
@@ -1235,7 +1233,7 @@ function responsi_excerpt_more( $more ){
 
 function responsi_custom_excerpt_more( $output ){
     if ( ! is_attachment() && ! is_admin() ) {
-        $output = '<p class="gird_descriptions">' . strip_tags( $output ) . '</p>' . responsi_continue_reading_link();
+        $output = '<p class="desc">' . strip_tags( $output ) . '</p>' . responsi_continue_reading_link();
     }
     return $output;
 }
@@ -1290,7 +1288,7 @@ if ( !function_exists( 'responsi_meta_tags' ) ) {
     function responsi_meta_tags() {
         $html = '';
         //$html .= '<meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1">';
-        $html .= '<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no,height=device-height">';
+        $html .= '<meta name="viewport" content="width=device-width, initial-scale=1, height=device-height">';
         $html .= '<meta name="format-detection" content="telephone=yes">';
         echo $html;
     }
@@ -1324,10 +1322,10 @@ function responsi_wrapper_header() {
     global $shiftclick;
     do_action( 'responsi_wrapper_header_before' );
     ?>
-    <div id="wrapper-header-content" class="responsi-header-container clearfix">
+    <div id="responsi-header" class="responsi-header clearfix">
       <?php do_action( 'responsi_wrapper_header_content_before' ); ?>
-      <div id="wrapper-header" class="responsi-header-wrapper site-width clearfix">
-        <div id="header-content" class="responsi-header-content clearfix">
+      <div id="header-cnt" class="header-cnt site-width clearfix">
+        <div id="header-in" class="header-in clearfix">
         <?php do_action( 'responsi_wrapper_header_content' ); ?>
         </div>
       </div>
@@ -1365,10 +1363,8 @@ if ( !function_exists( 'responsi_wrapper_header_content' ) ) {
 
         if ( $has_header_sidebars && $total > 0 ) {
             ?>
-            <div class="clear"></div>
-            <header id="header" class="responsi-header clearfix col-full col-<?php echo esc_attr( $total ); ?>">
+            <header id="header" class="header clearfix col-full col-<?php echo esc_attr( $total ); ?>">
             <?php do_action( 'responsi_header_widget_before' ); ?>
-            <div class="clear"></div>
             <?php
             $i = 0;
 
@@ -1398,7 +1394,7 @@ if ( !function_exists( 'responsi_wrapper_header_content' ) ) {
                             $header_style = ' style="'.$header_animation['style'].'"';
                         }
 
-                        echo '<div id="header_animation_'.$i.'" class="clearfix'.$header_class.'"'.$header_data . $header_style.'>';
+                        echo '<div id="header-animation-'.$i.'" class="clearfix'.$header_class.'"'.$header_data . $header_style.'>';
                    
                         ?>
 
@@ -1421,14 +1417,14 @@ if ( !function_exists( 'responsi_wrapper_header_content' ) ) {
                             $header_data = ' data-animation="'.$header_animation['data'].'"';
                             $header_style = ' style="'.$header_animation['style'].'"';
                         }
-                        echo '<div id="header_animation_1" class="clearfix'.$header_class.'"'.$header_data . $header_style.'>';
+                        echo '<div id="header-animation-1" class="clearfix'.$header_class.'"'.$header_data . $header_style.'>';
                         ?>
                             <div class="widget widget_text">
                                 <?php
-                                echo '<div class="site-logo-container">';
+                                echo '<div class="logo-ctn">';
                                 responsi_site_logo();
                                 echo '</div>';
-                                echo '<div class="site-description-container">';
+                                echo '<div class="desc-ctn">';
                                 responsi_site_description();
                                 echo '</div>';
                                 ?>
@@ -1452,7 +1448,7 @@ if ( !function_exists( 'responsi_wrapper_header_content' ) ) {
                             $header_data = ' data-animation="'.$header_animation['data'].'"';
                             $header_style = ' style="'.$header_animation['style'].'"';
                         }
-                        echo '<div id="header_animation_'.$i.'" class="clearfix'.$header_class.'"'.$header_data . $header_style.'>';
+                        echo '<div id="header-animation-'.$i.'" class="clearfix'.$header_class.'"'.$header_data . $header_style.'>';
                         ?>
                         <?php responsi_dynamic_sidebar( 'header-' . $i ); ?>
                         <?php echo '</div>';?> 
@@ -1463,18 +1459,14 @@ if ( !function_exists( 'responsi_wrapper_header_content' ) ) {
                 }
             }
             ?>
-            <div class="clear"></div>
             <?php do_action( 'responsi_header_widget_after' ); ?>
             </header>
-            <div class="clear"></div>
             <?php
 
         } else {
             ?>
-            <div class="clear"></div>
-            <header id="header" class="responsi-header clearfix col-full col-1">
+            <header id="header" class="header clearfix col-full col-1">
             <?php do_action( 'responsi_header_widget_before' ); ?>
-                <div class="clear"></div>
                 <div class="box box-last col-item  header-widget-1">
                     <?php
                     $header_animation = responsi_generate_animation($responsi_options['responsi_header_animation_1']);
@@ -1486,24 +1478,22 @@ if ( !function_exists( 'responsi_wrapper_header_content' ) ) {
                         $header_data = ' data-animation="'.$header_animation['data'].'"';
                         $header_style = ' style="'.$header_animation['style'].'"';
                     }
-                    echo '<div id="header_animation_1" class="clearfix'.$header_class.'"'.$header_data . $header_style.'>';
+                    echo '<div id="header-animation-1" class="clearfix'.$header_class.'"'.$header_data . $header_style.'>';
                     ?>
                         <div class="widget widget_text">
                             <?php
-                            echo '<div class="site-logo-container">';
+                            echo '<div class="logo-ctn">';
                             responsi_site_logo();
                             echo '</div>';
-                            echo '<div class="site-description-container">';
+                            echo '<div class="desc-ctn">';
                             responsi_site_description();
                             echo '</div>';
                             ?>
                         </div>
                     <?php echo '</div>';?> 
                 </div>
-                <div class="clear"></div>
             <?php do_action( 'responsi_header_widget_after' ); ?>
             </header>
-            <div class="clear"></div>
             <?php
         }
     }
@@ -1517,8 +1507,8 @@ function responsi_wrapper_nav() {
     global $shiftclick;
     do_action( 'responsi_wrapper_nav_before' );
     ?>
-    <div id="wrapper-nav-content" class="responsi-nav-container clearfix">
-      <div id="wrapper-nav" class="responsi-nav-wrapper site-width clearfix">
+    <div id="responsi-navigation" class="responsi-navigation clearfix">
+      <div id="navigation-ctn" class="navigation-ctn site-width clearfix">
         <?php do_action( 'responsi_wrapper_nav_content' ); ?>
       </div>
       <?php echo $shiftclick;?>
@@ -1536,15 +1526,15 @@ if ( !function_exists( 'responsi_navigation' ) ) {
         global $responsi_options;
         do_action( 'responsi_navigation_before' );
         ?>
-        <div id="navigation-content" class="responsi-nav-content clearfix">
-          <nav id="navigation" class="responsi-nav clearfix">
+        <div id="navigation-in" class="navigation-in clearfix">
+          <nav id="navigation" class="navigation clearfix">
             <?php do_action( 'responsi_navigation' ); ?>
             <?php
             $nav_ctr = '';
             $nav_ctr_before = apply_filters( 'responsi_mobile_navigation_before', '' );
             $nav_ctr_after = apply_filters( 'responsi_mobile_navigation_after', '' );
             if ( isset( $responsi_options['responsi_nav_mobile_type'] ) && 'click' === $responsi_options['responsi_nav_mobile_type'] ) {
-                $nav_ctr = '<div class="mobile-navigation mobile-navigation-open mobile-navigation-alignment-left"><div class="clearfix"></div>'.$nav_ctr_before.'<span class="nav-mobile-text nav-mobile-text-before"></span><span class="nav-separator"><i class="responsi-icon-mobile-menu responsi-icon-menu"></i></span><span class="nav-mobile-text nav-mobile-text-after">'. __('Navigation', 'responsi') .'</span>'.$nav_ctr_after.'<div class="clearfix"></div>'. do_action( 'responsi_navigation' ) .'<div class="clearfix"></div></div>';
+                $nav_ctr = '<div class="navigation-mobile open alignment-left">'.$nav_ctr_before.'<span class="menu-text before"></span><span class="separator"><i class="menu-icon hamburger-icon"></i></span><span class="menu-text after">'. __('Navigation', 'responsi') .'</span>'.$nav_ctr_after.''. do_action( 'responsi_navigation' ) .'</div>';
                 $nav_ctr = apply_filters( 'responsi_mobile_navigation', $nav_ctr );
             }
             if ( isset( $responsi_options['responsi_nav_mobile_type'] ) && 'select' === $responsi_options['responsi_nav_mobile_type'] ) {
@@ -1593,13 +1583,13 @@ if ( !function_exists( 'responsi_main_wrap_before' ) ) {
         global $is_blog_template;
         $class = ' clearfix';
         if( is_archive() || $is_blog_template ){
-            $class .= ' main-wrap-archive';
+            $class .= ' main-archive';
         }elseif( is_single() ){
-            $class .= ' main-wrap-post';
+            $class .= ' main-post';
         }elseif( is_page() ){
-            $class .= ' main-wrap-page';
+            $class .= ' main-page';
         }
-        echo '<div class="main-wrap' .esc_attr( $class ) .'">';
+        echo '<div class="main-ctn' .esc_attr( $class ) .'">';
     }
 }
 
@@ -1642,27 +1632,22 @@ if ( !function_exists( 'responsi_footer_sidebars' ) ) {
         }
 
         $footer_widget_container_before = '
-        <div id="wrapper-footer-top-content" class="responsi-footer-before-container clearfix">
-            <div class="clear"></div> 
-            <div id="wrapper-footer-top" class="responsi-footer-before-wrapper site-width clearfix lv0">
-                <div class="clear"></div> 
-                <div id="footer-top-content" class="responsi-footer-before-content clearfix">';
+        <div id="responsi-footer-widgets" class="responsi-footer-widgets clearfix">
+            <div id="footer-widgets-ctn" class="footer-widgets-ctn site-width clearfix lv0">
+                <div id="footer-widgets-in" class="footer-widgets-in clearfix">';
         $footer_widget_container_after = '
                 </div>
-                <div class="clear"></div>
                 '.$shiftclick.'
             </div>
-            <div class="clear"></div>
             '.$shiftclick.'
         </div>
-        <div class="clear"></div>';
+        ';
 
         if ( $has_footer_sidebars && $total > 0) {
             echo $footer_widget_container_before;
             ?>
-            <div id="footer-widgets" class="responsi-footer-before-widgets col-full col-<?php echo esc_attr( $total ); ?> clearfix">
+            <div id="footer-widgets" class="footer-widgets col-full col-<?php echo esc_attr( $total ); ?> clearfix">
             <?php do_action( 'responsi_footer_widget_before' ); ?>
-              <div class="clear"></div>
                 <?php
                 $i = 0;
                 $box_last = '';
@@ -1673,7 +1658,7 @@ if ( !function_exists( 'responsi_footer_sidebars' ) ) {
                     }
                     if ( responsi_active_sidebar( 'footer-' . $i ) ) {
                         ?>
-                    <div class="box<?php echo esc_attr( $box_last );?> col-item footer-widget-<?php echo $i; ?> responsi-shiftclick">
+                    <div class="box col-item footer-widget-<?php echo $i; ?> responsi-shiftclick<?php echo esc_attr( $box_last );?>">
                     
                     <?php
                     $footer_animation = responsi_generate_animation($responsi_options['responsi_footer_animation_'.$i]);
@@ -1685,7 +1670,7 @@ if ( !function_exists( 'responsi_footer_sidebars' ) ) {
                         $footer_data = ' data-animation="'.$footer_animation['data'].'"';
                         $footer_style = ' style="'.$footer_animation['style'].'"';
                     }
-                    echo '<div id="footer_animation_'.$i.'" class="clearfix'.$footer_class.'"'.$footer_data . $footer_style.'>';
+                    echo '<div id="footer-widgets-animation-'.$i.'" class="clearfix'.$footer_class.'"'.$footer_data . $footer_style.'>';
                     ?>
                     <?php responsi_dynamic_sidebar( 'footer-' . $i ); ?>
                     <?php echo '</div>';?>
@@ -1695,7 +1680,7 @@ if ( !function_exists( 'responsi_footer_sidebars' ) ) {
                     }
                 }
                 ?>
-              <div class="clear"></div>
+              
             <?php do_action( 'responsi_footer_widget_after' ); ?>
             </div>
             <?php
@@ -1710,10 +1695,10 @@ if ( !function_exists( 'responsi_footer_sidebars' ) ) {
 if ( !function_exists( 'responsi_wrapper_footer_content' ) ) {
     function responsi_wrapper_footer_content(){
         ?>
-        <div id="copyright" class="responsi-footer-copyright col-left">
+        <div id="copyright" class="copyright col-left">
             <?php do_action( 'responsi_wrapper_footer_content_copyright' ); ?>
         </div>
-        <div id="credit" class="responsi-footer-credit col-right">
+        <div id="credit" class="credit col-right">
             <?php do_action( 'responsi_wrapper_footer_content_credit' ); ?>
         </div>
         <?php
@@ -1845,7 +1830,7 @@ if ( !function_exists( 'responsi_single_post_meta_categories_default' ) ) {
             'after'     => '</span>'
         ));
         $post_info_categories = responsi_single_post_meta_categories( $attr_post_categories );
-        printf('<div class="post-utility post-utility-cat col-full">%s</div>', apply_filters( 'responsi_single_post_meta_categories_default', $post_info_categories ) );
+        printf('<div class="meta categories col-full">%s</div>', apply_filters( 'responsi_single_post_meta_categories_default', $post_info_categories ) );
 
     }
 }
@@ -1864,7 +1849,7 @@ if ( !function_exists( 'responsi_single_post_meta_tags_default' ) ) {
             'after'     => '</span>'
         ) );
         $post_info_tags = responsi_single_post_meta_tags($attr_post_tags);
-        printf('<div class="post-utility post-utility-tag col-full">%s</div>', apply_filters( 'responsi_single_post_meta_tags_default', $post_info_tags) );
+        printf('<div class="meta tags col-full">%s</div>', apply_filters( 'responsi_single_post_meta_tags_default', $post_info_tags) );
 
     }
 }
@@ -2022,7 +2007,7 @@ if ( !function_exists( 'responsi_blog_template_list_post' ) ) {
 if ( !function_exists( 'responsi_scrolltop' ) ) {
     function responsi_scrolltop() {
         ?>
-        <p id="back-top" class="responsi-scrolltop"><a href="#wrap"><span class="responsi-icon-up"></span></a></p>
+        <div id="backTopBtn" class="backTopBtn"><a href="#responsi-site" aria-label="Back to top"><span class="responsi-icon-up"></span></a></div>
         <?php
     }
 }
@@ -2188,6 +2173,9 @@ if ( !function_exists( 'responsi_blog_animation_html_open' ) ) {
             $animation_class = '';
             $animation_data = '';
             $animation_style = '';
+            if( is_customize_preview() ){
+                $animation_class = ' animateMe';
+            }
 
             if( false !== $responsi_blog_animation ){
                 $animation_class = ' '.$responsi_blog_animation['class'];
@@ -2195,7 +2183,7 @@ if ( !function_exists( 'responsi_blog_animation_html_open' ) ) {
                 $animation_style = ' style="'.$responsi_blog_animation['style'].'"';
             }
 
-            $html = '<div class="clearfix'.$animation_class.'"'.$animation_data . $animation_style.'>';        
+            $html = '<div class="animCard clearfix'.$animation_class.'"'.$animation_data . $animation_style.'>';        
             
             echo $html;
         //}

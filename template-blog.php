@@ -12,9 +12,9 @@
 <?php get_header(); ?>
 <?php global $main_box, $count; ?>
 <?php do_action( 'responsi_content_before' ); ?>
-<div id="content" class="responsi-content-content col-full clearfix">
+<div id="content" class="content col-full clearfix">
     <?php do_action( 'responsi_main_before' ); ?>
-    <div id="main" class="box<?php echo esc_attr( $main_box );?> archive-container">
+    <div id="main" class="box<?php echo esc_attr( $main_box );?> main-archive-ctn">
         <?php do_action( 'responsi_main_content_before' ); ?>
 		<div class="responsi-area responsi-area-archive responsi_title">
 			<?php do_action( 'responsi_loop_before' ); ?>

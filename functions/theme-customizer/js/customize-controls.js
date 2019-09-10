@@ -310,7 +310,7 @@
 
 			//Header Mobile
 			$(document).on('click', '.header_sidebars_logical img.responsi-radio-img-img', function() {
-				var w_num = $(this).parent().parent('.customize-control-container').find('input:checked').val();
+				var w_num = $(this).parent().parent('.customize-ctrl').find('input:checked').val();
 				if (w_num == 0) {
 					$('.header-widgets-logic').slideUp();
 				} else {
@@ -327,7 +327,7 @@
 
 			//Sidebar Mobile
 			$(document).on('click', '.sidebar_widget_logical img.responsi-radio-img-img', function() {
-				var sidebar_widget_logical = $(this).parent().parent('.customize-control-container').find('input:checked').val();
+				var sidebar_widget_logical = $(this).parent().parent('.customize-ctrl').find('input:checked').val();
 				if (sidebar_widget_logical == 'one-col') {
 					$('.sidebar-widgets-logic').slideUp();
 				} else {
@@ -337,7 +337,7 @@
 
 			//Footer Mobile
 			$(document).on('click', '.footer_widget_logical img.responsi-radio-img-img', function() {
-				var footer_widget_logical = $(this).parent().parent('.customize-control-container').find('input:checked').val();
+				var footer_widget_logical = $(this).parent().parent('.customize-ctrl').find('input:checked').val();
 			
 				if (footer_widget_logical == 0) {
 					$('.footer-widgets-logic').slideUp();

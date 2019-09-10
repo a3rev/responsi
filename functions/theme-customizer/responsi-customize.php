@@ -79,6 +79,9 @@ final class Responsi_Customize {
 
 	public function responsi_customize_register() {
 
+		@set_time_limit( 86400 );
+		@ini_set( "memory_limit", "640M" );
+
 		$controls_template = 'controls-templates';
 
 		$_custom_customizer_control = array(
@@ -471,7 +474,7 @@ final class Responsi_Customize {
 	    				$this->manager->get_setting( $value )->transport = 'postMessage';
 	    		}
 	    		$this->manager->selective_refresh->add_partial( 'responsi_site_logo_selective_refresh', array(
-			        'selector' => '.site-logo-container',
+			        'selector' => '.logo-ctn',
 			        'settings' => $responsi_site_logo_selective_refresh,
 			        'render_callback' => 'responsi_site_logo'
 			    ) );
@@ -485,7 +488,7 @@ final class Responsi_Customize {
 	    				$this->manager->get_setting( $value )->transport = 'postMessage';
 	    		}
 	    		$this->manager->selective_refresh->add_partial( 'responsi_site_description_selective_refresh', array(
-			        'selector' => '.site-description-container',
+			        'selector' => '.desc-ctn',
 			        'settings' => $responsi_site_description_selective_refresh,
 			        'render_callback' => 'responsi_site_description'
 			    ) );
@@ -499,7 +502,7 @@ final class Responsi_Customize {
 	    				$this->manager->get_setting( $value )->transport = 'postMessage';
 	    		}
 	    		$this->manager->selective_refresh->add_partial( 'responsi_site_before_footer_selective_refresh', array(
-			        'selector' => '.responsi-footer .responsi-footer-additional',
+			        'selector' => '.footer .additional',
 			        'settings' => $responsi_site_before_footer_selective_refresh,
 			        'render_callback' => 'responsi_footer_additional'
 			    ) );
@@ -513,7 +516,7 @@ final class Responsi_Customize {
 	    				$this->manager->get_setting( $value )->transport = 'postMessage';
 	    		}
 	    		$this->manager->selective_refresh->add_partial( 'responsi_site_footer_copyright_selective_refresh', array(
-			        'selector' => '.responsi-footer .responsi-footer-copyright',
+			        'selector' => '.footer .copyright',
 			        'settings' => $responsi_site_footer_copyright_selective_refresh,
 			        'render_callback' => 'responsi_footer_copyright'
 			    ) );
@@ -527,7 +530,7 @@ final class Responsi_Customize {
 	    				$this->manager->get_setting( $value )->transport = 'postMessage';
 	    		}
 	    		$this->manager->selective_refresh->add_partial( 'responsi_site_footer_credit_selective_refresh', array(
-			        'selector' => '.responsi-footer .responsi-footer-credit',
+			        'selector' => '.footer .credit',
 			        'settings' => $responsi_site_footer_credit_selective_refresh,
 			        'render_callback' => 'responsi_footer_credit'
 			    ) );
@@ -596,7 +599,7 @@ final class Responsi_Customize {
 	}
 
 	public function responsi_register_script( &$scripts ) {
-		global $responsi_version;
+		global $responsi_version, $google_fonts, $line_heights, $gFonts;
 
 		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
@@ -619,8 +622,10 @@ final class Responsi_Customize {
 			'Courier, Courier New, monospace'                             => array( 'name' => 'Courier, Courier New' ),
 			'Century Gothic, sans-serif'                                  => array( 'name' => 'Century Gothic' ),
 		);
-		// Google webfonts
-		global $google_fonts, $line_heights;
+
+		if( function_exists('responsi_google_webfonts') ) {
+			responsi_google_webfonts();
+		}
 
 		$all_fonts = array_merge( $system_fonts, $google_fonts );
 
@@ -630,7 +635,7 @@ final class Responsi_Customize {
 		}
 
 		// Registry main responsi customize script
-		$scripts->add( 'responsi-customize-function', 	get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.function.preview' .$suffix . '.js', 	array( 'jquery', 'customize-preview', 'customize-selective-refresh' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-function', 	get_template_directory_uri() . '/functions/theme-customizer/js/preview/function.preview' .$suffix . '.js', 	array( 'jquery', 'customize-preview', 'customize-selective-refresh' ), $responsi_version, true );
 
 		// Registry script libs
 		$scripts->add( 'jquery-ui-slider-rtl', 			get_template_directory_uri() . '/functions/js/jquery.ui.slider.rtl' .$suffix . '.js', 									array( 'jquery' ), $responsi_version, true );
@@ -641,16 +646,23 @@ final class Responsi_Customize {
 		$scripts->add( 'responsi-customize-controls', 	get_template_directory_uri() . '/functions/theme-customizer/js/customize-controls' . $suffix . '.js', 					array( 'customize-controls' ), $responsi_version, true );
 
 		// Registry Preview scripts for run inside a Customizer preview frame.
-		$scripts->add( 'responsi-customize-header', 	get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.header.preview' .$suffix . '.js', 		array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-navigation', get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.navigation.preview' .$suffix . '.js', 	array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-layout', 	get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.layout.preview' .$suffix . '.js', 		array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-setting', 	get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.setting.preview' .$suffix . '.js', 	array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-widget', 	get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.widget.preview' .$suffix . '.js', 		array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-footer', 	get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.footer.preview' .$suffix . '.js', 		array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-post', 		get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.post.preview' .$suffix . '.js', 		array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-page', 		get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.page.preview' .$suffix . '.js', 		array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-blog', 		get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.blog.preview' .$suffix . '.js', 		array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
-		$scripts->add( 'responsi-customize-focus', 		get_template_directory_uri() . '/functions/theme-customizer/js/preview/customize.shiftclick' .$suffix . '.js', 			array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-header', 	get_template_directory_uri() . '/functions/theme-customizer/js/preview/header.preview' .$suffix . '.js', 		array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-navigation', get_template_directory_uri() . '/functions/theme-customizer/js/preview/navigation.preview' .$suffix . '.js', 	array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-layout', 	get_template_directory_uri() . '/functions/theme-customizer/js/preview/layout.preview' .$suffix . '.js', 		array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-setting', 	get_template_directory_uri() . '/functions/theme-customizer/js/preview/setting.preview' .$suffix . '.js', 	array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-widget', 	get_template_directory_uri() . '/functions/theme-customizer/js/preview/widget.preview' .$suffix . '.js', 		array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-footer', 	get_template_directory_uri() . '/functions/theme-customizer/js/preview/footer.preview' .$suffix . '.js', 		array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-post', 		get_template_directory_uri() . '/functions/theme-customizer/js/preview/post.preview' .$suffix . '.js', 		array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-page', 		get_template_directory_uri() . '/functions/theme-customizer/js/preview/page.preview' .$suffix . '.js', 		array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-blog', 		get_template_directory_uri() . '/functions/theme-customizer/js/preview/blog.preview' .$suffix . '.js', 		array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
+		$scripts->add( 'responsi-customize-focus', 		get_template_directory_uri() . '/functions/theme-customizer/js/preview/shiftclick' .$suffix . '.js', 			array( 'jquery', 'responsi-customize-function' ), $responsi_version, true );
+		
+		if( is_array($gFonts) ){
+			$fontsDefaultsParameters =  $gFonts;
+		}else{
+			$fontsDefaultsParameters = array();
+		}
+		did_action( 'init' ) && $scripts->localize( 'responsi-customize-function', 'fontsDefaults', $fontsDefaultsParameters );
 
 		$backgrounds_list = array();
 		$patterns_list    = array();
@@ -958,17 +970,17 @@ final class Responsi_Customize {
 	public function responsi_focus_sections( $_sectionIds ) {
 
 		$focusSection =  array( 
-			'sidebar-widgets-primary' => '.responsi-content-sidebar .widget-blank',
-			'sidebar-widgets-secondary' => '.responsi-content-sidebar-alt .widget-blank',
-			'header_style' => '.responsi-header-container > .shiftclick',
-			'header_widgets' => '.responsi-header-container .responsi-shiftclick > .shiftclick',
-			'navigation_primary' => '.responsi-nav-container > .shiftclick',
-			'footer_widget' => '.responsi-footer-before-container > .shiftclick',
-			'footer_widget_content' => '.responsi-footer-before-wrapper > .shiftclick',
-			'footer_widget_style' => '.responsi-footer-before-widgets .responsi-shiftclick > .shiftclick',
-			'footer_style' => '.responsi-footer-container > .shiftclick',
-			'footer_content_style' => '.responsi-footer > .shiftclick',
-			'content_body_style' => '.responsi-content-article > .shiftclick',
+			'sidebar-widgets-primary' => '.sidebar .widget-blank',
+			'sidebar-widgets-secondary' => '.sidebar-alt .widget-blank',
+			'header_style' => '.responsi-header > .shiftclick',
+			'header_widgets' => '.responsi-header .responsi-shiftclick > .shiftclick',
+			'navigation_primary' => '.responsi-navigation > .shiftclick',
+			'footer_widget' => '.responsi-footer-widgets > .shiftclick',
+			'footer_widget_content' => '.footer-widgets-ctn > .shiftclick',
+			'footer_widget_style' => '.footer-widgets .responsi-shiftclick > .shiftclick',
+			'footer_style' => '.responsi-footer > .shiftclick',
+			'footer_content_style' => '.footer > .shiftclick',
+			'content_body_style' => '.content-in > .shiftclick',
 		);
 
 		for( $i = 1 ; $i <= 6 ; $i ++ ){
@@ -999,10 +1011,10 @@ final class Responsi_Customize {
 		$focusPanel =  array();
 
 		$focusPanel =  array( 
-			'sidebar_widget_settings_panel' => '.sidebar-wrap.clearfix > .shiftclick',
-			'pages_panel' => '.main-wrap-page.clearfix > .shiftclick, .main-wrap-archive.clearfix > .shiftclick',
-			'blogs_settings_panel' => '.blog-post-item > .shiftclick',
-			'posts_settings_panel' => '.main-wrap-post.clearfix > .shiftclick',
+			'sidebar_widget_settings_panel' => '.sidebar-ctn.clearfix > .shiftclick',
+			'pages_panel' => '.main-page.clearfix > .shiftclick, .main-archive.clearfix > .shiftclick',
+			'blogs_settings_panel' => '.card-item > .shiftclick',
+			'posts_settings_panel' => '.main-post.clearfix > .shiftclick',
 		);
 
 		$panelIds = apply_filters( 'responsi_focus_panels_selector', $focusPanel );

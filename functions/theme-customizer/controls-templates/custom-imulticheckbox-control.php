@@ -82,7 +82,7 @@ if ( ! class_exists( 'Customize_iMultiCheckbox_Control' ) && class_exists('WP_Cu
 		public function content_template() {
 			?>
 			<# var setting_id = data.setting_id ? data.setting_id : 'imulticheckbox', choices = data.choices,defaultValues = data.defaultValue,checked = '',i = 0; #>
-			<div class="customize-control-container">
+			<div class="customize-ctrl">
 				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<# _.each(choices, function(  val, key ){
 					checked = ''; value = defaultValues[i];

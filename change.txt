@@ -1,3 +1,222 @@
+
+// Phase 2 -----------
+
+'#wrapper-container' => '#responsi-site',
+'.responsi-site-container' => '.responsi-site',
+'.site-container' => 'remove',
+
+'#wrapper-top-container' => '#responsi-toolbar',
+'.responsi-top-container' => '.responsi-toolbar',
+
+'#wrapper-top-fixed' => '#toolbar-ctn',
+'.responsi-top-fixed' => '.toolbar-ctn',
+'.responsi-top-sticky' => '.toolbar-sticky',
+
+'#wrapper-center' => '#responsi-wrapper',
+'.responsi-center' => '.responsi-wrapper',
+
+'#wrapper-boxes' => '#wrapper-ctn',
+'.responsi-boxes' => '.wrapper-ctn',
+
+'#wrapper-boxes-content' => '#wrapper-in',
+'.responsi-boxes-content' => '.wrapper-in',
+
+//header
+'.responsi-header-wrapper' => '.header-ctn',
+'.responsi-header-content' => '.header-in',
+'#wrapper-header' => '#header-ctn',
+'#header-content' => '#header-in',
+'.responsi-header' => '.header',
+'#wrapper-header-content' => '#responsi-header',
+'.responsi-header-container' => '.responsi-header',
+'.header-container' => '.responsi-header',
+'.site-logo-container' => '.logo-ctn',
+'.site-description-container' => '.desc-ctn',
+'.masonry_widget_header' => '.msr-wg-header',
+
+//Navigation
+'#wrapper-nav-content' => '#responsi-navigation',
+'.responsi-nav-container' => '.responsi-navigation',
+'#wrapper-nav' => '#navigation-ctn',
+'.responsi-nav-wrapper' => '.navigation-ctn',
+'#navigation-content' => '#navigation-in',
+'.responsi-nav-content' => '.navigation-in',
+
+'.mobile-navigation-alignment-left' => '.alignment-left',
+'.mobile-navigation-alignment-right' => '.alignment-right',
+'.mobile-navigation-open' => '.open',
+'.mobile-navigation-close' => '.close',
+'.mobile-navigation' => '.navigation-mobile',
+'.nav-mobile-text' => '.menu-text',
+'.menu-text-before' => '.before',
+'.menu-text-after' => '.after',
+'.nav-separator' => '.separator',
+'.responsi-icon-mobile-menu' => '.menu-icon',
+'.responsi-icon-menu' => '.hamburger-icon',
+
+//Footer Top
+'#wrapper-footer-top-content' => '#responsi-footer-widgets',
+'.responsi-footer-before-container' => '.responsi-footer-widgets',
+'#wrapper-footer-top' => '#footer-widgets-ctn',
+'.responsi-footer-before-wrapper' => '.footer-widgets-ctn',
+'#footer-top-content' => '#footer-widgets-in',
+'.responsi-footer-before-content' => '.footer-widgets-in',
+'.responsi-footer-before-widgets' => '.footer-widgets',
+'.masonry_widget_footer' => '.msr-wg-footer',
+
+//Footer
+'#wrapper-footer-content' => '#responsi-footer',
+'.responsi-footer-container' => '.responsi-footer',
+'#wrapper-footer' => '#footer-ctn',
+'.responsi-footer-wrapper' => '.footer-ctn',
+
+//Content
+'#responsi-content-sidebar-alt' => '#sidebar-alt',
+'.responsi-content-sidebar-alt' => '.sidebar-alt',
+'#responsi-content-sidebar' => '#sidebar',
+'.responsi-content-sidebar' => '.sidebar',
+'.sidebar-wrap-content' => '.sidebar-in',
+'.sidebar-wrap' => '.sidebar-ctn',
+
+'.responsi-content-main' => '.main',
+'main-wrap-' => 'main-',
+'main-wrap' => 'main-ctn',
+'archive-container' => 'main-archive-ctn',
+'.responsi-content-content' => '.content',
+
+'#wrapper-article' => '#content-in',
+'.responsi-content-article' => '.content-in',
+'.responsi-content-wrapper' => '.content-ctn',
+'.responsi-content-container' => '.responsi-content',
+'blog-post' => 'card',
+'.thumbnail_container' => '.card-thumb',
+'.thumbnail' => '.thumb',
+'.content_container' => '.card-content',
+'.entry-bottom' => '.card-meta',
+'.custom_lines' => '.meta-lines',
+'.entry-content' => '.card-info',
+'.bottom-bg' => '.info-ctn',
+'.gird_descriptions' => '.desc',
+'.blogs-more' => '.ctrl',
+'.show-more-link' => '.ctrl-open',
+'.hide-more-link' => '.ctrl-close',
+'.more-link-button' => '.ctrl-button',
+'.post-utility-cat' => '.categories',
+'.post-utility-tag' => '.tags',
+'.single_content' => '.single-ct',
+'.video_ojbect_container' => '.video-ojbect-ctn',
+
+//'#main' => '#main',
+//'#footer-content' => '#footer-in',
+//'.responsi-footer-content' => '.footer-in',
+//'.footer-additional' => '.additional',
+//'.footer-copyright' => '.copyright',
+//'.footer-credit' => '.credit',
+//'.responsi-nav' => '.navigation',
+
+//Global
+'.masonry_widget_home' => '.msr-wg-home',
+'.masonry_widget' => '.msr-wg',
+'responsi-widget-' => 'widget-',
+
+JS CHange
+//function 
+'is_touch_device()' => 'window.isTouchDevice()',
+'jQuery('.responsi-edge-one-pager')' => 'jQuery('.edge-one-pager')',
+'onePager' => 'window.onePager',
+'window.responsi_top_container' => 'window.responsiToolbar',
+'window.responsi_site_container' => 'window.responsiSite',
+'responsi_parallax_edge()' => 'parallaxEdge()',
+'responsi_parallax()' => 'parallax()',
+'responsi_apply_video_container' => 'applyVideoCtn()'
+'#blog-thumb-height' => '#card-custom-style',
+'.click_showmore_container' => '.pagination-ctrl',
+'.click_showmore' => '.pagination-btn',
+'responsi-menu-icon-arrow' => 'build-icon-arrow',
+
+/*var typefonts = ['size', 'line_height', 'face', 'style', 'color'];
+var typeshadow = ['onoff', 'h_shadow', 'v_shadow', 'blur', 'spread', 'inset', 'color'];
+var typeradius = ['corner', 'rounded_value'];
+var typeborder = ['width', 'style', 'color'];
+var typeborderboxes = ['width', 'style', 'color','corner','topleft','topright','bottomright','bottomleft'];
+var typemp = ['_top', '_bottom', '_left', '_right'];
+var typesize = ['_width', '_height'];
+var typepos = ['_vertical', '_horizontal'];
+var typebg = ['onoff', 'color'];*/
+
+window.ctrlFonts = ['size', 'line_height', 'face', 'style', 'color'];
+window.ctrlShadow = ['onoff', 'h_shadow', 'v_shadow', 'blur', 'spread', 'inset', 'color'];
+window.ctrlRadius = ['corner', 'rounded_value'];
+window.ctrlBorder = ['width', 'style', 'color'];
+window.ctrlBorderBoxes = ['width', 'style', 'color','corner','topleft','topright','bottomright','bottomleft'];
+window.ctrlMarPad = ['_top', '_bottom', '_left', '_right'];
+window.ctrlSize = ['_width', '_height'];
+window.ctrlPos = ['_vertical', '_horizontal'];
+window.ctrlBG = ['onoff', 'color'];
+
+'responsiCustomize' => '_cFn',
+'build_typography' => 'renderTypo',
+'build_box_shadow' => 'renderShadow',
+'build_background' => 'renderBG',
+'build_border_radius' => 'renderRadius',
+'build_border_boxes' => 'renderBorderBoxs',
+'build_border' => 'renderBorder',
+'build_padding_margin' => 'renderMarPad',
+'build_animation' => 'renderAnimation',
+
+
+'customize-control-container' => 'customize-ctrl',
+'customize-control-title' => 'ctrl-title',
+
+
+//HomeBuilder
+'#hb-gallery-container' => '#hb-sliders',
+'.hb-gallery-container' => '.hb-sliders',
+'#hb-gallery-wrapper' => '#sliders-ctn',
+'.hb-gallery-wrapper' => '.sliders-ctn',
+'#hb-gallery-content' => '#sliders-in',
+'.hb-gallery-content' => '.sliders-in',
+'#hb-gallery' => '#sliders-ct',
+'.hb-gallery' => '.sliders-ct',
+
+'#hb-top-widgetized-container' => '#hb-widgetized-title',
+'.hb-top-widgetized-container' => '.hb-widgetized-title',
+'#hb-top-widgetized-wrapper' => '#widgetized-title-ctn',
+'.hb-top-widgetized-wrapper' => '.widgetized-title-ctn',
+'#hb-top-widgetized-content' => '#widgetized-title',
+'.hb-top-widgetized-content' => '.widgetized-title',
+
+'#hb-widgetized-content' => '#widgetized-in',
+'.hb-widgetized-content' => '.widgetized-in',
+'#hb-widgetized-wrapper' => '#widgetized-ctn',
+'.hb-widgetized-wrapper' => '.widgetized-ctn',
+'#hb-widgetized-container' => '#hb-widgetized',
+'.hb-widgetized-container' => '.hb-widgetized',
+
+'#hb-top-content-ctn' => '#hb-content-title',
+'.hb-top-content-ctn' => '.hb-content-title',
+
+'#hb-top-content-wrapper' => '#content-title-ctn',
+'.hb-top-content-wrapper' => '.content-title-ctn',
+
+'#hb-top-content-content' => '#content-title-in',
+'.hb-top-content-content' => '.content-title-in',
+
+//WC 
+'.shop-product' => '.card-product',
+'.shop-pro-item' => '.card-product-item',
+'.thumbnail_container' => '.card-thumb',
+'.content_container' => '.card-content',
+'.responsi-wc-price' => '.wctpl-price',
+'.entry-bottom' => '.card-meta',
+'.entry-content' => '.card-info',
+'.pro_gird_descriptions' => '.product-desc',
+'.postinfo' => '.card-ctrl',
+
+
+// Phase 1 -----------
+
+
 #wrapper-container | .responsi-site-container
 #wrapper-top-container | .responsi-top-container
 #wrapper-top-fixed | .responsi-top-fixed
@@ -109,14 +328,3 @@ Post Enhancer
 
 Background Addons
 .transparent_layout | .transparent-container
-
-
-
-
-
-
-
-
-
-
-

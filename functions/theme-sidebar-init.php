@@ -29,8 +29,8 @@ if ( !function_exists('responsi_widgets_init') ) {
 
 		//Sidebars
 		do_action( 'the_widgets_sidebar_init_before' );
-		register_sidebar( array( 'name' => __( 'Primary', 'responsi' ),'id' => 'primary', 'description' => __( 'Normal full width Sidebar', 'responsi' ), 'before_widget' => '<div id="%1$s" class="masonry_widget'.$widget_animation_class.'"'.$widget_animation_data . $widget_animation_style.'><div class="widget widget_content %2$s"><div class="responsi-widget-content clearfix">', 'after_widget' => '</div></div></div>', 'before_title' => '</div><div class="responsi-widget-title clearfix">', 'after_title' => '</div><div class="responsi-widget-content clearfix">' ) );
-	    register_sidebar( array( 'name' => __( 'Secondary', 'responsi' ), 'id' => 'secondary', 'description' => __( 'Secondary sidebar for use in three column layout', 'responsi' ), 'before_widget' => '<div id="%1$s" class="masonry_widget'.$widget_animation_class.'"'.$widget_animation_data . $widget_animation_style.'><div class="widget widget_content %2$s"><div class="responsi-widget-content clearfix">', 'after_widget' => '</div></div></div>', 'before_title' => '</div><div class="responsi-widget-title clearfix">', 'after_title' => '</div><div class="responsi-widget-content clearfix">' ) );
+		register_sidebar( array( 'name' => __( 'Primary', 'responsi' ),'id' => 'primary', 'description' => __( 'Normal full width Sidebar', 'responsi' ), 'before_widget' => '<div id="%1$s" class="msr-wg'.$widget_animation_class.'"'.$widget_animation_data . $widget_animation_style.'><div class="widget widget_content %2$s"><div class="widget-content clearfix">', 'after_widget' => '</div></div></div>', 'before_title' => '</div><div class="widget-title clearfix">', 'after_title' => '</div><div class="widget-content clearfix">' ) );
+	    register_sidebar( array( 'name' => __( 'Secondary', 'responsi' ), 'id' => 'secondary', 'description' => __( 'Secondary sidebar for use in three column layout', 'responsi' ), 'before_widget' => '<div id="%1$s" class="msr-wg'.$widget_animation_class.'"'.$widget_animation_data . $widget_animation_style.'><div class="widget widget_content %2$s"><div class="widget-content clearfix">', 'after_widget' => '</div></div></div>', 'before_title' => '</div><div class="widget-title clearfix">', 'after_title' => '</div><div class="widget-content clearfix">' ) );
 
 	    do_action( 'the_widgets_sidebar_init_after' );
 
@@ -43,7 +43,7 @@ if ( !function_exists('responsi_widgets_init') ) {
 		}
 		$i = 0;
 		while ( $i < $total ) : $i++;
-			register_sidebar( array( 'name' => __( 'Header', 'responsi' )." {$i}", 'id' => 'header-'.$i, 'description' => __( 'Widgetized header', 'responsi' ), 'before_widget' => '<div id="%1$s" class="masonry_widget masonry_widget_header"><div class="widget %2$s"><div class="responsi-widget-content clearfix">', 'after_widget' => '</div></div></div>', 'before_title' => '</div><div class="responsi-widget-title clearfix">', 'after_title' => '</div><div class="responsi-widget-content clearfix">' ) );
+			register_sidebar( array( 'name' => __( 'Header', 'responsi' )." {$i}", 'id' => 'header-'.$i, 'description' => __( 'Widgetized header', 'responsi' ), 'before_widget' => '<div id="%1$s" class="msr-wg msr-wg-header"><div class="widget %2$s"><div class="widget-content clearfix">', 'after_widget' => '</div></div></div>', 'before_title' => '</div><div class="widget-title clearfix">', 'after_title' => '</div><div class="widget-content clearfix">' ) );
 		endwhile;
 
 		do_action( 'the_widgets_header_init_after' );
@@ -57,7 +57,7 @@ if ( !function_exists('responsi_widgets_init') ) {
 		}
 		$i = 0; 
 		while ( $i < $total ) : $i++;
-			register_sidebar( array( 'name' => __( 'Footer', 'responsi' )." {$i}", 'id' => 'footer-'.$i, 'description' => __( 'Widgetized footer', 'responsi' ), 'before_widget' => '<div id="%1$s" class="masonry_widget masonry_widget_footer"><div class="widget %2$s"><div class="responsi-widget-content clearfix">', 'after_widget' => '</div></div></div>', 'before_title' => '</div><div class="responsi-widget-title clearfix">', 'after_title' => '</div><div class="responsi-widget-content clearfix">' ) );
+			register_sidebar( array( 'name' => __( 'Footer', 'responsi' )." {$i}", 'id' => 'footer-'.$i, 'description' => __( 'Widgetized footer', 'responsi' ), 'before_widget' => '<div id="%1$s" class="msr-wg msr-wg-footer"><div class="widget %2$s"><div class="widget-content clearfix">', 'after_widget' => '</div></div></div>', 'before_title' => '</div><div class="widget-title clearfix">', 'after_title' => '</div><div class="widget-content clearfix">' ) );
 		endwhile;
 
 		do_action( 'the_widgets_footer_init_after' );

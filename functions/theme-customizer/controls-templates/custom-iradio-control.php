@@ -79,7 +79,7 @@ if ( ! class_exists( 'Customize_iRadio_Control' ) && class_exists('WP_Customize_
 		public function content_template() {
 			?>
 			<# var setting_id = data.setting_id ? data.setting_id : 'iradio',choices = data.choices,checked = ''; #>
-			<div class="customize-control-container">
+			<div class="customize-ctrl">
 				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="responsi-iphone-checkbox">
 					<# _.each(choices, function(  val, key ){

@@ -114,7 +114,7 @@ if ( ! class_exists( 'Customize_Column_Control' ) && class_exists('WP_Customize_
 			}
 
 			#>
-			<div class="customize-control-container {{ data.custom_class }}">
+			<div class="customize-ctrl {{ data.custom_class }}">
 				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="column-container">
 					<# 

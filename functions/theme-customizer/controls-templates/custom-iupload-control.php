@@ -72,7 +72,7 @@ if ( ! class_exists( 'Customize_iUpload_Control' ) && class_exists('WP_Customize
 				};
 			}
 			#>
-			<div class="customize-control-container">
+			<div class="customize-ctrl">
 			<label for="{{ setting_id }}-button">
 				<# if ( data.label ) {  #>
 					<span for="{{ setting_id }}-button" class="customize-control-title customize-icolor-title">{{{ data.label }}}</span>

@@ -77,7 +77,7 @@ if ( ! class_exists( 'Customize_iTextarea_Control' ) && class_exists('WP_Customi
 		public function content_template() {
 			?>
 			<# var setting_id = data.setting_id ? data.setting_id : 'itextarea'; #>
-			<div class="customize-control-container">
+			<div class="customize-ctrl">
 				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="itextarea-container">
 					<textarea class="responsi-itextarea" name="{{ setting_id }}" id="{{ setting_id }}">{{{ data.value }}}</textarea>

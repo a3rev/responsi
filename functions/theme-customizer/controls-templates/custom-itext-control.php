@@ -80,7 +80,7 @@ if ( ! class_exists( 'Customize_iText_Control' ) && class_exists('WP_Customize_C
 			<# 
 			if( 'undefined' === typeof data.input_attrs ){ data.input_attrs = {}; }
 			var setting_id = data.setting_id ? data.setting_id : 'itext'; after_input = data.input_attrs.after_input ? data.input_attrs.after_input : ''; #>
-			<div class="customize-control-container">
+			<div class="customize-ctrl">
 				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="clear itext-clear"></div>
 				<div class="itext-container">

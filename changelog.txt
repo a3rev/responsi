@@ -1,5 +1,11 @@
 *** Responsi Framework Changelog ***
 
+= 7.6.0 - 2019/09/03 =
+* This is a major developer upgrade and is Phase 2 of a complete refactor of the framework code
+* Refactor - All framework Class and ID names for HTML, CSS, JS and Variables have been rewritten for frontend
+* Refactor - All framework Class and ID names for HTML, CSS, JS and Variables have been rewritten for the Customizer
+* Refactor - Removed some unused and obsolete CSS and JS
+
 = 7.5.0 - 2019/07/24 =
 * This is a major developer upgrade and is Phase 1 of a complete refactor of the framework code
 * Refactor - All framework CSS and JS from Class ID to Class name

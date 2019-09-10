@@ -82,7 +82,7 @@ if ( ! class_exists( 'Customize_Multiple_Text_Control' ) && class_exists('WP_Cus
 		public function content_template() {
 			?>
 			<# var setting_id = data.setting_id ? data.setting_id : 'multitext';choices = data.choices,defaultValue = data.defaultValue,i = 0; #>
-			<div class="customize-control-container">
+			<div class="customize-ctrl">
 				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<# _.each(data.choices, function(  val, key ){
 					#><div class="responsi-multitext-item"><input name="{{ setting_id }}_{{ key }}" id="{{ setting_id }}_{{ key }}" data-setting-link="{{ setting_id }}_{{ key }}" value="{{defaultValue[i]}}" type="text" class="responsi-text responsi-multitext" /><span class="ilabel-multitext ilabel-multitext-{{{key}}}">{{{val}}}</span></div><#

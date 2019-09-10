@@ -15,9 +15,7 @@ function scrollWaypointInit(items, trigger) {
 		);
 	});
 }
-
 //Call the init
-
 jQuery(document).ready(function() {
 	scrollWaypointInit(jQuery(".animateMe"));
 });

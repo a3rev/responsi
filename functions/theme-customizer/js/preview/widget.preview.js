@@ -5,7 +5,7 @@
  */
 (function($) {
 
-    function responsi_preview_widgets() {
+    function _previewWidgets() {
         var css = '';
 
         var responsi_enable_widget_container_bg_image = wp.customize.value('responsi_enable_widget_container_bg_image')();
@@ -14,7 +14,7 @@
         var responsi_widget_container_bg_position_vertical = wp.customize.value('responsi_widget_container_bg_position_vertical')();
         var responsi_widget_container_bg_image_repeat = wp.customize.value('responsi_widget_container_bg_image_repeat')();
 
-        css += '.responsi-content-sidebar .sidebar-wrap, .responsi-content-sidebar-alt .sidebar-wrap{';
+        css += '.sidebar .sidebar-ctn, .sidebar-alt .sidebar-ctn{';
         if (responsi_enable_widget_container_bg_image == 'true') {
             css += 'background-image: url(' + responsi_widget_container_bg_image + ') !important;';
             css += 'background-position:' + responsi_widget_container_bg_position_horizontal + ' ' + responsi_widget_container_bg_position_vertical + ';';
@@ -22,26 +22,26 @@
         } else {
             css += 'background-image: none !important;';
         }
-        css += responsiCustomize.build_background('responsi_widget_container_bg', true);
-        css += responsiCustomize.build_border('responsi_widget_container_border_top', 'top', true);
-        css += responsiCustomize.build_border('responsi_widget_container_border_bottom', 'bottom', true);
-        css += responsiCustomize.build_border('responsi_widget_container_border_lr', 'left', true);
-        css += responsiCustomize.build_border('responsi_widget_container_border_lr', 'right', true);
-        css += responsiCustomize.build_border_radius('responsi_widget_container_border_radius_tl', 'top-left', true);
-        css += responsiCustomize.build_border_radius('responsi_widget_container_border_radius_tr', 'top-right', true);
-        css += responsiCustomize.build_border_radius('responsi_widget_container_border_radius_bl', 'bottom-left', true);
-        css += responsiCustomize.build_border_radius('responsi_widget_container_border_radius_br', 'bottom-right', true);
-        css += responsiCustomize.build_padding_margin('responsi_widget_container_padding', 'padding', true);
-        css += responsiCustomize.build_padding_margin('responsi_widget_container_margin', 'margin', true);
-        css += responsiCustomize.build_box_shadow('responsi_widget_container_box_shadow', true);
+        css += _cFn.renderBG('responsi_widget_container_bg', true);
+        css += _cFn.renderBorder('responsi_widget_container_border_top', 'top', true);
+        css += _cFn.renderBorder('responsi_widget_container_border_bottom', 'bottom', true);
+        css += _cFn.renderBorder('responsi_widget_container_border_lr', 'left', true);
+        css += _cFn.renderBorder('responsi_widget_container_border_lr', 'right', true);
+        css += _cFn.renderRadius('responsi_widget_container_border_radius_tl', 'top-left', true);
+        css += _cFn.renderRadius('responsi_widget_container_border_radius_tr', 'top-right', true);
+        css += _cFn.renderRadius('responsi_widget_container_border_radius_bl', 'bottom-left', true);
+        css += _cFn.renderRadius('responsi_widget_container_border_radius_br', 'bottom-right', true);
+        css += _cFn.renderMarPad('responsi_widget_container_padding', 'padding', true);
+        css += _cFn.renderMarPad('responsi_widget_container_margin', 'margin', true);
+        css += _cFn.renderShadow('responsi_widget_container_box_shadow', true);
         css += 'box-sizing: border-box;';
         css += '}';
 
-        css += '.responsi-content-sidebar .widget, .responsi-content-sidebar-alt .widget{';
-        css += responsiCustomize.build_background('responsi_widget_bg');
-        css += responsiCustomize.build_padding_margin('responsi_widget_padding', 'padding');
-        css += responsiCustomize.build_border_boxes('responsi_widget_border');
-        css += responsiCustomize.build_box_shadow('responsi_widget_box_shadow', true);
+        css += '.sidebar .widget, .sidebar-alt .widget{';
+        css += _cFn.renderBG('responsi_widget_bg');
+        css += _cFn.renderMarPad('responsi_widget_padding', 'padding');
+        css += _cFn.renderBorderBoxs('responsi_widget_border');
+        css += _cFn.renderShadow('responsi_widget_box_shadow', true);
         css += 'text-align:' + wp.customize.value('responsi_widget_font_text_alignment')() + ';float: none; ';
         css += '}';
 
@@ -49,22 +49,22 @@
         var responsi_widget_title_transform = wp.customize.value('responsi_widget_title_transform')();
         var responsi_widget_title_align = wp.customize.value('responsi_widget_title_align')();
 
-        css += '.responsi-content-sidebar .responsi-widget-title h3, .responsi-content-sidebar-alt .responsi-widget-title h3 {';
-        css += responsiCustomize.build_background('responsi_widget_title_bg');
-        css += responsiCustomize.build_typography('responsi_widget_font_title', true);
+        css += '.sidebar .widget-title h3, .sidebar-alt .widget-title h3 {';
+        css += _cFn.renderBG('responsi_widget_title_bg');
+        css += _cFn.renderTypo('responsi_widget_font_title', true);
         css += 'text-align:' + responsi_widget_title_text_alignment + ' !important;';
         css += 'text-transform:' + responsi_widget_title_transform + ' !important;';
-        css += responsiCustomize.build_padding_margin('responsi_widget_title_padding', 'padding', true);
-        css += responsiCustomize.build_padding_margin('responsi_widget_title_margin', 'margin');
-        css += responsiCustomize.build_border('responsi_widget_title_border_top', 'top');
-        css += responsiCustomize.build_border('responsi_widget_title_border_bottom', 'bottom');
-        css += responsiCustomize.build_border('responsi_widget_title_border_left', 'left');
-        css += responsiCustomize.build_border('responsi_widget_title_border_right', 'right');
-        css += responsiCustomize.build_border_radius('responsi_widget_title_border_radius_tl', 'top-left');
-        css += responsiCustomize.build_border_radius('responsi_widget_title_border_radius_tr', 'top-right');
-        css += responsiCustomize.build_border_radius('responsi_widget_title_border_radius_bl', 'bottom-left');
-        css += responsiCustomize.build_border_radius('responsi_widget_title_border_radius_br', 'bottom-right');
-        css += responsiCustomize.build_box_shadow('responsi_widget_title_box_shadow', true);
+        css += _cFn.renderMarPad('responsi_widget_title_padding', 'padding', true);
+        css += _cFn.renderMarPad('responsi_widget_title_margin', 'margin');
+        css += _cFn.renderBorder('responsi_widget_title_border_top', 'top');
+        css += _cFn.renderBorder('responsi_widget_title_border_bottom', 'bottom');
+        css += _cFn.renderBorder('responsi_widget_title_border_left', 'left');
+        css += _cFn.renderBorder('responsi_widget_title_border_right', 'right');
+        css += _cFn.renderRadius('responsi_widget_title_border_radius_tl', 'top-left');
+        css += _cFn.renderRadius('responsi_widget_title_border_radius_tr', 'top-right');
+        css += _cFn.renderRadius('responsi_widget_title_border_radius_bl', 'bottom-left');
+        css += _cFn.renderRadius('responsi_widget_title_border_radius_br', 'bottom-right');
+        css += _cFn.renderShadow('responsi_widget_title_box_shadow', true);
         if (responsi_widget_title_align == 'left') {
             css += 'float:left !important;';
         }
@@ -79,27 +79,27 @@
         }
         css += '}';
 
-        css += '.responsi-content-sidebar .widget, .responsi-content-sidebar-alt .widget{';
+        css += '.sidebar .widget, .sidebar-alt .widget{';
         css += 'margin-bottom:' + wp.customize.value('responsi_widget_margin_between')() + 'px;';
         css += '}';
 
-        css += '.responsi-content-sidebar .responsi-widget-content, .responsi-content-sidebar-alt .responsi-widget-content {';
-        css += responsiCustomize.build_padding_margin('responsi_widget_content_padding', 'padding', true);
+        css += '.sidebar .widget-content, .sidebar-alt .widget-content {';
+        css += _cFn.renderMarPad('responsi_widget_content_padding', 'padding', true);
         css += '}';
 
-        css += '.responsi-content-sidebar .widget ul li, .responsi-content-sidebar .widget ol li, .responsi-content-sidebar .widget p, .responsi-content-sidebar .widget .textwidget, .responsi-content-sidebar .widget:not(div), .responsi-content-sidebar .widget .textwidget .tel, .responsi-content-sidebar .widget .textwidget .tel a, .responsi-content-sidebar .widget .textwidget a[href^=tel], .responsi-content-sidebar .widget * a[href^=tel], .responsi-content-sidebar .widget a[href^=tel], .responsi-content-sidebar-alt .widget ul li, .responsi-content-sidebar-alt .widget ol li, .responsi-content-sidebar-alt .widget p, .responsi-content-sidebar-alt .widget .textwidget, .responsi-content-sidebar-alt .widget:not(div), .responsi-content-sidebar-alt .widget .textwidget .tel, .responsi-content-sidebar-alt .widget .textwidget .tel a, .responsi-content-sidebar-alt .widget .textwidget a[href^=tel], .responsi-content-sidebar-alt .widget * a[href^=tel], .responsi-content-sidebar-alt .widget a[href^=tel] {';
-        css += responsiCustomize.build_typography('responsi_widget_font_text');
+        css += '.sidebar .widget ul li, .sidebar .widget ol li, .sidebar .widget p, .sidebar .widget .textwidget, .sidebar .widget:not(div), .sidebar .widget .textwidget .tel, .sidebar .widget .textwidget .tel a, .sidebar .widget .textwidget a[href^=tel], .sidebar .widget * a[href^=tel], .sidebar .widget a[href^=tel], .sidebar-alt .widget ul li, .sidebar-alt .widget ol li, .sidebar-alt .widget p, .sidebar-alt .widget .textwidget, .sidebar-alt .widget:not(div), .sidebar-alt .widget .textwidget .tel, .sidebar-alt .widget .textwidget .tel a, .sidebar-alt .widget .textwidget a[href^=tel], .sidebar-alt .widget * a[href^=tel], .sidebar-alt .widget a[href^=tel] {';
+        css += _cFn.renderTypo('responsi_widget_font_text');
         css += '}';
 
-        css += '.responsi-content-sidebar .widget a,.responsi-content-sidebar-alt .widget a, .responsi-content-sidebar .widget a:link,.responsi-content-sidebar-alt .widget a:link {';
+        css += '.sidebar .widget a,.sidebar-alt .widget a, .sidebar .widget a:link,.sidebar-alt .widget a:link {';
         css += 'color: ' + wp.customize.value('responsi_widget_link_color')() + ' !important;';
         css += '}';
 
-        css += '.responsi-content-sidebar .widget a:visited,.responsi-content-sidebar-alt .widget a:visited {';
+        css += '.sidebar .widget a:visited,.sidebar-alt .widget a:visited {';
         css += 'color: ' + wp.customize.value('responsi_widget_link_visited_color')() + ' !important;';
         css += '}';
 
-        css += '.responsi-content-sidebar .widget a:hover,.responsi-content-sidebar-alt .widget a:hover {';
+        css += '.sidebar .widget a:hover,.sidebar-alt .widget a:hover {';
         css += 'color: ' + wp.customize.value('responsi_widget_link_hover_color')() + ' !important;';
         css += '}';
 
@@ -180,82 +180,80 @@
     ];
 
     $.each(fonts_fields, function(inx, val) {
-        $.each(typefonts, function(i, v) {
+        $.each(window.ctrlFonts, function(i, v) {
             wp.customize(val + '[' + v + ']', function(value) {
                 value.bind(function(to) {
-                    responsi_preview_widgets();
+                    _previewWidgets();
                 });
             });
         });
     });
 
     $.each(border_fields, function(inx, val) {
-        $.each(typeborder, function(i, v) {
+        $.each(window.ctrlBorder, function(i, v) {
             wp.customize(val + '[' + v + ']', function(value) {
                 value.bind(function(to) {
-                    responsi_preview_widgets();
+                    _previewWidgets();
                 });
             });
         });
     });
 
     $.each(border_boxes_fields, function(inx, val) {
-        $.each(typeborderboxes, function(i, v) {
+        $.each(window.ctrlBorderBoxes, function(i, v) {
             wp.customize(val + '[' + v + ']', function(value) {
                 value.bind(function(to) {
-                    responsi_preview_widgets();
+                    _previewWidgets();
                 });
             });
         });
     });
 
-    
-
     $.each(border_radius_fields, function(inx, val) {
-        $.each(typeradius, function(i, v) {
+        $.each(window.ctrlRadius, function(i, v) {
             wp.customize(val + '[' + v + ']', function(value) {
                 value.bind(function(to) {
-                    responsi_preview_widgets();
+                    _previewWidgets();
                 });
             });
         });
     });
 
     $.each(shadow_fields, function(inx, val) {
-        $.each(typeshadow, function(i, v) {
+        $.each(window.ctrlShadow, function(i, v) {
             wp.customize(val + '[' + v + ']', function(value) {
                 value.bind(function(to) {
-                    responsi_preview_widgets();
+                    _previewWidgets();
                 });
             });
         });
     });
 
     $.each(margin_padding_fields, function(inx, val) {
-        $.each(typemp, function(i, v) {
+        $.each(window.ctrlMarPad, function(i, v) {
             wp.customize(val + v, function(value) {
                 value.bind(function(to) {
-                    responsi_preview_widgets();
+                    _previewWidgets();
                 });
             });
         });
     });
 
     $.each(position_fields, function(inx, val) {
-        $.each(typepos, function(i, v) {
+        $.each(window.ctrlPos, function(i, v) {
             wp.customize(val + v, function(value) {
                 value.bind(function(to) {
-                    responsi_preview_widgets();
+                    _previewWidgets();
                 });
             });
         });
     });
 
     $.each(bg_fields, function(inx, val) {
-        $.each(typebg, function(i, v) {
+        $.each(window.ctrlBG, function(i, v) {
             wp.customize(val + '[' + v + ']', function(value) {
                 value.bind(function(to) {
-                    responsi_preview_widgets();
+                    _previewWidgets();
                 });
             });
         });
@@ -264,12 +262,12 @@
     $.each(single_fields, function(inx, val) {
         wp.customize(val, function(value) {
             value.bind(function(to) {
-                responsi_preview_widgets();
+                _previewWidgets();
             });
         });
     });
 
-    function build_animation_widget( container, option_name ){
+    function _animationWidget( container, option_name ){
         
         var _container = $('body').find(container),
         type = wp.customize.value(option_name+'[type]')(),
@@ -283,7 +281,7 @@
             animation_type = type+'InLeft';
         }
 
-        _container.attr('class','masonry_widget animateMe').attr('data',animation_type);
+        _container.attr('class','msr-wg animateMe').attr('data',animation_type);
 
         setTimeout(function(){
             _container.attr( 'style', 'animation-delay:'+delay+'s;animation-duration:'+duration+'s');
@@ -298,32 +296,32 @@
     }
 
     var responsi_widget_animation = {
-        'responsi_widget_animation' : '.responsi-content-content .responsi-content-sidebar .masonry_widget, .responsi-content-content .responsi-content-sidebar-alt .masonry_widget',
+        'responsi_widget_animation' : '.content .sidebar .msr-wg, .content .sidebar-alt .msr-wg',
     };
 
     $.each( responsi_widget_animation, function(inx, val) {
 
         wp.customize(inx+'[type]', function(value) {
             value.bind(function(to) {
-                build_animation_widget( val,inx );
+                _animationWidget( val,inx );
             });
         });
 
         wp.customize(inx+'[duration]', function(value) {
             value.bind(function(to) {
-                build_animation_widget( val,inx );
+                _animationWidget( val,inx );
             });
         });
 
         wp.customize(inx+'[delay]', function(value) {
             value.bind(function(to) {
-                build_animation_widget( val,inx );
+                _animationWidget( val,inx );
             });
         });
 
         wp.customize(inx+'[direction]', function(value) {
             value.bind(function(to) {
-                build_animation_widget( val,inx );
+                _animationWidget( val,inx );
             });
         });
     });

@@ -103,7 +103,7 @@ if ( ! class_exists( 'Customize_iEditor_Control' ) && class_exists('WP_Customize
 			var setting_id = data.setting_id ? data.setting_id : 'ieditor'; 
 			if( 'undefined' === typeof data.button_label ){ data.button_label = '<?php echo __( 'Edit content', 'responsi' );?>';}
 			#>
-			<div class="customize-control-container">
+			<div class="customize-ctrl">
 				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="ieditor-container">
 					<button type="button" class="button show-editor-button" id="{{ setting_id }}">{{{ data.button_label }}}</button>

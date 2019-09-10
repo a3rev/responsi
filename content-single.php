@@ -14,16 +14,11 @@
 <?php the_title( '<h1 class="title entry-title">', '</h1>' ); ?>
 <?php do_action( 'responsi_post_title_after' ); ?>
 <?php do_action( 'responsi_post_meta' ); ?>
-<div class="clear"></div>
-<div class="entry">
-    <div class="clear"></div>
+<div class="entry-content clearfix">
     <?php do_action( 'responsi_single_post_content_before' ); ?>
     <?php the_content(__('Continue Reading &rarr;', 'responsi') ); ?>
-    <div class="clear"></div>
     <?php do_action( 'responsi_single_post_content_after' ); ?>
-    <div class="clear"></div>
 </div>
-<div class="clear"></div>
 <?php $page_link_args = apply_filters( 'responsi_pagelinks_args', array( 'before' => '<div class="page-link">' . __( 'Pages:', 'responsi' ), 'after' => '</div>' ) ); ?>
 <?php wp_link_pages( $page_link_args ); ?>
 <?php do_action( 'responsi_post_after' ); ?>

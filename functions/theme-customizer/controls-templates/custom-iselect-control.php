@@ -82,7 +82,7 @@ if ( ! class_exists( 'Customize_iSelect_Control' ) && class_exists('WP_Customize
 			<# 
 			if( 'undefined' === typeof data.input_attrs ){ data.input_attrs = {};}
 			var setting_id = data.setting_id ? data.setting_id : 'islect',choices = data.choices,input_attrs = data.input_attrs,selected = ''; #>
-			<div class="customize-control-container">
+			<div class="customize-ctrl">
 				<# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
 				<div class="iselect-container">
 					<select class="responsi-iselect" name="{{ setting_id }}" id="{{ setting_id }}">
