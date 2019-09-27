@@ -11,7 +11,7 @@
 ?>
 <?php do_action( 'responsi_post_before' ); ?>
 <?php do_action( 'responsi_page_title_before' ); ?>
-<?php the_title( '<h1 class="title entry-title">', '</h1>' ); ?>
+<?php do_action( 'responsi_page_title' ); ?>
 <?php do_action( 'responsi_page_title_after' ); ?>
 <div class="entry-content clearfix">
   	<?php do_action( 'responsi_single_post_content_before' ); ?>

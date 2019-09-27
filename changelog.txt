@@ -1,5 +1,11 @@
 *** Responsi Framework Changelog ***
 
+= 7.6.1 - 2019/09/27 =
+* This maintenance upgrade adds support for the new Responsi Page Banner plugin plus 2 bug fixes.
+* Refactor -  Rewrite the_title to a filter to support new Responsi Page Banner plugin
+* Fixed - Fixed z-index for infinitescroll behind blog posts.
+* Fixed - Fixed customize control JavaScript conflict slider JavaScript
+
 = 7.6.0 - 2019/09/03 =
 * This is a major developer upgrade and is Phase 2 of a complete refactor of the framework code
 * Refactor - All framework Class and ID names for HTML, CSS, JS and Variables have been rewritten for frontend

@@ -637,8 +637,8 @@ function responsi_metabox_add() {
 					'title'            => __( 'Framework Custom Settings', 'responsi' ),
 					'callback'         => 'responsi_metabox_create',
 					'page'             => $type,
-                    'context'          => 'advanced',
-					'priority'         => 'high',
+                    'context'          => 'side',
+					'priority'         => 'low',
 					'callback_args'    => array(
                         '__block_editor_compatible_meta_box'    => true,
                         '__back_compat_meta_box'                => false,

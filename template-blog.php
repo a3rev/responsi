@@ -25,8 +25,7 @@
 		            the_post();
 		            $count++;
 		            ?>
-		            <?php the_title( '<span class="archive_header"><h1 class="title entry-title">', '</h1></span>' ); ?>
-		            <div class="page-description clearfix"><?php the_content() ;?></div>
+		            <?php do_action( 'responsi_blogs_title' ); ?>
 		            <?php
 		        }
 		    }

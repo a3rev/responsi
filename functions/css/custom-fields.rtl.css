@@ -173,7 +173,7 @@ TABLE OF CONTENTS
 	font-size: 14px;
 }
 
-.edit-post-sidebar .responsi-metabox-name {
+.edit-post-sidebar .responsi-metabox-name, .postbox-container .responsi-metabox-name {
 	font-size: 13px;
 }
 
@@ -349,7 +349,8 @@ TABLE OF CONTENTS
 	box-shadow: none !important;
 }
 
-.edit-post-sidebar .ui-slider .ui-slider-range, .edit-post-sidebar .responsi-range-slider .ui-slider .ui-slider-handle, .edit-post-sidebar .responsi-range-slider .ui-slider .ui-slider-handle {
+.edit-post-sidebar .ui-slider .ui-slider-range, .edit-post-sidebar .responsi-range-slider .ui-slider .ui-slider-handle, .edit-post-sidebar .responsi-range-slider .ui-slider .ui-slider-handle,
+.postbox-container .ui-slider .ui-slider-range, .postbox-container .responsi-range-slider .ui-slider .ui-slider-handle, .postbox-container .responsi-range-slider .ui-slider .ui-slider-handle {
 	z-index: 0;
 }
 
@@ -373,11 +374,11 @@ TABLE OF CONTENTS
 }
 
 @media only screen and (min-width:783px) {
-	.edit-post-sidebar img.responsi-metabox-radio-img-img {
+	.edit-post-sidebar img.responsi-metabox-radio-img-img, .postbox-container img.responsi-metabox-radio-img-img {
 		max-width: 28px;
 	}
 
-	.edit-post-sidebar .responsi-range-slider .responsi-input {
+	.edit-post-sidebar .responsi-range-slider .responsi-input, .postbox-container .responsi-range-slider .responsi-input {
 		padding: 3px !important;
 		width: 44px !important;
 		margin-bottom: 0px;
@@ -408,11 +409,13 @@ TABLE OF CONTENTS
 }
 
 @media only screen and (max-width:782px) {
-	.edit-post-sidebar .responsi-range-slider .ui-slider, .edit-post-sidebar .responsi-range-slider .ui-slider {
+	.edit-post-sidebar .responsi-range-slider .ui-slider, .edit-post-sidebar .responsi-range-slider .ui-slider,
+	.postbox-container .responsi-range-slider .ui-slider, .postbox-container .responsi-range-slider .ui-slider {
 		height: 20px !important;
 	}
 
-	.edit-post-sidebar .responsi-range-slider .ui-slider .ui-slider-handle, .edit-post-sidebar .responsi-range-slider .ui-slider .ui-slider-handle {
+	.edit-post-sidebar .responsi-range-slider .ui-slider .ui-slider-handle, .edit-post-sidebar .responsi-range-slider .ui-slider .ui-slider-handle,
+	.postbox-container .responsi-range-slider .ui-slider .ui-slider-handle, .postbox-container .responsi-range-slider .ui-slider .ui-slider-handle {
 		height: 28px !important;
 	}
 

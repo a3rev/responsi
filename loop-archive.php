@@ -19,10 +19,7 @@
 <?php global $content_column_grid, $count; ?>
 <div class="responsi-area responsi-area-archive responsi_title">
 	<?php do_action( 'responsi_loop_before' ); ?>
-	<?php responsi_archive_title( '<span class="archive_header"><h1 class="title entry-title">', '</h1></span>', true ); ?>
-	<?php if ( category_description() ) : ?>
-		<div class="page-description archive-description clearfix"><?php echo category_description(); ?></div>
-	<?php endif; ?>
+	<?php do_action( 'responsi_archives_title' ); ?>
 </div>
 <?php
 if ( have_posts() ) {

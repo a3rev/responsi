@@ -1690,6 +1690,33 @@ if ( !function_exists( 'responsi_footer_sidebars' ) ) {
 }
 
 /*-----------------------------------------------------------------------------------*/
+/* responsi_title(). */
+/*-----------------------------------------------------------------------------------*/
+if ( !function_exists( 'responsi_title' ) ) {
+    function responsi_title(){
+       
+        if( is_blog_template() ){
+            the_title( '<span class="archive-title-ctn"><h1 class="title entry-title">', '</h1></span>' );
+            global $post;
+            ?>
+            <div class="page-description clearfix"><?php echo apply_filters( 'the_content', $post->post_content );?></div>
+            <?php
+        }elseif( is_singular() ){
+            the_title( '<h1 class="title entry-title">', '</h1>' );
+        }elseif( is_single() ){
+            the_title( '<h1 class="title entry-title">', '</h1>' );
+        }elseif( is_search() ){
+            echo '<span class="archive-title-ctn"><h1 class="title entry-title">' . sprintf( __( 'Search results for &quot;%s&quot;', 'responsi' ), get_search_query() ) . '</h1></span>';
+        }elseif( is_archive() ){
+            responsi_archive_title( '<span class="archive-title-ctn"><h1 class="title entry-title">', '</h1></span>', true );
+            if ( category_description() ) {
+                ?><div class="page-description archive-description clearfix"><?php echo category_description(); ?></div><?php
+            }
+        }
+    }
+}
+
+/*-----------------------------------------------------------------------------------*/
 /* responsi_wrapper_footer_content(). */
 /*-----------------------------------------------------------------------------------*/
 if ( !function_exists( 'responsi_wrapper_footer_content' ) ) {

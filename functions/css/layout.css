@@ -258,14 +258,14 @@
 	padding-top: 20px;
 }
 
-.archive_header {
+.archive-title-ctn {
 	display: table;
 	float: none;
 	width: 100%;
 	color: #222;
 }
 
-.archive_header .catrss a {
+.archive-title-ctn .catrss a {
 	padding: 10px 0 0;
 	text-decoration: none;
 	line-height: 1;
@@ -617,6 +617,7 @@ footer.footer,
 	font-family: "Open Sans", sans-serif !important;
 	line-height: 1 !important;
 	border-radius: 5px;
+	z-index: 1111;
 }
 
 #infscr-loading img {

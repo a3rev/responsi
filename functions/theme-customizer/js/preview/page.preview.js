@@ -19,14 +19,14 @@
         var responsi_archive_title_font_transform = wp.customize.value('responsi_archive_title_font_transform')();
         var responsi_archive_title_position = wp.customize.value('responsi_archive_title_position')();
         css += '.main .responsi-area.responsi-area-archive h1.title, .responsi-area.responsi-area-archive h1.title, .main .responsi-area.responsi-area-archive h1.title a:link, .main .responsi-area.responsi-area-archive h1.title a:visited{' + _cFn.renderTypo('responsi_archive_title_font', true) + _cFn.renderMarPad('responsi_archive_title_margin', 'margin', true) + 'text-transform:' + responsi_archive_title_font_transform + ' !important;text-align:' + responsi_archive_title_position + ';}';
-        css += '.responsi-area.responsi-area-archive,.archive_header .catrss{' + _cFn.renderTypo('responsi_archive_content_font', true) + '}';
+        css += '.responsi-area.responsi-area-archive,.archive-title-ctn .catrss{' + _cFn.renderTypo('responsi_archive_content_font', true) + '}';
 
         var responsi_archive_title_border_bottom_width = wp.customize.value('responsi_archive_title_border_bottom[width]')();
-        css += '.archive_header{' + _cFn.renderBorder('responsi_archive_title_border_bottom', 'bottom', true) + '}';
+        css += '.archive-title-ctn{' + _cFn.renderBorder('responsi_archive_title_border_bottom', 'bottom', true) + '}';
         if (responsi_archive_title_border_bottom_width > 0) {
-            css += '.responsi_title .archive_header{padding-bottom:5px !important;}';
+            css += '.responsi_title .archive-title-ctn{padding-bottom:5px !important;}';
         } else {
-            css += '.responsi_title .archive_header{padding-bottom:0px !important;}';
+            css += '.responsi_title .archive-title-ctn{padding-bottom:0px !important;}';
         }
 
         var responsi_enable_archive_title_box = wp.customize.value('responsi_enable_archive_title_box')();

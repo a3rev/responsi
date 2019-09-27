@@ -662,15 +662,15 @@
 				var switcher = control.container.find('.responsi-ui-icheckbox'),
 					ui_slide = control.container.find('.ui-slide'),
 					ui_slide_input = control.container.find('.islide-value'),
-					min = parseInt(_wpCustomBorderRadiusControl.rounded.min),
-					max = parseInt(_wpCustomBorderRadiusControl.rounded.max),
-					step = parseInt(_wpCustomBorderRadiusControl.rounded.step),
-					rounded_value = parseInt(control.params.values.rounded_value),
+					min = parseFloat(_wpCustomBorderRadiusControl.rounded.min),
+					max = parseFloat(_wpCustomBorderRadiusControl.rounded.max),
+					step = parseFloat(_wpCustomBorderRadiusControl.rounded.step),
+					rounded_value = parseFloat(control.params.values.rounded_value),
 					checked_value = _wpCustomBorderRadiusControl.corner.checked_value,
 					unchecked_value = _wpCustomBorderRadiusControl.corner.unchecked_value,
 					checked_label = _wpCustomBorderRadiusControl.corner.checked_label,
 					unchecked_label = _wpCustomBorderRadiusControl.corner.unchecked_label,
-					container_width = parseInt(_wpCustomBorderRadiusControl.corner.container_width),
+					container_width = parseFloat(_wpCustomBorderRadiusControl.corner.container_width),
 					corner_value = control.params.values.corner;
 
 
@@ -753,9 +753,9 @@
 				size_selected,
 				style_selected,
 				switcher = control.container.find('.responsi-ui-icheckbox'),
-				min = parseInt(_wpCustomBorderBoxesControl.rounded.min),
-				max = parseInt(_wpCustomBorderBoxesControl.rounded.max),
-				step = parseInt(_wpCustomBorderBoxesControl.rounded.step),
+				min = parseFloat(_wpCustomBorderBoxesControl.rounded.min),
+				max = parseFloat(_wpCustomBorderBoxesControl.rounded.max),
+				step = parseFloat(_wpCustomBorderBoxesControl.rounded.step),
 				ui_slide_topleft = control.container.find('.ui-slide-topleft'),
 				ui_slide_input_topleft = control.container.find('.islide-value-topleft'),
 				ui_slide_topright = control.container.find('.ui-slide-topright'),
@@ -764,15 +764,15 @@
 				ui_slide_input_bottomright = control.container.find('.islide-value-bottomright'),
 				ui_slide_bottomleft = control.container.find('.ui-slide-bottomleft'),
 				ui_slide_input_bottomleft = control.container.find('.islide-value-bottomleft'),
-				topleft = parseInt(control.params.values.topleft),
-				topright = parseInt(control.params.values.topright),
-				bottomright = parseInt(control.params.values.bottomright),
-				bottomleft = parseInt(control.params.values.bottomleft),
+				topleft = parseFloat(control.params.values.topleft),
+				topright = parseFloat(control.params.values.topright),
+				bottomright = parseFloat(control.params.values.bottomright),
+				bottomleft = parseFloat(control.params.values.bottomleft),
 				checked_value = _wpCustomBorderBoxesControl.corner.checked_value,
 				unchecked_value = _wpCustomBorderBoxesControl.corner.unchecked_value,
 				checked_label = _wpCustomBorderBoxesControl.corner.checked_label,
 				unchecked_label = _wpCustomBorderBoxesControl.corner.unchecked_label,
-				container_width = parseInt(_wpCustomBorderBoxesControl.corner.container_width),
+				container_width = parseFloat(_wpCustomBorderBoxesControl.corner.container_width),
 				corner_value = control.params.values.corner;
 
 				if (!control.container.hasClass('applied_border_boxes')) {
@@ -986,13 +986,13 @@
 					onoff_unchecked_value = _wpCustomBoxShadowControl.onoff.unchecked_value,
 					onoff_checked_label = _wpCustomBoxShadowControl.onoff.checked_label,
 					onoff_unchecked_label = _wpCustomBoxShadowControl.onoff.unchecked_label,
-					onoff_container_width = parseInt(_wpCustomBoxShadowControl.onoff.container_width),
+					onoff_container_width = parseFloat(_wpCustomBoxShadowControl.onoff.container_width),
 					onoff_value = control.params.values.onoff,
 					inset_checked_value = _wpCustomBoxShadowControl.inset.checked_value,
 					inset_unchecked_value = _wpCustomBoxShadowControl.inset.unchecked_value,
 					inset_checked_label = _wpCustomBoxShadowControl.inset.checked_label,
 					inset_unchecked_label = _wpCustomBoxShadowControl.inset.unchecked_label,
-					inset_container_width = parseInt(_wpCustomBoxShadowControl.inset.container_width),
+					inset_container_width = parseFloat(_wpCustomBoxShadowControl.inset.container_width),
 					h_shadow_selected,
 					v_shadow_selected,
 					blur_selected,
@@ -1182,7 +1182,7 @@
 				unchecked_value = control.params.unchecked_value ? control.params.unchecked_value : _wpCustomIRadioControl.onoff.unchecked_value,
 				checked_label = control.params.checked_label ? control.params.checked_label : _wpCustomIRadioControl.onoff.checked_label,
 				unchecked_label = control.params.unchecked_label ? control.params.unchecked_label : _wpCustomIRadioControl.onoff.unchecked_label,
-				container_width = control.params.container_width ? parseInt(control.params.container_width) : _wpCustomIRadioControl.onoff.container_width;
+				container_width = control.params.container_width ? parseFloat(control.params.container_width) : _wpCustomIRadioControl.onoff.container_width;
 
 				if (!control.container.hasClass('applied_icheckbox')) {
 					control.container.addClass('applied_icheckbox');
@@ -1239,7 +1239,7 @@
 					unchecked_value = _wpCustomIMultiCheckboxControl.onoff.unchecked_value,
 					checked_label = _wpCustomIMultiCheckboxControl.onoff.checked_label,
 					unchecked_label = _wpCustomIMultiCheckboxControl.onoff.unchecked_label,
-					container_width = parseInt(_wpCustomIMultiCheckboxControl.onoff.container_width);
+					container_width = parseFloat(_wpCustomIMultiCheckboxControl.onoff.container_width);
 
 				if (!control.container.hasClass('applied_imulticheckbox')) {
 					control.container.addClass('applied_imulticheckbox');
@@ -1299,7 +1299,7 @@
 
 						var checked_label = _wpCustomIRadioControl.onoff.checked_label,
 							unchecked_label = _wpCustomIRadioControl.onoff.unchecked_label,
-							container_width = parseInt(_wpCustomIRadioControl.onoff.container_width),
+							container_width = parseFloat(_wpCustomIRadioControl.onoff.container_width),
 							input_name = $(this).attr('name'),
 							current_item = $(this);
 
@@ -1352,10 +1352,10 @@
 
 				var ui_slide = control.container.find('.ui-slide'),
 					ui_slide_input = control.container.find('.islide-value'),
-					min = parseInt(control.params.min),
-					max = parseInt(control.params.max),
-					step = parseInt(control.params.step),
-					value = parseInt(control.params.value);
+					min = parseFloat(control.params.min),
+					max = parseFloat(control.params.max),
+					step = parseFloat(control.params.step),
+					value = parseFloat(control.params.value);
 
 				if (!control.container.hasClass('applied_slider')) {
 					control.container.addClass('applied_slider');
@@ -1401,7 +1401,7 @@
 					onoff_unchecked_value = _wpCustomiBackgroundControl.onoff.unchecked_value,
 					onoff_checked_label = _wpCustomiBackgroundControl.onoff.checked_label,
 					onoff_unchecked_label = _wpCustomiBackgroundControl.onoff.unchecked_label,
-					onoff_container_width = parseInt(_wpCustomiBackgroundControl.onoff.container_width),
+					onoff_container_width = parseFloat(_wpCustomiBackgroundControl.onoff.container_width),
 					onoff_value = control.params.values.onoff;
 
 				
@@ -2026,7 +2026,7 @@
 			this.currentEditorPage = ($('body').hasClass('wp-customizer') ? 'wp-customizer' : '');
 
 			if (this.currentEditorPage == "wp-customizer") {
-				this.wpFullOverlayOriginalZIndex = parseInt($('.wp-full-overlay').css('zIndex'));
+				this.wpFullOverlayOriginalZIndex = parseFloat($('.wp-full-overlay').css('zIndex'));
 				$('.wp-full-overlay').css({
 					zIndex: 49000
 				});
@@ -2103,22 +2103,22 @@
 				var type_select = control.container.find('select.responsi-animation-type'),
 				direction_select = control.container.find('select.responsi-animation-direction'),
 				
-				min_duration = parseInt(_wpCustomAnimationControl.duration.min),
-				max_duration = parseInt(_wpCustomAnimationControl.duration.max),
-				step_duration = parseInt(_wpCustomAnimationControl.duration.step),
+				min_duration = parseFloat(_wpCustomAnimationControl.duration.min),
+				max_duration = parseFloat(_wpCustomAnimationControl.duration.max),
+				step_duration = parseFloat(_wpCustomAnimationControl.duration.step),
 				ui_slide_input_duration = control.container.find('.islide-value-duration'),
 				ui_slide_duration = control.container.find('.ui-slide-duration'),
 
-				min_delay = parseInt(_wpCustomAnimationControl.delay.min),
-				max_delay = parseInt(_wpCustomAnimationControl.delay.max),
-				step_delay = parseInt(_wpCustomAnimationControl.delay.step),
+				min_delay = parseFloat(_wpCustomAnimationControl.delay.min),
+				max_delay = parseFloat(_wpCustomAnimationControl.delay.max),
+				step_delay = parseFloat(_wpCustomAnimationControl.delay.step),
 				ui_slide_input_delay = control.container.find('.islide-value-delay'),
 				ui_slide_delay = control.container.find('.ui-slide-delay'),
 				
 				type = control.params.values.type,
 				direction = control.params.values.direction,
-				duration = parseInt(control.params.values.duration),
-				delay = parseInt(control.params.values.delay);
+				duration = parseFloat(control.params.values.duration),
+				delay = parseFloat(control.params.values.delay);
 
 				if (!control.container.hasClass('applied_animation')) {
 					control.container.addClass('applied_animation');

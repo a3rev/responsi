@@ -3002,10 +3002,10 @@ function responsi_build_dynamic_css( $preview = false ) {
     $archive_title_css .= 'margin-left:' . $_archive_title_margin_left . 'px !important;margin-right:' . $_archive_title_margin_right . 'px !important;';
     
     $dynamic_css .= '.main .responsi-area.responsi-area-archive h1.title, .responsi-area.responsi-area-archive h1.title, .main .responsi-area.responsi-area-archive h1.title a:link, .main .responsi-area.responsi-area-archive h1.title a:visited{' . $archive_title_css . '}';
-    $dynamic_css .= '.responsi-area.responsi-area-archive,.archive_header .catrss{' . responsi_generate_fonts($_archive_content_font) . '}';
-    $dynamic_css .= '.archive_header {' . responsi_generate_border( $_archive_title_border_bottom, 'border-bottom' ) . '}';
+    $dynamic_css .= '.responsi-area.responsi-area-archive,.archive-title-ctn .catrss{' . responsi_generate_fonts($_archive_content_font) . '}';
+    $dynamic_css .= '.archive-title-ctn {' . responsi_generate_border( $_archive_title_border_bottom, 'border-bottom' ) . '}';
     if ( isset( $_archive_title_border_bottom['width'] ) && $_archive_title_border_bottom['width'] > 0 ) {
-        $dynamic_css .= '.responsi_title .archive_header{padding-bottom:5px !important;}';
+        $dynamic_css .= '.responsi_title .archive-title-ctn{padding-bottom:5px !important;}';
     }
 
     $enable_archive_title_box                       = isset( $responsi_options['responsi_enable_archive_title_box'] ) ? esc_attr( $responsi_options['responsi_enable_archive_title_box'] ) : 'false';
