@@ -74,7 +74,7 @@ if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 		    }
 	    }
 
-	    if ( version_compare(get_option('responsi_framework_version'), '7.6.1') === -1 ) {
+	    if ( version_compare(get_option('responsi_framework_version'), '7.6.2') === -1 ) {
 	        if( function_exists('responsi_dynamic_css') ){
 	        	_upgrade_customize_custom_css_phase2();
 		        responsi_dynamic_css( 'framework' );

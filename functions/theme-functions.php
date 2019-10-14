@@ -2439,7 +2439,7 @@ if ( ! function_exists( 'responsi_sanitize_animation' ) ) {
 if ( ! function_exists( 'responsi_sanitize_slider' ) ) {
     function responsi_sanitize_slider( $value , $setting ) {
         if ( is_numeric( $value ) ) {
-            return (int)$value;
+            return $value;
         }
     }
 }

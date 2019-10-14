@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 7.6.2 - 2019/10/14 =
+* This maintenance update fixes a bug in slide controls in the customizer menu
+* Fix - Customizer Slider control not getting the default value on first load.
+
 = 7.6.1 - 2019/09/27 =
 * This maintenance upgrade adds support for the new Responsi Page Banner plugin plus 2 bug fixes.
 * Refactor -  Rewrite the_title to a filter to support new Responsi Page Banner plugin
