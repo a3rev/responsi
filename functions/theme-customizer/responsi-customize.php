@@ -875,10 +875,15 @@ final class Responsi_Customize {
 	}
 
 	public function responsi_customize_controls_print_styles() {
-		global $responsi_version;
+		global $wp_version, $responsi_version;
 		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 		$rtl = is_rtl() ? '.rtl' : '';
-		wp_enqueue_style( 'responsi-customize', get_template_directory_uri() . '/functions/theme-customizer/css/customize' . $rtl .$suffix . '.css', array(), $responsi_version, 'screen' );
+		
+		if ( version_compare( $wp_version, '5.2.4', '<=' ) ) {
+	        wp_enqueue_style( 'responsi-customize', get_template_directory_uri() . '/functions/theme-customizer/css/customize-old' . $rtl .$suffix . '.css', array(), $responsi_version, 'screen' );
+	    }else{
+	    	wp_enqueue_style( 'responsi-customize', get_template_directory_uri() . '/functions/theme-customizer/css/customize' . $rtl .$suffix . '.css', array(), $responsi_version, 'screen' );
+	    }
 	}
 
 	public function responsi_customize_controls_print_footer_scripts() {

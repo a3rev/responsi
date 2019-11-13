@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 7.6.3 - 2019/11/13 =
+* This maintenance update is for compatibility with WordPress Major version 5.3
+* Tweak - Customizer Controls CSS for compatibility WordPress 5.3 new styles
+
 = 7.6.2 - 2019/10/14 =
 * This maintenance update fixes a bug in slide controls in the customizer menu
 * Fix - Customizer Slider control not getting the default value on first load.

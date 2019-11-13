@@ -34,6 +34,7 @@ add_filter( 'widget_text', array(
 	'autoembed' 
 ), 8 );
 
+add_filter( 'admin_body_class', 'responsi_admin_body_class' );
 add_filter( 'wp_headers', 'responsi_send_no_xss_protection_header', 10, 2 );
 add_filter( 'extra_theme_headers', 'responsi_extra_theme_headers' );
 add_filter( 'body_class', 'responsi_body_class', 10 );

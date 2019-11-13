@@ -6,6 +6,17 @@ if (!defined('ABSPATH'))
 /*-----------------------------------------------------------------------------------*/
 /* wp_body_open */
 /*-----------------------------------------------------------------------------------*/
+function responsi_admin_body_class( $classes ) {
+    global $wp_version;
+    if ( version_compare( $wp_version, '5.2.4', '>' ) ) {
+        $classes .= ' wpNew';
+    }
+    return $classes;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* wp_body_open */
+/*-----------------------------------------------------------------------------------*/
 if ( ! function_exists( 'wp_body_open' ) ) {
     function wp_body_open() {
         do_action( 'wp_body_open' );

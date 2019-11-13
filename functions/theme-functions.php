@@ -315,6 +315,10 @@ if ( !function_exists( 'responsi_body_class' ) ) {
             $classes[] = 'is-login';
         }
 
+        if ( version_compare( $wp_version, '5.2.4', '>' ) ) {
+            $classes[] = 'wpNew';
+        }
+        
         return $classes;
     }
 }
