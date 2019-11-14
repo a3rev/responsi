@@ -1,5 +1,11 @@
 *** Responsi Framework Changelog ***
 
+= 7.6.4 - 2019/11/14 =
+* This maintenance release contains 1 bug fix and 2 code tweaks for WordPress 5.3 
+* Tweak - Customizer Controls CSS fixed break lines some control on windows
+* Tweak - Style CSS, Icon support for Post Enhancer Plugin changed on WP 5.3
+* Fix - Customize js undefine variables is_chrome
+
 = 7.6.3 - 2019/11/13 =
 * This maintenance update is for compatibility with WordPress Major version 5.3
 * Tweak - Customizer Controls CSS for compatibility WordPress 5.3 new styles

@@ -57,7 +57,7 @@
 .icon:after { margin-left: .618em; }
 .icon:hover:before, .icon:hover:after { color: #aaa; }
 .i_comment { margin-right: 3px; }
-.i_author:before, .i_cat:before, .i_comment:before, .i_tag:before, .i_authors span.author .fn:before, .main .profile-link a:after, ul.menu li.menu-item-account a:before, #archives .archives_list li span.comments a:before, .post-entries .nav-prev a:before, .post-entries .nav-next a:after, .nav-entries .nav-prev:before, .nav-entries .nav-next:after, .icon:before, .icon:after, .social-actions .social-action a:before, .social-actions-single .social-action a:before, .i_date:before { font-family: "responsi-font-face" !important; font-style: normal !important; font-weight: normal !important; font-variant: normal !important; text-transform: none !important; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; display: inline-block; transition: all 0.1s ease-in-out 0s; top: 1px; font-size: 100%; position: relative; }
+.i_author:before, .i_cat:before, .i_comment:before, .i_tag:before, .i_authors span.author .fn:before, .main .profile-link a:after, ul.menu li.menu-item-account a:before, #archives .archives_list li span.comments a:before, .post-entries .nav-prev a:before, .post-entries .nav-previous a:before, .post-entries .nav-next a:after, .nav-entries .nav-prev:before, .nav-entries .nav-next:after, .icon:before, .icon:after, .social-actions .social-action a:before, .social-actions-single .social-action a:before, .i_date:before { font-family: "responsi-font-face" !important; font-style: normal !important; font-weight: normal !important; font-variant: normal !important; text-transform: none !important; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; display: inline-block; transition: all 0.1s ease-in-out 0s; top: 1px; font-size: 100%; position: relative; }
 .i_author:before, span.i_authors .fn:before, ul.menu li.menu-item-account a:before { content: "f" !important; }
 ul.menu li.menu-item-account a:before { font-size: 100% !important; font-style: inherit !important; margin-right: 3px; }
 .i_cat:before { content: "B"; }
@@ -65,7 +65,7 @@ ul.menu li.menu-item-account a:before { font-size: 100% !important; font-style: 
 .i_tag:before { content: "E"; }
 .i_date:before { content: "b"; }
 .main .profile-link a:after { font-size: 100%; content: "f" !important; }
-.post-entries .nav-prev a:before, .nav-entries .nav-prev:before { content: 'I'; margin-right: 0.618em; }
+.post-entries .nav-prev a:before, .nav-entries .nav-prev:before, .post-entries .nav-previous a:before, .nav-entries .nav-previous:before { content: 'I'; margin-right: 0.618em; }
 .post-entries .nav-next a:after, .nav-entries .nav-next:after { content: 'H'; margin-left: 0.618em; }
 
 /* Widget Login*/

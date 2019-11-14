@@ -2,6 +2,12 @@
  * Script run inside a Customizer preview frame.
  */
 
+window.is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+window.is_safari = navigator.userAgent.indexOf("Safari") > -1;
+if ( (window.is_chrome) && (window.is_safari) ) {
+    is_safari = false;
+}
+
 window.ctrlFonts = ['size', 'line_height', 'face', 'style', 'color'];
 window.ctrlShadow = ['onoff', 'h_shadow', 'v_shadow', 'blur', 'spread', 'inset', 'color'];
 window.ctrlRadius = ['corner', 'rounded_value'];
