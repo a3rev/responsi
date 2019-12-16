@@ -1,5 +1,11 @@
 *** Responsi Framework Changelog ***
 
+= 7.7.0 - 2019/12/16 =
+* This is a major feature release with the rewriting of the frameworks PHP code to Composer PHP Dependency Manager 
+* Feature - Framework PHP refactored to Composer PHP Dependency Manager for cleaner and faster PHP code
+* Tweak - Test for compatibility with WordPress 5.3.1
+* Dev - Upgrade Functions on Customize Control to Class
+
 = 7.6.4 - 2019/11/14 =
 * This maintenance release contains 1 bug fix and 2 code tweaks for WordPress 5.3 
 * Tweak - Customizer Controls CSS fixed break lines some control on windows

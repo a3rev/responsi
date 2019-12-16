@@ -1,5 +1,8 @@
 <?php
-class Responsi_Customize_Layout
+
+namespace A3Rev\Responsi;
+
+class Layout
 {
 
 	public function __construct() {
@@ -1068,7 +1071,7 @@ class Responsi_Customize_Layout
 			)
 		);
 
-		if( class_exists('Responsi_Backgrounds_Addon')){
+		if( class_exists('Responsi_Backgrounds_Addon') || class_exists('\A3Rev\RBackground\Main') ){
 
 			$layout_controls_settings['lblayout11'] = array(
 				'control' => array(
@@ -1450,6 +1453,4 @@ class Responsi_Customize_Layout
 		return  $controls_settings ;
 	}
 }
-
-new Responsi_Customize_Layout();
 ?>

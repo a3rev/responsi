@@ -1039,8 +1039,6 @@ function responsi_options()
     return $responsi_options;
 }
 
-
-
 add_action( 'init', 'responsi_options', 1 );
 add_action( 'widgets_init', 'responsi_options', 1 );
 
@@ -1057,7 +1055,6 @@ $responsi_requires = array(
     'functions/theme-actions.php',
     'functions/theme-extension.php',
     'functions/theme-sidebar-init.php',
-    'functions/theme-privacy.php'
 );
 
 foreach ( $responsi_requires as $i ) {
@@ -1073,6 +1070,11 @@ foreach ( $responsi_requires as $i ) {
 /* Allow child themes/plugins to add widgets to be loaded */
 /*-----------------------------------------------------------------------------------*/
 
+$responsi_customize_disabled_addon = false;
+if( isset( $_GET['disabled-addon'] ) && 'disabled' === $_GET['disabled-addon'] ) {
+    $responsi_customize_disabled_addon = true;
+}
+
 $responsi_includes = apply_filters( 'responsi_includes', array() );
 if ( is_array( $responsi_includes ) && count( $responsi_includes ) > 0 ) {
     foreach ( $responsi_includes as $i ){
@@ -1085,39 +1087,48 @@ if ( is_array( $responsi_includes ) && count( $responsi_includes ) > 0 ) {
     }
 }
 
+if ( version_compare( PHP_VERSION, '5.6.0', '>=' ) ) {
+    
+    require get_template_directory() . '/vendor/autoload.php';
+
+    new \A3Rev\Responsi\Customizer();
+    new \A3Rev\Responsi\Layout();
+    new \A3Rev\Responsi\Header();
+    new \A3Rev\Responsi\Navigation();
+    new \A3Rev\Responsi\Sidebar();
+    new \A3Rev\Responsi\Footer();
+    new \A3Rev\Responsi\Posts();
+    new \A3Rev\Responsi\Pages();
+    new \A3Rev\Responsi\Blogs();
+    new \A3Rev\Responsi\Settings();
+    new \A3Rev\Responsi\Privacy();
+
+    if( !$responsi_customize_disabled_addon ){
+        do_action( 'responsi_allow_addon_customizer' );
+    }
+
+} else {
+    return;
+}
+
 /*-----------------------------------------------------------------------------------*/
 /* Allow Responsi Customizer */
 /*-----------------------------------------------------------------------------------*/
 
-$responsi_includes_customizer = array(
-    'functions/theme-customizer/responsi-customize.php',
-    'functions/theme-customizer/panels/layout.php',
-    'functions/theme-customizer/panels/header.php',
-    'functions/theme-customizer/panels/navigation.php',
-    'functions/theme-customizer/panels/widget.php',
-    'functions/theme-customizer/panels/footer.php',
-    'functions/theme-customizer/panels/posts.php',
-    'functions/theme-customizer/panels/blogs.php',
-    'functions/theme-customizer/panels/settings.php',
-    'functions/theme-customizer/panels/pages.php'
-);
-
-$responsi_customize_disabled_addon = false;
-if( isset( $_GET['disabled-addon'] ) && 'disabled' === $_GET['disabled-addon'] ) {
-    $responsi_customize_disabled_addon = true;
-}
+$responsi_includes_customizer = array();
 
 if( !$responsi_customize_disabled_addon ){
     $responsi_includes_customizer = apply_filters( 'responsi_includes_customizer', $responsi_includes_customizer );
 }
 
-foreach ( $responsi_includes_customizer as $i ) {
-    $located = locate_template( $i, true );
-    if ( '' === $located ) {
-        if ( file_exists( $i ) && function_exists('load_template') ){
-            load_template( $i, true );
+if( is_array( $responsi_includes_customizer ) && count( $responsi_includes_customizer ) > 0 ){
+    foreach ( $responsi_includes_customizer as $i ) {
+        $located = locate_template( $i, true );
+        if ( '' === $located ) {
+            if ( file_exists( $i ) && function_exists('load_template') ){
+                load_template( $i, true );
+            }
         }
     }
 }
-
 ?>

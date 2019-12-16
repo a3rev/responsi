@@ -1,9 +1,12 @@
 <?php
+
+namespace A3Rev\Responsi;
+
 /**
  * Class to create a custom iCheckbox control
  */
-if ( ! class_exists( 'Customize_iCheckbox_Control' ) && class_exists('WP_Customize_Control')) {
-	class Customize_iCheckbox_Control extends WP_Customize_Control {
+if ( ! class_exists( '\A3Rev\Responsi\Customize_iCheckbox_Control' ) && class_exists('\WP_Customize_Control')) {
+	class Customize_iCheckbox_Control extends \WP_Customize_Control {
 
 		public $type = 'icheckbox';
 

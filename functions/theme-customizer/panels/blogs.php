@@ -1,5 +1,8 @@
 <?php
-class Responsi_Customize_Blogs
+
+namespace A3Rev\Responsi;
+
+class Blogs
 {
 
 	public function __construct() {
@@ -1118,6 +1121,4 @@ class Responsi_Customize_Blogs
 		return  $controls_settings;
 	}
 }
-
-new Responsi_Customize_Blogs();
 ?>

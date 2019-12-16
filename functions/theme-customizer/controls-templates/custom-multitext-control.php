@@ -1,9 +1,12 @@
 <?php
+
+namespace A3Rev\Responsi;
+
 /**
  * Class to create a custom Multiple Text control
  */
-if ( ! class_exists( 'Customize_Multiple_Text_Control' ) && class_exists('WP_Customize_Control')) {
-	class Customize_Multiple_Text_Control extends WP_Customize_Control {
+if ( ! class_exists( '\A3Rev\Responsi\Customize_Multiple_Text_Control' ) && class_exists('\WP_Customize_Control')) {
+	class Customize_Multiple_Text_Control extends \WP_Customize_Control {
 
 		public $type = 'multitext';
 

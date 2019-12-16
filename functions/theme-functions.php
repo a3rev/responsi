@@ -2007,7 +2007,7 @@ if ( !function_exists( 'responsi_blog_template_list_post' ) ) {
                 'order' => 'DESC'
             );
             $query_args = apply_filters( 'responsi_blog_template_query_args', $query_args );
-            $wp_query = new WP_Query( $query_args );
+            $wp_query = new \WP_Query( $query_args );
             ?>
             <?php
             if ( have_posts() ) {

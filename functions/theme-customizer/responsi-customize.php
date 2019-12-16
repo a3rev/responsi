@@ -1,4 +1,7 @@
 <?php
+
+namespace A3Rev\Responsi;
+
 /**
  * Responsi Customize classes
  *
@@ -17,7 +20,7 @@
  * @see Responsi_Customize
  */
 
-final class Responsi_Customize {
+final class Customizer {
 
 	public $manager;
 
@@ -67,10 +70,10 @@ final class Responsi_Customize {
 	}
 
 	public function add_control( $id, $args = array() ) {
-		if ( $id instanceof WP_Customize_Control ) {
+		if ( $id instanceof \WP_Customize_Control ) {
 			$control = $id;
 		} else {
-			$control = new WP_Customize_Control( $this, $id, $args );
+			$control = new \WP_Customize_Control( $this, $id, $args );
 		}
 
 		$this->controls[ $control->id ] = $control;
@@ -135,30 +138,30 @@ final class Responsi_Customize {
 		}
 
 		//Register Controls
-		$this->manager->register_control_type( 'Customize_iLabel_Control' );
-		$this->manager->register_control_type( 'Customize_iText_Control' );
-		$this->manager->register_control_type( 'Customize_iTextarea_Control' );
-		$this->manager->register_control_type( 'Customize_iSelect_Control' );
-		$this->manager->register_control_type( 'Customize_Layout_Control' );
-		$this->manager->register_control_type( 'Customize_Background_Patterns_Control' );
-		$this->manager->register_control_type( 'Customize_Slider_Control' );
-		$this->manager->register_control_type( 'Customize_iCheckbox_Control' );
-		$this->manager->register_control_type( 'Customize_iMultiCheckbox_Control' );
-		$this->manager->register_control_type( 'Customize_iSwitcher_Control' );
-		$this->manager->register_control_type( 'Customize_iRadio_Control' );
-		$this->manager->register_control_type( 'Customize_iColor_Control' );
-		$this->manager->register_control_type( 'Customize_iUpload_Control' );
-		$this->manager->register_control_type( 'Customize_iUploadCrop_Control' );
-		$this->manager->register_control_type( 'Customize_Multiple_Text_Control' );
-		$this->manager->register_control_type( 'Customize_Typography_Control' );
-		$this->manager->register_control_type( 'Customize_iBackground_Control' );
-		$this->manager->register_control_type( 'Customize_Border_Control' );
-		$this->manager->register_control_type( 'Customize_Border_Radius_Control' );
-		$this->manager->register_control_type( 'Customize_Border_Boxes_Control' );
-		$this->manager->register_control_type( 'Customize_Box_Shadow_Control' );
-		$this->manager->register_control_type( 'Customize_iEditor_Control' );
-		$this->manager->register_control_type( 'Customize_Animation_Control' );
-		$this->manager->register_control_type( 'Customize_Column_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_iLabel_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_iText_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_iTextarea_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_iSelect_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_Layout_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_Background_Patterns_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_Slider_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_iCheckbox_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_iMultiCheckbox_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_iSwitcher_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_iRadio_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_iColor_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_iUpload_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_iUploadCrop_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_Multiple_Text_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_Typography_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_iBackground_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_Border_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_Border_Radius_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_Border_Boxes_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_Box_Shadow_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_iEditor_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_Animation_Control' );
+		$this->manager->register_control_type( '\A3Rev\Responsi\Customize_Column_Control' );
 
 		//Register Panels
 		$panels = apply_filters( 'responsi_customize_register_panels', array() );
@@ -361,76 +364,76 @@ final class Responsi_Customize {
 
 					switch ( $value['control']['type'] ) {
 						case "iradio":
-							$this->add_control( new Customize_iRadio_Control( $this->manager, $key, $value['control']) );
+							$this->add_control( new \A3Rev\Responsi\Customize_iRadio_Control( $this->manager, $key, $value['control']) );
 					        break;
 						case "icheckbox":
-							$this->add_control( new Customize_iCheckbox_Control( $this->manager, $key, $value['control']) );
+							$this->add_control( new \A3Rev\Responsi\Customize_iCheckbox_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "imulticheckbox":
-					    	$this->add_control( new Customize_iMultiCheckbox_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_iMultiCheckbox_Control( $this->manager, $key, $value['control']) );
 					        break;
 						case "iswitcher":
-							$this->add_control( new Customize_iSwitcher_Control( $this->manager, $key, $value['control']) );
+							$this->add_control( new \A3Rev\Responsi\Customize_iSwitcher_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "slider":
-					    	$this->add_control( new Customize_Slider_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_Slider_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "layout":
-					    	$this->add_control( new Customize_Layout_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_Layout_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "ibackground":
-					    	$this->add_control( new Customize_iBackground_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_iBackground_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "border":
-					    	$this->add_control( new Customize_Border_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_Border_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "border_radius":
-					    	$this->add_control( new Customize_Border_Radius_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_Border_Radius_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "border_boxes":
-					    	$this->add_control( new Customize_Border_Boxes_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_Border_Boxes_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "box_shadow":
-					    	$this->add_control( new Customize_Box_Shadow_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_Box_Shadow_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "typography":
-					    	$this->add_control( new Customize_Typography_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_Typography_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "animation":
-		                    $this->add_control( new Customize_Animation_Control( $this->manager, $key, $value['control']) );
+		                    $this->add_control( new \A3Rev\Responsi\Customize_Animation_Control( $this->manager, $key, $value['control']) );
 		                    break;
 		                case "column":
-		                    $this->add_control( new Customize_Column_Control( $this->manager, $key, $value['control']) );
+		                    $this->add_control( new \A3Rev\Responsi\Customize_Column_Control( $this->manager, $key, $value['control']) );
 		                    break;
 					    case "multitext":
-					    	$this->add_control( new Customize_Multiple_Text_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_Multiple_Text_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "icolor":
-					    	$this->add_control( new Customize_iColor_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_iColor_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "iupload":
-					    	$this->add_control( new Customize_iUpload_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_iUpload_Control( $this->manager, $key, $value['control']) );
 					    	break;
 					    case "iuploadcrop":
-					    	$this->add_control( new Customize_iUploadCrop_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_iUploadCrop_Control( $this->manager, $key, $value['control']) );
 					    	break;
 					    case "background_patterns":
-					    	$this->add_control( new Customize_Background_Patterns_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_Background_Patterns_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "itext":
-					    	$this->add_control( new Customize_iText_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_iText_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "itextarea":
-					    	$this->add_control( new Customize_iTextarea_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_iTextarea_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "ieditor":
-					    	$this->add_control( new Customize_iEditor_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_iEditor_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "iselect":
-					    	$this->add_control( new Customize_iSelect_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_iSelect_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    case "ilabel":
-					    	$this->add_control( new Customize_iLabel_Control( $this->manager, $key, $value['control']) );
+					    	$this->add_control( new \A3Rev\Responsi\Customize_iLabel_Control( $this->manager, $key, $value['control']) );
 					        break;
 					    default:
 					    	$this->add_control( $key, $value['control'] );
@@ -1145,6 +1148,4 @@ final class Responsi_Customize {
 	}
 
 }
-
-new Responsi_Customize();
-
+?>

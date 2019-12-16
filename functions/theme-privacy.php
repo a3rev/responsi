@@ -1,4 +1,7 @@
 <?php
+
+namespace A3Rev\Responsi;
+
 /**
  * Responsi_Theme_Privacy class.
  */
@@ -6,7 +9,7 @@
 defined( 'ABSPATH' ) || exit;
 
 
-class Responsi_Theme_Privacy {
+class Privacy {
 
 	public $name = 'Responsi Theme Framework';
 	
@@ -35,5 +38,3 @@ class Responsi_Theme_Privacy {
 	}
 	
 }
-
-new Responsi_Theme_Privacy();

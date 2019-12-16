@@ -1,9 +1,12 @@
 <?php
+
+namespace A3Rev\Responsi;
+
 /**
  * Class to create a custom iupload control
  */
-if ( ! class_exists( 'Customize_iUpload_Control' ) && class_exists('WP_Customize_Image_Control')) {
-	class Customize_iUpload_Control extends WP_Customize_Image_Control {
+if ( ! class_exists( '\A3Rev\Responsi\Customize_iUpload_Control' ) && class_exists('\WP_Customize_Image_Control')) {
+	class Customize_iUpload_Control extends \WP_Customize_Image_Control {
 		
 		public $type = 'iupload';
 		public $mime_type = 'image';

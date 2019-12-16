@@ -1,5 +1,8 @@
 <?php
-class Responsi_Customize_Widget_Sidebar
+
+namespace A3Rev\Responsi;
+
+class Sidebar
 {
 
 	public function __construct() {
@@ -800,6 +803,4 @@ class Responsi_Customize_Widget_Sidebar
 		return  $controls_settings ;
 	}
 }
-
-new Responsi_Customize_Widget_Sidebar();
 ?>

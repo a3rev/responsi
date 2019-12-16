@@ -1,9 +1,12 @@
 <?php
+
+namespace A3Rev\Responsi;
+
 /**
  * Class to create a custom iColor control
  */
-if ( ! class_exists( 'Customize_iColor_Control' ) && class_exists('WP_Customize_Color_Control')) {
-	class Customize_iColor_Control extends WP_Customize_Color_Control {
+if ( ! class_exists( '\A3Rev\Responsi\Customize_iColor_Control' ) && class_exists('\WP_Customize_Color_Control')) {
+	class Customize_iColor_Control extends \WP_Customize_Color_Control {
 		public $type = 'icolor';
 
 		public $notifications = array();

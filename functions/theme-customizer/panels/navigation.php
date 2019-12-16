@@ -1,5 +1,8 @@
 <?php
-class Responsi_Customize_Navigation
+
+namespace A3Rev\Responsi;
+
+class Navigation
 {
 
 	public function __construct() {
@@ -1088,6 +1091,4 @@ class Responsi_Customize_Navigation
 		return  $controls_settings ;
 	}
 }
-
-new Responsi_Customize_Navigation();
 ?>

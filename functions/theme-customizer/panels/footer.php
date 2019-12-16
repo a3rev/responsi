@@ -1,5 +1,8 @@
 <?php
-class Responsi_Customize_Footer
+
+namespace A3Rev\Responsi;
+
+class Footer
 {
 	public function __construct() {
 		add_action( 'customize_preview_init', array( $this, 'responsi_customize_preview_init' ), 11 );
@@ -2018,6 +2021,4 @@ class Responsi_Customize_Footer
 		return  $controls_settings ;
 	}
 }
-
-new Responsi_Customize_Footer();
 ?>

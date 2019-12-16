@@ -1,5 +1,8 @@
 <?php
-class Responsi_Customize_Blog_Posts
+
+namespace A3Rev\Responsi;
+
+class Posts
 {
 
 	public function __construct() {
@@ -1049,5 +1052,4 @@ class Responsi_Customize_Blog_Posts
 	}
 }
 
-new Responsi_Customize_Blog_Posts();
 ?>

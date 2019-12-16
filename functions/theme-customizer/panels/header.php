@@ -1,5 +1,8 @@
 <?php
-class Responsi_Customize_Header
+
+namespace A3Rev\Responsi;
+
+class Header
 {
 
 	public function __construct() {
@@ -615,6 +618,4 @@ class Responsi_Customize_Header
 		return  $controls_settings ;
 	}
 }
-
-new Responsi_Customize_Header();
 ?>

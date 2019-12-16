@@ -1,5 +1,8 @@
 <?php
-class Responsi_Customize_Pages
+
+namespace A3Rev\Responsi;
+
+class Pages
 {
 
 	public function __construct() {
@@ -960,6 +963,4 @@ class Responsi_Customize_Pages
 		return $customize_list_page;
 	}
 }
-
-new Responsi_Customize_Pages();
 ?>

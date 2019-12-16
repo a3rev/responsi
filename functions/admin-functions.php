@@ -1,4 +1,5 @@
 <?php
+
 // File Security Check
 if (!defined('ABSPATH'))
     exit;
@@ -255,7 +256,7 @@ function responsi_get_attachment_id_by_url( $url ) {
                 ),
             )
         );
-        $query = new WP_Query( $query_args );
+        $query = new \WP_Query( $query_args );
         if ( $query->have_posts() ) {
             foreach ( $query->posts as $post_id ) {
                 $meta = wp_get_attachment_metadata( $post_id );
@@ -4197,6 +4198,29 @@ function responsi_framework_upgrade(){
         $upgrade = update_option('upgrade_responsi_693_to_694', 'done' );
     }
 
+}
+
+function responsi_wp_editor_customize() {
+    ?>
+    <div id="wp-editor-customize-container" style="display:none;">
+        <a href="#" class="close close-editor-button" title="<?php echo __( 'Close', 'responsi' ); ?>"><span class="icon"></span></a>
+        <div class="editor">
+            <span id="wpeditor_customize_title" class="customize-control-title"></span>
+            <?php
+            $output = '';
+            ob_start();
+            remove_all_filters('mce_external_plugins');
+            do_action('filter_mce_external_plugins_before');
+            wp_editor( '', 'wpeditorcustomize', array( 'textarea_name' => 'wpeditorcustomize', 'media_buttons' => true, 'textarea_rows' => 20, 'tinymce' => true, 'wpautop' => true ) );
+            do_action('filter_mce_external_plugins_after');
+            $output .= ob_get_clean();
+            echo $output;
+            ?>
+            <p><a href="#" data-id="setting-id" class="button button-primary update-editor-button"><?php echo __( 'Save and close', 'responsi' ); ?></a></p>
+        </div>
+    </div>
+    <div id="wp-editor-customize-backdrop" style="display:none;"></div>
+    <?php
 }
 
 ?>

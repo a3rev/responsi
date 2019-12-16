@@ -1,5 +1,8 @@
 <?php
-class Responsi_Customize_General_Settings
+
+namespace A3Rev\Responsi;
+
+class Settings
 {
 
 	public function __construct() {
@@ -948,6 +951,4 @@ class Responsi_Customize_General_Settings
 		return  $controls_settings ;
 	}
 }
-
-new Responsi_Customize_General_Settings();
 ?>

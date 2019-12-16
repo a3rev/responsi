@@ -1,9 +1,12 @@
 <?php
+
+namespace A3Rev\Responsi;
+
 /**
  * Class to create a Custom Slider control
  */
-if ( ! class_exists( 'Customize_Slider_Control' ) && class_exists('WP_Customize_Control')) {
-	class Customize_Slider_Control extends WP_Customize_Control {
+if ( ! class_exists( '\A3Rev\Responsi\Customize_Slider_Control' ) && class_exists('\WP_Customize_Control')) {
+	class Customize_Slider_Control extends \WP_Customize_Control {
 
 		public $type = 'slider';
 

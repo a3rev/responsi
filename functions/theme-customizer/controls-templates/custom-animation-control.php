@@ -1,9 +1,12 @@
 <?php
+
+namespace A3Rev\Responsi;
+
 /**
  * Class to create a custom Animation control
  */
-if ( ! class_exists( 'Customize_Animation_Control' ) && class_exists('WP_Customize_Control')) {
-	class Customize_Animation_Control extends WP_Customize_Control {
+if ( ! class_exists( '\A3Rev\Responsi\Customize_Animation_Control' ) && class_exists('\WP_Customize_Control')) {
+	class Customize_Animation_Control extends \WP_Customize_Control {
 
 		public $type = 'animation';
 

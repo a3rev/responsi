@@ -1,9 +1,12 @@
 <?php
+
+namespace A3Rev\Responsi;
+
 /**
  * Class to create a custom Background Patterns control
  */
-if ( ! class_exists( 'Customize_Background_Patterns_Control' ) && class_exists('WP_Customize_Control')) {
-	class Customize_Background_Patterns_Control extends WP_Customize_Control {
+if ( ! class_exists( '\A3Rev\Responsi\Customize_Background_Patterns_Control' ) && class_exists('\WP_Customize_Control')) {
+	class Customize_Background_Patterns_Control extends \WP_Customize_Control {
 
 		public $type = 'background_patterns';
 		

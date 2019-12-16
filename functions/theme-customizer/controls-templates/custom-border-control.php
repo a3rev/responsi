@@ -1,9 +1,12 @@
 <?php
+
+namespace A3Rev\Responsi;
+
 /**
  * Class to create a custom Border control
  */
-if ( ! class_exists( 'Customize_Border_Control' ) && class_exists('WP_Customize_Control')) {
-	class Customize_Border_Control extends WP_Customize_Control {
+if ( ! class_exists( '\A3Rev\Responsi\Customize_Border_Control' ) && class_exists('\WP_Customize_Control')) {
+	class Customize_Border_Control extends \WP_Customize_Control {
 
 		public $type = 'border';
 

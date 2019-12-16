@@ -1,9 +1,12 @@
 <?php
+
+namespace A3Rev\Responsi;
+
 /**
  * Class to create a custom Border Radius control
  */
-if ( ! class_exists( 'Customize_iBackground_Control' ) && class_exists('WP_Customize_Control')) {
-	class Customize_iBackground_Control extends WP_Customize_Control {
+if ( ! class_exists( '\A3Rev\Responsi\Customize_iBackground_Control' ) && class_exists('\WP_Customize_Control')) {
+	class Customize_iBackground_Control extends \WP_Customize_Control {
 
 		public $type = 'ibackground';
 
