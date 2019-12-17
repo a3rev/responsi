@@ -1640,7 +1640,7 @@ function responsi_autoembed_media_replace_iframe( $content = '' ){
 function responsi_button_none_css_lists(){
     
 
-    $responsi_button_none_css_lists = '.mejs-button button';
+    $responsi_button_none_css_lists = '.mejs-button button, .wp-pwd button';
 
     $responsi_button_none_css_lists = apply_filters( 'responsi_button_none_css_lists', $responsi_button_none_css_lists );
 
