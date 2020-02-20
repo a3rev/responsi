@@ -2401,27 +2401,6 @@ if ( ! function_exists( 'responsi_sanitize_box_shadow' ) ) {
     }
 }
 
-if ( ! function_exists( 'responsi_sanitize_typography' ) ) {
-    function responsi_sanitize_typography( $value, $setting ) {
-        $keys = preg_split( '/\[/', str_replace( ']', '', $setting->id ) );
-        if ( is_array($keys) && count($keys) > 0 && isset($keys[1]) ){
-            if( 'color' === $keys[1] ){
-                return sanitize_hex_color( $value );
-            }elseif( 'size' === $keys[1] ){
-                return sanitize_text_field( $value );
-            }elseif( 'line_height' === $keys[1] ){
-                return sanitize_text_field( $value );
-            }elseif( 'face' === $keys[1] ){
-                return sanitize_text_field( $value );
-            }elseif( 'style' === $keys[1] ){
-                return sanitize_text_field( $value );
-            }elseif( 'color' === $keys[1] ){
-                return sanitize_hex_color( $value );
-            }
-        }
-    }
-}
-
 if ( ! function_exists( 'responsi_sanitize_animation' ) ) {
     function responsi_sanitize_animation( $value, $setting ) {
         $keys = preg_split( '/\[/', str_replace( ']', '', $setting->id ) );
@@ -2444,6 +2423,27 @@ if ( ! function_exists( 'responsi_sanitize_slider' ) ) {
     function responsi_sanitize_slider( $value , $setting ) {
         if ( is_numeric( $value ) ) {
             return $value;
+        }
+    }
+}
+
+if ( ! function_exists( 'responsi_sanitize_typography' ) ) {
+    function responsi_sanitize_typography( $value, $setting ) {
+        $keys = preg_split( '/\[/', str_replace( ']', '', $setting->id ) );
+        if ( is_array($keys) && count($keys) > 0 && isset($keys[1]) ){
+            if( 'color' === $keys[1] ){
+                return sanitize_hex_color( $value );
+            }elseif( 'size' === $keys[1] ){
+                return sanitize_text_field( $value );
+            }elseif( 'line_height' === $keys[1] ){
+                return sanitize_text_field( $value );
+            }elseif( 'face' === $keys[1] ){
+                return sanitize_text_field( $value );
+            }elseif( 'style' === $keys[1] ){
+                return sanitize_text_field( $value );
+            }elseif( 'color' === $keys[1] ){
+                return sanitize_hex_color( $value );
+            }
         }
     }
 }

@@ -2,7 +2,7 @@
  * Script run inside a Customizer preview frame.
  */
 
-window.is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+window.is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
 window.is_safari = navigator.userAgent.indexOf("Safari") > -1;
 if ( (window.is_chrome) && (window.is_safari) ) {
     is_safari = false;
@@ -140,7 +140,11 @@ window.fontsDefaults.push (
             }
 
             responsiCustomize.getGFonts(face);
-     
+
+            face = face.replace(/Exo 2/g, '"Exo 2"');
+            face = face.replace(/Slabo 13px/g, '"Slabo 13px"');
+            face = face.replace(/Slabo 27px/g, '"Slabo 27px"');
+           
             if (imp) {
                 fonts = 'font:' + style + ' ' + size + 'px/' + lineHeight + 'em ' + face + ' !important;color:' + color + ' !important;';
             } else {

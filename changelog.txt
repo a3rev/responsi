@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 7.8.0 - 2020/02/20 =
+* This feature release adds support for Google font-weights to the font editor for creating beautiful fonts
+* Feature - Add support for font-weight 100 to 900 to the Customizer font controller in addition to existing font settings
+* Tweak - Test for compatibility with WordPress 5.3.2
+
 = 7.7.0 - 2019/12/16 =
 * This is a major feature release with the rewriting of the frameworks PHP code to Composer PHP Dependency Manager 
 * Feature - Framework PHP refactored to Composer PHP Dependency Manager for cleaner and faster PHP code

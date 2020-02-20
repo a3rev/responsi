@@ -1296,10 +1296,12 @@ if (!function_exists('responsi_generate_fonts')) {
 
         global $google_fonts;
 
-        $fonts_style = '';
+        $fonts = '';
 
         if( is_array( $option ) && isset( $option['face']) && isset( $option['line_height']) && isset($option['style']) && isset($option['size']) && isset($option['color']) ){
+            
             $important = '';
+            
             if ( $imp ){
                 $important = ' !important';
             }
@@ -1308,13 +1310,13 @@ if (!function_exists('responsi_generate_fonts')) {
                 $option['face'] = "'" . $option['face'] . "', sans-serif";
             }
             if ( !isset($option['style']) && !isset($option['size']) && !isset($option['color']) ){
-                $fonts_style = 'font-family: ' . stripslashes( $option["face"] ) . $important . ';';
+                $fonts = 'font-family: ' . stripslashes( $option["face"] ) . $important . ';';
             } else {
-                $fonts_style = 'font:' . esc_attr( $option['style'] ) . ' ' . esc_attr( $option['size'] ) . 'px/' . esc_attr( $option['line_height'] ) . 'em ' . stripslashes( $option['face'] ) . $important . ';color:' . esc_attr( $option['color'] ) . $important . ';';
+                $fonts = 'font:' . esc_attr( $option['style'] ) . ' ' . esc_attr( $option['size'] ) . 'px/' . esc_attr( $option['line_height'] ) . 'em ' . stripslashes( $option['face'] ) . $important . ';color:' . esc_attr( $option['color'] ) . $important . ';';
             }
         }
 
-        return $fonts_style;
+        return $fonts;
     }
 }
 
