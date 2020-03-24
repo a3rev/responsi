@@ -1089,7 +1089,7 @@ if ( is_array( $responsi_includes ) && count( $responsi_includes ) > 0 ) {
 
 if ( version_compare( PHP_VERSION, '5.6.0', '>=' ) ) {
     
-    require TEMPLATEPATH . '/vendor/autoload.php';
+    require dirname(__FILE__) . '/../vendor/autoload.php';
 
     new \A3Rev\Responsi\Customizer();
     new \A3Rev\Responsi\Layout();

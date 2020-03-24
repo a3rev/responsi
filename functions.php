@@ -5,8 +5,12 @@
 /*-----------------------------------------------------------------------------------*/
 
 define( 'RESPONSI_FRAMEWORK_VERSION', '7.8.0' );
-define( 'STYLESHEETPATH', get_stylesheet_directory() );
-define( 'TEMPLATEPATH', get_template_directory() );
+if( !defined('STYLESHEETPATH')){
+	define( 'STYLESHEETPATH', get_stylesheet_directory() );
+}
+if( !defined('TEMPLATEPATH')){
+	define( 'TEMPLATEPATH', get_template_directory() );
+}
 
 require_once ( 'functions/admin-init.php' );					// Framework Init
 
