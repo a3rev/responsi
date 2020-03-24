@@ -343,7 +343,8 @@ if ( !function_exists( 'responsi_header' ) ) {
         <?php do_action( 'responsi_head' ); ?>
         <?php wp_head(); ?>
         </head>
-        <body <?php body_class(); ?> <?php wp_body_open();?>>
+        <body <?php body_class(); ?>>
+        <?php wp_body_open();?>
         <?php do_action( 'responsi_wrapper_container_before' ); ?>
         <div id="responsi-site" class="responsi-site clearfix">
         <?php do_action( 'responsi_wrapper_container_content_before' ); ?>
@@ -1544,17 +1545,22 @@ if ( !function_exists( 'responsi_navigation' ) ) {
             if ( isset( $responsi_options['responsi_nav_mobile_type'] ) && 'select' === $responsi_options['responsi_nav_mobile_type'] ) {
                 $nav_ctr = $nav_ctr_before.$nav_ctr.$nav_ctr_after;
             }
-            echo $nav_ctr;
+            
             if ( function_exists('has_nav_menu' ) && has_nav_menu( 'primary-menu' ) ) {
-                @wp_nav_menu(array(
+                $nav = @wp_nav_menu(array(
                     'sort_column'       => 'menu_order',
                     'menu_id'           => 'main-nav',
                     'menu_class'        => 'responsi-menu menu nav',
                     'theme_location'    => 'primary-menu',
                     'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                     'container'         => 'ul',
+                    'echo'              => false
                 ));
+                if( $nav != '' ){
+                    echo $nav_ctr.$nav;
+                }
             } else {
+                echo $nav_ctr
                 ?>
             <ul id="main-nav" class="responsi-menu menu nav">
                 <?php
