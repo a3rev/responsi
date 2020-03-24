@@ -20,4 +20,11 @@ class a3Rev_Tests_ResponiFramework extends WP_UnitTestCase {
 
 	}
 
+	function test_responsi_exclude_button_css() {
+		
+		$output = responsi_exclude_button_css();
+		$this->assertStringContainsString( '.customize-partial-edit-shortcut-button' , $output );
+
+	}
+
 }
