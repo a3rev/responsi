@@ -27,4 +27,11 @@ class a3Rev_Tests_ResponiFramework extends WP_UnitTestCase {
 
 	}
 
+	function test_responsi_build_dynamic_css() {
+		
+		$output = responsi_build_dynamic_css();
+		$this->assertStringContainsString( 'body.mobile-view #wrap:after' , $output );
+
+	}
+
 }
