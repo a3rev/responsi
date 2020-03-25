@@ -27,7 +27,7 @@ class a3Rev_Tests_ResponiFramework extends WP_UnitTestCase {
 
 	}
 
-	function test_responsi_build_dynamic_css() {
+	/*function test_responsi_build_dynamic_css() {
 		
 		$output = responsi_build_dynamic_css();
 		$this->assertStringContainsString( '.mobile-view #wrap' , $output );
@@ -39,6 +39,6 @@ class a3Rev_Tests_ResponiFramework extends WP_UnitTestCase {
 		$output = responsi_register_webfonts();
 		$this->assertStringContainsString( 'fonts.googleapis.com' , $output );
 
-	}
+	}*/
 
 }
