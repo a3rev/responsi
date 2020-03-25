@@ -42,7 +42,7 @@ class a3Rev_Tests_ResponiFramework extends WP_UnitTestCase {
 		return $this->theme_root;
 	}
 
-	function test_theme_responsi() {
+	/*function test_theme_responsi() {
 		$theme = get_theme('Responsi');
 
 		$this->assertEquals( 'Responsi', $theme['Name'] );
@@ -61,7 +61,7 @@ class a3Rev_Tests_ResponiFramework extends WP_UnitTestCase {
 		$this->assertEquals( $this->theme_root.'/responsi', $theme['Stylesheet Dir'] );
 		$this->assertEquals( 'publish', $theme['Status'] );
 		$this->assertEquals( '', $theme['Parent Theme'] );
-	}
+	}*/
 
 	/**
 	 * A single example test.
