@@ -76,21 +76,21 @@ class a3Rev_Tests_ResponiFramework extends WP_UnitTestCase {
 	function test_responsi_exclude_button_css() {
 		
 		$output = (string)responsi_exclude_button_css();
-		$this->assertStringContains( '.customize-partial-edit-shortcut-button' , $output );
+		$this->assertStringContainsString( '.customize-partial-edit-shortcut-button' , $output );
 
 	}
 
 	function test_responsi_build_dynamic_css() {
 		
 		$output = (string)responsi_build_dynamic_css();
-		$this->assertStringContains( '.mobile-view #wrap' , $output );
+		$this->assertStringContainsString( '.customize-partial-edit-shortcut-button' , $output );
 
 	}
 
 	function test_responsi_register_webfonts() {
 		
 		$output = (string)responsi_register_webfonts();
-		$this->assertStringContains( '' , $output );
+		$this->assertStringContainsString( '' , $output );
 
 	}
 
