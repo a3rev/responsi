@@ -121,6 +121,29 @@ install_test_suite() {
 
 }
 
+install_responsi() {
+    # Script Variables
+	BRANCH=$TRAVIS_BRANCH
+	REPO=$TRAVIS_REPO_SLUG
+	WORKING_DIR="$PWD"
+
+	if [ "$TRAVIS_PULL_REQUEST_BRANCH" != "" ]; then
+		BRANCH=$TRAVIS_PULL_REQUEST_BRANCH
+		REPO=$TRAVIS_PULL_REQUEST_SLUG
+	fi
+
+    cd "$WP_CORE_DIR/wp-content/themes"
+    git clone --depth 1 "https://github.com/a3rev/responsi.git"
+    # install dependencies
+    cd responsi
+	composer install
+	npm install --no-dev
+    
+    # Back to original dir
+	cd "$WORKING_DIR"
+}
+
+
 install_db() {
 
 	if [ ${SKIP_DB_CREATE} = "true" ]; then
@@ -150,3 +173,4 @@ install_db() {
 install_wp
 install_test_suite
 install_db
+install_responsi
