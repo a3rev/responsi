@@ -215,7 +215,7 @@ if ( !function_exists('responsi_google_webfonts') ) {
                 // Check if option has "face" in array
                 if ( is_array( $option ) && isset( $option['face'] ) ) {
                     // Check if the google font name exists in the current "face" option
-                    if ( array_key_exists( $option['face'], $google_fonts ) && !strstr( $fonts, $option['face'] ) ) {
+                    if ( is_array($google_fonts) && array_key_exists( $option['face'], $google_fonts ) && !strstr( $fonts, $option['face'] ) ) {
                         $fonts .= $option['face'] . $google_fonts[$option['face']]['variant'] . "|";
                         $list_fonts[] = $option['face'];
                     }
@@ -1306,7 +1306,7 @@ if (!function_exists('responsi_generate_fonts')) {
                 $important = ' !important';
             }
 
-            if ( array_key_exists( $option['face'], $google_fonts ) ) {
+            if ( is_array($google_fonts) && array_key_exists( $option['face'], $google_fonts ) ) {
                 $option['face'] = "'" . $option['face'] . "', sans-serif";
             }
             if ( !isset($option['style']) && !isset($option['size']) && !isset($option['color']) ){
