@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 7.8.2 - 2020/04/03 =
+* This maintenance release fixes and issue with the WP Admin bar
+* Fix -  .responsi-toolbar z-index over riding the WP Admin bar dropdown menus in layout.css
+
 = 7.8.1 - 2020/04/02 =
 * This maintenance update is for compatibility with WordPress Major version 5.4
 * Tweak - Test for compatibility with WordPress 5.4
