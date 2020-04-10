@@ -454,24 +454,46 @@ if ( ! function_exists( 'responsi_setup' ) ){
 	        'primary-menu' => __( 'Primary Menu', 'responsi' )
 	    ));
 
-	    add_theme_support( 'html5', array(
-	        'comment-list',
-	        'comment-form',
-	        'search-form',
-	        'gallery',
-	        'caption'
-	    ));
+	    /*
+		 * Switch default core markup for search form, comment form, and comments
+		 * to output valid HTML5.
+		 */
+		add_theme_support(
+			'html5',
+			array(
+				'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
+				'script',
+				'style',
+			)
+		);
 
-	    add_theme_support( 'custom-logo' );
+		/**
+		 * Add support for core custom logo.
+		 *
+		 * @link https://codex.wordpress.org/Theme_Logo
+		 */
+		add_theme_support(
+			'custom-logo',
+			array(
+				'height'      => 250,
+				'width'       => 250,
+				'flex-width'  => false,
+				'flex-height' => false,
+			)
+		);
+
 	    add_theme_support( 'post-thumbnails' );
+		//set_post_thumbnail_size( 1568, 9999 );
 	    add_theme_support( 'automatic-feed-links' );
 	    add_theme_support( 'customize-selective-refresh-widgets' );
 
 	    // Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
-		add_theme_support( 'align-wide' );
-		add_theme_support( 'dark-editor-style' );
 
 		/*
 		 * This theme styles the visual editor to resemble the theme style,
@@ -479,11 +501,77 @@ if ( ! function_exists( 'responsi_setup' ) ){
 	 	 */
 		//add_editor_style( array( 'functions/css/editor-style.css' ) );
 
-		// Load regular editor styles into the new block-based editor.
+		// Add support for Block Styles.
+		add_theme_support( 'wp-block-styles' );
+
+		// Add support for full and wide align images.
+		add_theme_support( 'align-wide' );
+
+		// Add support for editor styles.
 		add_theme_support( 'editor-styles' );
 
-	 	// Load default block styles.
-		add_theme_support( 'wp-block-styles' );
+		// Add custom editor font sizes.
+		/*add_theme_support(
+			'editor-font-sizes',
+			array(
+				array(
+					'name'      => __( 'Small', 'responsi' ),
+					'shortName' => __( 'S', 'responsi' ),
+					'size'      => 19.5,
+					'slug'      => 'small',
+				),
+				array(
+					'name'      => __( 'Normal', 'responsi' ),
+					'shortName' => __( 'M', 'responsi' ),
+					'size'      => 22,
+					'slug'      => 'normal',
+				),
+				array(
+					'name'      => __( 'Large', 'responsi' ),
+					'shortName' => __( 'L', 'responsi' ),
+					'size'      => 36.5,
+					'slug'      => 'large',
+				),
+				array(
+					'name'      => __( 'Huge', 'responsi' ),
+					'shortName' => __( 'XL', 'responsi' ),
+					'size'      => 49.5,
+					'slug'      => 'huge',
+				),
+			)
+		);*/
+
+		// Editor color palette.
+		/*add_theme_support(
+			'editor-color-palette',
+			array(
+				array(
+					'name'  => 'default' === get_theme_mod( 'primary_color' ) ? __( 'Blue', 'responsi' ) : null,
+					'slug'  => 'primary',
+					'color' => get_theme_mod( 'primary_color_hue', 199 ),
+				),
+				array(
+					'name'  => 'default' === get_theme_mod( 'primary_color' ) ? __( 'Dark Blue', 'responsi' ) : null,
+					'slug'  => 'secondary',
+					'color' => get_theme_mod( 'primary_color_hue', 199 ),
+				),
+				array(
+					'name'  => __( 'Dark Gray', 'responsi' ),
+					'slug'  => 'dark-gray',
+					'color' => '#111',
+				),
+				array(
+					'name'  => __( 'Light Gray', 'responsi' ),
+					'slug'  => 'light-gray',
+					'color' => '#767676',
+				),
+				array(
+					'name'  => __( 'White', 'responsi' ),
+					'slug'  => 'white',
+					'color' => '#FFF',
+				),
+			)
+		);*/
 
 		// Add support for responsive embeds.
 		add_theme_support( 'responsive-embeds' );
@@ -492,6 +580,107 @@ if ( ! function_exists( 'responsi_setup' ) ){
 }
 
 add_action( 'after_setup_theme', 'responsi_setup' );
+
+if ( !function_exists( 'responsi_get_customizer_css' ) ){
+	function responsi_get_customizer_css( $type = 'front-end' ) {
+
+		global $post, $responsi_options;
+
+		$blockBgCSS = '';
+
+		$post_box_bg                                    = isset( $responsi_options['responsi_post_box_bg'] ) ? $responsi_options['responsi_post_box_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
+		$page_box_bg 			= isset( $responsi_options['responsi_page_box_bg'] ) ? $responsi_options['responsi_page_box_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
+    	$wrap_content_bg       	= isset( $responsi_options['responsi_wrap_content_background'] ) ? $responsi_options['responsi_wrap_content_background'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
+    	$box_inner_bg           = isset( $responsi_options['responsi_box_inner_bg'] ) ? $responsi_options['responsi_box_inner_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
+    	$is_layout_boxed		= isset( $responsi_options['responsi_layout_boxed'] ) ? esc_attr( $responsi_options['responsi_layout_boxed'] ) : 'true';
+    	$is_enable_boxed_style  = isset( $responsi_options['responsi_enable_boxed_style'] ) ? esc_attr( $responsi_options['responsi_enable_boxed_style'] ) : 'false';
+    	$wrap_ctn_bg     		= isset( $responsi_options['responsi_wrap_container_background'] ) ? $responsi_options['responsi_wrap_container_background'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
+
+		if( $post && $post->post_type == 'post' && isset($post_box_bg['onoff']) && isset($post_box_bg['color']) && 'false' != $post_box_bg['onoff'] && '' != $post_box_bg['color'] && 'transparent' != $post_box_bg['color'] ){
+			$blockBgCSS = responsi_generate_background_color($post_box_bg);
+		}elseif( isset($page_box_bg['onoff']) && isset($page_box_bg['color']) && 'false' != $page_box_bg['onoff'] && '' != $page_box_bg['color'] && 'transparent' != $page_box_bg['color'] ){
+			$blockBgCSS = responsi_generate_background_color($page_box_bg);
+		}elseif( isset($wrap_content_bg['onoff']) && isset($wrap_content_bg['color']) && 'false' != $wrap_content_bg['onoff'] && '' != $wrap_content_bg['color'] && 'transparent' != $wrap_content_bg['color'] ){
+			$blockBgCSS = responsi_generate_background_color($wrap_content_bg);
+		}elseif( isset($wrap_ctn_bg['onoff']) && isset($wrap_ctn_bg['color']) && 'false' != $wrap_ctn_bg['onoff'] && '' != $wrap_ctn_bg['color'] && 'transparent' != $wrap_ctn_bg['color'] ){
+			$blockBgCSS = responsi_generate_background_color($wrap_ctn_bg);
+		}elseif( 'true' === $is_layout_boxed && 'true' === $is_enable_boxed_style && isset($box_inner_bg['onoff']) && isset($box_inner_bg['color']) && 'false' != $box_inner_bg['onoff'] && '' != $box_inner_bg['color'] && 'transparent' != $box_inner_bg['color'] ){
+			$blockBgCSS = responsi_generate_background_color($box_inner_bg);
+		}else {
+		    $responsi_use_style_bg_image                = isset($responsi_options['responsi_use_style_bg_image']) ? esc_attr( $responsi_options['responsi_use_style_bg_image'] ) : 'false';
+		    $responsi_style_bg                          = isset($responsi_options['responsi_style_bg']) ? $responsi_options['responsi_style_bg'] : array( 'onoff' => 'true', 'color' => '#ffffff' );
+		    $responsi_style_bg_image                    = isset($responsi_options['responsi_style_bg_image']) ? str_replace( array( 'https:', 'http:' ), '', esc_url( $responsi_options['responsi_style_bg_image'] ) ) : '';
+		    $responsi_style_bg_image_repeat             = isset($responsi_options['responsi_style_bg_image_repeat']) ? esc_attr( $responsi_options['responsi_style_bg_image_repeat'] ) : 'repeat';
+		    $responsi_style_bg_image_attachment         = isset($responsi_options['responsi_style_bg_image_attachment']) ? esc_attr( $responsi_options['responsi_style_bg_image_attachment'] ) : 'inherit';
+		    $responsi_bg_position_vertical              = isset($responsi_options['responsi_bg_position_vertical']) ? esc_attr( $responsi_options['responsi_bg_position_vertical'] ) : 'center';
+		    $responsi_bg_position_horizontal            = isset($responsi_options['responsi_bg_position_horizontal']) ? esc_attr( $responsi_options['responsi_bg_position_horizontal'] ) : 'center';
+		    $responsi_background_style_img              = isset($responsi_options['responsi_background_style_img']) ? esc_attr( $responsi_options['responsi_background_style_img'] ) : '';
+		    $responsi_disable_background_style_img      = isset($responsi_options['responsi_disable_background_style_img']) ? esc_attr( $responsi_options['responsi_disable_background_style_img'] ) : 'false';
+		    $responsi_use_bg_size                       = isset($responsi_options['responsi_use_bg_size']) ? esc_attr( $responsi_options['responsi_use_bg_size'] ) : 'false';
+		    $responsi_bg_size_width                     = isset($responsi_options['responsi_bg_size_width']) ? esc_attr( $responsi_options['responsi_bg_size_width'] ) : '100%';
+		    $responsi_bg_size_height                    = isset($responsi_options['responsi_bg_size_height']) ? esc_attr( $responsi_options['responsi_bg_size_height'] ) : 'auto';
+		    $bg_image_size = '';
+		    if ($responsi_use_bg_size == 'true') {
+		        $bg_image_size = 'background-size:' . $responsi_bg_size_width . ' ' . $responsi_bg_size_height . ';';
+		    }
+
+		    if ( 'true' === $responsi_use_style_bg_image ) {
+		        $blockBgCSS .= responsi_generate_background_color( $responsi_style_bg );
+		        $blockBgCSS .= 'background-image:url("' . $responsi_style_bg_image . '");';
+		        $blockBgCSS .= 'background-repeat:' . $responsi_style_bg_image_repeat . ';';
+		        $blockBgCSS .= 'background-attachment:' . $responsi_style_bg_image_attachment . ';';
+		        $blockBgCSS .= 'background-position:' . $responsi_bg_position_horizontal . ' ' . $responsi_bg_position_vertical . ';';
+		        $blockBgCSS .= $bg_image_size;
+		    } else {
+		        if ( 'true' === $responsi_disable_background_style_img && '' !== $responsi_background_style_img ) {
+		            $blockBgCSS .= '
+		                background-attachment: ' . $responsi_style_bg_image_attachment . ';
+		                background-image: url("' . $responsi_background_style_img . '");
+		                ' . responsi_generate_background_color($responsi_style_bg) . '
+		                background-position:' . $responsi_bg_position_horizontal . ' ' . $responsi_bg_position_vertical . ';
+		                background-repeat: repeat;
+		            ';
+		        } else {
+		            $blockBgCSS .= '
+		                background-attachment: ' . $responsi_style_bg_image_attachment . ';
+		                ' . responsi_generate_background_color( $responsi_style_bg ) . '
+		                background-position:' . $responsi_bg_position_horizontal . ' ' . $responsi_bg_position_vertical . ';
+		                background-repeat: ' . $responsi_style_bg_image_repeat . ';
+		            ';
+		        }
+		    }
+		}
+
+		$css = '';
+
+		if( '' != $blockBgCSS ){
+			$css .= '
+				.editor-styles-wrapper {
+					' . $blockBgCSS . '
+				}
+			';
+		}
+
+		return $css;
+
+	}
+}
+/**
+ * Enqueue supplemental block editor styles.
+ */
+function responsi_block_editor_styles() {
+
+	$css_dependencies = array();
+
+	// Enqueue the editor styles.
+	wp_enqueue_style( 'responsi-block-editor-styles', get_theme_file_uri( '/functions/css/editor-style-block.css' ), $css_dependencies, wp_get_theme()->get( 'Version' ), 'all' );
+
+	// Add inline style from the Customizer.
+	wp_add_inline_style( 'responsi-block-editor-styles', responsi_get_customizer_css( 'block-editor' ) );
+	
+}
+
+add_action( 'enqueue_block_editor_assets', 'responsi_block_editor_styles', 1, 1 );
 
 /*-----------------------------------------------------------------------------------*/
 /* responsi_after_setup_theme */
