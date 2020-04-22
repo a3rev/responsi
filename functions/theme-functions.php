@@ -1536,15 +1536,16 @@ if ( !function_exists( 'responsi_navigation' ) ) {
             <?php do_action( 'responsi_navigation' ); ?>
             <?php
             $nav_ctr = '';
+            $text_navigation = '';
             $nav_ctr_before = apply_filters( 'responsi_mobile_navigation_before', '' );
             $nav_ctr_after = apply_filters( 'responsi_mobile_navigation_after', '' );
-            if ( isset( $responsi_options['responsi_nav_mobile_type'] ) && 'click' === $responsi_options['responsi_nav_mobile_type'] ) {
-                $nav_ctr = '<div class="navigation-mobile open alignment-left">'.$nav_ctr_before.'<span class="menu-text before"></span><span class="separator"><i class="menu-icon hamburger-icon"></i></span><span class="menu-text after">'. __('Navigation', 'responsi') .'</span>'.$nav_ctr_after.''. do_action( 'responsi_navigation' ) .'</div>';
-                $nav_ctr = apply_filters( 'responsi_mobile_navigation', $nav_ctr );
+            
+            if( isset($responsi_options['responsi_hext_navbar_mobile_text_on']) && $responsi_options['responsi_hext_navbar_mobile_text_on'] == 'true' ){
+                $text_navigation = $responsi_options['responsi_hext_navbar_mobile_text'];
             }
-            if ( isset( $responsi_options['responsi_nav_mobile_type'] ) && 'select' === $responsi_options['responsi_nav_mobile_type'] ) {
-                $nav_ctr = $nav_ctr_before.$nav_ctr.$nav_ctr_after;
-            }
+            $nav_ctr = '<div class="navigation-mobile open alignment-'.$responsi_options['responsi_hext_navbar_icon_mobile_alignment'].'">'.$nav_ctr_before.'<span class="menu-text before">'. esc_html( $text_navigation ) .'</span><span class="separator nav-separator"><i class="menu-icon hamburger-icon hext-icon"></i></span><span class="menu-text after">'. esc_html( $text_navigation ) .'</span>'.$nav_ctr_after.'</div>';
+                
+            $nav_ctr = apply_filters( 'responsi_mobile_navigation', $nav_ctr );
             
             if ( function_exists('has_nav_menu' ) && has_nav_menu( 'primary-menu' ) ) {
                 $nav = @wp_nav_menu(array(

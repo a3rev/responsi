@@ -6,12 +6,20 @@ if ( ! isset( $content_width ) ){
 }
 
 if ( !is_admin() ) {
-    if( function_exists( 'wp_make_content_images_responsive' ) ){
+
+	if( function_exists( 'wp_filter_content_tags' ) ){
+        add_filter( 'a3_lazy_load_html', 'wp_filter_content_tags' );
+    }elseif( function_exists( 'wp_make_content_images_responsive' ) ){
         add_filter( 'a3_lazy_load_html', 'wp_make_content_images_responsive' );
     }
 }
 
-add_filter( 'responsi_autoembed_media', 'wp_make_content_images_responsive', 8 );
+if( function_exists( 'wp_filter_content_tags' ) ){
+    add_filter( 'responsi_autoembed_media', 'wp_filter_content_tags', 8 );
+}elseif( function_exists( 'wp_make_content_images_responsive' ) ){
+    add_filter( 'responsi_autoembed_media', 'wp_make_content_images_responsive', 8 );
+}
+
 add_filter( 'responsi_autoembed_media', 'responsi_autoembed_media_replace_iframe' );
 
 add_filter( 'responsi_autoembed_media', array( 

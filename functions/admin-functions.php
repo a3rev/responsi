@@ -3225,6 +3225,10 @@ function responsi_build_dynamic_css( $preview = false ) {
     $responsi_container_nav_border_top              = isset( $responsi_options['responsi_container_nav_border_top'] ) ? $responsi_options['responsi_container_nav_border_top'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB');
     $responsi_container_nav_border_bottom           = isset( $responsi_options['responsi_container_nav_border_bottom'] ) ? $responsi_options['responsi_container_nav_border_bottom'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB');
     $responsi_container_nav_border_lr               = isset( $responsi_options['responsi_container_nav_border_lr'] ) ? $responsi_options['responsi_container_nav_border_lr'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB');
+    
+    $responsi_container_nav_border_radius_option    = isset( $responsi_options['responsi_container_nav_border_radius'] ) ? $responsi_options['responsi_container_nav_border_radius'] : array( 'corner' => 'square','rounded_value' => '0' );
+    $responsi_container_nav_border_radius           = responsi_generate_border_radius_value( $responsi_container_nav_border_radius_option );
+    
     $responsi_nav_box_shadow_option                 = isset( $responsi_options['responsi_nav_box_shadow'] ) ? $responsi_options['responsi_nav_box_shadow'] : array( 'onoff' => 'false' , 'h_shadow' => '0px' , 'v_shadow' => '0px', 'blur' => '5px' , 'spread' => '0px', 'color' => '#DBDBDB', 'inset' => '' );
     $responsi_nav_box_shadow                        = responsi_generate_box_shadow( $responsi_nav_box_shadow_option, false );
     $responsi_container_nav_padding_top             = isset( $responsi_options['responsi_container_nav_padding_top'] ) ? esc_attr( $responsi_options['responsi_container_nav_padding_top'] ) : 0;
@@ -3240,7 +3244,24 @@ function responsi_build_dynamic_css( $preview = false ) {
     $nav_container_css .= responsi_generate_background_color( $container_nav_bg );
     if ( 'true' === $enable_container_nav_bg_image && trim( $responsi_container_bg_image ) != '') {
         $nav_container_css .= 'background-image:url("' . $responsi_container_bg_image . '");background-position:' . strtolower($responsi_container_bg_position_horizontal) . ' ' . strtolower($responsi_container_bg_position_vertical) . ';background-repeat:' . $responsi_container_bg_image_repeat . ';';
+        $responsi_hext_n_container_background_image_size_on = 'false';
+        if(isset($responsi_options['responsi_hext_n_container_background_image_size_on'])){
+            $responsi_hext_n_container_background_image_size_on    = trim($responsi_options['responsi_hext_n_container_background_image_size_on']);
+        }
+
+        $responsi_hext_n_container_background_image_size_width    = 'auto';
+        if(isset($responsi_options['responsi_hext_n_container_background_image_size_width'])){
+            $responsi_hext_n_container_background_image_size_width    =  strtolower( trim($responsi_options['responsi_hext_n_container_background_image_size_width']) );
+        }
+        $responsi_hext_n_container_background_image_size_height    = 'auto';
+        if(isset($responsi_options['responsi_hext_n_container_background_image_size_height'])){
+            $responsi_hext_n_container_background_image_size_height    = strtolower( trim($responsi_options['responsi_hext_n_container_background_image_size_height']) );
+        }
+        if($responsi_hext_n_container_background_image_size_on == 'true'){
+            $nav_container_css .= 'background-size:'. $responsi_hext_n_container_background_image_size_width.' '. $responsi_hext_n_container_background_image_size_height.';';
+        }
     }
+
     $nav_container_css .= responsi_generate_border( $responsi_container_nav_border_top, 'border-top' );
     $nav_container_css .= responsi_generate_border( $responsi_container_nav_border_bottom, 'border-bottom' );
     $nav_container_css .= responsi_generate_border( $responsi_container_nav_border_lr, 'border-left' );
@@ -3253,10 +3274,84 @@ function responsi_build_dynamic_css( $preview = false ) {
     $nav_container_css .= 'margin-bottom:' . $responsi_container_nav_margin_bottom . 'px;';
     $nav_container_css .= 'margin-left:' . $responsi_container_nav_margin_left . 'px;';
     $nav_container_css .= 'margin-right:' . $responsi_container_nav_margin_right . 'px;';
+    $nav_container_css .= $responsi_container_nav_border_radius;
     $nav_container_css .= $responsi_nav_box_shadow;
-    
-    $dynamic_css .= '.responsi-navigation{' . $nav_container_css . '}';
-    
+
+    $responsi_hext_n_content_margin_top = $responsi_options['responsi_hext_n_content_margin_top'];
+    $responsi_hext_n_content_margin_left = $responsi_options['responsi_hext_n_content_margin_left'];
+    $responsi_hext_n_content_margin_right = $responsi_options['responsi_hext_n_content_margin_right'];
+    $responsi_hext_n_content_margin_bottom = $responsi_options['responsi_hext_n_content_margin_bottom'];
+
+    $responsi_hext_n_content_padding_top = $responsi_options['responsi_hext_n_content_padding_top'];
+    $responsi_hext_n_content_padding_left = $responsi_options['responsi_hext_n_content_padding_left'];
+    $responsi_hext_n_content_padding_right = $responsi_options['responsi_hext_n_content_padding_right'];
+    $responsi_hext_n_content_padding_bottom = $responsi_options['responsi_hext_n_content_padding_bottom'];
+
+    $responsi_hext_n_content_background_color = $responsi_options['responsi_hext_n_content_background_color'];
+    if( !is_array( $responsi_hext_n_content_background_color ) ){
+        $responsi_hext_n_content_background_color = array( 'onoff' => 'true', 'color' => $responsi_hext_n_content_background_color );
+    }
+
+    $responsi_hext_n_content_background_image_url = '';
+    $responsi_hext_n_content_background_image = $responsi_options['responsi_hext_n_content_background_image'];
+    if( $responsi_hext_n_content_background_image == 'true' ){
+        $responsi_hext_n_content_background_image_url = $responsi_options['responsi_hext_n_content_background_image_url'];
+    }
+
+    $responsi_hext_n_content_background_image_position_vertical = 'center';
+    if (trim($responsi_options['responsi_hext_n_content_background_image_position_vertical']) != '') {
+        $responsi_hext_n_content_background_image_position_vertical = trim($responsi_options['responsi_hext_n_content_background_image_position_vertical']);
+    }
+
+    $responsi_hext_n_content_background_image_position_horizontal = 'center';
+    if (trim($responsi_options['responsi_hext_n_content_background_image_position_horizontal']) != '') {
+        $responsi_hext_n_content_background_image_position_horizontal = trim($responsi_options['responsi_hext_n_content_background_image_position_horizontal']);
+    }
+
+    $responsi_hext_n_content_background_image_repeat = $responsi_options['responsi_hext_n_content_background_image_repeat'];
+
+    $responsi_hext_n_content_border_top = $responsi_options['responsi_hext_n_content_border_top'];
+    $responsi_hext_n_content_border_bottom = $responsi_options['responsi_hext_n_content_border_bottom'];
+    $responsi_hext_n_content_border_lr = $responsi_options['responsi_hext_n_content_border_lr'];
+    $responsi_hext_n_content_border_radius     = responsi_generate_border_radius( $responsi_options['responsi_hext_n_content_border_radius'] );
+    $responsi_hext_n_content_box_shadow = responsi_generate_box_shadow($responsi_options['responsi_hext_n_content_box_shadow']);
+
+    $nav_container_in_css = '';
+    $nav_container_in_css .= 'margin:'.$responsi_hext_n_content_margin_top.'px '.$responsi_hext_n_content_margin_right.'px '.$responsi_hext_n_content_margin_bottom.'px '.$responsi_hext_n_content_margin_left.'px;';
+    $nav_container_in_css .= 'padding:'.$responsi_hext_n_content_padding_top.'px '.$responsi_hext_n_content_padding_right.'px '.$responsi_hext_n_content_padding_bottom.'px '.$responsi_hext_n_content_padding_left.'px;';
+    $nav_container_in_css .= responsi_generate_background_color( $responsi_hext_n_content_background_color );
+
+    if( $responsi_hext_n_content_background_image == 'true' && $responsi_hext_n_content_background_image_url != '' ){
+        $nav_container_in_css .= 'background-image:url(' . $responsi_hext_n_content_background_image_url . ');';
+        $nav_container_in_css .= 'background-repeat:' . $responsi_hext_n_content_background_image_repeat . ';';
+        $nav_container_in_css .= 'background-position:' . strtolower($responsi_hext_n_content_background_image_position_horizontal) . ' ' . strtolower($responsi_hext_n_content_background_image_position_vertical) . ';';
+        
+        $responsi_hext_n_content_background_image_size_on = 'false';
+        if(isset($responsi_options['responsi_hext_n_content_background_image_size_on'])){
+            $responsi_hext_n_content_background_image_size_on    = trim($responsi_options['responsi_hext_n_content_background_image_size_on']);
+        }
+
+        $responsi_hext_n_content_background_image_size_width    = 'auto';
+        if(isset($responsi_options['responsi_hext_n_content_background_image_size_width'])){
+            $responsi_hext_n_content_background_image_size_width    =  strtolower( trim($responsi_options['responsi_hext_n_content_background_image_size_width']) );
+        }
+        $responsi_hext_n_content_background_image_size_height    = 'auto';
+        if(isset($responsi_options['responsi_hext_n_content_background_image_size_height'])){
+            $responsi_hext_n_content_background_image_size_height    = strtolower( trim($responsi_options['responsi_hext_n_content_background_image_size_height']) );
+        }
+        if($responsi_hext_n_content_background_image_size_on == 'true'){
+            $nav_container_in_css .= 'background-size:'. $responsi_hext_n_content_background_image_size_width.' '. $responsi_hext_n_content_background_image_size_height.';';
+        }
+    }
+
+    $nav_container_in_css .= responsi_generate_border( $responsi_hext_n_content_border_top, 'border-top', true);
+    $nav_container_in_css .= responsi_generate_border( $responsi_hext_n_content_border_bottom, 'border-bottom', true);
+    $nav_container_in_css .= responsi_generate_border( $responsi_hext_n_content_border_lr, 'border-left', true);
+    $nav_container_in_css .= responsi_generate_border( $responsi_hext_n_content_border_lr, 'border-right', true);
+    $nav_container_in_css .= $responsi_hext_n_content_border_radius;
+    $nav_container_in_css .= $responsi_hext_n_content_box_shadow;
+
+
     $nav_bg                                         = isset( $responsi_options['responsi_nav_bg'] ) ? $responsi_options['responsi_nav_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
     $responsi_nav_margin_left                       = isset( $responsi_options['responsi_nav_margin_left'] ) ? esc_attr( $responsi_options['responsi_nav_margin_left'] ) : 0;
     $responsi_nav_margin_right                      = isset( $responsi_options['responsi_nav_margin_right'] ) ? esc_attr( $responsi_options['responsi_nav_margin_right'] ) : 0;
@@ -3313,61 +3408,41 @@ function responsi_build_dynamic_css( $preview = false ) {
     $nav_content_css = 'box-sizing: border-box;';
     $nav_content_css .= responsi_generate_background_color($nav_bg, true );
 
-    $nav_content_css .= 'padding-top:' . $responsi_nav_padding_tb_top . 'px !important;';
-    $nav_content_css .= 'padding-bottom:' . $responsi_nav_padding_tb_bottom . 'px !important;';
-    $nav_content_css .= 'padding-left:' . $responsi_nav_padding_lr_left . 'px !important;';
-    $nav_content_css .= 'padding-right:' . $responsi_nav_padding_lr_right . 'px !important;';
-    $nav_content_css .= 'margin-top:' . $responsi_nav_margin_top . 'px !important;';
-    $nav_content_css .= 'margin-bottom:' . $responsi_nav_margin_bottom . 'px !important;';
-    $nav_content_css .= 'margin-left:' . $responsi_nav_margin_left . 'px !important;';
-    $nav_content_css .= 'margin-right:' . $responsi_nav_margin_right . 'px !important;';
+    $nav_content_css .= 'padding-top:' . $responsi_nav_padding_tb_top . 'px;';
+    $nav_content_css .= 'padding-bottom:' . $responsi_nav_padding_tb_bottom . 'px;';
+    $nav_content_css .= 'padding-left:' . $responsi_nav_padding_lr_left . 'px;';
+    $nav_content_css .= 'padding-right:' . $responsi_nav_padding_lr_right . 'px;';
+    $nav_content_css .= 'margin-top:' . $responsi_nav_margin_top . 'px;';
+    $nav_content_css .= 'margin-bottom:' . $responsi_nav_margin_bottom . 'px;';
+    $nav_content_css .= 'margin-left:' . $responsi_nav_margin_left . 'px;';
+    $nav_content_css .= 'margin-right:' . $responsi_nav_margin_right . 'px;';
     $nav_content_css .= responsi_generate_border( $nav_border_top, 'border-top' );
     $nav_content_css .= responsi_generate_border( $nav_border_bot, 'border-bottom' );
     $nav_content_css .= responsi_generate_border( $nav_border_lr, 'border-left' );
     $nav_content_css .= responsi_generate_border( $nav_border_lr, 'border-right' );
     $nav_content_css .= 'border-radius:' . $responsi_nav_border_radius_tl . ' ' . $responsi_nav_border_radius_tr . ' ' . $responsi_nav_border_radius_br . ' ' . $responsi_nav_border_radius_bl . ';';
     $nav_content_css .= $responsi_nav_shadow;
-    $dynamic_css .= '.navigation{' . $nav_content_css . '}';
-    if ( isset($responsi_options['responsi_nav_mobile_type']) && 'click' === $responsi_options['responsi_nav_mobile_type'] ) {
-        $dynamic_css .= '#mobileMenu_main-nav{display:none !important;}';
-    }
-    if ( isset( $nav_divider_border['width'] ) && $nav_divider_border['width'] >= 0 ) {
-        $dynamic_css .= '.navigation-in nav > ul.menu > li, .navigation-in div > ul.menu > li, .navigation-in .partial-refresh-menu-container ul.menu > li { '.responsi_generate_border( $nav_divider_border, 'border-left' ).'}';
-        $dynamic_css .= '.navigation-in nav > ul.menu > li:first-child, .navigation-in div > ul.menu > li:first-child, .navigation-in .partial-refresh-menu-container ul.menu > li:first-child { border-left: 0px !important; }';
-        $dynamic_css .= '.navigation-in ul.menu > li > ul  { left: ' . $responsi_navi_border_margin_left . 'px !important; }';
-    }
-    
+
     $nav_item_css = '';
     $nav_item_css .= responsi_generate_background_color( $responsi_navi_background );
     $nav_item_css .= responsi_generate_border( $responsi_navi_border_top, 'border-top' );
     $nav_item_css .= responsi_generate_border( $responsi_navi_border_bottom, 'border-bottom' );
     $nav_item_css .= responsi_generate_border( $responsi_navi_border_left, 'border-left' );
     $nav_item_css .= responsi_generate_border( $responsi_navi_border_right, 'border-right' );
-    $nav_item_css .= 'padding-top:' . $responsi_navi_border_padding_top . 'px !important;';
-    $nav_item_css .= 'padding-bottom:' . $responsi_navi_border_padding_bottom . 'px !important;';
-    $nav_item_css .= 'padding-left:' . $responsi_navi_border_padding_left . 'px !important;';
-    $nav_item_css .= 'padding-right:' . $responsi_navi_border_padding_right . 'px !important;';
-    $nav_item_css .= 'margin-top:' . $responsi_navi_border_margin_top . 'px !important;';
-    $nav_item_css .= 'margin-bottom:' . $responsi_navi_border_margin_bottom . 'px !important;';
-    $nav_item_css .= 'margin-left:' . $responsi_navi_border_margin_left . 'px !important;';
-    $nav_item_css .= 'margin-right:' . $responsi_navi_border_margin_right . 'px !important;';
+    $nav_item_css .= 'padding-top:' . $responsi_navi_border_padding_top . 'px;';
+    $nav_item_css .= 'padding-bottom:' . $responsi_navi_border_padding_bottom . 'px;';
+    $nav_item_css .= 'padding-left:' . $responsi_navi_border_padding_left . 'px;';
+    $nav_item_css .= 'padding-right:' . $responsi_navi_border_padding_right . 'px;';
+    $nav_item_css .= 'margin-top:' . $responsi_navi_border_margin_top . 'px;';
+    $nav_item_css .= 'margin-bottom:' . $responsi_navi_border_margin_bottom . 'px;';
+    $nav_item_css .= 'margin-left:' . $responsi_navi_border_margin_left . 'px;';
+    $nav_item_css .= 'margin-right:' . $responsi_navi_border_margin_right . 'px;';
     $nav_item_css .= 'border-radius:' . $responsi_navi_border_radius_tl . ' ' . $responsi_navi_border_radius_tr . ' ' . $responsi_navi_border_radius_br . ' ' . $responsi_navi_border_radius_bl . ';';
     $nav_item_css .= responsi_generate_fonts( $nav_font, false );
     $nav_item_css .= 'color:' . esc_attr( $nav_font['color'] ) . ';';
     $nav_item_css .= 'text-transform:' . $nav_font_transform . ';';
-    $dynamic_css .= '.navigation-in nav > ul.menu > li > a,.navigation-in div > ul.menu > li > a ,.navigation-in nav > ul.menu > li:first-child > a,.navigation-in div > ul.menu > li:first-child > a , .navigation-in .partial-refresh-menu-container ul.menu > li > a,.navigation-in .navigation-in .partial-refresh-menu-container ul > li:first-child > a {'.$nav_item_css.'}';
-    $dynamic_css .= '.navigation-in ul.menu li.menu-item-account a:before{ top: -1px !important;vertical-align: top !important;}';
-    $dynamic_css .= '.navigation-mobile{color:' . esc_attr( $nav_font['color'] ) . ';}';
-    $dynamic_css .= '.navigation-mobile .hamburger-icon:before,.navigation-mobile .responsi-icon-cancel:before{box-shadow: 1px 0 0 ' . esc_attr( $nav_font['color'] ) . ';}';
-    $dynamic_css .= '.navigation-in ul.menu > li.current-menu-item > a { ' . responsi_generate_background_color($nav_currentitem_bg) . 'color:' . $nav_currentitem . ' !important; }';
-    $dynamic_css .= '.navigation-in ul.menu > li > a:hover,.navigation-in ul.menu > li:hover > a,.navigation-in .menu > li.menu-item-has-children:hover > a,.navigation-mobile .hamburger-icon:hover,.navigation-mobile .responsi-icon-cancel:hover,.navigation-in ul.menu > li.current-menu-item > a:hover{ color:' . $nav_hover . '!important; }';
-    $dynamic_css .= '.navigation-in ul.menu > li a:hover, .navigation-in ul.menu > li.menu-item-has-children:hover > a,.navigation-in ul.menu > li:hover > a {' . responsi_generate_background_color( $nav_hover_bg, true ) . '}';
-    $dynamic_css .= '.navigation-in ul.menu > li.menu-item-has-children > a:after { border-color:' . esc_attr( $nav_font['color'] ) . ' transparent transparent !important;}';
-    $dynamic_css .= '.navigation-in ul.menu > li.menu-item-has-children:hover > a:after,.navigation-in ul.menu > li.menu-item-has-children.current-menu-item:hover > a:after{ border-color:' . $nav_hover . ' transparent transparent !important;}';
-    $dynamic_css .= '.navigation-in ul.menu > li.menu-item-has-children.current-menu-item > a:after{ border-color:' . $nav_currentitem . ' transparent transparent !important;}';
-    $dynamic_css .= '.navigation{text-align:left}';
-    $dynamic_css .= '.navigation-in ul{text-align:left}';
-    $dynamic_css .= '.navigation-in select{max-width:100%;margin-bottom:0px !important;margin-top:0px !important;width:100%;}';
+
+
     $pri_navbar_postion = 'left';
     if ($responsi_pri_navbar_postion == 'left') {
         $pri_navbar_postion = 'left';
@@ -3376,8 +3451,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     } elseif ($responsi_pri_navbar_postion == 'center') {
         $pri_navbar_postion = 'center';
     }
-    $dynamic_css .= '@media only screen and (min-width: 783px){.navigation-in ul.menu {float:none;display:inline-block;}.navigation{text-align:' . $pri_navbar_postion . ';}}';
-    
+
     $responsi_nav_dropdown_background               = isset( $responsi_options['responsi_nav_dropdown_background'] ) ? $responsi_options['responsi_nav_dropdown_background'] :  array( 'onoff' => 'true', 'color' => '#ffffff');
     $responsi_nav_dropdown_padding_left             = isset( $responsi_options['responsi_nav_dropdown_padding_left'] ) ? esc_attr( $responsi_options['responsi_nav_dropdown_padding_left'] ) : 0;
     $responsi_nav_dropdown_padding_right            = isset( $responsi_options['responsi_nav_dropdown_padding_right'] ) ? esc_attr( $responsi_options['responsi_nav_dropdown_padding_right'] ) : 0;
@@ -3397,7 +3471,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $responsi_nav_dropdown_border_radius_br         = responsi_generate_border_radius_value($responsi_nav_dropdown_border_radius_br_option);
     $responsi_nav_dropdown_shadow_option            = isset( $responsi_options['responsi_nav_dropdown_shadow'] ) ? $responsi_options['responsi_nav_dropdown_shadow'] : array( 'onoff' => 'false' , 'h_shadow' => '0px' , 'v_shadow' => '0px', 'blur' => '5px' , 'spread' => '0px', 'color' => '#DBDBDB', 'inset' => '' );
     $responsi_nav_dropdown_shadow                   = responsi_generate_box_shadow($responsi_nav_dropdown_shadow_option);
-    
+
     $nav_dropdown_css = '';
     $nav_dropdown_css .= responsi_generate_background_color( $responsi_nav_dropdown_background );
     $nav_dropdown_css .= responsi_generate_border( $responsi_nav_dropdown_border_top, 'border-top' );
@@ -3408,12 +3482,9 @@ function responsi_build_dynamic_css( $preview = false ) {
     $nav_dropdown_css .= 'padding-bottom:' . $responsi_nav_dropdown_padding_bottom . 'px;';
     $nav_dropdown_css .= 'padding-left:' . $responsi_nav_dropdown_padding_left . 'px;';
     $nav_dropdown_css .= 'padding-right:' . $responsi_nav_dropdown_padding_right . 'px;';
-    $nav_dropdown_css .= 'border-radius:' . $responsi_nav_dropdown_border_radius_tl . ' ' . $responsi_nav_dropdown_border_radius_tr . ' ' . $responsi_nav_dropdown_border_radius_br . ' ' . $responsi_nav_dropdown_border_radius_bl . ';';
     $nav_dropdown_css .= $responsi_nav_dropdown_shadow;
-    $dynamic_css .= '.navigation-in ul.sub-menu li:first-child > a{border-top-left-radius: ' . $responsi_nav_dropdown_border_radius_tl . ';border-top-right-radius: ' . $responsi_nav_dropdown_border_radius_tr . ';}';
-    $dynamic_css .= '.navigation-in ul.sub-menu li:last-child > a{border-bottom-left-radius: ' . $responsi_nav_dropdown_border_radius_bl . ';border-bottom-right-radius: ' . $responsi_nav_dropdown_border_radius_br . ';}';
-    $dynamic_css .= '.navigation-in ul.menu ul{' . $nav_dropdown_css . '}';
-    $dynamic_css .= '.navigation-in ul.menu ul ul{top:-' . esc_attr( $responsi_nav_dropdown_border_top['width'] ) . 'px;}';
+    
+    
 
     $responsi_nav_dropdown_item_padding_left             = isset( $responsi_options['responsi_nav_dropdown_item_padding_left'] ) ? esc_attr( $responsi_options['responsi_nav_dropdown_item_padding_left'] ) : 0;
     $responsi_nav_dropdown_item_padding_right            = isset( $responsi_options['responsi_nav_dropdown_item_padding_right'] ) ? esc_attr( $responsi_options['responsi_nav_dropdown_item_padding_right'] ) : 0;
@@ -3426,22 +3497,328 @@ function responsi_build_dynamic_css( $preview = false ) {
     $responsi_nav_dropdown_item_background               = isset( $responsi_options['responsi_nav_dropdown_item_background'] ) ? $responsi_options['responsi_nav_dropdown_item_background'] :  array( 'onoff' => 'true', 'color' => '#ffffff');
     $responsi_nav_dropdown_hover_background              = isset( $responsi_options['responsi_nav_dropdown_hover_background'] ) ? $responsi_options['responsi_nav_dropdown_hover_background'] :  array( 'onoff' => 'true', 'color' => '#ffffff');
     
-    $dynamic_css .= '.navigation-in ul.menu li ul li a{padding-top:' . $responsi_nav_dropdown_item_padding_top . 'px;padding-bottom:' . $responsi_nav_dropdown_item_padding_bottom . 'px;padding-left:' . $responsi_nav_dropdown_item_padding_left . 'px;padding-right:' . $responsi_nav_dropdown_item_padding_right . 'px;}';
-    $dynamic_css .= '.navigation-in ul.menu ul li {'.responsi_generate_border( $responsi_nav_dropdown_separator, 'border-top' ).'}';
-    $dynamic_css .= '.navigation-in ul.menu ul li:first-child{border-top: 0 solid #FFFFFF !important;}';
-    $dynamic_css .= '.navigation-in ul.menu ul li a, .navigation-in ul.menu li ul li a{ ' . responsi_generate_fonts($responsi_nav_dropdown_font, false) . ' }';
-    $dynamic_css .= '.navigation-in ul.menu li ul li a { text-transform:' . $responsi_nav_dropdown_font_transform . '; }';
-    $dynamic_css .= '.navigation-in ul.menu ul li ,.navigation-in ul.menu ul li a{white-space: nowrap;' . responsi_generate_background_color($responsi_nav_dropdown_item_background) . '}';
-    $dynamic_css .= '.navigation-in ul.sub-menu li{background-color:transparent;}';
-    $dynamic_css .= '.navigation-in ul.menu > li ul li a:hover,.navigation-in ul.menu > li ul li:hover{' . responsi_generate_background_color($responsi_nav_dropdown_hover_background, true) . '}';
-    $dynamic_css .= '.navigation-in ul.menu > li ul li:hover{background-color:transparent !important;}';
-    $dynamic_css .= '.navigation-in ul.menu > li.menu-item-has-children:hover ul li a{ color:' . esc_attr( $responsi_nav_dropdown_font['color'] ) . '; }';
-    $dynamic_css .= '.navigation-in ul.menu li.menu-item-has-children ul li a:hover{color:' . $responsi_nav_dropdown_hover_color . ';}';
-    $dynamic_css .= '.navigation-in ul.menu > li > ul > li > ul > li > ul > li > a:hover{color:' . $responsi_nav_dropdown_hover_color . ';}';
-    $dynamic_css .= '.navigation-in ul.menu > li > ul > li.menu-item-has-children a:after{ border-color:transparent transparent transparent ' . esc_attr( $responsi_nav_dropdown_font['color'] ) . ';}';
-    $dynamic_css .= '.navigation-in ul.menu > li > ul li.menu-item-has-children:hover > a:hover:after{ border-color:transparent transparent transparent ' . $responsi_nav_dropdown_hover_color . ';}';
-    $dynamic_css .= '.navigation-in nav > ul.menu > li, .navigation-in div > ul.menu > li, .navigation-in nav > ul.menu > li:hover, .navigation-in div > ul.menu > li:hover, .navigation-in .partial-refresh-menu-container ul.menu > li, .navigation-in .partial-refresh-menu-container ul.menu > li:hover {background: none !important;}';
+    $responsi_hext_navi_li_margin_top = isset( $responsi_options['responsi_hext_navi_li_margin_top'] ) ? esc_attr( $responsi_options['responsi_hext_navi_li_margin_top'] ) : 0;
+    $responsi_hext_navi_li_margin_bottom = isset( $responsi_options['responsi_hext_navi_li_margin_bottom'] ) ? esc_attr( $responsi_options['responsi_hext_navi_li_margin_bottom'] ) : 0;
+    $responsi_hext_navi_li_margin_left = isset( $responsi_options['responsi_hext_navi_li_margin_left'] ) ? esc_attr( $responsi_options['responsi_hext_navi_li_margin_left'] ) : 0;
+    $responsi_hext_navi_li_margin_right = isset( $responsi_options['responsi_hext_navi_li_margin_right'] ) ? esc_attr( $responsi_options['responsi_hext_navi_li_margin_right'] ) : 0;
+
+    $dynamic_css .= '@media only screen and (min-width: 783px){';
+
+        $dynamic_css .= '.responsi-navigation{' . $nav_container_css . '}';
+        $dynamic_css .= '.navigation-in{'.$nav_container_in_css.'}';
+        $dynamic_css .= '.navigation-in ul.menu{' . $nav_content_css . '}';
+
+        $dynamic_css .= '.navigation-in ul.menu > li{
+            margin:'.$responsi_hext_navi_li_margin_top.'px '.$responsi_hext_navi_li_margin_right.'px '.$responsi_hext_navi_li_margin_bottom.'px '.$responsi_hext_navi_li_margin_left.'px;
+            '.responsi_generate_border( $nav_divider_border, 'border-left').'
+        }';
+
+        $dynamic_css .= '.navigation-in ul.menu > li > a {'.$nav_item_css.'}';
+        
+        $responsi_hext_navbar_border_currentitem    = isset( $responsi_options['responsi_hext_navbar_border_currentitem'] ) ? esc_attr( $responsi_options['responsi_hext_navbar_border_currentitem'] ) : '#ffffff';
+        $responsi_hext_navbar_border_hover          = isset( $responsi_options['responsi_hext_navbar_border_hover'] ) ? esc_attr( $responsi_options['responsi_hext_navbar_border_hover'] ) : '#ffffff';
     
+
+        $responsi_hext_navi_border_radius_first_tl = responsi_generate_border_radius_value($responsi_options['responsi_hext_navi_border_radius_first_tl']);
+        $responsi_hext_navi_border_radius_first_tr = responsi_generate_border_radius_value($responsi_options['responsi_hext_navi_border_radius_first_tr']);
+        $responsi_hext_navi_border_radius_first_bl = responsi_generate_border_radius_value($responsi_options['responsi_hext_navi_border_radius_first_bl']);
+        $responsi_hext_navi_border_radius_first_br = responsi_generate_border_radius_value($responsi_options['responsi_hext_navi_border_radius_first_br']);
+        $responsi_hext_navi_border_radius_last_tl = responsi_generate_border_radius_value($responsi_options['responsi_hext_navi_border_radius_last_tl']);
+        $responsi_hext_navi_border_radius_last_tr = responsi_generate_border_radius_value($responsi_options['responsi_hext_navi_border_radius_last_tr']);
+        $responsi_hext_navi_border_radius_last_bl = responsi_generate_border_radius_value($responsi_options['responsi_hext_navi_border_radius_last_bl']);
+        $responsi_hext_navi_border_radius_last_br = responsi_generate_border_radius_value($responsi_options['responsi_hext_navi_border_radius_last_br']);
+        $dynamic_css .= '.navigation-in ul.menu > li:first-child > a, .customize-partial-edit-shortcuts-shown .navigation-in ul.menu > li:nth-child(2) a{
+            border-radius:' . $responsi_hext_navi_border_radius_first_tl . ' ' . $responsi_hext_navi_border_radius_first_tr . ' ' . $responsi_hext_navi_border_radius_first_br . ' ' . $responsi_hext_navi_border_radius_first_bl . ';
+        }';
+        $dynamic_css .= '.navigation-in ul.menu > li:last-child > a{
+            border-radius:' . $responsi_hext_navi_border_radius_last_tl . ' ' . $responsi_hext_navi_border_radius_last_tr . ' ' . $responsi_hext_navi_border_radius_last_br . ' ' . $responsi_hext_navi_border_radius_last_bl . ';
+        }';
+
+        if ( isset( $nav_divider_border['width'] ) && $nav_divider_border['width'] >= 0 ) {
+            $dynamic_css .= '.navigation-in ul.menu > li { '.responsi_generate_border( $nav_divider_border, 'border-left' ).'}';
+            $dynamic_css .= '.navigation-in ul.menu > li:first-child, .navigation-in ul.menu > li:first-child,.customize-partial-edit-shortcuts-shown .navigation-in ul.menu > li:nth-child(2) { border-left: 0px !important; }';
+            $dynamic_css .= '.navigation-in ul.menu > li > ul  { left: ' . $responsi_navi_border_margin_left . 'px !important; }';
+        }
+
+        $dynamic_css .= '.navigation-in ul.menu > li.current-menu-item > a { ' . responsi_generate_background_color($nav_currentitem_bg) . 'color:' . $nav_currentitem . ' !important;border-color:'.$responsi_hext_navbar_border_currentitem.'; }';
+        $dynamic_css .= '.navigation-in ul.menu > li > a:hover,.navigation-in ul.menu > li:hover > a,.navigation-in .menu > li.menu-item-has-children:hover > a,.navigation-mobile .hamburger-icon:hover,.navigation-mobile .responsi-icon-cancel:hover,.navigation-in ul.menu > li.current-menu-item > a:hover{ color:' . $nav_hover . '!important; }';
+        $dynamic_css .= '.navigation-in ul.menu > li a:hover, .navigation-in ul.menu > li.menu-item-has-children:hover > a,.navigation-in ul.menu > li:hover > a {' . responsi_generate_background_color( $nav_hover_bg, true ) . 'border-color:'.$responsi_hext_navbar_border_hover.';}';
+        $dynamic_css .= '.navigation-in ul.menu > li.menu-item-has-children > a:after { border-color:' . esc_attr( $nav_font['color'] ) . ' transparent transparent !important;}';
+        $dynamic_css .= '.navigation-in ul.menu > li.menu-item-has-children:hover > a:after,.navigation-in ul.menu > li.menu-item-has-children.current-menu-item:hover > a:after{ border-color:' . $nav_hover . ' transparent transparent !important;}';
+        $dynamic_css .= '.navigation-in ul.menu > li.menu-item-has-children.current-menu-item > a:after{ border-color:' . $nav_currentitem . ' transparent transparent !important;}';
+
+        
+        $dynamic_css .= '.navigation-in ul.sub-menu li:first-child > a{border-top-left-radius: ' . $responsi_nav_dropdown_border_radius_tl . ';border-top-right-radius: ' . $responsi_nav_dropdown_border_radius_tr . ';}';
+        $dynamic_css .= '.navigation-in ul.sub-menu li:last-child > a{border-bottom-left-radius: ' . $responsi_nav_dropdown_border_radius_bl . ';border-bottom-right-radius: ' . $responsi_nav_dropdown_border_radius_br . ';}';
+        
+        $dynamic_css .= '.navigation-in ul.menu ul{' . $nav_dropdown_css . '}';
+        $dynamic_css .= '.navigation-in ul.menu ul ul{top:-' . esc_attr( $responsi_nav_dropdown_border_top['width'] ) . 'px;}';
+        $dynamic_css .= '.navigation-in ul.menu li ul li a{padding-top:' . $responsi_nav_dropdown_item_padding_top . 'px;padding-bottom:' . $responsi_nav_dropdown_item_padding_bottom . 'px;padding-left:' . $responsi_nav_dropdown_item_padding_left . 'px;padding-right:' . $responsi_nav_dropdown_item_padding_right . 'px;}';
+        $dynamic_css .= '.navigation-in ul.menu ul li {'.responsi_generate_border( $responsi_nav_dropdown_separator, 'border-top' ).'}';
+        $dynamic_css .= '.navigation-in ul.menu ul li:first-child{border-top: 0 solid #FFFFFF !important;}';
+        $dynamic_css .= '.navigation-in ul.menu ul li a, .navigation-in ul.menu li ul li a{ ' . responsi_generate_fonts($responsi_nav_dropdown_font, false) . ' }';
+        $dynamic_css .= '.navigation-in ul.menu li ul li a { text-transform:' . $responsi_nav_dropdown_font_transform . '; }';
+        $dynamic_css .= '.navigation-in ul.menu ul li ,.navigation-in ul.menu ul li a{white-space: nowrap;' . responsi_generate_background_color($responsi_nav_dropdown_item_background) . '}';
+        $dynamic_css .= '.navigation-in ul.sub-menu li{background-color:transparent;}';
+        $dynamic_css .= '.navigation-in ul.menu > li ul li a:hover,.navigation-in ul.menu > li ul li:hover{' . responsi_generate_background_color($responsi_nav_dropdown_hover_background, true) . '}';
+        $dynamic_css .= '.navigation-in ul.menu > li ul li:hover{background-color:transparent !important;}';
+        $dynamic_css .= '.navigation-in ul.menu > li.menu-item-has-children:hover ul li a{ color:' . esc_attr( $responsi_nav_dropdown_font['color'] ) . '; }';
+        $dynamic_css .= '.navigation-in ul.menu li.menu-item-has-children ul li a:hover{color:' . $responsi_nav_dropdown_hover_color . ';}';
+        $dynamic_css .= '.navigation-in ul.menu > li > ul > li > ul > li > ul > li > a:hover{color:' . $responsi_nav_dropdown_hover_color . ';}';
+        $dynamic_css .= '.navigation-in ul.menu > li > ul > li.menu-item-has-children a:after{ border-color:transparent transparent transparent ' . esc_attr( $responsi_nav_dropdown_font['color'] ) . ';}';
+        $dynamic_css .= '.navigation-in ul.menu > li > ul li.menu-item-has-children:hover > a:hover:after{ border-color:transparent transparent transparent ' . $responsi_nav_dropdown_hover_color . ';}';
+        $dynamic_css .= '.navigation-in nav > ul.menu > li, .navigation-in div > ul.menu > li, .navigation-in nav > ul.menu > li:hover, .navigation-in div > ul.menu > li:hover, .navigation-in .partial-refresh-menu-container ul.menu > li, .navigation-in .partial-refresh-menu-container ul.menu > li:hover {background: none !important;}';
+    
+        $dynamic_css .= '.navigation{text-align:' . $pri_navbar_postion . ';}';
+        $dynamic_css .= '.navigation-mobile{color:' . esc_attr( $nav_font['color'] ) . ';}';
+        $dynamic_css .= '.navigation-mobile .hamburger-icon:before,.navigation-mobile .responsi-icon-cancel:before{box-shadow: 1px 0 0 ' . esc_attr( $nav_font['color'] ) . ';}';
+
+    $dynamic_css .= '}';
+
+    $_navbar_container_mobile_margin_top = $responsi_options['responsi_hext_navbar_container_mobile_margin_top'];
+    $_navbar_container_mobile_margin_left = $responsi_options['responsi_hext_navbar_container_mobile_margin_left'];
+    $_navbar_container_mobile_margin_right = $responsi_options['responsi_hext_navbar_container_mobile_margin_right'];
+    $_navbar_container_mobile_margin_bottom = $responsi_options['responsi_hext_navbar_container_mobile_margin_bottom'];
+
+    $_navbar_container_mobile_padding_top = $responsi_options['responsi_hext_navbar_container_mobile_padding_top'];
+    $_navbar_container_mobile_padding_left = $responsi_options['responsi_hext_navbar_container_mobile_padding_left'];
+    $_navbar_container_mobile_padding_right = $responsi_options['responsi_hext_navbar_container_mobile_padding_right'];
+    $_navbar_container_mobile_padding_bottom = $responsi_options['responsi_hext_navbar_container_mobile_padding_bottom'];
+
+    $_navbar_container_mobile_background_color = $responsi_options['responsi_hext_navbar_container_mobile_background_color'];
+    if( !is_array( $_navbar_container_mobile_background_color ) ){
+        $_navbar_container_mobile_background_color = array( 'onoff' => 'true', 'color' => $_navbar_container_mobile_background_color );
+    }
+
+    $_navbar_container_mobile_border_top = $responsi_options['responsi_hext_navbar_container_mobile_border_top'];
+    $_navbar_container_mobile_border_bottom = $responsi_options['responsi_hext_navbar_container_mobile_border_bottom'];
+    $_navbar_container_mobile_border_lr = $responsi_options['responsi_hext_navbar_container_mobile_border_lr'];
+    $_navbar_container_mobile_border_radius     = responsi_generate_border_radius( $responsi_options['responsi_hext_navbar_container_mobile_border_radius'] );
+    $_navbar_container_mobile_box_shadow = responsi_generate_box_shadow($responsi_options['responsi_hext_navbar_container_mobile_box_shadow']);
+
+    $_navbar_container_mobile_css = '';
+    $_navbar_container_mobile_css .= 'margin:'.$_navbar_container_mobile_margin_top.'px '.$_navbar_container_mobile_margin_right.'px '.$_navbar_container_mobile_margin_bottom.'px '.$_navbar_container_mobile_margin_left.'px;';
+    $_navbar_container_mobile_css .= 'padding:'.$_navbar_container_mobile_padding_top.'px '.$_navbar_container_mobile_padding_right.'px '.$_navbar_container_mobile_padding_bottom.'px '.$_navbar_container_mobile_padding_left.'px;';
+    $_navbar_container_mobile_css .= responsi_generate_background_color( $_navbar_container_mobile_background_color );
+    $_navbar_container_mobile_css .= responsi_generate_border( $_navbar_container_mobile_border_top, 'border-top', true);
+    $_navbar_container_mobile_css .= responsi_generate_border( $_navbar_container_mobile_border_bottom, 'border-bottom', true);
+    $_navbar_container_mobile_css .= responsi_generate_border( $_navbar_container_mobile_border_lr, 'border-left', true);
+    $_navbar_container_mobile_css .= responsi_generate_border( $_navbar_container_mobile_border_lr, 'border-right', true);
+    $_navbar_container_mobile_css .= $_navbar_container_mobile_border_radius;
+    $_navbar_container_mobile_css .= $_navbar_container_mobile_box_shadow;
+
+    $_navbar_icon_mobile_alignment = $responsi_options['responsi_hext_navbar_icon_mobile_alignment'];
+    
+    $_navbar_container_mobile_css .= 'text-align:'.$_navbar_icon_mobile_alignment.';';
+
+    $_navbar_container_mobile_el = '.navigation-mobile{'.$_navbar_container_mobile_css.'}';
+
+    $_navbar_icon_mobile_margin_top = $responsi_options['responsi_hext_navbar_icon_mobile_margin_top'];
+    $_navbar_icon_mobile_margin_left = $responsi_options['responsi_hext_navbar_icon_mobile_margin_left'];
+    $_navbar_icon_mobile_margin_right = $responsi_options['responsi_hext_navbar_icon_mobile_margin_right'];
+    $_navbar_icon_mobile_margin_bottom = $responsi_options['responsi_hext_navbar_icon_mobile_margin_bottom'];
+
+    $_navbar_icon_mobile_padding_top = $responsi_options['responsi_hext_navbar_icon_mobile_padding_top'];
+    $_navbar_icon_mobile_padding_left = $responsi_options['responsi_hext_navbar_icon_mobile_padding_left'];
+    $_navbar_icon_mobile_padding_right = $responsi_options['responsi_hext_navbar_icon_mobile_padding_right'];
+    $_navbar_icon_mobile_padding_bottom = $responsi_options['responsi_hext_navbar_icon_mobile_padding_bottom'];
+
+    $_navbar_icon_mobile_background_color = $responsi_options['responsi_hext_navbar_icon_mobile_background_color'];
+    if( !is_array( $_navbar_icon_mobile_background_color ) ){
+        $_navbar_icon_mobile_background_color = array( 'onoff' => 'true', 'color' => $_navbar_icon_mobile_background_color );
+    }
+
+    $_navbar_icon_mobile_border_top = $responsi_options['responsi_hext_navbar_icon_mobile_border_top'];
+    $_navbar_icon_mobile_border_bottom = $responsi_options['responsi_hext_navbar_icon_mobile_border_bottom'];
+    $_navbar_icon_mobile_border_left = $responsi_options['responsi_hext_navbar_icon_mobile_border_left'];
+    $_navbar_icon_mobile_border_right = $responsi_options['responsi_hext_navbar_icon_mobile_border_right'];
+    $_navbar_icon_mobile_border_radius     = responsi_generate_border_radius( $responsi_options['responsi_hext_navbar_icon_mobile_border_radius'] );
+    $_navbar_icon_mobile_box_shadow = responsi_generate_box_shadow($responsi_options['responsi_hext_navbar_icon_mobile_box_shadow'], true);
+
+    $_navbar_icon_mobile_css = '';
+    $_navbar_icon_mobile_css .= 'margin:'.$_navbar_icon_mobile_margin_top.'px '.$_navbar_icon_mobile_margin_right.'px '.$_navbar_icon_mobile_margin_bottom.'px '.$_navbar_icon_mobile_margin_left.'px;';
+    $_navbar_icon_mobile_css .= 'padding:'.$_navbar_icon_mobile_padding_top.'px '.$_navbar_icon_mobile_padding_right.'px '.$_navbar_icon_mobile_padding_bottom.'px '.$_navbar_icon_mobile_padding_left.'px;';
+    $_navbar_icon_mobile_css .= responsi_generate_background_color( $_navbar_icon_mobile_background_color );
+    $_navbar_icon_mobile_css .= responsi_generate_border( $_navbar_icon_mobile_border_top, 'border-top', true);
+    $_navbar_icon_mobile_css .= responsi_generate_border( $_navbar_icon_mobile_border_bottom, 'border-bottom', true);
+    $_navbar_icon_mobile_css .= responsi_generate_border( $_navbar_icon_mobile_border_left, 'border-left', true);
+    $_navbar_icon_mobile_css .= responsi_generate_border( $_navbar_icon_mobile_border_right, 'border-right', true);
+    $_navbar_icon_mobile_css .= $_navbar_icon_mobile_border_radius;
+    $_navbar_icon_mobile_css .= $_navbar_icon_mobile_box_shadow;
+
+    $_navbar_icon_mobile_el = '';
+
+    $_navbar_icon_mobile_el .= '.navigation-mobile .hamburger-icon:before, .navigation-mobile svg.hext-icon, .navigation-mobile svg{'.$_navbar_icon_mobile_css.'}';
+
+    $_navbar_icon_mobile_separator = $responsi_options['responsi_hext_navbar_icon_mobile_separator'];
+
+    $_navbar_icon_mobile_separator_pos = 'right';
+    if($_navbar_icon_mobile_alignment == 'left'){
+        $_navbar_icon_mobile_separator_pos = 'right';
+    }else{
+        $_navbar_icon_mobile_separator_pos = 'left';
+    }
+    $_navbar_icon_mobile_el .= '.navigation-mobile span.nav-separator{
+        '.responsi_generate_border( $_navbar_icon_mobile_separator, 'border-'.$_navbar_icon_mobile_separator_pos).'
+    }';
+
+    $_navbar_icon_mobile_size = $responsi_options['responsi_hext_navbar_icon_mobile_size'];
+    $_navbar_icon_mobile_color = $responsi_options['responsi_hext_navbar_icon_mobile_color'];
+
+    $_navbar_icon_mobile_el .= '.navigation-mobile .hamburger-icon:before, .navigation-mobile svg.hext-icon, .navigation-mobile svg{
+        font-size: '.$_navbar_icon_mobile_size.'px !important;
+        color: '.$_navbar_icon_mobile_color.' !important;
+    }';
+
+    /* Nav Bar Mobile Text Style */
+    $_navbar_mobile_text_on = $responsi_options['responsi_hext_navbar_mobile_text_on'];
+
+    $_navbar_mobile_text_margin_top = $responsi_options['responsi_hext_navbar_mobile_text_margin_top'];
+    $_navbar_mobile_text_margin_left = $responsi_options['responsi_hext_navbar_mobile_text_margin_left'];
+    $_navbar_mobile_text_margin_right = $responsi_options['responsi_hext_navbar_mobile_text_margin_right'];
+    $_navbar_mobile_text_margin_bottom = $responsi_options['responsi_hext_navbar_mobile_text_margin_bottom'];
+
+    $_navbar_mobile_text_padding_top = $responsi_options['responsi_hext_navbar_mobile_text_padding_top'];
+    $_navbar_mobile_text_padding_left = $responsi_options['responsi_hext_navbar_mobile_text_padding_left'];
+    $_navbar_mobile_text_padding_right = $responsi_options['responsi_hext_navbar_mobile_text_padding_right'];
+    $_navbar_mobile_text_padding_bottom = $responsi_options['responsi_hext_navbar_mobile_text_padding_bottom'];
+
+    
+    $_navbar_mobile_text_font = $responsi_options['responsi_hext_navbar_mobile_text_font'];
+    $_navbar_mobile_text_font_transform = $responsi_options['responsi_hext_navbar_mobile_text_font_transform'];
+
+    $_navbar_mobile_text_css = '';
+    $_navbar_mobile_text_css .= 'margin:'.$_navbar_mobile_text_margin_top.'px '.$_navbar_mobile_text_margin_right.'px '.$_navbar_mobile_text_margin_bottom.'px '.$_navbar_mobile_text_margin_left.'px;';
+    $_navbar_mobile_text_css .= 'padding:'.$_navbar_mobile_text_padding_top.'px '.$_navbar_mobile_text_padding_right.'px '.$_navbar_mobile_text_padding_bottom.'px '.$_navbar_mobile_text_padding_left.'px;';
+    $_navbar_mobile_text_css .= responsi_generate_fonts( $_navbar_mobile_text_font, true );
+    $_navbar_mobile_text_css .= 'text-transform:'. $_navbar_mobile_text_font_transform .';';
+
+    $_navbar_mobile_text_el = '';
+
+    if( $_navbar_mobile_text_on == 'false' ){
+        $_navbar_mobile_text_el .= '.navigation-mobile span.menu-text{ display:none !important; }';
+    }
+
+    $_navbar_mobile_text_el .= '.navigation-mobile span.menu-text{ '.$_navbar_mobile_text_css.' }';
+
+    /*Dropdown Mobile Menu Ctn*/
+    $_nav_dropdown_mobile_bg                = isset( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_background_color'] ) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_background_color'] :  array( 'onoff' => 'true', 'color' => '#000000');
+    $_nav_dropdown_mobile_border_top        = isset( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_border_top'] ) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_border_top'] : array('width' => '0','style' => 'solid','color' => '#000000');
+    $_nav_dropdown_mobile_border_bottom     = isset( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_border_bottom'] ) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_border_bottom'] : array('width' => '0','style' => 'solid','color' => '#000000');
+    $_nav_dropdown_mobile_border_lr         = isset( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_border_lr'] ) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_border_lr'] : array('width' => '0','style' => 'solid','color' => '#000000');
+    $_nav_dropdown_mobile_border_radius     = isset( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_border_radius'] ) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_border_radius'] : array( 'corner' => 'square','rounded_value' => '0' );
+    $_nav_dropdown_mobile_shadow            = isset( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_box_shadow'] ) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_box_shadow'] : array( 'onoff' => 'false' , 'h_shadow' => '0px' , 'v_shadow' => '0px', 'blur' => '0px' , 'spread' => '0px', 'color' => '#000000', 'inset' => '' );
+    $_nav_dropdown_mobile_margin_top        = isset( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_margin_top'] ) ? esc_attr( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_margin_top'] ) : 0;
+    $_nav_dropdown_mobile_margin_bottom     = isset( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_margin_bottom'] ) ? esc_attr( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_margin_bottom'] ) : 0;
+    $_nav_dropdown_mobile_margin_left       = isset( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_margin_left'] ) ? esc_attr( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_margin_left'] ) : 0;
+    $_nav_dropdown_mobile_margin_right      = isset( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_margin_right'] ) ? esc_attr( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_margin_right'] ) : 0;
+    $_nav_dropdown_mobile_padding_top       = isset( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_padding_top'] ) ? esc_attr( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_padding_top'] ) : 0;
+    $_nav_dropdown_mobile_padding_bottom    = isset( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_padding_bottom'] ) ? esc_attr( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_padding_bottom'] ) : 0;
+    $_nav_dropdown_mobile_padding_left      = isset( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_padding_left'] ) ? esc_attr( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_padding_left'] ) : 0;
+    $_nav_dropdown_mobile_padding_right     = isset( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_padding_right'] ) ? esc_attr( $responsi_options['responsi_hext_navbar_container_dropdown_mobile_padding_right'] ) : 0;
+
+    $_nav_dropdown_mobile_ctn_css = '';
+    $_nav_dropdown_mobile_ctn_css .= 'margin:'.$_nav_dropdown_mobile_margin_top.'px '.$_nav_dropdown_mobile_margin_right.'px '.$_nav_dropdown_mobile_margin_bottom.'px '.$_nav_dropdown_mobile_margin_left.'px;';
+    $_nav_dropdown_mobile_ctn_css .= 'padding:'.$_nav_dropdown_mobile_padding_top.'px '.$_nav_dropdown_mobile_padding_right.'px '.$_nav_dropdown_mobile_padding_bottom.'px '.$_nav_dropdown_mobile_padding_left.'px;';
+    $_nav_dropdown_mobile_ctn_css .= responsi_generate_background_color( $_nav_dropdown_mobile_bg );
+    $_nav_dropdown_mobile_ctn_css .= responsi_generate_border( $_nav_dropdown_mobile_border_top, 'border-top');
+    $_nav_dropdown_mobile_ctn_css .= responsi_generate_border( $_nav_dropdown_mobile_border_bottom, 'border-bottom');
+    $_nav_dropdown_mobile_ctn_css .= responsi_generate_border( $_nav_dropdown_mobile_border_lr, 'border-left');
+    $_nav_dropdown_mobile_ctn_css .= responsi_generate_border( $_nav_dropdown_mobile_border_lr, 'border-right');
+    $_nav_dropdown_mobile_ctn_css .= responsi_generate_border_radius( $_nav_dropdown_mobile_border_radius );
+    $_nav_dropdown_mobile_ctn_css .= responsi_generate_box_shadow($_nav_dropdown_mobile_shadow, false);
+
+    $_nav_dropdown_mobile_ctn_el   = 'ul.responsi-menu{'.$_nav_dropdown_mobile_ctn_css.'}';
+
+    /*Dropdown Mobile Menu Items*/
+    $_nav_dropdown_mobile_items_bg                  = isset( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_background'] ) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_background'] :  array( 'onoff' => 'true', 'color' => '#000000');
+    $_nav_dropdown_mobile_separator                 = isset( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_separator'] ) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_separator'] : array('width' => '0','style' => 'solid','color' => '#ffffff');
+    $_nav_dropdown_mobile_items_padding_top         = isset( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_padding_top'] ) ? esc_attr( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_padding_top'] ) : 0;
+    $_nav_dropdown_mobile_items_padding_bottom      = isset( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_padding_bottom'] ) ? esc_attr( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_padding_bottom'] ) : 0;
+    $_nav_dropdown_mobile_items_padding_left        = isset( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_padding_left'] ) ? esc_attr( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_padding_left'] ) : 0;
+    $_nav_dropdown_mobile_items_padding_right       = isset( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_padding_right'] ) ? esc_attr( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_padding_right'] ) : 0;
+    $_nav_dropdown_mobile_items_font                = isset( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_font'] ) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_font'] : array('size' => '13','line_height' => '1','face' => 'Open Sans','style' => 'bold','color' => '#FFFFFF');
+    $_nav_dropdown_mobile_items_font_transform      = isset( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_font_transform'] ) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_font_transform'] : 'uppercase';
+    $_nav_dropdown_mobile_items_hover_bg            = isset( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_hover_background'] ) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_hover_background'] :  array( 'onoff' => 'true', 'color' => '#000000');
+    $_nav_dropdown_mobile_items_hover_color         = isset( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_hover_color'] ) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_hover_color'] : '#ffffff';
+
+    $_nav_dropdown_mobile_items_css = '';
+    $_nav_dropdown_mobile_items_css .= 'padding:'.$_nav_dropdown_mobile_items_padding_top.'px '.$_nav_dropdown_mobile_items_padding_right.'px '.$_nav_dropdown_mobile_items_padding_bottom.'px '.$_nav_dropdown_mobile_items_padding_left.'px;';
+    $_nav_dropdown_mobile_items_css .= responsi_generate_fonts( $_nav_dropdown_mobile_items_font );
+    $_nav_dropdown_mobile_items_css .= 'text-transform:'. $_nav_dropdown_mobile_items_font_transform .';';
+    $_nav_dropdown_mobile_items_css .= responsi_generate_background_color( $_nav_dropdown_mobile_items_bg );
+    $_nav_dropdown_mobile_items_css .= responsi_generate_border( $_nav_dropdown_mobile_separator, 'border-top' );
+
+    $_nav_dropdown_mobile_items_el   = 'ul.responsi-menu a{ '.$_nav_dropdown_mobile_items_css.' }';
+
+    $_nav_dropdown_mobile_items_el  .= 'ul.responsi-menu li a:hover, ul.responsi-menu li:hover > a{ 
+        ' . responsi_generate_background_color( $_nav_dropdown_mobile_items_hover_bg ). '        
+        color:'.$_nav_dropdown_mobile_items_hover_color.' !important;    
+    }';
+
+    $_nav_dropdown_mobile_items_el  .= 'ul.responsi-menu .menu-item-has-children > i,
+    ul.responsi-menu .menu-item-has-children > svg{
+        font-size:'.$_nav_dropdown_mobile_items_font['size'].'px;
+        color:'.$_nav_dropdown_mobile_items_font['color'].';
+        font-weight:'.$_nav_dropdown_mobile_items_font['style'].';
+    }';
+
+    $_nav_dropdown_mobile_items_el .= 'ul.responsi-menu ul li a { padding-left: '. ( $_nav_dropdown_mobile_items_padding_left + 20 ) .'px !important; }';
+    $_nav_dropdown_mobile_items_el .= 'ul.responsi-menu ul li ul li a { padding-left: '. ( $_nav_dropdown_mobile_items_padding_left + 40 ) .'px !important; }';
+    $_nav_dropdown_mobile_items_el .= 'ul.responsi-menu ul li ul li ul li a { padding-left: '. ( $_nav_dropdown_mobile_items_padding_left + 60 ) .'px !important; }';
+    $_nav_dropdown_mobile_items_el .= 'ul.responsi-menu ul li ul li ul li ul li a { padding-left: '. ( $_nav_dropdown_mobile_items_padding_left + 80 ) .'px !important; }';
+
+    /*Dropdown Mobile Menu Submenu Items*/
+    $_nav_dropdown_mobile_items_submenu_font            = isset( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_font'] ) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_font'] : array('size' => '13','line_height' => '1','face' => 'Open Sans','style' => 'bold','color' => '#FFFFFF');
+    $_nav_dropdown_mobile_items_submenu_font_transform  = isset( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_font_transform'] ) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_font_transform'] : 'uppercase';
+    $_nav_dropdown_mobile_items_submenu_bg              = isset( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_background'] ) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_background'] :  array( 'onoff' => 'true', 'color' => '#000000');
+    $_nav_dropdown_mobile_items_submenu_separator       = isset( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_separator'] ) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_separator'] : array('width' => '0','style' => 'solid','color' => '#000000');
+    $_nav_dropdown_mobile_items_submenu_hover_bg        = isset( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_hover_background'] ) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_hover_background'] :  array( 'onoff' => 'true', 'color' => '#000000');
+    $_nav_dropdown_mobile_items_submenu_hover_color             = isset( $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_hover_color'] ) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_hover_color'] : '#ffffff';
+
+    $_nav_dropdown_mobile_items_submenu_css = '';
+    $_nav_dropdown_mobile_items_submenu_css .= responsi_generate_fonts( $_nav_dropdown_mobile_items_submenu_font );
+    $_nav_dropdown_mobile_items_submenu_css .= 'text-transform:'. $_nav_dropdown_mobile_items_submenu_font_transform .';';
+    $_nav_dropdown_mobile_items_submenu_css .= responsi_generate_background_color( $_nav_dropdown_mobile_items_submenu_bg );
+    $_nav_dropdown_mobile_items_submenu_css .= responsi_generate_border( $_nav_dropdown_mobile_items_submenu_separator, 'border-top' );
+
+    $_nav_dropdown_mobile_items_submenu_el = 'ul.responsi-menu .sub-menu a{ '.$_nav_dropdown_mobile_items_submenu_css.' }';
+
+    $_nav_dropdown_mobile_items_submenu_el .= 'ul.responsi-menu .sub-menu li a:hover, ul.responsi-menu .sub-menu li:hover > a{ 
+        ' . responsi_generate_background_color( $_nav_dropdown_mobile_items_submenu_hover_bg ). '        
+        color:'.$_nav_dropdown_mobile_items_submenu_hover_color.' !important;    
+    }';
+
+    $_nav_dropdown_mobile_items_submenu_el  .= 'ul.responsi-menu ul.sub-menu .menu-item-has-children > i,
+    ul.responsi-menu ul.sub-menu .menu-item-has-children > svg{
+        font-size:'.$_nav_dropdown_mobile_items_submenu_font['size'].'px;
+        color:'.$_nav_dropdown_mobile_items_submenu_font['color'].';
+        font-weight:'.$_nav_dropdown_mobile_items_submenu_font['style'].';
+    }';
+
+    $_nav_container = '.responsi-navigation, .hext-moblie-menu-icon{
+        margin:'.$responsi_options['responsi_hext_n_container_mobile_margin_top'].'px '.$responsi_options['responsi_hext_n_container_mobile_margin_right'].'px '.$responsi_options['responsi_hext_n_container_mobile_margin_bottom'].'px '.$responsi_options['responsi_hext_n_container_mobile_margin_left'].'px;
+        padding:'.$responsi_options['responsi_hext_n_container_mobile_padding_top'].'px '.$responsi_options['responsi_hext_n_container_mobile_padding_right'].'px '.$responsi_options['responsi_hext_n_container_mobile_padding_bottom'].'px '.$responsi_options['responsi_hext_n_container_mobile_padding_left'].'px;
+    }';
+
+    $_nav_container_in = '.navigation-in{
+        margin:'.$responsi_options['responsi_hext_n_content_mobile_margin_top'].'px '.$responsi_options['responsi_hext_n_content_mobile_margin_right'].'px '.$responsi_options['responsi_hext_n_content_mobile_margin_bottom'].'px '.$responsi_options['responsi_hext_n_content_mobile_margin_left'].'px;
+        padding:'.$responsi_options['responsi_hext_n_content_mobile_padding_top'].'px '.$responsi_options['responsi_hext_n_content_mobile_padding_right'].'px '.$responsi_options['responsi_hext_n_content_mobile_padding_bottom'].'px '.$responsi_options['responsi_hext_n_content_mobile_padding_left'].'px;
+    }';
+
+    $dynamic_css .= '
+    @media only screen and (max-width:782px) {
+        '.$_nav_container.'
+        '.$_nav_container_in.'
+        '.$_navbar_container_mobile_el.'
+        '.$_navbar_icon_mobile_el.'
+        '.$_navbar_mobile_text_el.'
+        '.$_nav_dropdown_mobile_ctn_el.'
+        '.$_nav_dropdown_mobile_items_el.'
+        '.$_nav_dropdown_mobile_items_submenu_el.'
+    }
+    ';
+
     /* Pagination Scroll */
     $scroll_font                                        = isset( $responsi_options['responsi_scroll_font'] ) ? $responsi_options['responsi_scroll_font'] : array('size' => '14','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#555555');
     $scroll_link_hover_color                            = $hover;
@@ -4080,124 +4457,393 @@ function responsi_framework_upgrade(){
 
     global $responsi_options;
 
-    $upgrade = get_option('upgrade_responsi_693_to_694' );
-    
-    if( $upgrade != 'done' ){
-       
-        $theme_mods = get_theme_mods();
+    //Upgrade Mobile Menu options
+    $upgradeDB = get_option('responsiUpgradeMobileMenu' );
 
-        $list_options = array( 
-            'responsi_widget_border'                    => 'responsi_widget_border_radius',
-            'responsi_page_box_border'                  => 'responsi_page_box_border_radius',
-            'responsi_archive_box_border'               => 'responsi_archive_box_border_radius',
-            'responsi_post_box_border'                  => 'responsi_post_box_border_radius',
-            'responsi_blog_box_border'                  => 'responsi_blog_box_border_radius',
-            'responsi_archive_title_box_border'         => 'responsi_archive_title_box_border_radius',
-            'responsi_blog_post_thumbnail_border'       =>  array(
-                                                            'responsi_blog_post_thumbnail_border_radius_tl',
-                                                            'responsi_blog_post_thumbnail_border_radius_tr',
-                                                            'responsi_blog_post_thumbnail_border_radius_br',
-                                                            'responsi_blog_post_thumbnail_border_radius_bl'
-                                                        ),
-            'responsi_footer_widget_border'             => 'responsi_footer_widget_border_radius',
-            'responsi_top_widget_area_container_border' => 'responsi_top_widget_area_container_border_corner'
+    if( $upgradeDB != 'done' ){
 
-        );
+        $header_extender_responsi_active = false;
 
-        foreach ( $list_options as $border => $corner ) {
-            
-            if( !is_array( $corner ) ){
-
-                $corners = array();
-
-                if ( isset( $theme_mods[ $corner ] ) && isset( $theme_mods[ $border ] ) ){
-                
-                    if( isset( $theme_mods[ $corner ]['corner'] ) && $theme_mods[ $corner ]['corner'] == 'rounded' && isset( $theme_mods[ $corner ]['rounded_value'] ) ){
-                        $corners = array( 'corner' => 'rounded', 'topleft' => $theme_mods[ $corner ]['rounded_value'], 'topright' => $theme_mods[ $corner ]['rounded_value'], 'bottomright' => $theme_mods[ $corner ]['rounded_value'], 'bottomleft' => $theme_mods[ $corner ]['rounded_value'] );
-                        $theme_mods[$border] = array_merge( $theme_mods[ $border ], $corners );
-                        set_theme_mod( $border,  $theme_mods[$border] );
-                    }
-                    
-                    remove_theme_mod( $corner );
-                
-                }elseif ( isset( $theme_mods[ $corner ] ) && !isset( $theme_mods[ $border ] ) ){
-
-                    if( isset( $theme_mods[ $corner ]['corner'] ) && $theme_mods[ $corner ]['corner'] == 'rounded' && isset( $theme_mods[ $corner ]['rounded_value'] ) ){
-                        $corners = array( 'corner' => 'rounded', 'topleft' => $theme_mods[ $corner ]['rounded_value'], 'topright' => $theme_mods[ $corner ]['rounded_value'], 'bottomright' => $theme_mods[ $corner ]['rounded_value'], 'bottomleft' => $theme_mods[ $corner ]['rounded_value'] );
-                        set_theme_mod( $border,  $corners );
-                    }
-
-                    remove_theme_mod( $corner );
-
-                }
-                
-            }  
-
-            if( is_array( $corner ) ){
-
-                $corners = array();
-
-                foreach ( $corner as $c ) {
-
-                    if ( isset( $theme_mods[ $c ] ) && isset( $theme_mods[ $border ] ) ){
-
-                        if( isset( $theme_mods[ $c ]['corner'] ) && $theme_mods[ $c ]['corner'] == 'rounded' && isset( $theme_mods[ $c ]['rounded_value'] ) ){
-                            
-                            $corners['corner'] = 'rounded';
-
-                            if( $c == 'responsi_blog_post_thumbnail_border_radius_tl' ){
-                                $corners['topleft'] = $theme_mods[ $c ]['rounded_value'];
-                            }
-                            if( $c == 'responsi_blog_post_thumbnail_border_radius_tr' ){
-                                $corners['topright'] = $theme_mods[ $c ]['rounded_value'];
-                            }
-                            if( $c == 'responsi_blog_post_thumbnail_border_radius_br' ){
-                                $corners['bottomright'] =  $theme_mods[ $c ]['rounded_value'];
-                            }
-                            if( $c == 'responsi_blog_post_thumbnail_border_radius_bl' ){
-                                $corners['bottomleft'] =  $theme_mods[ $c ]['rounded_value'];
-                            }
-
-                            $theme_mods[$border] = array_merge( $theme_mods[ $border ], $corners );
-                            set_theme_mod( $border,  $theme_mods[$border] );
-                        }
-
-                        remove_theme_mod( $c );
-                    
-                    }elseif ( isset( $theme_mods[ $c ] ) && !isset( $theme_mods[ $border ] ) ){
-
-                        if( isset( $theme_mods[ $c ]['corner'] ) && $theme_mods[ $c ]['corner'] == 'rounded' && isset( $theme_mods[ $c ]['rounded_value'] ) ){
-                            
-                            $corners['corner'] = 'rounded';
-
-                            if( $c == 'responsi_blog_post_thumbnail_border_radius_tl' ){
-                                $corners['topleft'] = $theme_mods[ $c ]['rounded_value'];
-                            }
-                            if( $c == 'responsi_blog_post_thumbnail_border_radius_tr' ){
-                                $corners['topright'] = $theme_mods[ $c ]['rounded_value'];
-                            }
-                            if( $c == 'responsi_blog_post_thumbnail_border_radius_br' ){
-                                $corners['bottomright'] =  $theme_mods[ $c ]['rounded_value'];
-                            }
-                            if( $c == 'responsi_blog_post_thumbnail_border_radius_bl' ){
-                                $corners['bottomleft'] =  $theme_mods[ $c ]['rounded_value'];
-                            }
-
-                            $theme_mods[$border] = $corners ;
-
-                            set_theme_mod( $border,  $theme_mods[$border] );
-                        }
-
-                        remove_theme_mod( $c );
-
-                    }
-
-                }
-            }  
-            
+        if ( in_array( 'responsi-header-extender/responsi-header-extender.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+            $header_extender_responsi_active = true;
         }
 
-        $upgrade = update_option('upgrade_responsi_693_to_694', 'done' );
+        if( !is_array( $responsi_options ) ){
+            $responsi_options = responsi_options();
+        }
+       
+        if( $header_extender_responsi_active && is_array( $responsi_options ) ){
+
+            $listUpgrade = array(
+                
+                'responsi_hext_navbar_container_alignment' => 'responsi_nav_position',
+                
+                /* Navbar Container Options */
+                'responsi_hext_n_container_background_color'                => 'responsi_container_nav_bg',
+                'responsi_hext_n_container_background_image'                => 'responsi_enable_container_nav_bg_image',
+                'responsi_hext_n_container_background_image_url'            => 'responsi_container_bg_image',
+                'responsi_hext_n_container_background_image_size_on'        => 'responsi_hext_n_container_background_image_size_on',
+                
+                //'responsi_hext_n_container_background_image_size'           => 'responsi_hext_n_container_background_image_size',
+                'responsi_hext_n_container_background_image_size_height'    => 'responsi_hext_n_container_background_image_size_height',
+                'responsi_hext_n_container_background_image_size_width'     => 'responsi_hext_n_container_background_image_size_width',
+                
+                //'responsi_hext_n_container_background_image_position'               => 'responsi_container_bg_position',
+                'responsi_hext_n_container_background_image_position_vertical'      => 'responsi_container_bg_position_vertical',
+                'responsi_hext_n_container_background_image_position_horizontal'    => 'responsi_container_bg_position_horizontal',
+
+                'responsi_hext_n_container_background_image_repeat'         => 'responsi_container_bg_image_repeat',
+                'responsi_hext_n_container_border_top'                      => 'responsi_container_nav_border_top',
+                'responsi_hext_n_container_border_bottom'                   => 'responsi_container_nav_border_bottom',
+                'responsi_hext_n_container_border_lr'                       => 'responsi_container_nav_border_lr',
+                'responsi_hext_n_container_border_radius'                   => 'responsi_container_nav_border_radius',
+                'responsi_hext_n_container_box_shadow'                      => 'responsi_nav_box_shadow',
+
+                //'responsi_hext_n_container_margin'                          => 'responsi_container_nav_margin',
+                'responsi_hext_n_container_margin_top'                      => 'responsi_container_nav_margin_top',
+                'responsi_hext_n_container_margin_bottom'                   => 'responsi_container_nav_margin_bottom',
+                'responsi_hext_n_container_margin_left'                     => 'responsi_container_nav_margin_left',
+                'responsi_hext_n_container_margin_right'                    => 'responsi_container_nav_margin_right',
+
+                //'responsi_hext_n_container_padding'                         => 'responsi_container_nav_padding',
+                'responsi_hext_n_container_padding_top'                     => 'responsi_container_nav_padding_top',
+                'responsi_hext_n_container_padding_bottom'                  => 'responsi_container_nav_padding_bottom',
+                'responsi_hext_n_container_padding_left'                    => 'responsi_container_nav_padding_left',
+                'responsi_hext_n_container_padding_right'                   => 'responsi_container_nav_padding_right',
+                
+                //'responsi_hext_n_container_mobile_margin'                   => 'responsi_hext_n_container_mobile_margin',
+                'responsi_hext_n_container_mobile_margin_top'               => 'responsi_hext_n_container_mobile_margin_top',
+                'responsi_hext_n_container_mobile_margin_bottom'            => 'responsi_hext_n_container_mobile_margin_bottom',
+                'responsi_hext_n_container_mobile_margin_left'              => 'responsi_hext_n_container_mobile_margin_left',
+                'responsi_hext_n_container_mobile_margin_right'             => 'responsi_hext_n_container_mobile_margin_right',
+
+                //'responsi_hext_n_container_mobile_padding'                  => 'responsi_hext_n_container_mobile_padding',
+                'responsi_hext_n_container_mobile_padding_top'              => 'responsi_hext_n_container_mobile_padding_top',
+                'responsi_hext_n_container_mobile_padding_bottom'           => 'responsi_hext_n_container_mobile_padding_bottom',
+                'responsi_hext_n_container_mobile_padding_left'             => 'responsi_hext_n_container_mobile_padding_left',
+                'responsi_hext_n_container_mobile_padding_right'            => 'responsi_hext_n_container_mobile_padding_right',
+
+                /* Navbar Container Innner Options */
+                'responsi_hext_n_content_background_color'                  => 'responsi_hext_n_content_background_color',
+                'responsi_hext_n_content_background_image'                  => 'responsi_hext_n_content_background_image',
+                'responsi_hext_n_content_background_image_url'              => 'responsi_hext_n_content_background_image_url',
+                'responsi_hext_n_content_background_image_size_on'          => 'responsi_hext_n_content_background_image_size_on',
+                
+                //'responsi_hext_n_content_background_image_size'             => 'responsi_hext_n_content_background_image_size',
+                'responsi_hext_n_content_background_image_size_height'      => 'responsi_hext_n_content_background_image_size_height',
+                'responsi_hext_n_content_background_image_size_width'       => 'responsi_hext_n_content_background_image_size_width',
+                
+                //'responsi_hext_n_content_background_image_position'         => 'responsi_hext_n_content_background_image_position',
+                'responsi_hext_n_content_background_image_position_vertical'    => 'responsi_hext_n_content_background_image_position_vertical',
+                'responsi_hext_n_content_background_image_position_horizontal'  => 'responsi_hext_n_content_background_image_position_horizontal',
+                
+                'responsi_hext_n_content_background_image_repeat'           => 'responsi_hext_n_content_background_image_repeat',
+                'responsi_hext_n_content_border_top'                        => 'responsi_hext_n_content_border_top',
+                'responsi_hext_n_content_border_bottom'                     => 'responsi_hext_n_content_border_bottom',
+                'responsi_hext_n_content_border_lr'                         => 'responsi_hext_n_content_border_lr',
+                'responsi_hext_n_content_border_radius'                     => 'responsi_hext_n_content_border_radius',
+                'responsi_hext_n_content_box_shadow'                        => 'responsi_hext_n_content_box_shadow',
+
+                //'responsi_hext_n_content_margin'                            => 'responsi_hext_n_content_margin',
+                'responsi_hext_n_content_margin_top'                        => 'responsi_hext_n_content_margin_top',
+                'responsi_hext_n_content_margin_bottom'                     => 'responsi_hext_n_content_margin_bottom',
+                'responsi_hext_n_content_margin_left'                       => 'responsi_hext_n_content_margin_left',
+                'responsi_hext_n_content_margin_right'                      => 'responsi_hext_n_content_margin_right',
+
+                //'responsi_hext_n_content_padding'                           => 'responsi_hext_n_content_padding',
+                'responsi_hext_n_content_padding_top'                       => 'responsi_hext_n_content_padding_top',
+                'responsi_hext_n_content_padding_bottom'                    => 'responsi_hext_n_content_padding_bottom',
+                'responsi_hext_n_content_padding_left'                      => 'responsi_hext_n_content_padding_left',
+                'responsi_hext_n_content_padding_right'                     => 'responsi_hext_n_content_padding_right',
+
+                //'responsi_hext_n_content_mobile_margin'                     => 'responsi_hext_n_content_mobile_margin',
+                'responsi_hext_n_content_mobile_margin_top'                 => 'responsi_hext_n_content_mobile_margin_top',
+                'responsi_hext_n_content_mobile_margin_bottom'              => 'responsi_hext_n_content_mobile_margin_bottom',
+                'responsi_hext_n_content_mobile_margin_left'                => 'responsi_hext_n_content_mobile_margin_left',
+                'responsi_hext_n_content_mobile_margin_right'               => 'responsi_hext_n_content_mobile_margin_right',
+
+                //'responsi_hext_n_content_mobile_padding'                    => 'responsi_hext_n_content_mobile_padding',
+                'responsi_hext_n_content_mobile_padding_top'                => 'responsi_hext_n_content_mobile_padding_top',
+                'responsi_hext_n_content_mobile_padding_bottom'             => 'responsi_hext_n_content_mobile_padding_bottom',
+                'responsi_hext_n_content_mobile_padding_left'               => 'responsi_hext_n_content_mobile_padding_left',
+                'responsi_hext_n_content_mobile_padding_right'              => 'responsi_hext_n_content_mobile_padding_right',
+
+                //Navbar Wrapper Options
+                'responsi_hext_navbar_container_bg_color'                   => 'responsi_nav_bg',
+                'responsi_hext_navbar_container_border_top'                 => 'responsi_nav_border_top',
+                'responsi_hext_navbar_container_border_bottom'              => 'responsi_nav_border_bottom',
+                'responsi_hext_navbar_container_border_lr'                  => 'responsi_nav_border_lr',
+                'responsi_hext_navbar_container_border_radius_tl'           => 'responsi_nav_border_radius_tl',
+                'responsi_hext_navbar_container_border_radius_tr'           => 'responsi_nav_border_radius_tr',
+                'responsi_hext_navbar_container_border_radius_bl'           => 'responsi_nav_border_radius_bl',
+                'responsi_hext_navbar_container_border_radius_br'           => 'responsi_nav_border_radius_br',
+                'responsi_hext_navbar_container_shadow'                     => 'responsi_nav_shadow',
+
+                //'responsi_hext_navbar_container_margin'                     => 'responsi_nav_margin',
+                'responsi_hext_navbar_container_margin_top'                 => 'responsi_nav_margin_top',
+                'responsi_hext_navbar_container_margin_bottom'              => 'responsi_nav_margin_bottom',
+                'responsi_hext_navbar_container_margin_left'                => 'responsi_nav_margin_left',
+                'responsi_hext_navbar_container_margin_right'               => 'responsi_nav_margin_right',
+                
+                //'responsi_hext_navbar_container_padding'                    => 'responsi_nav_padding',
+                'responsi_hext_navbar_container_padding_top'                => 'responsi_nav_padding_top',
+                'responsi_hext_navbar_container_padding_bottom'             => 'responsi_nav_padding_bottom',
+                'responsi_hext_navbar_container_padding_left'               => 'responsi_nav_padding_left',
+                'responsi_hext_navbar_container_padding_right'              => 'responsi_nav_padding_right',
+
+                //Navbar Items Options
+                'responsi_hext_navi_border_top'                             => 'responsi_navi_border_top',
+                'responsi_hext_navi_border_bottom'                          => 'responsi_navi_border_bottom',
+                'responsi_hext_navi_border_left'                            => 'responsi_navi_border_left',
+                'responsi_hext_navi_border_right'                           => 'responsi_navi_border_right',
+                'responsi_hext_navi_border_radius_tl'                       => 'responsi_navi_border_radius_tl',
+                'responsi_hext_navi_border_radius_tr'                       => 'responsi_navi_border_radius_tr',
+                'responsi_hext_navi_border_radius_bl'                       => 'responsi_navi_border_radius_bl',
+                'responsi_hext_navi_border_radius_br'                       => 'responsi_navi_border_radius_br',
+                'responsi_hext_navi_border_radius_first_tl'                 => 'responsi_hext_navi_border_radius_first_tl',
+                'responsi_hext_navi_border_radius_first_tr'                 => 'responsi_hext_navi_border_radius_first_tr',
+                'responsi_hext_navi_border_radius_first_bl'                 => 'responsi_hext_navi_border_radius_first_bl',
+                'responsi_hext_navi_border_radius_first_br'                 => 'responsi_hext_navi_border_radius_first_br',
+                'responsi_hext_navi_border_radius_last_tl'                  => 'responsi_hext_navi_border_radius_last_tl',
+                'responsi_hext_navi_border_radius_last_tr'                  => 'responsi_hext_navi_border_radius_last_tr',
+                'responsi_hext_navi_border_radius_last_bl'                  => 'responsi_hext_navi_border_radius_last_bl',
+                'responsi_hext_navi_border_radius_last_br'                  => 'responsi_hext_navi_border_radius_last_br',
+
+                //'responsi_hext_navi_li_margin'                              => 'responsi_hext_navi_li_margin',
+                'responsi_hext_navi_li_margin_top'                          => 'responsi_hext_navi_li_margin_top',
+                'responsi_hext_navi_li_margin_bottom'                       => 'responsi_hext_navi_li_margin_bottom',
+                'responsi_hext_navi_li_margin_left'                         => 'responsi_hext_navi_li_margin_left',
+                'responsi_hext_navi_li_margin_right'                        => 'responsi_hext_navi_li_margin_right',
+
+                'responsi_hext_navbar_font'                                 => 'responsi_nav_font',
+                'responsi_hext_navbar_font_transform'                       => 'responsi_nav_font_transform',
+                'responsi_hext_navbar_hover'                                => 'responsi_nav_hover',
+                'responsi_hext_navbar_hover_bg'                             => 'responsi_nav_hover_bg',
+                'responsi_hext_navbar_border_hover'                         => 'responsi_hext_navbar_border_hover',
+                'responsi_hext_navbar_currentitem'                          => 'responsi_nav_currentitem',
+                'responsi_hext_navbar_currentitem_bg'                       => 'responsi_nav_currentitem_bg',
+                'responsi_hext_navbar_border_currentitem'                   => 'responsi_hext_navbar_border_currentitem',
+                'responsi_hext_navbar_divider_border'                       => 'responsi_nav_divider_border',
+                'responsi_hext_navi_background'                             => 'responsi_navi_background',
+
+                //'responsi_hext_navi_border_margin'                          => 'responsi_navi_border_margin',
+                'responsi_hext_navi_border_margin_top'                      => 'responsi_navi_border_margin_top',
+                'responsi_hext_navi_border_margin_bottom'                   => 'responsi_navi_border_margin_bottom',
+                'responsi_hext_navi_border_margin_left'                     => 'responsi_navi_border_margin_left',
+                'responsi_hext_navi_border_margin_right'                    => 'responsi_navi_border_margin_right',
+
+                //'responsi_hext_navi_border_padding'                         => 'responsi_navi_border_padding',
+                'responsi_hext_navi_border_padding_top'                     => 'responsi_navi_border_padding_top',
+                'responsi_hext_navi_border_padding_bottom'                  => 'responsi_navi_border_padding_bottom',
+                'responsi_hext_navi_border_padding_left'                    => 'responsi_navi_border_padding_left',
+                'responsi_hext_navi_border_padding_right'                   => 'responsi_navi_border_padding_right',
+                
+                //Navbar Dropdown Options
+                'responsi_hext_navbar_dropdown_border_top'                  => 'responsi_nav_dropdown_border_top',
+                'responsi_hext_navbar_dropdown_border_bottom'               => 'responsi_nav_dropdown_border_bottom',
+                'responsi_hext_navbar_dropdown_border_left'                 => 'responsi_nav_dropdown_border_left',
+                'responsi_hext_navbar_dropdown_border_right'                => 'responsi_nav_dropdown_border_right',
+                'responsi_hext_navbar_dropdown_border_radius_tl'            => 'responsi_nav_dropdown_border_radius_tl',
+                'responsi_hext_navbar_dropdown_border_radius_tr'            => 'responsi_nav_dropdown_border_radius_br',
+                'responsi_hext_navbar_dropdown_border_radius_bl'            => 'responsi_nav_dropdown_border_radius_bl',
+                'responsi_hext_navbar_dropdown_border_radius_br'            => 'responsi_nav_dropdown_border_radius_br',
+                'responsi_hext_navbar_dropdown_shadow'                      => 'responsi_nav_dropdown_shadow',
+                'responsi_hext_navbar_dropdown_background'                  => 'responsi_nav_dropdown_background',
+                
+                //'responsi_hext_navbar_dropdown_padding'                     => 'responsi_nav_dropdown_padding',
+                'responsi_hext_navbar_dropdown_padding_top'                 => 'responsi_nav_dropdown_padding_top',
+                'responsi_hext_navbar_dropdown_padding_bottom'              => 'responsi_nav_dropdown_padding_bottom',
+                'responsi_hext_navbar_dropdown_padding_left'                => 'responsi_nav_dropdown_padding_left',
+                'responsi_hext_navbar_dropdown_padding_right'               => 'responsi_nav_dropdown_padding_right',
+
+                'responsi_hext_navbar_dropdown_font'                        => 'responsi_nav_dropdown_font',
+                'responsi_hext_navbar_dropdown_hover_color'                 => 'responsi_nav_dropdown_hover_color',
+                'responsi_hext_navbar_dropdown_font_transform'              => 'responsi_nav_dropdown_font_transform',
+                'responsi_hext_navbar_dropdown_item_background'             => 'responsi_nav_dropdown_item_background',
+                'responsi_hext_navbar_dropdown_hover_background'            => 'responsi_nav_dropdown_hover_background',
+                'responsi_hext_navbar_dropdown_separator'                   => 'responsi_nav_dropdown_separator',
+
+                //'responsi_hext_navbar_dropdown_item_padding'                => 'responsi_nav_dropdown_item_padding',
+                'responsi_hext_navbar_dropdown_item_padding_top'            => 'responsi_nav_dropdown_item_padding_top',
+                'responsi_hext_navbar_dropdown_item_padding_bottom'         => 'responsi_nav_dropdown_item_padding_bottom',
+                'responsi_hext_navbar_dropdown_item_padding_left'           => 'responsi_nav_dropdown_item_padding_left',
+                'responsi_hext_navbar_dropdown_item_padding_right'          => 'responsi_nav_dropdown_item_padding_right',
+
+                //Navbar Mobile
+                'responsi_hext_navbar_container_mobile_background_color'    => 'responsi_hext_navbar_container_mobile_background_color',
+                'responsi_hext_navbar_container_mobile_border_top'          => 'responsi_hext_navbar_container_mobile_border_top',
+                'responsi_hext_navbar_container_mobile_border_bottom'       => 'responsi_hext_navbar_container_mobile_border_bottom',
+                'responsi_hext_navbar_container_mobile_border_lr'           => 'responsi_hext_navbar_container_mobile_border_lr',
+                'responsi_hext_navbar_container_mobile_border_radius'       => 'responsi_hext_navbar_container_mobile_border_radius',
+                'responsi_hext_navbar_container_mobile_box_shadow'          => 'responsi_hext_navbar_container_mobile_box_shadow',
+                
+                //'responsi_hext_navbar_container_mobile_margin'              => 'responsi_hext_navbar_container_mobile_margin',
+                'responsi_hext_navbar_container_mobile_margin_top'          => 'responsi_hext_navbar_container_mobile_margin_top',
+                'responsi_hext_navbar_container_mobile_margin_bottom'       => 'responsi_hext_navbar_container_mobile_margin_bottom',
+                'responsi_hext_navbar_container_mobile_margin_left'         => 'responsi_hext_navbar_container_mobile_margin_left',
+                'responsi_hext_navbar_container_mobile_margin_right'        => 'responsi_hext_navbar_container_mobile_margin_right',
+                
+                //'responsi_hext_navbar_container_mobile_padding'             => 'responsi_hext_navbar_container_mobile_padding',
+                'responsi_hext_navbar_container_mobile_padding_top'         => 'responsi_hext_navbar_container_mobile_padding_top',
+                'responsi_hext_navbar_container_mobile_padding_bottom'      => 'responsi_hext_navbar_container_mobile_padding_bottom',
+                'responsi_hext_navbar_container_mobile_padding_left'        => 'responsi_hext_navbar_container_mobile_padding_left',
+                'responsi_hext_navbar_container_mobile_padding_right'       => 'responsi_hext_navbar_container_mobile_padding_right',
+                
+                'responsi_hext_navbar_icon_mobile_background_color'         => 'responsi_hext_navbar_icon_mobile_background_color',
+                'responsi_hext_navbar_icon_mobile_border_top'               => 'responsi_hext_navbar_icon_mobile_border_top',
+                'responsi_hext_navbar_icon_mobile_border_bottom'            => 'responsi_hext_navbar_icon_mobile_border_bottom',
+                'responsi_hext_navbar_icon_mobile_border_left'              => 'responsi_hext_navbar_icon_mobile_border_left',
+                'responsi_hext_navbar_icon_mobile_border_right'             => 'responsi_hext_navbar_icon_mobile_border_right',
+                'responsi_hext_navbar_icon_mobile_border_radius'            => 'responsi_hext_navbar_icon_mobile_border_radius',
+                'responsi_hext_navbar_icon_mobile_box_shadow'               => 'responsi_hext_navbar_icon_mobile_box_shadow',
+
+                //'responsi_hext_navbar_icon_mobile_margin'                   => 'responsi_hext_navbar_icon_mobile_margin',
+                'responsi_hext_navbar_icon_mobile_margin_top'               => 'responsi_hext_navbar_icon_mobile_margin_top',
+                'responsi_hext_navbar_icon_mobile_margin_bottom'            => 'responsi_hext_navbar_icon_mobile_margin_bottom',
+                'responsi_hext_navbar_icon_mobile_margin_left'              => 'responsi_hext_navbar_icon_mobile_margin_left',
+                'responsi_hext_navbar_icon_mobile_margin_right'             => 'responsi_hext_navbar_icon_mobile_margin_right',
+
+                //'responsi_hext_navbar_icon_mobile_padding'                  => 'responsi_hext_navbar_icon_mobile_padding',
+                'responsi_hext_navbar_icon_mobile_padding_top'              => 'responsi_hext_navbar_icon_mobile_padding_top',
+                'responsi_hext_navbar_icon_mobile_padding_bottom'           => 'responsi_hext_navbar_icon_mobile_padding_bottom',
+                'responsi_hext_navbar_icon_mobile_padding_left'             => 'responsi_hext_navbar_icon_mobile_padding_left',
+                'responsi_hext_navbar_icon_mobile_padding_right'            => 'responsi_hext_navbar_icon_mobile_padding_right',
+
+                'responsi_hext_navbar_icon_mobile_alignment'                => 'responsi_hext_navbar_icon_mobile_alignment',
+                'responsi_hext_navbar_icon_mobile_size'                     => 'responsi_hext_navbar_icon_mobile_size',
+                'responsi_hext_navbar_icon_mobile_color'                    => 'responsi_hext_navbar_icon_mobile_color',
+                'responsi_hext_navbar_icon_mobile_separator'                => 'responsi_hext_navbar_icon_mobile_separator',
+                'responsi_hext_navbar_mobile_text_on'                       => 'responsi_hext_navbar_mobile_text_on',
+                'responsi_hext_navbar_mobile_text'                          => 'responsi_hext_navbar_mobile_text',
+                'responsi_hext_navbar_mobile_text_font'                     => 'responsi_hext_navbar_mobile_text_font',
+                'responsi_hext_navbar_mobile_text_font_transform'           => 'responsi_hext_navbar_mobile_text_font_transform',
+                
+                //'responsi_hext_navbar_mobile_text_margin'                   => 'responsi_hext_navbar_mobile_text_margin',
+                'responsi_hext_navbar_mobile_text_margin_left'              => 'responsi_hext_navbar_mobile_text_margin_left',
+                'responsi_hext_navbar_mobile_text_margin_right'             => 'responsi_hext_navbar_mobile_text_margin_right',
+                'responsi_hext_navbar_mobile_text_margin_bottom'            => 'responsi_hext_navbar_mobile_text_margin_bottom',
+                'responsi_hext_navbar_mobile_text_margin_top'               => 'responsi_hext_navbar_mobile_text_margin_top',
+
+                //'responsi_hext_navbar_mobile_text_padding'                  => 'responsi_hext_navbar_mobile_text_padding',
+                'responsi_hext_navbar_mobile_text_padding_left'             => 'responsi_hext_navbar_mobile_text_padding_left',
+                'responsi_hext_navbar_mobile_text_padding_right'            => 'responsi_hext_navbar_mobile_text_padding_right',
+                'responsi_hext_navbar_mobile_text_padding_bottom'           => 'responsi_hext_navbar_mobile_text_padding_bottom',
+                'responsi_hext_navbar_mobile_text_padding_top'              => 'responsi_hext_navbar_mobile_text_padding_top',
+                
+                'responsi_hext_navbar_container_dropdown_mobile_background_color'       => 'responsi_hext_navbar_container_dropdown_mobile_background_color',
+                'responsi_hext_navbar_container_dropdown_mobile_border_top'             => 'responsi_hext_navbar_container_dropdown_mobile_border_top',
+                'responsi_hext_navbar_container_dropdown_mobile_border_bottom'          => 'responsi_hext_navbar_container_dropdown_mobile_border_bottom',
+                'responsi_hext_navbar_container_dropdown_mobile_border_lr'              => 'responsi_hext_navbar_container_dropdown_mobile_border_lr',
+                'responsi_hext_navbar_container_dropdown_mobile_border_radius'          => 'responsi_hext_navbar_container_dropdown_mobile_border_radius',
+                'responsi_hext_navbar_container_dropdown_mobile_box_shadow'             => 'responsi_hext_navbar_container_dropdown_mobile_box_shadow',
+                
+                //'responsi_hext_navbar_container_dropdown_mobile_margin'                 => 'responsi_hext_navbar_container_dropdown_mobile_margin',
+                'responsi_hext_navbar_container_dropdown_mobile_margin_left'            => 'responsi_hext_navbar_container_dropdown_mobile_margin_left',
+                'responsi_hext_navbar_container_dropdown_mobile_margin_right'           => 'responsi_hext_navbar_container_dropdown_mobile_margin_right',
+                'responsi_hext_navbar_container_dropdown_mobile_margin_bottom'          => 'responsi_hext_navbar_container_dropdown_mobile_margin_bottom',
+                'responsi_hext_navbar_container_dropdown_mobile_margin_top'             => 'responsi_hext_navbar_container_dropdown_mobile_margin_top',
+
+                //'responsi_hext_navbar_container_dropdown_mobile_padding'                => 'responsi_hext_navbar_container_dropdown_mobile_padding',
+                'responsi_hext_navbar_container_dropdown_mobile_padding_left'           => 'responsi_hext_navbar_container_dropdown_mobile_padding_left',
+                'responsi_hext_navbar_container_dropdown_mobile_padding_right'          => 'responsi_hext_navbar_container_dropdown_mobile_padding_right',
+                'responsi_hext_navbar_container_dropdown_mobile_padding_bottom'         => 'responsi_hext_navbar_container_dropdown_mobile_padding_bottom',
+                'responsi_hext_navbar_container_dropdown_mobile_padding_top'            => 'responsi_hext_navbar_container_dropdown_mobile_padding_top',
+                
+                'responsi_hext_navbar_item_dropdown_mobile_font'                        => 'responsi_hext_navbar_item_dropdown_mobile_font',
+                'responsi_hext_navbar_item_dropdown_mobile_hover_color'                 => 'responsi_hext_navbar_item_dropdown_mobile_hover_color',
+                'responsi_hext_navbar_item_dropdown_mobile_font_transform'              => 'responsi_hext_navbar_item_dropdown_mobile_font_transform',
+                'responsi_hext_navbar_item_dropdown_mobile_background'                  => 'responsi_hext_navbar_item_dropdown_mobile_background',
+                'responsi_hext_navbar_item_dropdown_mobile_hover_background'            => 'responsi_hext_navbar_item_dropdown_mobile_hover_background',
+                'responsi_hext_navbar_item_dropdown_mobile_separator'                   => 'responsi_hext_navbar_item_dropdown_mobile_separator',
+                
+                //'responsi_hext_navbar_item_dropdown_mobile_padding'                     => 'responsi_hext_navbar_item_dropdown_mobile_padding',
+                'responsi_hext_navbar_item_dropdown_mobile_padding_left'                => 'responsi_hext_navbar_item_dropdown_mobile_padding_left',
+                'responsi_hext_navbar_item_dropdown_mobile_padding_right'               => 'responsi_hext_navbar_item_dropdown_mobile_padding_right',
+                'responsi_hext_navbar_item_dropdown_mobile_padding_bottom'              => 'responsi_hext_navbar_item_dropdown_mobile_padding_bottom',
+                'responsi_hext_navbar_item_dropdown_mobile_padding_top'                 => 'responsi_hext_navbar_item_dropdown_mobile_padding_top',
+                
+                'responsi_hext_navbar_item_dropdown_mobile_submenu_font'                => 'responsi_hext_navbar_item_dropdown_mobile_submenu_font',
+                'responsi_hext_navbar_item_dropdown_mobile_submenu_hover_color'         => 'responsi_hext_navbar_item_dropdown_mobile_submenu_hover_color',
+                'responsi_hext_navbar_item_dropdown_mobile_submenu_background'          => 'responsi_hext_navbar_item_dropdown_mobile_submenu_background',
+                'responsi_hext_navbar_item_dropdown_mobile_submenu_font_transform'      => 'responsi_hext_navbar_item_dropdown_mobile_submenu_font_transform',
+                'responsi_hext_navbar_item_dropdown_mobile_submenu_hover_background'    => 'responsi_hext_navbar_item_dropdown_mobile_submenu_hover_background',
+                'responsi_hext_navbar_item_dropdown_mobile_submenu_separator'           => 'responsi_hext_navbar_item_dropdown_mobile_submenu_separator',
+            );
+            
+            $pluginSlug                 = 'header_extender';
+            $theme                      = get_stylesheet();
+            $theme_mods                 = get_theme_mods();
+            $plugin_mods                = get_option( $pluginSlug.'_'.$theme );
+            $plugin_mods_default        = responsi_default_options($pluginSlug);
+            
+            $pluginMods = array();
+            
+            if( is_array( $plugin_mods_default ) && is_array( $plugin_mods ) ){
+                $pluginMods             = array_replace_recursive( $plugin_mods_default, $plugin_mods );
+            }
+
+            if( is_array( $pluginMods ) && count($pluginMods) > 0 && isset( $pluginMods['responsi_hext_active'] ) && $pluginMods['responsi_hext_active'] == 'true' ){
+
+                //Backup Options
+                if( $theme_mods != false && get_option( 'responsi_framework_version' ) != false ){
+                    $version = str_replace('.', '_', get_option( 'responsi_framework_version' ));
+                    update_option( 'theme_mods_backup_'.$theme.'_'.$version, $theme_mods );
+                    update_option( $pluginSlug.'_'.$theme.'_'.$version, $plugin_mods );
+                }
+
+                foreach( $listUpgrade as $key => $value ){
+                    
+                    if( array_key_exists( $key, $pluginMods ) ){
+
+                        $newOp = $pluginMods[$key];
+
+                        if( isset( $responsi_options[$value] )  ){
+                            
+                            $defaultOp = $responsi_options[$value];
+
+                            if( is_array( $defaultOp ) ){
+                                
+                                foreach ($defaultOp as $k => $v) {
+                                    
+                                    if( isset($newOp[$k]) && $newOp[$k] == $v ){
+                                        unset($newOp[$k]);
+                                    }
+                                }
+
+                                if( is_array( $newOp ) && count( $newOp ) > 0 ){
+                                    set_theme_mod( $value,  $newOp );
+                                }else{
+                                    remove_theme_mod( $value );
+                                }
+
+                            }else{
+                                
+                                if( $newOp != '' && $newOp != $defaultOp ){
+                                    set_theme_mod( $value,  $newOp );
+                                }else{
+                                    remove_theme_mod( $value );
+                                }
+                            }
+
+                        }
+
+                        unset($plugin_mods[$key]);
+                        delete_option($key);
+
+                    }
+                }
+
+                update_option( $pluginSlug.'_'.$theme, $plugin_mods );
+                if( function_exists('responsi_dynamic_css') ){
+                    responsi_dynamic_css( 'framework' );
+                }
+            }
+
+        }
+
+        
+
+        $upgrade = update_option('responsiUpgradeMobileMenu', 'done' );
     }
 
 }

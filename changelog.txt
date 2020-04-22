@@ -1,5 +1,7 @@
 *** Responsi Framework Changelog ***
 
+= 7.9.0 - 2020/04/22 =
+
 = 7.8.3 - 2020/04/10 =
 * This maintenance release has tweaks for compatibility with WordPress 5.4 editor features.
 * Tweak - Add new function and hook to get new WordPress 5.4 Gutenberg editor style features.
