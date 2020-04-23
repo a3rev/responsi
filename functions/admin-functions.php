@@ -4452,6 +4452,8 @@ function responsi_build_dynamic_css( $preview = false ) {
     return $dynamic_css;
 }
 
+//add_action( 'after_setup_theme', 'responsi_framework_upgrade', 9 );
+
 function responsi_framework_upgrade(){
 
     global $responsi_options;
@@ -4459,7 +4461,7 @@ function responsi_framework_upgrade(){
     //Upgrade Mobile Menu options
     $upgradeDB = get_option('responsiUpgradeMobileMenu' );
 
-    if( $upgradeDB != 'done' ){
+    if( $upgradeDB != 'done'){
 
         $header_extender_responsi_active = false;
 
@@ -6752,10 +6754,12 @@ function responsi_framework_upgrade(){
         $theme                      = get_stylesheet();
         $theme_mods                 = get_theme_mods();
         $plugin_mods                = get_option( $pluginSlug.'_'.$theme );
+        //$plugin_mods                = get_option( $pluginSlug.'_'.$theme.'_783' );
 
         if( get_option( 'theme_mods_backup_'.$theme.'_783', false ) == false ){
             update_option( 'theme_mods_backup_'.$theme.'_783', $theme_mods );
         }
+
         if( get_option( $pluginSlug.'_'.$theme.'_783', false ) == false ){
             update_option( $pluginSlug.'_'.$theme.'_783', $plugin_mods );
         }
@@ -6776,9 +6780,11 @@ function responsi_framework_upgrade(){
 
                         $newOp = $pluginMods[$key];
 
-                        //set_theme_mod( $value,  $newOp );
+                        set_theme_mod( $value,  $newOp );
 
-                        if( isset( $responsi_options[$value] )  ){
+                        unset($plugin_mods[$key]);
+
+                        /*if( isset( $responsi_options[$value] )  ){
                         
                             $defaultOp = $responsi_options[$value];
 
@@ -6806,10 +6812,12 @@ function responsi_framework_upgrade(){
                                 }
                             }
 
-                        }
+                        }*/
 
                     }
                 }
+
+                update_option( $pluginSlug.'_'.$theme, $plugin_mods );
 
                 if( function_exists('responsi_dynamic_css') ){
                     responsi_dynamic_css( 'framework' );
