@@ -3226,8 +3226,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $responsi_container_nav_border_bottom           = isset( $responsi_options['responsi_container_nav_border_bottom'] ) ? $responsi_options['responsi_container_nav_border_bottom'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB');
     $responsi_container_nav_border_lr               = isset( $responsi_options['responsi_container_nav_border_lr'] ) ? $responsi_options['responsi_container_nav_border_lr'] : array('width' => '0','style' => 'solid','color' => '#DBDBDB');
     
-    $responsi_container_nav_border_radius_option    = isset( $responsi_options['responsi_container_nav_border_radius'] ) ? $responsi_options['responsi_container_nav_border_radius'] : array( 'corner' => 'square','rounded_value' => '0' );
-    $responsi_container_nav_border_radius           = responsi_generate_border_radius_value( $responsi_container_nav_border_radius_option );
+    $responsi_container_nav_border_radius    = isset( $responsi_options['responsi_container_nav_border_radius'] ) ? $responsi_options['responsi_container_nav_border_radius'] : array( 'corner' => 'square','rounded_value' => '0' );
     
     $responsi_nav_box_shadow_option                 = isset( $responsi_options['responsi_nav_box_shadow'] ) ? $responsi_options['responsi_nav_box_shadow'] : array( 'onoff' => 'false' , 'h_shadow' => '0px' , 'v_shadow' => '0px', 'blur' => '5px' , 'spread' => '0px', 'color' => '#DBDBDB', 'inset' => '' );
     $responsi_nav_box_shadow                        = responsi_generate_box_shadow( $responsi_nav_box_shadow_option, false );
@@ -3274,7 +3273,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $nav_container_css .= 'margin-bottom:' . $responsi_container_nav_margin_bottom . 'px;';
     $nav_container_css .= 'margin-left:' . $responsi_container_nav_margin_left . 'px;';
     $nav_container_css .= 'margin-right:' . $responsi_container_nav_margin_right . 'px;';
-    $nav_container_css .= $responsi_container_nav_border_radius;
+    $nav_container_css .= responsi_generate_border_radius( $responsi_container_nav_border_radius );
     $nav_container_css .= $responsi_nav_box_shadow;
 
     $responsi_hext_n_content_margin_top = $responsi_options['responsi_hext_n_content_margin_top'];
@@ -4471,325 +4470,2305 @@ function responsi_framework_upgrade(){
         if( !is_array( $responsi_options ) ){
             $responsi_options = responsi_options();
         }
-       
+
+        $listUpgrade = array(
+                
+            'responsi_hext_navbar_container_alignment' => 'responsi_nav_position',
+            
+            /* Navbar Container Options */
+            'responsi_hext_n_container_background_color'                => 'responsi_container_nav_bg',
+            'responsi_hext_n_container_background_image'                => 'responsi_enable_container_nav_bg_image',
+            'responsi_hext_n_container_background_image_url'            => 'responsi_container_bg_image',
+            'responsi_hext_n_container_background_image_size_on'        => 'responsi_hext_n_container_background_image_size_on',
+            
+            //'responsi_hext_n_container_background_image_size'           => 'responsi_hext_n_container_background_image_size',
+            'responsi_hext_n_container_background_image_size_height'    => 'responsi_hext_n_container_background_image_size_height',
+            'responsi_hext_n_container_background_image_size_width'     => 'responsi_hext_n_container_background_image_size_width',
+            
+            //'responsi_hext_n_container_background_image_position'               => 'responsi_container_bg_position',
+            'responsi_hext_n_container_background_image_position_vertical'      => 'responsi_container_bg_position_vertical',
+            'responsi_hext_n_container_background_image_position_horizontal'    => 'responsi_container_bg_position_horizontal',
+
+            'responsi_hext_n_container_background_image_repeat'         => 'responsi_container_bg_image_repeat',
+            'responsi_hext_n_container_border_top'                      => 'responsi_container_nav_border_top',
+            'responsi_hext_n_container_border_bottom'                   => 'responsi_container_nav_border_bottom',
+            'responsi_hext_n_container_border_lr'                       => 'responsi_container_nav_border_lr',
+            'responsi_hext_n_container_border_radius'                   => 'responsi_container_nav_border_radius',
+            'responsi_hext_n_container_box_shadow'                      => 'responsi_nav_box_shadow',
+
+            //'responsi_hext_n_container_margin'                          => 'responsi_container_nav_margin',
+            'responsi_hext_n_container_margin_top'                      => 'responsi_container_nav_margin_top',
+            'responsi_hext_n_container_margin_bottom'                   => 'responsi_container_nav_margin_bottom',
+            'responsi_hext_n_container_margin_left'                     => 'responsi_container_nav_margin_left',
+            'responsi_hext_n_container_margin_right'                    => 'responsi_container_nav_margin_right',
+
+            //'responsi_hext_n_container_padding'                         => 'responsi_container_nav_padding',
+            'responsi_hext_n_container_padding_top'                     => 'responsi_container_nav_padding_top',
+            'responsi_hext_n_container_padding_bottom'                  => 'responsi_container_nav_padding_bottom',
+            'responsi_hext_n_container_padding_left'                    => 'responsi_container_nav_padding_left',
+            'responsi_hext_n_container_padding_right'                   => 'responsi_container_nav_padding_right',
+            
+            //'responsi_hext_n_container_mobile_margin'                   => 'responsi_hext_n_container_mobile_margin',
+            'responsi_hext_n_container_mobile_margin_top'               => 'responsi_hext_n_container_mobile_margin_top',
+            'responsi_hext_n_container_mobile_margin_bottom'            => 'responsi_hext_n_container_mobile_margin_bottom',
+            'responsi_hext_n_container_mobile_margin_left'              => 'responsi_hext_n_container_mobile_margin_left',
+            'responsi_hext_n_container_mobile_margin_right'             => 'responsi_hext_n_container_mobile_margin_right',
+
+            //'responsi_hext_n_container_mobile_padding'                  => 'responsi_hext_n_container_mobile_padding',
+            'responsi_hext_n_container_mobile_padding_top'              => 'responsi_hext_n_container_mobile_padding_top',
+            'responsi_hext_n_container_mobile_padding_bottom'           => 'responsi_hext_n_container_mobile_padding_bottom',
+            'responsi_hext_n_container_mobile_padding_left'             => 'responsi_hext_n_container_mobile_padding_left',
+            'responsi_hext_n_container_mobile_padding_right'            => 'responsi_hext_n_container_mobile_padding_right',
+
+            /* Navbar Container Innner Options */
+            'responsi_hext_n_content_background_color'                  => 'responsi_hext_n_content_background_color',
+            'responsi_hext_n_content_background_image'                  => 'responsi_hext_n_content_background_image',
+            'responsi_hext_n_content_background_image_url'              => 'responsi_hext_n_content_background_image_url',
+            'responsi_hext_n_content_background_image_size_on'          => 'responsi_hext_n_content_background_image_size_on',
+            
+            //'responsi_hext_n_content_background_image_size'             => 'responsi_hext_n_content_background_image_size',
+            'responsi_hext_n_content_background_image_size_height'      => 'responsi_hext_n_content_background_image_size_height',
+            'responsi_hext_n_content_background_image_size_width'       => 'responsi_hext_n_content_background_image_size_width',
+            
+            //'responsi_hext_n_content_background_image_position'         => 'responsi_hext_n_content_background_image_position',
+            'responsi_hext_n_content_background_image_position_vertical'    => 'responsi_hext_n_content_background_image_position_vertical',
+            'responsi_hext_n_content_background_image_position_horizontal'  => 'responsi_hext_n_content_background_image_position_horizontal',
+            
+            'responsi_hext_n_content_background_image_repeat'           => 'responsi_hext_n_content_background_image_repeat',
+            'responsi_hext_n_content_border_top'                        => 'responsi_hext_n_content_border_top',
+            'responsi_hext_n_content_border_bottom'                     => 'responsi_hext_n_content_border_bottom',
+            'responsi_hext_n_content_border_lr'                         => 'responsi_hext_n_content_border_lr',
+            'responsi_hext_n_content_border_radius'                     => 'responsi_hext_n_content_border_radius',
+            'responsi_hext_n_content_box_shadow'                        => 'responsi_hext_n_content_box_shadow',
+
+            //'responsi_hext_n_content_margin'                            => 'responsi_hext_n_content_margin',
+            'responsi_hext_n_content_margin_top'                        => 'responsi_hext_n_content_margin_top',
+            'responsi_hext_n_content_margin_bottom'                     => 'responsi_hext_n_content_margin_bottom',
+            'responsi_hext_n_content_margin_left'                       => 'responsi_hext_n_content_margin_left',
+            'responsi_hext_n_content_margin_right'                      => 'responsi_hext_n_content_margin_right',
+
+            //'responsi_hext_n_content_padding'                           => 'responsi_hext_n_content_padding',
+            'responsi_hext_n_content_padding_top'                       => 'responsi_hext_n_content_padding_top',
+            'responsi_hext_n_content_padding_bottom'                    => 'responsi_hext_n_content_padding_bottom',
+            'responsi_hext_n_content_padding_left'                      => 'responsi_hext_n_content_padding_left',
+            'responsi_hext_n_content_padding_right'                     => 'responsi_hext_n_content_padding_right',
+
+            //'responsi_hext_n_content_mobile_margin'                     => 'responsi_hext_n_content_mobile_margin',
+            'responsi_hext_n_content_mobile_margin_top'                 => 'responsi_hext_n_content_mobile_margin_top',
+            'responsi_hext_n_content_mobile_margin_bottom'              => 'responsi_hext_n_content_mobile_margin_bottom',
+            'responsi_hext_n_content_mobile_margin_left'                => 'responsi_hext_n_content_mobile_margin_left',
+            'responsi_hext_n_content_mobile_margin_right'               => 'responsi_hext_n_content_mobile_margin_right',
+
+            //'responsi_hext_n_content_mobile_padding'                    => 'responsi_hext_n_content_mobile_padding',
+            'responsi_hext_n_content_mobile_padding_top'                => 'responsi_hext_n_content_mobile_padding_top',
+            'responsi_hext_n_content_mobile_padding_bottom'             => 'responsi_hext_n_content_mobile_padding_bottom',
+            'responsi_hext_n_content_mobile_padding_left'               => 'responsi_hext_n_content_mobile_padding_left',
+            'responsi_hext_n_content_mobile_padding_right'              => 'responsi_hext_n_content_mobile_padding_right',
+
+            //Navbar Wrapper Options
+            'responsi_hext_navbar_container_bg_color'                   => 'responsi_nav_bg',
+            'responsi_hext_navbar_container_border_top'                 => 'responsi_nav_border_top',
+            'responsi_hext_navbar_container_border_bottom'              => 'responsi_nav_border_bottom',
+            'responsi_hext_navbar_container_border_lr'                  => 'responsi_nav_border_lr',
+            'responsi_hext_navbar_container_border_radius_tl'           => 'responsi_nav_border_radius_tl',
+            'responsi_hext_navbar_container_border_radius_tr'           => 'responsi_nav_border_radius_tr',
+            'responsi_hext_navbar_container_border_radius_bl'           => 'responsi_nav_border_radius_bl',
+            'responsi_hext_navbar_container_border_radius_br'           => 'responsi_nav_border_radius_br',
+            'responsi_hext_navbar_container_shadow'                     => 'responsi_nav_shadow',
+
+            //'responsi_hext_navbar_container_margin'                     => 'responsi_nav_margin',
+            'responsi_hext_navbar_container_margin_top'                 => 'responsi_nav_margin_top',
+            'responsi_hext_navbar_container_margin_bottom'              => 'responsi_nav_margin_bottom',
+            'responsi_hext_navbar_container_margin_left'                => 'responsi_nav_margin_left',
+            'responsi_hext_navbar_container_margin_right'               => 'responsi_nav_margin_right',
+            
+            //'responsi_hext_navbar_container_padding'                    => 'responsi_nav_padding',
+            'responsi_hext_navbar_container_padding_top'                => 'responsi_nav_padding_top',
+            'responsi_hext_navbar_container_padding_bottom'             => 'responsi_nav_padding_bottom',
+            'responsi_hext_navbar_container_padding_left'               => 'responsi_nav_padding_left',
+            'responsi_hext_navbar_container_padding_right'              => 'responsi_nav_padding_right',
+
+            //Navbar Items Options
+            'responsi_hext_navi_border_top'                             => 'responsi_navi_border_top',
+            'responsi_hext_navi_border_bottom'                          => 'responsi_navi_border_bottom',
+            'responsi_hext_navi_border_left'                            => 'responsi_navi_border_left',
+            'responsi_hext_navi_border_right'                           => 'responsi_navi_border_right',
+            'responsi_hext_navi_border_radius_tl'                       => 'responsi_navi_border_radius_tl',
+            'responsi_hext_navi_border_radius_tr'                       => 'responsi_navi_border_radius_tr',
+            'responsi_hext_navi_border_radius_bl'                       => 'responsi_navi_border_radius_bl',
+            'responsi_hext_navi_border_radius_br'                       => 'responsi_navi_border_radius_br',
+            'responsi_hext_navi_border_radius_first_tl'                 => 'responsi_hext_navi_border_radius_first_tl',
+            'responsi_hext_navi_border_radius_first_tr'                 => 'responsi_hext_navi_border_radius_first_tr',
+            'responsi_hext_navi_border_radius_first_bl'                 => 'responsi_hext_navi_border_radius_first_bl',
+            'responsi_hext_navi_border_radius_first_br'                 => 'responsi_hext_navi_border_radius_first_br',
+            'responsi_hext_navi_border_radius_last_tl'                  => 'responsi_hext_navi_border_radius_last_tl',
+            'responsi_hext_navi_border_radius_last_tr'                  => 'responsi_hext_navi_border_radius_last_tr',
+            'responsi_hext_navi_border_radius_last_bl'                  => 'responsi_hext_navi_border_radius_last_bl',
+            'responsi_hext_navi_border_radius_last_br'                  => 'responsi_hext_navi_border_radius_last_br',
+
+            //'responsi_hext_navi_li_margin'                              => 'responsi_hext_navi_li_margin',
+            'responsi_hext_navi_li_margin_top'                          => 'responsi_hext_navi_li_margin_top',
+            'responsi_hext_navi_li_margin_bottom'                       => 'responsi_hext_navi_li_margin_bottom',
+            'responsi_hext_navi_li_margin_left'                         => 'responsi_hext_navi_li_margin_left',
+            'responsi_hext_navi_li_margin_right'                        => 'responsi_hext_navi_li_margin_right',
+
+            'responsi_hext_navbar_font'                                 => 'responsi_nav_font',
+            'responsi_hext_navbar_font_transform'                       => 'responsi_nav_font_transform',
+            'responsi_hext_navbar_hover'                                => 'responsi_nav_hover',
+            'responsi_hext_navbar_hover_bg'                             => 'responsi_nav_hover_bg',
+            'responsi_hext_navbar_border_hover'                         => 'responsi_hext_navbar_border_hover',
+            'responsi_hext_navbar_currentitem'                          => 'responsi_nav_currentitem',
+            'responsi_hext_navbar_currentitem_bg'                       => 'responsi_nav_currentitem_bg',
+            'responsi_hext_navbar_border_currentitem'                   => 'responsi_hext_navbar_border_currentitem',
+            'responsi_hext_navbar_divider_border'                       => 'responsi_nav_divider_border',
+            'responsi_hext_navi_background'                             => 'responsi_navi_background',
+
+            //'responsi_hext_navi_border_margin'                          => 'responsi_navi_border_margin',
+            'responsi_hext_navi_border_margin_top'                      => 'responsi_navi_border_margin_top',
+            'responsi_hext_navi_border_margin_bottom'                   => 'responsi_navi_border_margin_bottom',
+            'responsi_hext_navi_border_margin_left'                     => 'responsi_navi_border_margin_left',
+            'responsi_hext_navi_border_margin_right'                    => 'responsi_navi_border_margin_right',
+
+            //'responsi_hext_navi_border_padding'                         => 'responsi_navi_border_padding',
+            'responsi_hext_navi_border_padding_top'                     => 'responsi_navi_border_padding_top',
+            'responsi_hext_navi_border_padding_bottom'                  => 'responsi_navi_border_padding_bottom',
+            'responsi_hext_navi_border_padding_left'                    => 'responsi_navi_border_padding_left',
+            'responsi_hext_navi_border_padding_right'                   => 'responsi_navi_border_padding_right',
+            
+            //Navbar Dropdown Options
+            'responsi_hext_navbar_dropdown_border_top'                  => 'responsi_nav_dropdown_border_top',
+            'responsi_hext_navbar_dropdown_border_bottom'               => 'responsi_nav_dropdown_border_bottom',
+            'responsi_hext_navbar_dropdown_border_left'                 => 'responsi_nav_dropdown_border_left',
+            'responsi_hext_navbar_dropdown_border_right'                => 'responsi_nav_dropdown_border_right',
+            'responsi_hext_navbar_dropdown_border_radius_tl'            => 'responsi_nav_dropdown_border_radius_tl',
+            'responsi_hext_navbar_dropdown_border_radius_tr'            => 'responsi_nav_dropdown_border_radius_br',
+            'responsi_hext_navbar_dropdown_border_radius_bl'            => 'responsi_nav_dropdown_border_radius_bl',
+            'responsi_hext_navbar_dropdown_border_radius_br'            => 'responsi_nav_dropdown_border_radius_br',
+            'responsi_hext_navbar_dropdown_shadow'                      => 'responsi_nav_dropdown_shadow',
+            'responsi_hext_navbar_dropdown_background'                  => 'responsi_nav_dropdown_background',
+            
+            //'responsi_hext_navbar_dropdown_padding'                     => 'responsi_nav_dropdown_padding',
+            'responsi_hext_navbar_dropdown_padding_top'                 => 'responsi_nav_dropdown_padding_top',
+            'responsi_hext_navbar_dropdown_padding_bottom'              => 'responsi_nav_dropdown_padding_bottom',
+            'responsi_hext_navbar_dropdown_padding_left'                => 'responsi_nav_dropdown_padding_left',
+            'responsi_hext_navbar_dropdown_padding_right'               => 'responsi_nav_dropdown_padding_right',
+
+            'responsi_hext_navbar_dropdown_font'                        => 'responsi_nav_dropdown_font',
+            'responsi_hext_navbar_dropdown_hover_color'                 => 'responsi_nav_dropdown_hover_color',
+            'responsi_hext_navbar_dropdown_font_transform'              => 'responsi_nav_dropdown_font_transform',
+            'responsi_hext_navbar_dropdown_item_background'             => 'responsi_nav_dropdown_item_background',
+            'responsi_hext_navbar_dropdown_hover_background'            => 'responsi_nav_dropdown_hover_background',
+            'responsi_hext_navbar_dropdown_separator'                   => 'responsi_nav_dropdown_separator',
+
+            //'responsi_hext_navbar_dropdown_item_padding'                => 'responsi_nav_dropdown_item_padding',
+            'responsi_hext_navbar_dropdown_item_padding_top'            => 'responsi_nav_dropdown_item_padding_top',
+            'responsi_hext_navbar_dropdown_item_padding_bottom'         => 'responsi_nav_dropdown_item_padding_bottom',
+            'responsi_hext_navbar_dropdown_item_padding_left'           => 'responsi_nav_dropdown_item_padding_left',
+            'responsi_hext_navbar_dropdown_item_padding_right'          => 'responsi_nav_dropdown_item_padding_right',
+
+            //Navbar Mobile
+            'responsi_hext_navbar_container_mobile_background_color'    => 'responsi_hext_navbar_container_mobile_background_color',
+            'responsi_hext_navbar_container_mobile_border_top'          => 'responsi_hext_navbar_container_mobile_border_top',
+            'responsi_hext_navbar_container_mobile_border_bottom'       => 'responsi_hext_navbar_container_mobile_border_bottom',
+            'responsi_hext_navbar_container_mobile_border_lr'           => 'responsi_hext_navbar_container_mobile_border_lr',
+            'responsi_hext_navbar_container_mobile_border_radius'       => 'responsi_hext_navbar_container_mobile_border_radius',
+            'responsi_hext_navbar_container_mobile_box_shadow'          => 'responsi_hext_navbar_container_mobile_box_shadow',
+            
+            //'responsi_hext_navbar_container_mobile_margin'              => 'responsi_hext_navbar_container_mobile_margin',
+            'responsi_hext_navbar_container_mobile_margin_top'          => 'responsi_hext_navbar_container_mobile_margin_top',
+            'responsi_hext_navbar_container_mobile_margin_bottom'       => 'responsi_hext_navbar_container_mobile_margin_bottom',
+            'responsi_hext_navbar_container_mobile_margin_left'         => 'responsi_hext_navbar_container_mobile_margin_left',
+            'responsi_hext_navbar_container_mobile_margin_right'        => 'responsi_hext_navbar_container_mobile_margin_right',
+            
+            //'responsi_hext_navbar_container_mobile_padding'             => 'responsi_hext_navbar_container_mobile_padding',
+            'responsi_hext_navbar_container_mobile_padding_top'         => 'responsi_hext_navbar_container_mobile_padding_top',
+            'responsi_hext_navbar_container_mobile_padding_bottom'      => 'responsi_hext_navbar_container_mobile_padding_bottom',
+            'responsi_hext_navbar_container_mobile_padding_left'        => 'responsi_hext_navbar_container_mobile_padding_left',
+            'responsi_hext_navbar_container_mobile_padding_right'       => 'responsi_hext_navbar_container_mobile_padding_right',
+            
+            'responsi_hext_navbar_icon_mobile_background_color'         => 'responsi_hext_navbar_icon_mobile_background_color',
+            'responsi_hext_navbar_icon_mobile_border_top'               => 'responsi_hext_navbar_icon_mobile_border_top',
+            'responsi_hext_navbar_icon_mobile_border_bottom'            => 'responsi_hext_navbar_icon_mobile_border_bottom',
+            'responsi_hext_navbar_icon_mobile_border_left'              => 'responsi_hext_navbar_icon_mobile_border_left',
+            'responsi_hext_navbar_icon_mobile_border_right'             => 'responsi_hext_navbar_icon_mobile_border_right',
+            'responsi_hext_navbar_icon_mobile_border_radius'            => 'responsi_hext_navbar_icon_mobile_border_radius',
+            'responsi_hext_navbar_icon_mobile_box_shadow'               => 'responsi_hext_navbar_icon_mobile_box_shadow',
+
+            //'responsi_hext_navbar_icon_mobile_margin'                   => 'responsi_hext_navbar_icon_mobile_margin',
+            'responsi_hext_navbar_icon_mobile_margin_top'               => 'responsi_hext_navbar_icon_mobile_margin_top',
+            'responsi_hext_navbar_icon_mobile_margin_bottom'            => 'responsi_hext_navbar_icon_mobile_margin_bottom',
+            'responsi_hext_navbar_icon_mobile_margin_left'              => 'responsi_hext_navbar_icon_mobile_margin_left',
+            'responsi_hext_navbar_icon_mobile_margin_right'             => 'responsi_hext_navbar_icon_mobile_margin_right',
+
+            //'responsi_hext_navbar_icon_mobile_padding'                  => 'responsi_hext_navbar_icon_mobile_padding',
+            'responsi_hext_navbar_icon_mobile_padding_top'              => 'responsi_hext_navbar_icon_mobile_padding_top',
+            'responsi_hext_navbar_icon_mobile_padding_bottom'           => 'responsi_hext_navbar_icon_mobile_padding_bottom',
+            'responsi_hext_navbar_icon_mobile_padding_left'             => 'responsi_hext_navbar_icon_mobile_padding_left',
+            'responsi_hext_navbar_icon_mobile_padding_right'            => 'responsi_hext_navbar_icon_mobile_padding_right',
+
+            'responsi_hext_navbar_icon_mobile_alignment'                => 'responsi_hext_navbar_icon_mobile_alignment',
+            'responsi_hext_navbar_icon_mobile_size'                     => 'responsi_hext_navbar_icon_mobile_size',
+            'responsi_hext_navbar_icon_mobile_color'                    => 'responsi_hext_navbar_icon_mobile_color',
+            'responsi_hext_navbar_icon_mobile_separator'                => 'responsi_hext_navbar_icon_mobile_separator',
+            'responsi_hext_navbar_mobile_text_on'                       => 'responsi_hext_navbar_mobile_text_on',
+            'responsi_hext_navbar_mobile_text'                          => 'responsi_hext_navbar_mobile_text',
+            'responsi_hext_navbar_mobile_text_font'                     => 'responsi_hext_navbar_mobile_text_font',
+            'responsi_hext_navbar_mobile_text_font_transform'           => 'responsi_hext_navbar_mobile_text_font_transform',
+            
+            //'responsi_hext_navbar_mobile_text_margin'                   => 'responsi_hext_navbar_mobile_text_margin',
+            'responsi_hext_navbar_mobile_text_margin_left'              => 'responsi_hext_navbar_mobile_text_margin_left',
+            'responsi_hext_navbar_mobile_text_margin_right'             => 'responsi_hext_navbar_mobile_text_margin_right',
+            'responsi_hext_navbar_mobile_text_margin_bottom'            => 'responsi_hext_navbar_mobile_text_margin_bottom',
+            'responsi_hext_navbar_mobile_text_margin_top'               => 'responsi_hext_navbar_mobile_text_margin_top',
+
+            //'responsi_hext_navbar_mobile_text_padding'                  => 'responsi_hext_navbar_mobile_text_padding',
+            'responsi_hext_navbar_mobile_text_padding_left'             => 'responsi_hext_navbar_mobile_text_padding_left',
+            'responsi_hext_navbar_mobile_text_padding_right'            => 'responsi_hext_navbar_mobile_text_padding_right',
+            'responsi_hext_navbar_mobile_text_padding_bottom'           => 'responsi_hext_navbar_mobile_text_padding_bottom',
+            'responsi_hext_navbar_mobile_text_padding_top'              => 'responsi_hext_navbar_mobile_text_padding_top',
+            
+            'responsi_hext_navbar_container_dropdown_mobile_background_color'       => 'responsi_hext_navbar_container_dropdown_mobile_background_color',
+            'responsi_hext_navbar_container_dropdown_mobile_border_top'             => 'responsi_hext_navbar_container_dropdown_mobile_border_top',
+            'responsi_hext_navbar_container_dropdown_mobile_border_bottom'          => 'responsi_hext_navbar_container_dropdown_mobile_border_bottom',
+            'responsi_hext_navbar_container_dropdown_mobile_border_lr'              => 'responsi_hext_navbar_container_dropdown_mobile_border_lr',
+            'responsi_hext_navbar_container_dropdown_mobile_border_radius'          => 'responsi_hext_navbar_container_dropdown_mobile_border_radius',
+            'responsi_hext_navbar_container_dropdown_mobile_box_shadow'             => 'responsi_hext_navbar_container_dropdown_mobile_box_shadow',
+            
+            //'responsi_hext_navbar_container_dropdown_mobile_margin'                 => 'responsi_hext_navbar_container_dropdown_mobile_margin',
+            'responsi_hext_navbar_container_dropdown_mobile_margin_left'            => 'responsi_hext_navbar_container_dropdown_mobile_margin_left',
+            'responsi_hext_navbar_container_dropdown_mobile_margin_right'           => 'responsi_hext_navbar_container_dropdown_mobile_margin_right',
+            'responsi_hext_navbar_container_dropdown_mobile_margin_bottom'          => 'responsi_hext_navbar_container_dropdown_mobile_margin_bottom',
+            'responsi_hext_navbar_container_dropdown_mobile_margin_top'             => 'responsi_hext_navbar_container_dropdown_mobile_margin_top',
+
+            //'responsi_hext_navbar_container_dropdown_mobile_padding'                => 'responsi_hext_navbar_container_dropdown_mobile_padding',
+            'responsi_hext_navbar_container_dropdown_mobile_padding_left'           => 'responsi_hext_navbar_container_dropdown_mobile_padding_left',
+            'responsi_hext_navbar_container_dropdown_mobile_padding_right'          => 'responsi_hext_navbar_container_dropdown_mobile_padding_right',
+            'responsi_hext_navbar_container_dropdown_mobile_padding_bottom'         => 'responsi_hext_navbar_container_dropdown_mobile_padding_bottom',
+            'responsi_hext_navbar_container_dropdown_mobile_padding_top'            => 'responsi_hext_navbar_container_dropdown_mobile_padding_top',
+            
+            'responsi_hext_navbar_item_dropdown_mobile_font'                        => 'responsi_hext_navbar_item_dropdown_mobile_font',
+            'responsi_hext_navbar_item_dropdown_mobile_hover_color'                 => 'responsi_hext_navbar_item_dropdown_mobile_hover_color',
+            'responsi_hext_navbar_item_dropdown_mobile_font_transform'              => 'responsi_hext_navbar_item_dropdown_mobile_font_transform',
+            'responsi_hext_navbar_item_dropdown_mobile_background'                  => 'responsi_hext_navbar_item_dropdown_mobile_background',
+            'responsi_hext_navbar_item_dropdown_mobile_hover_background'            => 'responsi_hext_navbar_item_dropdown_mobile_hover_background',
+            'responsi_hext_navbar_item_dropdown_mobile_separator'                   => 'responsi_hext_navbar_item_dropdown_mobile_separator',
+            
+            //'responsi_hext_navbar_item_dropdown_mobile_padding'                     => 'responsi_hext_navbar_item_dropdown_mobile_padding',
+            'responsi_hext_navbar_item_dropdown_mobile_padding_left'                => 'responsi_hext_navbar_item_dropdown_mobile_padding_left',
+            'responsi_hext_navbar_item_dropdown_mobile_padding_right'               => 'responsi_hext_navbar_item_dropdown_mobile_padding_right',
+            'responsi_hext_navbar_item_dropdown_mobile_padding_bottom'              => 'responsi_hext_navbar_item_dropdown_mobile_padding_bottom',
+            'responsi_hext_navbar_item_dropdown_mobile_padding_top'                 => 'responsi_hext_navbar_item_dropdown_mobile_padding_top',
+            
+            'responsi_hext_navbar_item_dropdown_mobile_submenu_font'                => 'responsi_hext_navbar_item_dropdown_mobile_submenu_font',
+            'responsi_hext_navbar_item_dropdown_mobile_submenu_hover_color'         => 'responsi_hext_navbar_item_dropdown_mobile_submenu_hover_color',
+            'responsi_hext_navbar_item_dropdown_mobile_submenu_background'          => 'responsi_hext_navbar_item_dropdown_mobile_submenu_background',
+            'responsi_hext_navbar_item_dropdown_mobile_submenu_font_transform'      => 'responsi_hext_navbar_item_dropdown_mobile_submenu_font_transform',
+            'responsi_hext_navbar_item_dropdown_mobile_submenu_hover_background'    => 'responsi_hext_navbar_item_dropdown_mobile_submenu_hover_background',
+            'responsi_hext_navbar_item_dropdown_mobile_submenu_separator'           => 'responsi_hext_navbar_item_dropdown_mobile_submenu_separator',
+        );
+
+        $plugin_mods_default = array(
+          'responsi_hext_active' => 'false',
+          'responsi_hext_off_responsi_main_header' => 'false',
+          'responsi_hext_off_responsi_main_navbar' => 'false',
+          'responsi_hext_position' => 'after',
+          'responsi_hext_layout_width' => 1024,
+          'responsi_hext_layout' => '7',
+          'responsi_hext_header_special_sticky' => 'false',
+          'responsi_hext_header_special_transparent' => 'false',
+          'responsi_hext_header_special_transparent_opacity' => 0,
+          'responsi_hext_header_special_transparent_color' => '#000000',
+          'responsi_hext_logo_widget_width' => 20,
+          'responsi_hext_logo_navbar_width' => 20,
+          'responsi_hext_header_content_full' => 'false',
+          'responsi_hext_enable_logo' => 'true',
+          'responsi_hext_logo' => '',
+          'responsi_hext_logo_height' => 60,
+          'responsi_hext_logo_min_height' => 30,
+          'responsi_hext_logo_animation_speed' => 7,
+          'responsi_hext_logo_mobile_height' => 40,
+          'responsi_hext_logo_mobile_min_height' => 30,
+          'responsi_hext_logo_alignment' => 'left',
+          'responsi_hext_logo_alignment_mobile' => 'center',
+          'responsi_hext_l_widget_enable' => 'true',
+          'responsi_hext_logo_widget_column' => '4',
+          'responsi_hext_logo_widget_column_hide_1' => 'true',
+          'responsi_hext_logo_widget_column_hide_2' => 'true',
+          'responsi_hext_logo_widget_column_hide_3' => 'true',
+          'responsi_hext_logo_widget_column_hide_4' => 'true',
+          'responsi_hext_logo_widget_column_hide_5' => 'true',
+          'responsi_hext_logo_widget_column_hide_6' => 'true',
+          'responsi_hext_enable_navbar' => 'true',
+          'responsi_hext_navabar_id' => '0',
+          'responsi_hext_navbar_container_alignment' => 'right',
+          'responsi_hext_navbar_content_full' => 'false',
+          'responsi_hext_scroll_fixed' => 'false',
+          'responsi_hext_top_fixed' => 'true',
+          'responsi_hext_container_background_image_repeat' => 'no-repeat',
+          'responsi_hext_menu_mobile_text' => '',
+          'responsi_hext_menu_mobile_text_font' => 
+          array(
+            'size' => '14',
+            'line_height' => '1',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#000000',
+          ),
+          'responsi_hext_menu_icon_size' => 14,
+          'responsi_hext_menu_icon_color' => '#ffffff',
+          'responsi_hext_mobile_sticky' => 'false',
+          'responsi_hext_navbar_mobile_type' => 'click',
+          'responsi_hext_sidenav_width' => '250',
+          'responsi_hext_navbar_slide_type' => 'ltr',
+          'responsi_hext_sidenav_effect' => 'push',
+          'responsi_hext_sidenav_desktop' => 'false',
+          'responsi_hext_navabar_slide_id' => '0',
+          'responsi_hext_navbar_slide_nav_replace' => 'false',
+          'responsi_hext_sidenav_desktop_icon_position' => 'right',
+          'responsi_hext_sidenav_desktop_icon_size' => 24,
+          'responsi_hext_sidenav_desktop_icon_color' => '#ffffff',
+          'responsi_hext_sidenav_desktop_icon_color_hover' => '#ffffff',
+          'responsi_hext_sidenav_desktop_menu_text' => '',
+          'responsi_hext_sidenav_desktop_menu_text_font' => 
+          array(
+            'size' => '14',
+            'line_height' => '1',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_phone_number' => '',
+          'responsi_hext_phone_font' => 
+          array(
+            'size' => '14',
+            'line_height' => '1.5',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_phone_icon_size' => 14,
+          'responsi_hext_phone_icon_color' => '#ffffff',
+          'responsi_hext_phone_mobile_icon_size' => 14,
+          'responsi_hext_phone_mobile_icon_color' => '#ffffff',
+          'responsi_hext_nw_above_enable' => 'true',
+          'responsi_hext_navbar_widget_above_column' => '4',
+          'responsi_hext_navbar_widget_above_column_hide_1' => 'true',
+          'responsi_hext_navbar_widget_above_column_hide_2' => 'true',
+          'responsi_hext_navbar_widget_above_column_hide_3' => 'true',
+          'responsi_hext_navbar_widget_above_column_hide_4' => 'true',
+          'responsi_hext_navbar_widget_above_column_hide_5' => 'true',
+          'responsi_hext_navbar_widget_above_column_hide_6' => 'true',
+          'responsi_hext_navbar_widget_above_column_full' => 'false',
+          'responsi_hext_nw_below_enable' => 'true',
+          'responsi_hext_navbar_widget_below_column' => '4',
+          'responsi_hext_navbar_widget_below_column_hide_1' => 'true',
+          'responsi_hext_navbar_widget_below_column_hide_2' => 'true',
+          'responsi_hext_navbar_widget_below_column_hide_3' => 'true',
+          'responsi_hext_navbar_widget_below_column_hide_4' => 'true',
+          'responsi_hext_navbar_widget_below_column_hide_5' => 'true',
+          'responsi_hext_navbar_widget_below_column_hide_6' => 'true',
+          'responsi_hext_navbar_widget_below_column_full' => 'false',
+          'responsi_hext_container_background_color' => 
+          array(
+            'onoff' => 'true',
+            'color' => '#686868',
+          ),
+          'responsi_hext_container_background_image' => 'false',
+          'responsi_hext_container_background_image_url' => '',
+          'responsi_hext_container_background_image_size_on' => 'false',
+          'responsi_hext_container_background_image_size_width' => '100%',
+          'responsi_hext_container_background_image_size_height' => 'auto',
+          'responsi_hext_container_background_image_position_vertical' => 'center',
+          'responsi_hext_container_background_image_position_horizontal' => 'center',
+          'responsi_hext_container_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_container_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_container_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_container_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_container_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_container_margin_top' => '0',
+          'responsi_hext_container_margin_bottom' => '0',
+          'responsi_hext_container_margin_left' => '0',
+          'responsi_hext_container_margin_right' => '0',
+          'responsi_hext_container_padding_top' => '0',
+          'responsi_hext_container_padding_bottom' => '0',
+          'responsi_hext_container_padding_left' => '0',
+          'responsi_hext_container_padding_right' => '0',
+          'responsi_hext_container_z_index' => '12',
+          'responsi_hext_container_mobile_margin_top' => '0',
+          'responsi_hext_container_mobile_margin_bottom' => '0',
+          'responsi_hext_container_mobile_margin_left' => '0',
+          'responsi_hext_container_mobile_margin_right' => '0',
+          'responsi_hext_container_mobile_padding_top' => '0',
+          'responsi_hext_container_mobile_padding_bottom' => '0',
+          'responsi_hext_container_mobile_padding_left' => '0',
+          'responsi_hext_container_mobile_padding_right' => '0',
+          'responsi_hext_content_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_content_background_image' => 'false',
+          'responsi_hext_content_background_image_url' => '',
+          'responsi_hext_content_background_image_size_on' => 'false',
+          'responsi_hext_content_background_image_size_width' => '100%',
+          'responsi_hext_content_background_image_size_height' => 'auto',
+          'responsi_hext_content_background_image_position_vertical' => 'center',
+          'responsi_hext_content_background_image_position_horizontal' => 'center',
+          'responsi_hext_content_background_image_repeat' => 'no-repeat',
+          'responsi_hext_content_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_content_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_content_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_content_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_content_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_content_margin_top' => '0',
+          'responsi_hext_content_margin_bottom' => '0',
+          'responsi_hext_content_margin_left' => '0',
+          'responsi_hext_content_margin_right' => '0',
+          'responsi_hext_content_padding_top' => '0',
+          'responsi_hext_content_padding_bottom' => '0',
+          'responsi_hext_content_padding_left' => '0',
+          'responsi_hext_content_padding_right' => '0',
+          'responsi_hext_content_mobile_margin_top' => '0',
+          'responsi_hext_content_mobile_margin_bottom' => '0',
+          'responsi_hext_content_mobile_margin_left' => '0',
+          'responsi_hext_content_mobile_margin_right' => '0',
+          'responsi_hext_content_mobile_padding_top' => '0',
+          'responsi_hext_content_mobile_padding_bottom' => '0',
+          'responsi_hext_content_mobile_padding_left' => '0',
+          'responsi_hext_content_mobile_padding_right' => '0',
+          'responsi_hext_lw_container_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_lw_container_background_image' => 'false',
+          'responsi_hext_lw_container_background_image_url' => '',
+          'responsi_hext_lw_container_background_image_size_on' => 'false',
+          'responsi_hext_lw_container_background_image_size_width' => '100%',
+          'responsi_hext_lw_container_background_image_size_height' => 'auto',
+          'responsi_hext_lw_container_background_image_position_vertical' => 'center',
+          'responsi_hext_lw_container_background_image_position_horizontal' => 'center',
+          'responsi_hext_lw_container_background_image_repeat' => 'no-repeat',
+          'responsi_hext_lw_container_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_lw_container_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_lw_container_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_lw_container_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_lw_container_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_lw_container_margin_top' => '0',
+          'responsi_hext_lw_container_margin_bottom' => '0',
+          'responsi_hext_lw_container_margin_left' => '0',
+          'responsi_hext_lw_container_margin_right' => '0',
+          'responsi_hext_lw_container_padding_top' => '0',
+          'responsi_hext_lw_container_padding_bottom' => '0',
+          'responsi_hext_lw_container_padding_left' => '0',
+          'responsi_hext_lw_container_padding_right' => '0',
+          'responsi_hext_lw_container_mobile_margin_top' => '0',
+          'responsi_hext_lw_container_mobile_margin_bottom' => '0',
+          'responsi_hext_lw_container_mobile_margin_left' => '0',
+          'responsi_hext_lw_container_mobile_margin_right' => '0',
+          'responsi_hext_lw_container_mobile_padding_top' => '0',
+          'responsi_hext_lw_container_mobile_padding_bottom' => '0',
+          'responsi_hext_lw_container_mobile_padding_left' => '0',
+          'responsi_hext_lw_container_mobile_padding_right' => '0',
+          'responsi_hext_lw_content_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_lw_content_background_image' => 'false',
+          'responsi_hext_lw_content_background_image_url' => '',
+          'responsi_hext_lw_content_background_image_size_on' => 'false',
+          'responsi_hext_lw_content_background_image_size_width' => '100%',
+          'responsi_hext_lw_content_background_image_size_height' => 'auto',
+          'responsi_hext_lw_content_background_image_position_vertical' => 'center',
+          'responsi_hext_lw_content_background_image_position_horizontal' => 'center',
+          'responsi_hext_lw_content_background_image_repeat' => 'no-repeat',
+          'responsi_hext_lw_content_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_lw_content_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_lw_content_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_lw_content_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_lw_content_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_lw_content_margin_top' => '10',
+          'responsi_hext_lw_content_margin_bottom' => '10',
+          'responsi_hext_lw_content_margin_left' => '10',
+          'responsi_hext_lw_content_margin_right' => '10',
+          'responsi_hext_lw_content_padding_top' => '0',
+          'responsi_hext_lw_content_padding_bottom' => '0',
+          'responsi_hext_lw_content_padding_left' => '0',
+          'responsi_hext_lw_content_padding_right' => '0',
+          'responsi_hext_lw_content_mobile_margin_top' => '10',
+          'responsi_hext_lw_content_mobile_margin_bottom' => '10',
+          'responsi_hext_lw_content_mobile_margin_left' => '10',
+          'responsi_hext_lw_content_mobile_margin_right' => '10',
+          'responsi_hext_lw_content_mobile_padding_top' => '0',
+          'responsi_hext_lw_content_mobile_padding_bottom' => '0',
+          'responsi_hext_lw_content_mobile_padding_left' => '0',
+          'responsi_hext_lw_content_mobile_padding_right' => '0',
+          'responsi_hext_logo_container_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_logo_container_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_logo_container_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_logo_container_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_logo_container_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_logo_container_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_logo_container_margin_top' => '0',
+          'responsi_hext_logo_container_margin_bottom' => '0',
+          'responsi_hext_logo_container_margin_left' => '0',
+          'responsi_hext_logo_container_margin_right' => '0',
+          'responsi_hext_logo_container_padding_top' => '0',
+          'responsi_hext_logo_container_padding_bottom' => '0',
+          'responsi_hext_logo_container_padding_left' => '0',
+          'responsi_hext_logo_container_padding_right' => '0',
+          'responsi_hext_logo_container_mobile_margin_top' => '0',
+          'responsi_hext_logo_container_mobile_margin_bottom' => '0',
+          'responsi_hext_logo_container_mobile_margin_left' => '0',
+          'responsi_hext_logo_container_mobile_margin_right' => '0',
+          'responsi_hext_logo_container_mobile_padding_top' => '0',
+          'responsi_hext_logo_container_mobile_padding_bottom' => '0',
+          'responsi_hext_logo_container_mobile_padding_left' => '0',
+          'responsi_hext_logo_container_mobile_padding_right' => '0',
+          'responsi_hext_l_widget_container_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_container_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_container_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_container_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_container_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_l_widget_container_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_l_widget_container_margin_top' => '0',
+          'responsi_hext_l_widget_container_margin_bottom' => '0',
+          'responsi_hext_l_widget_container_margin_left' => '0',
+          'responsi_hext_l_widget_container_margin_right' => '0',
+          'responsi_hext_l_widget_container_padding_top' => '0',
+          'responsi_hext_l_widget_container_padding_bottom' => '0',
+          'responsi_hext_l_widget_container_padding_left' => '0',
+          'responsi_hext_l_widget_container_padding_right' => '0',
+          'responsi_hext_l_widget_container_mobile_margin_top' => '0',
+          'responsi_hext_l_widget_container_mobile_margin_bottom' => '0',
+          'responsi_hext_l_widget_container_mobile_margin_left' => '0',
+          'responsi_hext_l_widget_container_mobile_margin_right' => '0',
+          'responsi_hext_l_widget_container_mobile_padding_top' => '0',
+          'responsi_hext_l_widget_container_mobile_padding_bottom' => '0',
+          'responsi_hext_l_widget_container_mobile_padding_left' => '0',
+          'responsi_hext_l_widget_container_mobile_padding_right' => '0',
+          'responsi_hext_l_widget_item_container_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_item_container_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_item_container_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_item_container_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_item_container_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_l_widget_item_container_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_l_widget_item_container_margin_top' => '0',
+          'responsi_hext_l_widget_item_container_margin_bottom' => '0',
+          'responsi_hext_l_widget_item_container_margin_left' => '0',
+          'responsi_hext_l_widget_item_container_margin_right' => '0',
+          'responsi_hext_l_widget_item_container_padding_top' => '0',
+          'responsi_hext_l_widget_item_container_padding_bottom' => '0',
+          'responsi_hext_l_widget_item_container_padding_left' => '0',
+          'responsi_hext_l_widget_item_container_padding_right' => '0',
+          'responsi_hext_l_widget_item_container_mobile_margin_top' => '0',
+          'responsi_hext_l_widget_item_container_mobile_margin_bottom' => '0',
+          'responsi_hext_l_widget_item_container_mobile_margin_left' => '0',
+          'responsi_hext_l_widget_item_container_mobile_margin_right' => '0',
+          'responsi_hext_l_widget_item_container_mobile_padding_top' => '0',
+          'responsi_hext_l_widget_item_container_mobile_padding_bottom' => '0',
+          'responsi_hext_l_widget_item_container_mobile_padding_left' => '0',
+          'responsi_hext_l_widget_item_container_mobile_padding_right' => '0',
+          'responsi_hext_l_widget_item_title_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_item_title_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_item_title_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_item_title_border_left' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_item_title_border_right' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_item_title_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_l_widget_item_title_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_l_widget_item_title' => 
+          array(
+            'size' => '14',
+            'line_height' => '1.5',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_item_title_alignment' => 'left',
+          'responsi_hext_l_widget_item_title_margin_top' => '0',
+          'responsi_hext_l_widget_item_title_margin_bottom' => '5',
+          'responsi_hext_l_widget_item_title_margin_left' => '0',
+          'responsi_hext_l_widget_item_title_margin_right' => '0',
+          'responsi_hext_l_widget_item_title_padding_top' => '0',
+          'responsi_hext_l_widget_item_title_padding_bottom' => '0',
+          'responsi_hext_l_widget_item_title_padding_left' => '0',
+          'responsi_hext_l_widget_item_title_padding_right' => '0',
+          'responsi_hext_l_widget_item_title_mobile_alignment' => 'left',
+          'responsi_hext_l_widget_item_title_mobile_margin_top' => '0',
+          'responsi_hext_l_widget_item_title_mobile_margin_bottom' => '5',
+          'responsi_hext_l_widget_item_title_mobile_margin_left' => '0',
+          'responsi_hext_l_widget_item_title_mobile_margin_right' => '0',
+          'responsi_hext_l_widget_item_title_mobile_padding_top' => '0',
+          'responsi_hext_l_widget_item_title_mobile_padding_bottom' => '0',
+          'responsi_hext_l_widget_item_title_mobile_padding_left' => '0',
+          'responsi_hext_l_widget_item_title_mobile_padding_right' => '0',
+          'responsi_hext_l_widget_item_text_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_item_text_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_item_text_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_item_text_border_left' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_item_text_border_right' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_l_widget_item_text_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_l_widget_item_text_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_l_widget_item_text' => 
+          array(
+            'size' => '13',
+            'line_height' => '1.5',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#dddddd',
+          ),
+          'responsi_hext_l_widget_item_link' => 
+          array(
+            'size' => '13',
+            'line_height' => '1.5',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#dddddd',
+          ),
+          'responsi_hext_l_widget_item_link_hover' => '#ff6868',
+          'responsi_hext_l_widget_item_phone' => 
+          array(
+            'size' => '13',
+            'line_height' => '1.5',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#dddddd',
+          ),
+          'responsi_hext_l_widget_item_text_alignment' => 'left',
+          'responsi_hext_l_widget_item_text_margin_top' => '0',
+          'responsi_hext_l_widget_item_text_margin_bottom' => '5',
+          'responsi_hext_l_widget_item_text_margin_left' => '0',
+          'responsi_hext_l_widget_item_text_margin_right' => '0',
+          'responsi_hext_l_widget_item_text_padding_top' => '0',
+          'responsi_hext_l_widget_item_text_padding_bottom' => '0',
+          'responsi_hext_l_widget_item_text_padding_left' => '0',
+          'responsi_hext_l_widget_item_text_padding_right' => '0',
+          'responsi_hext_l_widget_item_text_mobile_alignment' => 'left',
+          'responsi_hext_l_widget_item_text_mobile_margin_top' => '0',
+          'responsi_hext_l_widget_item_text_mobile_margin_bottom' => '0',
+          'responsi_hext_l_widget_item_text_mobile_margin_left' => '0',
+          'responsi_hext_l_widget_item_text_mobile_margin_right' => '0',
+          'responsi_hext_l_widget_item_text_mobile_padding_top' => '0',
+          'responsi_hext_l_widget_item_text_mobile_padding_bottom' => '0',
+          'responsi_hext_l_widget_item_text_mobile_padding_left' => '0',
+          'responsi_hext_l_widget_item_text_mobile_padding_right' => '0',
+          'responsi_hext_n_container_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_n_container_background_image' => 'false',
+          'responsi_hext_n_container_background_image_url' => '',
+          'responsi_hext_n_container_background_image_size_on' => 'false',
+          'responsi_hext_n_container_background_image_size_width' => '100%',
+          'responsi_hext_n_container_background_image_size_height' => 'auto',
+          'responsi_hext_n_container_background_image_position_vertical' => 'center',
+          'responsi_hext_n_container_background_image_position_horizontal' => 'center',
+          'responsi_hext_n_container_background_image_repeat' => 'no-repeat',
+          'responsi_hext_n_container_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_n_container_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_n_container_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_n_container_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_n_container_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_n_container_margin_top' => '0',
+          'responsi_hext_n_container_margin_bottom' => '0',
+          'responsi_hext_n_container_margin_left' => '0',
+          'responsi_hext_n_container_margin_right' => '0',
+          'responsi_hext_n_container_padding_top' => '0',
+          'responsi_hext_n_container_padding_bottom' => '0',
+          'responsi_hext_n_container_padding_left' => '0',
+          'responsi_hext_n_container_padding_right' => '0',
+          'responsi_hext_n_container_mobile_margin_top' => '0',
+          'responsi_hext_n_container_mobile_margin_bottom' => '0',
+          'responsi_hext_n_container_mobile_margin_left' => '10',
+          'responsi_hext_n_container_mobile_margin_right' => '10',
+          'responsi_hext_n_container_mobile_padding_top' => '0',
+          'responsi_hext_n_container_mobile_padding_bottom' => '0',
+          'responsi_hext_n_container_mobile_padding_left' => '0',
+          'responsi_hext_n_container_mobile_padding_right' => '0',
+          'responsi_hext_n_content_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_n_content_background_image' => 'false',
+          'responsi_hext_n_content_background_image_url' => '',
+          'responsi_hext_n_content_background_image_size_on' => 'false',
+          'responsi_hext_n_content_background_image_size_width' => '100%',
+          'responsi_hext_n_content_background_image_size_height' => 'auto',
+          'responsi_hext_n_content_background_image_position_vertical' => 'center',
+          'responsi_hext_n_content_background_image_position_horizontal' => 'center',
+          'responsi_hext_n_content_background_image_repeat' => 'no-repeat',
+          'responsi_hext_n_content_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_n_content_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_n_content_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_n_content_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_n_content_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_n_content_margin_top' => '0',
+          'responsi_hext_n_content_margin_bottom' => '0',
+          'responsi_hext_n_content_margin_left' => '10',
+          'responsi_hext_n_content_margin_right' => '10',
+          'responsi_hext_n_content_padding_top' => '0',
+          'responsi_hext_n_content_padding_bottom' => '0',
+          'responsi_hext_n_content_padding_left' => '0',
+          'responsi_hext_n_content_padding_right' => '0',
+          'responsi_hext_n_content_mobile_margin_top' => '0',
+          'responsi_hext_n_content_mobile_margin_bottom' => '0',
+          'responsi_hext_n_content_mobile_margin_left' => '0',
+          'responsi_hext_n_content_mobile_margin_right' => '0',
+          'responsi_hext_n_content_mobile_padding_top' => '0',
+          'responsi_hext_n_content_mobile_padding_bottom' => '0',
+          'responsi_hext_n_content_mobile_padding_left' => '0',
+          'responsi_hext_n_content_mobile_padding_right' => '0',
+          'responsi_hext_navbar_container_bg_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_navbar_container_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#DBDBDB',
+          ),
+          'responsi_hext_navbar_container_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#DBDBDB',
+          ),
+          'responsi_hext_navbar_container_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#DBDBDB',
+          ),
+          'responsi_hext_navbar_container_border_radius_tl' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_navbar_container_border_radius_tr' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_navbar_container_border_radius_bl' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_navbar_container_border_radius_br' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_navbar_container_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_navbar_container_margin_top' => '0',
+          'responsi_hext_navbar_container_margin_bottom' => '0',
+          'responsi_hext_navbar_container_margin_left' => '0',
+          'responsi_hext_navbar_container_margin_right' => '0',
+          'responsi_hext_navbar_container_padding_top' => '0',
+          'responsi_hext_navbar_container_padding_bottom' => '0',
+          'responsi_hext_navbar_container_padding_left' => '0',
+          'responsi_hext_navbar_container_padding_right' => '0',
+          'responsi_hext_navi_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#DBDBDB',
+          ),
+          'responsi_hext_navi_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#DBDBDB',
+          ),
+          'responsi_hext_navi_border_left' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#DBDBDB',
+          ),
+          'responsi_hext_navi_border_right' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#DBDBDB',
+          ),
+          'responsi_hext_navi_border_radius_tl' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '3',
+          ),
+          'responsi_hext_navi_border_radius_tr' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '3',
+          ),
+          'responsi_hext_navi_border_radius_bl' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '3',
+          ),
+          'responsi_hext_navi_border_radius_br' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '3',
+          ),
+          'responsi_hext_navi_border_radius_first_tl' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '3',
+          ),
+          'responsi_hext_navi_border_radius_first_tr' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '3',
+          ),
+          'responsi_hext_navi_border_radius_first_bl' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '3',
+          ),
+          'responsi_hext_navi_border_radius_first_br' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '3',
+          ),
+          'responsi_hext_navi_border_radius_last_tl' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '3',
+          ),
+          'responsi_hext_navi_border_radius_last_tr' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '3',
+          ),
+          'responsi_hext_navi_border_radius_last_bl' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '3',
+          ),
+          'responsi_hext_navi_border_radius_last_br' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '3',
+          ),
+          'responsi_hext_navi_li_margin_top' => '0',
+          'responsi_hext_navi_li_margin_bottom' => '0',
+          'responsi_hext_navi_li_margin_left' => '0',
+          'responsi_hext_navi_li_margin_right' => '0',
+          'responsi_hext_navbar_font' => 
+          array(
+            'size' => '13',
+            'line_height' => '1',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#000000',
+          ),
+          'responsi_hext_navbar_font_transform' => 'uppercase',
+          'responsi_hext_navbar_hover' => '#ffffff',
+          'responsi_hext_navbar_hover_bg' => 
+          array(
+            'onoff' => 'true',
+            'color' => '#000000',
+          ),
+          'responsi_hext_navbar_border_hover' => '#ffffff',
+          'responsi_hext_navbar_currentitem' => '#ffffff',
+          'responsi_hext_navbar_currentitem_bg' => 
+          array(
+            'onoff' => 'true',
+            'color' => '#000000',
+          ),
+          'responsi_hext_navbar_border_currentitem' => '#ffffff',
+          'responsi_hext_navbar_divider_border' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#DBDBDB',
+          ),
+          'responsi_hext_navi_background' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_navi_border_margin_top' => '1',
+          'responsi_hext_navi_border_margin_bottom' => '1',
+          'responsi_hext_navi_border_margin_left' => '0',
+          'responsi_hext_navi_border_margin_right' => '0',
+          'responsi_hext_navi_border_padding_top' => '7',
+          'responsi_hext_navi_border_padding_bottom' => '7',
+          'responsi_hext_navi_border_padding_left' => '15',
+          'responsi_hext_navi_border_padding_right' => '15',
+          'responsi_hext_navbar_dropdown_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#000000',
+          ),
+          'responsi_hext_navbar_dropdown_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#000000',
+          ),
+          'responsi_hext_navbar_dropdown_border_left' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#000000',
+          ),
+          'responsi_hext_navbar_dropdown_border_right' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#000000',
+          ),
+          'responsi_hext_navbar_dropdown_border_radius_tl' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '3',
+          ),
+          'responsi_hext_navbar_dropdown_border_radius_tr' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '3',
+          ),
+          'responsi_hext_navbar_dropdown_border_radius_bl' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '3',
+          ),
+          'responsi_hext_navbar_dropdown_border_radius_br' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '3',
+          ),
+          'responsi_hext_navbar_dropdown_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => 'inset',
+          ),
+          'responsi_hext_navbar_dropdown_background' => 
+          array(
+            'onoff' => 'true',
+            'color' => '#000000',
+          ),
+          'responsi_hext_navbar_dropdown_padding_top' => '0',
+          'responsi_hext_navbar_dropdown_padding_bottom' => '0',
+          'responsi_hext_navbar_dropdown_padding_left' => '0',
+          'responsi_hext_navbar_dropdown_padding_right' => '0',
+          'responsi_hext_navbar_dropdown_font' => 
+          array(
+            'size' => '13',
+            'line_height' => '1',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#FFFFFF',
+          ),
+          'responsi_hext_navbar_dropdown_hover_color' => '#000000',
+          'responsi_hext_navbar_dropdown_font_transform' => 'uppercase',
+          'responsi_hext_navbar_dropdown_item_background' => 
+          array(
+            'onoff' => 'true',
+            'color' => '#000000',
+          ),
+          'responsi_hext_navbar_dropdown_hover_background' => 
+          array(
+            'onoff' => 'true',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_navbar_dropdown_separator' => 
+          array(
+            'width' => '1',
+            'style' => 'solid',
+            'color' => '#666666',
+          ),
+          'responsi_hext_navbar_dropdown_item_padding_top' => '7',
+          'responsi_hext_navbar_dropdown_item_padding_bottom' => '7',
+          'responsi_hext_navbar_dropdown_item_padding_left' => '15',
+          'responsi_hext_navbar_dropdown_item_padding_right' => '15',
+          'responsi_hext_navbar_container_mobile_background_color' => 
+          array(
+            'onoff' => 'true',
+            'color' => '#000000',
+          ),
+          'responsi_hext_navbar_container_mobile_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_navbar_container_mobile_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_navbar_container_mobile_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_navbar_container_mobile_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_navbar_container_mobile_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => 'exclude_11_12',
+          ),
+          'responsi_hext_navbar_container_mobile_margin_top' => '0',
+          'responsi_hext_navbar_container_mobile_margin_bottom' => '0',
+          'responsi_hext_navbar_container_mobile_margin_left' => '0',
+          'responsi_hext_navbar_container_mobile_margin_right' => '0',
+          'responsi_hext_navbar_container_mobile_padding_top' => '5',
+          'responsi_hext_navbar_container_mobile_padding_bottom' => '5',
+          'responsi_hext_navbar_container_mobile_padding_left' => '5',
+          'responsi_hext_navbar_container_mobile_padding_right' => '5',
+          'responsi_hext_navbar_icon_mobile_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#000000',
+          ),
+          'responsi_hext_navbar_icon_mobile_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_navbar_icon_mobile_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_navbar_icon_mobile_border_left' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_navbar_icon_mobile_border_right' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_navbar_icon_mobile_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_navbar_icon_mobile_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => 'exclude_11_12',
+          ),
+          'responsi_hext_navbar_icon_mobile_margin_top' => '0',
+          'responsi_hext_navbar_icon_mobile_margin_bottom' => '0',
+          'responsi_hext_navbar_icon_mobile_margin_left' => '0',
+          'responsi_hext_navbar_icon_mobile_margin_right' => '5',
+          'responsi_hext_navbar_icon_mobile_padding_top' => '0',
+          'responsi_hext_navbar_icon_mobile_padding_bottom' => '0',
+          'responsi_hext_navbar_icon_mobile_padding_left' => '0',
+          'responsi_hext_navbar_icon_mobile_padding_right' => '0',
+          'responsi_hext_navbar_icon_mobile_alignment' => 'left',
+          'responsi_hext_navbar_icon_mobile_size' => 24,
+          'responsi_hext_navbar_icon_mobile_color' => '#ffffff',
+          'responsi_hext_navbar_icon_mobile_separator' => 
+          array(
+            'width' => '2',
+            'style' => 'solid',
+            'color' => '#161616',
+          ),
+          'responsi_hext_navbar_mobile_text_on' => 'true',
+          'responsi_hext_navbar_mobile_text' => 'Navigation',
+          'responsi_hext_navbar_mobile_text_font' => 
+          array(
+            'size' => '18',
+            'line_height' => '1',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#FFFFFF',
+          ),
+          'responsi_hext_navbar_mobile_text_font_transform' => 'none',
+          'responsi_hext_navbar_mobile_text_margin_top' => '0',
+          'responsi_hext_navbar_mobile_text_margin_bottom' => '0',
+          'responsi_hext_navbar_mobile_text_margin_left' => '8',
+          'responsi_hext_navbar_mobile_text_margin_right' => '8',
+          'responsi_hext_navbar_mobile_text_padding_top' => '0',
+          'responsi_hext_navbar_mobile_text_padding_bottom' => '0',
+          'responsi_hext_navbar_mobile_text_padding_left' => '0',
+          'responsi_hext_navbar_mobile_text_padding_right' => '0',
+          'responsi_hext_navbar_container_dropdown_mobile_background_color' => 
+          array(
+            'onoff' => 'true',
+            'color' => '#000000',
+          ),
+          'responsi_hext_navbar_container_dropdown_mobile_border_top' => 
+          array(
+            'width' => '2',
+            'style' => 'solid',
+            'color' => '#161616',
+          ),
+          'responsi_hext_navbar_container_dropdown_mobile_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#161616',
+          ),
+          'responsi_hext_navbar_container_dropdown_mobile_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#161616',
+          ),
+          'responsi_hext_navbar_container_dropdown_mobile_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_navbar_container_dropdown_mobile_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_navbar_container_dropdown_mobile_margin_top' => '0',
+          'responsi_hext_navbar_container_dropdown_mobile_margin_bottom' => '0',
+          'responsi_hext_navbar_container_dropdown_mobile_margin_left' => '0',
+          'responsi_hext_navbar_container_dropdown_mobile_margin_right' => '0',
+          'responsi_hext_navbar_container_dropdown_mobile_padding_top' => '0',
+          'responsi_hext_navbar_container_dropdown_mobile_padding_bottom' => '0',
+          'responsi_hext_navbar_container_dropdown_mobile_padding_left' => '0',
+          'responsi_hext_navbar_container_dropdown_mobile_padding_right' => '0',
+          'responsi_hext_sidenav_close_position' => 'top',
+          'responsi_hext_navbar_item_dropdown_mobile_font' => 
+          array(
+            'size' => '13',
+            'line_height' => '1',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#FFFFFF',
+          ),
+          'responsi_hext_navbar_item_dropdown_mobile_hover_color' => '#ffffff',
+          'responsi_hext_navbar_item_dropdown_mobile_font_transform' => 'uppercase',
+          'responsi_hext_navbar_item_dropdown_mobile_background' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#000000',
+          ),
+          'responsi_hext_navbar_item_dropdown_mobile_hover_background' => 
+          array(
+            'onoff' => 'true',
+            'color' => '#161616',
+          ),
+          'responsi_hext_navbar_item_dropdown_mobile_separator' => 
+          array(
+            'width' => '2',
+            'style' => 'solid',
+            'color' => '#161616',
+          ),
+          'responsi_hext_navbar_item_dropdown_mobile_padding_top' => '9',
+          'responsi_hext_navbar_item_dropdown_mobile_padding_bottom' => '9',
+          'responsi_hext_navbar_item_dropdown_mobile_padding_left' => '10',
+          'responsi_hext_navbar_item_dropdown_mobile_padding_right' => '10',
+          'responsi_hext_navbar_item_dropdown_mobile_submenu_font' => 
+          array(
+            'size' => '13',
+            'line_height' => '1',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#FFFFFF',
+          ),
+          'responsi_hext_navbar_item_dropdown_mobile_submenu_hover_color' => '#ffffff',
+          'responsi_hext_navbar_item_dropdown_mobile_submenu_background' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#000000',
+          ),
+          'responsi_hext_navbar_item_dropdown_mobile_submenu_font_transform' => 'uppercase',
+          'responsi_hext_navbar_item_dropdown_mobile_submenu_hover_background' => 
+          array(
+            'onoff' => 'true',
+            'color' => '#161616',
+          ),
+          'responsi_hext_navbar_item_dropdown_mobile_submenu_separator' => 
+          array(
+            'width' => '2',
+            'style' => 'solid',
+            'color' => '#161616',
+          ),
+          'responsi_hext_nw_above_container_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_container_background_image' => 'false',
+          'responsi_hext_nw_above_container_background_image_url' => '',
+          'responsi_hext_nw_above_container_background_image_size_on' => 'false',
+          'responsi_hext_nw_above_container_background_image_size_width' => '100%',
+          'responsi_hext_nw_above_container_background_image_size_height' => 'auto',
+          'responsi_hext_nw_above_container_background_image_position_vertical' => 'center',
+          'responsi_hext_nw_above_container_background_image_position_horizontal' => 'center',
+          'responsi_hext_nw_above_container_background_image_repeat' => 'no-repeat',
+          'responsi_hext_nw_above_container_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_container_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_container_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_container_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_nw_above_container_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_nw_above_container_margin_top' => '0',
+          'responsi_hext_nw_above_container_margin_bottom' => '0',
+          'responsi_hext_nw_above_container_margin_left' => '0',
+          'responsi_hext_nw_above_container_margin_right' => '0',
+          'responsi_hext_nw_above_container_padding_top' => '0',
+          'responsi_hext_nw_above_container_padding_bottom' => '0',
+          'responsi_hext_nw_above_container_padding_left' => '0',
+          'responsi_hext_nw_above_container_padding_right' => '0',
+          'responsi_hext_nw_above_container_mobile_margin_top' => '0',
+          'responsi_hext_nw_above_container_mobile_margin_bottom' => '0',
+          'responsi_hext_nw_above_container_mobile_margin_left' => '0',
+          'responsi_hext_nw_above_container_mobile_margin_right' => '0',
+          'responsi_hext_nw_above_container_mobile_padding_top' => '0',
+          'responsi_hext_nw_above_container_mobile_padding_bottom' => '0',
+          'responsi_hext_nw_above_container_mobile_padding_left' => '0',
+          'responsi_hext_nw_above_container_mobile_padding_right' => '0',
+          'responsi_hext_nw_above_content_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_content_background_image' => 'false',
+          'responsi_hext_nw_above_content_background_image_url' => '',
+          'responsi_hext_nw_above_content_background_image_size_on' => 'false',
+          'responsi_hext_nw_above_content_background_image_size_width' => '100%',
+          'responsi_hext_nw_above_content_background_image_size_height' => 'auto',
+          'responsi_hext_nw_above_content_background_image_position_vertical' => 'center',
+          'responsi_hext_nw_above_content_background_image_position_horizontal' => 'center',
+          'responsi_hext_nw_above_content_background_image_repeat' => 'no-repeat',
+          'responsi_hext_nw_above_content_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_content_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_content_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_content_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_nw_above_content_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_nw_above_content_margin_top' => '10',
+          'responsi_hext_nw_above_content_margin_bottom' => '10',
+          'responsi_hext_nw_above_content_margin_left' => '10',
+          'responsi_hext_nw_above_content_margin_right' => '10',
+          'responsi_hext_nw_above_content_padding_top' => '0',
+          'responsi_hext_nw_above_content_padding_bottom' => '0',
+          'responsi_hext_nw_above_content_padding_left' => '0',
+          'responsi_hext_nw_above_content_padding_right' => '0',
+          'responsi_hext_nw_above_content_mobile_margin_top' => '0',
+          'responsi_hext_nw_above_content_mobile_margin_bottom' => '10',
+          'responsi_hext_nw_above_content_mobile_margin_left' => '10',
+          'responsi_hext_nw_above_content_mobile_margin_right' => '10',
+          'responsi_hext_nw_above_content_mobile_padding_top' => '0',
+          'responsi_hext_nw_above_content_mobile_padding_bottom' => '0',
+          'responsi_hext_nw_above_content_mobile_padding_left' => '0',
+          'responsi_hext_nw_above_content_mobile_padding_right' => '0',
+          'responsi_hext_nw_above_widget_item_container_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_widget_item_container_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_widget_item_container_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_widget_item_container_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_widget_item_container_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_nw_above_widget_item_container_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_nw_above_widget_item_container_margin_top' => '0',
+          'responsi_hext_nw_above_widget_item_container_margin_bottom' => '0',
+          'responsi_hext_nw_above_widget_item_container_margin_left' => '0',
+          'responsi_hext_nw_above_widget_item_container_margin_right' => '0',
+          'responsi_hext_nw_above_widget_item_container_padding_top' => '0',
+          'responsi_hext_nw_above_widget_item_container_padding_bottom' => '0',
+          'responsi_hext_nw_above_widget_item_container_padding_left' => '0',
+          'responsi_hext_nw_above_widget_item_container_padding_right' => '0',
+          'responsi_hext_nw_above_widget_item_container_mobile_margin_top' => '0',
+          'responsi_hext_nw_above_widget_item_container_mobile_margin_bottom' => '0',
+          'responsi_hext_nw_above_widget_item_container_mobile_margin_left' => '0',
+          'responsi_hext_nw_above_widget_item_container_mobile_margin_right' => '0',
+          'responsi_hext_nw_above_widget_item_container_mobile_padding_top' => '0',
+          'responsi_hext_nw_above_widget_item_container_mobile_padding_bottom' => '0',
+          'responsi_hext_nw_above_widget_item_container_mobile_padding_left' => '0',
+          'responsi_hext_nw_above_widget_item_container_mobile_padding_right' => '0',
+          'responsi_hext_nw_above_widget_item_title_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_widget_item_title_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_widget_item_title_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_widget_item_title_border_left' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_widget_item_title_border_right' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_widget_item_title_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_nw_above_widget_item_title_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_nw_above_widget_item_title' => 
+          array(
+            'size' => '14',
+            'line_height' => '1.5',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_widget_item_title_alignment' => 'left',
+          'responsi_hext_nw_above_widget_item_title_margin_top' => '0',
+          'responsi_hext_nw_above_widget_item_title_margin_bottom' => '5',
+          'responsi_hext_nw_above_widget_item_title_margin_left' => '0',
+          'responsi_hext_nw_above_widget_item_title_margin_right' => '0',
+          'responsi_hext_nw_above_widget_item_title_padding_top' => '0',
+          'responsi_hext_nw_above_widget_item_title_padding_bottom' => '0',
+          'responsi_hext_nw_above_widget_item_title_padding_left' => '0',
+          'responsi_hext_nw_above_widget_item_title_padding_right' => '0',
+          'responsi_hext_nw_above_widget_item_title_mobile_alignment' => 'left',
+          'responsi_hext_nw_above_widget_item_title_mobile_margin_top' => '0',
+          'responsi_hext_nw_above_widget_item_title_mobile_margin_bottom' => '5',
+          'responsi_hext_nw_above_widget_item_title_mobile_margin_left' => '0',
+          'responsi_hext_nw_above_widget_item_title_mobile_margin_right' => '0',
+          'responsi_hext_nw_above_widget_item_title_mobile_padding_top' => '0',
+          'responsi_hext_nw_above_widget_item_title_mobile_padding_bottom' => '0',
+          'responsi_hext_nw_above_widget_item_title_mobile_padding_left' => '0',
+          'responsi_hext_nw_above_widget_item_title_mobile_padding_right' => '0',
+          'responsi_hext_nw_above_widget_item_text_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_widget_item_text_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_widget_item_text_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_widget_item_text_border_left' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_widget_item_text_border_right' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_above_widget_item_text_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_nw_above_widget_item_text_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_nw_above_widget_item_text' => 
+          array(
+            'size' => '13',
+            'line_height' => '1.5',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#dddddd',
+          ),
+          'responsi_hext_nw_above_widget_item_link' => 
+          array(
+            'size' => '13',
+            'line_height' => '1.5',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#dddddd',
+          ),
+          'responsi_hext_nw_above_widget_item_link_hover' => '#ff6868',
+          'responsi_hext_nw_above_widget_item_phone' => 
+          array(
+            'size' => '13',
+            'line_height' => '1.5',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#dddddd',
+          ),
+          'responsi_hext_nw_above_widget_item_text_alignment' => 'left',
+          'responsi_hext_nw_above_widget_item_text_margin_top' => '0',
+          'responsi_hext_nw_above_widget_item_text_margin_bottom' => '5',
+          'responsi_hext_nw_above_widget_item_text_margin_left' => '0',
+          'responsi_hext_nw_above_widget_item_text_margin_right' => '0',
+          'responsi_hext_nw_above_widget_item_text_padding_top' => '0',
+          'responsi_hext_nw_above_widget_item_text_padding_bottom' => '0',
+          'responsi_hext_nw_above_widget_item_text_padding_left' => '0',
+          'responsi_hext_nw_above_widget_item_text_padding_right' => '0',
+          'responsi_hext_nw_above_widget_item_text_mobile_alignment' => 'left',
+          'responsi_hext_nw_above_widget_item_text_mobile_margin_top' => '0',
+          'responsi_hext_nw_above_widget_item_text_mobile_margin_bottom' => '0',
+          'responsi_hext_nw_above_widget_item_text_mobile_margin_left' => '0',
+          'responsi_hext_nw_above_widget_item_text_mobile_margin_right' => '0',
+          'responsi_hext_nw_above_widget_item_text_mobile_padding_top' => '0',
+          'responsi_hext_nw_above_widget_item_text_mobile_padding_bottom' => '0',
+          'responsi_hext_nw_above_widget_item_text_mobile_padding_left' => '0',
+          'responsi_hext_nw_above_widget_item_text_mobile_padding_right' => '0',
+          'responsi_hext_nw_below_container_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_container_background_image' => 'false',
+          'responsi_hext_nw_below_container_background_image_url' => '',
+          'responsi_hext_nw_below_container_background_image_size_on' => 'false',
+          'responsi_hext_nw_below_container_background_image_size_width' => '100%',
+          'responsi_hext_nw_below_container_background_image_size_height' => 'auto',
+          'responsi_hext_nw_below_container_background_image_position_vertical' => 'center',
+          'responsi_hext_nw_below_container_background_image_position_horizontal' => 'center',
+          'responsi_hext_nw_below_container_background_image_repeat' => 'no-repeat',
+          'responsi_hext_nw_below_container_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_container_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_container_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_container_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_nw_below_container_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_nw_below_container_margin_top' => '0',
+          'responsi_hext_nw_below_container_margin_bottom' => '0',
+          'responsi_hext_nw_below_container_margin_left' => '0',
+          'responsi_hext_nw_below_container_margin_right' => '0',
+          'responsi_hext_nw_below_container_padding_top' => '0',
+          'responsi_hext_nw_below_container_padding_bottom' => '0',
+          'responsi_hext_nw_below_container_padding_left' => '0',
+          'responsi_hext_nw_below_container_padding_right' => '0',
+          'responsi_hext_nw_below_container_mobile_margin_top' => '0',
+          'responsi_hext_nw_below_container_mobile_margin_bottom' => '0',
+          'responsi_hext_nw_below_container_mobile_margin_left' => '0',
+          'responsi_hext_nw_below_container_mobile_margin_right' => '0',
+          'responsi_hext_nw_below_container_mobile_padding_top' => '0',
+          'responsi_hext_nw_below_container_mobile_padding_bottom' => '0',
+          'responsi_hext_nw_below_container_mobile_padding_left' => '0',
+          'responsi_hext_nw_below_container_mobile_padding_right' => '0',
+          'responsi_hext_nw_below_content_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_content_background_image' => 'false',
+          'responsi_hext_nw_below_content_background_image_url' => '',
+          'responsi_hext_nw_below_content_background_image_size_on' => 'false',
+          'responsi_hext_nw_below_content_background_image_size_width' => '100%',
+          'responsi_hext_nw_below_content_background_image_size_height' => 'auto',
+          'responsi_hext_nw_below_content_background_image_position_vertical' => 'center',
+          'responsi_hext_nw_below_content_background_image_position_horizontal' => 'center',
+          'responsi_hext_nw_below_content_background_image_repeat' => 'no-repeat',
+          'responsi_hext_nw_below_content_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_content_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_content_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_content_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_nw_below_content_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_nw_below_content_margin_top' => '10',
+          'responsi_hext_nw_below_content_margin_bottom' => '10',
+          'responsi_hext_nw_below_content_margin_left' => '10',
+          'responsi_hext_nw_below_content_margin_right' => '10',
+          'responsi_hext_nw_below_content_padding_top' => '0',
+          'responsi_hext_nw_below_content_padding_bottom' => '0',
+          'responsi_hext_nw_below_content_padding_left' => '0',
+          'responsi_hext_nw_below_content_padding_right' => '0',
+          'responsi_hext_nw_below_content_mobile_margin_top' => '0',
+          'responsi_hext_nw_below_content_mobile_margin_bottom' => '10',
+          'responsi_hext_nw_below_content_mobile_margin_left' => '10',
+          'responsi_hext_nw_below_content_mobile_margin_right' => '10',
+          'responsi_hext_nw_below_content_mobile_padding_top' => '0',
+          'responsi_hext_nw_below_content_mobile_padding_bottom' => '0',
+          'responsi_hext_nw_below_content_mobile_padding_left' => '0',
+          'responsi_hext_nw_below_content_mobile_padding_right' => '0',
+          'responsi_hext_nw_below_widget_item_container_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_widget_item_container_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_widget_item_container_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_widget_item_container_border_lr' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_widget_item_container_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_nw_below_widget_item_container_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_nw_below_widget_item_container_margin_top' => '10',
+          'responsi_hext_nw_below_widget_item_container_margin_bottom' => '0',
+          'responsi_hext_nw_below_widget_item_container_margin_left' => '0',
+          'responsi_hext_nw_below_widget_item_container_margin_right' => '0',
+          'responsi_hext_nw_below_widget_item_container_padding_top' => '0',
+          'responsi_hext_nw_below_widget_item_container_padding_bottom' => '0',
+          'responsi_hext_nw_below_widget_item_container_padding_left' => '0',
+          'responsi_hext_nw_below_widget_item_container_padding_right' => '0',
+          'responsi_hext_nw_below_widget_item_container_mobile_margin_top' => '0',
+          'responsi_hext_nw_below_widget_item_container_mobile_margin_bottom' => '0',
+          'responsi_hext_nw_below_widget_item_container_mobile_margin_left' => '0',
+          'responsi_hext_nw_below_widget_item_container_mobile_margin_right' => '0',
+          'responsi_hext_nw_below_widget_item_container_mobile_padding_top' => '0',
+          'responsi_hext_nw_below_widget_item_container_mobile_padding_bottom' => '0',
+          'responsi_hext_nw_below_widget_item_container_mobile_padding_left' => '0',
+          'responsi_hext_nw_below_widget_item_container_mobile_padding_right' => '0',
+          'responsi_hext_nw_below_widget_item_title_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_widget_item_title_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_widget_item_title_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_widget_item_title_border_left' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_widget_item_title_border_right' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_widget_item_title_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_nw_below_widget_item_title_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_nw_below_widget_item_title' => 
+          array(
+            'size' => '14',
+            'line_height' => '1.5',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_widget_item_title_alignment' => 'left',
+          'responsi_hext_nw_below_widget_item_title_margin_top' => '0',
+          'responsi_hext_nw_below_widget_item_title_margin_bottom' => '5',
+          'responsi_hext_nw_below_widget_item_title_margin_left' => '0',
+          'responsi_hext_nw_below_widget_item_title_margin_right' => '0',
+          'responsi_hext_nw_below_widget_item_title_padding_top' => '0',
+          'responsi_hext_nw_below_widget_item_title_padding_bottom' => '0',
+          'responsi_hext_nw_below_widget_item_title_padding_left' => '0',
+          'responsi_hext_nw_below_widget_item_title_padding_right' => '0',
+          'responsi_hext_nw_below_widget_item_title_mobile_alignment' => 'left',
+          'responsi_hext_nw_below_widget_item_title_mobile_margin_top' => '0',
+          'responsi_hext_nw_below_widget_item_title_mobile_margin_bottom' => '5',
+          'responsi_hext_nw_below_widget_item_title_mobile_margin_left' => '0',
+          'responsi_hext_nw_below_widget_item_title_mobile_margin_right' => '0',
+          'responsi_hext_nw_below_widget_item_title_mobile_padding_top' => '0',
+          'responsi_hext_nw_below_widget_item_title_mobile_padding_bottom' => '0',
+          'responsi_hext_nw_below_widget_item_title_mobile_padding_left' => '0',
+          'responsi_hext_nw_below_widget_item_title_mobile_padding_right' => '0',
+          'responsi_hext_nw_below_widget_item_text_background_color' => 
+          array(
+            'onoff' => 'false',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_widget_item_text_border_top' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_widget_item_text_border_bottom' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_widget_item_text_border_left' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_widget_item_text_border_right' => 
+          array(
+            'width' => '0',
+            'style' => 'solid',
+            'color' => '#ffffff',
+          ),
+          'responsi_hext_nw_below_widget_item_text_border_radius' => 
+          array(
+            'corner' => 'rounded',
+            'rounded_value' => '0',
+          ),
+          'responsi_hext_nw_below_widget_item_text_box_shadow' => 
+          array(
+            'onoff' => 'false',
+            'h_shadow' => '0px',
+            'v_shadow' => '0px',
+            'blur' => '8px',
+            'spread' => '0px',
+            'color' => '#DBDBDB',
+            'inset' => '',
+          ),
+          'responsi_hext_nw_below_widget_item_text' => 
+          array(
+            'size' => '13',
+            'line_height' => '1.5',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#dddddd',
+          ),
+          'responsi_hext_nw_below_widget_item_link' => 
+          array(
+            'size' => '13',
+            'line_height' => '1.5',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#dddddd',
+          ),
+          'responsi_hext_nw_below_widget_item_link_hover' => '#ff6868',
+          'responsi_hext_nw_below_widget_item_phone' => 
+          array(
+            'size' => '13',
+            'line_height' => '1.5',
+            'face' => 'Open Sans',
+            'style' => 'normal',
+            'color' => '#dddddd',
+          ),
+          'responsi_hext_nw_below_widget_item_text_alignment' => 'left',
+          'responsi_hext_nw_below_widget_item_text_margin_top' => '0',
+          'responsi_hext_nw_below_widget_item_text_margin_bottom' => '5',
+          'responsi_hext_nw_below_widget_item_text_margin_left' => '0',
+          'responsi_hext_nw_below_widget_item_text_margin_right' => '0',
+          'responsi_hext_nw_below_widget_item_text_padding_top' => '0',
+          'responsi_hext_nw_below_widget_item_text_padding_bottom' => '0',
+          'responsi_hext_nw_below_widget_item_text_padding_left' => '0',
+          'responsi_hext_nw_below_widget_item_text_padding_right' => '0',
+          'responsi_hext_nw_below_widget_item_text_mobile_alignment' => 'left',
+          'responsi_hext_nw_below_widget_item_text_mobile_margin_top' => '0',
+          'responsi_hext_nw_below_widget_item_text_mobile_margin_bottom' => '0',
+          'responsi_hext_nw_below_widget_item_text_mobile_margin_left' => '0',
+          'responsi_hext_nw_below_widget_item_text_mobile_margin_right' => '0',
+          'responsi_hext_nw_below_widget_item_text_mobile_padding_top' => '0',
+          'responsi_hext_nw_below_widget_item_text_mobile_padding_bottom' => '0',
+          'responsi_hext_nw_below_widget_item_text_mobile_padding_left' => '0',
+          'responsi_hext_nw_below_widget_item_text_mobile_padding_right' => '0',
+        );
+        
+        if( version_compare(get_option('a3rev_responsi_header_extender_version'), '2.2.0', '<') ){
+            //$header_extender_responsi_active = true;
+        }
+
+        $pluginSlug                 = 'header_extender';
+        $theme                      = get_stylesheet();
+        $theme_mods                 = get_theme_mods();
+        $plugin_mods                = get_option( $pluginSlug.'_'.$theme );
+
+        if( get_option( 'theme_mods_backup_'.$theme.'_783', false ) == false ){
+            update_option( 'theme_mods_backup_'.$theme.'_783', $theme_mods );
+        }
+        if( get_option( $pluginSlug.'_'.$theme.'_783', false ) == false ){
+            update_option( $pluginSlug.'_'.$theme.'_783', $plugin_mods );
+        }
+
+        $pluginMods = $plugin_mods_default;
+            
+        if( is_array( $plugin_mods_default ) && is_array( $plugin_mods ) ){
+            $pluginMods             = array_replace_recursive( $plugin_mods_default, $plugin_mods );
+        }
+
         if( $header_extender_responsi_active && is_array( $responsi_options ) ){
 
-            $listUpgrade = array(
-                
-                'responsi_hext_navbar_container_alignment' => 'responsi_nav_position',
-                
-                /* Navbar Container Options */
-                'responsi_hext_n_container_background_color'                => 'responsi_container_nav_bg',
-                'responsi_hext_n_container_background_image'                => 'responsi_enable_container_nav_bg_image',
-                'responsi_hext_n_container_background_image_url'            => 'responsi_container_bg_image',
-                'responsi_hext_n_container_background_image_size_on'        => 'responsi_hext_n_container_background_image_size_on',
-                
-                //'responsi_hext_n_container_background_image_size'           => 'responsi_hext_n_container_background_image_size',
-                'responsi_hext_n_container_background_image_size_height'    => 'responsi_hext_n_container_background_image_size_height',
-                'responsi_hext_n_container_background_image_size_width'     => 'responsi_hext_n_container_background_image_size_width',
-                
-                //'responsi_hext_n_container_background_image_position'               => 'responsi_container_bg_position',
-                'responsi_hext_n_container_background_image_position_vertical'      => 'responsi_container_bg_position_vertical',
-                'responsi_hext_n_container_background_image_position_horizontal'    => 'responsi_container_bg_position_horizontal',
-
-                'responsi_hext_n_container_background_image_repeat'         => 'responsi_container_bg_image_repeat',
-                'responsi_hext_n_container_border_top'                      => 'responsi_container_nav_border_top',
-                'responsi_hext_n_container_border_bottom'                   => 'responsi_container_nav_border_bottom',
-                'responsi_hext_n_container_border_lr'                       => 'responsi_container_nav_border_lr',
-                'responsi_hext_n_container_border_radius'                   => 'responsi_container_nav_border_radius',
-                'responsi_hext_n_container_box_shadow'                      => 'responsi_nav_box_shadow',
-
-                //'responsi_hext_n_container_margin'                          => 'responsi_container_nav_margin',
-                'responsi_hext_n_container_margin_top'                      => 'responsi_container_nav_margin_top',
-                'responsi_hext_n_container_margin_bottom'                   => 'responsi_container_nav_margin_bottom',
-                'responsi_hext_n_container_margin_left'                     => 'responsi_container_nav_margin_left',
-                'responsi_hext_n_container_margin_right'                    => 'responsi_container_nav_margin_right',
-
-                //'responsi_hext_n_container_padding'                         => 'responsi_container_nav_padding',
-                'responsi_hext_n_container_padding_top'                     => 'responsi_container_nav_padding_top',
-                'responsi_hext_n_container_padding_bottom'                  => 'responsi_container_nav_padding_bottom',
-                'responsi_hext_n_container_padding_left'                    => 'responsi_container_nav_padding_left',
-                'responsi_hext_n_container_padding_right'                   => 'responsi_container_nav_padding_right',
-                
-                //'responsi_hext_n_container_mobile_margin'                   => 'responsi_hext_n_container_mobile_margin',
-                'responsi_hext_n_container_mobile_margin_top'               => 'responsi_hext_n_container_mobile_margin_top',
-                'responsi_hext_n_container_mobile_margin_bottom'            => 'responsi_hext_n_container_mobile_margin_bottom',
-                'responsi_hext_n_container_mobile_margin_left'              => 'responsi_hext_n_container_mobile_margin_left',
-                'responsi_hext_n_container_mobile_margin_right'             => 'responsi_hext_n_container_mobile_margin_right',
-
-                //'responsi_hext_n_container_mobile_padding'                  => 'responsi_hext_n_container_mobile_padding',
-                'responsi_hext_n_container_mobile_padding_top'              => 'responsi_hext_n_container_mobile_padding_top',
-                'responsi_hext_n_container_mobile_padding_bottom'           => 'responsi_hext_n_container_mobile_padding_bottom',
-                'responsi_hext_n_container_mobile_padding_left'             => 'responsi_hext_n_container_mobile_padding_left',
-                'responsi_hext_n_container_mobile_padding_right'            => 'responsi_hext_n_container_mobile_padding_right',
-
-                /* Navbar Container Innner Options */
-                'responsi_hext_n_content_background_color'                  => 'responsi_hext_n_content_background_color',
-                'responsi_hext_n_content_background_image'                  => 'responsi_hext_n_content_background_image',
-                'responsi_hext_n_content_background_image_url'              => 'responsi_hext_n_content_background_image_url',
-                'responsi_hext_n_content_background_image_size_on'          => 'responsi_hext_n_content_background_image_size_on',
-                
-                //'responsi_hext_n_content_background_image_size'             => 'responsi_hext_n_content_background_image_size',
-                'responsi_hext_n_content_background_image_size_height'      => 'responsi_hext_n_content_background_image_size_height',
-                'responsi_hext_n_content_background_image_size_width'       => 'responsi_hext_n_content_background_image_size_width',
-                
-                //'responsi_hext_n_content_background_image_position'         => 'responsi_hext_n_content_background_image_position',
-                'responsi_hext_n_content_background_image_position_vertical'    => 'responsi_hext_n_content_background_image_position_vertical',
-                'responsi_hext_n_content_background_image_position_horizontal'  => 'responsi_hext_n_content_background_image_position_horizontal',
-                
-                'responsi_hext_n_content_background_image_repeat'           => 'responsi_hext_n_content_background_image_repeat',
-                'responsi_hext_n_content_border_top'                        => 'responsi_hext_n_content_border_top',
-                'responsi_hext_n_content_border_bottom'                     => 'responsi_hext_n_content_border_bottom',
-                'responsi_hext_n_content_border_lr'                         => 'responsi_hext_n_content_border_lr',
-                'responsi_hext_n_content_border_radius'                     => 'responsi_hext_n_content_border_radius',
-                'responsi_hext_n_content_box_shadow'                        => 'responsi_hext_n_content_box_shadow',
-
-                //'responsi_hext_n_content_margin'                            => 'responsi_hext_n_content_margin',
-                'responsi_hext_n_content_margin_top'                        => 'responsi_hext_n_content_margin_top',
-                'responsi_hext_n_content_margin_bottom'                     => 'responsi_hext_n_content_margin_bottom',
-                'responsi_hext_n_content_margin_left'                       => 'responsi_hext_n_content_margin_left',
-                'responsi_hext_n_content_margin_right'                      => 'responsi_hext_n_content_margin_right',
-
-                //'responsi_hext_n_content_padding'                           => 'responsi_hext_n_content_padding',
-                'responsi_hext_n_content_padding_top'                       => 'responsi_hext_n_content_padding_top',
-                'responsi_hext_n_content_padding_bottom'                    => 'responsi_hext_n_content_padding_bottom',
-                'responsi_hext_n_content_padding_left'                      => 'responsi_hext_n_content_padding_left',
-                'responsi_hext_n_content_padding_right'                     => 'responsi_hext_n_content_padding_right',
-
-                //'responsi_hext_n_content_mobile_margin'                     => 'responsi_hext_n_content_mobile_margin',
-                'responsi_hext_n_content_mobile_margin_top'                 => 'responsi_hext_n_content_mobile_margin_top',
-                'responsi_hext_n_content_mobile_margin_bottom'              => 'responsi_hext_n_content_mobile_margin_bottom',
-                'responsi_hext_n_content_mobile_margin_left'                => 'responsi_hext_n_content_mobile_margin_left',
-                'responsi_hext_n_content_mobile_margin_right'               => 'responsi_hext_n_content_mobile_margin_right',
-
-                //'responsi_hext_n_content_mobile_padding'                    => 'responsi_hext_n_content_mobile_padding',
-                'responsi_hext_n_content_mobile_padding_top'                => 'responsi_hext_n_content_mobile_padding_top',
-                'responsi_hext_n_content_mobile_padding_bottom'             => 'responsi_hext_n_content_mobile_padding_bottom',
-                'responsi_hext_n_content_mobile_padding_left'               => 'responsi_hext_n_content_mobile_padding_left',
-                'responsi_hext_n_content_mobile_padding_right'              => 'responsi_hext_n_content_mobile_padding_right',
-
-                //Navbar Wrapper Options
-                'responsi_hext_navbar_container_bg_color'                   => 'responsi_nav_bg',
-                'responsi_hext_navbar_container_border_top'                 => 'responsi_nav_border_top',
-                'responsi_hext_navbar_container_border_bottom'              => 'responsi_nav_border_bottom',
-                'responsi_hext_navbar_container_border_lr'                  => 'responsi_nav_border_lr',
-                'responsi_hext_navbar_container_border_radius_tl'           => 'responsi_nav_border_radius_tl',
-                'responsi_hext_navbar_container_border_radius_tr'           => 'responsi_nav_border_radius_tr',
-                'responsi_hext_navbar_container_border_radius_bl'           => 'responsi_nav_border_radius_bl',
-                'responsi_hext_navbar_container_border_radius_br'           => 'responsi_nav_border_radius_br',
-                'responsi_hext_navbar_container_shadow'                     => 'responsi_nav_shadow',
-
-                //'responsi_hext_navbar_container_margin'                     => 'responsi_nav_margin',
-                'responsi_hext_navbar_container_margin_top'                 => 'responsi_nav_margin_top',
-                'responsi_hext_navbar_container_margin_bottom'              => 'responsi_nav_margin_bottom',
-                'responsi_hext_navbar_container_margin_left'                => 'responsi_nav_margin_left',
-                'responsi_hext_navbar_container_margin_right'               => 'responsi_nav_margin_right',
-                
-                //'responsi_hext_navbar_container_padding'                    => 'responsi_nav_padding',
-                'responsi_hext_navbar_container_padding_top'                => 'responsi_nav_padding_top',
-                'responsi_hext_navbar_container_padding_bottom'             => 'responsi_nav_padding_bottom',
-                'responsi_hext_navbar_container_padding_left'               => 'responsi_nav_padding_left',
-                'responsi_hext_navbar_container_padding_right'              => 'responsi_nav_padding_right',
-
-                //Navbar Items Options
-                'responsi_hext_navi_border_top'                             => 'responsi_navi_border_top',
-                'responsi_hext_navi_border_bottom'                          => 'responsi_navi_border_bottom',
-                'responsi_hext_navi_border_left'                            => 'responsi_navi_border_left',
-                'responsi_hext_navi_border_right'                           => 'responsi_navi_border_right',
-                'responsi_hext_navi_border_radius_tl'                       => 'responsi_navi_border_radius_tl',
-                'responsi_hext_navi_border_radius_tr'                       => 'responsi_navi_border_radius_tr',
-                'responsi_hext_navi_border_radius_bl'                       => 'responsi_navi_border_radius_bl',
-                'responsi_hext_navi_border_radius_br'                       => 'responsi_navi_border_radius_br',
-                'responsi_hext_navi_border_radius_first_tl'                 => 'responsi_hext_navi_border_radius_first_tl',
-                'responsi_hext_navi_border_radius_first_tr'                 => 'responsi_hext_navi_border_radius_first_tr',
-                'responsi_hext_navi_border_radius_first_bl'                 => 'responsi_hext_navi_border_radius_first_bl',
-                'responsi_hext_navi_border_radius_first_br'                 => 'responsi_hext_navi_border_radius_first_br',
-                'responsi_hext_navi_border_radius_last_tl'                  => 'responsi_hext_navi_border_radius_last_tl',
-                'responsi_hext_navi_border_radius_last_tr'                  => 'responsi_hext_navi_border_radius_last_tr',
-                'responsi_hext_navi_border_radius_last_bl'                  => 'responsi_hext_navi_border_radius_last_bl',
-                'responsi_hext_navi_border_radius_last_br'                  => 'responsi_hext_navi_border_radius_last_br',
-
-                //'responsi_hext_navi_li_margin'                              => 'responsi_hext_navi_li_margin',
-                'responsi_hext_navi_li_margin_top'                          => 'responsi_hext_navi_li_margin_top',
-                'responsi_hext_navi_li_margin_bottom'                       => 'responsi_hext_navi_li_margin_bottom',
-                'responsi_hext_navi_li_margin_left'                         => 'responsi_hext_navi_li_margin_left',
-                'responsi_hext_navi_li_margin_right'                        => 'responsi_hext_navi_li_margin_right',
-
-                'responsi_hext_navbar_font'                                 => 'responsi_nav_font',
-                'responsi_hext_navbar_font_transform'                       => 'responsi_nav_font_transform',
-                'responsi_hext_navbar_hover'                                => 'responsi_nav_hover',
-                'responsi_hext_navbar_hover_bg'                             => 'responsi_nav_hover_bg',
-                'responsi_hext_navbar_border_hover'                         => 'responsi_hext_navbar_border_hover',
-                'responsi_hext_navbar_currentitem'                          => 'responsi_nav_currentitem',
-                'responsi_hext_navbar_currentitem_bg'                       => 'responsi_nav_currentitem_bg',
-                'responsi_hext_navbar_border_currentitem'                   => 'responsi_hext_navbar_border_currentitem',
-                'responsi_hext_navbar_divider_border'                       => 'responsi_nav_divider_border',
-                'responsi_hext_navi_background'                             => 'responsi_navi_background',
-
-                //'responsi_hext_navi_border_margin'                          => 'responsi_navi_border_margin',
-                'responsi_hext_navi_border_margin_top'                      => 'responsi_navi_border_margin_top',
-                'responsi_hext_navi_border_margin_bottom'                   => 'responsi_navi_border_margin_bottom',
-                'responsi_hext_navi_border_margin_left'                     => 'responsi_navi_border_margin_left',
-                'responsi_hext_navi_border_margin_right'                    => 'responsi_navi_border_margin_right',
-
-                //'responsi_hext_navi_border_padding'                         => 'responsi_navi_border_padding',
-                'responsi_hext_navi_border_padding_top'                     => 'responsi_navi_border_padding_top',
-                'responsi_hext_navi_border_padding_bottom'                  => 'responsi_navi_border_padding_bottom',
-                'responsi_hext_navi_border_padding_left'                    => 'responsi_navi_border_padding_left',
-                'responsi_hext_navi_border_padding_right'                   => 'responsi_navi_border_padding_right',
-                
-                //Navbar Dropdown Options
-                'responsi_hext_navbar_dropdown_border_top'                  => 'responsi_nav_dropdown_border_top',
-                'responsi_hext_navbar_dropdown_border_bottom'               => 'responsi_nav_dropdown_border_bottom',
-                'responsi_hext_navbar_dropdown_border_left'                 => 'responsi_nav_dropdown_border_left',
-                'responsi_hext_navbar_dropdown_border_right'                => 'responsi_nav_dropdown_border_right',
-                'responsi_hext_navbar_dropdown_border_radius_tl'            => 'responsi_nav_dropdown_border_radius_tl',
-                'responsi_hext_navbar_dropdown_border_radius_tr'            => 'responsi_nav_dropdown_border_radius_br',
-                'responsi_hext_navbar_dropdown_border_radius_bl'            => 'responsi_nav_dropdown_border_radius_bl',
-                'responsi_hext_navbar_dropdown_border_radius_br'            => 'responsi_nav_dropdown_border_radius_br',
-                'responsi_hext_navbar_dropdown_shadow'                      => 'responsi_nav_dropdown_shadow',
-                'responsi_hext_navbar_dropdown_background'                  => 'responsi_nav_dropdown_background',
-                
-                //'responsi_hext_navbar_dropdown_padding'                     => 'responsi_nav_dropdown_padding',
-                'responsi_hext_navbar_dropdown_padding_top'                 => 'responsi_nav_dropdown_padding_top',
-                'responsi_hext_navbar_dropdown_padding_bottom'              => 'responsi_nav_dropdown_padding_bottom',
-                'responsi_hext_navbar_dropdown_padding_left'                => 'responsi_nav_dropdown_padding_left',
-                'responsi_hext_navbar_dropdown_padding_right'               => 'responsi_nav_dropdown_padding_right',
-
-                'responsi_hext_navbar_dropdown_font'                        => 'responsi_nav_dropdown_font',
-                'responsi_hext_navbar_dropdown_hover_color'                 => 'responsi_nav_dropdown_hover_color',
-                'responsi_hext_navbar_dropdown_font_transform'              => 'responsi_nav_dropdown_font_transform',
-                'responsi_hext_navbar_dropdown_item_background'             => 'responsi_nav_dropdown_item_background',
-                'responsi_hext_navbar_dropdown_hover_background'            => 'responsi_nav_dropdown_hover_background',
-                'responsi_hext_navbar_dropdown_separator'                   => 'responsi_nav_dropdown_separator',
-
-                //'responsi_hext_navbar_dropdown_item_padding'                => 'responsi_nav_dropdown_item_padding',
-                'responsi_hext_navbar_dropdown_item_padding_top'            => 'responsi_nav_dropdown_item_padding_top',
-                'responsi_hext_navbar_dropdown_item_padding_bottom'         => 'responsi_nav_dropdown_item_padding_bottom',
-                'responsi_hext_navbar_dropdown_item_padding_left'           => 'responsi_nav_dropdown_item_padding_left',
-                'responsi_hext_navbar_dropdown_item_padding_right'          => 'responsi_nav_dropdown_item_padding_right',
-
-                //Navbar Mobile
-                'responsi_hext_navbar_container_mobile_background_color'    => 'responsi_hext_navbar_container_mobile_background_color',
-                'responsi_hext_navbar_container_mobile_border_top'          => 'responsi_hext_navbar_container_mobile_border_top',
-                'responsi_hext_navbar_container_mobile_border_bottom'       => 'responsi_hext_navbar_container_mobile_border_bottom',
-                'responsi_hext_navbar_container_mobile_border_lr'           => 'responsi_hext_navbar_container_mobile_border_lr',
-                'responsi_hext_navbar_container_mobile_border_radius'       => 'responsi_hext_navbar_container_mobile_border_radius',
-                'responsi_hext_navbar_container_mobile_box_shadow'          => 'responsi_hext_navbar_container_mobile_box_shadow',
-                
-                //'responsi_hext_navbar_container_mobile_margin'              => 'responsi_hext_navbar_container_mobile_margin',
-                'responsi_hext_navbar_container_mobile_margin_top'          => 'responsi_hext_navbar_container_mobile_margin_top',
-                'responsi_hext_navbar_container_mobile_margin_bottom'       => 'responsi_hext_navbar_container_mobile_margin_bottom',
-                'responsi_hext_navbar_container_mobile_margin_left'         => 'responsi_hext_navbar_container_mobile_margin_left',
-                'responsi_hext_navbar_container_mobile_margin_right'        => 'responsi_hext_navbar_container_mobile_margin_right',
-                
-                //'responsi_hext_navbar_container_mobile_padding'             => 'responsi_hext_navbar_container_mobile_padding',
-                'responsi_hext_navbar_container_mobile_padding_top'         => 'responsi_hext_navbar_container_mobile_padding_top',
-                'responsi_hext_navbar_container_mobile_padding_bottom'      => 'responsi_hext_navbar_container_mobile_padding_bottom',
-                'responsi_hext_navbar_container_mobile_padding_left'        => 'responsi_hext_navbar_container_mobile_padding_left',
-                'responsi_hext_navbar_container_mobile_padding_right'       => 'responsi_hext_navbar_container_mobile_padding_right',
-                
-                'responsi_hext_navbar_icon_mobile_background_color'         => 'responsi_hext_navbar_icon_mobile_background_color',
-                'responsi_hext_navbar_icon_mobile_border_top'               => 'responsi_hext_navbar_icon_mobile_border_top',
-                'responsi_hext_navbar_icon_mobile_border_bottom'            => 'responsi_hext_navbar_icon_mobile_border_bottom',
-                'responsi_hext_navbar_icon_mobile_border_left'              => 'responsi_hext_navbar_icon_mobile_border_left',
-                'responsi_hext_navbar_icon_mobile_border_right'             => 'responsi_hext_navbar_icon_mobile_border_right',
-                'responsi_hext_navbar_icon_mobile_border_radius'            => 'responsi_hext_navbar_icon_mobile_border_radius',
-                'responsi_hext_navbar_icon_mobile_box_shadow'               => 'responsi_hext_navbar_icon_mobile_box_shadow',
-
-                //'responsi_hext_navbar_icon_mobile_margin'                   => 'responsi_hext_navbar_icon_mobile_margin',
-                'responsi_hext_navbar_icon_mobile_margin_top'               => 'responsi_hext_navbar_icon_mobile_margin_top',
-                'responsi_hext_navbar_icon_mobile_margin_bottom'            => 'responsi_hext_navbar_icon_mobile_margin_bottom',
-                'responsi_hext_navbar_icon_mobile_margin_left'              => 'responsi_hext_navbar_icon_mobile_margin_left',
-                'responsi_hext_navbar_icon_mobile_margin_right'             => 'responsi_hext_navbar_icon_mobile_margin_right',
-
-                //'responsi_hext_navbar_icon_mobile_padding'                  => 'responsi_hext_navbar_icon_mobile_padding',
-                'responsi_hext_navbar_icon_mobile_padding_top'              => 'responsi_hext_navbar_icon_mobile_padding_top',
-                'responsi_hext_navbar_icon_mobile_padding_bottom'           => 'responsi_hext_navbar_icon_mobile_padding_bottom',
-                'responsi_hext_navbar_icon_mobile_padding_left'             => 'responsi_hext_navbar_icon_mobile_padding_left',
-                'responsi_hext_navbar_icon_mobile_padding_right'            => 'responsi_hext_navbar_icon_mobile_padding_right',
-
-                'responsi_hext_navbar_icon_mobile_alignment'                => 'responsi_hext_navbar_icon_mobile_alignment',
-                'responsi_hext_navbar_icon_mobile_size'                     => 'responsi_hext_navbar_icon_mobile_size',
-                'responsi_hext_navbar_icon_mobile_color'                    => 'responsi_hext_navbar_icon_mobile_color',
-                'responsi_hext_navbar_icon_mobile_separator'                => 'responsi_hext_navbar_icon_mobile_separator',
-                'responsi_hext_navbar_mobile_text_on'                       => 'responsi_hext_navbar_mobile_text_on',
-                'responsi_hext_navbar_mobile_text'                          => 'responsi_hext_navbar_mobile_text',
-                'responsi_hext_navbar_mobile_text_font'                     => 'responsi_hext_navbar_mobile_text_font',
-                'responsi_hext_navbar_mobile_text_font_transform'           => 'responsi_hext_navbar_mobile_text_font_transform',
-                
-                //'responsi_hext_navbar_mobile_text_margin'                   => 'responsi_hext_navbar_mobile_text_margin',
-                'responsi_hext_navbar_mobile_text_margin_left'              => 'responsi_hext_navbar_mobile_text_margin_left',
-                'responsi_hext_navbar_mobile_text_margin_right'             => 'responsi_hext_navbar_mobile_text_margin_right',
-                'responsi_hext_navbar_mobile_text_margin_bottom'            => 'responsi_hext_navbar_mobile_text_margin_bottom',
-                'responsi_hext_navbar_mobile_text_margin_top'               => 'responsi_hext_navbar_mobile_text_margin_top',
-
-                //'responsi_hext_navbar_mobile_text_padding'                  => 'responsi_hext_navbar_mobile_text_padding',
-                'responsi_hext_navbar_mobile_text_padding_left'             => 'responsi_hext_navbar_mobile_text_padding_left',
-                'responsi_hext_navbar_mobile_text_padding_right'            => 'responsi_hext_navbar_mobile_text_padding_right',
-                'responsi_hext_navbar_mobile_text_padding_bottom'           => 'responsi_hext_navbar_mobile_text_padding_bottom',
-                'responsi_hext_navbar_mobile_text_padding_top'              => 'responsi_hext_navbar_mobile_text_padding_top',
-                
-                'responsi_hext_navbar_container_dropdown_mobile_background_color'       => 'responsi_hext_navbar_container_dropdown_mobile_background_color',
-                'responsi_hext_navbar_container_dropdown_mobile_border_top'             => 'responsi_hext_navbar_container_dropdown_mobile_border_top',
-                'responsi_hext_navbar_container_dropdown_mobile_border_bottom'          => 'responsi_hext_navbar_container_dropdown_mobile_border_bottom',
-                'responsi_hext_navbar_container_dropdown_mobile_border_lr'              => 'responsi_hext_navbar_container_dropdown_mobile_border_lr',
-                'responsi_hext_navbar_container_dropdown_mobile_border_radius'          => 'responsi_hext_navbar_container_dropdown_mobile_border_radius',
-                'responsi_hext_navbar_container_dropdown_mobile_box_shadow'             => 'responsi_hext_navbar_container_dropdown_mobile_box_shadow',
-                
-                //'responsi_hext_navbar_container_dropdown_mobile_margin'                 => 'responsi_hext_navbar_container_dropdown_mobile_margin',
-                'responsi_hext_navbar_container_dropdown_mobile_margin_left'            => 'responsi_hext_navbar_container_dropdown_mobile_margin_left',
-                'responsi_hext_navbar_container_dropdown_mobile_margin_right'           => 'responsi_hext_navbar_container_dropdown_mobile_margin_right',
-                'responsi_hext_navbar_container_dropdown_mobile_margin_bottom'          => 'responsi_hext_navbar_container_dropdown_mobile_margin_bottom',
-                'responsi_hext_navbar_container_dropdown_mobile_margin_top'             => 'responsi_hext_navbar_container_dropdown_mobile_margin_top',
-
-                //'responsi_hext_navbar_container_dropdown_mobile_padding'                => 'responsi_hext_navbar_container_dropdown_mobile_padding',
-                'responsi_hext_navbar_container_dropdown_mobile_padding_left'           => 'responsi_hext_navbar_container_dropdown_mobile_padding_left',
-                'responsi_hext_navbar_container_dropdown_mobile_padding_right'          => 'responsi_hext_navbar_container_dropdown_mobile_padding_right',
-                'responsi_hext_navbar_container_dropdown_mobile_padding_bottom'         => 'responsi_hext_navbar_container_dropdown_mobile_padding_bottom',
-                'responsi_hext_navbar_container_dropdown_mobile_padding_top'            => 'responsi_hext_navbar_container_dropdown_mobile_padding_top',
-                
-                'responsi_hext_navbar_item_dropdown_mobile_font'                        => 'responsi_hext_navbar_item_dropdown_mobile_font',
-                'responsi_hext_navbar_item_dropdown_mobile_hover_color'                 => 'responsi_hext_navbar_item_dropdown_mobile_hover_color',
-                'responsi_hext_navbar_item_dropdown_mobile_font_transform'              => 'responsi_hext_navbar_item_dropdown_mobile_font_transform',
-                'responsi_hext_navbar_item_dropdown_mobile_background'                  => 'responsi_hext_navbar_item_dropdown_mobile_background',
-                'responsi_hext_navbar_item_dropdown_mobile_hover_background'            => 'responsi_hext_navbar_item_dropdown_mobile_hover_background',
-                'responsi_hext_navbar_item_dropdown_mobile_separator'                   => 'responsi_hext_navbar_item_dropdown_mobile_separator',
-                
-                //'responsi_hext_navbar_item_dropdown_mobile_padding'                     => 'responsi_hext_navbar_item_dropdown_mobile_padding',
-                'responsi_hext_navbar_item_dropdown_mobile_padding_left'                => 'responsi_hext_navbar_item_dropdown_mobile_padding_left',
-                'responsi_hext_navbar_item_dropdown_mobile_padding_right'               => 'responsi_hext_navbar_item_dropdown_mobile_padding_right',
-                'responsi_hext_navbar_item_dropdown_mobile_padding_bottom'              => 'responsi_hext_navbar_item_dropdown_mobile_padding_bottom',
-                'responsi_hext_navbar_item_dropdown_mobile_padding_top'                 => 'responsi_hext_navbar_item_dropdown_mobile_padding_top',
-                
-                'responsi_hext_navbar_item_dropdown_mobile_submenu_font'                => 'responsi_hext_navbar_item_dropdown_mobile_submenu_font',
-                'responsi_hext_navbar_item_dropdown_mobile_submenu_hover_color'         => 'responsi_hext_navbar_item_dropdown_mobile_submenu_hover_color',
-                'responsi_hext_navbar_item_dropdown_mobile_submenu_background'          => 'responsi_hext_navbar_item_dropdown_mobile_submenu_background',
-                'responsi_hext_navbar_item_dropdown_mobile_submenu_font_transform'      => 'responsi_hext_navbar_item_dropdown_mobile_submenu_font_transform',
-                'responsi_hext_navbar_item_dropdown_mobile_submenu_hover_background'    => 'responsi_hext_navbar_item_dropdown_mobile_submenu_hover_background',
-                'responsi_hext_navbar_item_dropdown_mobile_submenu_separator'           => 'responsi_hext_navbar_item_dropdown_mobile_submenu_separator',
-            );
-            
-            $pluginSlug                 = 'header_extender';
-            $theme                      = get_stylesheet();
-            $theme_mods                 = get_theme_mods();
-            $plugin_mods                = get_option( $pluginSlug.'_'.$theme );
-            $plugin_mods_default        = responsi_default_options($pluginSlug);
-            
-            $pluginMods = array();
-            
-            if( is_array( $plugin_mods_default ) && is_array( $plugin_mods ) ){
-                $pluginMods             = array_replace_recursive( $plugin_mods_default, $plugin_mods );
-            }
-
             if( is_array( $pluginMods ) && count($pluginMods) > 0 && isset( $pluginMods['responsi_hext_active'] ) && $pluginMods['responsi_hext_active'] == 'true' ){
-
-                //Backup Options
-                if( $theme_mods != false && get_option( 'responsi_framework_version' ) != false ){
-                    $version = str_replace('.', '_', get_option( 'responsi_framework_version' ));
-                    update_option( 'theme_mods_backup_'.$theme.'_'.$version, $theme_mods );
-                    update_option( $pluginSlug.'_'.$theme.'_'.$version, $plugin_mods );
-                }
 
                 foreach( $listUpgrade as $key => $value ){
                     
@@ -4797,15 +6776,17 @@ function responsi_framework_upgrade(){
 
                         $newOp = $pluginMods[$key];
 
+                        //set_theme_mod( $value,  $newOp );
+
                         if( isset( $responsi_options[$value] )  ){
-                            
+                        
                             $defaultOp = $responsi_options[$value];
 
                             if( is_array( $defaultOp ) ){
                                 
                                 foreach ($defaultOp as $k => $v) {
                                     
-                                    if( isset($newOp[$k]) && $newOp[$k] == $v ){
+                                    if( isset($newOp[$k]) && strtolower( $newOp[$k] ) == strtolower( $v ) ){
                                         unset($newOp[$k]);
                                     }
                                 }
@@ -4818,7 +6799,7 @@ function responsi_framework_upgrade(){
 
                             }else{
                                 
-                                if( $newOp != '' && $newOp != $defaultOp ){
+                                if( $newOp != '' && strtolower( $newOp ) != strtolower( $defaultOp ) ){
                                     set_theme_mod( $value,  $newOp );
                                 }else{
                                     remove_theme_mod( $value );
@@ -4827,21 +6808,15 @@ function responsi_framework_upgrade(){
 
                         }
 
-                        unset($plugin_mods[$key]);
-                        delete_option($key);
-
                     }
                 }
 
-                update_option( $pluginSlug.'_'.$theme, $plugin_mods );
                 if( function_exists('responsi_dynamic_css') ){
                     responsi_dynamic_css( 'framework' );
                 }
             }
 
         }
-
-        
 
         $upgrade = update_option('responsiUpgradeMobileMenu', 'done' );
     }
