@@ -1206,7 +1206,7 @@ jQuery(document).ready(function($) {
             }
         });
 
-        applyVideoCtn();
+        //applyVideoCtn();
 
         /*-----------------------------------------------------------------------------------*/
         /* Responsi Masonry */
@@ -1371,7 +1371,7 @@ jQuery(document).ready(function($) {
 
     $(window).on('resize', function() {
         window.responsiTopCtn();
-        applyVideoCtn();
+        //applyVideoCtn();
     });
 
     $(window).on('load resize', function() {

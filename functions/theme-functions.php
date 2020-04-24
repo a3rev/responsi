@@ -1540,10 +1540,10 @@ if ( !function_exists( 'responsi_navigation' ) ) {
             $nav_ctr_before = apply_filters( 'responsi_mobile_navigation_before', '' );
             $nav_ctr_after = apply_filters( 'responsi_mobile_navigation_after', '' );
             
-            if( isset($responsi_options['responsi_hext_navbar_mobile_text_on']) && $responsi_options['responsi_hext_navbar_mobile_text_on'] == 'true' ){
-                $text_navigation = $responsi_options['responsi_hext_navbar_mobile_text'];
+            if( isset($responsi_options['responsi_nav_container_mobile_text_on']) && $responsi_options['responsi_nav_container_mobile_text_on'] == 'true' ){
+                $text_navigation = $responsi_options['responsi_nav_container_mobile_text'];
             }
-            $nav_ctr = '<div class="navigation-mobile open alignment-'.$responsi_options['responsi_hext_navbar_icon_mobile_alignment'].'">'.$nav_ctr_before.'<span class="menu-text before">'. esc_html( $text_navigation ) .'</span><span class="separator nav-separator"><i class="menu-icon hamburger-icon hext-icon"></i></span><span class="menu-text after">'. esc_html( $text_navigation ) .'</span>'.$nav_ctr_after.'</div>';
+            $nav_ctr = '<div class="navigation-mobile open alignment-'.$responsi_options['responsi_nav_icon_mobile_alignment'].'">'.$nav_ctr_before.'<span class="menu-text before">'. esc_html( $text_navigation ) .'</span><span class="separator nav-separator"><i class="menu-icon hamburger-icon hext-icon"></i></span><span class="menu-text after">'. esc_html( $text_navigation ) .'</span>'.$nav_ctr_after.'</div>';
                 
             $nav_ctr = apply_filters( 'responsi_mobile_navigation', $nav_ctr );
             

@@ -118,11 +118,11 @@ class Navigation
 			)
 		);
 
-		$navigation_controls_settings['responsi_hext_n_container_background_image_size_on'] = array(
+		$navigation_controls_settings['responsi_container_bg_image_size_on'] = array(
             'control' => array(
                 'label'      => __('Image Resizer', 'responsi'),
                 'section'    => 'navigation_primary',
-                'settings'   => 'responsi_hext_n_container_background_image_size_on',
+                'settings'   => 'responsi_container_bg_image_size_on',
                 'type'       => 'icheckbox',
                 'input_attrs' => array(
                     'class' => 'hide collapsed-custom-sub'
@@ -130,12 +130,12 @@ class Navigation
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_checkboxs',
-                'default'       => isset($responsi_options['responsi_hext_n_container_background_image_size_on']) ? $responsi_options['responsi_hext_n_container_background_image_size_on'] : 'false',
+                'default'       => isset($responsi_options['responsi_container_bg_image_size_on']) ? $responsi_options['responsi_container_bg_image_size_on'] : 'false',
                 'transport' => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_container_background_image_size'] = array(
+        $navigation_controls_settings['responsi_container_bg_image_size'] = array(
             'control' => array(
                 'label'      => __('Image Size', 'responsi'),
                 //'description'      => __('Supported values are auto, percentage e.g 50% and pixels e.g. 20px', 'responsi'),
@@ -153,8 +153,8 @@ class Navigation
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_background_size',
                 'default'       => array( 
-                    isset($responsi_options['responsi_hext_n_container_background_image_size_width']) ? $responsi_options['responsi_hext_n_container_background_image_size_width'] : '100%' , 
-                    isset($responsi_options['responsi_hext_n_container_background_image_size_height']) ? $responsi_options['responsi_hext_n_container_background_image_size_height'] : 'auto'
+                    isset($responsi_options['responsi_container_bg_image_size_width']) ? $responsi_options['responsi_container_bg_image_size_width'] : '100%' , 
+                    isset($responsi_options['responsi_container_bg_image_size_height']) ? $responsi_options['responsi_container_bg_image_size_height'] : 'auto'
                 ),
                 'transport' => 'postMessage'
             )
@@ -346,7 +346,7 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_container_mobile_margin'] = array(
+        $navigation_controls_settings['responsi_container_nav_mobile_margin'] = array(
             'control' => array(
                 'label' => __('Margin', 'responsi'),
                 'section' => 'navigation_primary',
@@ -363,16 +363,16 @@ class Navigation
             
                 'sanitize_callback' => 'responsi_sanitize_numeric',
                 'default' => array(
-                    isset($responsi_options['responsi_hext_n_container_mobile_margin_top']) ? $responsi_options['responsi_hext_n_container_mobile_margin_top'] : '0',
-                    isset($responsi_options['responsi_hext_n_container_mobile_margin_bottom']) ? $responsi_options['responsi_hext_n_container_mobile_margin_bottom'] : '0',
-                    isset($responsi_options['responsi_hext_n_container_mobile_margin_left']) ? $responsi_options['responsi_hext_n_container_mobile_margin_left'] : '10',
-                    isset($responsi_options['responsi_hext_n_container_mobile_margin_right']) ? $responsi_options['responsi_hext_n_container_mobile_margin_right'] : '10'
+                    isset($responsi_options['responsi_container_nav_mobile_margin_top']) ? $responsi_options['responsi_container_nav_mobile_margin_top'] : '0',
+                    isset($responsi_options['responsi_container_nav_mobile_margin_bottom']) ? $responsi_options['responsi_container_nav_mobile_margin_bottom'] : '0',
+                    isset($responsi_options['responsi_container_nav_mobile_margin_left']) ? $responsi_options['responsi_container_nav_mobile_margin_left'] : '10',
+                    isset($responsi_options['responsi_container_nav_mobile_margin_right']) ? $responsi_options['responsi_container_nav_mobile_margin_right'] : '10'
                 ),
                 'transport'   => 'postMessage',
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_container_mobile_padding'] = array(
+        $navigation_controls_settings['responsi_container_nav_mobile_padding'] = array(
             'control' => array(
                 'label' => __('Padding', 'responsi'),
                 'section' => 'navigation_primary',
@@ -389,10 +389,10 @@ class Navigation
             
                 'sanitize_callback' => 'responsi_sanitize_numeric',
                 'default' => array(
-                    isset($responsi_options['responsi_hext_n_container_mobile_padding_top']) ? $responsi_options['responsi_hext_n_container_mobile_padding_top'] : '0',
-                    isset($responsi_options['responsi_hext_n_container_mobile_padding_bottom']) ? $responsi_options['responsi_hext_n_container_mobile_padding_bottom'] : '0',
-                    isset($responsi_options['responsi_hext_n_container_mobile_padding_left']) ? $responsi_options['responsi_hext_n_container_mobile_padding_left'] : '0',
-                    isset($responsi_options['responsi_hext_n_container_mobile_padding_right']) ? $responsi_options['responsi_hext_n_container_mobile_padding_right'] : '0'
+                    isset($responsi_options['responsi_container_nav_mobile_padding_top']) ? $responsi_options['responsi_container_nav_mobile_padding_top'] : '0',
+                    isset($responsi_options['responsi_container_nav_mobile_padding_bottom']) ? $responsi_options['responsi_container_nav_mobile_padding_bottom'] : '0',
+                    isset($responsi_options['responsi_container_nav_mobile_padding_left']) ? $responsi_options['responsi_container_nav_mobile_padding_left'] : '0',
+                    isset($responsi_options['responsi_container_nav_mobile_padding_right']) ? $responsi_options['responsi_container_nav_mobile_padding_right'] : '0'
                 ),
                 'transport'   => 'postMessage',
             )
@@ -410,7 +410,7 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_content_background_color'] = array(
+        $navigation_controls_settings['responsi_content_nav_background_color'] = array(
             'control' => array(
                 'label' => __('Background Color', 'responsi'),
                 'section' => 'navigation_primary',
@@ -422,16 +422,16 @@ class Navigation
             'setting' => array(
             
                 'sanitize_callback' => 'responsi_sanitize_background_color',
-                'default' => isset($responsi_options['responsi_hext_n_content_background_color']) ? $responsi_options['responsi_hext_n_content_background_color'] : array( 'onoff' => 'false', 'color' => '#ffffff'),
+                'default' => isset($responsi_options['responsi_content_nav_background_color']) ? $responsi_options['responsi_content_nav_background_color'] : array( 'onoff' => 'false', 'color' => '#ffffff'),
                 'transport'   => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_content_background_image'] = array(
+        $navigation_controls_settings['responsi_content_nav_background_image'] = array(
             'control' => array(
                 'label' => __('Background Image', 'responsi'),
                 'section' => 'navigation_primary',
-                'settings' => 'responsi_hext_n_content_background_image',
+                'settings' => 'responsi_content_nav_background_image',
                 'type' => 'icheckbox',
                 'input_attrs' => array(
                     'class' => 'collapsed'
@@ -440,16 +440,16 @@ class Navigation
             'setting' => array(
             
                 'sanitize_callback' => 'responsi_sanitize_checkboxs',
-                'default' => isset($responsi_options['responsi_hext_n_content_background_image']) ? $responsi_options['responsi_hext_n_content_background_image'] : 'false',
+                'default' => isset($responsi_options['responsi_content_nav_background_image']) ? $responsi_options['responsi_content_nav_background_image'] : 'false',
                 'transport'   => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_content_background_image_url'] = array(
+        $navigation_controls_settings['responsi_content_nav_background_image_url'] = array(
             'control' => array(
                 'label' => __('Image', 'responsi'),
                 'section' => 'navigation_primary',
-                'settings' => 'responsi_hext_n_content_background_image_url',
+                'settings' => 'responsi_content_nav_background_image_url',
                 'type' => 'iupload',
                 'input_attrs' => array(
                     'class' => 'hide'
@@ -458,16 +458,16 @@ class Navigation
             'setting' => array(
             
                 'sanitize_callback' => 'esc_url',
-                'default' => isset($responsi_options['responsi_hext_n_content_background_image_url']) ? $responsi_options['responsi_hext_n_content_background_image_url'] : '',
+                'default' => isset($responsi_options['responsi_content_nav_background_image_url']) ? $responsi_options['responsi_content_nav_background_image_url'] : '',
                 'transport'   => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_content_background_image_size_on'] = array(
+        $navigation_controls_settings['responsi_content_nav_background_image_size_on'] = array(
             'control' => array(
                 'label'      => __('Image Resizer', 'responsi'),
                 'section'    => 'navigation_primary',
-                'settings'   => 'responsi_hext_n_content_background_image_size_on',
+                'settings'   => 'responsi_content_nav_background_image_size_on',
                 'type'       => 'icheckbox',
                 'input_attrs' => array(
                     'class' => 'hide collapsed-custom-sub'
@@ -476,12 +476,12 @@ class Navigation
             'setting' => array(
             
                 'sanitize_callback' => 'responsi_sanitize_checkboxs',
-                'default'       => isset($responsi_options['responsi_hext_n_content_background_image_size_on']) ? $responsi_options['responsi_hext_n_content_background_image_size_on'] : 'false',
+                'default'       => isset($responsi_options['responsi_content_nav_background_image_size_on']) ? $responsi_options['responsi_content_nav_background_image_size_on'] : 'false',
                 'transport' => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_content_background_image_size'] = array(
+        $navigation_controls_settings['responsi_content_nav_background_image_size'] = array(
             'control' => array(
                 'label'      => __('Image Size', 'responsi'),
                 //'description'      => __('Supported values are auto, percentage e.g 50% and pixels e.g. 20px', 'responsi'),
@@ -500,14 +500,14 @@ class Navigation
             
                 'sanitize_callback' => 'responsi_sanitize_background_size',
                 'default'       => array( 
-                    isset($responsi_options['responsi_hext_n_content_background_image_size_width']) ? $responsi_options['responsi_hext_n_content_background_image_size_width'] : '100%' , 
-                    isset($responsi_options['responsi_hext_n_content_background_image_size_height']) ? $responsi_options['responsi_hext_n_content_background_image_size_height'] : 'auto'
+                    isset($responsi_options['responsi_content_nav_background_image_size_width']) ? $responsi_options['responsi_content_nav_background_image_size_width'] : '100%' , 
+                    isset($responsi_options['responsi_content_nav_background_image_size_height']) ? $responsi_options['responsi_content_nav_background_image_size_height'] : 'auto'
                 ),
                 'transport' => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_content_background_image_position'] = array(
+        $navigation_controls_settings['responsi_content_nav_background_image_position'] = array(
             'control' => array(
                 'label' => __('Image Alignment', 'responsi'),
                 'section' => 'navigation_primary',
@@ -525,18 +525,18 @@ class Navigation
             
                 'sanitize_callback' => 'responsi_sanitize_background_position',
                 'default' => array(
-                    isset($responsi_options['responsi_hext_n_content_background_image_position_vertical']) ? $responsi_options['responsi_hext_n_content_background_image_position_vertical'] : 'center',
-                    isset($responsi_options['responsi_hext_n_content_background_image_position_horizontal']) ? $responsi_options['responsi_hext_n_content_background_image_position_horizontal'] : 'center'
+                    isset($responsi_options['responsi_content_nav_background_image_position_vertical']) ? $responsi_options['responsi_content_nav_background_image_position_vertical'] : 'center',
+                    isset($responsi_options['responsi_content_nav_background_image_position_horizontal']) ? $responsi_options['responsi_content_nav_background_image_position_horizontal'] : 'center'
                 ),
                 'transport'   => 'postMessage',
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_content_background_image_repeat'] = array(
+        $navigation_controls_settings['responsi_content_nav_background_image_repeat'] = array(
             'control' => array(
                 'label' => __('Image Repeat', 'responsi'),
                 'section' => 'navigation_primary',
-                'settings' => 'responsi_hext_n_content_background_image_repeat',
+                'settings' => 'responsi_content_nav_background_image_repeat',
                 'type' => 'iradio',
                 'input_attrs' => array(
                     'checked_label' => 'ON',
@@ -554,12 +554,12 @@ class Navigation
             'setting' => array(
             
                 'sanitize_callback' => 'responsi_sanitize_choices',
-                'default' => isset($responsi_options['responsi_hext_n_content_background_image_repeat']) ? $responsi_options['responsi_hext_n_content_background_image_repeat'] : 'no-repeat',
+                'default' => isset($responsi_options['responsi_content_nav_background_image_repeat']) ? $responsi_options['responsi_content_nav_background_image_repeat'] : 'no-repeat',
                 'transport'   => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_content_border_top'] = array(
+        $navigation_controls_settings['responsi_content_nav_border_top'] = array(
             'control' => array(
                 'label' => __('Border - Top', 'responsi'),
                 'section' => 'navigation_primary',
@@ -569,7 +569,7 @@ class Navigation
             'setting' => array(
             
                 'sanitize_callback' => 'responsi_sanitize_border',
-                'default' => isset($responsi_options['responsi_hext_n_content_border_top']) ? $responsi_options['responsi_hext_n_content_border_top'] : array(
+                'default' => isset($responsi_options['responsi_content_nav_border_top']) ? $responsi_options['responsi_content_nav_border_top'] : array(
                     'width' => '0',
                     'style' => 'solid',
                     'color' => '#ffffff'
@@ -578,7 +578,7 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_content_border_bottom'] = array(
+        $navigation_controls_settings['responsi_content_nav_border_bottom'] = array(
             'control' => array(
                 'label' => __('Border - Bottom', 'responsi'),
                 'section' => 'navigation_primary',
@@ -588,7 +588,7 @@ class Navigation
             'setting' => array(
             
                 'sanitize_callback' => 'responsi_sanitize_border',
-                'default' => isset($responsi_options['responsi_hext_n_content_border_bottom']) ? $responsi_options['responsi_hext_n_content_border_bottom'] : array(
+                'default' => isset($responsi_options['responsi_content_nav_border_bottom']) ? $responsi_options['responsi_content_nav_border_bottom'] : array(
                     'width' => '0',
                     'style' => 'solid',
                     'color' => '#ffffff'
@@ -597,7 +597,7 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_content_border_lr'] = array(
+        $navigation_controls_settings['responsi_content_nav_border_lr'] = array(
             'control' => array(
                 'label' => __('Border - Left / Right', 'responsi'),
                 'section' => 'navigation_primary',
@@ -607,7 +607,7 @@ class Navigation
             'setting' => array(
             
                 'sanitize_callback' => 'responsi_sanitize_border',
-                'default' => isset($responsi_options['responsi_hext_n_content_border_lr']) ? $responsi_options['responsi_hext_n_content_border_lr'] : array(
+                'default' => isset($responsi_options['responsi_content_nav_border_lr']) ? $responsi_options['responsi_content_nav_border_lr'] : array(
                     'width' => '0',
                     'style' => 'solid',
                     'color' => '#ffffff'
@@ -616,7 +616,7 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_content_border_radius'] = array(
+        $navigation_controls_settings['responsi_content_nav_border_radius'] = array(
             'control' => array(
                 'label' => __('Border Corner', 'responsi'),
                 'section' => 'navigation_primary',
@@ -626,7 +626,7 @@ class Navigation
             'setting' => array(
             
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
-                'default' => isset($responsi_options['responsi_hext_n_content_border_radius']) ? $responsi_options['responsi_hext_n_content_border_radius'] : array(
+                'default' => isset($responsi_options['responsi_content_nav_border_radius']) ? $responsi_options['responsi_content_nav_border_radius'] : array(
                     'corner' => 'rounded',
                     'rounded_value' => '0'
                 ),
@@ -634,7 +634,7 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_content_box_shadow'] = array(
+        $navigation_controls_settings['responsi_content_nav_box_shadow'] = array(
             'control' => array(
                 'label' => __('Border Shadow', 'responsi'),
                 'section' => 'navigation_primary',
@@ -644,7 +644,7 @@ class Navigation
             'setting' => array(
             
                 'sanitize_callback' => 'responsi_sanitize_box_shadow',
-                'default' => isset($responsi_options['responsi_hext_n_content_box_shadow']) ? $responsi_options['responsi_hext_n_content_box_shadow'] : array(
+                'default' => isset($responsi_options['responsi_content_nav_box_shadow']) ? $responsi_options['responsi_content_nav_box_shadow'] : array(
                     'onoff' => 'false',
                     'h_shadow' => '0px',
                     'v_shadow' => '0px',
@@ -657,7 +657,7 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_content_margin'] = array(
+        $navigation_controls_settings['responsi_content_nav_margin'] = array(
             'control' => array(
                 'label' => __('Margin', 'responsi'),
                 'section' => 'navigation_primary',
@@ -674,16 +674,16 @@ class Navigation
             
                 'sanitize_callback' => 'responsi_sanitize_numeric',
                 'default' => array(
-                    isset($responsi_options['responsi_hext_n_content_margin_top']) ? $responsi_options['responsi_hext_n_content_margin_top'] : '0',
-                    isset($responsi_options['responsi_hext_n_content_margin_bottom']) ? $responsi_options['responsi_hext_n_content_margin_bottom'] : '0',
-                    isset($responsi_options['responsi_hext_n_content_margin_left']) ? $responsi_options['responsi_hext_n_content_margin_left'] : '10',
-                    isset($responsi_options['responsi_hext_n_content_margin_right']) ? $responsi_options['responsi_hext_n_content_margin_right'] : '10'
+                    isset($responsi_options['responsi_content_nav_margin_top']) ? $responsi_options['responsi_content_nav_margin_top'] : '0',
+                    isset($responsi_options['responsi_content_nav_margin_bottom']) ? $responsi_options['responsi_content_nav_margin_bottom'] : '0',
+                    isset($responsi_options['responsi_content_nav_margin_left']) ? $responsi_options['responsi_content_nav_margin_left'] : '10',
+                    isset($responsi_options['responsi_content_nav_margin_right']) ? $responsi_options['responsi_content_nav_margin_right'] : '10'
                 ),
                 'transport'   => 'postMessage',
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_content_padding'] = array(
+        $navigation_controls_settings['responsi_content_nav_padding'] = array(
             'control' => array(
                 'label' => __('Padding', 'responsi'),
                 'section' => 'navigation_primary',
@@ -700,10 +700,10 @@ class Navigation
             
                 'sanitize_callback' => 'responsi_sanitize_numeric',
                 'default' => array(
-                    isset($responsi_options['responsi_hext_n_content_padding_top']) ? $responsi_options['responsi_hext_n_content_padding_top'] : '0',
-                    isset($responsi_options['responsi_hext_n_content_padding_bottom']) ? $responsi_options['responsi_hext_n_content_padding_bottom'] : '0',
-                    isset($responsi_options['responsi_hext_n_content_padding_left']) ? $responsi_options['responsi_hext_n_content_padding_left'] : '0',
-                    isset($responsi_options['responsi_hext_n_content_padding_right']) ? $responsi_options['responsi_hext_n_content_padding_right'] : '0'
+                    isset($responsi_options['responsi_content_nav_padding_top']) ? $responsi_options['responsi_content_nav_padding_top'] : '0',
+                    isset($responsi_options['responsi_content_nav_padding_bottom']) ? $responsi_options['responsi_content_nav_padding_bottom'] : '0',
+                    isset($responsi_options['responsi_content_nav_padding_left']) ? $responsi_options['responsi_content_nav_padding_left'] : '0',
+                    isset($responsi_options['responsi_content_nav_padding_right']) ? $responsi_options['responsi_content_nav_padding_right'] : '0'
                 ),
                 'transport'   => 'postMessage',
             )
@@ -723,7 +723,7 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_content_mobile_margin'] = array(
+        $navigation_controls_settings['responsi_content_nav_mobile_margin'] = array(
             'control' => array(
                 'label' => __('Margin', 'responsi'),
                 'section' => 'navigation_primary',
@@ -740,16 +740,16 @@ class Navigation
             
                 'sanitize_callback' => 'responsi_sanitize_numeric',
                 'default' => array(
-                    isset($responsi_options['responsi_hext_n_content_mobile_margin_top']) ? $responsi_options['responsi_hext_n_content_mobile_margin_top'] : '0',
-                    isset($responsi_options['responsi_hext_n_content_mobile_margin_bottom']) ? $responsi_options['responsi_hext_n_content_mobile_margin_bottom'] : '0',
-                    isset($responsi_options['responsi_hext_n_content_mobile_margin_left']) ? $responsi_options['responsi_hext_n_content_mobile_margin_left'] : '0',
-                    isset($responsi_options['responsi_hext_n_content_mobile_margin_right']) ? $responsi_options['responsi_hext_n_content_mobile_margin_right'] : '0'
+                    isset($responsi_options['responsi_content_nav_mobile_margin_top']) ? $responsi_options['responsi_content_nav_mobile_margin_top'] : '0',
+                    isset($responsi_options['responsi_content_nav_mobile_margin_bottom']) ? $responsi_options['responsi_content_nav_mobile_margin_bottom'] : '0',
+                    isset($responsi_options['responsi_content_nav_mobile_margin_left']) ? $responsi_options['responsi_content_nav_mobile_margin_left'] : '0',
+                    isset($responsi_options['responsi_content_nav_mobile_margin_right']) ? $responsi_options['responsi_content_nav_mobile_margin_right'] : '0'
                 ),
                 'transport'   => 'postMessage',
             )
         );
 
-        $navigation_controls_settings['responsi_hext_n_content_mobile_padding'] = array(
+        $navigation_controls_settings['responsi_content_nav_mobile_padding'] = array(
             'control' => array(
                 'label' => __('Padding', 'responsi'),
                 'section' => 'navigation_primary',
@@ -766,10 +766,10 @@ class Navigation
             
                 'sanitize_callback' => 'responsi_sanitize_numeric',
                 'default' => array(
-                    isset($responsi_options['responsi_hext_n_content_mobile_padding_top']) ? $responsi_options['responsi_hext_n_content_mobile_padding_top'] : '0',
-                    isset($responsi_options['responsi_hext_n_content_mobile_padding_bottom']) ? $responsi_options['responsi_hext_n_content_mobile_padding_bottom'] : '0',
-                    isset($responsi_options['responsi_hext_n_content_mobile_padding_left']) ? $responsi_options['responsi_hext_n_content_mobile_padding_left'] : '0',
-                    isset($responsi_options['responsi_hext_n_content_mobile_padding_right']) ? $responsi_options['responsi_hext_n_content_mobile_padding_right'] : '0'
+                    isset($responsi_options['responsi_content_nav_mobile_padding_top']) ? $responsi_options['responsi_content_nav_mobile_padding_top'] : '0',
+                    isset($responsi_options['responsi_content_nav_mobile_padding_bottom']) ? $responsi_options['responsi_content_nav_mobile_padding_bottom'] : '0',
+                    isset($responsi_options['responsi_content_nav_mobile_padding_left']) ? $responsi_options['responsi_content_nav_mobile_padding_left'] : '0',
+                    isset($responsi_options['responsi_content_nav_mobile_padding_right']) ? $responsi_options['responsi_content_nav_mobile_padding_right'] : '0'
                 ),
                 'transport'   => 'postMessage',
             )
@@ -988,16 +988,16 @@ class Navigation
 			)
 		);
 
-		$navigation_controls_settings['responsi_hext_navbar_border_hover'] = array(
+		$navigation_controls_settings['responsi_nav_border_hover'] = array(
             'control' => array(
                 'label' => __('Tab Hover Border Colour', 'responsi'),
                 'section' => 'navigation_primary',
-                'settings' => 'responsi_hext_navbar_border_hover',
+                'settings' => 'responsi_nav_border_hover',
                 'type' => 'icolor',
             ),
             'setting' => array(
                 'sanitize_callback' => 'sanitize_hex_color',
-                'default' => isset($responsi_options['responsi_hext_navbar_border_hover']) ? $responsi_options['responsi_hext_navbar_border_hover'] : '#ffffff',
+                'default' => isset($responsi_options['responsi_nav_border_hover']) ? $responsi_options['responsi_nav_border_hover'] : '#ffffff',
                 'transport'   => 'postMessage'
             )
         );
@@ -1016,16 +1016,16 @@ class Navigation
 			)
 		);
 
-		$navigation_controls_settings['responsi_hext_navbar_border_currentitem'] = array(
+		$navigation_controls_settings['responsi_nav_currentitem_border'] = array(
             'control' => array(
                 'label' => __('Open Tab Border Colour', 'responsi'),
                 'section' => 'navigation_primary',
-                'settings' => 'responsi_hext_navbar_border_currentitem',
+                'settings' => 'responsi_nav_currentitem_border',
                 'type' => 'icolor',
             ),
             'setting' => array(
                 'sanitize_callback' => 'sanitize_hex_color',
-                'default' => isset($responsi_options['responsi_hext_navbar_border_currentitem']) ? $responsi_options['responsi_hext_navbar_border_currentitem'] : '#ffffff',
+                'default' => isset($responsi_options['responsi_nav_currentitem_border']) ? $responsi_options['responsi_nav_currentitem_border'] : '#ffffff',
                 'transport'   => 'postMessage'
             )
         );
@@ -1178,7 +1178,7 @@ class Navigation
 			)
 		);
 
-		$navigation_controls_settings['responsi_hext_navi_border_radius_first_tl'] = array(
+		$navigation_controls_settings['responsi_navi_border_radius_first_tl'] = array(
             'control' => array(
                 'label' => __('Fisrt Item Border Corner - Top Left', 'responsi'),
                 'section' => 'navigation_primary',
@@ -1188,7 +1188,7 @@ class Navigation
             'setting' => array(
                 
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
-                'default' => isset($responsi_options['responsi_hext_navi_border_radius_first_tl']) ? $responsi_options['responsi_hext_navi_border_radius_first_tl'] : array(
+                'default' => isset($responsi_options['responsi_navi_border_radius_first_tl']) ? $responsi_options['responsi_navi_border_radius_first_tl'] : array(
                     'corner' => 'rounded',
                     'rounded_value' => '3'
                 ),
@@ -1196,7 +1196,7 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navi_border_radius_first_tr'] = array(
+        $navigation_controls_settings['responsi_navi_border_radius_first_tr'] = array(
             'control' => array(
                 'label' => __('Fisrt Item Border Corner - Top Right', 'responsi'),
                 'section' => 'navigation_primary',
@@ -1206,7 +1206,7 @@ class Navigation
             'setting' => array(
                 
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
-                'default' => isset($responsi_options['responsi_hext_navi_border_radius_first_tr']) ? $responsi_options['responsi_hext_navi_border_radius_first_tr'] : array(
+                'default' => isset($responsi_options['responsi_navi_border_radius_first_tr']) ? $responsi_options['responsi_navi_border_radius_first_tr'] : array(
                     'corner' => 'rounded',
                     'rounded_value' => '3'
                 ),
@@ -1214,7 +1214,7 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navi_border_radius_first_bl'] = array(
+        $navigation_controls_settings['responsi_navi_border_radius_first_bl'] = array(
             'control' => array(
                 'label' => __('Fisrt Item Border Corner - Bottom Left', 'responsi'),
                 'section' => 'navigation_primary',
@@ -1224,7 +1224,7 @@ class Navigation
             'setting' => array(
                 
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
-                'default' => isset($responsi_options['responsi_hext_navi_border_radius_first_bl']) ? $responsi_options['responsi_hext_navi_border_radius_first_bl'] : array(
+                'default' => isset($responsi_options['responsi_navi_border_radius_first_bl']) ? $responsi_options['responsi_navi_border_radius_first_bl'] : array(
                     'corner' => 'rounded',
                     'rounded_value' => '3'
                 ),
@@ -1232,7 +1232,7 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navi_border_radius_first_br'] = array(
+        $navigation_controls_settings['responsi_navi_border_radius_first_br'] = array(
             'control' => array(
                 'label' => __('Fisrt Item Border Corner - Bottom Right', 'responsi'),
                 'section' => 'navigation_primary',
@@ -1242,7 +1242,7 @@ class Navigation
             'setting' => array(
                 
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
-                'default' => isset($responsi_options['responsi_hext_navi_border_radius_first_br']) ? $responsi_options['responsi_hext_navi_border_radius_first_br'] : array(
+                'default' => isset($responsi_options['responsi_navi_border_radius_first_br']) ? $responsi_options['responsi_navi_border_radius_first_br'] : array(
                     'corner' => 'rounded',
                     'rounded_value' => '3'
                 ),
@@ -1250,7 +1250,7 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navi_border_radius_last_tl'] = array(
+        $navigation_controls_settings['responsi_navi_border_radius_last_tl'] = array(
             'control' => array(
                 'label' => __('Last Item Border Corner - Top Left', 'responsi'),
                 'section' => 'navigation_primary',
@@ -1260,7 +1260,7 @@ class Navigation
             'setting' => array(
                 
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
-                'default' => isset($responsi_options['responsi_hext_navi_border_radius_last_tl']) ? $responsi_options['responsi_hext_navi_border_radius_last_tl'] : array(
+                'default' => isset($responsi_options['responsi_navi_border_radius_last_tl']) ? $responsi_options['responsi_navi_border_radius_last_tl'] : array(
                     'corner' => 'rounded',
                     'rounded_value' => '3'
                 ),
@@ -1268,7 +1268,7 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navi_border_radius_last_tr'] = array(
+        $navigation_controls_settings['responsi_navi_border_radius_last_tr'] = array(
             'control' => array(
                 'label' => __('Last Item Border Corner - Top Right', 'responsi'),
                 'section' => 'navigation_primary',
@@ -1278,7 +1278,7 @@ class Navigation
             'setting' => array(
                 
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
-                'default' => isset($responsi_options['responsi_hext_navi_border_radius_last_tr']) ? $responsi_options['responsi_hext_navi_border_radius_last_tr'] : array(
+                'default' => isset($responsi_options['responsi_navi_border_radius_last_tr']) ? $responsi_options['responsi_navi_border_radius_last_tr'] : array(
                     'corner' => 'rounded',
                     'rounded_value' => '3'
                 ),
@@ -1286,7 +1286,7 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navi_border_radius_last_bl'] = array(
+        $navigation_controls_settings['responsi_navi_border_radius_last_bl'] = array(
             'control' => array(
                 'label' => __('Last Item Border Corner - Bottom Left', 'responsi'),
                 'section' => 'navigation_primary',
@@ -1296,7 +1296,7 @@ class Navigation
             'setting' => array(
                 
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
-                'default' => isset($responsi_options['responsi_hext_navi_border_radius_last_bl']) ? $responsi_options['responsi_hext_navi_border_radius_last_bl'] : array(
+                'default' => isset($responsi_options['responsi_navi_border_radius_last_bl']) ? $responsi_options['responsi_navi_border_radius_last_bl'] : array(
                     'corner' => 'rounded',
                     'rounded_value' => '3'
                 ),
@@ -1304,7 +1304,7 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navi_border_radius_last_br'] = array(
+        $navigation_controls_settings['responsi_navi_border_radius_last_br'] = array(
             'control' => array(
                 'label' => __('Last Item Border Corner - Bottom Right', 'responsi'),
                 'section' => 'navigation_primary',
@@ -1314,7 +1314,7 @@ class Navigation
             'setting' => array(
                 
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
-                'default' => isset($responsi_options['responsi_hext_navi_border_radius_last_br']) ? $responsi_options['responsi_hext_navi_border_radius_last_br'] : array(
+                'default' => isset($responsi_options['responsi_navi_border_radius_last_br']) ? $responsi_options['responsi_navi_border_radius_last_br'] : array(
                     'corner' => 'rounded',
                     'rounded_value' => '3'
                 ),
@@ -1323,7 +1323,7 @@ class Navigation
         );
 
 
-		$navigation_controls_settings['responsi_hext_navi_li_margin'] = array(
+		$navigation_controls_settings['responsi_navi_li_margin'] = array(
 			'control' => array(
 			    'label'      => __('Margin', 'responsi'),
 			    'description' => __(" Margin add space between each tab items.", 'responsi'),
@@ -1339,10 +1339,10 @@ class Navigation
 			),
 			'setting' => array(
 				'default'		=> array( 
-					isset($responsi_options['responsi_hext_navi_li_margin_top']) ? $responsi_options['responsi_hext_navi_li_margin_top'] : '0' , 
-					isset($responsi_options['responsi_hext_navi_li_margin_bottom']) ? $responsi_options['responsi_hext_navi_li_margin_bottom'] : '0',
-					isset($responsi_options['responsi_hext_navi_li_margin_left']) ? $responsi_options['responsi_hext_navi_li_margin_left'] : '0',
-					isset($responsi_options['responsi_hext_navi_li_margin_right']) ? $responsi_options['responsi_hext_navi_li_margin_right'] : '0'
+					isset($responsi_options['responsi_navi_li_margin_top']) ? $responsi_options['responsi_navi_li_margin_top'] : '0' , 
+					isset($responsi_options['responsi_navi_li_margin_bottom']) ? $responsi_options['responsi_navi_li_margin_bottom'] : '0',
+					isset($responsi_options['responsi_navi_li_margin_left']) ? $responsi_options['responsi_navi_li_margin_left'] : '0',
+					isset($responsi_options['responsi_navi_li_margin_right']) ? $responsi_options['responsi_navi_li_margin_right'] : '0'
 				),
 				'sanitize_callback' => 'responsi_sanitize_numeric',
 			    'transport'	=> 'postMessage',
@@ -1765,749 +1765,107 @@ class Navigation
 
 		/*Nav Bar Mobile Settings*/
         $navigation_controls_settings['lbhex43'] = array(
-            'control' => array(
-                'label' => __('Nav Bar Mobile Container', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'type' => 'ilabel',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_container_mobile_background_color'] = array(
-            'control' => array(
-                'label' => __('Background Color', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multiple',
-                'type' => 'ibackground',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_background_color',
-                'default' => isset($responsi_options['responsi_hext_navbar_container_mobile_background_color']) ? $responsi_options['responsi_hext_navbar_container_mobile_background_color'] : array( 'onoff' => 'true', 'color' => '#000000'),
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_container_mobile_border_top'] = array(
-            'control' => array(
-                'label' => __('Border - Top', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multiple',
-                'type' => 'border',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_border',
-                'default' => isset($responsi_options['responsi_hext_navbar_container_mobile_border_top']) ? $responsi_options['responsi_hext_navbar_container_mobile_border_top'] : array(
-                    'width' => '0',
-                    'style' => 'solid',
-                    'color' => '#ffffff'
-                ),
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_container_mobile_border_bottom'] = array(
-            'control' => array(
-                'label' => __('Border - Bottom', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multiple',
-                'type' => 'border',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_border',
-                'default' => isset($responsi_options['responsi_hext_navbar_container_mobile_border_bottom']) ? $responsi_options['responsi_hext_navbar_container_mobile_border_bottom'] : array(
-                    'width' => '0',
-                    'style' => 'solid',
-                    'color' => '#ffffff'
-                ),
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_container_mobile_border_lr'] = array(
-            'control' => array(
-                'label' => __('Border - Left / Right', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multiple',
-                'type' => 'border',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_border',
-                'default' => isset($responsi_options['responsi_hext_navbar_container_mobile_border_lr']) ? $responsi_options['responsi_hext_navbar_container_mobile_border_lr'] : array(
-                    'width' => '0',
-                    'style' => 'solid',
-                    'color' => '#ffffff'
-                ),
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_container_mobile_border_radius'] = array(
-            'control' => array(
-                'label' => __('Border Corner', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multiple',
-                'type' => 'border_radius',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_border_radius',
-                'default' => isset($responsi_options['responsi_hext_navbar_container_mobile_border_radius']) ? $responsi_options['responsi_hext_navbar_container_mobile_border_radius'] : array(
-                    'corner' => 'rounded',
-                    'rounded_value' => '0'
-                ),
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_container_mobile_box_shadow'] = array(
-            'control' => array(
-                'label' => __('Border Shadow', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multiple',
-                'type' => 'box_shadow',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_box_shadow',
-                'default' => isset($responsi_options['responsi_hext_navbar_container_mobile_box_shadow']) ? $responsi_options['responsi_hext_navbar_container_mobile_box_shadow'] : array(
-                    'onoff' => 'false',
-                    'h_shadow' => '0px',
-                    'v_shadow' => '0px',
-                    'blur' => '8px',
-                    'spread' => '0px',
-                    'color' => '#DBDBDB',
-                    'inset' => 'exclude_11_12'
-                ),
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_container_mobile_margin'] = array(
-            'control' => array(
-                'label' => __('Margin', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multitext',
-                'type' => 'multitext',
-                'choices' => array(
-                    'top' => 'Top',
-                    'bottom' => 'Bottom',
-                    'left' => 'Left',
-                    'right' => 'Right'
-                ),
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_numeric',
-                'default' => array(
-                    isset($responsi_options['responsi_hext_navbar_container_mobile_margin_top']) ? $responsi_options['responsi_hext_navbar_container_mobile_margin_top'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_container_mobile_margin_bottom']) ? $responsi_options['responsi_hext_navbar_container_mobile_margin_bottom'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_container_mobile_margin_left']) ? $responsi_options['responsi_hext_navbar_container_mobile_margin_left'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_container_mobile_margin_right']) ? $responsi_options['responsi_hext_navbar_container_mobile_margin_right'] : '0'
-                ),
-                'transport'   => 'postMessage',
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_container_mobile_padding'] = array(
-            'control' => array(
-                'label' => __('Padding', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multitext',
-                'type' => 'multitext',
-                'choices' => array(
-                    'top' => 'Top',
-                    'bottom' => 'Bottom',
-                    'left' => 'Left',
-                    'right' => 'Right'
-                ),
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_numeric',
-                'default' => array(
-                    isset($responsi_options['responsi_hext_navbar_container_mobile_padding_top']) ? $responsi_options['responsi_hext_navbar_container_mobile_padding_top'] : '5',
-                    isset($responsi_options['responsi_hext_navbar_container_mobile_padding_bottom']) ? $responsi_options['responsi_hext_navbar_container_mobile_padding_bottom'] : '5',
-                    isset($responsi_options['responsi_hext_navbar_container_mobile_padding_left']) ? $responsi_options['responsi_hext_navbar_container_mobile_padding_left'] : '5',
-                    isset($responsi_options['responsi_hext_navbar_container_mobile_padding_right']) ? $responsi_options['responsi_hext_navbar_container_mobile_padding_right'] : '5'
-                ),
-                'transport'   => 'postMessage',
-            )
-        );
-
-        $navigation_controls_settings['lbhex44'] = array(
-            'control' => array(
-                'label' => __('Mobile Icon Container', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'type' => 'ilabel',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            )
-        );
-
-
-        $navigation_controls_settings['responsi_hext_navbar_icon_mobile_background_color'] = array(
-            'control' => array(
-                'label' => __('Background Color', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multiple',
-                'type' => 'ibackground',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_background_color',
-                'default' => isset($responsi_options['responsi_hext_navbar_icon_mobile_background_color']) ? $responsi_options['responsi_hext_navbar_icon_mobile_background_color'] : array( 'onoff' => 'false', 'color' => '#000000'),
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_icon_mobile_border_top'] = array(
-            'control' => array(
-                'label' => __('Border - Top', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multiple',
-                'type' => 'border',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_border',
-                'default' => isset($responsi_options['responsi_hext_navbar_icon_mobile_border_top']) ? $responsi_options['responsi_hext_navbar_icon_mobile_border_top'] : array(
-                    'width' => '0',
-                    'style' => 'solid',
-                    'color' => '#ffffff'
-                ),
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_icon_mobile_border_bottom'] = array(
-            'control' => array(
-                'label' => __('Border - Bottom', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multiple',
-                'type' => 'border',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_border',
-                'default' => isset($responsi_options['responsi_hext_navbar_icon_mobile_border_bottom']) ? $responsi_options['responsi_hext_navbar_icon_mobile_border_bottom'] : array(
-                    'width' => '0',
-                    'style' => 'solid',
-                    'color' => '#ffffff'
-                ),
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_icon_mobile_border_left'] = array(
-            'control' => array(
-                'label' => __('Border - Left', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multiple',
-                'type' => 'border',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_border',
-                'default' => isset($responsi_options['responsi_hext_navbar_icon_mobile_border_left']) ? $responsi_options['responsi_hext_navbar_icon_mobile_border_left'] : array(
-                    'width' => '0',
-                    'style' => 'solid',
-                    'color' => '#ffffff'
-                ),
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_icon_mobile_border_right'] = array(
-            'control' => array(
-                'label' => __('Border - Right', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multiple',
-                'type' => 'border',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_border',
-                'default' => isset($responsi_options['responsi_hext_navbar_icon_mobile_border_right']) ? $responsi_options['responsi_hext_navbar_icon_mobile_border_right'] : array(
-                    'width' => '0',
-                    'style' => 'solid',
-                    'color' => '#ffffff'
-                ),
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_icon_mobile_border_radius'] = array(
-            'control' => array(
-                'label' => __('Border Corner', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multiple',
-                'type' => 'border_radius',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_border_radius',
-                'default' => isset($responsi_options['responsi_hext_navbar_icon_mobile_border_radius']) ? $responsi_options['responsi_hext_navbar_icon_mobile_border_radius'] : array(
-                    'corner' => 'rounded',
-                    'rounded_value' => '0'
-                ),
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_icon_mobile_box_shadow'] = array(
-            'control' => array(
-                'label' => __('Border Shadow', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multiple',
-                'type' => 'box_shadow',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_box_shadow',
-                'default' => isset($responsi_options['responsi_hext_navbar_icon_mobile_box_shadow']) ? $responsi_options['responsi_hext_navbar_icon_mobile_box_shadow'] : array(
-                    'onoff' => 'false',
-                    'h_shadow' => '0px',
-                    'v_shadow' => '0px',
-                    'blur' => '8px',
-                    'spread' => '0px',
-                    'color' => '#DBDBDB',
-                    'inset' => 'exclude_11_12'
-                ),
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_icon_mobile_margin'] = array(
-            'control' => array(
-                'label' => __('Margin', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multitext',
-                'type' => 'multitext',
-                'choices' => array(
-                    'top' => 'Top',
-                    'bottom' => 'Bottom',
-                    'left' => 'Left',
-                    'right' => 'Right'
-                ),
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_numeric',
-                'default' => array(
-                    isset($responsi_options['responsi_hext_navbar_icon_mobile_margin_top']) ? $responsi_options['responsi_hext_navbar_icon_mobile_margin_top'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_icon_mobile_margin_bottom']) ? $responsi_options['responsi_hext_navbar_icon_mobile_margin_bottom'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_icon_mobile_margin_left']) ? $responsi_options['responsi_hext_navbar_icon_mobile_margin_left'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_icon_mobile_margin_right']) ? $responsi_options['responsi_hext_navbar_icon_mobile_margin_right'] : '5'
-                ),
-                'transport'   => 'postMessage',
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_icon_mobile_padding'] = array(
-            'control' => array(
-                'label' => __('Padding', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multitext',
-                'type' => 'multitext',
-                'choices' => array(
-                    'top' => 'Top',
-                    'bottom' => 'Bottom',
-                    'left' => 'Left',
-                    'right' => 'Right'
-                ),
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_numeric',
-                'default' => array(
-                    isset($responsi_options['responsi_hext_navbar_icon_mobile_padding_top']) ? $responsi_options['responsi_hext_navbar_icon_mobile_padding_top'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_icon_mobile_padding_bottom']) ? $responsi_options['responsi_hext_navbar_icon_mobile_padding_bottom'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_icon_mobile_padding_left']) ? $responsi_options['responsi_hext_navbar_icon_mobile_padding_left'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_icon_mobile_padding_right']) ? $responsi_options['responsi_hext_navbar_icon_mobile_padding_right'] : '0'
-                ),
-                'transport'   => 'postMessage',
-            )
-        );
-
-        $navigation_controls_settings['lbhex45'] = array(
-            'control' => array(
-                'label' => __('Icon Size & Colour', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'type' => 'ilabel',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_icon_mobile_alignment'] = array(
-            'control' => array(
-                'label'      => __('Alignment', 'responsi'),
-                'section'    => 'navigation_primary_mobile',
-                'settings'   => 'responsi_hext_navbar_icon_mobile_alignment',
-                'type'       => 'iradio',
-                'input_attrs' => array(
-                    'checked_label' => 'ON',
-                    'unchecked_label' => 'OFF',
-                    'container_width' => 80,
-                    'class' => 'exclude_11_12'
-                ),
-                'choices' => array("left" => "Left", "right" => "Right" )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_choices',
-                'default'       => isset($responsi_options['responsi_hext_navbar_icon_mobile_alignment']) ? $responsi_options['responsi_hext_navbar_icon_mobile_alignment'] : 'left',
-                'transport' => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_icon_mobile_size'] = array(
-            'control' => array(
-                'label' => __('Size', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'responsi_hext_navbar_icon_mobile_size',
-                'type' => 'slider',
-                'input_attrs' => array(
-                    'min' => '7',
-                    'max' => '100',
-                    'step' => '1',
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_slider',
-                'default' => isset($responsi_options['responsi_hext_navbar_icon_mobile_size']) ? $responsi_options['responsi_hext_navbar_icon_mobile_size'] : 24,
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_icon_mobile_color'] = array(
-            'control' => array(
-                'label' => __('Colour', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'responsi_hext_navbar_icon_mobile_color',
-                'type' => 'icolor',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'sanitize_hex_color',
-                'default' => isset($responsi_options['responsi_hext_navbar_icon_mobile_color']) ? $responsi_options['responsi_hext_navbar_icon_mobile_color'] : '#ffffff',
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['lbhex46'] = array(
-            'control' => array(
-                'label' => __('Separator', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'type' => 'ilabel',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_icon_mobile_separator'] = array(
-            'control' => array(
-                'label' => "",
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multiple',
-                'type' => 'border',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_border',
-                'default' => isset($responsi_options['responsi_hext_navbar_icon_mobile_separator']) ? $responsi_options['responsi_hext_navbar_icon_mobile_separator'] : array(
-                    'width' => '2',
-                    'style' => 'solid',
-                    'color' => '#161616'
-                ),
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['lbhex47'] = array(
-            'control' => array(
-                'label' => __('Nav Bar Mobile Text', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'type' => 'ilabel',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_mobile_text_on'] = array(
-            'control' => array(
-                'label' => __('Navigation Text', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'responsi_hext_navbar_mobile_text_on',
-                'type' => 'icheckbox',
-                'input_attrs' => array(
-                    'class' => 'collapsed exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_checkboxs',
-                'default' => isset($responsi_options['responsi_hext_navbar_mobile_text_on']) ? $responsi_options['responsi_hext_navbar_mobile_text_on'] : 'true',
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_mobile_text'] = array(
-            'control' => array(
-                'label'      => "",
-                'section'    => 'navigation_primary_mobile',
-                'settings'    => 'responsi_hext_navbar_mobile_text',
-                'type'       => 'itext',
-                'input_attrs' => array(
-                    'class' => 'hide exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'sanitize_text_field',
-                'default'       => isset($responsi_options['responsi_hext_navbar_mobile_text']) ? $responsi_options['responsi_hext_navbar_mobile_text'] : 'Navigation',
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_mobile_text_font'] = array(
-            'control' => array(
-                'label' => __('Font', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multiple',
-                'type' => 'typography',
-                'input_attrs' => array(
-                    'class' => 'exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_typography',
-                'default' => isset($responsi_options['responsi_hext_navbar_mobile_text_font']) ? $responsi_options['responsi_hext_navbar_mobile_text_font'] : array(
-                    'size' => '18',
-                    'line_height' => '1',
-                    'face' => 'Open Sans',
-                    'style' => 'normal',
-                    'color' => '#FFFFFF'
-                ),
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_mobile_text_font_transform'] = array(
-            'control' => array(
-                'label' => __('Font transform', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'responsi_hext_navbar_mobile_text_font_transform',
-                'type' => 'iradio',
-                'input_attrs' => array(
-                    'checked_label' => 'ON',
-                    'unchecked_label' => 'OFF',
-                    'container_width' => 80,
-                    'class' => 'exclude_11_12'
-                ),
-                'choices' => array(
-                    'none' => 'None',
-                    'uppercase' => 'Uppercase',
-                    'lowercase' => 'Lowercase'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_choices',
-                'default' => isset($responsi_options['responsi_hext_navbar_mobile_text_font_transform']) ? $responsi_options['responsi_hext_navbar_mobile_text_font_transform'] : 'none',
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_mobile_text_margin'] = array(
-            'control' => array(
-                'label' => __('Margin', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multitext',
-                'type' => 'multitext',
-                'choices' => array(
-                    'top' => 'Top',
-                    'bottom' => 'Bottom',
-                    'left' => 'Left',
-                    'right' => 'Right'
-                ),
-                'input_attrs' => array(
-                    'class' => 'hide exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_numeric',
-                'default' => array(
-                    isset($responsi_options['responsi_hext_navbar_mobile_text_margin_top']) ? $responsi_options['responsi_hext_navbar_mobile_text_margin_top'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_mobile_text_margin_bottom']) ? $responsi_options['responsi_hext_navbar_mobile_text_margin_bottom'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_mobile_text_margin_left']) ? $responsi_options['responsi_hext_navbar_mobile_text_margin_left'] : '8',
-                    isset($responsi_options['responsi_hext_navbar_mobile_text_margin_right']) ? $responsi_options['responsi_hext_navbar_mobile_text_margin_right'] : '8'
-                ),
-                'transport'   => 'postMessage',
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_mobile_text_padding'] = array(
-            'control' => array(
-                'label' => __('Padding', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'multitext',
-                'type' => 'multitext',
-                'choices' => array(
-                    'top' => 'Top',
-                    'bottom' => 'Bottom',
-                    'left' => 'Left',
-                    'right' => 'Right'
-                ),
-                'input_attrs' => array(
-                    'class' => 'hide last exclude_11_12'
-                )
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'responsi_sanitize_numeric',
-                'default' => array(
-                    isset($responsi_options['responsi_hext_navbar_mobile_text_padding_top']) ? $responsi_options['responsi_hext_navbar_mobile_text_padding_top'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_mobile_text_padding_bottom']) ? $responsi_options['responsi_hext_navbar_mobile_text_padding_bottom'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_mobile_text_padding_left']) ? $responsi_options['responsi_hext_navbar_mobile_text_padding_left'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_mobile_text_padding_right']) ? $responsi_options['responsi_hext_navbar_mobile_text_padding_right'] : '0'
-                ),
-                'transport'   => 'postMessage',
-            )
-        );
-
-		//Navbar in Mobile
-		$navigation_controls_settings['lbnav9'] = array(
 			'control' => array(
-			    'label'      => __('Mobile and Tablet Dropdown', 'responsi'),
+			    'label'      => __('Nav Bar Mobile Container', 'responsi'),
 			    'section'    => 'navigation_primary_mobile',
 			    'type'       => 'ilabel'
 			),
 			'setting' => array()
 		);
 
-        $navigation_controls_settings['responsi_hext_navbar_container_dropdown_mobile_background_color'] = array(
+        $navigation_controls_settings['responsi_navbar_container_mobile_background_color'] = array(
             'control' => array(
                 'label' => __('Background Color', 'responsi'),
                 'section' => 'navigation_primary_mobile',
                 'settings' => 'multiple',
                 'type' => 'ibackground',
+                'input_attrs' => array(
+                    'class' => ''
+                )
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_background_color',
-                'default' => isset($responsi_options['responsi_hext_navbar_container_dropdown_mobile_background_color']) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_background_color'] : array( 'onoff' => 'true', 'color' => '#000000'),
+                'default' => isset($responsi_options['responsi_navbar_container_mobile_background_color']) ? $responsi_options['responsi_navbar_container_mobile_background_color'] : array( 'onoff' => 'true', 'color' => '#000000'),
                 'transport'   => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_container_dropdown_mobile_border_top'] = array(
+        $navigation_controls_settings['responsi_navbar_container_mobile_border_top'] = array(
             'control' => array(
                 'label' => __('Border - Top', 'responsi'),
                 'section' => 'navigation_primary_mobile',
                 'settings' => 'multiple',
                 'type' => 'border',
+                'input_attrs' => array(
+                    'class' => ''
+                )
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_border',
-                'default' => isset($responsi_options['responsi_hext_navbar_container_dropdown_mobile_border_top']) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_border_top'] : array(
-                    'width' => '2',
+                'default' => isset($responsi_options['responsi_navbar_container_mobile_border_top']) ? $responsi_options['responsi_navbar_container_mobile_border_top'] : array(
+                    'width' => '0',
                     'style' => 'solid',
-                    'color' => '#161616'
+                    'color' => '#ffffff'
                 ),
                 'transport'   => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_container_dropdown_mobile_border_bottom'] = array(
+        $navigation_controls_settings['responsi_navbar_container_mobile_border_bottom'] = array(
             'control' => array(
                 'label' => __('Border - Bottom', 'responsi'),
                 'section' => 'navigation_primary_mobile',
                 'settings' => 'multiple',
                 'type' => 'border',
+                'input_attrs' => array(
+                    'class' => ''
+                )
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_border',
-                'default' => isset($responsi_options['responsi_hext_navbar_container_dropdown_mobile_border_bottom']) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_border_bottom'] : array(
+                'default' => isset($responsi_options['responsi_navbar_container_mobile_border_bottom']) ? $responsi_options['responsi_navbar_container_mobile_border_bottom'] : array(
                     'width' => '0',
                     'style' => 'solid',
-                    'color' => '#161616'
+                    'color' => '#ffffff'
                 ),
                 'transport'   => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_container_dropdown_mobile_border_lr'] = array(
+        $navigation_controls_settings['responsi_navbar_container_mobile_border_lr'] = array(
             'control' => array(
                 'label' => __('Border - Left / Right', 'responsi'),
                 'section' => 'navigation_primary_mobile',
                 'settings' => 'multiple',
                 'type' => 'border',
+                'input_attrs' => array(
+                    'class' => ''
+                )
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_border',
-                'default' => isset($responsi_options['responsi_hext_navbar_container_dropdown_mobile_border_lr']) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_border_lr'] : array(
+                'default' => isset($responsi_options['responsi_navbar_container_mobile_border_lr']) ? $responsi_options['responsi_navbar_container_mobile_border_lr'] : array(
                     'width' => '0',
                     'style' => 'solid',
-                    'color' => '#161616'
+                    'color' => '#ffffff'
                 ),
                 'transport'   => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_container_dropdown_mobile_border_radius'] = array(
+        $navigation_controls_settings['responsi_navbar_container_mobile_border_radius'] = array(
             'control' => array(
                 'label' => __('Border Corner', 'responsi'),
                 'section' => 'navigation_primary_mobile',
                 'settings' => 'multiple',
                 'type' => 'border_radius',
+                'input_attrs' => array(
+                    'class' => ''
+                )
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
-                'default' => isset($responsi_options['responsi_hext_navbar_container_dropdown_mobile_border_radius']) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_border_radius'] : array(
+                'default' => isset($responsi_options['responsi_navbar_container_mobile_border_radius']) ? $responsi_options['responsi_navbar_container_mobile_border_radius'] : array(
                     'corner' => 'rounded',
                     'rounded_value' => '0'
                 ),
@@ -2515,16 +1873,19 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_container_dropdown_mobile_box_shadow'] = array(
+        $navigation_controls_settings['responsi_navbar_container_mobile_box_shadow'] = array(
             'control' => array(
                 'label' => __('Border Shadow', 'responsi'),
                 'section' => 'navigation_primary_mobile',
                 'settings' => 'multiple',
                 'type' => 'box_shadow',
+                'input_attrs' => array(
+                    'class' => ''
+                )
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_box_shadow',
-                'default' => isset($responsi_options['responsi_hext_navbar_container_dropdown_mobile_box_shadow']) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_box_shadow'] : array(
+                'default' => isset($responsi_options['responsi_navbar_container_mobile_box_shadow']) ? $responsi_options['responsi_navbar_container_mobile_box_shadow'] : array(
                     'onoff' => 'false',
                     'h_shadow' => '0px',
                     'v_shadow' => '0px',
@@ -2537,7 +1898,7 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_container_dropdown_mobile_margin'] = array(
+        $navigation_controls_settings['responsi_navbar_container_mobile_margin'] = array(
             'control' => array(
                 'label' => __('Margin', 'responsi'),
                 'section' => 'navigation_primary_mobile',
@@ -2549,20 +1910,23 @@ class Navigation
                     'left' => 'Left',
                     'right' => 'Right'
                 ),
+                'input_attrs' => array(
+                    'class' => ''
+                )
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_numeric',
                 'default' => array(
-                    isset($responsi_options['responsi_hext_navbar_container_dropdown_mobile_margin_top']) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_margin_top'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_container_dropdown_mobile_margin_bottom']) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_margin_bottom'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_container_dropdown_mobile_margin_left']) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_margin_left'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_container_dropdown_mobile_margin_right']) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_margin_right'] : '0'
+                    isset($responsi_options['responsi_navbar_container_mobile_margin_top']) ? $responsi_options['responsi_navbar_container_mobile_margin_top'] : '0',
+                    isset($responsi_options['responsi_navbar_container_mobile_margin_bottom']) ? $responsi_options['responsi_navbar_container_mobile_margin_bottom'] : '0',
+                    isset($responsi_options['responsi_navbar_container_mobile_margin_left']) ? $responsi_options['responsi_navbar_container_mobile_margin_left'] : '0',
+                    isset($responsi_options['responsi_navbar_container_mobile_margin_right']) ? $responsi_options['responsi_navbar_container_mobile_margin_right'] : '0'
                 ),
                 'transport'   => 'postMessage',
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_container_dropdown_mobile_padding'] = array(
+        $navigation_controls_settings['responsi_navbar_container_mobile_padding'] = array(
             'control' => array(
                 'label' => __('Padding', 'responsi'),
                 'section' => 'navigation_primary_mobile',
@@ -2574,38 +1938,388 @@ class Navigation
                     'left' => 'Left',
                     'right' => 'Right'
                 ),
+                'input_attrs' => array(
+                    'class' => ''
+                )
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_numeric',
                 'default' => array(
-                    isset($responsi_options['responsi_hext_navbar_container_dropdown_mobile_padding_top']) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_padding_top'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_container_dropdown_mobile_padding_bottom']) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_padding_bottom'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_container_dropdown_mobile_padding_left']) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_padding_left'] : '0',
-                    isset($responsi_options['responsi_hext_navbar_container_dropdown_mobile_padding_right']) ? $responsi_options['responsi_hext_navbar_container_dropdown_mobile_padding_right'] : '0'
+                    isset($responsi_options['responsi_navbar_container_mobile_padding_top']) ? $responsi_options['responsi_navbar_container_mobile_padding_top'] : '5',
+                    isset($responsi_options['responsi_navbar_container_mobile_padding_bottom']) ? $responsi_options['responsi_navbar_container_mobile_padding_bottom'] : '5',
+                    isset($responsi_options['responsi_navbar_container_mobile_padding_left']) ? $responsi_options['responsi_navbar_container_mobile_padding_left'] : '5',
+                    isset($responsi_options['responsi_navbar_container_mobile_padding_right']) ? $responsi_options['responsi_navbar_container_mobile_padding_right'] : '5'
                 ),
                 'transport'   => 'postMessage',
             )
         );
 
-        $navigation_controls_settings['lbhex49'] = array(
+        $navigation_controls_settings['lbhex44'] = array(
+			'control' => array(
+			    'label' => __('Mobile Icon Container', 'responsi'),
+			    'section'    => 'navigation_primary_mobile',
+			    'type'       => 'ilabel'
+			),
+			'setting' => array()
+		);
+
+
+        $navigation_controls_settings['responsi_nav_icon_mobile_background_color'] = array(
             'control' => array(
-                'label' => __('Nav Bar Mobile Dropdown Items', 'responsi'),
+                'label' => __('Background Color', 'responsi'),
                 'section' => 'navigation_primary_mobile',
-                'type' => 'ilabel',
+                'settings' => 'multiple',
+                'type' => 'ibackground',
+                'input_attrs' => array(
+                    'class' => ''
+                )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_background_color',
+                'default' => isset($responsi_options['responsi_nav_icon_mobile_background_color']) ? $responsi_options['responsi_nav_icon_mobile_background_color'] : array( 'onoff' => 'false', 'color' => '#000000'),
+                'transport'   => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_item_dropdown_mobile_font'] = array(
+        $navigation_controls_settings['responsi_nav_icon_mobile_border_top'] = array(
+            'control' => array(
+                'label' => __('Border - Top', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multiple',
+                'type' => 'border',
+                'input_attrs' => array(
+                    'class' => ''
+                )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_border',
+                'default' => isset($responsi_options['responsi_nav_icon_mobile_border_top']) ? $responsi_options['responsi_nav_icon_mobile_border_top'] : array(
+                    'width' => '0',
+                    'style' => 'solid',
+                    'color' => '#ffffff'
+                ),
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_icon_mobile_border_bottom'] = array(
+            'control' => array(
+                'label' => __('Border - Bottom', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multiple',
+                'type' => 'border',
+                'input_attrs' => array(
+                    'class' => ''
+                )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_border',
+                'default' => isset($responsi_options['responsi_nav_icon_mobile_border_bottom']) ? $responsi_options['responsi_nav_icon_mobile_border_bottom'] : array(
+                    'width' => '0',
+                    'style' => 'solid',
+                    'color' => '#ffffff'
+                ),
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_icon_mobile_border_left'] = array(
+            'control' => array(
+                'label' => __('Border - Left', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multiple',
+                'type' => 'border',
+                'input_attrs' => array(
+                    'class' => ''
+                )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_border',
+                'default' => isset($responsi_options['responsi_nav_icon_mobile_border_left']) ? $responsi_options['responsi_nav_icon_mobile_border_left'] : array(
+                    'width' => '0',
+                    'style' => 'solid',
+                    'color' => '#ffffff'
+                ),
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_icon_mobile_border_right'] = array(
+            'control' => array(
+                'label' => __('Border - Right', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multiple',
+                'type' => 'border',
+                'input_attrs' => array(
+                    'class' => ''
+                )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_border',
+                'default' => isset($responsi_options['responsi_nav_icon_mobile_border_right']) ? $responsi_options['responsi_nav_icon_mobile_border_right'] : array(
+                    'width' => '0',
+                    'style' => 'solid',
+                    'color' => '#ffffff'
+                ),
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_icon_mobile_border_radius'] = array(
+            'control' => array(
+                'label' => __('Border Corner', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multiple',
+                'type' => 'border_radius',
+                'input_attrs' => array(
+                    'class' => ''
+                )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_border_radius',
+                'default' => isset($responsi_options['responsi_nav_icon_mobile_border_radius']) ? $responsi_options['responsi_nav_icon_mobile_border_radius'] : array(
+                    'corner' => 'rounded',
+                    'rounded_value' => '0'
+                ),
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_icon_mobile_box_shadow'] = array(
+            'control' => array(
+                'label' => __('Border Shadow', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multiple',
+                'type' => 'box_shadow',
+                'input_attrs' => array(
+                    'class' => ''
+                )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_box_shadow',
+                'default' => isset($responsi_options['responsi_nav_icon_mobile_box_shadow']) ? $responsi_options['responsi_nav_icon_mobile_box_shadow'] : array(
+                    'onoff' => 'false',
+                    'h_shadow' => '0px',
+                    'v_shadow' => '0px',
+                    'blur' => '8px',
+                    'spread' => '0px',
+                    'color' => '#DBDBDB',
+                    'inset' => ''
+                ),
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_icon_mobile_margin'] = array(
+            'control' => array(
+                'label' => __('Margin', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multitext',
+                'type' => 'multitext',
+                'choices' => array(
+                    'top' => 'Top',
+                    'bottom' => 'Bottom',
+                    'left' => 'Left',
+                    'right' => 'Right'
+                ),
+                'input_attrs' => array(
+                    'class' => ''
+                )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_numeric',
+                'default' => array(
+                    isset($responsi_options['responsi_nav_icon_mobile_margin_top']) ? $responsi_options['responsi_nav_icon_mobile_margin_top'] : '0',
+                    isset($responsi_options['responsi_nav_icon_mobile_margin_bottom']) ? $responsi_options['responsi_nav_icon_mobile_margin_bottom'] : '0',
+                    isset($responsi_options['responsi_nav_icon_mobile_margin_left']) ? $responsi_options['responsi_nav_icon_mobile_margin_left'] : '0',
+                    isset($responsi_options['responsi_nav_icon_mobile_margin_right']) ? $responsi_options['responsi_nav_icon_mobile_margin_right'] : '5'
+                ),
+                'transport'   => 'postMessage',
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_icon_mobile_padding'] = array(
+            'control' => array(
+                'label' => __('Padding', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multitext',
+                'type' => 'multitext',
+                'choices' => array(
+                    'top' => 'Top',
+                    'bottom' => 'Bottom',
+                    'left' => 'Left',
+                    'right' => 'Right'
+                ),
+                'input_attrs' => array(
+                    'class' => ''
+                )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_numeric',
+                'default' => array(
+                    isset($responsi_options['responsi_nav_icon_mobile_padding_top']) ? $responsi_options['responsi_nav_icon_mobile_padding_top'] : '0',
+                    isset($responsi_options['responsi_nav_icon_mobile_padding_bottom']) ? $responsi_options['responsi_nav_icon_mobile_padding_bottom'] : '0',
+                    isset($responsi_options['responsi_nav_icon_mobile_padding_left']) ? $responsi_options['responsi_nav_icon_mobile_padding_left'] : '0',
+                    isset($responsi_options['responsi_nav_icon_mobile_padding_right']) ? $responsi_options['responsi_nav_icon_mobile_padding_right'] : '0'
+                ),
+                'transport'   => 'postMessage',
+            )
+        );
+
+        $navigation_controls_settings['lbhex45'] = array(
+			'control' => array(
+			    'label' => __('Icon Size & Colour', 'responsi'),
+			    'section'    => 'navigation_primary_mobile',
+			    'type'       => 'ilabel'
+			),
+			'setting' => array()
+		);
+
+        $navigation_controls_settings['responsi_nav_icon_mobile_alignment'] = array(
+            'control' => array(
+                'label'      => __('Alignment', 'responsi'),
+                'section'    => 'navigation_primary_mobile',
+                'settings'   => 'responsi_nav_icon_mobile_alignment',
+                'type'       => 'iradio',
+                'input_attrs' => array(
+                    'checked_label' => 'ON',
+                    'unchecked_label' => 'OFF',
+                    'container_width' => 80,
+                    'class' => ''
+                ),
+                'choices' => array("left" => "Left", "right" => "Right" )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_choices',
+                'default'       => isset($responsi_options['responsi_nav_icon_mobile_alignment']) ? $responsi_options['responsi_nav_icon_mobile_alignment'] : 'left',
+                'transport' => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_icon_mobile_size'] = array(
+            'control' => array(
+                'label' => __('Size', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'responsi_nav_icon_mobile_size',
+                'type' => 'slider',
+                'input_attrs' => array(
+                    'min' => '7',
+                    'max' => '100',
+                    'step' => '1',
+                    'class' => ''
+                )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_slider',
+                'default' => isset($responsi_options['responsi_nav_icon_mobile_size']) ? $responsi_options['responsi_nav_icon_mobile_size'] : 24,
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_icon_mobile_color'] = array(
+            'control' => array(
+                'label' => __('Colour', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'responsi_nav_icon_mobile_color',
+                'type' => 'icolor',
+                'input_attrs' => array(
+                    'class' => ''
+                )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'sanitize_hex_color',
+                'default' => isset($responsi_options['responsi_nav_icon_mobile_color']) ? $responsi_options['responsi_nav_icon_mobile_color'] : '#ffffff',
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['lbhex46'] = array(
+			'control' => array(
+			    'label' => __('Separator', 'responsi'),
+			    'section'    => 'navigation_primary_mobile',
+			    'type'       => 'ilabel'
+			),
+			'setting' => array()
+		);
+
+        $navigation_controls_settings['responsi_nav_icon_mobile_separator'] = array(
+            'control' => array(
+                'label' => "",
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multiple',
+                'type' => 'border',
+                'input_attrs' => array(
+                    'class' => ''
+                )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_border',
+                'default' => isset($responsi_options['responsi_nav_icon_mobile_separator']) ? $responsi_options['responsi_nav_icon_mobile_separator'] : array(
+                    'width' => '2',
+                    'style' => 'solid',
+                    'color' => '#161616'
+                ),
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['lbhex47'] = array(
+			'control' => array(
+			    'label' => __('Nav Bar Mobile Text', 'responsi'),
+			    'section'    => 'navigation_primary_mobile',
+			    'type'       => 'ilabel'
+			),
+			'setting' => array()
+		);
+
+        $navigation_controls_settings['responsi_nav_container_mobile_text_on'] = array(
+            'control' => array(
+                'label' => __('Navigation Text', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'responsi_nav_container_mobile_text_on',
+                'type' => 'icheckbox',
+                'input_attrs' => array(
+                    'class' => 'collapsed '
+                )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_checkboxs',
+                'default' => isset($responsi_options['responsi_nav_container_mobile_text_on']) ? $responsi_options['responsi_nav_container_mobile_text_on'] : 'true',
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_container_mobile_text'] = array(
+            'control' => array(
+                'label'      => "",
+                'section'    => 'navigation_primary_mobile',
+                'settings'    => 'responsi_nav_container_mobile_text',
+                'type'       => 'itext',
+                'input_attrs' => array(
+                    'class' => 'hide '
+                )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'sanitize_text_field',
+                'default'       => isset($responsi_options['responsi_nav_container_mobile_text']) ? $responsi_options['responsi_nav_container_mobile_text'] : 'Navigation',
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_container_mobile_text_font'] = array(
             'control' => array(
                 'label' => __('Font', 'responsi'),
                 'section' => 'navigation_primary_mobile',
                 'settings' => 'multiple',
                 'type' => 'typography',
+                'input_attrs' => array(
+                    'class' => ''
+                )
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_typography',
-                'default' => isset($responsi_options['responsi_hext_navbar_item_dropdown_mobile_font']) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_font'] : array(
-                    'size' => '13',
+                'default' => isset($responsi_options['responsi_nav_container_mobile_text_font']) ? $responsi_options['responsi_nav_container_mobile_text_font'] : array(
+                    'size' => '18',
                     'line_height' => '1',
                     'face' => 'Open Sans',
                     'style' => 'normal',
@@ -2615,25 +2329,11 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_item_dropdown_mobile_hover_color'] = array(
-            'control' => array(
-                'label' => __('Colour on Mouse Over', 'responsi'),
-                'section' => 'navigation_primary_mobile',
-                'settings' => 'responsi_hext_navbar_item_dropdown_mobile_hover_color',
-                'type' => 'icolor',
-            ),
-            'setting' => array(
-                'sanitize_callback' => 'sanitize_hex_color',
-                'default' => isset($responsi_options['responsi_hext_navbar_item_dropdown_mobile_hover_color']) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_hover_color'] : '#ffffff',
-                'transport'   => 'postMessage'
-            )
-        );
-
-        $navigation_controls_settings['responsi_hext_navbar_item_dropdown_mobile_font_transform'] = array(
+        $navigation_controls_settings['responsi_nav_container_mobile_text_font_transform'] = array(
             'control' => array(
                 'label' => __('Font transform', 'responsi'),
                 'section' => 'navigation_primary_mobile',
-                'settings' => 'responsi_hext_navbar_item_dropdown_mobile_font_transform',
+                'settings' => 'responsi_nav_container_mobile_text_font_transform',
                 'type' => 'iradio',
                 'input_attrs' => array(
                     'checked_label' => 'ON',
@@ -2649,12 +2349,78 @@ class Navigation
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_choices',
-                'default' => isset($responsi_options['responsi_hext_navbar_item_dropdown_mobile_font_transform']) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_font_transform'] : 'uppercase',
+                'default' => isset($responsi_options['responsi_nav_container_mobile_text_font_transform']) ? $responsi_options['responsi_nav_container_mobile_text_font_transform'] : 'none',
                 'transport'   => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_item_dropdown_mobile_background'] = array(
+        $navigation_controls_settings['responsi_nav_container_mobile_text_margin'] = array(
+            'control' => array(
+                'label' => __('Margin', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multitext',
+                'type' => 'multitext',
+                'choices' => array(
+                    'top' => 'Top',
+                    'bottom' => 'Bottom',
+                    'left' => 'Left',
+                    'right' => 'Right'
+                ),
+                'input_attrs' => array(
+                    'class' => 'hide '
+                )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_numeric',
+                'default' => array(
+                    isset($responsi_options['responsi_nav_container_mobile_text_margin_top']) ? $responsi_options['responsi_nav_container_mobile_text_margin_top'] : '0',
+                    isset($responsi_options['responsi_nav_container_mobile_text_margin_bottom']) ? $responsi_options['responsi_nav_container_mobile_text_margin_bottom'] : '0',
+                    isset($responsi_options['responsi_nav_container_mobile_text_margin_left']) ? $responsi_options['responsi_nav_container_mobile_text_margin_left'] : '8',
+                    isset($responsi_options['responsi_nav_container_mobile_text_margin_right']) ? $responsi_options['responsi_nav_container_mobile_text_margin_right'] : '8'
+                ),
+                'transport'   => 'postMessage',
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_container_mobile_text_padding'] = array(
+            'control' => array(
+                'label' => __('Padding', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multitext',
+                'type' => 'multitext',
+                'choices' => array(
+                    'top' => 'Top',
+                    'bottom' => 'Bottom',
+                    'left' => 'Left',
+                    'right' => 'Right'
+                ),
+                'input_attrs' => array(
+                    'class' => 'hide last '
+                )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_numeric',
+                'default' => array(
+                    isset($responsi_options['responsi_nav_container_mobile_text_padding_top']) ? $responsi_options['responsi_nav_container_mobile_text_padding_top'] : '0',
+                    isset($responsi_options['responsi_nav_container_mobile_text_padding_bottom']) ? $responsi_options['responsi_nav_container_mobile_text_padding_bottom'] : '0',
+                    isset($responsi_options['responsi_nav_container_mobile_text_padding_left']) ? $responsi_options['responsi_nav_container_mobile_text_padding_left'] : '0',
+                    isset($responsi_options['responsi_nav_container_mobile_text_padding_right']) ? $responsi_options['responsi_nav_container_mobile_text_padding_right'] : '0'
+                ),
+                'transport'   => 'postMessage',
+            )
+        );
+
+		//Navbar in Mobile
+		$navigation_controls_settings['lbnav9'] = array(
+			'control' => array(
+			    'label'      => __('Mobile and Tablet Dropdown', 'responsi'),
+			    'section'    => 'navigation_primary_mobile',
+			    'type'       => 'ilabel'
+			),
+			'setting' => array()
+		);
+
+        $navigation_controls_settings['responsi_nav_container_dropdown_mobile_background_color'] = array(
             'control' => array(
                 'label' => __('Background Color', 'responsi'),
                 'section' => 'navigation_primary_mobile',
@@ -2663,12 +2429,237 @@ class Navigation
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_background_color',
-                'default' => isset($responsi_options['responsi_hext_navbar_item_dropdown_mobile_background']) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_background'] : array( 'onoff' => 'false', 'color' => '#000000'),
+                'default' => isset($responsi_options['responsi_nav_container_dropdown_mobile_background_color']) ? $responsi_options['responsi_nav_container_dropdown_mobile_background_color'] : array( 'onoff' => 'true', 'color' => '#000000'),
                 'transport'   => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_item_dropdown_mobile_hover_background'] = array(
+        $navigation_controls_settings['responsi_nav_container_dropdown_mobile_border_top'] = array(
+            'control' => array(
+                'label' => __('Border - Top', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multiple',
+                'type' => 'border',
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_border',
+                'default' => isset($responsi_options['responsi_nav_container_dropdown_mobile_border_top']) ? $responsi_options['responsi_nav_container_dropdown_mobile_border_top'] : array(
+                    'width' => '2',
+                    'style' => 'solid',
+                    'color' => '#161616'
+                ),
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_container_dropdown_mobile_border_bottom'] = array(
+            'control' => array(
+                'label' => __('Border - Bottom', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multiple',
+                'type' => 'border',
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_border',
+                'default' => isset($responsi_options['responsi_nav_container_dropdown_mobile_border_bottom']) ? $responsi_options['responsi_nav_container_dropdown_mobile_border_bottom'] : array(
+                    'width' => '0',
+                    'style' => 'solid',
+                    'color' => '#161616'
+                ),
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_container_dropdown_mobile_border_lr'] = array(
+            'control' => array(
+                'label' => __('Border - Left / Right', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multiple',
+                'type' => 'border',
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_border',
+                'default' => isset($responsi_options['responsi_nav_container_dropdown_mobile_border_lr']) ? $responsi_options['responsi_nav_container_dropdown_mobile_border_lr'] : array(
+                    'width' => '0',
+                    'style' => 'solid',
+                    'color' => '#161616'
+                ),
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_container_dropdown_mobile_border_radius'] = array(
+            'control' => array(
+                'label' => __('Border Corner', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multiple',
+                'type' => 'border_radius',
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_border_radius',
+                'default' => isset($responsi_options['responsi_nav_container_dropdown_mobile_border_radius']) ? $responsi_options['responsi_nav_container_dropdown_mobile_border_radius'] : array(
+                    'corner' => 'rounded',
+                    'rounded_value' => '0'
+                ),
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_container_dropdown_mobile_box_shadow'] = array(
+            'control' => array(
+                'label' => __('Border Shadow', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multiple',
+                'type' => 'box_shadow',
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_box_shadow',
+                'default' => isset($responsi_options['responsi_nav_container_dropdown_mobile_box_shadow']) ? $responsi_options['responsi_nav_container_dropdown_mobile_box_shadow'] : array(
+                    'onoff' => 'false',
+                    'h_shadow' => '0px',
+                    'v_shadow' => '0px',
+                    'blur' => '8px',
+                    'spread' => '0px',
+                    'color' => '#DBDBDB',
+                    'inset' => ''
+                ),
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_container_dropdown_mobile_margin'] = array(
+            'control' => array(
+                'label' => __('Margin', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multitext',
+                'type' => 'multitext',
+                'choices' => array(
+                    'top' => 'Top',
+                    'bottom' => 'Bottom',
+                    'left' => 'Left',
+                    'right' => 'Right'
+                ),
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_numeric',
+                'default' => array(
+                    isset($responsi_options['responsi_nav_container_dropdown_mobile_margin_top']) ? $responsi_options['responsi_nav_container_dropdown_mobile_margin_top'] : '0',
+                    isset($responsi_options['responsi_nav_container_dropdown_mobile_margin_bottom']) ? $responsi_options['responsi_nav_container_dropdown_mobile_margin_bottom'] : '0',
+                    isset($responsi_options['responsi_nav_container_dropdown_mobile_margin_left']) ? $responsi_options['responsi_nav_container_dropdown_mobile_margin_left'] : '0',
+                    isset($responsi_options['responsi_nav_container_dropdown_mobile_margin_right']) ? $responsi_options['responsi_nav_container_dropdown_mobile_margin_right'] : '0'
+                ),
+                'transport'   => 'postMessage',
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_container_dropdown_mobile_padding'] = array(
+            'control' => array(
+                'label' => __('Padding', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multitext',
+                'type' => 'multitext',
+                'choices' => array(
+                    'top' => 'Top',
+                    'bottom' => 'Bottom',
+                    'left' => 'Left',
+                    'right' => 'Right'
+                ),
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_numeric',
+                'default' => array(
+                    isset($responsi_options['responsi_nav_container_dropdown_mobile_padding_top']) ? $responsi_options['responsi_nav_container_dropdown_mobile_padding_top'] : '0',
+                    isset($responsi_options['responsi_nav_container_dropdown_mobile_padding_bottom']) ? $responsi_options['responsi_nav_container_dropdown_mobile_padding_bottom'] : '0',
+                    isset($responsi_options['responsi_nav_container_dropdown_mobile_padding_left']) ? $responsi_options['responsi_nav_container_dropdown_mobile_padding_left'] : '0',
+                    isset($responsi_options['responsi_nav_container_dropdown_mobile_padding_right']) ? $responsi_options['responsi_nav_container_dropdown_mobile_padding_right'] : '0'
+                ),
+                'transport'   => 'postMessage',
+            )
+        );
+
+        $navigation_controls_settings['lbhex49'] = array(
+            'control' => array(
+                'label' => __('Nav Bar Mobile Dropdown Items', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'type' => 'ilabel',
+            ),
+			'setting' => array()
+        );
+
+        $navigation_controls_settings['responsi_nav_item_dropdown_mobile_font'] = array(
+            'control' => array(
+                'label' => __('Font', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multiple',
+                'type' => 'typography',
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_typography',
+                'default' => isset($responsi_options['responsi_nav_item_dropdown_mobile_font']) ? $responsi_options['responsi_nav_item_dropdown_mobile_font'] : array(
+                    'size' => '13',
+                    'line_height' => '1',
+                    'face' => 'Open Sans',
+                    'style' => 'normal',
+                    'color' => '#FFFFFF'
+                ),
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_item_dropdown_mobile_hover_color'] = array(
+            'control' => array(
+                'label' => __('Colour on Mouse Over', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'responsi_nav_item_dropdown_mobile_hover_color',
+                'type' => 'icolor',
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'sanitize_hex_color',
+                'default' => isset($responsi_options['responsi_nav_item_dropdown_mobile_hover_color']) ? $responsi_options['responsi_nav_item_dropdown_mobile_hover_color'] : '#ffffff',
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_item_dropdown_mobile_font_transform'] = array(
+            'control' => array(
+                'label' => __('Font transform', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'responsi_nav_item_dropdown_mobile_font_transform',
+                'type' => 'iradio',
+                'input_attrs' => array(
+                    'checked_label' => 'ON',
+                    'unchecked_label' => 'OFF',
+                    'container_width' => 80,
+                    'class' => ''
+                ),
+                'choices' => array(
+                    'none' => 'None',
+                    'uppercase' => 'Uppercase',
+                    'lowercase' => 'Lowercase'
+                )
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_choices',
+                'default' => isset($responsi_options['responsi_nav_item_dropdown_mobile_font_transform']) ? $responsi_options['responsi_nav_item_dropdown_mobile_font_transform'] : 'uppercase',
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_item_dropdown_mobile_background'] = array(
+            'control' => array(
+                'label' => __('Background Color', 'responsi'),
+                'section' => 'navigation_primary_mobile',
+                'settings' => 'multiple',
+                'type' => 'ibackground',
+            ),
+            'setting' => array(
+                'sanitize_callback' => 'responsi_sanitize_background_color',
+                'default' => isset($responsi_options['responsi_nav_item_dropdown_mobile_background']) ? $responsi_options['responsi_nav_item_dropdown_mobile_background'] : array( 'onoff' => 'false', 'color' => '#000000'),
+                'transport'   => 'postMessage'
+            )
+        );
+
+        $navigation_controls_settings['responsi_nav_item_dropdown_mobile_hover_background'] = array(
             'control' => array(
                 'label' => __('Hover background color', 'responsi'),
                 'section' => 'navigation_primary_mobile',
@@ -2677,12 +2668,12 @@ class Navigation
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_background_color',
-                'default' => isset($responsi_options['responsi_hext_navbar_item_dropdown_mobile_hover_background']) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_hover_background'] : array( 'onoff' => 'true', 'color' => '#161616'),
+                'default' => isset($responsi_options['responsi_nav_item_dropdown_mobile_hover_background']) ? $responsi_options['responsi_nav_item_dropdown_mobile_hover_background'] : array( 'onoff' => 'true', 'color' => '#161616'),
                 'transport'   => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_item_dropdown_mobile_separator'] = array(
+        $navigation_controls_settings['responsi_nav_item_dropdown_mobile_separator'] = array(
             'control' => array(
                 'label' => __('Separator', 'responsi'),
                 //'description' => __("No Border = 0px.", 'responsi'),
@@ -2692,7 +2683,7 @@ class Navigation
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_border',
-                'default' => isset($responsi_options['responsi_hext_navbar_item_dropdown_mobile_separator']) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_separator'] : array(
+                'default' => isset($responsi_options['responsi_nav_item_dropdown_mobile_separator']) ? $responsi_options['responsi_nav_item_dropdown_mobile_separator'] : array(
                     'width' => '2',
                     'style' => 'solid',
                     'color' => '#161616'
@@ -2701,7 +2692,7 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_item_dropdown_mobile_padding'] = array(
+        $navigation_controls_settings['responsi_nav_item_dropdown_mobile_padding'] = array(
             'control' => array(
                 'label' => __('Padding', 'responsi'),
                 'description' => __("Padding between the Item cell Border and the Item (space around each item text).", 'responsi'),
@@ -2718,10 +2709,10 @@ class Navigation
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_numeric',
                 'default' => array(
-                    isset($responsi_options['responsi_hext_navbar_item_dropdown_mobile_padding_top']) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_padding_top'] : '9',
-                    isset($responsi_options['responsi_hext_navbar_item_dropdown_mobile_padding_bottom']) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_padding_bottom'] : '9',
-                    isset($responsi_options['responsi_hext_navbar_item_dropdown_mobile_padding_left']) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_padding_left'] : '10',
-                    isset($responsi_options['responsi_hext_navbar_item_dropdown_mobile_padding_right']) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_padding_right'] : '10'
+                    isset($responsi_options['responsi_nav_item_dropdown_mobile_padding_top']) ? $responsi_options['responsi_nav_item_dropdown_mobile_padding_top'] : '9',
+                    isset($responsi_options['responsi_nav_item_dropdown_mobile_padding_bottom']) ? $responsi_options['responsi_nav_item_dropdown_mobile_padding_bottom'] : '9',
+                    isset($responsi_options['responsi_nav_item_dropdown_mobile_padding_left']) ? $responsi_options['responsi_nav_item_dropdown_mobile_padding_left'] : '10',
+                    isset($responsi_options['responsi_nav_item_dropdown_mobile_padding_right']) ? $responsi_options['responsi_nav_item_dropdown_mobile_padding_right'] : '10'
                 ),
                 'transport'   => 'postMessage',
             )
@@ -2732,10 +2723,12 @@ class Navigation
                 'label' => __('Child Menu', 'responsi'),
                 'section' => 'navigation_primary_mobile',
                 'type' => 'ilabel',
-            )
+            ),
+			'setting' => array()
+            
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_item_dropdown_mobile_submenu_font'] = array(
+        $navigation_controls_settings['responsi_nav_item_dropdown_mobile_submenu_font'] = array(
             'control' => array(
                 'label' => __('Font', 'responsi'),
                 'section' => 'navigation_primary_mobile',
@@ -2744,7 +2737,7 @@ class Navigation
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_typography',
-                'default' => isset($responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_font']) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_font'] : array(
+                'default' => isset($responsi_options['responsi_nav_item_dropdown_mobile_submenu_font']) ? $responsi_options['responsi_nav_item_dropdown_mobile_submenu_font'] : array(
                     'size' => '13',
                     'line_height' => '1',
                     'face' => 'Open Sans',
@@ -2755,21 +2748,21 @@ class Navigation
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_item_dropdown_mobile_submenu_hover_color'] = array(
+        $navigation_controls_settings['responsi_nav_item_dropdown_mobile_submenu_hover_color'] = array(
             'control' => array(
                 'label' => __('Colour on Mouse Over', 'responsi'),
                 'section' => 'navigation_primary_mobile',
-                'settings' => 'responsi_hext_navbar_item_dropdown_mobile_submenu_hover_color',
+                'settings' => 'responsi_nav_item_dropdown_mobile_submenu_hover_color',
                 'type' => 'icolor',
             ),
             'setting' => array(
                 'sanitize_callback' => 'sanitize_hex_color',
-                'default' => isset($responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_hover_color']) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_hover_color'] : '#ffffff',
+                'default' => isset($responsi_options['responsi_nav_item_dropdown_mobile_submenu_hover_color']) ? $responsi_options['responsi_nav_item_dropdown_mobile_submenu_hover_color'] : '#ffffff',
                 'transport'   => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_item_dropdown_mobile_submenu_background'] = array(
+        $navigation_controls_settings['responsi_nav_item_dropdown_mobile_submenu_background'] = array(
             'control' => array(
                 'label' => __('Background Color', 'responsi'),
                 'section' => 'navigation_primary_mobile',
@@ -2778,16 +2771,16 @@ class Navigation
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_background_color',
-                'default' => isset($responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_background']) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_background'] : array( 'onoff' => 'false', 'color' => '#000000'),
+                'default' => isset($responsi_options['responsi_nav_item_dropdown_mobile_submenu_background']) ? $responsi_options['responsi_nav_item_dropdown_mobile_submenu_background'] : array( 'onoff' => 'false', 'color' => '#000000'),
                 'transport'   => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_item_dropdown_mobile_submenu_font_transform'] = array(
+        $navigation_controls_settings['responsi_nav_item_dropdown_mobile_submenu_font_transform'] = array(
             'control' => array(
                 'label' => __('Font transform', 'responsi'),
                 'section' => 'navigation_primary_mobile',
-                'settings' => 'responsi_hext_navbar_item_dropdown_mobile_submenu_font_transform',
+                'settings' => 'responsi_nav_item_dropdown_mobile_submenu_font_transform',
                 'type' => 'iradio',
                 'input_attrs' => array(
                     'checked_label' => 'ON',
@@ -2803,12 +2796,12 @@ class Navigation
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_choices',
-                'default' => isset($responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_font_transform']) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_font_transform'] : 'uppercase',
+                'default' => isset($responsi_options['responsi_nav_item_dropdown_mobile_submenu_font_transform']) ? $responsi_options['responsi_nav_item_dropdown_mobile_submenu_font_transform'] : 'uppercase',
                 'transport'   => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_item_dropdown_mobile_submenu_hover_background'] = array(
+        $navigation_controls_settings['responsi_nav_item_dropdown_mobile_submenu_hover_background'] = array(
             'control' => array(
                 'label' => __('Hover background color', 'responsi'),
                 'section' => 'navigation_primary_mobile',
@@ -2817,12 +2810,12 @@ class Navigation
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_background_color',
-                'default' => isset($responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_hover_background']) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_hover_background'] : array( 'onoff' => 'true', 'color' => '#161616'),
+                'default' => isset($responsi_options['responsi_nav_item_dropdown_mobile_submenu_hover_background']) ? $responsi_options['responsi_nav_item_dropdown_mobile_submenu_hover_background'] : array( 'onoff' => 'true', 'color' => '#161616'),
                 'transport'   => 'postMessage'
             )
         );
 
-        $navigation_controls_settings['responsi_hext_navbar_item_dropdown_mobile_submenu_separator'] = array(
+        $navigation_controls_settings['responsi_nav_item_dropdown_mobile_submenu_separator'] = array(
             'control' => array(
                 'label' => __('Separator', 'responsi'),
                 //'description' => __("No Border = 0px.", 'responsi'),
@@ -2832,7 +2825,7 @@ class Navigation
             ),
             'setting' => array(
                 'sanitize_callback' => 'responsi_sanitize_border',
-                'default' => isset($responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_separator']) ? $responsi_options['responsi_hext_navbar_item_dropdown_mobile_submenu_separator'] : array(
+                'default' => isset($responsi_options['responsi_nav_item_dropdown_mobile_submenu_separator']) ? $responsi_options['responsi_nav_item_dropdown_mobile_submenu_separator'] : array(
                     'width' => '2',
                     'style' => 'solid',
                     'color' => '#161616'
