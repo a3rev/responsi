@@ -1,3 +1,19 @@
+1 - Backup DB 
+
+2 - Go to Developer Tools > Backup Settings > Download Export File ( Keep Json File on your PC )
+
+3 - Upgrade Framework Responsi
+
+4 - Upgrade Header Extender Plugins
+
+5 - Go to customize check Navigation Options then do a trigger save customize options
+
+6 - Clear cache - check frontend
+
+*** If's fine then continue upgrade other sites - Have Issue STOP -> And please notice - Thanks
+
+
+
 // Phase 2 -----------
 
 '#wrapper-container' => '#responsi-site',

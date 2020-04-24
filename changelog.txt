@@ -1,6 +1,11 @@
 *** Responsi Framework Changelog ***
 
-= 7.9.0 - 2020/04/22 =
+= 7.9.0 - 2020/04/24 =
+* This is a feature release that moves the advanced mobile nav bar settings from the Responsi Header Extender plugin into the framework with Header Extender & Inline Header using those settings from framework. Also 2 bug fixes. 
+* Dev - Move Navigation Bar Settings from header extender plugins to Framework
+* Dev - write upgrade function to avoid breaking sites when upgrade
+* Fix - Layout css remove hover text underline on menu
+* Fix - Videos not showing when added with oembed or the Gutenberg Video embed blocks
 
 = 7.8.3 - 2020/04/10 =
 * This maintenance release has tweaks for compatibility with WordPress 5.4 editor features.
