@@ -943,8 +943,8 @@ class Navigation
 				'default'		=> array( 
 					isset($responsi_options['responsi_nav_padding_tb_top']) ? $responsi_options['responsi_nav_padding_tb_top'] : '0' , 
 					isset($responsi_options['responsi_nav_padding_tb_bottom']) ? $responsi_options['responsi_nav_padding_tb_bottom'] : '0',
-					isset($responsi_options['responsi_nav_padding_lr_left']) ? $responsi_options['responsi_nav_padding_lr_left'] : '10',
-					isset($responsi_options['responsi_nav_padding_lr_right']) ? $responsi_options['responsi_nav_padding_lr_right'] : '10'
+					isset($responsi_options['responsi_nav_padding_lr_left']) ? $responsi_options['responsi_nav_padding_lr_left'] : '0',
+					isset($responsi_options['responsi_nav_padding_lr_right']) ? $responsi_options['responsi_nav_padding_lr_right'] : '0'
 				),
 				'sanitize_callback' => 'responsi_sanitize_numeric',
 			    'transport'	=> 'postMessage',
@@ -1190,7 +1190,7 @@ class Navigation
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
                 'default' => isset($responsi_options['responsi_navi_border_radius_first_tl']) ? $responsi_options['responsi_navi_border_radius_first_tl'] : array(
                     'corner' => 'rounded',
-                    'rounded_value' => '3'
+                    'rounded_value' => '0'
                 ),
                 'transport'   => 'postMessage'
             )
@@ -1208,7 +1208,7 @@ class Navigation
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
                 'default' => isset($responsi_options['responsi_navi_border_radius_first_tr']) ? $responsi_options['responsi_navi_border_radius_first_tr'] : array(
                     'corner' => 'rounded',
-                    'rounded_value' => '3'
+                    'rounded_value' => '0'
                 ),
                 'transport'   => 'postMessage'
             )
@@ -1226,7 +1226,7 @@ class Navigation
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
                 'default' => isset($responsi_options['responsi_navi_border_radius_first_bl']) ? $responsi_options['responsi_navi_border_radius_first_bl'] : array(
                     'corner' => 'rounded',
-                    'rounded_value' => '3'
+                    'rounded_value' => '0'
                 ),
                 'transport'   => 'postMessage'
             )
@@ -1244,7 +1244,7 @@ class Navigation
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
                 'default' => isset($responsi_options['responsi_navi_border_radius_first_br']) ? $responsi_options['responsi_navi_border_radius_first_br'] : array(
                     'corner' => 'rounded',
-                    'rounded_value' => '3'
+                    'rounded_value' => '0'
                 ),
                 'transport'   => 'postMessage'
             )
@@ -1262,7 +1262,7 @@ class Navigation
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
                 'default' => isset($responsi_options['responsi_navi_border_radius_last_tl']) ? $responsi_options['responsi_navi_border_radius_last_tl'] : array(
                     'corner' => 'rounded',
-                    'rounded_value' => '3'
+                    'rounded_value' => '0'
                 ),
                 'transport'   => 'postMessage'
             )
@@ -1280,7 +1280,7 @@ class Navigation
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
                 'default' => isset($responsi_options['responsi_navi_border_radius_last_tr']) ? $responsi_options['responsi_navi_border_radius_last_tr'] : array(
                     'corner' => 'rounded',
-                    'rounded_value' => '3'
+                    'rounded_value' => '0'
                 ),
                 'transport'   => 'postMessage'
             )
@@ -1298,7 +1298,7 @@ class Navigation
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
                 'default' => isset($responsi_options['responsi_navi_border_radius_last_bl']) ? $responsi_options['responsi_navi_border_radius_last_bl'] : array(
                     'corner' => 'rounded',
-                    'rounded_value' => '3'
+                    'rounded_value' => '0'
                 ),
                 'transport'   => 'postMessage'
             )
@@ -1316,7 +1316,7 @@ class Navigation
                 'sanitize_callback' => 'responsi_sanitize_border_radius',
                 'default' => isset($responsi_options['responsi_navi_border_radius_last_br']) ? $responsi_options['responsi_navi_border_radius_last_br'] : array(
                     'corner' => 'rounded',
-                    'rounded_value' => '3'
+                    'rounded_value' => '0'
                 ),
                 'transport'   => 'postMessage'
             )

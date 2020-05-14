@@ -1677,7 +1677,7 @@ function responsi_exclude_button_css(){
 
     global $responsi_options;
 
-    $_exclude_lists = '.customize-partial-edit-shortcut-button, .bfwc-googlepay-button, .close, .none-button-css';
+    $_exclude_lists = '.customize-partial-edit-shortcut-button, .bfwc-googlepay-button, .close, .none-button-css, .slick-next, .slick-arrow, .slick-prev, .presentation button';
 
     if( isset( $responsi_options['responsi_exclude_button_lists'] ) && '' != trim( $responsi_options['responsi_exclude_button_lists'] ) ){
         $_exclude_lists .= ',' . trim( $responsi_options['responsi_exclude_button_lists'] );
@@ -3760,6 +3760,10 @@ function responsi_build_dynamic_css( $preview = false ) {
         font-size:'.$_nav_dropdown_mobile_items_font['size'].'px;
         color:'.$_nav_dropdown_mobile_items_font['color'].';
         font-weight:'.$_nav_dropdown_mobile_items_font['style'].';
+    }';
+
+    $_nav_dropdown_mobile_items_el  .= 'ul.responsi-menu .menu-item-has-children > svg{
+        height:'.$_nav_dropdown_mobile_items_font['size'].'px;
     }';
 
     $_nav_dropdown_mobile_items_el .= 'ul.responsi-menu ul li a { padding-left: '. ( $_nav_dropdown_mobile_items_padding_left + 20 ) .'px !important; }';

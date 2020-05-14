@@ -292,6 +292,10 @@
                 css += 'font-weight: ' + wp.customize.value('responsi_nav_item_dropdown_mobile_font[style]')() + ';';
             css += '}';
 
+            css += 'ul.responsi-menu .menu-item-has-children > svg{';
+                css += 'height: ' + wp.customize.value('responsi_nav_item_dropdown_mobile_font[size]')() + 'px;';
+            css += '}';
+
             css += 'ul.responsi-menu ul li a { padding-left: ' + (parseInt(wp.customize.value('responsi_nav_item_dropdown_mobile_padding_left')()) + 20) + 'px !important; }';
             css += 'ul.responsi-menu ul li ul li a { padding-left: ' + (parseInt(wp.customize.value('responsi_nav_item_dropdown_mobile_padding_left')()) + 40) + 'px !important; }';
             css += 'ul.responsi-menu ul li ul li ul li a { padding-left: ' + (parseInt(wp.customize.value('responsi_nav_item_dropdown_mobile_padding_left')()) + 60) + 'px !important; }';

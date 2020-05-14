@@ -78,6 +78,14 @@ if ( !function_exists( 'responsi_load_styles' ) ){
 }
 add_action( 'wp_head', 'responsi_load_styles', 0 );
 
+/*add_filter( 'style_loader_tag', 'responsi_style_loader_tag', 10, 4 );
+function responsi_style_loader_tag( $tag, $handle, $href, $media ) {
+	if( 'google-fonts' === $handle ){
+		$tag = str_replace( 'rel="stylesheet"', 'rel="stylesheet"', $tag);
+	}
+	return $tag;
+}*/
+
 /*-----------------------------------------------------------------------------------*/
 /* Theme Register Scripts */
 /*-----------------------------------------------------------------------------------*/

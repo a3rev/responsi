@@ -1060,6 +1060,7 @@ jQuery(document).ready(function($) {
             if( $(this).is( "svg" ) ){
 
                 $(this).css({
+                    //height: itemHeight+"px",
                     lineHeight: itemHeight+"px",
                     maxHeight: itemHeight+"px",
                     paddingTop:$(this).siblings('a').css('padding-top'),
