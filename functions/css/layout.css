@@ -803,6 +803,7 @@ footer.footer,
 
 	.responsi-menu .menu-item-has-children {
 		position: relative;
+		overflow-x: hidden;
 	}
 
 	.responsi-menu .menu-item-has-children > i,

@@ -1,5 +1,12 @@
 *** Responsi Framework Changelog ***
 
+= 7.9.1 - 2020/05/15 =
+* This maintenance release has 2  minor bug fixes and 2 tweaks.
+* Tweak - add 5px of margin on navigation dropdown icon on mobile menu
+* Tweak -  arrow icon show fine while fontawesome use svg icon
+* Fix - css button conflict with getwid blocks
+* Fix - navigations scroll in mobile
+
 = 7.9.0 - 2020/04/24 =
 * This is a feature release that moves the advanced mobile nav bar settings from the Responsi Header Extender plugin into the framework with Header Extender & Inline Header using those settings from framework. Also 2 bug fixes. 
 * Dev - Move Navigation Bar Settings from header extender plugins to Framework

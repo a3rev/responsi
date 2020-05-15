@@ -1051,7 +1051,7 @@ jQuery(document).ready(function($) {
                     left: function() {
                         $el = $(this).siblings('a').find('.item-arrow');
                         position = $el.position();
-                        return position.left + 5;
+                        return position.left + 10;
                     },
                     opacity:1
                 });
@@ -1069,7 +1069,7 @@ jQuery(document).ready(function($) {
                     left: function() {
                         $el = $(this).siblings('a').find('.item-arrow');
                         position = $el.position();
-                        return position.left + 5;
+                        return position.left + 10;
                     },
                     opacity:1
                 });
