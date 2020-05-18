@@ -614,7 +614,7 @@ if ( !function_exists( 'responsi_get_customizer_css' ) ){
 		}else {
 		    $responsi_use_style_bg_image                = isset($responsi_options['responsi_use_style_bg_image']) ? esc_attr( $responsi_options['responsi_use_style_bg_image'] ) : 'false';
 		    $responsi_style_bg                          = isset($responsi_options['responsi_style_bg']) ? $responsi_options['responsi_style_bg'] : array( 'onoff' => 'true', 'color' => '#ffffff' );
-		    $responsi_style_bg_image                    = isset($responsi_options['responsi_style_bg_image']) ? str_replace( array( 'https:', 'http:' ), '', esc_url( $responsi_options['responsi_style_bg_image'] ) ) : '';
+		    $responsi_style_bg_image                    = isset($responsi_options['responsi_style_bg_image']) ? esc_url( $responsi_options['responsi_style_bg_image'] ) : '';
 		    $responsi_style_bg_image_repeat             = isset($responsi_options['responsi_style_bg_image_repeat']) ? esc_attr( $responsi_options['responsi_style_bg_image_repeat'] ) : 'repeat';
 		    $responsi_style_bg_image_attachment         = isset($responsi_options['responsi_style_bg_image_attachment']) ? esc_attr( $responsi_options['responsi_style_bg_image_attachment'] ) : 'inherit';
 		    $responsi_bg_position_vertical              = isset($responsi_options['responsi_bg_position_vertical']) ? esc_attr( $responsi_options['responsi_bg_position_vertical'] ) : 'center';

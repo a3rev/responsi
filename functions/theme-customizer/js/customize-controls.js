@@ -2255,7 +2255,7 @@
 
 			// Set the Customizer setting; the callback takes care of rendering.
 
-			this.setting( attachment.url.replace(/^https:/i, 'https://').replace(/^http:/i, '') );
+			this.setting( attachment.url );
 
 			node = this.container.find( 'audio, video' ).get(0);
 
