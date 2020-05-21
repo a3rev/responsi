@@ -20,6 +20,55 @@ function responsi_wpshout_excerpt($text = '') {
     return $text;
 }
 
+if ( !function_exists( 'responsi_trim_excerpt' ) ) {
+    function responsi_trim_excerpt( $text = '', $post = null ) {
+        $raw_excerpt = $text;
+        if ( '' == $text ) {
+            $post = get_post( $post );
+            $text = get_the_content( '', false, $post );
+     
+            $text = strip_shortcodes( $text );
+            $text = excerpt_remove_blocks( $text );
+     
+            /** This filter is documented in wp-includes/post-template.php */
+            $text = apply_filters( 'the_content', $text );
+            $text = str_replace( ']]>', ']]&gt;', $text );
+     
+            /* translators: Maximum number of words used in a post excerpt. */
+            $excerpt_length = intval( _x( '55', 'excerpt_length' ) );
+     
+            /**
+             * Filters the maximum number of words in a post excerpt.
+             *
+             * @since 2.7.0
+             *
+             * @param int $number The maximum number of words. Default 55.
+             */
+            $excerpt_length = (int) apply_filters( 'excerpt_length', $excerpt_length );
+     
+            /**
+             * Filters the string in the "more" link displayed after a trimmed excerpt.
+             *
+             * @since 2.9.0
+             *
+             * @param string $more_string The string shown within the more link.
+             */
+            $excerpt_more = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
+            $text         = wp_trim_words( $text, $excerpt_length, $excerpt_more );
+        }
+     
+        /**
+         * Filters the trimmed excerpt string.
+         *
+         * @since 2.8.0
+         *
+         * @param string $text        The trimmed text.
+         * @param string $raw_excerpt The text prior to trimming.
+         */
+        return apply_filters( 'responsi_trim_excerpt', $text, $raw_excerpt );
+    }
+}
+
 if ( !function_exists( 'responsi_remove_shortcode_get_the_excerpt' ) ) {
     function responsi_remove_shortcode_get_the_excerpt( $content ) {
 

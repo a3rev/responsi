@@ -83,7 +83,6 @@ if ( ! class_exists( '\A3Rev\Responsi\Customize_iUpload_Control' ) && class_exis
 			</label>
 
 			<# if ( data.attachment && data.attachment.id ) { 
-			console.log(data.attachment);
 			#>
 				<div class="attachment-media-view attachment-media-view-{{ data.attachment.type }} {{ data.attachment.orientation }}">
 					<div class="thumbnail thumbnail-{{ data.attachment.type }}">

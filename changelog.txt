@@ -1,5 +1,11 @@
 *** Responsi Framework Changelog ***
 
+= 7.9.2 - 2020/05/21 =
+* This maintenance release adds full framework support for the Webp image format
+* Tweak - Customizer image upload Control for compatibility with Webp images
+* Tweak - Dynamic style CSS general image, to support conversion of inline images to Webp, example background and page banner images. These images will be converted by image URL, replace image tag with picture tag does not work for background images. 
+* Tweak - Add support for Webp images in the customize preview
+
 = 7.9.1 - 2020/05/15 =
 * This maintenance release has 2  minor bug fixes and 2 tweaks.
 * Tweak - add 5px of margin on navigation dropdown icon on mobile menu

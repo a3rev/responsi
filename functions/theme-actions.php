@@ -47,6 +47,8 @@ add_filter( 'wp_headers', 'responsi_send_no_xss_protection_header', 10, 2 );
 add_filter( 'extra_theme_headers', 'responsi_extra_theme_headers' );
 add_filter( 'body_class', 'responsi_body_class', 10 );
 add_filter( 'get_custom_logo', 'responsi_filter_get_custom_logo', 10, 2 );
+//remove_filter( 'get_the_excerpt', 'wp_trim_excerpt' );
+//add_filter( 'get_the_excerpt', 'responsi_trim_excerpt', 10, 2 );
 add_filter( 'the_excerpt', 'responsi_custom_excerpt_more' );
 add_filter( 'excerpt_more', 'responsi_excerpt_more' );
 add_filter( 'comment_form_field_comment', 'responsi_comment_form_field_comment', 10 );

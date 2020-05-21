@@ -273,6 +273,30 @@ function responsi_get_attachment_id_by_url( $url ) {
 }
 
 /*-----------------------------------------------------------------------------------*/
+/* responsi_attachment_url_to_postid */
+/*-----------------------------------------------------------------------------------*/
+
+if( !function_exists('responsi_attachment_url_to_postid') ){
+    function responsi_attachment_url_to_postid( $url ) {
+
+        $attachment_id = 0;
+
+        if( empty( $url ) ){
+            return $attachment_id;
+        }
+
+        if( function_exists('attachment_url_to_postid') ){
+            $attachment_id = attachment_url_to_postid( $url );
+        }else{
+            $attachment_id = responsi_get_attachment_id_by_url( $url );
+        }
+
+        return $attachment_id;
+
+    }
+}
+
+/*-----------------------------------------------------------------------------------*/
 /* Responsi get thumbnail */
 /*-----------------------------------------------------------------------------------*/
 
