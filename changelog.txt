@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 7.9.2.1 - 2020/05/21 =
+* This maintenance release resolves a bug on the 7.9.2 release
+* Fix - Bug exclude button css broken custom style on framework
+
 = 7.9.2 - 2020/05/21 =
 * This maintenance release adds full framework support for the Webp image format
 * Tweak - Customizer image upload Control for compatibility with Webp images

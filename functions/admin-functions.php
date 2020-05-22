@@ -1701,7 +1701,7 @@ function responsi_exclude_button_css(){
 
     global $responsi_options;
 
-    $_exclude_lists = '.customize-partial-edit-shortcut-button, .bfwc-googlepay-button, .close, .none-button-css, .slick-next, .slick-arrow, .slick-prev, .presentation button';
+    $_exclude_lists = '.customize-partial-edit-shortcut-button, .bfwc-googlepay-button, .close, .none-button-css, .slick-next, .slick-arrow, .slick-prev, [id^="slick-slide-control"]';
 
     if( isset( $responsi_options['responsi_exclude_button_lists'] ) && '' != trim( $responsi_options['responsi_exclude_button_lists'] ) ){
         $_exclude_lists .= ',' . trim( $responsi_options['responsi_exclude_button_lists'] );
