@@ -18,16 +18,21 @@
 
         if( responsi_post_thumbnail_type == 'left' || responsi_post_thumbnail_type == 'right' ){
             if( responsi_post_thumbnail_type == 'left' ){
-                css += '.card-item .card-thumb{width:'+grid_thumb_width+'% !important;clear:none;float:left !important;}';
-                css += '.card-item .card-content{width:'+grid_content_width+'% !important;clear:none;float:right !important;}';
-            }
-            if( responsi_post_thumbnail_type == 'right' ){
-                css += '.card-item .card-thumb{width:'+grid_thumb_width+'% !important;clear:none;float:right !important;}';
-                css += '.card-item .card-content{width:'+grid_content_width+'% !important;clear:none;float:left !important;}';
+                css += '@media screen and (min-width:481px) {';
+                    css += '.card-item .card-thumb{width:'+grid_thumb_width+'% !important;clear:none;float:left;}';
+                    css += '.card-item .card-content{width:'+grid_content_width+'%;clear:none;float:right;}';
+                css += '}';
+            }else{
+                if( responsi_post_thumbnail_type == 'right' ){
+                    css += '@media screen and (min-width:481px) {';
+                        css += '.card-item .card-thumb{width:'+grid_thumb_width+'%;clear:none;float:right;}';
+                        css += '.card-item .card-content{width:'+grid_content_width+'%;clear:none;float:left;}';
+                    css += '}';
+                }
             }
         }else{
-            css += '.card-item .card-thumb{width:100% !important;clear:both;display: inline-block;float:none !important;}';
-            css += '.card-item .card-content{width:100% !important;clear:none;float:none !important;}';
+            css += '.card-item .card-thumb{width:100%;clear:both;display: inline-block;float:none;}';
+            css += '.card-item .card-content{width:100%;clear:both;float:none;}';
         }
 
         css += '.box-item .entry-item.card-item,.main .box-item .entry-item.card-item,.main .box-item .entry-item{'+_cFn.renderBG('responsi_blog_box_bg',true)+_cFn.renderBorderBoxs('responsi_blog_box_border',true)+_cFn.renderShadow('responsi_blog_box_shadow',true)+'}';

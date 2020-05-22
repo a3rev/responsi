@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 7.9.3 - 2020/05/22 =
+* This maintenance release has a tweak for the blog card structure in mobile to ensure it always shows good
+* Tweak - Blogs card structure so that regardless of layout selected that in mobile it show image at the top full width
+
 = 7.9.2.1 - 2020/05/21 =
 * This maintenance release resolves a bug on the 7.9.2 release
 * Fix - Bug exclude button css broken custom style on framework

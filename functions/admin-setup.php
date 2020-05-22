@@ -10,7 +10,7 @@ if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 
 	function responsi_framework_upgrade_version(){
 	    
-	    if( version_compare(get_option('responsi_framework_version'), '7.9.2.1', '<') ){
+	    if( version_compare(get_option('responsi_framework_version'), '7.9.3', '<') ){
 
 	        if( function_exists('responsi_framework_upgrade') ){
 	        	responsi_framework_upgrade();
@@ -72,7 +72,7 @@ if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 		    }
 	    }
 
-	    /*if( version_compare(get_option('responsi_framework_version'), '7.9.2.1', '<') ){
+	    /*if( version_compare(get_option('responsi_framework_version'), '7.9.3', '<') ){
 
 	        if( get_theme_mods() != false && get_option( 'responsi_framework_version' ) != false ){
 	        	$theme = get_option( 'stylesheet' );

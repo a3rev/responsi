@@ -1067,6 +1067,9 @@ footer.footer,
 		width: 100% !important;
 	}
 
+	.card-item .card-thumb{width:100%;clear:both;display: inline-block;float:none;}
+    .card-item .card-content{width:100%;clear:both;float:none;}
+
 }
 
 @media screen and (min-width:480px) {

@@ -4300,12 +4300,15 @@ function responsi_build_dynamic_css( $preview = false ) {
     
     $dynamic_css .= '.card-thumb {width:100%;clear:both;display: inline-block;}';
     if ( 'left' === $post_thumbnail_type ) {
-        $dynamic_css .= '.card-item .card-thumb{width:' . $grid_thumb_width . '%;float:left;}';
-        $dynamic_css .= '.card-item .card-content{width:' . $grid_content_width . '%;float:right;}';
-    }
-    if ( 'right' === $post_thumbnail_type ) {
-        $dynamic_css .= '.card-item .card-thumb{width:' . $grid_thumb_width . '%;float:right;}';
-        $dynamic_css .= '.card-item .card-content{width:' . $grid_content_width . '%;float:left;}';
+        $dynamic_css .= '@media screen and (min-width:481px) {';
+            $dynamic_css .= '.card-item .card-thumb{width:' . $grid_thumb_width . '%;float:left;}';
+            $dynamic_css .= '.card-item .card-content{width:' . $grid_content_width . '%;float:right;}';
+        $dynamic_css .= '}';
+    }elseif ( 'right' === $post_thumbnail_type ) {
+        $dynamic_css .= '@media screen and (min-width:481px) {';
+            $dynamic_css .= '.card-item .card-thumb{width:' . $grid_thumb_width . '%;float:right;}';
+            $dynamic_css .= '.card-item .card-content{width:' . $grid_content_width . '%;float:left;}';
+        $dynamic_css .= '}';
     }
     $dynamic_css .= '.box-item .entry-item .card-meta .postinfo{' . responsi_generate_border($blog_box_border, 'border', true) . 'border-left:0px !important;border-right:0px !important;}';
     $dynamic_css .= '.box-item .entry-item.card-item .card-meta{margin-top:0px;margin-bottom:0px !important;}';
