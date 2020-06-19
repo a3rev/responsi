@@ -28,7 +28,8 @@ global $responsi_options,
     $wrapper_content, 
     $wrapper_content_top,
     $blog_animation,
-    $gFonts;
+    $gFonts,
+    $responsi_animate;
 
 /*-----------------------------------------------------------------------------------*/
 /* Google Webfonts */

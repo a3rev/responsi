@@ -35,7 +35,7 @@ if ( !function_exists( 'responsi_trim_excerpt' ) ) {
             $text = str_replace( ']]>', ']]&gt;', $text );
      
             /* translators: Maximum number of words used in a post excerpt. */
-            $excerpt_length = intval( _x( '55', 'excerpt_length' ) );
+            $excerpt_length = intval( _x( '55', 'excerpt_length', 'responsi' ) );
      
             /**
              * Filters the maximum number of words in a post excerpt.
@@ -193,7 +193,7 @@ if ( !function_exists( 'responsi_admin_bar_menu_style' ) ) {
     function responsi_admin_bar_menu_style(){
         $css = '';
         if( is_admin() ){
-            $css .= '@font-face { font-family: "responsi-icon"; src: url("'.get_template_directory_uri().'/functions/fonts/responsi-icon.eot"); src: url("'.get_template_directory_uri().'/functions/fonts/responsi-icon.eot?#iefix") format("embedded-opentype"), url("'.get_template_directory_uri().'/functions/fonts/responsi-icon.woff") format("woff"), url("'.get_template_directory_uri().'/functions/fonts/responsi-icon.ttf") format("truetype"), url("'.get_template_directory_uri().'/functions/fonts/responsi-icon.svg#responsi-icon") format("svg"); font-weight: normal; font-style: normal; }';
+            $css .= '@font-face { font-family:"responsi-icon";font-style:normal;font-weight:normal;src:local("responsi-icon"),url("'.get_template_directory_uri().'/functions/fonts/responsi-icon.eot"),url("'.get_template_directory_uri().'/functions/fonts/responsi-icon.woff") format("woff"),url("'.get_template_directory_uri().'/functions/fonts/responsi-icon.ttf") format("truetype"),url("'.get_template_directory_uri().'/functions/fonts/responsi-icon.svg#responsi-icon") format("svg");font-display:swap}';
         }
         $css .= '
         #wp-admin-bar-responsithemes > a.ab-item:before{font-family:"responsi-icon"!important;font-style:normal!important;font-weight:normal!important;font-variant:normal!important;text-transform:none!important;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;display:inline-block;font-size:17px!important;transition:all 0.1s ease-in-out 0s;content:"a"!important;padding:4px;margin-right:6px;top:3px;}

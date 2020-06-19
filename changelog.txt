@@ -1,5 +1,13 @@
 *** Responsi Framework Changelog ***
 
+= 7.9.4 - 2020/06/19 =
+* This maintenance release is a major framework code performance refactor inconjunction with Responsi Developer v 2.1.0 new feature release. Be sure to upgrade Developer to 2.1.0 when you run this upgrade.
+* Refactor - Framework stylesheets for load performance 
+* Refactor - Framework layout.css for load performance
+* Tweak - For compatibility with Responsi Developer 2.1.0 Google fonts preload feature
+* Tweak - For compatibility with Responsi Developer 2.1.0 Stylesheets Preload feature. 
+* Tweak - For compatibility with Responsi Developer 2.1.0 JavaScript async | defer render-blocking code feature
+
 = 7.9.3 - 2020/05/22 =
 * This maintenance release has a tweak for the blog card structure in mobile to ensure it always shows good
 * Tweak - Blogs card structure so that regardless of layout selected that in mobile it show image at the top full width

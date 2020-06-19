@@ -180,10 +180,10 @@ if ( !function_exists( 'responsi_register_webfonts' ) ) {
         global $responsi_version;
         $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
-        $urls = responsi_google_webfonts();
-
+        $urls = ( responsi_google_webfonts() ).'&display=swap';
+        
         if( '' !== $urls ){
-            wp_register_style( 'google-fonts', esc_url( $urls ) , array(), $responsi_version, 'screen'  );
+            wp_register_style( 'google-fonts', $urls , array(), $responsi_version, 'all'  );
         }
 
     }
@@ -211,13 +211,15 @@ if ( !function_exists('responsi_google_webfonts') ) {
         
         // Go through the options
         if ( !empty( $responsi_options_webfonts ) ) {
+            $note = '';
             foreach ( $responsi_options_webfonts as $option ) {
                 // Check if option has "face" in array
                 if ( is_array( $option ) && isset( $option['face'] ) ) {
                     // Check if the google font name exists in the current "face" option
                     if ( is_array($google_fonts) && array_key_exists( $option['face'], $google_fonts ) && !strstr( $fonts, $option['face'] ) ) {
-                        $fonts .= $option['face'] . $google_fonts[$option['face']]['variant'] . "|";
+                        $fonts .= $note.$option['face'] . $google_fonts[$option['face']]['variant'];
                         $list_fonts[] = $option['face'];
+                        $note =  "|";
                     }
                 }
             }
@@ -1322,6 +1324,8 @@ if (!function_exists('responsi_generate_fonts')) {
 
         $fonts = '';
 
+        $systemFonts = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif';
+
         if( is_array( $option ) && isset( $option['face']) && isset( $option['line_height']) && isset($option['style']) && isset($option['size']) && isset($option['color']) ){
             
             $important = '';
@@ -1334,9 +1338,9 @@ if (!function_exists('responsi_generate_fonts')) {
                 $option['face'] = "'" . $option['face'] . "', sans-serif";
             }
             if ( !isset($option['style']) && !isset($option['size']) && !isset($option['color']) ){
-                $fonts = 'font-family: ' . stripslashes( $option["face"] ) . $important . ';';
+                $fonts = 'font-family: ' . stripslashes( $option["face"] ).', '.$systemFonts . $important . ';';
             } else {
-                $fonts = 'font:' . esc_attr( $option['style'] ) . ' ' . esc_attr( $option['size'] ) . 'px/' . esc_attr( $option['line_height'] ) . 'em ' . stripslashes( $option['face'] ) . $important . ';color:' . esc_attr( $option['color'] ) . $important . ';';
+                $fonts = 'font:' . esc_attr( $option['style'] ) . ' ' . esc_attr( $option['size'] ) . 'px/' . esc_attr( $option['line_height'] ) . 'em ' . stripslashes( $option['face'] ).', '.$systemFonts . $important . ';color:' . esc_attr( $option['color'] ) . $important . ';';
             }
         }
 
@@ -4340,24 +4344,24 @@ function responsi_build_dynamic_css( $preview = false ) {
 
     $dynamic_css .= '.box-item .entry-item.card-item img.thumb{margin-bottom:0px !important;}';
     $dynamic_css .= '.box-item .entry-item.card-item .thumb{' . $blog_thumbnail_css . '}';
-    $dynamic_css .= '.box-item .entry-item.card-item h3{margin:0;padding-top:' . $responsi_blog_post_title_padding_top . 'px !important;padding-bottom:' . $responsi_blog_post_title_padding_bottom . 'px !important;padding-left:' . $responsi_blog_post_title_padding_left . 'px !important;padding-right:' . $responsi_blog_post_title_padding_right . 'px !important;}';
+    $dynamic_css .= '.box-item .entry-item.card-item h2{margin:0;padding-top:' . $responsi_blog_post_title_padding_top . 'px !important;padding-bottom:' . $responsi_blog_post_title_padding_bottom . 'px !important;padding-left:' . $responsi_blog_post_title_padding_left . 'px !important;padding-right:' . $responsi_blog_post_title_padding_right . 'px !important;}';
     $dynamic_css .= '.box-item .entry-item.card-item .card-info{margin:0px;padding-top:' . $responsi_blog_post_description_padding_top . 'px !important;padding-bottom:' . $responsi_blog_post_description_padding_bottom . 'px !important;padding-left:' . $responsi_blog_post_description_padding_left . 'px !important;padding-right:' . $responsi_blog_post_description_padding_right . 'px !important;}';
-    $dynamic_css .= 'body.category .main .box-item .entry-item h3 a,body.tag .main .box-item .entry-item h3 a,body.page-template-template-blog-php .main .box-item .entry-item h3 a, .box-item .entry-item h3 a, body.category .main .box-item .entry-item h3,body.tag .main .box-item .entry-item h3,body.page-template-template-blog-php .main .box-item .entry-item h3, .box-item .entry-item h3,body .main .card .card-item h3 a:link,.main .card.box-item .entry-item h3 a:link, .main .card.box-item .entry-item h3 a:visited{text-align:' . $responsi_blog_post_title_alignment . ';' . responsi_generate_fonts($responsi_blog_post_font_title) . '}';
-    $dynamic_css .= 'body.category .main .box-item .entry-item h3 a:hover,body.tag .main .box-item .entry-item h3 a:hover,body.page-template-template-blog-php .main .box-item .entry-item h3 a:hover, .box-item .entry-item h3 a:hover,.main .card.box-item .entry-item h3 a:link:hover, .main .card.box-item .entry-item h3 a:visited:hover{ color:' . $hover . ' !important;}';
+    $dynamic_css .= 'body.category .main .box-item .entry-item h2 a,body.tag .main .box-item .entry-item h2 a,body.page-template-template-blog-php .main .box-item .entry-item h2 a, .box-item .entry-item h2 a, body.category .main .box-item .entry-item h2,body.tag .main .box-item .entry-item h2,body.page-template-template-blog-php .main .box-item .entry-item h2, .box-item .entry-item h2,body .main .card .card-item h2 a:link,.main .card.box-item .entry-item h2 a:link, .main .card.box-item .entry-item h2 a:visited{text-align:' . $responsi_blog_post_title_alignment . ';' . responsi_generate_fonts($responsi_blog_post_font_title) . '}';
+    $dynamic_css .= 'body.category .main .box-item .entry-item h2 a:hover,body.tag .main .box-item .entry-item h2 a:hover,body.page-template-template-blog-php .main .box-item .entry-item h2 a:hover, .box-item .entry-item h2 a:hover,.main .card.box-item .entry-item h2 a:link:hover, .main .card.box-item .entry-item h2 a:visited:hover{ color:' . $hover . ' !important;}';
     $dynamic_css .= 'body.category .main .box-item .entry-item .card-info p,body.tag .main .box-item .entry-item .card-info p,body.page-template-template-blog-php .main .box-item .entry-item .card-info p, .box-item .entry-item .card-info p{text-align:' . $responsi_blog_post_content_alignment . ';' . responsi_generate_fonts($responsi_blog_post_font_content) . '}';
     $dynamic_css .= 'body.category .main .box-item .entry-item .card-meta,body.tag .main .box-item .entry-item .card-meta,body.page-template-template-blog-php .main .box-item .entry-item .card-meta, .box-item .entry-item .card-meta{text-align:' . $responsi_blog_ext_alignment . ';' . responsi_generate_fonts($responsi_blog_ext_font) . '}';
     $dynamic_css .= '@media only screen and (min-width: 480px) {';
     if ( $enable_fix_tall_title_grid == '1' ) {
         $blog_title_height = floatval($blog_title_line_height) + 0.1;
-        $dynamic_css .= '.box-item .entry-item h3 a{display:block !important;height: ' . $blog_title_height . 'em !important;overflow: hidden !important;line-height:' . floatval($blog_title_line_height) . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item h2 a{display:block !important;height: ' . $blog_title_height . 'em !important;overflow: hidden !important;line-height:' . floatval($blog_title_line_height) . 'em !important;}';
     } elseif ( $enable_fix_tall_title_grid == '2' ) {
         $blog_title_height = (floatval($blog_title_line_height) * 2) + 0.1;
-        $dynamic_css .= '.box-item .entry-item h3 a{display:block !important;height: ' . $blog_title_height . 'em !important;overflow: hidden !important;line-height:' . floatval($blog_title_line_height) . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item h2 a{display:block !important;height: ' . $blog_title_height . 'em !important;overflow: hidden !important;line-height:' . floatval($blog_title_line_height) . 'em !important;}';
     } elseif ( $enable_fix_tall_title_grid == '3' ) {
         $blog_title_height = (floatval($blog_title_line_height) * 3) + 0.1;
-        $dynamic_css .= '.box-item .entry-item h3 a{display:block !important;height: ' . $blog_title_height . 'em !important;overflow: hidden !important;line-height:' . floatval($blog_title_line_height) . 'em !important;}';
+        $dynamic_css .= '.box-item .entry-item h2 a{display:block !important;height: ' . $blog_title_height . 'em !important;overflow: hidden !important;line-height:' . floatval($blog_title_line_height) . 'em !important;}';
     } else {
-        $dynamic_css .= '.box-item .entry-item h3 a{display:inherit !important;height: inherit !important;overflow: inherit !important;line-height:' . floatval($blog_title_line_height) . ' !important;}';
+        $dynamic_css .= '.box-item .entry-item h2 a{display:inherit !important;height: inherit !important;overflow: inherit !important;line-height:' . floatval($blog_title_line_height) . ' !important;}';
     }
     $dynamic_css .= '}';
     $dynamic_css .= '.box-item .entry-item p.desc{margin-bottom:0em !important;}';
@@ -4376,7 +4380,7 @@ function responsi_build_dynamic_css( $preview = false ) {
         $blog_des_height = floatval($blog_des_line_height) * 4;
         $dynamic_css .= '.box-item .entry-item p.desc{display:block !important;height: ' . $blog_des_height . 'em !important;overflow: hidden !important;line-height:' . $blog_des_line_height . 'em !important;}';
     }
-    $dynamic_css .= '.box-item .entry-item h3 a,.box-item .entry-item h3{text-transform:' . $responsi_blog_post_font_title_transform . '}';
+    $dynamic_css .= '.box-item .entry-item h2 a,.box-item .entry-item h2{text-transform:' . $responsi_blog_post_font_title_transform . '}';
         
     if ( 'true' === $responsi_fixed_thumbnail && $responsi_fixed_thumbnail_tall > 0 ) {
         $dynamic_css .= '.box-item .entry-item .thumb > a {display: block !important;max-width: 100% !important;overflow: hidden !important;text-align: center !important;vertical-align: top !important;width: 100% !important;padding:0 !important;margin:0 !important;height: inherit;}';

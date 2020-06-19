@@ -238,8 +238,8 @@ if ( !function_exists( 'responsi_body_class' ) ) {
         // Add classes to body_class() output
         $classes[] = 'responsi-frontend';
         $classes[] = $layout;
-        $classes[] = 'width-' . $responsi_layout_width;
-        $classes[] = $layout . '-' . $responsi_layout_width;
+        //$classes[] = 'width-' . $responsi_layout_width;
+        //$classes[] = $layout . '-' . $responsi_layout_width;
         if ( isset( $responsi_options['responsi_enable_header_widget'] ) && 'true' === $responsi_options['responsi_enable_header_widget'] && $responsi_options['responsi_header_sidebars'] > 0) {
             if ( 'false' === $responsi_options['responsi_on_header_1'] )
                 $classes[] = 'mobile-header-1';

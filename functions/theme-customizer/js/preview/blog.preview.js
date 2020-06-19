@@ -41,8 +41,8 @@
 
         var responsi_blog_post_font_title_transform = wp.customize.value('responsi_blog_post_font_title_transform')();
         var responsi_blog_post_title_alignment = wp.customize.value('responsi_blog_post_title_alignment')();
-        css += '.main .box-item .entry-item.card-item h3{'+_cFn.renderMarPad('responsi_blog_post_title_padding','padding',true)+'}';
-        css += 'body.category .main .box-item .entry-item h3 a,body.tag .main .box-item .entry-item h3 a,body.page-template-template-blog-php .main .box-item .entry-item h3 a, .box-item .entry-item h3 a, body.category .main .box-item .entry-item h3,body.tag .main .box-item .entry-item h3,body.page-template-template-blog-php .main .box-item .entry-item h3, .box-item .entry-item h3,body .main .card .card-item h3 a:link,.main .card.box-item .entry-item h3 a:link, .main .card.box-item .entry-item h3 a:visited{text-transform: '+responsi_blog_post_font_title_transform+' !important;text-align: '+responsi_blog_post_title_alignment+' !important;'+_cFn.renderTypo('responsi_blog_post_font_title',true)+'}';
+        css += '.main .box-item .entry-item.card-item h2{'+_cFn.renderMarPad('responsi_blog_post_title_padding','padding',true)+'}';
+        css += 'body.category .main .box-item .entry-item h2 a,body.tag .main .box-item .entry-item h2 a,body.page-template-template-blog-php .main .box-item .entry-item h2 a, .box-item .entry-item h2 a, body.category .main .box-item .entry-item h2,body.tag .main .box-item .entry-item h2,body.page-template-template-blog-php .main .box-item .entry-item h2, .box-item .entry-item h2,body .main .card .card-item h2 a:link,.main .card.box-item .entry-item h2 a:link, .main .card.box-item .entry-item h2 a:visited{text-transform: '+responsi_blog_post_font_title_transform+' !important;text-align: '+responsi_blog_post_title_alignment+' !important;'+_cFn.renderTypo('responsi_blog_post_font_title',true)+'}';
 
         var responsi_blog_post_font_date_transform = wp.customize.value('responsi_blog_post_font_date_transform')();
         var responsi_blog_post_date_alignment = wp.customize.value('responsi_blog_post_date_alignment')();
@@ -89,18 +89,18 @@
         css += '@media only screen and (min-width: 480px) {';
         if (enable_fix_tall_title_grid == '1') {
             var blog_title_height = parseFloat(blog_title_line_height) + 0.1 ;
-            css += 'body .main .box-item .entry-item h3 a{display:block !important;height: '+blog_title_height+'em !important;overflow: hidden !important;line-height:'+parseFloat(blog_title_line_height)+'em !important;}';
+            css += 'body .main .box-item .entry-item h2 a{display:block !important;height: '+blog_title_height+'em !important;overflow: hidden !important;line-height:'+parseFloat(blog_title_line_height)+'em !important;}';
         }
         if (enable_fix_tall_title_grid == '2') {
             var blog_title_height = ( parseFloat(blog_title_line_height) * 2 ) + 0.1 ;
-            css += 'body .main .box-item .entry-item h3 a{display:block !important;height: '+blog_title_height+'em !important;overflow: hidden !important;line-height:'+parseFloat(blog_title_line_height)+'em !important;}';
+            css += 'body .main .box-item .entry-item h2 a{display:block !important;height: '+blog_title_height+'em !important;overflow: hidden !important;line-height:'+parseFloat(blog_title_line_height)+'em !important;}';
         }
         if (enable_fix_tall_title_grid == '3') {
             var blog_title_height = ( parseFloat(blog_title_line_height) * 3 ) + 0.1 ;
-            css += 'body .main .box-item .entry-item h3 a{display:block !important;height: '+blog_title_height+'em !important;overflow: hidden !important;line-height:'+parseFloat(blog_title_line_height)+'em !important;}';
+            css += 'body .main .box-item .entry-item h2 a{display:block !important;height: '+blog_title_height+'em !important;overflow: hidden !important;line-height:'+parseFloat(blog_title_line_height)+'em !important;}';
         }
         if (enable_fix_tall_title_grid == 'none') {
-            css += 'body .main .box-item .entry-item h3 a{display:inherit !important;height: inherit !important;overflow: inherit !important;line-height:'+parseFloat(blog_title_line_height)+'em !important;}';
+            css += 'body .main .box-item .entry-item h2 a{display:inherit !important;height: inherit !important;overflow: inherit !important;line-height:'+parseFloat(blog_title_line_height)+'em !important;}';
         }
         css += '}';
 

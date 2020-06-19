@@ -33,7 +33,7 @@ if( $title === get_the_title() ){
         </div>
         <div class="card-content">
             <?php do_action( 'responsi_archive_post_title_item_before' ); ?>
-            <h3 class="card-title"><a title="<?php echo esc_html( get_the_title() ); ?>" href="<?php echo esc_url( get_permalink() ); ?>"><?php echo $title;?></a></h3>
+            <h2 class="card-title"><a title="<?php echo esc_html( get_the_title() ); ?>" href="<?php echo esc_url( get_permalink() ); ?>"><?php echo $title;?></a></h2>
             <?php do_action( 'responsi_archive_post_title_item_after' ); ?>
             <div class="card-info">
               <div class="info-ctn">

@@ -1022,7 +1022,7 @@ jQuery(document).ready(function($) {
             return true;
         });
 
-        $(document).on('tap', '.responsi-menu li.menu-item-has-children > a', function() {
+        $(document).on('tap click', '.responsi-menu li.menu-item-has-children > a', function() {
             if (!$(this).parent('.responsi-menu li.menu-item-has-children').hasClass('open')) {
                 $('li.menu-item-has-children').removeClass('open');
                 $(this).parent('.responsi-menu li.menu-item-has-children').addClass('open');
@@ -1081,21 +1081,21 @@ jQuery(document).ready(function($) {
 
     });
 
-    $(document).on("tap", ".responsi-menu .menu-item-has-children > i, .responsi-menu .menu-item-has-children > svg", function() {
+    $(document).on("tap click", ".responsi-menu .menu-item-has-children > i, .responsi-menu .menu-item-has-children > svg", function() {
         $(this).parent().addClass('open');
         $(this).addClass('fa-caret-up').removeClass('fa-caret-down');
         $(window).trigger('build-icon-arrow');
         return false;
     });
 
-    $(document).on("tap", ".responsi-menu .menu-item-has-children.open > i, .responsi-menu .menu-item-has-children.open > svg", function() {
+    $(document).on("tap click", ".responsi-menu .menu-item-has-children.open > i, .responsi-menu .menu-item-has-children.open > svg", function() {
         $(this).parent().removeClass('open');
         $(this).addClass('fa-caret-down').removeClass('fa-caret-up');
         $(window).trigger('build-icon-arrow');
         return false;
     });
 
-    $(document).on("tap", ".close .separator,.close .menu-text", function() {
+    $(document).on("tap click", ".close .separator,.close .menu-text", function() {
         var clicked = $(this).parent('div.navigation-mobile');
         clicked.siblings(".responsi-menu").slideUp("fast", function() {
             clicked.children('.menu-icon').removeClass('responsi-icon-cancel').addClass('hamburger-icon');
@@ -1104,7 +1104,7 @@ jQuery(document).ready(function($) {
         });
     });
 
-    $(document).on("tap", ".open .separator, .open .menu-text", function() {
+    $(document).on("tap click", ".open .separator, .open .menu-text", function() {
         $('.responsi-menu .menu-item-has-children > i, .responsi-menu .menu-item-has-children > svg').css({opacity:0});
         var clicked = $(this).parent('div.navigation-mobile');
         clicked.siblings(".responsi-menu").slideDown("fast", function() {
@@ -1366,7 +1366,9 @@ jQuery(document).ready(function($) {
             }
         }
 
-        scrollWaypointInit($(".animateMe"));
+        if (typeof scrollWaypointInit === "function") { 
+            scrollWaypointInit($(".animateMe"));
+        }
         
     });
 

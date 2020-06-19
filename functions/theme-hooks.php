@@ -22,15 +22,15 @@ function responsi_register_styles( $styles ){
 	$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 	$group_styles = array();
 
-    $styles->add( 'animate', get_template_directory_uri() . '/functions/css/animate/animate.min.css', array(), $responsi_version, 'screen' );    
-    $styles->add( 'responsi-custom-fields', get_template_directory_uri() . '/functions/css/custom-fields'.$suffix.'.css', array(), $responsi_version, 'screen' );
-    $styles->add( 'responsi-custom-fields-rtl', get_template_directory_uri() . '/functions/css/custom-fields.rtl'.$suffix.'.css', array(), $responsi_version, 'screen' );
-    $styles->add( 'responsi-icon', get_template_directory_uri() . '/functions/css/responsi-icon'.$suffix.'.css', array(), $responsi_version, 'screen' );
-    $styles->add( 'responsi-font-face', get_template_directory_uri() . '/functions/css/responsi-font-face' . $suffix . '.css', $group_styles, $responsi_version, 'screen' );
-    $styles->add( 'responsi-layout', get_template_directory_uri() . '/functions/css/layout' . $suffix . '.css', array( 'responsi-font-face' ), $responsi_version, 'screen' );
-    $styles->add( 'responsi-framework', get_template_directory_uri() . '/style.css', array( 'responsi-layout' ), $responsi_version, 'screen' );
+    $styles->add( 'animate', get_template_directory_uri() . '/functions/css/animate/animate.min.css', array(), $responsi_version, 'all' );    
+    $styles->add( 'responsi-custom-fields', get_template_directory_uri() . '/functions/css/custom-fields'.$suffix.'.css', array(), $responsi_version, 'all' );
+    $styles->add( 'responsi-custom-fields-rtl', get_template_directory_uri() . '/functions/css/custom-fields.rtl'.$suffix.'.css', array(), $responsi_version, 'all' );
+    $styles->add( 'responsi-icon', get_template_directory_uri() . '/functions/css/responsi-icon'.$suffix.'.css', array(), $responsi_version, 'all' );
+    $styles->add( 'responsi-font-face', get_template_directory_uri() . '/functions/css/responsi-font-face' . $suffix . '.css', $group_styles, $responsi_version, 'all' );
+    //$styles->add( 'responsi-layout', get_template_directory_uri() . '/functions/css/layout' . $suffix . '.css', array( 'responsi-font-face' ), $responsi_version, 'all' );
+    $styles->add( 'responsi-framework', get_template_directory_uri() . '/style.css', array(), $responsi_version, 'all' );
     if( is_child_theme() ){
-	    $styles->add( 'responsi-theme', get_bloginfo('stylesheet_url'), array( 'responsi-framework' ), $responsi_version, 'screen' );
+	    $styles->add( 'responsi-theme', get_bloginfo('stylesheet_url'), array( 'responsi-framework' ), $responsi_version, 'all' );
 	}
 }
 
@@ -59,12 +59,65 @@ add_action( 'wp_print_styles', 'responsi_rm_minify_css', 2 );
 
 if ( !function_exists( 'responsi_load_styles' ) ){
     function responsi_load_styles(){
-    	wp_enqueue_style( 'responsi-icon' );
+
+    	global $responsi_animate;
+
+    	if ( is_user_logged_in() ) {
+	    	wp_enqueue_style( 'responsi-icon' );
+	    }
         wp_enqueue_style( 'responsi-font-face' );
-        wp_enqueue_style( 'responsi-layout' );
+        //wp_enqueue_style( 'responsi-layout' );
         wp_enqueue_style( 'responsi-framework' );
         wp_enqueue_style( 'responsi-theme' );
-        wp_enqueue_style( 'animate' );
+
+        global $responsi_options;
+
+        if( is_customize_preview() ){
+        	$responsi_animate = true;
+        }else{
+        	$responsi_animate = false;
+        }
+
+        $animateOpLists = array(
+        	'responsi_header_animation_1',
+	        'responsi_header_animation_2',
+	        'responsi_header_animation_3',
+	        'responsi_header_animation_4',
+	        'responsi_header_animation_5',
+	        'responsi_header_animation_6',
+	        'responsi_blog_animation',
+	        'responsi_widget_animation',
+	        'responsi_additional_animation',
+	        'responsi_footer_left_animation',
+	        'responsi_footer_link_animation',
+	        'responsi_footer_animation_1',
+	        'responsi_footer_animation_2',
+	        'responsi_footer_animation_3',
+	        'responsi_footer_animation_4',
+	        'responsi_footer_animation_5',
+	        'responsi_footer_animation_6'
+	       
+	    );
+
+	    $animateOpLists = apply_filters( 'responsi-animateOpLists', $animateOpLists );
+
+	    if( is_array( $animateOpLists ) && count( $animateOpLists ) > 0 ){
+	    	foreach ( $animateOpLists as $value) {
+	    		if( isset( $responsi_options[ $value ] ) && is_array( $responsi_options[ $value ] ) ){
+	    			if( isset( $responsi_options[ $value ]['type'] ) && $responsi_options[ $value ]['type'] != 'none' ){
+	    				$responsi_animate = true;
+	    			}
+	    		}
+	    	}
+	    }
+
+	    $responsi_animate = apply_filters( 'responsi-animate', $responsi_animate );
+
+	    if( is_customize_preview() ){
+        	wp_enqueue_style( 'animate' );
+        }elseif( $responsi_animate ){
+        	wp_enqueue_style( 'animate' );
+        }
 
         // Load the dark colorscheme.
 		if ( 'dark' === get_theme_mod( 'colorscheme', 'light' ) || is_customize_preview() ) {
@@ -78,14 +131,6 @@ if ( !function_exists( 'responsi_load_styles' ) ){
 }
 add_action( 'wp_head', 'responsi_load_styles', 0 );
 
-/*add_filter( 'style_loader_tag', 'responsi_style_loader_tag', 10, 4 );
-function responsi_style_loader_tag( $tag, $handle, $href, $media ) {
-	if( 'google-fonts' === $handle ){
-		$tag = str_replace( 'rel="stylesheet"', 'rel="stylesheet"', $tag);
-	}
-	return $tag;
-}*/
-
 /*-----------------------------------------------------------------------------------*/
 /* Theme Register Scripts */
 /*-----------------------------------------------------------------------------------*/
@@ -95,10 +140,10 @@ function responsi_framework_default_scripts( &$scripts ){
 	$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
     $scripts->add( 'waypoints', get_template_directory_uri() . '/functions/js/waypoints/jquery.waypoints.min.js', array('jquery' ), $responsi_version, true );
 	$scripts->add( 'a3-blockpress-animation', get_template_directory_uri() . '/functions/js/front/js/animation-on-scroll.js', array('waypoints' ), $responsi_version, true );
-	$scripts->add( 'responsi-mobile-custom', get_template_directory_uri() . '/functions/js/jquery.mobile.custom'.$suffix.'.js', array('jquery' ), $responsi_version, true );
+	$scripts->add( 'responsi-mobile-custom', get_template_directory_uri() . '/functions/js/jquery.mobile.custom'.$suffix.'.js', array( 'jquery'), $responsi_version, true );
 	$scripts->add( 'responsi-custom-fields', get_template_directory_uri() . '/functions/js/custom-fields'.$suffix.'.js', array( 'jquery', 'jquery-ui-tabs' ), $responsi_version, true );
-	$scripts->add( 'responsi-main-script', get_template_directory_uri() . '/functions/js/jquery.responsi'.$suffix.'.js', array('jquery', 'responsi-mobile-custom' ), $responsi_version, true );
-	$scripts->add( 'responsi-infinitescroll', get_template_directory_uri() . '/functions/js/masonry/jquery.infinitescroll'.$suffix.'.js', array('jquery', 'jquery-masonry'), $responsi_version, true );
+	$scripts->add( 'responsi-main-script', get_template_directory_uri() . '/functions/js/jquery.responsi'.$suffix.'.js', array( 'jquery' ), $responsi_version, true );
+	$scripts->add( 'responsi-infinitescroll', get_template_directory_uri() . '/functions/js/masonry/jquery.infinitescroll'.$suffix.'.js', array( 'jquery-masonry' ), $responsi_version, true );
 }
 
 add_action( 'wp_default_scripts', 'responsi_framework_default_scripts', 11 );
@@ -109,12 +154,15 @@ add_action( 'wp_default_scripts', 'responsi_framework_default_scripts', 11 );
 
 if ( ! function_exists( 'responsi_load_javascript' ) ){
 	function responsi_load_javascript(){
-		global $responsi_version, $responsi_options, $layout, $content_column, $content_column_grid ;
-		wp_enqueue_script( 'responsi-mobile-custom' );
+		global $responsi_version, $responsi_options, $layout, $content_column, $content_column_grid, $responsi_animate;
+		if( wp_is_mobile() ){
+			wp_enqueue_script( 'responsi-mobile-custom' );
+		}
 		wp_enqueue_script( 'responsi-main-script' );
-		wp_enqueue_script( 'jquery-masonry' );
         wp_enqueue_script( 'responsi-infinitescroll' );
-        wp_enqueue_script( 'a3-blockpress-animation' );
+        if( $responsi_animate ){
+        	wp_enqueue_script( 'a3-blockpress-animation' );
+        }
         $responsi_paramaters =  array(
         	'responsi_is_customized'        	=> is_customize_preview() ? true : false,
         	'responsi_is_search'        		=> is_search() ? true : false,
@@ -142,7 +190,7 @@ if ( ! function_exists( 'responsi_load_javascript' ) ){
 	}
 }
 
-add_action( 'wp_head', 'responsi_load_javascript', 0 );
+add_action( 'wp_footer', 'responsi_load_javascript', 0 );
 
 /*-----------------------------------------------------------------------------------*/
 /* Enable SEO on these Post types */
