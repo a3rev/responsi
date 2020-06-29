@@ -15,7 +15,7 @@ $cats = get_the_category_list( ', ' . ' ' );
 $cats = str_replace( '<li>', '<span>', $cats );
 $cats = str_replace( '</li>', '</span>', $cats );
 $class= 'box-item';
-$image = '<a href="'. esc_url( get_permalink() ).'">'.responsi_get_thumbnail( 'return=true&type=image').'</a>';
+$image = '<a aria-label="'. get_the_title() .'" href="'. esc_url( get_permalink() ).'">'.responsi_get_thumbnail( 'return=true&type=image').'</a>';
 $title = substr( get_the_title(), 0, 100 );
 if( $title === get_the_title() ){
     $title = $title;

@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 7.9.5 - 2020/06/29 =
+* This maintenance release has implementation of support for arial-label attribute to provide labels for assistive technologies.
+* Dev - Add arial-label attribute for link have contain image for Logo
+* Dev - Add arial-label attribute for link have contain image blogs card
+
 = 7.9.4 - 2020/06/19 =
 * This maintenance release is a major framework code performance refactor inconjunction with Responsi Developer v 2.1.0 new feature release. Be sure to upgrade Developer to 2.1.0 when you run this upgrade.
 * Refactor - Framework stylesheets for load performance 

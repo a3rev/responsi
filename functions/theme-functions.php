@@ -2132,8 +2132,9 @@ function responsi_site_logo(){
     if( function_exists( 'the_custom_logo' ) && function_exists( 'has_custom_logo' ) && has_custom_logo() ){
         the_custom_logo();
     }else{
+        $site_title = get_bloginfo( 'name' );
         ?>
-        <a class="logo site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+        <a aria-label="<?php echo $site_title; ?>" class="logo site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php echo $site_title; ?></a>
         <?php
     }
 }
@@ -2144,7 +2145,9 @@ function responsi_filter_get_custom_logo( $html, $blog_id ){
             esc_url( home_url( '/' ) )
         );
     }
+    $site_title = get_bloginfo( 'name' );
     $html = str_replace('custom-logo-link', 'custom-logo-link logo site-logo', $html);
+    $html = str_replace('class="', 'aria-label="'.$site_title.'" class="', $html);
     return $html;
 }
 
