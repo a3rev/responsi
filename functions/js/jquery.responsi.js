@@ -1,3 +1,14 @@
+window.onload = function (){
+    document.body.className += ' site-loaded';
+    if (window.isIE()) {
+        if (window.isIE() <= 9) {
+            document.body.className += ' ie ie9';
+        } else {
+            document.body.className += ' ie';
+        }
+    } 
+}
+
 window.isIE = function (){
     var myNav = navigator.userAgent.toLowerCase();
     return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
@@ -1181,18 +1192,6 @@ jQuery(document).ready(function($) {
     });
 
     $(window).on('load', function() {
-
-        $('body').addClass('site-loaded');
-
-        if (window.isIE()) {
-            if (window.isIE() <= 9) {
-                $('body').addClass('ie ie9');
-            } else {
-                $('body').addClass('ie').removeClass('ie9');
-            }
-        } else {
-            $('body').removeClass('ie ie9');
-        }
 
         parallaxEdge();
         parallax();
