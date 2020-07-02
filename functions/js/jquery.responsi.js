@@ -1213,6 +1213,7 @@ jQuery(document).ready(function($) {
         /* Responsi Masonry */
         /*-----------------------------------------------------------------------------------*/
         var screenWidth = $(window).width(),
+        masonrySection = $('div.box-content'),
         gridColumn = responsi_paramaters.responsi_content_column_grid;
 
         if ('true' === responsi_paramaters.responsi_fixed_thumbnail && responsi_paramaters.responsi_fixed_thumbnail_tall > 0) {
@@ -1229,14 +1230,18 @@ jQuery(document).ready(function($) {
         if (screenWidth <= 782 && screenWidth >= 480) {
             gridColumn = 2;
         }
-        $('div.box-content').imagesLoaded(function() {
-            $('div.box-content').masonry({
-                itemSelector: '.box-item',
-                columnWidth: $('div.box-content').parent().width() / gridColumn,
-                percentPosition: false,
-                "gutter": (($('div.box-content').width() - $('div.box-content').parent().width()) / gridColumn) - 0.1
-            });
-        }).trigger('newElements');
+
+        $('div.box-content').each( function( v , index ){
+            masonrySection = $(this);
+            masonrySection.imagesLoaded(function() {
+                masonrySection.masonry({
+                    itemSelector: '.box-item',
+                    columnWidth: masonrySection.parent().width() / gridColumn,
+                    percentPosition: false,
+                    "gutter": ((masonrySection.width() - masonrySection.parent().width()) / gridColumn) - 0.1
+                });
+            }).trigger('newElements');
+        });
 
         var onAjaxLoad = true,
         nextPage = false,
@@ -1357,11 +1362,15 @@ jQuery(document).ready(function($) {
 
         if ($('div.box-content .box-item').length) {
             if (typeof $('div.box-content').masonry === 'function') {
-                $('div.box-content').masonry({
-                    itemSelector: '.box-item',
-                    columnWidth: $('div.box-content').parent().width() / gridColumn,
-                    percentPosition: false,
-                    "gutter": (($('div.box-content').width() - $('div.box-content').parent().width()) / gridColumn) - 0.1,
+
+                $('div.box-content').each( function( v , index ){
+                    masonrySection = $(this);
+                    masonrySection.masonry({
+                        itemSelector: '.box-item',
+                        columnWidth: masonrySection.parent().width() / gridColumn,
+                        percentPosition: false,
+                        "gutter": ((masonrySection.width() - masonrySection.parent().width()) / gridColumn) - 0.1,
+                    });
                 });
             }
         }

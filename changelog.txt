@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 7.9.6 - 2020/07/02 =
+* This maintenance release has a Masonry layout bug fix when blog cards are embedded in the Gutenberg editor.
+* Fix - Masonry for blogs card when embed multiple cards in Gutenberg editor
+
 = 7.9.5 - 2020/06/29 =
 * This maintenance release has implementation of support for arial-label attribute to provide labels for assistive technologies.
 * Dev - Add arial-label attribute for link have contain image for Logo
