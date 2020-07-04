@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 7.9.7 - 2020/07/04 =
+* This maintenance release fixes an issue with the Customizer site logo uploader.
+* Fix - Customizer site logo upload. Media uploader incorrectly requiring the logo to be cropped.
+
 = 7.9.6 - 2020/07/02 =
 * This maintenance release has a Masonry layout bug fix when blog cards are embedded in the Gutenberg editor.
 * Fix - Masonry for blogs card when embed multiple cards in Gutenberg editor

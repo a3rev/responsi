@@ -1230,7 +1230,14 @@ jQuery(document).ready(function($) {
             gridColumn = 2;
         }
 
+        
+
         $('div.box-content').each( function( v , index ){
+
+            if( typeof masonrySection ==  typeof undefined ){
+                var masonrySection = $(this);
+            }
+
             masonrySection = $(this);
             masonrySection.imagesLoaded(function() {
                 masonrySection.masonry({
