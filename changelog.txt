@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 7.9.7.1 - 2020/07/07 =
+* This maintenance release has a fontface bug fix
+* Fix - Fontface not applying in attribute shortcode and html tags
+
 = 7.9.7 - 2020/07/04 =
 * This maintenance release fixes an issue with the Customizer site logo uploader.
 * Fix - Customizer site logo upload. Media uploader incorrectly requiring the logo to be cropped.

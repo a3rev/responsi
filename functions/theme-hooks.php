@@ -34,7 +34,6 @@ function responsi_register_styles( $styles ){
 	}
 }
 
-
 add_action( 'wp_default_styles', 'responsi_register_styles', 1 );
 
 /*-----------------------------------------------------------------------------------*/
@@ -48,7 +47,9 @@ add_action( 'wp_head', 'responsi_register_webfonts', 0 );
 /*-----------------------------------------------------------------------------------*/
 
 function responsi_rm_minify_css(){
+	do_action( 'responsi_rm_minify_css_before' );
 	echo '<!-- RM-Minify CSS -->';
+	do_action( 'responsi_rm_minify_css_after' );
 }
 
 add_action( 'wp_print_styles', 'responsi_rm_minify_css', 2 );

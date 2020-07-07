@@ -1324,7 +1324,7 @@ if (!function_exists('responsi_generate_fonts')) {
 
         $fonts = '';
 
-        $systemFonts = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif';
+        $systemFonts = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif";
 
         if( is_array( $option ) && isset( $option['face']) && isset( $option['line_height']) && isset($option['style']) && isset($option['size']) && isset($option['color']) ){
             
@@ -1338,7 +1338,7 @@ if (!function_exists('responsi_generate_fonts')) {
                 $option['face'] = "'" . $option['face'] . "', sans-serif";
             }
             if ( !isset($option['style']) && !isset($option['size']) && !isset($option['color']) ){
-                $fonts = 'font-family: ' . stripslashes( $option["face"] ).', '.$systemFonts . $important . ';';
+                $fonts = 'font-family: ' . stripslashes( $option["face"] ).', '.esc_attr( $systemFonts ) . $important . ';';
             } else {
                 $fonts = 'font:' . esc_attr( $option['style'] ) . ' ' . esc_attr( $option['size'] ) . 'px/' . esc_attr( $option['line_height'] ) . 'em ' . stripslashes( $option['face'] ).', '.$systemFonts . $important . ';color:' . esc_attr( $option['color'] ) . $important . ';';
             }
