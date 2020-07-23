@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 7.9.8 - 2020/07/23 =
+* This maintenance release adds support for font-face Cross-Domain files
+* Tweak - Add filter Reponsi support Font-Face Cross-Origin 
+
 = 7.9.7.1 - 2020/07/07 =
 * This maintenance release has a fontface bug fix
 * Fix - Fontface not applying in attribute shortcode and html tags

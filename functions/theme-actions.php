@@ -62,7 +62,7 @@ add_action( 'wp', 'responsi_404_redirect', 1 );
 add_action( 'wp_head', 'responsi_custom_content_metabox' );
 add_action( 'init', 'responsi_get_post_types' );
 add_action( 'init', 'responsi_filter_image_rss' );
-//add_action( 'responsi_rm_minify_css_before', 'responsi_add_crossorigin_fontface' );
+add_action( 'responsi_rm_minify_css_before', 'responsi_add_crossorigin_fontface' );
 add_action( 'responsi_meta', 'responsi_meta_tags', 1 );
 add_action( 'responsi_head', 'responsi_layout_class' );
 add_action( 'responsi_head', 'is_blog_template', 10 );
