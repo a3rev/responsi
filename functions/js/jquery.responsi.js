@@ -74,6 +74,18 @@ jQuery.exists = function(selector) {
     return (jQuery(selector).length > 0);
 };
 
+jQuery.event.special.touchstart = {
+    setup: function( _, ns, handle ){
+        this.addEventListener("touchstart", handle, { passive: true });
+    }
+};
+
+jQuery.event.special.scroll = {
+    setup: function( _, ns, handle ){
+        this.addEventListener("scroll", handle, { passive: true });
+    }
+};
+
 window.responsiGetStyle = function responsiGetStyle(oElm, strCssRule){
     if( !oElm ){
         return;

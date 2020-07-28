@@ -430,13 +430,13 @@ function responsi_get_thumbnail( $args = array() ) {
 
     if ( $return ){
         if( 'image' === $type ){
-            return $_thumbnail_image;
+            return apply_filters( 'a3_lazy_load_html', $_thumbnail_image );
         }elseif( 'src' === $type ){
             return $_thumbnail_src;
         }
     } else {
         if( 'image' === $type ){
-            echo $_thumbnail_image;
+            echo apply_filters( 'a3_lazy_load_html', $_thumbnail_image );
         }elseif( 'src' === $type ){
             echo $_thumbnail_src;
         }

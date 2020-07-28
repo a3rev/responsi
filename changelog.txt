@@ -1,4 +1,10 @@
-*** Responsi Framework Changelog ***
+*** Responsi Framework Changelog ***  
+
+= 7.9.9 - 2020/07/28 =
+* This is another performance maintenance release with 2 code tweaks, including the introduction of passive event listeners and 1 bug fix.
+* Tweak - Tweak Responsi get images support filter a3_lazy_load_html
+* Tweak - Add passive event listeners for Responsi js to improve scrolling performance
+* Fix - Responsi Icon font-face bug Cross-Domain
 
 = 7.9.8 - 2020/07/23 =
 * This maintenance release adds support for font-face Cross-Domain files

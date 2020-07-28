@@ -1034,6 +1034,8 @@ if ( !function_exists( 'responsi_build_credit' ) ) {
 
         }
 
+        $output = apply_filters( 'a3_lazy_load_html', $output );
+
         return apply_filters( 'responsi_build_credit', $output, $atts );
     }
 }
@@ -2552,7 +2554,9 @@ if ( ! function_exists( 'responsi_add_crossorigin_fontface' ) ) {
     function responsi_add_crossorigin_fontface(){
         do_action( 'responsi_add_crossorigin_fontface_before' );
         echo '<link rel="preload" href="'.get_template_directory_uri().'/functions/fonts/responsi-font-face.woff" as="font" crossorigin="anonymous">';
-        echo '<link rel="preload" href="'.get_template_directory_uri().'/functions/fonts/responsi-icon.woff" as="font" crossorigin="anonymous">';
+        if ( is_user_logged_in() ) {
+            echo '<link rel="preload" href="'.get_template_directory_uri().'/functions/fonts/responsi-icon.woff" as="font" crossorigin="anonymous">';
+        }
         do_action( 'responsi_add_crossorigin_fontface_after' );
     }
 }
