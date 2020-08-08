@@ -25,14 +25,16 @@ class Privacy {
 
 	public function get_privacy_message() {
 
-		$suggested_text =  '<strong class="privacy-policy-tutorial">' . __( 'Suggested text:', 'responsi' ) . ' </strong>';
-		
+		$suggested_text = '<strong class="privacy-policy-tutorial">' . __( 'Suggested text:', 'responsi' ) . ' </strong>';
+		$ggFonts_url  	= 'https://fonts.google.com/';
+		$policies_url 	= 'https://policies.google.com/privacy/';
+
 		$content = '
-			<div class="wp-suggested-text">'.
-				'<p class="privacy-policy-tutorial">' . __( 'Responsi Theme Framework uses fonts from <a href="https://fonts.google.com/" target="_blank" rel="noopener">google fonts</a>, you should list in privacy page.', 'responsi' ) . '</p>' .
-				'<p>' . $suggested_text .__( 'Links on this site may use Google fonts. Google may collect data about you, use cookies, IP, embed additional third-party tracking.', 'responsi' ).'</p>'.
-				'<p>' . __( 'Please see the <a href="https://policies.google.com/privacy/" target="_blank" rel="noopener">Google Privacy Policy</a> for more details.', 'responsi' ) . '</p>'.
-			'</div>';
+		<div class="wp-suggested-text">
+			<p class="privacy-policy-tutorial">' . sprintf( __( 'Responsi Theme Framework uses fonts from <a href="%s" target="_blank" rel="noopener">google fonts</a>, you should list in privacy page.', 'responsi' ), $ggFonts_url ) . '</p>
+			<p>' . sprintf( '%s'. __( 'Links on this site may use Google fonts. Google may collect data about you, use cookies, IP, embed additional third-party tracking.', 'responsi' ), $suggested_text ) .'</p>
+			<p>' . sprintf( __( 'Please see the <a href="%s" target="_blank" rel="noopener">Google Privacy Policy</a> for more details.', 'responsi' ), $policies_url ) . '</p>
+		</div>';
 		
 		return apply_filters( 'responsi_privacy_policy_content', $content );
 	}

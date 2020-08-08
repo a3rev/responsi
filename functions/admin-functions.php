@@ -529,7 +529,7 @@ function responsi_filter_image_rss(){
 function responsi_get_image_attribute( $url ) {
     $width_height_attr = '';
     $home    = set_url_scheme( home_url(), 'http' );
-    $siteurl = set_url_scheme( get_site_url(), 'http' );
+    $siteurl = set_url_scheme( get_home_url(), 'http' );
 
     if ( ! empty( $home ) && 0 !== strcasecmp( $home, $siteurl ) ) {
         $wp_path_rel_to_home = str_ireplace( $home, '', $siteurl ); /* $siteurl - $home */

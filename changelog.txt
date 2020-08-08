@@ -1,5 +1,12 @@
 *** Responsi Framework Changelog ***  
 
+= 8.0.0 - 2020/08/08 =
+* This feature release has full compatibility with major WordPress version 5.5 and updated versions Masonry and jQuery libraries. 
+* Feature - Upgrade Responsi JavaScript for compatibility with new Masonry version on WordPress 5.5
+* Feature - Upgrade Responsi JavaScript for compatibility with new jQuery version 3.5.1
+* Tweak - Test for compatibility with WordPress 5.5
+* Tweak - Test for compatibility with WooCommerce 4.3.1
+
 = 7.9.9 - 2020/07/28 =
 * This is another performance maintenance release with 2 code tweaks, including the introduction of passive event listeners and 1 bug fix.
 * Tweak - Tweak Responsi get images support filter a3_lazy_load_html

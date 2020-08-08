@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Responsi v1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-01 09:49+0700\n"
-"PO-Revision-Date: 2016-12-01 09:49+0700\n"
+"POT-Creation-Date: 2020-08-05 10:23+0700\n"
+"PO-Revision-Date: 2020-08-05 10:23+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_GB\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "We're so sorry, we can't find that page!"
 msgstr ""
 
-#: 404.php:27
+#: 404.php:25
 #, php-format
 msgid ""
 "We're sorry, we can't find the page you are looking for. Perhaps you can "
@@ -62,380 +62,347 @@ msgstr ""
 msgid "Sorry, no posts matched your criteria."
 msgstr ""
 
-#: content-page.php:20 content-single.php:21
+#: content-page.php:18 content-single.php:19
 msgid "Continue Reading &rarr;"
 msgstr ""
 
 # @ woothemes
-#: content-page.php:26 content-single.php:27 content.php:13
+#: content-page.php:21 content-single.php:22 content.php:13
 msgid "Pages:"
 msgstr ""
 
-#: content-post.php:53 content-postcards.php:53 content.php:54
+#: content-post.php:52 content-postcards.php:52 content.php:53
 msgid "Tagged"
 msgstr ""
 
-#: functions/admin-custom-metabox.php:17
-#: functions/theme-customizer/panels/layout.php:170
+#: functions/admin-custom-metabox.php:19
+#: functions/theme-customizer/panels/layout.php:272
 msgid "Content Sidebar Layout"
 msgstr ""
 
-#: functions/admin-custom-metabox.php:19
+#: functions/admin-custom-metabox.php:21
 msgid ""
 "Select a specific layout for this post/page. Overrides default site layout."
 msgstr ""
 
-#: functions/admin-custom-metabox.php:32
+#: functions/admin-custom-metabox.php:34
 msgid "Content Width"
 msgstr ""
 
-#: functions/admin-custom-metabox.php:34
+#: functions/admin-custom-metabox.php:36
 msgid ""
 "Select a specific content wide for this post/page. Overrides default site "
 "content width."
 msgstr ""
 
-#: functions/admin-custom-metabox.php:48
+#: functions/admin-custom-metabox.php:50
 msgid "Grid View Column"
 msgstr ""
 
-#: functions/admin-custom-metabox.php:50
+#: functions/admin-custom-metabox.php:52
 msgid ""
 "Select a specific Column for grid view show in content width for this post/"
 "page. Overrides default site content wide."
 msgstr ""
 
-#: functions/admin-custom-metabox.php:95
-msgid "Custom Layout"
+#: functions/admin-custom-metabox.php:78
+#: functions/admin-custom-metabox.php:795
+#: functions/admin-custom-metabox.php:866
+msgid "Maximun Content Width"
 msgstr ""
 
-#: functions/admin-custom-metabox.php:217
-#: functions/admin-custom-metabox.php:252
+#: functions/admin-custom-metabox.php:80
+#: functions/admin-custom-metabox.php:801
+#: functions/admin-custom-metabox.php:873
+#: functions/theme-customizer/panels/layout.php:598
+msgid "Maximum content width in pixels in large screens."
+msgstr ""
+
+#: functions/admin-custom-metabox.php:325
+#: functions/admin-custom-metabox.php:360
 msgid "Select to return to default"
 msgstr ""
 
-#: functions/admin-custom-metabox.php:513
-#: functions/admin-custom-metabox.php:524
-#: functions/admin-custom-metabox.php:525
+#: functions/admin-custom-metabox.php:637
 msgid "Framework Custom Settings"
 msgstr ""
 
-#: functions/admin-custom-metabox.php:595
+#: functions/admin-custom-metabox.php:744
 msgid "Check to hide Title of this post / page."
 msgstr ""
 
-#: functions/admin-custom-metabox.php:610
-#: functions/admin-custom-metabox.php:628
+#: functions/admin-custom-metabox.php:805
+#: functions/admin-custom-metabox.php:878
 msgid "Custom Title"
 msgstr ""
 
-#: functions/admin-custom-metabox.php:611
-#: functions/admin-custom-metabox.php:630
+#: functions/admin-custom-metabox.php:806
+#: functions/admin-custom-metabox.php:880
 msgid "Check to hide Title of this Category Page."
 msgstr ""
 
-#: functions/admin-functions.php:396
+#: functions/admin-functions.php:425
 msgid "No Image"
 msgstr ""
 
-#: functions/admin-functions.php:564
+#: functions/admin-functions.php:604
 msgid "&larr; Previous"
 msgstr ""
 
-#: functions/admin-functions.php:565
+#: functions/admin-functions.php:605
 msgid "Next &rarr;"
 msgstr ""
 
-#: functions/admin-functions.php:618
-msgid "You are here:"
-msgstr ""
-
-#: functions/admin-functions.php:621 functions/theme-functions.php:1444
+#: functions/admin-functions.php:653 functions/admin-functions.php:901
+#: functions/theme-functions.php:1575
 msgid "Home"
 msgstr ""
 
-#: functions/admin-functions.php:767
+#: functions/admin-functions.php:858
+msgid "Page"
+msgstr ""
+
+#: functions/admin-functions.php:868
+msgid "Error 404"
+msgstr ""
+
+#: functions/admin-functions.php:898
+msgid "You are here:"
+msgstr ""
+
+#: functions/admin-functions.php:1056
 msgid "g:i a"
 msgstr ""
 
-#: functions/admin-functions.php:769
+#: functions/admin-functions.php:1058
 #, php-format
 msgid "Minute %1$s"
 msgstr ""
 
-#: functions/admin-functions.php:769
+#: functions/admin-functions.php:1058
 msgid "i"
 msgstr ""
 
-#: functions/admin-functions.php:771
+#: functions/admin-functions.php:1060
 msgid "g a"
 msgstr ""
 
-#: functions/admin-functions.php:779 functions/admin-functions.php:785
-#: functions/admin-functions.php:788 functions/admin-functions.php:791
+#: functions/admin-functions.php:1068 functions/admin-functions.php:1074
+#: functions/admin-functions.php:1077 functions/admin-functions.php:1080
 msgid "Y"
 msgstr ""
 
-#: functions/admin-functions.php:780 functions/admin-functions.php:789
+#: functions/admin-functions.php:1069 functions/admin-functions.php:1078
 msgid "F"
 msgstr ""
 
-#: functions/admin-functions.php:781
+#: functions/admin-functions.php:1070
 msgid "j"
 msgstr ""
 
-#: functions/admin-functions.php:786
+#: functions/admin-functions.php:1075
 #, php-format
 msgid "Week %1$s"
 msgstr ""
 
-#: functions/admin-functions.php:795
+#: functions/admin-functions.php:1084
 #, php-format
 msgid "Search results for &quot;%1$s&quot;"
 msgstr ""
 
-#: functions/admin-functions.php:797
+#: functions/admin-functions.php:1086
 msgid "404 Not Found"
 msgstr ""
 
-#: functions/admin-init.php:785
+#: functions/admin-functions.php:6868
+msgid "Close"
+msgstr ""
+
+#: functions/admin-functions.php:6881
+msgid "Save and close"
+msgstr ""
+
+#: functions/admin-init.php:784
 msgid "Click to edit element style CSS"
 msgstr ""
 
 # @ woothemes
-#: functions/admin-setup.php:51
+#: functions/admin-setup.php:453
 msgid "Primary Menu"
 msgstr ""
 
-#: functions/theme-customizer/controls/custom-background-patterns-control.php:89
+#: functions/theme-customizer/controls-templates/custom-animation-control.php:109
+msgid "Duration"
+msgstr ""
+
+#: functions/theme-customizer/controls-templates/custom-animation-control.php:115
+msgid "Delay"
+msgstr ""
+
+#: functions/theme-customizer/controls-templates/custom-animation-control.php:121
+msgid "Direction"
+msgstr ""
+
+#: functions/theme-customizer/controls-templates/custom-background-patterns-control.php:92
 msgid "Background Tiles"
 msgstr ""
 
-#: functions/theme-customizer/controls/custom-background-patterns-control.php:110
+#: functions/theme-customizer/controls-templates/custom-background-patterns-control.php:102
 msgid "Patterns"
 msgstr ""
 
-#: functions/theme-customizer/controls/custom-icheckbox-control.php:47
-#: functions/theme-customizer/customizer.php:108
-#: functions/theme-customizer/customizer.php:117
-#: functions/theme-customizer/customizer.php:150
-#: functions/theme-customizer/customizer.php:168
+#: functions/theme-customizer/controls-templates/custom-icheckbox-control.php:52
+#: functions/theme-customizer/controls-templates/custom-icheckbox-control.php:59
+#: functions/theme-customizer/responsi-customize.php:890
+#: functions/theme-customizer/responsi-customize.php:899
+#: functions/theme-customizer/responsi-customize.php:932
+#: functions/theme-customizer/responsi-customize.php:950
+#: functions/theme-functions.php:2482
 msgid "ON"
 msgstr ""
 
-#: functions/theme-customizer/controls/custom-icheckbox-control.php:48
-#: functions/theme-customizer/customizer.php:109
-#: functions/theme-customizer/customizer.php:118
-#: functions/theme-customizer/customizer.php:151
-#: functions/theme-customizer/customizer.php:169
+#: functions/theme-customizer/controls-templates/custom-icheckbox-control.php:53
+#: functions/theme-customizer/controls-templates/custom-icheckbox-control.php:60
+#: functions/theme-customizer/responsi-customize.php:891
+#: functions/theme-customizer/responsi-customize.php:900
+#: functions/theme-customizer/responsi-customize.php:933
+#: functions/theme-customizer/responsi-customize.php:951
+#: functions/theme-functions.php:2483
 msgid "OFF"
 msgstr ""
 
-#: functions/theme-customizer/controls/custom-ieditor-control.php:5
-msgid "Close"
-msgstr ""
-
-#: functions/theme-customizer/controls/custom-ieditor-control.php:22
-msgid "Save and close"
-msgstr ""
-
-#: functions/theme-customizer/controls/custom-ieditor-control.php:69
+#: functions/theme-customizer/controls-templates/custom-ieditor-control.php:48
+#: functions/theme-customizer/controls-templates/custom-ieditor-control.php:85
 msgid "Edit content"
 msgstr ""
 
-#: functions/theme-customizer/controls/custom-iupload-control.php:15
-#: functions/theme-customizer/controls/custom-iuploadcrop-control.php:15
+#: functions/theme-customizer/controls-templates/custom-iupload-control.php:20
+#: functions/theme-customizer/controls-templates/custom-iupload-control.php:68
+#: functions/theme-customizer/controls-templates/custom-iuploadcrop-control.php:19
+#: functions/theme-customizer/controls-templates/custom-iuploadcrop-control.php:77
 msgid "Add Image"
 msgstr ""
 
-#: functions/theme-customizer/controls/custom-iupload-control.php:16
-#: functions/theme-customizer/controls/custom-iuploadcrop-control.php:16
+#: functions/theme-customizer/controls-templates/custom-iupload-control.php:21
+#: functions/theme-customizer/controls-templates/custom-iupload-control.php:69
+#: functions/theme-customizer/controls-templates/custom-iuploadcrop-control.php:20
+#: functions/theme-customizer/controls-templates/custom-iuploadcrop-control.php:78
 msgid "Change Image"
 msgstr ""
 
-#: functions/theme-customizer/controls/custom-iupload-control.php:17
-#: functions/theme-customizer/controls/custom-iuploadcrop-control.php:17
+#: functions/theme-customizer/controls-templates/custom-iupload-control.php:22
+#: functions/theme-customizer/controls-templates/custom-iupload-control.php:70
+#: functions/theme-customizer/controls-templates/custom-iuploadcrop-control.php:21
+#: functions/theme-customizer/controls-templates/custom-iuploadcrop-control.php:79
 msgid "Default"
 msgstr ""
 
-#: functions/theme-customizer/controls/custom-iupload-control.php:18
-#: functions/theme-customizer/controls/custom-iuploadcrop-control.php:18
+#: functions/theme-customizer/controls-templates/custom-iupload-control.php:23
+#: functions/theme-customizer/controls-templates/custom-iupload-control.php:71
+#: functions/theme-customizer/controls-templates/custom-iuploadcrop-control.php:22
+#: functions/theme-customizer/controls-templates/custom-iuploadcrop-control.php:80
 msgid "Remove"
 msgstr ""
 
-#: functions/theme-customizer/controls/custom-iupload-control.php:19
-#: functions/theme-customizer/controls/custom-iuploadcrop-control.php:19
+#: functions/theme-customizer/controls-templates/custom-iupload-control.php:24
+#: functions/theme-customizer/controls-templates/custom-iupload-control.php:72
+#: functions/theme-customizer/controls-templates/custom-iuploadcrop-control.php:23
+#: functions/theme-customizer/controls-templates/custom-iuploadcrop-control.php:81
 msgid "No image set"
 msgstr ""
 
-#: functions/theme-customizer/controls/custom-iupload-control.php:20
-#: functions/theme-customizer/controls/custom-iuploadcrop-control.php:20
+#: functions/theme-customizer/controls-templates/custom-iupload-control.php:25
+#: functions/theme-customizer/controls-templates/custom-iupload-control.php:73
+#: functions/theme-customizer/controls-templates/custom-iuploadcrop-control.php:24
+#: functions/theme-customizer/controls-templates/custom-iuploadcrop-control.php:82
 msgid "Select Image"
 msgstr ""
 
-#: functions/theme-customizer/controls/custom-iupload-control.php:21
-#: functions/theme-customizer/controls/custom-iuploadcrop-control.php:21
+#: functions/theme-customizer/controls-templates/custom-iupload-control.php:26
+#: functions/theme-customizer/controls-templates/custom-iupload-control.php:74
+#: functions/theme-customizer/controls-templates/custom-iuploadcrop-control.php:25
+#: functions/theme-customizer/controls-templates/custom-iuploadcrop-control.php:83
 msgid "Choose Image"
 msgstr ""
 
-#: functions/theme-customizer/customizer.php:135
-msgid "ROUNDED"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:136
-msgid "SQUARE"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:157
-msgid "INNER"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:158
-msgid "OUTER"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:183
-msgid "Thin"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:184
-msgid "Thin/Italic"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:185
-msgid "Normal"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:186
-msgid "Italic"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:187
-msgid "Bold"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:188
-msgid "Bold/Italic"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:199
-msgid "Solid"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:200
-msgid "Dashed"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:201
-msgid "Dotted"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:202
-msgid "Double"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:203
-msgid "Groove"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:204
-msgid "Ridge"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:205
-msgid "Inset"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:206
-msgid "Outset"
-msgstr ""
-
-#: functions/theme-customizer/customizer.php:396
-msgid "Tagline / Description"
-msgstr ""
-
-#: functions/theme-customizer/panels/blogs.php:20
+#: functions/theme-customizer/panels/blogs.php:23
 msgid "Blog Cards"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:31
+#: functions/theme-customizer/panels/blogs.php:33
 msgid "Blog Card Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:36
+#: functions/theme-customizer/panels/blogs.php:38
 msgid "Blog Card Features"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:52
+#: functions/theme-customizer/panels/blogs.php:60
 msgid "Blog Card Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:63
+#: functions/theme-customizer/panels/blogs.php:69
 msgid "Card Background Color"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:78
+#: functions/theme-customizer/panels/blogs.php:83
 msgid "Card Borders"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:92
-#: functions/theme-customizer/panels/footer.php:690
-#: functions/theme-customizer/panels/layout.php:599
-#: functions/theme-customizer/panels/layout.php:798
-#: functions/theme-customizer/panels/layout.php:1232
-#: functions/theme-customizer/panels/pages.php:311
-#: functions/theme-customizer/panels/pages.php:848
-#: functions/theme-customizer/panels/posts.php:91
-#: functions/theme-customizer/panels/posts.php:455
-#: functions/theme-customizer/panels/posts.php:712
-#: functions/theme-customizer/panels/settings.php:890
-#: functions/theme-customizer/panels/widget.php:378
-msgid "Border Corner"
-msgstr ""
-
-#: functions/theme-customizer/panels/blogs.php:106
-#: functions/theme-customizer/panels/blogs.php:315
-#: functions/theme-customizer/panels/footer.php:303
-#: functions/theme-customizer/panels/footer.php:584
-#: functions/theme-customizer/panels/footer.php:704
-#: functions/theme-customizer/panels/footer.php:962
-#: functions/theme-customizer/panels/footer.php:1408
-#: functions/theme-customizer/panels/footer.php:1686
-#: functions/theme-customizer/panels/header.php:211
-#: functions/theme-customizer/panels/header.php:437
-#: functions/theme-customizer/panels/layout.php:617
-#: functions/theme-customizer/panels/layout.php:816
-#: functions/theme-customizer/panels/layout.php:1247
-#: functions/theme-customizer/panels/navigation.php:213
-#: functions/theme-customizer/panels/navigation.php:403
-#: functions/theme-customizer/panels/navigation.php:945
-#: functions/theme-customizer/panels/pages.php:114
-#: functions/theme-customizer/panels/pages.php:325
-#: functions/theme-customizer/panels/pages.php:575
-#: functions/theme-customizer/panels/pages.php:865
-#: functions/theme-customizer/panels/posts.php:105
-#: functions/theme-customizer/panels/settings.php:431
-#: functions/theme-customizer/panels/settings.php:907
-#: functions/theme-customizer/panels/widget.php:273
-#: functions/theme-customizer/panels/widget.php:392
-#: functions/theme-customizer/panels/widget.php:650
+#: functions/theme-customizer/panels/blogs.php:96
+#: functions/theme-customizer/panels/blogs.php:254
+#: functions/theme-customizer/panels/footer.php:297
+#: functions/theme-customizer/panels/footer.php:562
+#: functions/theme-customizer/panels/footer.php:661
+#: functions/theme-customizer/panels/footer.php:900
+#: functions/theme-customizer/panels/footer.php:1317
+#: functions/theme-customizer/panels/footer.php:1579
+#: functions/theme-customizer/panels/header.php:210
+#: functions/theme-customizer/panels/header.php:424
+#: functions/theme-customizer/panels/layout.php:792
+#: functions/theme-customizer/panels/layout.php:980
+#: functions/theme-customizer/panels/layout.php:1389
+#: functions/theme-customizer/panels/navigation.php:273
+#: functions/theme-customizer/panels/navigation.php:639
+#: functions/theme-customizer/panels/navigation.php:893
+#: functions/theme-customizer/panels/navigation.php:1600
+#: functions/theme-customizer/panels/navigation.php:1878
+#: functions/theme-customizer/panels/navigation.php:2090
+#: functions/theme-customizer/panels/navigation.php:2510
+#: functions/theme-customizer/panels/pages.php:105
+#: functions/theme-customizer/panels/pages.php:307
+#: functions/theme-customizer/panels/pages.php:543
+#: functions/theme-customizer/panels/pages.php:814
+#: functions/theme-customizer/panels/posts.php:95
+#: functions/theme-customizer/panels/settings.php:405
+#: functions/theme-customizer/panels/settings.php:870
+#: functions/theme-customizer/panels/sidebar.php:268
+#: functions/theme-customizer/panels/sidebar.php:366
+#: functions/theme-customizer/panels/sidebar.php:620
 msgid "Border Shadow"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:121
+#: functions/theme-customizer/panels/blogs.php:110
+#: functions/theme-customizer/panels/footer.php:1681
+#: functions/theme-customizer/panels/footer.php:1799
+#: functions/theme-customizer/panels/footer.php:2007
+msgid "Animation"
+msgstr ""
+
+#: functions/theme-customizer/panels/blogs.php:126
 msgid "Card Layout"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:131
+#: functions/theme-customizer/panels/blogs.php:134
 msgid "Image | Content Layout"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:153
+#: functions/theme-customizer/panels/blogs.php:155
 #, php-format
 msgid "Image Wide set as a % of Card Wide"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:175
+#: functions/theme-customizer/panels/blogs.php:176
 msgid "Image Display Height"
 msgstr ""
 
@@ -444,1243 +411,1509 @@ msgstr ""
 msgid "Image Height as a % of Width"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:221
+#: functions/theme-customizer/panels/blogs.php:220
 msgid "Blog Card Image Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:231
-#: functions/theme-customizer/panels/blogs.php:597
-#: functions/theme-customizer/panels/footer.php:101
-#: functions/theme-customizer/panels/footer.php:382
-#: functions/theme-customizer/panels/footer.php:1208
-#: functions/theme-customizer/panels/footer.php:1486
-#: functions/theme-customizer/panels/layout.php:707
-#: functions/theme-customizer/panels/layout.php:903
-#: functions/theme-customizer/panels/layout.php:1146
-#: functions/theme-customizer/panels/layout.php:1172
-#: functions/theme-customizer/panels/navigation.php:290
-#: functions/theme-customizer/panels/pages.php:779
-#: functions/theme-customizer/panels/settings.php:820
-#: functions/theme-customizer/panels/widget.php:73
+#: functions/theme-customizer/panels/blogs.php:228
+#: functions/theme-customizer/panels/blogs.php:517
+#: functions/theme-customizer/panels/footer.php:106
+#: functions/theme-customizer/panels/footer.php:371
+#: functions/theme-customizer/panels/footer.php:1128
+#: functions/theme-customizer/panels/footer.php:1390
+#: functions/theme-customizer/panels/layout.php:877
+#: functions/theme-customizer/panels/layout.php:1062
+#: functions/theme-customizer/panels/layout.php:1294
+#: functions/theme-customizer/panels/layout.php:1318
+#: functions/theme-customizer/panels/navigation.php:788
+#: functions/theme-customizer/panels/pages.php:733
+#: functions/theme-customizer/panels/settings.php:788
+#: functions/theme-customizer/panels/sidebar.php:79
 msgid "Background Colour"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:245
-#: functions/theme-customizer/panels/footer.php:676
-#: functions/theme-customizer/panels/pages.php:297
-#: functions/theme-customizer/panels/widget.php:364
+#: functions/theme-customizer/panels/blogs.php:241
+#: functions/theme-customizer/panels/footer.php:648
+#: functions/theme-customizer/panels/pages.php:294
+#: functions/theme-customizer/panels/sidebar.php:353
 msgid "Border"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:259
-#: functions/theme-customizer/panels/footer.php:246
-#: functions/theme-customizer/panels/footer.php:527
-#: functions/theme-customizer/panels/footer.php:906
-#: functions/theme-customizer/panels/footer.php:1351
-#: functions/theme-customizer/panels/footer.php:1629
-#: functions/theme-customizer/panels/navigation.php:347
-#: functions/theme-customizer/panels/navigation.php:627
-#: functions/theme-customizer/panels/navigation.php:889
-#: functions/theme-customizer/panels/settings.php:375
-#: functions/theme-customizer/panels/widget.php:216
-#: functions/theme-customizer/panels/widget.php:594
-msgid "Border Corner - Top Left"
-msgstr ""
-
-#: functions/theme-customizer/panels/blogs.php:273
-#: functions/theme-customizer/panels/footer.php:260
-#: functions/theme-customizer/panels/footer.php:541
-#: functions/theme-customizer/panels/footer.php:920
-#: functions/theme-customizer/panels/footer.php:1365
-#: functions/theme-customizer/panels/footer.php:1643
-#: functions/theme-customizer/panels/navigation.php:361
-#: functions/theme-customizer/panels/navigation.php:641
-#: functions/theme-customizer/panels/navigation.php:903
-#: functions/theme-customizer/panels/settings.php:389
-#: functions/theme-customizer/panels/widget.php:230
-#: functions/theme-customizer/panels/widget.php:608
-msgid "Border Corner - Top Right"
-msgstr ""
-
-#: functions/theme-customizer/panels/blogs.php:287
-#: functions/theme-customizer/panels/footer.php:274
-#: functions/theme-customizer/panels/footer.php:555
-#: functions/theme-customizer/panels/footer.php:934
-#: functions/theme-customizer/panels/footer.php:1379
-#: functions/theme-customizer/panels/footer.php:1657
-#: functions/theme-customizer/panels/navigation.php:375
-#: functions/theme-customizer/panels/navigation.php:655
-#: functions/theme-customizer/panels/navigation.php:917
-#: functions/theme-customizer/panels/settings.php:403
-#: functions/theme-customizer/panels/widget.php:244
-#: functions/theme-customizer/panels/widget.php:622
-msgid "Border Corner - Bottom Left"
-msgstr ""
-
-#: functions/theme-customizer/panels/blogs.php:301
-#: functions/theme-customizer/panels/footer.php:288
-#: functions/theme-customizer/panels/footer.php:569
-#: functions/theme-customizer/panels/footer.php:948
-#: functions/theme-customizer/panels/footer.php:1393
-#: functions/theme-customizer/panels/footer.php:1671
-#: functions/theme-customizer/panels/navigation.php:389
-#: functions/theme-customizer/panels/navigation.php:669
-#: functions/theme-customizer/panels/navigation.php:931
-#: functions/theme-customizer/panels/settings.php:417
-#: functions/theme-customizer/panels/widget.php:258
-#: functions/theme-customizer/panels/widget.php:636
-msgid "Border Corner - Bottom Right"
-msgstr ""
-
-#: functions/theme-customizer/panels/blogs.php:329
-#: functions/theme-customizer/panels/footer.php:318
-#: functions/theme-customizer/panels/footer.php:599
-#: functions/theme-customizer/panels/footer.php:996
-#: functions/theme-customizer/panels/footer.php:1423
-#: functions/theme-customizer/panels/footer.php:1701
-#: functions/theme-customizer/panels/header.php:226
-#: functions/theme-customizer/panels/header.php:452
-#: functions/theme-customizer/panels/layout.php:635
-#: functions/theme-customizer/panels/layout.php:834
-#: functions/theme-customizer/panels/navigation.php:683
-#: functions/theme-customizer/panels/pages.php:128
-#: functions/theme-customizer/panels/pages.php:339
-#: functions/theme-customizer/panels/pages.php:592
-#: functions/theme-customizer/panels/pages.php:883
-#: functions/theme-customizer/panels/posts.php:119
-#: functions/theme-customizer/panels/posts.php:469
-#: functions/theme-customizer/panels/posts.php:726
-#: functions/theme-customizer/panels/posts.php:1058
-#: functions/theme-customizer/panels/settings.php:925
-#: functions/theme-customizer/panels/widget.php:288
-#: functions/theme-customizer/panels/widget.php:684
+#: functions/theme-customizer/panels/blogs.php:267
+#: functions/theme-customizer/panels/footer.php:311
+#: functions/theme-customizer/panels/footer.php:576
+#: functions/theme-customizer/panels/footer.php:932
+#: functions/theme-customizer/panels/footer.php:1331
+#: functions/theme-customizer/panels/footer.php:1593
+#: functions/theme-customizer/panels/header.php:224
+#: functions/theme-customizer/panels/header.php:438
+#: functions/theme-customizer/panels/layout.php:809
+#: functions/theme-customizer/panels/layout.php:997
+#: functions/theme-customizer/panels/navigation.php:351
+#: functions/theme-customizer/panels/navigation.php:662
+#: functions/theme-customizer/panels/navigation.php:728
+#: functions/theme-customizer/panels/navigation.php:1328
+#: functions/theme-customizer/panels/navigation.php:1354
+#: functions/theme-customizer/panels/navigation.php:1903
+#: functions/theme-customizer/panels/navigation.php:2115
+#: functions/theme-customizer/panels/navigation.php:2359
+#: functions/theme-customizer/panels/navigation.php:2532
+#: functions/theme-customizer/panels/pages.php:118
+#: functions/theme-customizer/panels/pages.php:320
+#: functions/theme-customizer/panels/pages.php:559
+#: functions/theme-customizer/panels/pages.php:831
+#: functions/theme-customizer/panels/posts.php:108
+#: functions/theme-customizer/panels/posts.php:450
+#: functions/theme-customizer/panels/posts.php:688
+#: functions/theme-customizer/panels/posts.php:997
+#: functions/theme-customizer/panels/settings.php:887
+#: functions/theme-customizer/panels/sidebar.php:282
+#: functions/theme-customizer/panels/sidebar.php:652
 msgid "Margin"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:354
-#: functions/theme-customizer/panels/blogs.php:722
-#: functions/theme-customizer/panels/blogs.php:988
-#: functions/theme-customizer/panels/blogs.php:1102
-#: functions/theme-customizer/panels/footer.php:344
-#: functions/theme-customizer/panels/footer.php:625
-#: functions/theme-customizer/panels/footer.php:736
-#: functions/theme-customizer/panels/footer.php:1021
-#: functions/theme-customizer/panels/footer.php:1132
-#: functions/theme-customizer/panels/footer.php:1449
-#: functions/theme-customizer/panels/footer.php:1727
-#: functions/theme-customizer/panels/header.php:252
-#: functions/theme-customizer/panels/header.php:478
-#: functions/theme-customizer/panels/layout.php:664
-#: functions/theme-customizer/panels/layout.php:863
-#: functions/theme-customizer/panels/navigation.php:709
-#: functions/theme-customizer/panels/navigation.php:959
-#: functions/theme-customizer/panels/pages.php:153
-#: functions/theme-customizer/panels/pages.php:364
-#: functions/theme-customizer/panels/pages.php:620
-#: functions/theme-customizer/panels/pages.php:912
-#: functions/theme-customizer/panels/posts.php:144
-#: functions/theme-customizer/panels/posts.php:494
-#: functions/theme-customizer/panels/posts.php:751
-#: functions/theme-customizer/panels/posts.php:1086
-#: functions/theme-customizer/panels/settings.php:445
-#: functions/theme-customizer/panels/settings.php:953
-#: functions/theme-customizer/panels/widget.php:314
-#: functions/theme-customizer/panels/widget.php:424
-#: functions/theme-customizer/panels/widget.php:709
-#: functions/theme-customizer/panels/widget.php:820
+#: functions/theme-customizer/panels/blogs.php:291
+#: functions/theme-customizer/panels/blogs.php:635
+#: functions/theme-customizer/panels/blogs.php:885
+#: functions/theme-customizer/panels/blogs.php:992
+#: functions/theme-customizer/panels/footer.php:336
+#: functions/theme-customizer/panels/footer.php:601
+#: functions/theme-customizer/panels/footer.php:691
+#: functions/theme-customizer/panels/footer.php:956
+#: functions/theme-customizer/panels/footer.php:1059
+#: functions/theme-customizer/panels/footer.php:1356
+#: functions/theme-customizer/panels/footer.php:1618
+#: functions/theme-customizer/panels/header.php:249
+#: functions/theme-customizer/panels/header.php:463
+#: functions/theme-customizer/panels/layout.php:837
+#: functions/theme-customizer/panels/layout.php:1025
+#: functions/theme-customizer/panels/navigation.php:377
+#: functions/theme-customizer/panels/navigation.php:688
+#: functions/theme-customizer/panels/navigation.php:754
+#: functions/theme-customizer/panels/navigation.php:1379
+#: functions/theme-customizer/panels/navigation.php:1613
+#: functions/theme-customizer/panels/navigation.php:1931
+#: functions/theme-customizer/panels/navigation.php:2143
+#: functions/theme-customizer/panels/navigation.php:2387
+#: functions/theme-customizer/panels/navigation.php:2557
+#: functions/theme-customizer/panels/navigation.php:2697
+#: functions/theme-customizer/panels/pages.php:142
+#: functions/theme-customizer/panels/pages.php:344
+#: functions/theme-customizer/panels/pages.php:586
+#: functions/theme-customizer/panels/pages.php:859
+#: functions/theme-customizer/panels/posts.php:132
+#: functions/theme-customizer/panels/posts.php:474
+#: functions/theme-customizer/panels/posts.php:712
+#: functions/theme-customizer/panels/posts.php:1024
+#: functions/theme-customizer/panels/settings.php:419
+#: functions/theme-customizer/panels/settings.php:914
+#: functions/theme-customizer/panels/sidebar.php:307
+#: functions/theme-customizer/panels/sidebar.php:396
+#: functions/theme-customizer/panels/sidebar.php:676
+#: functions/theme-customizer/panels/sidebar.php:779
 msgid "Padding"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:379
+#: functions/theme-customizer/panels/blogs.php:315
 msgid "Footer Cell #1 Features"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:389
+#: functions/theme-customizer/panels/blogs.php:323
 msgid "Footer Cell #1"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:406
+#: functions/theme-customizer/panels/blogs.php:339
 msgid "Show Post Author Name"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:423
+#: functions/theme-customizer/panels/blogs.php:355
 msgid "Post Categories"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:443
+#: functions/theme-customizer/panels/blogs.php:374
 msgid "Cell #1 Line Wrap"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:454
-#: functions/theme-customizer/panels/blogs.php:536
-#: functions/theme-customizer/panels/blogs.php:827
+#: functions/theme-customizer/panels/blogs.php:384
+#: functions/theme-customizer/panels/blogs.php:460
+#: functions/theme-customizer/panels/blogs.php:733
 msgid "Auto height"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:454
-#: functions/theme-customizer/panels/blogs.php:536
-#: functions/theme-customizer/panels/blogs.php:827
-#: functions/theme-customizer/panels/blogs.php:1093
+#: functions/theme-customizer/panels/blogs.php:384
+#: functions/theme-customizer/panels/blogs.php:460
+#: functions/theme-customizer/panels/blogs.php:733
+#: functions/theme-customizer/panels/blogs.php:983
 msgid "1 Line"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:454
-#: functions/theme-customizer/panels/blogs.php:536
-#: functions/theme-customizer/panels/blogs.php:827
-#: functions/theme-customizer/panels/blogs.php:1093
+#: functions/theme-customizer/panels/blogs.php:384
+#: functions/theme-customizer/panels/blogs.php:460
+#: functions/theme-customizer/panels/blogs.php:733
+#: functions/theme-customizer/panels/blogs.php:983
 msgid "2 Line"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:454
-#: functions/theme-customizer/panels/blogs.php:536
-#: functions/theme-customizer/panels/blogs.php:827
-#: functions/theme-customizer/panels/blogs.php:1093
+#: functions/theme-customizer/panels/blogs.php:384
+#: functions/theme-customizer/panels/blogs.php:460
+#: functions/theme-customizer/panels/blogs.php:733
+#: functions/theme-customizer/panels/blogs.php:983
 msgid "3 Line"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:463
+#: functions/theme-customizer/panels/blogs.php:393
 msgid "Footer Cell #2 Features"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:473
+#: functions/theme-customizer/panels/blogs.php:401
 msgid "Footer Cell #2"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:489
-#: functions/theme-customizer/panels/posts.php:819
+#: functions/theme-customizer/panels/blogs.php:416
+#: functions/theme-customizer/panels/posts.php:775
 msgid "Post Comment Count"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:505
+#: functions/theme-customizer/panels/blogs.php:431
 msgid "Post Tags"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:525
+#: functions/theme-customizer/panels/blogs.php:450
 msgid "Cell #2 Line Wrap"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:546
+#: functions/theme-customizer/panels/blogs.php:470
 msgid "Card Footer Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:559
-#: functions/theme-customizer/panels/blogs.php:891
-#: functions/theme-customizer/panels/blogs.php:1044
-#: functions/theme-customizer/panels/blogs.php:1199
-#: functions/theme-customizer/panels/footer.php:1056
-#: functions/theme-customizer/panels/footer.php:1168
-#: functions/theme-customizer/panels/footer.php:1809
-#: functions/theme-customizer/panels/footer.php:2071
-#: functions/theme-customizer/panels/pages.php:483
-#: functions/theme-customizer/panels/pages.php:727
-#: functions/theme-customizer/panels/posts.php:273
-#: functions/theme-customizer/panels/posts.php:530
-#: functions/theme-customizer/panels/posts.php:847
-#: functions/theme-customizer/panels/settings.php:229
-#: functions/theme-customizer/panels/settings.php:724
-#: functions/theme-customizer/panels/widget.php:744
+#: functions/theme-customizer/panels/blogs.php:481
+#: functions/theme-customizer/panels/blogs.php:793
+#: functions/theme-customizer/panels/blogs.php:937
+#: functions/theme-customizer/panels/blogs.php:1083
+#: functions/theme-customizer/panels/footer.php:988
+#: functions/theme-customizer/panels/footer.php:1092
+#: functions/theme-customizer/panels/footer.php:1709
+#: functions/theme-customizer/panels/footer.php:1967
+#: functions/theme-customizer/panels/navigation.php:2311
+#: functions/theme-customizer/panels/navigation.php:2591
+#: functions/theme-customizer/panels/navigation.php:2733
+#: functions/theme-customizer/panels/pages.php:473
+#: functions/theme-customizer/panels/pages.php:685
+#: functions/theme-customizer/panels/posts.php:269
+#: functions/theme-customizer/panels/posts.php:507
+#: functions/theme-customizer/panels/posts.php:800
+#: functions/theme-customizer/panels/settings.php:217
+#: functions/theme-customizer/panels/settings.php:700
+#: functions/theme-customizer/panels/sidebar.php:708
 msgid "Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:576
-#: functions/theme-customizer/panels/blogs.php:929
-#: functions/theme-customizer/panels/blogs.php:1061
-#: functions/theme-customizer/panels/blogs.php:1217
-#: functions/theme-customizer/panels/footer.php:1112
-#: functions/theme-customizer/panels/pages.php:744
-#: functions/theme-customizer/panels/widget.php:800
+#: functions/theme-customizer/panels/blogs.php:497
+#: functions/theme-customizer/panels/blogs.php:829
+#: functions/theme-customizer/panels/blogs.php:953
+#: functions/theme-customizer/panels/blogs.php:1100
+#: functions/theme-customizer/panels/footer.php:1040
+#: functions/theme-customizer/panels/navigation.php:2180
+#: functions/theme-customizer/panels/pages.php:701
+#: functions/theme-customizer/panels/sidebar.php:760
 msgid "Alignment"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:614
+#: functions/theme-customizer/panels/blogs.php:533
 msgid "Cells #1 Border - Top"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:631
+#: functions/theme-customizer/panels/blogs.php:549
 msgid "Cells #1 Border - Bottom"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:648
+#: functions/theme-customizer/panels/blogs.php:565
 msgid "Cells #2 Border - Top"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:665
+#: functions/theme-customizer/panels/blogs.php:581
 msgid "Cells #2 Border - Bottom"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:683
+#: functions/theme-customizer/panels/blogs.php:598
 msgid "Cells Icons"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:705
-#: functions/theme-customizer/panels/blogs.php:971
-#: functions/theme-customizer/panels/posts.php:370
-#: functions/theme-customizer/panels/posts.php:627
-#: functions/theme-customizer/panels/posts.php:958
+#: functions/theme-customizer/panels/blogs.php:619
+#: functions/theme-customizer/panels/blogs.php:869
+#: functions/theme-customizer/panels/posts.php:359
+#: functions/theme-customizer/panels/posts.php:597
+#: functions/theme-customizer/panels/posts.php:904
 msgid "Icon Colour"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:751
+#: functions/theme-customizer/panels/blogs.php:663
 msgid "Post Title Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:762
-#: functions/theme-customizer/panels/footer.php:771
-#: functions/theme-customizer/panels/header.php:515
-#: functions/theme-customizer/panels/pages.php:189
-#: functions/theme-customizer/panels/pages.php:400
-#: functions/theme-customizer/panels/posts.php:179
-#: functions/theme-customizer/panels/widget.php:459
+#: functions/theme-customizer/panels/blogs.php:672
+#: functions/theme-customizer/panels/footer.php:723
+#: functions/theme-customizer/panels/header.php:497
+#: functions/theme-customizer/panels/pages.php:175
+#: functions/theme-customizer/panels/pages.php:377
+#: functions/theme-customizer/panels/posts.php:164
+#: functions/theme-customizer/panels/sidebar.php:443
 msgid "Title Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:776
-#: functions/theme-customizer/panels/footer.php:805
-#: functions/theme-customizer/panels/pages.php:203
-#: functions/theme-customizer/panels/pages.php:414
-#: functions/theme-customizer/panels/posts.php:193
-#: functions/theme-customizer/panels/widget.php:493
+#: functions/theme-customizer/panels/blogs.php:685
+#: functions/theme-customizer/panels/footer.php:755
+#: functions/theme-customizer/panels/pages.php:188
+#: functions/theme-customizer/panels/pages.php:390
+#: functions/theme-customizer/panels/posts.php:177
+#: functions/theme-customizer/panels/sidebar.php:475
 msgid "Title Transformation"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:796
-#: functions/theme-customizer/panels/footer.php:785
-#: functions/theme-customizer/panels/widget.php:473
+#: functions/theme-customizer/panels/blogs.php:694
+#: functions/theme-customizer/panels/blogs.php:819
+#: functions/theme-customizer/panels/footer.php:764
+#: functions/theme-customizer/panels/navigation.php:1435
+#: functions/theme-customizer/panels/navigation.php:1757
+#: functions/theme-customizer/panels/pages.php:197
+#: functions/theme-customizer/panels/pages.php:399
+#: functions/theme-customizer/panels/posts.php:186
+#: functions/theme-customizer/panels/posts.php:291
+#: functions/theme-customizer/panels/posts.php:529
+#: functions/theme-customizer/panels/posts.php:826
+#: functions/theme-customizer/panels/settings.php:252
+#: functions/theme-customizer/panels/settings.php:534
+#: functions/theme-customizer/panels/sidebar.php:484
+#: functions/theme-customizer/responsi-customize.php:1035
+msgid "None"
+msgstr ""
+
+#: functions/theme-customizer/panels/blogs.php:694
+#: functions/theme-customizer/panels/blogs.php:819
+#: functions/theme-customizer/panels/footer.php:764
+#: functions/theme-customizer/panels/navigation.php:1435
+#: functions/theme-customizer/panels/navigation.php:1757
+#: functions/theme-customizer/panels/pages.php:197
+#: functions/theme-customizer/panels/pages.php:399
+#: functions/theme-customizer/panels/posts.php:186
+#: functions/theme-customizer/panels/posts.php:291
+#: functions/theme-customizer/panels/posts.php:529
+#: functions/theme-customizer/panels/posts.php:826
+#: functions/theme-customizer/panels/settings.php:252
+#: functions/theme-customizer/panels/sidebar.php:484
+msgid "Uppercase"
+msgstr ""
+
+#: functions/theme-customizer/panels/blogs.php:694
+#: functions/theme-customizer/panels/blogs.php:819
+#: functions/theme-customizer/panels/footer.php:764
+#: functions/theme-customizer/panels/navigation.php:1435
+#: functions/theme-customizer/panels/navigation.php:1757
+#: functions/theme-customizer/panels/pages.php:197
+#: functions/theme-customizer/panels/pages.php:399
+#: functions/theme-customizer/panels/posts.php:186
+#: functions/theme-customizer/panels/posts.php:291
+#: functions/theme-customizer/panels/posts.php:529
+#: functions/theme-customizer/panels/posts.php:826
+#: functions/theme-customizer/panels/settings.php:252
+#: functions/theme-customizer/panels/sidebar.php:484
+msgid "Lowercase"
+msgstr ""
+
+#: functions/theme-customizer/panels/blogs.php:704
+#: functions/theme-customizer/panels/footer.php:736
+#: functions/theme-customizer/panels/pages.php:207
+#: functions/theme-customizer/panels/pages.php:409
+#: functions/theme-customizer/panels/posts.php:196
+#: functions/theme-customizer/panels/sidebar.php:456
 msgid "Title Alignment"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:817
+#: functions/theme-customizer/panels/blogs.php:724
 msgid "Post Title Line Wrap"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:837
+#: functions/theme-customizer/panels/blogs.php:743
 msgid "Title Padding"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:863
+#: functions/theme-customizer/panels/blogs.php:768
 msgid "Post Published Date"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:874
-#: functions/theme-customizer/panels/posts.php:804
+#: functions/theme-customizer/panels/blogs.php:777
+#: functions/theme-customizer/panels/posts.php:761
 msgid "Post Date"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:908
-#: functions/theme-customizer/panels/posts.php:287
-#: functions/theme-customizer/panels/posts.php:544
-#: functions/theme-customizer/panels/posts.php:864
+#: functions/theme-customizer/panels/blogs.php:809
+#: functions/theme-customizer/panels/posts.php:282
+#: functions/theme-customizer/panels/posts.php:520
+#: functions/theme-customizer/panels/posts.php:816
 msgid "Transformation"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:950
+#: functions/theme-customizer/panels/blogs.php:849
 msgid "Date Icon"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:1016
+#: functions/theme-customizer/panels/blogs.php:912
 msgid "Post Extract Text"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:1027
+#: functions/theme-customizer/panels/blogs.php:921
 msgid "Post Description"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:1082
+#: functions/theme-customizer/panels/blogs.php:973
 msgid "Post Description Line Wrap"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:1093
+#: functions/theme-customizer/panels/blogs.php:983
 msgid "4 Line"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:1131
+#: functions/theme-customizer/panels/blogs.php:1020
 msgid "Read More Link"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:1141
+#: functions/theme-customizer/panels/blogs.php:1028
 msgid "Read More Feature"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:1158
+#: functions/theme-customizer/panels/blogs.php:1044
 msgid "Button or Linked Text"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:1182
+#: functions/theme-customizer/panels/blogs.php:1067
 msgid "Custom Text"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:1228
+#: functions/theme-customizer/panels/blogs.php:1110
+#: functions/theme-customizer/panels/pages.php:216
+#: functions/theme-customizer/panels/pages.php:418
+#: functions/theme-customizer/panels/posts.php:205
+#: functions/theme-customizer/responsi-customize.php:1059
 msgid "Left"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:1228
+#: functions/theme-customizer/panels/blogs.php:1110
+#: functions/theme-customizer/panels/pages.php:216
+#: functions/theme-customizer/panels/pages.php:418
+#: functions/theme-customizer/panels/posts.php:205
+#: functions/theme-customizer/responsi-customize.php:1061
 msgid "Center"
 msgstr ""
 
-#: functions/theme-customizer/panels/blogs.php:1228
+#: functions/theme-customizer/panels/blogs.php:1110
+#: functions/theme-customizer/panels/pages.php:216
+#: functions/theme-customizer/panels/pages.php:418
+#: functions/theme-customizer/panels/posts.php:205
+#: functions/theme-customizer/responsi-customize.php:1060
 msgid "Right"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:28
-#: functions/theme-customizer/panels/layout.php:300
+#: functions/theme-customizer/panels/footer.php:31
+#: functions/theme-customizer/panels/layout.php:393
 msgid "Footer Widgets"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:34
-#: functions/theme-sidebar-init.php:43
+#: functions/theme-customizer/panels/footer.php:36
+#: functions/theme-sidebar-init.php:60
 msgid "Footer"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:45
+#: functions/theme-customizer/panels/footer.php:46
 msgid "Footer Widgets - Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:50
+#: functions/theme-customizer/panels/footer.php:51
 msgid "Footer Widgets - Content"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:55
+#: functions/theme-customizer/panels/footer.php:56
 msgid "Footer Widgets - Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:60
+#: functions/theme-customizer/panels/footer.php:61
 msgid "Footer Section - Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:65
+#: functions/theme-customizer/panels/footer.php:66
 msgid "Footer Content - Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:70
-#: functions/theme-customizer/panels/footer.php:1753
-#: functions/theme-customizer/panels/footer.php:1763
+#: functions/theme-customizer/panels/footer.php:71
+#: functions/theme-customizer/panels/footer.php:1643
+#: functions/theme-customizer/panels/footer.php:1651
 msgid "Footer Content"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:75
+#: functions/theme-customizer/panels/footer.php:76
 msgid "Footer Notifications"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:90
+#: functions/theme-customizer/panels/footer.php:97
 msgid "Footer Widget Area Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:115
-#: functions/theme-customizer/panels/footer.php:396
-#: functions/theme-customizer/panels/footer.php:1222
-#: functions/theme-customizer/panels/footer.php:1500
-#: functions/theme-customizer/panels/header.php:78
-#: functions/theme-customizer/panels/header.php:304
-#: functions/theme-customizer/panels/layout.php:968
-#: functions/theme-customizer/panels/layout.php:979
-#: functions/theme-customizer/panels/navigation.php:84
-#: functions/theme-customizer/panels/widget.php:87
+#: functions/theme-customizer/panels/footer.php:119
+#: functions/theme-customizer/panels/footer.php:384
+#: functions/theme-customizer/panels/footer.php:1141
+#: functions/theme-customizer/panels/footer.php:1403
+#: functions/theme-customizer/panels/header.php:83
+#: functions/theme-customizer/panels/header.php:297
+#: functions/theme-customizer/panels/layout.php:1125
+#: functions/theme-customizer/panels/layout.php:1134
+#: functions/theme-customizer/panels/navigation.php:89
+#: functions/theme-customizer/panels/navigation.php:432
+#: functions/theme-customizer/panels/sidebar.php:92
 msgid "Background Image"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:133
-#: functions/theme-customizer/panels/footer.php:414
-#: functions/theme-customizer/panels/footer.php:1240
-#: functions/theme-customizer/panels/footer.php:1518
-#: functions/theme-customizer/panels/header.php:96
-#: functions/theme-customizer/panels/header.php:322
-#: functions/theme-customizer/panels/layout.php:997
-#: functions/theme-customizer/panels/navigation.php:102
-#: functions/theme-customizer/panels/widget.php:105
+#: functions/theme-customizer/panels/footer.php:136
+#: functions/theme-customizer/panels/footer.php:401
+#: functions/theme-customizer/panels/footer.php:1158
+#: functions/theme-customizer/panels/footer.php:1420
+#: functions/theme-customizer/panels/header.php:100
+#: functions/theme-customizer/panels/header.php:314
+#: functions/theme-customizer/panels/layout.php:1151
+#: functions/theme-customizer/panels/navigation.php:106
+#: functions/theme-customizer/panels/navigation.php:450
+#: functions/theme-customizer/panels/sidebar.php:109
 msgid "Image"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:151
-#: functions/theme-customizer/panels/footer.php:432
-#: functions/theme-customizer/panels/footer.php:1258
-#: functions/theme-customizer/panels/footer.php:1536
-#: functions/theme-customizer/panels/header.php:114
-#: functions/theme-customizer/panels/header.php:340
-#: functions/theme-customizer/panels/layout.php:1083
-#: functions/theme-customizer/panels/navigation.php:120
-#: functions/theme-customizer/panels/widget.php:123
+#: functions/theme-customizer/panels/footer.php:153
+#: functions/theme-customizer/panels/footer.php:418
+#: functions/theme-customizer/panels/footer.php:1175
+#: functions/theme-customizer/panels/footer.php:1437
+#: functions/theme-customizer/panels/header.php:117
+#: functions/theme-customizer/panels/header.php:331
+#: functions/theme-customizer/panels/layout.php:1234
+#: functions/theme-customizer/panels/navigation.php:165
+#: functions/theme-customizer/panels/navigation.php:512
+#: functions/theme-customizer/panels/sidebar.php:126
 msgid "Image Alignment"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:152
-#: functions/theme-customizer/panels/footer.php:433
-#: functions/theme-customizer/panels/footer.php:1259
-#: functions/theme-customizer/panels/footer.php:1537
-#: functions/theme-customizer/panels/header.php:115
-#: functions/theme-customizer/panels/header.php:341
-#: functions/theme-customizer/panels/widget.php:124
-msgid ""
-"Supports absolute values left, right, center, top, bottom or pixel values e."
-"g. 20px for inner container positioning of image."
-msgstr ""
-
-#: functions/theme-customizer/panels/footer.php:176
-#: functions/theme-customizer/panels/footer.php:457
-#: functions/theme-customizer/panels/footer.php:1283
-#: functions/theme-customizer/panels/footer.php:1561
-#: functions/theme-customizer/panels/header.php:139
-#: functions/theme-customizer/panels/header.php:365
-#: functions/theme-customizer/panels/layout.php:1108
-#: functions/theme-customizer/panels/navigation.php:145
-#: functions/theme-customizer/panels/widget.php:148
+#: functions/theme-customizer/panels/footer.php:178
+#: functions/theme-customizer/panels/footer.php:443
+#: functions/theme-customizer/panels/footer.php:1200
+#: functions/theme-customizer/panels/footer.php:1462
+#: functions/theme-customizer/panels/header.php:142
+#: functions/theme-customizer/panels/header.php:356
+#: functions/theme-customizer/panels/layout.php:1259
+#: functions/theme-customizer/panels/navigation.php:190
+#: functions/theme-customizer/panels/navigation.php:537
+#: functions/theme-customizer/panels/sidebar.php:151
 msgid "Image Repeat"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:203
-#: functions/theme-customizer/panels/footer.php:484
-#: functions/theme-customizer/panels/footer.php:850
-#: functions/theme-customizer/panels/footer.php:1309
-#: functions/theme-customizer/panels/footer.php:1587
-#: functions/theme-customizer/panels/layout.php:762
-#: functions/theme-customizer/panels/navigation.php:171
-#: functions/theme-customizer/panels/navigation.php:305
-#: functions/theme-customizer/panels/navigation.php:571
-#: functions/theme-customizer/panels/navigation.php:833
-#: functions/theme-customizer/panels/posts.php:413
-#: functions/theme-customizer/panels/posts.php:670
-#: functions/theme-customizer/panels/posts.php:1007
-#: functions/theme-customizer/panels/settings.php:319
-#: functions/theme-customizer/panels/widget.php:174
-#: functions/theme-customizer/panels/widget.php:538
+#: functions/theme-customizer/panels/footer.php:204
+#: functions/theme-customizer/panels/footer.php:469
+#: functions/theme-customizer/panels/footer.php:796
+#: functions/theme-customizer/panels/footer.php:1225
+#: functions/theme-customizer/panels/footer.php:1487
+#: functions/theme-customizer/panels/layout.php:929
+#: functions/theme-customizer/panels/navigation.php:215
+#: functions/theme-customizer/panels/navigation.php:564
+#: functions/theme-customizer/panels/navigation.php:802
+#: functions/theme-customizer/panels/navigation.php:1078
+#: functions/theme-customizer/panels/navigation.php:1495
+#: functions/theme-customizer/panels/navigation.php:1795
+#: functions/theme-customizer/panels/navigation.php:1986
+#: functions/theme-customizer/panels/navigation.php:2439
+#: functions/theme-customizer/panels/posts.php:398
+#: functions/theme-customizer/panels/posts.php:636
+#: functions/theme-customizer/panels/posts.php:949
+#: functions/theme-customizer/panels/settings.php:301
+#: functions/theme-customizer/panels/sidebar.php:176
+#: functions/theme-customizer/panels/sidebar.php:516
 msgid "Border - Top"
 msgstr ""
 
 #: functions/theme-customizer/panels/footer.php:217
-#: functions/theme-customizer/panels/footer.php:498
-#: functions/theme-customizer/panels/footer.php:864
-#: functions/theme-customizer/panels/footer.php:1323
-#: functions/theme-customizer/panels/footer.php:1601
-#: functions/theme-customizer/panels/layout.php:780
-#: functions/theme-customizer/panels/navigation.php:185
-#: functions/theme-customizer/panels/navigation.php:319
-#: functions/theme-customizer/panels/navigation.php:585
-#: functions/theme-customizer/panels/navigation.php:847
-#: functions/theme-customizer/panels/posts.php:427
-#: functions/theme-customizer/panels/posts.php:684
-#: functions/theme-customizer/panels/posts.php:1024
-#: functions/theme-customizer/panels/settings.php:333
-#: functions/theme-customizer/panels/widget.php:188
-#: functions/theme-customizer/panels/widget.php:552
+#: functions/theme-customizer/panels/footer.php:482
+#: functions/theme-customizer/panels/footer.php:809
+#: functions/theme-customizer/panels/footer.php:1238
+#: functions/theme-customizer/panels/footer.php:1500
+#: functions/theme-customizer/panels/layout.php:946
+#: functions/theme-customizer/panels/navigation.php:228
+#: functions/theme-customizer/panels/navigation.php:583
+#: functions/theme-customizer/panels/navigation.php:815
+#: functions/theme-customizer/panels/navigation.php:1091
+#: functions/theme-customizer/panels/navigation.php:1508
+#: functions/theme-customizer/panels/navigation.php:1816
+#: functions/theme-customizer/panels/navigation.php:2007
+#: functions/theme-customizer/panels/navigation.php:2457
+#: functions/theme-customizer/panels/posts.php:411
+#: functions/theme-customizer/panels/posts.php:649
+#: functions/theme-customizer/panels/posts.php:965
+#: functions/theme-customizer/panels/settings.php:314
+#: functions/theme-customizer/panels/sidebar.php:189
+#: functions/theme-customizer/panels/sidebar.php:529
 msgid "Border - Bottom"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:231
-#: functions/theme-customizer/panels/footer.php:512
-#: functions/theme-customizer/panels/footer.php:1337
-#: functions/theme-customizer/panels/footer.php:1615
+#: functions/theme-customizer/panels/footer.php:230
+#: functions/theme-customizer/panels/footer.php:495
+#: functions/theme-customizer/panels/footer.php:1251
+#: functions/theme-customizer/panels/footer.php:1513
 #: functions/theme-customizer/panels/header.php:196
-#: functions/theme-customizer/panels/header.php:422
-#: functions/theme-customizer/panels/layout.php:563
-#: functions/theme-customizer/panels/navigation.php:199
-#: functions/theme-customizer/panels/navigation.php:333
-#: functions/theme-customizer/panels/posts.php:1041
-#: functions/theme-customizer/panels/widget.php:202
+#: functions/theme-customizer/panels/header.php:410
+#: functions/theme-customizer/panels/layout.php:741
+#: functions/theme-customizer/panels/navigation.php:241
+#: functions/theme-customizer/panels/navigation.php:602
+#: functions/theme-customizer/panels/navigation.php:828
+#: functions/theme-customizer/panels/navigation.php:1837
+#: functions/theme-customizer/panels/navigation.php:2475
+#: functions/theme-customizer/panels/posts.php:981
+#: functions/theme-customizer/panels/sidebar.php:202
 msgid "Border - Left / Right"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:371
+#: functions/theme-customizer/panels/footer.php:244
+#: functions/theme-customizer/panels/footer.php:509
+#: functions/theme-customizer/panels/footer.php:848
+#: functions/theme-customizer/panels/footer.php:1264
+#: functions/theme-customizer/panels/footer.php:1526
+#: functions/theme-customizer/panels/navigation.php:841
+#: functions/theme-customizer/panels/navigation.php:1130
+#: functions/theme-customizer/panels/navigation.php:1547
+#: functions/theme-customizer/panels/settings.php:353
+#: functions/theme-customizer/panels/sidebar.php:215
+#: functions/theme-customizer/panels/sidebar.php:568
+msgid "Border Corner - Top Left"
+msgstr ""
+
+#: functions/theme-customizer/panels/footer.php:257
+#: functions/theme-customizer/panels/footer.php:522
+#: functions/theme-customizer/panels/footer.php:861
+#: functions/theme-customizer/panels/footer.php:1277
+#: functions/theme-customizer/panels/footer.php:1539
+#: functions/theme-customizer/panels/navigation.php:854
+#: functions/theme-customizer/panels/navigation.php:1143
+#: functions/theme-customizer/panels/navigation.php:1560
+#: functions/theme-customizer/panels/settings.php:366
+#: functions/theme-customizer/panels/sidebar.php:228
+#: functions/theme-customizer/panels/sidebar.php:581
+msgid "Border Corner - Top Right"
+msgstr ""
+
+#: functions/theme-customizer/panels/footer.php:270
+#: functions/theme-customizer/panels/footer.php:535
+#: functions/theme-customizer/panels/footer.php:874
+#: functions/theme-customizer/panels/footer.php:1290
+#: functions/theme-customizer/panels/footer.php:1552
+#: functions/theme-customizer/panels/navigation.php:867
+#: functions/theme-customizer/panels/navigation.php:1156
+#: functions/theme-customizer/panels/navigation.php:1573
+#: functions/theme-customizer/panels/settings.php:379
+#: functions/theme-customizer/panels/sidebar.php:241
+#: functions/theme-customizer/panels/sidebar.php:594
+msgid "Border Corner - Bottom Left"
+msgstr ""
+
+#: functions/theme-customizer/panels/footer.php:283
+#: functions/theme-customizer/panels/footer.php:548
+#: functions/theme-customizer/panels/footer.php:887
+#: functions/theme-customizer/panels/footer.php:1303
+#: functions/theme-customizer/panels/footer.php:1565
+#: functions/theme-customizer/panels/navigation.php:880
+#: functions/theme-customizer/panels/navigation.php:1169
+#: functions/theme-customizer/panels/navigation.php:1586
+#: functions/theme-customizer/panels/settings.php:392
+#: functions/theme-customizer/panels/sidebar.php:254
+#: functions/theme-customizer/panels/sidebar.php:607
+msgid "Border Corner - Bottom Right"
+msgstr ""
+
+#: functions/theme-customizer/panels/footer.php:362
 msgid "Footer Widget Content"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:652
+#: functions/theme-customizer/panels/footer.php:627
 msgid "Footer Widget Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:662
-#: functions/theme-customizer/panels/footer.php:836
-#: functions/theme-customizer/panels/header.php:63
-#: functions/theme-customizer/panels/header.php:289
-#: functions/theme-customizer/panels/navigation.php:69
-#: functions/theme-customizer/panels/navigation.php:819
-#: functions/theme-customizer/panels/pages.php:72
-#: functions/theme-customizer/panels/pages.php:283
-#: functions/theme-customizer/panels/pages.php:524
-#: functions/theme-customizer/panels/posts.php:63
-#: functions/theme-customizer/panels/posts.php:399
-#: functions/theme-customizer/panels/posts.php:656
-#: functions/theme-customizer/panels/posts.php:990
-#: functions/theme-customizer/panels/widget.php:350
-#: functions/theme-customizer/panels/widget.php:524
+#: functions/theme-customizer/panels/footer.php:635
+#: functions/theme-customizer/panels/footer.php:783
+#: functions/theme-customizer/panels/header.php:69
+#: functions/theme-customizer/panels/header.php:283
+#: functions/theme-customizer/panels/navigation.php:75
+#: functions/theme-customizer/panels/navigation.php:415
+#: functions/theme-customizer/panels/navigation.php:1482
+#: functions/theme-customizer/panels/navigation.php:1778
+#: functions/theme-customizer/panels/navigation.php:1969
+#: functions/theme-customizer/panels/navigation.php:2425
+#: functions/theme-customizer/panels/navigation.php:2650
+#: functions/theme-customizer/panels/navigation.php:2767
+#: functions/theme-customizer/panels/pages.php:78
+#: functions/theme-customizer/panels/pages.php:281
+#: functions/theme-customizer/panels/pages.php:511
+#: functions/theme-customizer/panels/posts.php:69
+#: functions/theme-customizer/panels/posts.php:385
+#: functions/theme-customizer/panels/posts.php:623
+#: functions/theme-customizer/panels/posts.php:933
+#: functions/theme-customizer/panels/sidebar.php:340
+#: functions/theme-customizer/panels/sidebar.php:503
 msgid "Background Color"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:718
-#: functions/theme-customizer/panels/header.php:607
-#: functions/theme-customizer/panels/widget.php:406
+#: functions/theme-customizer/panels/footer.php:674
+#: functions/theme-customizer/panels/header.php:583
+#: functions/theme-customizer/panels/sidebar.php:379
 msgid "Widget Horizontal Margin"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:725
-#: functions/theme-customizer/panels/header.php:632
-#: functions/theme-customizer/panels/layout.php:278
-#: functions/theme-customizer/panels/widget.php:413
+#: functions/theme-customizer/panels/footer.php:680
+#: functions/theme-customizer/panels/header.php:605
+#: functions/theme-customizer/panels/layout.php:373
+#: functions/theme-customizer/panels/sidebar.php:385
 msgid "Pixels"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:761
+#: functions/theme-customizer/panels/footer.php:715
 msgid "Widget Header & Titles"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:825
-#: functions/theme-customizer/panels/widget.php:513
+#: functions/theme-customizer/panels/footer.php:774
+#: functions/theme-customizer/panels/sidebar.php:494
 msgid "Widget Title Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:878
-#: functions/theme-customizer/panels/layout.php:725
-#: functions/theme-customizer/panels/navigation.php:599
-#: functions/theme-customizer/panels/navigation.php:861
-#: functions/theme-customizer/panels/settings.php:347
-#: functions/theme-customizer/panels/widget.php:566
+#: functions/theme-customizer/panels/footer.php:822
+#: functions/theme-customizer/panels/layout.php:894
+#: functions/theme-customizer/panels/navigation.php:1104
+#: functions/theme-customizer/panels/navigation.php:1521
+#: functions/theme-customizer/panels/navigation.php:2028
+#: functions/theme-customizer/panels/settings.php:327
+#: functions/theme-customizer/panels/sidebar.php:542
 msgid "Border - Left"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:892
-#: functions/theme-customizer/panels/layout.php:743
-#: functions/theme-customizer/panels/navigation.php:613
-#: functions/theme-customizer/panels/navigation.php:875
-#: functions/theme-customizer/panels/settings.php:361
-#: functions/theme-customizer/panels/widget.php:580
+#: functions/theme-customizer/panels/footer.php:835
+#: functions/theme-customizer/panels/layout.php:911
+#: functions/theme-customizer/panels/navigation.php:1117
+#: functions/theme-customizer/panels/navigation.php:1534
+#: functions/theme-customizer/panels/navigation.php:2049
+#: functions/theme-customizer/panels/settings.php:340
+#: functions/theme-customizer/panels/sidebar.php:555
 msgid "Border - Right"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:976
-#: functions/theme-customizer/panels/widget.php:664
+#: functions/theme-customizer/panels/footer.php:913
+#: functions/theme-customizer/panels/sidebar.php:633
 msgid "Title Container Align"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1046
-#: functions/theme-customizer/panels/widget.php:734
+#: functions/theme-customizer/panels/footer.php:980
+#: functions/theme-customizer/panels/sidebar.php:700
 msgid "Widget Content Styling"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1070
-#: functions/theme-customizer/panels/widget.php:758
+#: functions/theme-customizer/panels/footer.php:1001
+#: functions/theme-customizer/panels/sidebar.php:721
 msgid "Text Link"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1084
-#: functions/theme-customizer/panels/header.php:560
-#: functions/theme-customizer/panels/posts.php:322
-#: functions/theme-customizer/panels/posts.php:579
-#: functions/theme-customizer/panels/posts.php:904
-#: functions/theme-customizer/panels/settings.php:758
-#: functions/theme-customizer/panels/widget.php:772
+#: functions/theme-customizer/panels/footer.php:1014
+#: functions/theme-customizer/panels/header.php:539
+#: functions/theme-customizer/panels/posts.php:315
+#: functions/theme-customizer/panels/posts.php:553
+#: functions/theme-customizer/panels/posts.php:854
+#: functions/theme-customizer/panels/settings.php:732
+#: functions/theme-customizer/panels/sidebar.php:734
 msgid "Text Link Hover"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1098
-#: functions/theme-customizer/panels/widget.php:786
+#: functions/theme-customizer/panels/footer.php:1027
+#: functions/theme-customizer/panels/sidebar.php:747
 msgid "Text Link Clicked"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1158
+#: functions/theme-customizer/panels/footer.php:1084
 msgid "Footer Widget List Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1182
+#: functions/theme-customizer/panels/footer.php:1105
 msgid "Line (border) Under Each list Item"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1198
+#: functions/theme-customizer/panels/footer.php:1120
 msgid "Footer - Container Background"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1475
+#: functions/theme-customizer/panels/footer.php:1381
 msgid "Footer Content Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1796
+#: functions/theme-customizer/panels/footer.php:1698
 msgid "Footer - Content Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1826
-#: functions/theme-customizer/panels/footer.php:2085
+#: functions/theme-customizer/panels/footer.php:1725
+#: functions/theme-customizer/panels/footer.php:1980
 msgid "Link Colour"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1843
-#: functions/theme-customizer/panels/footer.php:2099
+#: functions/theme-customizer/panels/footer.php:1741
+#: functions/theme-customizer/panels/footer.php:1993
 msgid "Link Colour on Mouse Over"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1861
+#: functions/theme-customizer/panels/footer.php:1758
 msgid "Site Copyright"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1872
+#: functions/theme-customizer/panels/footer.php:1767
 msgid "Copyright Notice (Align Left)"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1889
+#: functions/theme-customizer/panels/footer.php:1783
 msgid "Copyright Notice (Align Left) Content"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1906
+#: functions/theme-customizer/panels/footer.php:1816
 msgid "Site Access Link"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1917
+#: functions/theme-customizer/panels/footer.php:1825
 msgid "Log in / Log out Link (Far Right)"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1931
+#: functions/theme-customizer/panels/footer.php:1838
 msgid "Developer Branding"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1942
+#: functions/theme-customizer/panels/footer.php:1847
 msgid "Site Developed By"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1959
+#: functions/theme-customizer/panels/footer.php:1863
 msgid "Text Before Image"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1976
-#: functions/theme-customizer/panels/footer.php:2044
+#: functions/theme-customizer/panels/footer.php:1879
+#: functions/theme-customizer/panels/footer.php:1943
 msgid "Text Link URL"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:1993
+#: functions/theme-customizer/panels/footer.php:1895
 msgid "Developer Logo"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:2010
+#: functions/theme-customizer/panels/footer.php:1911
 msgid "Developer Logo URL"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:2027
+#: functions/theme-customizer/panels/footer.php:1927
 msgid "Text After Image"
 msgstr ""
 
-#: functions/theme-customizer/panels/footer.php:2061
+#: functions/theme-customizer/panels/footer.php:1959
 msgid "Footer Notices Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/header.php:20
-#: functions/theme-sidebar-init.php:29
+#: functions/theme-customizer/panels/header.php:23
+#: functions/theme-sidebar-init.php:46
 msgid "Header"
 msgstr ""
 
-#: functions/theme-customizer/panels/header.php:31
+#: functions/theme-customizer/panels/header.php:33
 msgid "Header - Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/header.php:36
+#: functions/theme-customizer/panels/header.php:38
 msgid "Header - Widgets"
 msgstr ""
 
-#: functions/theme-customizer/panels/header.php:52
+#: functions/theme-customizer/panels/header.php:60
 msgid "Header Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/header.php:166
-#: functions/theme-customizer/panels/header.php:392
-#: functions/theme-customizer/panels/layout.php:1187
-#: functions/theme-customizer/panels/pages.php:797
-#: functions/theme-customizer/panels/settings.php:839
+#: functions/theme-customizer/panels/header.php:168
+#: functions/theme-customizer/panels/header.php:382
+#: functions/theme-customizer/panels/layout.php:1333
+#: functions/theme-customizer/panels/pages.php:750
+#: functions/theme-customizer/panels/settings.php:806
 msgid "Container Border - Top"
 msgstr ""
 
-#: functions/theme-customizer/panels/header.php:181
-#: functions/theme-customizer/panels/header.php:407
-#: functions/theme-customizer/panels/layout.php:1202
-#: functions/theme-customizer/panels/pages.php:814
-#: functions/theme-customizer/panels/settings.php:856
+#: functions/theme-customizer/panels/header.php:182
+#: functions/theme-customizer/panels/header.php:396
+#: functions/theme-customizer/panels/layout.php:1347
+#: functions/theme-customizer/panels/pages.php:766
+#: functions/theme-customizer/panels/settings.php:822
 msgid "Container Border - Bottom"
 msgstr ""
 
-#: functions/theme-customizer/panels/header.php:278
+#: functions/theme-customizer/panels/header.php:274
 msgid "Header Content Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/header.php:504
+#: functions/theme-customizer/panels/header.php:488
 msgid "Header Widget Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/header.php:530
+#: functions/theme-customizer/panels/header.php:511
 #: functions/theme-customizer/panels/pages.php:258
-#: functions/theme-customizer/panels/posts.php:248
+#: functions/theme-customizer/panels/posts.php:247
 msgid "Content Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/header.php:545
+#: functions/theme-customizer/panels/header.php:525
 msgid "Linked Text Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/header.php:575
+#: functions/theme-customizer/panels/header.php:553
 msgid "Content Alignment"
 msgstr ""
 
-#: functions/theme-customizer/panels/header.php:596
+#: functions/theme-customizer/panels/header.php:573
 msgid "Multi Widget Margin"
 msgstr ""
 
-#: functions/theme-customizer/panels/header.php:597
+#: functions/theme-customizer/panels/header.php:574
 msgid ""
 "Horizontal margin between multiple widgets in the same header widget area"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:20
+#: functions/theme-customizer/panels/layout.php:23
 msgid "Site Structure"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:32
-#: functions/theme-customizer/panels/layout.php:442
+#: functions/theme-customizer/panels/layout.php:34
+#: functions/theme-customizer/panels/layout.php:626
 msgid "Site Layout"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:37
+#: functions/theme-customizer/panels/layout.php:39
 msgid "Layout Structure"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:42
+#: functions/theme-customizer/panels/layout.php:44
 msgid "Site Background"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:47
+#: functions/theme-customizer/panels/layout.php:49
 msgid "Site Body"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:61
+#: functions/theme-customizer/panels/layout.php:70
 msgid "Site Header"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:72
+#: functions/theme-customizer/panels/layout.php:79
 msgid "Header Widgets"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:115
+#: functions/theme-customizer/panels/layout.php:119
+msgid "Header Widgets 1 animation "
+msgstr ""
+
+#: functions/theme-customizer/panels/layout.php:136
+msgid "Header Widgets 2 animation "
+msgstr ""
+
+#: functions/theme-customizer/panels/layout.php:153
+msgid "Header Widgets 3 animation "
+msgstr ""
+
+#: functions/theme-customizer/panels/layout.php:170
+msgid "Header Widgets 4 animation "
+msgstr ""
+
+#: functions/theme-customizer/panels/layout.php:187
+msgid "Header Widgets 5 animation "
+msgstr ""
+
+#: functions/theme-customizer/panels/layout.php:204
+msgid "Header Widgets 6 animation "
+msgstr ""
+
+#: functions/theme-customizer/panels/layout.php:221
 msgid "Header Widget Display in Mobile Phones"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:141
-#: functions/theme-customizer/panels/layout.php:195
-#: functions/theme-customizer/panels/layout.php:343
+#: functions/theme-customizer/panels/layout.php:246
+#: functions/theme-customizer/panels/layout.php:296
+#: functions/theme-customizer/panels/layout.php:535
 msgid "Center Widget Content in Mobile"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:159
+#: functions/theme-customizer/panels/layout.php:263
 msgid "Post / Page Layout"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:213
+#: functions/theme-customizer/panels/layout.php:313
 msgid "Content Layout"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:224
+#: functions/theme-customizer/panels/layout.php:322
 msgid "Content Section Width"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:249
+#: functions/theme-customizer/panels/layout.php:346
 msgid "Blog Cards Per Row"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:271
+#: functions/theme-customizer/panels/layout.php:367
 msgid "Card Rows Horizontal Margin"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:289
+#: functions/theme-customizer/panels/layout.php:384
 msgid "Site Footer"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:361
+#: functions/theme-customizer/panels/layout.php:433
+msgid "Footer Widgets 1 animation "
+msgstr ""
+
+#: functions/theme-customizer/panels/layout.php:450
+msgid "Footer Widgets 2 animation "
+msgstr ""
+
+#: functions/theme-customizer/panels/layout.php:467
+msgid "Footer Widgets 3 animation "
+msgstr ""
+
+#: functions/theme-customizer/panels/layout.php:484
+msgid "Footer Widgets 4 animation "
+msgstr ""
+
+#: functions/theme-customizer/panels/layout.php:501
+msgid "Footer Widgets 5 animation "
+msgstr ""
+
+#: functions/theme-customizer/panels/layout.php:518
+msgid "Footer Widgets 6 animation "
+msgstr ""
+
+#: functions/theme-customizer/panels/layout.php:552
 msgid "Site Vertical Gutter"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:372
+#: functions/theme-customizer/panels/layout.php:561
 msgid "Gutter Width %"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:378
+#: functions/theme-customizer/panels/layout.php:566
 msgid "0 Percent"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:379
+#: functions/theme-customizer/panels/layout.php:567
 msgid "0.5 Percent"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:380
+#: functions/theme-customizer/panels/layout.php:568
 msgid "1 Percent"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:381
+#: functions/theme-customizer/panels/layout.php:569
 msgid "1.5 Percent"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:382
+#: functions/theme-customizer/panels/layout.php:570
 msgid "2 Percent"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:383
+#: functions/theme-customizer/panels/layout.php:571
 msgid "2.5 Percent"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:384
+#: functions/theme-customizer/panels/layout.php:572
 msgid "3 Percent"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:400
+#: functions/theme-customizer/panels/layout.php:588
 msgid "Site Content Width"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:411
+#: functions/theme-customizer/panels/layout.php:597
 msgid "Maximum Content Width"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:412
-msgid "Maximum content width in pixels in large screens."
-msgstr ""
-
-#: functions/theme-customizer/panels/layout.php:431
+#: functions/theme-customizer/panels/layout.php:617
 msgid "Stretched or Boxed Layout"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:463
+#: functions/theme-customizer/panels/layout.php:646
 msgid "Stretched Header with Boxed Content"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:480
-#: functions/theme-customizer/panels/layout.php:514
+#: functions/theme-customizer/panels/layout.php:662
+#: functions/theme-customizer/panels/layout.php:695
 msgid "Fix Header in Browser"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:481
-#: functions/theme-customizer/panels/layout.php:515
+#: functions/theme-customizer/panels/layout.php:663
+#: functions/theme-customizer/panels/layout.php:696
 msgid ""
 "Sites content will roll up under the nav bar / header which stays always "
 "visible (fixed) in the browser."
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:497
+#: functions/theme-customizer/panels/layout.php:679
 msgid "Stretched Footer with Boxed Content"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:531
+#: functions/theme-customizer/panels/layout.php:712
 msgid "Boxed Content Border"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:545
+#: functions/theme-customizer/panels/layout.php:724
 msgid "Border Settings"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:581
+#: functions/theme-customizer/panels/layout.php:758
 msgid "Border - Top / Bottom"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:693
+#: functions/theme-customizer/panels/layout.php:775
+#: functions/theme-customizer/panels/layout.php:963
+#: functions/theme-customizer/panels/layout.php:1375
+#: functions/theme-customizer/panels/navigation.php:255
+#: functions/theme-customizer/panels/navigation.php:621
+#: functions/theme-customizer/panels/navigation.php:1858
+#: functions/theme-customizer/panels/navigation.php:2070
+#: functions/theme-customizer/panels/navigation.php:2493
+#: functions/theme-customizer/panels/pages.php:798
+#: functions/theme-customizer/panels/posts.php:437
+#: functions/theme-customizer/panels/posts.php:675
+#: functions/theme-customizer/panels/settings.php:854
+msgid "Border Corner"
+msgstr ""
+
+#: functions/theme-customizer/panels/layout.php:865
 msgid "Boxed Content Inner Border"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:892
+#: functions/theme-customizer/panels/layout.php:1053
 msgid "Theme Background"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:920
+#: functions/theme-customizer/panels/layout.php:1078
 msgid "Tile or Pattern Background "
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:932
+#: functions/theme-customizer/panels/layout.php:1089
 msgid "Background Tiles and Patterns"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:949
+#: functions/theme-customizer/panels/layout.php:1106
 msgid "Tiles and Patterns"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:1015
+#: functions/theme-customizer/panels/layout.php:1168
+#: functions/theme-customizer/panels/navigation.php:123
+#: functions/theme-customizer/panels/navigation.php:468
 msgid "Image Resizer"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:1033
+#: functions/theme-customizer/panels/layout.php:1185
+#: functions/theme-customizer/panels/navigation.php:140
+#: functions/theme-customizer/panels/navigation.php:486
 msgid "Image Size"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:1034
+#: functions/theme-customizer/panels/layout.php:1186
 msgid "Supported values are auto, percentage e.g 50% and pixels e.g. 20px"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:1058
+#: functions/theme-customizer/panels/layout.php:1210
 msgid "Image Attachment"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:1084
+#: functions/theme-customizer/panels/layout.php:1235
 msgid ""
 "Supported values are top, bottom, left, right, center, percentage e.g. 50% "
 "and pixels e.g. 20px"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:1135
+#: functions/theme-customizer/panels/layout.php:1285
 msgid "Body Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:1147
+#: functions/theme-customizer/panels/layout.php:1295
 msgid ""
 "Container between Header / Primary Nav bar and the Footer. All pages, posts "
 "and sidebars sit inside this container"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:1161
+#: functions/theme-customizer/panels/layout.php:1309
 msgid "Body Content"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:1173
+#: functions/theme-customizer/panels/layout.php:1319
 msgid ""
 "Content between Header / Primary Nav bar and the Footer. All pages, posts "
 "and sidebars sit inside this container"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:1217
-#: functions/theme-customizer/panels/pages.php:831
-#: functions/theme-customizer/panels/settings.php:873
+#: functions/theme-customizer/panels/layout.php:1361
+#: functions/theme-customizer/panels/pages.php:782
+#: functions/theme-customizer/panels/settings.php:838
 msgid "Container Border - Left / Right"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:1262
-#: functions/theme-customizer/panels/navigation.php:228
-#: functions/theme-customizer/panels/navigation.php:417
+#: functions/theme-customizer/panels/layout.php:1403
+#: functions/theme-customizer/panels/navigation.php:287
+#: functions/theme-customizer/panels/navigation.php:906
 msgid "Border Margin"
 msgstr ""
 
-#: functions/theme-customizer/panels/layout.php:1288
-#: functions/theme-customizer/panels/navigation.php:254
-#: functions/theme-customizer/panels/navigation.php:443
+#: functions/theme-customizer/panels/layout.php:1428
+#: functions/theme-customizer/panels/navigation.php:312
+#: functions/theme-customizer/panels/navigation.php:931
 msgid "Border Padding"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:20
+#: functions/theme-customizer/panels/navigation.php:23
 msgid "Navigation Bars"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:31
+#: functions/theme-customizer/panels/navigation.php:33
 msgid "Nav Bar - Primary"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:36
+#: functions/theme-customizer/panels/navigation.php:38
 msgid "Nav Bar - Dropdown"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:41
+#: functions/theme-customizer/panels/navigation.php:43
 msgid "Nav Bar - Mobile"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:58
+#: functions/theme-customizer/panels/navigation.php:66
 msgid "Primary Nav Bar (PNB) Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:121
+#: functions/theme-customizer/panels/navigation.php:166
 msgid ""
 "Supports absolute values left, right, center, top, bottom or pixel values e."
 "g. 20px for inner container positioning of image"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:280
+#: functions/theme-customizer/panels/navigation.php:337
+msgid "Mobile Settings"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:404
+msgid "Nav Bar Area Inner Container"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:714
+msgid "Mobile Inner Content Settings"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:780
 msgid "PNB Tabs Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:469
+#: functions/theme-customizer/panels/navigation.php:956
 msgid "PNB Tabs Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:480
+#: functions/theme-customizer/panels/navigation.php:965
 msgid "Tab Colour"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:495
+#: functions/theme-customizer/panels/navigation.php:979
 msgid "Tab Hover Colour"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:510
+#: functions/theme-customizer/panels/navigation.php:993
+msgid "Tab Hover Border Colour"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:1007
 msgid "Open Tab Colour"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:525
+#: functions/theme-customizer/panels/navigation.php:1021
+msgid "Open Tab Border Colour"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:1035
 msgid "Tabs Alignment"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:546
+#: functions/theme-customizer/panels/navigation.php:1055
 msgid "Tabs Vertical Separator"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:561
+#: functions/theme-customizer/panels/navigation.php:1069
 msgid "PNB Tabs Border Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:735
+#: functions/theme-customizer/panels/navigation.php:1183
+msgid "Fisrt Item Border Corner - Top Left"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:1201
+msgid "Fisrt Item Border Corner - Top Right"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:1219
+msgid "Fisrt Item Border Corner - Bottom Left"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:1237
+msgid "Fisrt Item Border Corner - Bottom Right"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:1255
+msgid "Last Item Border Corner - Top Left"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:1273
+msgid "Last Item Border Corner - Top Right"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:1291
+msgid "Last Item Border Corner - Bottom Left"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:1309
+msgid "Last Item Border Corner - Bottom Right"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:1329
+msgid " Margin add space between each tab items."
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:1404
 msgid "Nav Bar Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:745
-#: functions/theme-customizer/panels/navigation.php:1076
+#: functions/theme-customizer/panels/navigation.php:1413
+#: functions/theme-customizer/panels/navigation.php:1722
 msgid "Menu Item Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:759
-#: functions/theme-customizer/panels/navigation.php:1104
+#: functions/theme-customizer/panels/navigation.php:1426
+#: functions/theme-customizer/panels/navigation.php:1748
 msgid "Font Transformation"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:779
-#: functions/theme-customizer/panels/navigation.php:1090
+#: functions/theme-customizer/panels/navigation.php:1445
+#: functions/theme-customizer/panels/navigation.php:1735
 msgid "Font on Hover"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:794
+#: functions/theme-customizer/panels/navigation.php:1459
 msgid "Open Item Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:810
+#: functions/theme-customizer/panels/navigation.php:1474
 msgid "Nav Bar Dropdown Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:985
+#: functions/theme-customizer/panels/navigation.php:1638
 msgid "Dropdown Item Containers"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:995
+#: functions/theme-customizer/panels/navigation.php:1647
 msgid "Container Colour"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:1009
+#: functions/theme-customizer/panels/navigation.php:1660
 msgid "Container Hover Colour"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:1024
+#: functions/theme-customizer/panels/navigation.php:1674
 msgid "Item Container Padding"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:1050
+#: functions/theme-customizer/panels/navigation.php:1699
 msgid "Item Horizontal Separator"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:1065
+#: functions/theme-customizer/panels/navigation.php:1713
 msgid "Dropdown Menu Item Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:1126
-msgid "Mobile and Tablet Nav Bar"
+#: functions/theme-customizer/panels/navigation.php:1769
+msgid "Nav Bar Mobile Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/navigation.php:1135
-msgid "Nav Bar - Mobile Type"
+#: functions/theme-customizer/panels/navigation.php:1959
+msgid "Mobile Icon Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:20
+#: functions/theme-customizer/panels/navigation.php:2171
+msgid "Icon Size & Colour"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:2201
+msgid "Size"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:2221
+msgid "Colour"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:2238
+#: functions/theme-customizer/panels/navigation.php:2678
+#: functions/theme-customizer/panels/navigation.php:2820
+msgid "Separator"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:2268
+msgid "Nav Bar Mobile Text"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:2277
+msgid "Navigation Text"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:2334
+#: functions/theme-customizer/panels/navigation.php:2625
+#: functions/theme-customizer/panels/navigation.php:2781
+msgid "Font transform"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:2416
+msgid "Mobile and Tablet Dropdown"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:2582
+msgid "Nav Bar Mobile Dropdown Items"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:2611
+#: functions/theme-customizer/panels/navigation.php:2753
+msgid "Colour on Mouse Over"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:2664
+#: functions/theme-customizer/panels/navigation.php:2806
+msgid "Hover background color"
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:2698
+msgid ""
+"Padding between the Item cell Border and the Item (space around each item "
+"text)."
+msgstr ""
+
+#: functions/theme-customizer/panels/navigation.php:2723
+msgid "Child Menu"
+msgstr ""
+
+#: functions/theme-customizer/panels/pages.php:23
 msgid "Pages"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:31
+#: functions/theme-customizer/panels/pages.php:33
 msgid "Pages Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:36
+#: functions/theme-customizer/panels/pages.php:38
 msgid "Archive Pages - Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:41
+#: functions/theme-customizer/panels/pages.php:43
 msgid "Archive Pages - Features"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:46
-#: functions/theme-customizer/panels/pages.php:1001
+#: functions/theme-customizer/panels/pages.php:48
+#: functions/theme-customizer/panels/pages.php:940
 msgid "404 Page"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:62
-#: functions/theme-customizer/panels/pages.php:273
+#: functions/theme-customizer/panels/pages.php:70
+#: functions/theme-customizer/panels/pages.php:272
 msgid "Page Content Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:86
+#: functions/theme-customizer/panels/pages.php:91
 msgid "Content Container Border"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:100
-#: functions/theme-customizer/panels/pages.php:558
-msgid "Border Corners"
-msgstr ""
-
-#: functions/theme-customizer/panels/pages.php:179
+#: functions/theme-customizer/panels/pages.php:167
 msgid "Page Title Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:223
-#: functions/theme-customizer/panels/pages.php:448
-#: functions/theme-customizer/panels/posts.php:213
+#: functions/theme-customizer/panels/pages.php:226
+#: functions/theme-customizer/panels/pages.php:441
+#: functions/theme-customizer/panels/posts.php:215
 msgid "Title Margin"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:248
+#: functions/theme-customizer/panels/pages.php:250
 msgid "Page Content Font Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:274
+#: functions/theme-customizer/panels/pages.php:273
 msgid ""
 "Blog Page Template and WordPress Category and Tag and custom category and "
 "tag taxonomy pages - e.g. WooCommerce Shop page, product category and tag "
 "pages"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:390
+#: functions/theme-customizer/panels/pages.php:369
 msgid "Archive Pages Title"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:434
+#: functions/theme-customizer/panels/pages.php:428
 msgid "Under Title Border"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:473
+#: functions/theme-customizer/panels/pages.php:465
 msgid "Custom Content Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:497
-#: functions/theme-customizer/panels/pages.php:507
+#: functions/theme-customizer/panels/pages.php:486
+#: functions/theme-customizer/panels/pages.php:495
 msgid "Inner Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:498
+#: functions/theme-customizer/panels/pages.php:487
 msgid ""
 "Applies to the Archive Page title and any custom content added to the top of "
 "the page above the blog cards"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:541
+#: functions/theme-customizer/panels/pages.php:527
 msgid "Container Borders"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:649
+#: functions/theme-customizer/panels/pages.php:614
 msgid "Cards Per Endless Scroll"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:660
+#: functions/theme-customizer/panels/pages.php:623
 msgid "Number of Cards to Load"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:675
+#: functions/theme-customizer/panels/pages.php:637
 msgid "Endless Scroll - Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:686
+#: functions/theme-customizer/panels/pages.php:646
 msgid "Endless Scroll Load"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:710
+#: functions/theme-customizer/panels/pages.php:669
 msgid "Click to Load Text"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:765
+#: functions/theme-customizer/panels/pages.php:721
 msgid "Click to Load Text Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:941
+#: functions/theme-customizer/panels/pages.php:887
 msgid "Blog Page - Exclude Categories"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:952
+#: functions/theme-customizer/panels/pages.php:896
 msgid "Category ID"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:953
+#: functions/theme-customizer/panels/pages.php:897
 #, php-format
 msgid ""
 "Specify a comma seperated list of <a href=\"%s\">Post Category</a> IDs or "
@@ -1688,381 +1921,608 @@ msgid ""
 "uncategorized)."
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:966
+#: functions/theme-customizer/panels/pages.php:910
 msgid "Blog Category Pages RSS"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:977
+#: functions/theme-customizer/panels/pages.php:919
 msgid "Category Pages RSS Link"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:991
+#: functions/theme-customizer/panels/pages.php:932
 msgid "404 Page Not Found"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:1002
+#: functions/theme-customizer/panels/pages.php:941
 msgid ""
 "Home page is default 404 error page visitors are redirected to when they "
 "encounter a broken link"
 msgstr ""
 
-#: functions/theme-customizer/panels/pages.php:1019
+#: functions/theme-customizer/panels/pages.php:958
 msgid "Select a page:"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:20
+#: functions/theme-customizer/panels/posts.php:23
 msgid "Blog Posts"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:32
+#: functions/theme-customizer/panels/posts.php:34
 msgid "Post Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:37
+#: functions/theme-customizer/panels/posts.php:39
 msgid "Post Features"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:53
+#: functions/theme-customizer/panels/posts.php:61
 msgid "Post Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:77
+#: functions/theme-customizer/panels/posts.php:82
 msgid "Container Border"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:169
+#: functions/theme-customizer/panels/posts.php:156
 msgid "Post Title"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:238
+#: functions/theme-customizer/panels/posts.php:239
 msgid "Post Content Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:263
+#: functions/theme-customizer/panels/posts.php:261
 msgid "Categories Meta Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:307
-#: functions/theme-customizer/panels/posts.php:564
-#: functions/theme-customizer/panels/posts.php:886
-#: functions/theme-customizer/panels/settings.php:741
+#: functions/theme-customizer/panels/posts.php:301
+#: functions/theme-customizer/panels/posts.php:539
+#: functions/theme-customizer/panels/posts.php:837
+#: functions/theme-customizer/panels/settings.php:716
 msgid "Text Link Colour"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:337
+#: functions/theme-customizer/panels/posts.php:329
 msgid "Categories Meta Icon"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:348
-#: functions/theme-customizer/panels/posts.php:605
+#: functions/theme-customizer/panels/posts.php:338
+#: functions/theme-customizer/panels/posts.php:576
 msgid "Meta Icon"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:388
+#: functions/theme-customizer/panels/posts.php:376
 msgid "Categories Meta Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:441
-#: functions/theme-customizer/panels/posts.php:698
+#: functions/theme-customizer/panels/posts.php:424
+#: functions/theme-customizer/panels/posts.php:662
 msgid "Border - Left / Righ"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:520
+#: functions/theme-customizer/panels/posts.php:499
 msgid "Tag Meta Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:594
+#: functions/theme-customizer/panels/posts.php:567
 msgid "Tag Meta Icon"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:645
+#: functions/theme-customizer/panels/posts.php:614
 msgid "Tag Meta Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:777
+#: functions/theme-customizer/panels/posts.php:737
 msgid "Post Title Meta"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:789
+#: functions/theme-customizer/panels/posts.php:747
 msgid "Post Author"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:834
+#: functions/theme-customizer/panels/posts.php:789
 msgid "Post Title Meta Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:922
+#: functions/theme-customizer/panels/posts.php:871
 msgid "Post Title Meta Icons"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:936
+#: functions/theme-customizer/panels/posts.php:883
 msgid "Meta Icons"
 msgstr ""
 
-#: functions/theme-customizer/panels/posts.php:976
+#: functions/theme-customizer/panels/posts.php:921
 msgid "Post Title Meta Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:20
+#: functions/theme-customizer/panels/settings.php:23
 msgid "General Settings"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:31
+#: functions/theme-customizer/panels/settings.php:33
 msgid "Site Logo & Images"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:36
+#: functions/theme-customizer/panels/settings.php:38
 msgid "Site Buttons"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:41
+#: functions/theme-customizer/panels/settings.php:43
 msgid "Site Text Links"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:46
-#: functions/theme-customizer/panels/settings.php:522
+#: functions/theme-customizer/panels/settings.php:48
+#: functions/theme-customizer/panels/settings.php:517
 msgid "Comments"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:51
+#: functions/theme-customizer/panels/settings.php:53
 msgid "Site Typography"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:56
+#: functions/theme-customizer/panels/settings.php:58
 msgid "Breadcrumb Navigation"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:61
-#: functions/theme-customizer/panels/settings.php:982
-msgid "Add Custom CSS"
-msgstr ""
-
-#: functions/theme-customizer/panels/settings.php:78
+#: functions/theme-customizer/panels/settings.php:81
 msgid "Site Logo"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:90
+#: functions/theme-customizer/panels/settings.php:91
 msgid "Site Title and Tag Line"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:102
+#: functions/theme-customizer/panels/settings.php:101
 msgid "Site Title Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:118
+#: functions/theme-customizer/panels/settings.php:116
 msgid "Show in Header"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:136
+#: functions/theme-customizer/panels/settings.php:133
 msgid "Tagline Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:155
+#: functions/theme-customizer/panels/settings.php:151
 msgid "Site Icon"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:167
+#: functions/theme-customizer/panels/settings.php:161
 msgid "Site Default Image"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:178
+#: functions/theme-customizer/panels/settings.php:170
 msgid "Default Image"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:179
+#: functions/theme-customizer/panels/settings.php:171
 msgid ""
 "When no image is uploaded or featured in a Post or custom post type the "
 "default image is used. Social Share OpenGraph requires image be larger than "
 "200px by 200px"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:194
+#: functions/theme-customizer/panels/settings.php:186
 msgid "RSS Feed Image"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:205
+#: functions/theme-customizer/panels/settings.php:195
 msgid "RSS Image Thumbnail"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:219
+#: functions/theme-customizer/panels/settings.php:208
 msgid "Site Button Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:243
+#: functions/theme-customizer/panels/settings.php:230
 msgid "Font Shadow"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:257
+#: functions/theme-customizer/panels/settings.php:243
 msgid "Transform"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:277
+#: functions/theme-customizer/panels/settings.php:262
 msgid "Base Background Colour"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:291
+#: functions/theme-customizer/panels/settings.php:275
 msgid "Gradient from"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:305
+#: functions/theme-customizer/panels/settings.php:288
 msgid "Gradient to"
+msgstr ""
+
+#: functions/theme-customizer/panels/settings.php:444
+msgid "Exclude Buttons by class or id from Framework Button style"
+msgstr ""
+
+#: functions/theme-customizer/panels/settings.php:454
+msgid ""
+"Enter button class (eg: .button-class) or ID (eg: .button-id) that you want "
+"excluded, comma separated if more than 1."
 msgstr ""
 
 #: functions/theme-customizer/panels/settings.php:470
 msgid "Site Link Colours"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:480
+#: functions/theme-customizer/panels/settings.php:478
 msgid "Text link Colour"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:494
+#: functions/theme-customizer/panels/settings.php:491
 msgid "Text Link Colour on Mouse Over"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:508
+#: functions/theme-customizer/panels/settings.php:504
 msgid "Clicked Text Link Colour"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:532
+#: functions/theme-customizer/panels/settings.php:525
 msgid "Post/Page Comments"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:542
-msgid "None"
-msgstr ""
-
-#: functions/theme-customizer/panels/settings.php:542
+#: functions/theme-customizer/panels/settings.php:534
 msgid "Posts Only"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:542
+#: functions/theme-customizer/panels/settings.php:534
 msgid "Pages Only"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:542
+#: functions/theme-customizer/panels/settings.php:534
 msgid "Pages / Posts"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:551
+#: functions/theme-customizer/panels/settings.php:543
 msgid "Comments Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:561
+#: functions/theme-customizer/panels/settings.php:551
 msgid "Comments Background Color (even threads)"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:575
+#: functions/theme-customizer/panels/settings.php:564
 msgid "Default Typography"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:576
+#: functions/theme-customizer/panels/settings.php:565
 msgid ""
 "These fonts are your theme designs default fonts. There are many sections "
 "where these can be over ridden with custom font options"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:585
+#: functions/theme-customizer/panels/settings.php:573
 msgid "General Text Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:599
+#: functions/theme-customizer/panels/settings.php:586
 msgid "H1 Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:613
+#: functions/theme-customizer/panels/settings.php:599
 msgid "H2 Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:627
+#: functions/theme-customizer/panels/settings.php:612
 msgid "H3 Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:641
+#: functions/theme-customizer/panels/settings.php:625
 msgid "H4 Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:655
+#: functions/theme-customizer/panels/settings.php:638
 msgid "H5 Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:669
+#: functions/theme-customizer/panels/settings.php:651
 msgid "H6 Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:683
+#: functions/theme-customizer/panels/settings.php:664
 msgid "Site Breadcrumbs"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:693
+#: functions/theme-customizer/panels/settings.php:672
 msgid "Breadcrumbs"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:711
+#: functions/theme-customizer/panels/settings.php:689
 msgid "Breadcrumb Font"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:776
+#: functions/theme-customizer/panels/settings.php:749
 msgid "Breadcrumb Separator"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:789
+#: functions/theme-customizer/panels/settings.php:760
 msgid "Arrow Separator"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:806
+#: functions/theme-customizer/panels/settings.php:776
 msgid "Breadcrumb Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:992
-msgid "Custom CSS"
+#: functions/theme-customizer/panels/settings.php:942
+msgid "Add Custom CSS"
 msgstr ""
 
-#: functions/theme-customizer/panels/settings.php:993
-msgid "Quickly add some CSS to your Responsi Child Theme by adding it here."
-msgstr ""
-
-#: functions/theme-customizer/panels/widget.php:29
+#: functions/theme-customizer/panels/sidebar.php:32
 msgid "Sidebars and Widgets"
 msgstr ""
 
-#: functions/theme-customizer/panels/widget.php:41
+#: functions/theme-customizer/panels/sidebar.php:43
 msgid "Sidebars - Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/widget.php:46
+#: functions/theme-customizer/panels/sidebar.php:48
 msgid "Sidebar Widgets - Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/widget.php:62
+#: functions/theme-customizer/panels/sidebar.php:70
 msgid "Sidebar Container"
 msgstr ""
 
-#: functions/theme-customizer/panels/widget.php:340
+#: functions/theme-customizer/panels/sidebar.php:127
+msgid ""
+"Supports absolute values left, right, center, top, bottom or pixel values e."
+"g. 20px for inner container positioning of image."
+msgstr ""
+
+#: functions/theme-customizer/panels/sidebar.php:332
 msgid "Sidebar Widget Style"
 msgstr ""
 
-#: functions/theme-customizer/panels/widget.php:449
+#: functions/theme-customizer/panels/sidebar.php:421
+msgid "Animation "
+msgstr ""
+
+#: functions/theme-customizer/panels/sidebar.php:435
 msgid "Widget Title Font"
 msgstr ""
 
-#: functions/theme-extension.php:58
+#: functions/theme-customizer/responsi-customize.php:458
+msgid "Tagline / Description"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:917
+#: functions/theme-customizer/responsi-customize.php:1025
+msgid "ROUNDED"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:918
+#: functions/theme-customizer/responsi-customize.php:1026
+msgid "SQUARE"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:939
+msgid "INNER"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:940
+msgid "OUTER"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:965
+msgid "100"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:966
+msgid "200"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:967
+msgid "300"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:968
+msgid "400"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:969
+msgid "500"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:970
+msgid "600"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:971
+msgid "700"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:972
+msgid "800"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:973
+msgid "900"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:974
+msgid "Deafult"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:975
+msgid "Thin"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:976
+msgid "Thin/Italic"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:977
+msgid "Italic"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:978
+msgid "Bold"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:979
+msgid "Bold/Italic"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:990
+#: functions/theme-customizer/responsi-customize.php:1008
+msgid "Solid"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:991
+#: functions/theme-customizer/responsi-customize.php:1009
+msgid "Dashed"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:992
+#: functions/theme-customizer/responsi-customize.php:1010
+msgid "Dotted"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:993
+#: functions/theme-customizer/responsi-customize.php:1011
+msgid "Double"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:994
+#: functions/theme-customizer/responsi-customize.php:1012
+msgid "Groove"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:995
+#: functions/theme-customizer/responsi-customize.php:1013
+msgid "Ridge"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:996
+#: functions/theme-customizer/responsi-customize.php:1014
+msgid "Inset"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:997
+#: functions/theme-customizer/responsi-customize.php:1015
+msgid "Outset"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1036
+msgid "Flash"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1037
+msgid "Pulse"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1038
+msgid "Rubber Band"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1039
+msgid "Shake"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1040
+msgid "Swing"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1041
+msgid "Tada"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1042
+msgid "Wobble"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1043
+msgid "Jello"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1044
+msgid "Heart Beat"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1045
+msgid "Hinge"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1046
+msgid "Jack In The Box"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1047
+msgid "Roll"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1048
+msgid "Light Speed"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1049
+msgid "Flip"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1050
+msgid "Flip X"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1051
+msgid "Flip Y"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1052
+msgid "Rotate"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1053
+msgid "Bounce"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1054
+msgid "Fade"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1055
+msgid "Slide"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1056
+msgid "Zoom"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1062
+msgid "Top"
+msgstr ""
+
+#: functions/theme-customizer/responsi-customize.php:1063
+msgid "Bottom"
+msgstr ""
+
+#. translators: Maximum number of words used in a post excerpt.
+#: functions/theme-extension.php:38
+msgctxt "excerpt_length"
+msgid "55"
+msgstr ""
+
+#: functions/theme-extension.php:155
 msgid "Responsi"
 msgstr ""
 
-#: functions/theme-extension.php:70
+#: functions/theme-extension.php:167
 msgid "Theme Customizer"
 msgstr ""
 
-#: functions/theme-extension.php:88
+#: functions/theme-extension.php:185
 msgid "Changelog"
 msgstr ""
 
-#: functions/theme-functions.php:447
+#: functions/theme-functions.php:464
 msgid "Primary Sidebar"
 msgstr ""
 
-#: functions/theme-functions.php:447 functions/theme-functions.php:502
+#: functions/theme-functions.php:464 functions/theme-functions.php:519
 msgid ""
 "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec massa "
 "enim. Aliquam viverra at est ullamcorper sollicitudin. Proin a leo sit amet "
@@ -2072,154 +2532,174 @@ msgid ""
 "pharetra ut eros.</p>"
 msgstr ""
 
-#: functions/theme-functions.php:502
+#: functions/theme-functions.php:519
 msgid "Secondary Sidebar"
 msgstr ""
 
-#: functions/theme-functions.php:602
+#: functions/theme-functions.php:649
 msgctxt "Used before publish date."
 msgid "Posted on"
 msgstr ""
 
-#: functions/theme-functions.php:624
+#: functions/theme-functions.php:671
 msgctxt "Used before post author name."
 msgid "Author"
 msgstr ""
 
-#: functions/theme-functions.php:682
+#: functions/theme-functions.php:729
 msgid "Comments [ 0 ]"
 msgstr ""
 
-#: functions/theme-functions.php:683
+#: functions/theme-functions.php:730
 msgid "Comments [ 1 ]"
 msgstr ""
 
-#: functions/theme-functions.php:684
+#: functions/theme-functions.php:731
 msgid "Comments [ % ]"
 msgstr ""
 
-#: functions/theme-functions.php:686
+#: functions/theme-functions.php:733
 msgid "Comments are closed"
 msgstr ""
 
-#: functions/theme-functions.php:727
+#: functions/theme-functions.php:774
 msgid "Tags: "
 msgstr ""
 
-#: functions/theme-functions.php:797
+#: functions/theme-functions.php:844
 msgid "Login"
 msgstr ""
 
-#: functions/theme-functions.php:799
+#: functions/theme-functions.php:846
 msgid "Logout"
 msgstr ""
 
-#: functions/theme-functions.php:925 functions/theme-functions.php:928
+#: functions/theme-functions.php:996 functions/theme-functions.php:999
 msgid "Logo"
 msgstr ""
 
-#: functions/theme-functions.php:1059
+#: functions/theme-functions.php:1151
 #, php-format
 msgid "%1$s"
 msgstr ""
 
-#: functions/theme-functions.php:1092
+#: functions/theme-functions.php:1184
 msgid "RSS feed for this section"
 msgstr ""
 
-#: functions/theme-functions.php:1420
-msgid "Navigation"
+#: functions/theme-functions.php:1720
+#, php-format
+msgid "Search results for &quot;%s&quot;"
 msgstr ""
 
-#: functions/theme-functions.php:1700
+#: functions/theme-functions.php:1867
 msgid "Posted in"
 msgstr ""
 
-#: functions/theme-functions.php:1719
+#: functions/theme-functions.php:1886
 msgid "Tags"
 msgstr ""
 
-#: functions/theme-functions.php:1754
+#: functions/theme-functions.php:1921
 msgid "Name"
 msgstr ""
 
-#: functions/theme-functions.php:1754 functions/theme-functions.php:1755
+#: functions/theme-functions.php:1921 functions/theme-functions.php:1922
 msgid "required"
 msgstr ""
 
-#: functions/theme-functions.php:1755
-msgid "Email (will not be published)"
+#: functions/theme-functions.php:1922
+msgid "Email"
 msgstr ""
 
-#: functions/theme-functions.php:1756
+#: functions/theme-functions.php:1923
 msgid "Website"
 msgstr ""
 
-#: functions/theme-functions.php:1776
+#: functions/theme-functions.php:1942
 msgid "Submit Comment"
 msgstr ""
 
-#: functions/theme-functions.php:1779
+#: functions/theme-functions.php:1945
 msgid "Cancel reply"
 msgstr ""
 
-#: functions/theme-functions.php:1964
+#: functions/theme-functions.php:2179
 msgid "at"
 msgstr ""
 
-#: functions/theme-functions.php:1965
+#: functions/theme-functions.php:2180
 msgid "Direct link to this comment"
 msgstr ""
 
 # @ woothemes
-#: functions/theme-functions.php:1966
+#: functions/theme-functions.php:2181
 msgid "Edit"
 msgstr ""
 
 # @ woothemes
-#: functions/theme-functions.php:1972
+#: functions/theme-functions.php:2187
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: functions/theme-hooks.php:101
+#: functions/theme-hooks.php:175
 msgid "Show more"
 msgstr ""
 
-#: functions/theme-hooks.php:104
+#: functions/theme-hooks.php:178
 msgid "No more Posts to load."
 msgstr ""
 
-#: functions/theme-hooks.php:105
+#: functions/theme-hooks.php:179
 msgid "Loading the next set of post..."
 msgstr ""
 
-#: functions/theme-sidebar-init.php:15
+#: functions/theme-privacy.php:28
+msgid "Suggested text:"
+msgstr ""
+
+#: functions/theme-privacy.php:34
+#, php-format
+msgid ""
+"Responsi Theme Framework uses fonts from <a href=\"%s\" target=\"_blank\" "
+"rel=\"noopener\">google fonts</a>, you should list in privacy page."
+msgstr ""
+
+#: functions/theme-privacy.php:35
+msgid ""
+"Links on this site may use Google fonts. Google may collect data about you, "
+"use cookies, IP, embed additional third-party tracking."
+msgstr ""
+
+#: functions/theme-privacy.php:36
+#, php-format
+msgid ""
+"Please see the <a href=\"%s\" target=\"_blank\" rel=\"noopener\">Google "
+"Privacy Policy</a> for more details."
+msgstr ""
+
+#: functions/theme-sidebar-init.php:32
 msgid "Primary"
 msgstr ""
 
-#: functions/theme-sidebar-init.php:15
+#: functions/theme-sidebar-init.php:32
 msgid "Normal full width Sidebar"
 msgstr ""
 
-#: functions/theme-sidebar-init.php:16
+#: functions/theme-sidebar-init.php:33
 msgid "Secondary"
 msgstr ""
 
-#: functions/theme-sidebar-init.php:16
+#: functions/theme-sidebar-init.php:33
 msgid "Secondary sidebar for use in three column layout"
 msgstr ""
 
-#: functions/theme-sidebar-init.php:29
+#: functions/theme-sidebar-init.php:46
 msgid "Widgetized header"
 msgstr ""
 
-#: functions/theme-sidebar-init.php:43
+#: functions/theme-sidebar-init.php:60
 msgid "Widgetized footer"
-msgstr ""
-
-#: loop-search.php:15
-#, php-format
-msgid "Search results for &quot;%s&quot;"
 msgstr ""
 
 #: search-form.php:3
