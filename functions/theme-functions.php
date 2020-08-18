@@ -23,7 +23,13 @@ if ( !function_exists( 'responsi_layout_class' ) ) {
         $sidebar_box, 
         $sidebar_alt_box,
         $wrapper_content, 
-        $wrapper_content_top;
+        $wrapper_content_top,
+        $header_fullwide,
+        $navbar_fullwide,
+        $content_fullwide,
+        $footerwidget_fullwide,
+        $footer_fullwide,
+        $responsi_custom_meta;
     
         if( !is_array( $responsi_options ) ) return;
 
@@ -114,7 +120,7 @@ if ( !function_exists( 'responsi_layout_class' ) ) {
             }
 
         } else {
-
+        
             $content_column = get_post_meta( $page_id, 'content_layout', true );
 
             if ( $content_column <= 0 || '' === $content_column ) {
@@ -137,6 +143,54 @@ if ( !function_exists( 'responsi_layout_class' ) ) {
             }
         }
 
+        if( is_array( $responsi_custom_meta ) && count( $responsi_custom_meta) > 0 ){
+            if ( isset($responsi_custom_meta['responsi_header_fullwide'] ) && true === $responsi_custom_meta['responsi_header_fullwide'] ) {
+                $responsi_options['responsi_header_fullwide'] = 'true';
+            }
+
+            if ( isset($responsi_custom_meta['responsi_navbar_fullwide'] ) && true === $responsi_custom_meta['responsi_navbar_fullwide'] ) {
+                $responsi_options['responsi_navbar_fullwide'] = 'true';
+            }
+
+            if ( isset($responsi_custom_meta['responsi_content_fullwide'] ) && true === $responsi_custom_meta['responsi_content_fullwide'] ) {
+                $responsi_options['responsi_content_fullwide'] = 'true';
+                $layout = 'one-col';
+            }
+
+            if ( isset($responsi_custom_meta['responsi_footerwidget_fullwide'] ) && true === $responsi_custom_meta['responsi_footerwidget_fullwide'] ) {
+                $responsi_options['responsi_footerwidget_fullwide'] = 'true';
+            }
+
+            if ( isset($responsi_custom_meta['responsi_footer_fullwide'] ) && true === $responsi_custom_meta['responsi_footer_fullwide'] ) {
+               $responsi_options['responsi_footer_fullwide'] = 'true';
+            }
+        }elseif( $page_id > 0 ){
+            $responsi_header_fullwide = get_post_meta( $page_id, 'responsi_header_fullwide', true );
+            if ( '' !== $responsi_header_fullwide ) {
+                $responsi_options['responsi_header_fullwide'] = $responsi_header_fullwide;
+            }
+
+            $responsi_navbar_fullwide = get_post_meta( $page_id, 'responsi_navbar_fullwide', true );
+            if ( '' !== $responsi_navbar_fullwide ) {
+                $responsi_options['responsi_navbar_fullwide'] = $responsi_navbar_fullwide;
+            }
+
+            $responsi_content_fullwide = get_post_meta( $page_id, 'responsi_content_fullwide', true );
+            if ( '' !== $responsi_content_fullwide ) {
+                $responsi_options['responsi_content_fullwide'] = $responsi_content_fullwide;
+            }
+
+            $responsi_footerwidget_fullwide = get_post_meta( $page_id, 'responsi_footerwidget_fullwide', true );
+            if ( '' !== $responsi_footerwidget_fullwide ) {
+                $responsi_options['responsi_footerwidget_fullwide'] = $responsi_footerwidget_fullwide;
+            }
+
+            $responsi_footer_fullwide = get_post_meta( $page_id, 'responsi_footer_fullwide', true );
+            if ( '' !== $responsi_footer_fullwide ) {
+                $responsi_options['responsi_footer_fullwide'] = $responsi_footer_fullwide;
+            }
+        }
+
         if ( $content_column <= 0 ) {
             $content_column = $responsi_options['responsi_content_layout'];
         }
@@ -148,7 +202,38 @@ if ( !function_exists( 'responsi_layout_class' ) ) {
         if ($content_column_grid <= 0 || '' === $content_column_grid )
             $content_column_grid = 3;
 
-        apply_filters( 'responsi_layouts', $content_column_grid, $wrapper_content_top, $wrapper_content, $layout_column, $content_column, $layout_column_top, $layout_top, $layout );
+        if ( isset( $responsi_options['responsi_header_fullwide'] ) && 'true' == $responsi_options['responsi_header_fullwide'] ) {
+            $header_fullwide = true;
+        }else{
+            $header_fullwide = false;
+        }
+
+        if ( isset( $responsi_options['responsi_navbar_fullwide'] ) && 'true' == $responsi_options['responsi_navbar_fullwide'] ) {
+            $navbar_fullwide = true;
+        }else{
+            $navbar_fullwide = false;
+        }
+
+        if ( isset( $responsi_options['responsi_content_fullwide'] ) && 'true' == $responsi_options['responsi_content_fullwide'] ) {
+            $content_fullwide = true;
+            //$layout = 'one-col';
+        }else{
+            $content_fullwide = false;
+        }
+
+        if ( isset( $responsi_options['responsi_footerwidget_fullwide'] ) && 'true' == $responsi_options['responsi_footerwidget_fullwide'] ) {
+            $footerwidget_fullwide = true;
+        }else{
+            $footerwidget_fullwide = false;
+        }
+
+        if ( isset( $responsi_options['responsi_footer_fullwide'] ) && 'true' == $responsi_options['responsi_footer_fullwide'] ) {
+            $footer_fullwide = true;
+        }else{
+            $footer_fullwide = false;
+        }
+
+        apply_filters( 'responsi_layouts', $content_column_grid, $wrapper_content_top, $wrapper_content, $layout_column, $content_column, $layout_column_top, $layout_top, $layout, $header_fullwide, $navbar_fullwide, $content_fullwide, $footerwidget_fullwide, $footer_fullwide );
 
         if ( 'one-col' === $layout ) {
             $wrapper_content    = 'full';
@@ -332,7 +417,7 @@ if ( !function_exists( 'responsi_header' ) ) {
         do_action( 'responsi_doctype_before' );
         $heading_tag = 'span';
         if ( is_home() OR is_front_page() ) { $heading_tag = 'h1'; }
-        global $responsi_options, $wrapper_content, $layout_column, $layout, $responsi_layout_boxed, $responsi_header_is_inside, $responsi_header_is_outside, $sidebar_box, $main_box, $sidebar_alt_box;
+        global $responsi_options, $wrapper_content, $layout_column, $layout, $responsi_layout_boxed, $responsi_header_is_inside, $responsi_header_is_outside, $sidebar_box, $main_box, $sidebar_alt_box, $header_fullwide, $navbar_fullwide, $content_fullwide, $footerwidget_fullwide, $footer_fullwide;
         ?>
         <!DOCTYPE html>
         <html <?php language_attributes(); ?>>
@@ -381,7 +466,7 @@ if ( !function_exists( 'responsi_header' ) ) {
         <?php do_action( 'responsi_wrapper_content_before' ); ?>
         <div id="responsi-content" class="responsi-content clearfix col-<?php echo esc_attr( $layout_column );?>-<?php echo esc_attr( $wrapper_content );?>">
         <?php do_action( 'responsi_wrapper_content_content_before' ); ?>
-        <div id="content-ctn" class="content-ctn site-width clearfix">
+        <div id="content-ctn" class="content-ctn<?php if( true != $content_fullwide ){echo ' site-width';}?> clearfix">
         <?php do_action( 'responsi_wrapper_article_before' ); ?>
         <article id="content-in" class="content-in clearfix">
         <?php global $shiftclick; echo $shiftclick;?>
@@ -396,7 +481,7 @@ if ( !function_exists( 'responsi_header' ) ) {
 if ( !function_exists( 'responsi_footer' ) ) {
 
     function responsi_footer() {
-        global $responsi_options, $responsi_footer_is_outside, $shiftclick;
+        global $responsi_options, $responsi_footer_is_outside, $shiftclick, $footer_fullwide;
         ?>
         <?php do_action( 'responsi_wrapper_article_content_after' ); ?>
         </article>
@@ -418,7 +503,7 @@ if ( !function_exists( 'responsi_footer' ) ) {
         ?>
         <?php do_action( 'responsi_wrapper_footer_before' ); ?>
         <div id="responsi-footer" class="responsi-footer clearfix">
-          <div id="footer-ctn" class="footer-ctn site-width clearfix">
+          <div id="footer-ctn" class="footer-ctn<?php if( true != $footer_fullwide ){echo ' site-width';}?> clearfix">
             <div id="footer-in" class="footer-in clearfix">
             <footer id="footer" class="footer col-full lv0 clearfix">
               <div id="additional" class="additional col-below clearfix">
@@ -1324,12 +1409,12 @@ function responsi_404_redirect() {
 /*-----------------------------------------------------------------------------------*/
 
 function responsi_wrapper_header() {
-    global $shiftclick;
+    global $shiftclick, $header_fullwide;
     do_action( 'responsi_wrapper_header_before' );
     ?>
     <div id="responsi-header" class="responsi-header clearfix">
       <?php do_action( 'responsi_wrapper_header_content_before' ); ?>
-      <div id="header-cnt" class="header-cnt site-width clearfix">
+      <div id="header-cnt" class="header-cnt<?php if( true != $header_fullwide ){echo ' site-width';}?> clearfix">
         <div id="header-in" class="header-in clearfix">
         <?php do_action( 'responsi_wrapper_header_content' ); ?>
         </div>
@@ -1509,11 +1594,11 @@ if ( !function_exists( 'responsi_wrapper_header_content' ) ) {
 /*-----------------------------------------------------------------------------------*/
 
 function responsi_wrapper_nav() {
-    global $shiftclick;
+    global $shiftclick, $navbar_fullwide;
     do_action( 'responsi_wrapper_nav_before' );
     ?>
     <div id="responsi-navigation" class="responsi-navigation clearfix">
-      <div id="navigation-ctn" class="navigation-ctn site-width clearfix">
+      <div id="navigation-ctn" class="navigation-ctn<?php if( true != $navbar_fullwide ){echo ' site-width';}?> clearfix">
         <?php do_action( 'responsi_wrapper_nav_content' ); ?>
       </div>
       <?php echo $shiftclick;?>
@@ -1621,7 +1706,7 @@ if ( !function_exists( 'responsi_main_wrap_after' ) ) {
 
 if ( !function_exists( 'responsi_footer_sidebars' ) ) {
     function responsi_footer_sidebars() {
-        global $responsi_options, $has_footer_sidebars, $shiftclick;
+        global $responsi_options, $has_footer_sidebars, $shiftclick, $footerwidget_fullwide;
 
         $footer_sidebar_total = 6;
         $has_footer_sidebars  = false;
@@ -1642,9 +1727,15 @@ if ( !function_exists( 'responsi_footer_sidebars' ) ) {
             $total = 0;
         }
 
+        $sitewidth = ' site-width';
+
+        if( true != $footerwidget_fullwide ){
+            $sitewidth = '';
+        }
+
         $footer_widget_container_before = '
         <div id="responsi-footer-widgets" class="responsi-footer-widgets clearfix">
-            <div id="footer-widgets-ctn" class="footer-widgets-ctn site-width clearfix lv0">
+            <div id="footer-widgets-ctn" class="footer-widgets-ctn'.$sitewidth.' clearfix lv0">
                 <div id="footer-widgets-in" class="footer-widgets-in clearfix">';
         $footer_widget_container_after = '
                 </div>
@@ -2063,6 +2154,26 @@ if ( !function_exists( 'responsi_custom_layout_width' ) ) {
 /*-----------------------------------------------------------------------------------*/
 /* responsi_custom_content_metabox(). */
 /*-----------------------------------------------------------------------------------*/
+if ( !function_exists( 'responsi_custom_metabox' ) ) {
+    function responsi_custom_metabox(){
+
+        global $wp_query, $responsi_options, $post, $responsi_custom_meta_type, $responsi_custom_meta;
+
+        if ( is_home() || is_admin() ) {
+            return;
+        }
+  
+        if( is_array($responsi_custom_meta_type) && isset($responsi_custom_meta_type['meta_type']) && 'responsi_custom_meta' === $responsi_custom_meta_type['meta_type'] && isset($responsi_custom_meta_type['post_id']) && $responsi_custom_meta_type['post_id'] >= 1 ){
+            $responsi_custom_meta = get_post_meta( $responsi_custom_meta_type['post_id'] , $responsi_custom_meta_type['meta_type'], true );
+        }elseif(is_array($responsi_custom_meta_type) && isset($responsi_custom_meta_type['meta_type']) && 'responsi_custom_meta_term' === $responsi_custom_meta_type['meta_type'] && isset($responsi_custom_meta_type['post_id']) && $responsi_custom_meta_type['post_id'] >= 1){
+            $responsi_custom_meta = get_term_meta( $responsi_custom_meta_type['post_id'] , $responsi_custom_meta_type['meta_type'], true );
+        } 
+    }
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* responsi_custom_content_metabox(). */
+/*-----------------------------------------------------------------------------------*/
 if ( !function_exists( 'responsi_custom_content_metabox' ) ) {
     function responsi_custom_content_metabox(){
 
@@ -2070,7 +2181,7 @@ if ( !function_exists( 'responsi_custom_content_metabox' ) ) {
             return;
         }
 
-        global $wp_query, $responsi_options, $post, $responsi_custom_meta_type, $responsi_layout_width;
+        global $wp_query, $responsi_options, $post, $responsi_custom_meta, $responsi_layout_width;
 
         $is_layout_boxed        = isset( $responsi_options['responsi_layout_boxed'] ) ? esc_attr( $responsi_options['responsi_layout_boxed'] ) : 'true';
         $is_enable_boxed_style  = isset( $responsi_options['responsi_enable_boxed_style'] ) ? esc_attr( $responsi_options['responsi_enable_boxed_style'] ) : 'false';
@@ -2089,23 +2200,11 @@ if ( !function_exists( 'responsi_custom_content_metabox' ) ) {
 
         $content_max_width = isset( $responsi_options['responsi_layout_width'] ) ? esc_attr( $responsi_options['responsi_layout_width'] ) : 1024;
 
-        if( is_array($responsi_custom_meta_type) && isset($responsi_custom_meta_type['meta_type']) && 'responsi_custom_meta' === $responsi_custom_meta_type['meta_type'] && isset($responsi_custom_meta_type['post_id']) && $responsi_custom_meta_type['post_id'] >= 1 ){
-            $responsi_custom_meta = get_post_meta( $responsi_custom_meta_type['post_id'] , $responsi_custom_meta_type['meta_type'], true );
-            if( is_array($responsi_custom_meta) && isset($responsi_custom_meta['content_max_width']) ){
-                $content_max_width = $responsi_custom_meta['content_max_width'];
-                if( $content_max_width > 0 ){
-                    $custom_max_width = true;
-                }
+        if( is_array($responsi_custom_meta) && isset($responsi_custom_meta['content_max_width']) ){
+            $content_max_width = $responsi_custom_meta['content_max_width'];
+            if( $content_max_width > 0 ){
+                $custom_max_width = true;
             }
-        }elseif(is_array($responsi_custom_meta_type) && isset($responsi_custom_meta_type['meta_type']) && 'responsi_custom_meta_term' === $responsi_custom_meta_type['meta_type'] && isset($responsi_custom_meta_type['post_id']) && $responsi_custom_meta_type['post_id'] >= 1){
-            $responsi_custom_meta = get_term_meta( $responsi_custom_meta_type['post_id'] , $responsi_custom_meta_type['meta_type'], true );
-            if( is_array($responsi_custom_meta) && isset($responsi_custom_meta['content_max_width']) ){
-                $content_max_width = $responsi_custom_meta['content_max_width'];
-                if( $content_max_width > 0 ){
-                    $custom_max_width = true;
-                }
-            }
-            
         }
 
         $css = '';

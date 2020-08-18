@@ -87,6 +87,46 @@ if ( !function_exists('responsi_metabox_options') ){
                 'place_holder'              => isset($responsi_options['responsi_layout_width']) ? $responsi_options['responsi_layout_width'] : 1024,
             );
 
+            $responsi_metaboxe_options[] = array(
+                'name' => 'responsi_header_fullwide',
+                'label' => __( 'Header Fullwide', 'responsi' ),
+                'type' => 'checkbox',
+                'desc' => __( 'Checked Header is fullwide.', 'responsi' ),
+                'std'                       => isset($responsi_options['responsi_header_fullwide']) ? $responsi_options['responsi_header_fullwide'] : false,
+            );
+
+            $responsi_metaboxe_options[] = array(
+                'name' => 'responsi_navbar_fullwide',
+                'label' => __( 'Navbar Fullwide', 'responsi' ),
+                'type' => 'checkbox',
+                'desc' => __( 'Checked Navbar is fullwide.', 'responsi' ),
+                'std'                       => isset($responsi_options['responsi_navbar_fullwide']) ? $responsi_options['responsi_navbar_fullwide'] : false,
+            );
+
+            $responsi_metaboxe_options[] = array(
+                'name' => 'responsi_content_fullwide',
+                'label' => __( 'Content Fullwide', 'responsi' ),
+                'type' => 'checkbox',
+                'desc' => __( 'Checked Content is fullwide.', 'responsi' ),
+                'std'                       => isset($responsi_options['responsi_content_fullwide']) ? $responsi_options['responsi_content_fullwide'] : false,
+            );
+
+            $responsi_metaboxe_options[] = array(
+                'name' => 'responsi_footerwidget_fullwide',
+                'label' => __( 'Footer Widgets Fullwide', 'responsi' ),
+                'type' => 'checkbox',
+                'desc' => __( 'Checked Footer Widgets is fullwide.', 'responsi' ),
+                'std'                       => isset($responsi_options['responsi_footerwidget_fullwide']) ? $responsi_options['responsi_footerwidget_fullwide'] : false,
+            );
+
+            $responsi_metaboxe_options[] = array(
+                'name' => 'responsi_footer_fullwide',
+                'label' => __( 'Footer Fullwide', 'responsi' ),
+                'type' => 'checkbox',
+                'desc' => __( 'Checked Footer is fullwide.', 'responsi' ),
+                'std'                       => isset($responsi_options['responsi_footer_fullwide']) ? $responsi_options['responsi_footer_fullwide'] : false,
+            );
+
             if ( get_option( 'responsi_metaboxe_options' ) != $responsi_metaboxe_options ) {
                 update_option( 'responsi_metaboxe_options', $responsi_metaboxe_options );
             }
@@ -802,6 +842,31 @@ function responsi_taxonomy_add_new_meta_field(){
     </div>
     <div style="clear: both;"></div>
     <div class="form-field">
+        <label><strong><?php _e('Header Fullwide.', 'responsi'); ?></strong></label>
+        <label><input type="checkbox" name="responsi_custom_meta_term[responsi_header_fullwide]" value="true" /> <?php _e('Checked Header is fullwide.', 'responsi'); ?></label>
+    </div>
+    <div style="clear: both;"></div>
+    <div class="form-field">
+        <label><strong><?php _e('Navbar Fullwide.', 'responsi'); ?></strong></label>
+        <label><input type="checkbox" name="responsi_custom_meta_term[responsi_navbar_fullwide]" value="true" /> <?php _e('Checked Navbar is fullwide.', 'responsi'); ?></label>
+    </div>
+    <div style="clear: both;"></div>
+    <div class="form-field">
+        <label><strong><?php _e('Content Fullwide.', 'responsi'); ?></strong></label>
+        <label><input type="checkbox" name="responsi_custom_meta_term[responsi_content_fullwide]" value="true" /> <?php _e('Checked Content is fullwide.', 'responsi'); ?></label>
+    </div>
+    <div style="clear: both;"></div>
+    <div class="form-field">
+        <label><strong><?php _e('Footer Widgets Fullwide.', 'responsi'); ?></strong></label>
+        <label><input type="checkbox" name="responsi_custom_meta_term[responsi_footerwidget_fullwide]" value="true" /> <?php _e('Checked Footer Widgets is fullwide.', 'responsi'); ?></label>
+    </div>
+    <div style="clear: both;"></div>
+    <div class="form-field">
+        <label><strong><?php _e('Footer Fullwide.', 'responsi'); ?></strong></label>
+        <label><input type="checkbox" name="responsi_custom_meta_term[responsi_footer_fullwide]" value="true" /> <?php _e('Checked Footer is fullwide.', 'responsi'); ?></label>
+    </div>
+    <div style="clear: both;"></div>
+    <div class="form-field">
         <label><strong><?php _e('Custom Title', 'responsi'); ?></strong></label>
         <label><input type="checkbox" name="responsi_custom_meta_term[hide_title]" value="1" /> <?php _e('Check to hide Title of this Category Page.', 'responsi'); ?></label>
     </div>
@@ -817,6 +882,31 @@ function responsi_taxonomy_edit_meta_field( $term ){
     $checked = '';
     if ( $responsi_custom_meta_term && isset( $responsi_custom_meta_term['hide_title'] ) && 1 === $responsi_custom_meta_term['hide_title'] ) {
         $checked = 'checked="checked" ';
+    }
+
+    $checked_hf = '';
+    if ( $responsi_custom_meta_term && isset( $responsi_custom_meta_term['responsi_header_fullwide'] ) && true === $responsi_custom_meta_term['responsi_header_fullwide'] ) {
+        $checked_hf = 'checked="checked" ';
+    }
+
+    $checked_nf = '';
+    if ( $responsi_custom_meta_term && isset( $responsi_custom_meta_term['responsi_navbar_fullwide'] ) && true === $responsi_custom_meta_term['responsi_navbar_fullwide'] ) {
+        $checked_nf = 'checked="checked" ';
+    }
+
+    $checked_cf = '';
+    if ( $responsi_custom_meta_term && isset( $responsi_custom_meta_term['responsi_content_fullwide'] ) && true === $responsi_custom_meta_term['responsi_content_fullwide'] ) {
+        $checked_cf = 'checked="checked" ';
+    }
+
+    $checked_fwf = '';
+    if ( $responsi_custom_meta_term && isset( $responsi_custom_meta_term['responsi_footerwidget_fullwide'] ) && true === $responsi_custom_meta_term['responsi_footerwidget_fullwide'] ) {
+        $checked_fwf = 'checked="checked" ';
+    }
+
+    $checked_ff = '';
+    if ( $responsi_custom_meta_term && isset( $responsi_custom_meta_term['responsi_footer_fullwide'] ) && true === $responsi_custom_meta_term['responsi_footer_fullwide'] ) {
+        $checked_ff = 'checked="checked" ';
     }
 
     global $responsi_options;
@@ -875,6 +965,41 @@ function responsi_taxonomy_edit_meta_field( $term ){
     </tr>
 
     <tr class="form-field">
+    <th scope="row" valign="top"><label for="responsi_header_fullwide"><?php _e('Header Fullwide', 'responsi'); ?></label></th>
+        <td>
+        <input <?php echo $checked_hf; ?>type="checkbox" name="responsi_custom_meta_term[responsi_header_fullwide]" id="responsi_header_fullwide" value="true" /> <?php _e('Checked Header is fullwide.', 'responsi'); ?>
+        </td>
+    </tr>
+
+    <tr class="form-field">
+    <th scope="row" valign="top"><label for="responsi_navbar_fullwide"><?php _e('Navbar Fullwide', 'responsi'); ?></label></th>
+        <td>
+        <input <?php echo $checked_nf; ?>type="checkbox" name="responsi_custom_meta_term[responsi_navbar_fullwide]" id="responsi_navbar_fullwide" value="true" /> <?php _e('Checked Navbar is fullwide.', 'responsi'); ?>
+        </td>
+    </tr>
+
+    <tr class="form-field">
+    <th scope="row" valign="top"><label for="responsi_content_fullwide"><?php _e('Content Fullwide', 'responsi'); ?></label></th>
+        <td>
+        <input <?php echo $checked_cf; ?>type="checkbox" name="responsi_custom_meta_term[responsi_content_fullwide]" id="responsi_content_fullwide" value="true" /> <?php _e('Checked Content is fullwide.', 'responsi'); ?>
+        </td>
+    </tr>
+
+    <tr class="form-field">
+    <th scope="row" valign="top"><label for="responsi_footerwidget_fullwide"><?php _e('Footer Widgets Fullwide', 'responsi'); ?></label></th>
+        <td>
+        <input <?php echo $checked_fwf; ?>type="checkbox" name="responsi_custom_meta_term[responsi_footerwidget_fullwide]" id="responsi_footerwidget_fullwide" value="true" /> <?php _e('Checked Footer Widgets is fullwide.', 'responsi'); ?>
+        </td>
+    </tr>
+
+    <tr class="form-field">
+    <th scope="row" valign="top"><label for="responsi_footer_fullwide"><?php _e('Footer Fullwide', 'responsi'); ?></label></th>
+        <td>
+        <input <?php echo $checked_ff; ?>type="checkbox" name="responsi_custom_meta_term[responsi_footer_fullwide]" id="responsi_footer_fullwide" value="true" /> <?php _e('Checked Footer is fullwide.', 'responsi'); ?>
+        </td>
+    </tr>
+
+    <tr class="form-field">
     <th scope="row" valign="top"><label for="responsi_custom_meta_term"><?php _e('Custom Title', 'responsi'); ?></label></th>
         <td>
         <input <?php echo $checked; ?>type="checkbox" name="responsi_custom_meta_term[hide_title]" id="active_responsi_custom_meta_term" value="1" /> <?php _e('Check to hide Title of this Category Page.', 'responsi'); ?>
@@ -895,6 +1020,25 @@ function responsi_save_taxonomy_custom_meta( $term_id ){
 
         if ( isset( $_POST['responsi_custom_meta_term']['hide_title'] ) ) {
             $responsi_custom_meta_term['hide_title'] = 1;
+        }
+
+        if ( isset( $_POST['responsi_custom_meta_term']['responsi_header_fullwide'] ) ) {
+            $responsi_custom_meta_term['responsi_header_fullwide'] = true;
+        }
+
+        if ( isset( $_POST['responsi_custom_meta_term']['responsi_navbar_fullwide'] ) ) {
+            $responsi_custom_meta_term['responsi_navbar_fullwide'] = true;
+        }
+
+        if ( isset( $_POST['responsi_custom_meta_term']['responsi_content_fullwide'] ) ) {
+            $responsi_custom_meta_term['responsi_content_fullwide'] = true;
+        }
+
+        if ( isset( $_POST['responsi_custom_meta_term']['responsi_footerwidget_fullwide'] ) ) {
+            $responsi_custom_meta_term['responsi_footerwidget_fullwide'] = true;
+        }
+        if ( isset( $_POST['responsi_custom_meta_term']['responsi_footer_fullwide'] ) ) {
+            $responsi_custom_meta_term['responsi_footer_fullwide'] = true;
         }
 
         $responsi_metaboxe_options = get_option( 'responsi_metaboxe_options', array() );
@@ -962,7 +1106,7 @@ function responsi_custom_meta_post(){
         return;
     }
     
-    global $wp_query, $responsi_custom_meta_type, $post;
+    global $wp_query, $responsi_custom_meta_type, $post, $responsi_custom_meta;
 
     $post_id = 0;
 
@@ -988,7 +1132,7 @@ function responsi_custom_meta_post(){
 
 }
 
-add_action( 'wp_head', 'responsi_custom_meta_post', 1 );
+add_action( 'responsi_head', 'responsi_custom_meta_post', 1 );
 
 /**
  * Specify action hooks for the functions above.

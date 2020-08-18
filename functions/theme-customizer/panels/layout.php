@@ -612,6 +612,81 @@ class Layout
 			)
 		);
 
+		$layout_controls_settings['responsi_header_fullwide'] = array(
+			'control' => array(
+			    'label'      => __('Header Fullwide', 'responsi'),
+			    'section'    => 'layout_style',
+			    'settings'   => 'responsi_header_fullwide',
+			    'type'       => 'icheckbox',
+			    'input_attrs' => array(
+		        ),
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_header_fullwide']) ? $responsi_options['responsi_header_fullwide'] : 'false',
+			    'sanitize_callback' => 'responsi_sanitize_checkboxs',
+			)
+		);
+
+		$layout_controls_settings['responsi_navbar_fullwide'] = array(
+			'control' => array(
+			    'label'      => __('Navbar Fullwide', 'responsi'),
+			    'section'    => 'layout_style',
+			    'settings'   => 'responsi_navbar_fullwide',
+			    'type'       => 'icheckbox',
+			    'input_attrs' => array(
+		        ),
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_navbar_fullwide']) ? $responsi_options['responsi_navbar_fullwide'] : 'false',
+			    'sanitize_callback' => 'responsi_sanitize_checkboxs',
+			)
+		);
+
+		$layout_controls_settings['responsi_content_fullwide'] = array(
+			'control' => array(
+			    'label'      => __('Content Fullwide', 'responsi'),
+			    'section'    => 'layout_style',
+			    'settings'   => 'responsi_content_fullwide',
+			    'type'       => 'icheckbox',
+			    'input_attrs' => array(
+		        ),
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_content_fullwide']) ? $responsi_options['responsi_content_fullwide'] : 'false',
+			    'sanitize_callback' => 'responsi_sanitize_checkboxs',
+			)
+		);
+
+		$layout_controls_settings['responsi_footerwidget_fullwide'] = array(
+			'control' => array(
+			    'label'      => __('Footer Widgets Fullwide', 'responsi'),
+			    'section'    => 'layout_style',
+			    'settings'   => 'responsi_footerwidget_fullwide',
+			    'type'       => 'icheckbox',
+			    'input_attrs' => array(
+		        ),
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_footerwidget_fullwide']) ? $responsi_options['responsi_footerwidget_fullwide'] : 'false',
+			    'sanitize_callback' => 'responsi_sanitize_checkboxs',
+			)
+		);
+
+		$layout_controls_settings['responsi_footer_fullwide'] = array(
+			'control' => array(
+			    'label'      => __('Footer Fullwide', 'responsi'),
+			    'section'    => 'layout_style',
+			    'settings'   => 'responsi_footer_fullwide',
+			    'type'       => 'icheckbox',
+			    'input_attrs' => array(
+		        ),
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_footer_fullwide']) ? $responsi_options['responsi_footer_fullwide'] : 'false',
+			    'sanitize_callback' => 'responsi_sanitize_checkboxs',
+			)
+		);
+
 		$layout_controls_settings['lblayout7'] = array(
 			'control' => array(
 			    'label'      => __('Stretched or Boxed Layout', 'responsi'),
