@@ -10,7 +10,7 @@ if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 
 	function responsi_framework_upgrade_version(){
 
-		if( version_compare(get_option('responsi_framework_version'), '8.0.0', '<') ){
+		if( version_compare(get_option('responsi_framework_version'), '8.1.0', '<') ){
 
 	        if( function_exists('responsi_dynamic_css') ){
 	        	responsi_dynamic_css( 'framework' );

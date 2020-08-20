@@ -1,4 +1,9 @@
-*** Responsi Framework Changelog ***  
+*** Responsi Framework Changelog ***
+
+= 8.1.0 - 2020/08/20 =
+* This feature release adds full support for Gutenberg block alignments Wide width and Full width. Works with any block that have those alignment options.
+* Feature - Added Theme Framework support for Gutenberg Blocks alignment Wide width and Full width
+* Tweak - CSS to support the Block Alignments
 
 = 8.0.0 - 2020/08/08 =
 * This feature release has full compatibility with major WordPress version 5.5 and updated versions Masonry and jQuery libraries . 

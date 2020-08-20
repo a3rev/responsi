@@ -24,11 +24,6 @@ if ( !function_exists( 'responsi_layout_class' ) ) {
         $sidebar_alt_box,
         $wrapper_content, 
         $wrapper_content_top,
-        $header_fullwide,
-        $navbar_fullwide,
-        $content_fullwide,
-        $footerwidget_fullwide,
-        $footer_fullwide,
         $responsi_custom_meta;
     
         if( !is_array( $responsi_options ) ) return;
@@ -120,7 +115,7 @@ if ( !function_exists( 'responsi_layout_class' ) ) {
             }
 
         } else {
-        
+
             $content_column = get_post_meta( $page_id, 'content_layout', true );
 
             if ( $content_column <= 0 || '' === $content_column ) {
@@ -143,54 +138,6 @@ if ( !function_exists( 'responsi_layout_class' ) ) {
             }
         }
 
-        if( is_array( $responsi_custom_meta ) && count( $responsi_custom_meta) > 0 ){
-            if ( isset($responsi_custom_meta['responsi_header_fullwide'] ) && true === $responsi_custom_meta['responsi_header_fullwide'] ) {
-                $responsi_options['responsi_header_fullwide'] = 'true';
-            }
-
-            if ( isset($responsi_custom_meta['responsi_navbar_fullwide'] ) && true === $responsi_custom_meta['responsi_navbar_fullwide'] ) {
-                $responsi_options['responsi_navbar_fullwide'] = 'true';
-            }
-
-            if ( isset($responsi_custom_meta['responsi_content_fullwide'] ) && true === $responsi_custom_meta['responsi_content_fullwide'] ) {
-                $responsi_options['responsi_content_fullwide'] = 'true';
-                $layout = 'one-col';
-            }
-
-            if ( isset($responsi_custom_meta['responsi_footerwidget_fullwide'] ) && true === $responsi_custom_meta['responsi_footerwidget_fullwide'] ) {
-                $responsi_options['responsi_footerwidget_fullwide'] = 'true';
-            }
-
-            if ( isset($responsi_custom_meta['responsi_footer_fullwide'] ) && true === $responsi_custom_meta['responsi_footer_fullwide'] ) {
-               $responsi_options['responsi_footer_fullwide'] = 'true';
-            }
-        }elseif( $page_id > 0 ){
-            $responsi_header_fullwide = get_post_meta( $page_id, 'responsi_header_fullwide', true );
-            if ( '' !== $responsi_header_fullwide ) {
-                $responsi_options['responsi_header_fullwide'] = $responsi_header_fullwide;
-            }
-
-            $responsi_navbar_fullwide = get_post_meta( $page_id, 'responsi_navbar_fullwide', true );
-            if ( '' !== $responsi_navbar_fullwide ) {
-                $responsi_options['responsi_navbar_fullwide'] = $responsi_navbar_fullwide;
-            }
-
-            $responsi_content_fullwide = get_post_meta( $page_id, 'responsi_content_fullwide', true );
-            if ( '' !== $responsi_content_fullwide ) {
-                $responsi_options['responsi_content_fullwide'] = $responsi_content_fullwide;
-            }
-
-            $responsi_footerwidget_fullwide = get_post_meta( $page_id, 'responsi_footerwidget_fullwide', true );
-            if ( '' !== $responsi_footerwidget_fullwide ) {
-                $responsi_options['responsi_footerwidget_fullwide'] = $responsi_footerwidget_fullwide;
-            }
-
-            $responsi_footer_fullwide = get_post_meta( $page_id, 'responsi_footer_fullwide', true );
-            if ( '' !== $responsi_footer_fullwide ) {
-                $responsi_options['responsi_footer_fullwide'] = $responsi_footer_fullwide;
-            }
-        }
-
         if ( $content_column <= 0 ) {
             $content_column = $responsi_options['responsi_content_layout'];
         }
@@ -202,38 +149,7 @@ if ( !function_exists( 'responsi_layout_class' ) ) {
         if ($content_column_grid <= 0 || '' === $content_column_grid )
             $content_column_grid = 3;
 
-        if ( isset( $responsi_options['responsi_header_fullwide'] ) && 'true' == $responsi_options['responsi_header_fullwide'] ) {
-            $header_fullwide = true;
-        }else{
-            $header_fullwide = false;
-        }
-
-        if ( isset( $responsi_options['responsi_navbar_fullwide'] ) && 'true' == $responsi_options['responsi_navbar_fullwide'] ) {
-            $navbar_fullwide = true;
-        }else{
-            $navbar_fullwide = false;
-        }
-
-        if ( isset( $responsi_options['responsi_content_fullwide'] ) && 'true' == $responsi_options['responsi_content_fullwide'] ) {
-            $content_fullwide = true;
-            //$layout = 'one-col';
-        }else{
-            $content_fullwide = false;
-        }
-
-        if ( isset( $responsi_options['responsi_footerwidget_fullwide'] ) && 'true' == $responsi_options['responsi_footerwidget_fullwide'] ) {
-            $footerwidget_fullwide = true;
-        }else{
-            $footerwidget_fullwide = false;
-        }
-
-        if ( isset( $responsi_options['responsi_footer_fullwide'] ) && 'true' == $responsi_options['responsi_footer_fullwide'] ) {
-            $footer_fullwide = true;
-        }else{
-            $footer_fullwide = false;
-        }
-
-        apply_filters( 'responsi_layouts', $content_column_grid, $wrapper_content_top, $wrapper_content, $layout_column, $content_column, $layout_column_top, $layout_top, $layout, $header_fullwide, $navbar_fullwide, $content_fullwide, $footerwidget_fullwide, $footer_fullwide );
+        apply_filters( 'responsi_layouts', $content_column_grid, $wrapper_content_top, $wrapper_content, $layout_column, $content_column, $layout_column_top, $layout_top, $layout );
 
         if ( 'one-col' === $layout ) {
             $wrapper_content    = 'full';
@@ -417,7 +333,7 @@ if ( !function_exists( 'responsi_header' ) ) {
         do_action( 'responsi_doctype_before' );
         $heading_tag = 'span';
         if ( is_home() OR is_front_page() ) { $heading_tag = 'h1'; }
-        global $responsi_options, $wrapper_content, $layout_column, $layout, $responsi_layout_boxed, $responsi_header_is_inside, $responsi_header_is_outside, $sidebar_box, $main_box, $sidebar_alt_box, $header_fullwide, $navbar_fullwide, $content_fullwide, $footerwidget_fullwide, $footer_fullwide;
+        global $responsi_options, $wrapper_content, $layout_column, $layout, $responsi_layout_boxed, $responsi_header_is_inside, $responsi_header_is_outside, $sidebar_box, $main_box, $sidebar_alt_box;
         ?>
         <!DOCTYPE html>
         <html <?php language_attributes(); ?>>
@@ -466,7 +382,7 @@ if ( !function_exists( 'responsi_header' ) ) {
         <?php do_action( 'responsi_wrapper_content_before' ); ?>
         <div id="responsi-content" class="responsi-content clearfix col-<?php echo esc_attr( $layout_column );?>-<?php echo esc_attr( $wrapper_content );?>">
         <?php do_action( 'responsi_wrapper_content_content_before' ); ?>
-        <div id="content-ctn" class="content-ctn<?php if( true != $content_fullwide ){echo ' site-width';}?> clearfix">
+        <div id="content-ctn" class="content-ctn site-width clearfix">
         <?php do_action( 'responsi_wrapper_article_before' ); ?>
         <article id="content-in" class="content-in clearfix">
         <?php global $shiftclick; echo $shiftclick;?>
@@ -481,7 +397,7 @@ if ( !function_exists( 'responsi_header' ) ) {
 if ( !function_exists( 'responsi_footer' ) ) {
 
     function responsi_footer() {
-        global $responsi_options, $responsi_footer_is_outside, $shiftclick, $footer_fullwide;
+        global $responsi_options, $responsi_footer_is_outside, $shiftclick;
         ?>
         <?php do_action( 'responsi_wrapper_article_content_after' ); ?>
         </article>
@@ -503,7 +419,7 @@ if ( !function_exists( 'responsi_footer' ) ) {
         ?>
         <?php do_action( 'responsi_wrapper_footer_before' ); ?>
         <div id="responsi-footer" class="responsi-footer clearfix">
-          <div id="footer-ctn" class="footer-ctn<?php if( true != $footer_fullwide ){echo ' site-width';}?> clearfix">
+          <div id="footer-ctn" class="footer-ctn site-width clearfix">
             <div id="footer-in" class="footer-in clearfix">
             <footer id="footer" class="footer col-full lv0 clearfix">
               <div id="additional" class="additional col-below clearfix">
@@ -1409,12 +1325,12 @@ function responsi_404_redirect() {
 /*-----------------------------------------------------------------------------------*/
 
 function responsi_wrapper_header() {
-    global $shiftclick, $header_fullwide;
+    global $shiftclick;
     do_action( 'responsi_wrapper_header_before' );
     ?>
     <div id="responsi-header" class="responsi-header clearfix">
       <?php do_action( 'responsi_wrapper_header_content_before' ); ?>
-      <div id="header-cnt" class="header-cnt<?php if( true != $header_fullwide ){echo ' site-width';}?> clearfix">
+      <div id="header-cnt" class="header-cnt site-width clearfix">
         <div id="header-in" class="header-in clearfix">
         <?php do_action( 'responsi_wrapper_header_content' ); ?>
         </div>
@@ -1594,11 +1510,11 @@ if ( !function_exists( 'responsi_wrapper_header_content' ) ) {
 /*-----------------------------------------------------------------------------------*/
 
 function responsi_wrapper_nav() {
-    global $shiftclick, $navbar_fullwide;
+    global $shiftclick;
     do_action( 'responsi_wrapper_nav_before' );
     ?>
     <div id="responsi-navigation" class="responsi-navigation clearfix">
-      <div id="navigation-ctn" class="navigation-ctn<?php if( true != $navbar_fullwide ){echo ' site-width';}?> clearfix">
+      <div id="navigation-ctn" class="navigation-ctn site-width clearfix">
         <?php do_action( 'responsi_wrapper_nav_content' ); ?>
       </div>
       <?php echo $shiftclick;?>
@@ -1706,7 +1622,7 @@ if ( !function_exists( 'responsi_main_wrap_after' ) ) {
 
 if ( !function_exists( 'responsi_footer_sidebars' ) ) {
     function responsi_footer_sidebars() {
-        global $responsi_options, $has_footer_sidebars, $shiftclick, $footerwidget_fullwide;
+        global $responsi_options, $has_footer_sidebars, $shiftclick;
 
         $footer_sidebar_total = 6;
         $has_footer_sidebars  = false;
@@ -1727,15 +1643,9 @@ if ( !function_exists( 'responsi_footer_sidebars' ) ) {
             $total = 0;
         }
 
-        $sitewidth = ' site-width';
-
-        if( true != $footerwidget_fullwide ){
-            $sitewidth = '';
-        }
-
         $footer_widget_container_before = '
         <div id="responsi-footer-widgets" class="responsi-footer-widgets clearfix">
-            <div id="footer-widgets-ctn" class="footer-widgets-ctn'.$sitewidth.' clearfix lv0">
+            <div id="footer-widgets-ctn" class="footer-widgets-ctn site-width clearfix lv0">
                 <div id="footer-widgets-in" class="footer-widgets-in clearfix">';
         $footer_widget_container_after = '
                 </div>
@@ -1886,6 +1796,120 @@ if (!function_exists('responsi_footer_credit')) {
         do_action( 'responsi_footer_credit_after' );
 
     }
+}
+
+
+function responsi_add_theme_support_fullwide(){
+
+    global $responsi_options, $responsi_layout_width;
+
+    $css = '';
+
+    $layout_width_value     = isset( $responsi_options['responsi_layout_width'] ) ? esc_attr( $responsi_options['responsi_layout_width'] ) : 1024;
+    $layout_width           = intval( str_replace('px', '', $layout_width_value ) );
+    $responsi_layout_width  = apply_filters( 'responsi_layout_width', $layout_width );
+
+    if( $responsi_layout_width > 0 ) {
+
+        $responsi_wrapper_margin_left           = isset( $responsi_options['responsi_wrapper_margin_left'] ) ? esc_attr( $responsi_options['responsi_wrapper_margin_left'] ) : 0;
+        $responsi_wrapper_margin_right          = isset( $responsi_options['responsi_wrapper_margin_right'] ) ? esc_attr( $responsi_options['responsi_wrapper_margin_right'] ) : 0;
+        $responsi_wrapper_padding_left          = isset( $responsi_options['responsi_wrapper_padding_left'] ) ? esc_attr( $responsi_options['responsi_wrapper_padding_left'] ) : 0;
+        $responsi_wrapper_padding_right         = isset( $responsi_options['responsi_wrapper_padding_right'] ) ? esc_attr( $responsi_options['responsi_wrapper_padding_right'] ) : 0;
+
+        $responsi_page_box_margin_left          = isset( $responsi_options['responsi_page_box_margin_left'] ) ? esc_attr( $responsi_options['responsi_page_box_margin_left'] ) : 0;
+        $responsi_page_box_margin_right         = isset( $responsi_options['responsi_page_box_margin_right'] ) ? esc_attr( $responsi_options['responsi_page_box_margin_right'] ) : 0;
+        $responsi_page_box_padding_left         = isset( $responsi_options['responsi_page_box_padding_left'] ) ? esc_attr( $responsi_options['responsi_page_box_padding_left'] ) : 0;
+        $responsi_page_box_padding_right        = isset( $responsi_options['responsi_page_box_padding_right'] ) ? esc_attr( $responsi_options['responsi_page_box_padding_right'] ) : 0;
+
+        $responsi_post_box_margin_left          = isset( $responsi_options['responsi_post_box_margin_left'] ) ? esc_attr( $responsi_options['responsi_post_box_margin_left'] ) : 0;
+        $responsi_post_box_margin_right         = isset( $responsi_options['responsi_post_box_margin_right'] ) ? esc_attr( $responsi_options['responsi_post_box_margin_right'] ) : 0;
+        $responsi_post_box_padding_left         = isset( $responsi_options['responsi_post_box_padding_left'] ) ? esc_attr( $responsi_options['responsi_post_box_padding_left'] ) : 0;
+        $responsi_post_box_padding_right        = isset( $responsi_options['responsi_post_box_padding_right'] ) ? esc_attr( $responsi_options['responsi_post_box_padding_right'] ) : 0;
+
+        $wrapper_margin_left                    = intval( str_replace('px', '', $responsi_wrapper_margin_left ) );
+        $wrapper_margin_right                   = intval( str_replace('px', '', $responsi_wrapper_margin_right ) );
+        $wrapper_padding_left                   = intval( str_replace('px', '', $responsi_wrapper_padding_left ) );
+        $wrapper_padding_right                  = intval( str_replace('px', '', $responsi_wrapper_padding_right ) );
+
+        $page_box_margin_left                   = intval( str_replace('px', '', $responsi_page_box_margin_left ) );
+        $page_box_margin_right                  = intval( str_replace('px', '', $responsi_page_box_margin_right ) );
+        $page_box_padding_left                  = intval( str_replace('px', '', $responsi_page_box_padding_left ) );
+        $page_box_padding_right                 = intval( str_replace('px', '', $responsi_page_box_padding_right ) );
+
+        $post_box_margin_left                   = intval( str_replace('px', '', $responsi_post_box_margin_left ) );
+        $post_box_margin_right                  = intval( str_replace('px', '', $responsi_post_box_margin_right ) );
+        $post_box_padding_left                  = intval( str_replace('px', '', $responsi_post_box_padding_left ) );
+        $post_box_padding_right                 = intval( str_replace('px', '', $responsi_post_box_padding_right ) );
+
+        $total_ext                              = 0;
+        $total_ext_left                         = 0;
+        $total_ext_right                        = 0;
+
+        if( is_page() ){
+            $total_ext_left                     = $wrapper_margin_left + $wrapper_padding_left + $page_box_margin_left + $page_box_padding_left;
+            $total_ext_right                    = $wrapper_margin_right + $wrapper_padding_right + $page_box_margin_right + $page_box_padding_right;
+            $total_ext                          = $total_ext_left + $total_ext_right;
+        }elseif( is_single() ){
+            $total_ext_left                     = $wrapper_margin_left + $wrapper_padding_left + $post_box_margin_left + $post_box_padding_left;
+            $total_ext_right                    = $wrapper_margin_right + $wrapper_padding_right + $post_box_margin_right + $post_box_padding_right;
+            $total_ext                          = $total_ext_left + $total_ext_right;
+        }
+
+        $alignl_value                           = $responsi_layout_width - $total_ext;
+
+        $css = '
+
+        @media only screen and (min-width:783px) {
+
+            .one-col #content .entry-content > .alignwide {
+                margin-left: -'.$total_ext_left.'px;
+                margin-right: -'.$total_ext_right.'px;
+                max-width: 100vw;
+            }
+            .one-col #content .entry-content > .alignfull {
+                margin-left: calc( -100vw / 2 + 100% / 2 );
+                margin-right: calc( -100vw / 2 + 100% / 2 );
+                max-width: 100vw;
+            }
+            .one-col #content > .alignfull img {
+                width: 100vw;
+            }
+            .one-col #content .entry-content > .alignfull > div {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .one-col #content .entry-content > .alignfull.wp-block-cover, .one-col #content .entry-content > .alignwide.wp-block-cover{
+                width:auto;
+            }
+        }
+
+        @media only screen and (max-width:782px) {
+            .one-col #content .entry-content > .alignwide {
+                margin-left: -'.$total_ext_left.'px;
+                margin-right: -'.$total_ext_right.'px;
+                max-width: 100vw;
+            }
+            .one-col #content .entry-content > .alignfull {
+                margin-left: calc( -100vw / 2 + 100% / 2 );
+                margin-right: calc( -100vw / 2 + 100% / 2 );
+                max-width: 100vw;
+            }
+            .one-col #content > .alignfull img {
+                width: 100vw;
+            }
+            .one-col #content .entry-content > .alignfull > div {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .one-col #content .entry-content > .alignfull.wp-block-cover, .one-col #content .entry-content > .alignwide.wp-block-cover{
+                width:auto;
+            }
+        }';
+    }
+
+    if( '' != $css ){
+        echo '<style media="screen">'.$css.'</style>';
+    } 
 }
 
 /*-----------------------------------------------------------------------------------*/

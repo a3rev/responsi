@@ -581,7 +581,7 @@ final class Customizer {
 		.responsi-site { margin: 0 auto; padding: 0; }
 		.toolbar-ctn { width: 100%; left: 0; transform: translateZ(0); }
 		.toolbar-sticky .toolbar-ctn { position: fixed }
-		.responsi-frontend .responsi-content { overflow-x: hidden; }
+		.responsi-frontend #responsi-wrapper:not(.site-width) .responsi-content { overflow-x: hidden; }
 		.responsi-toolbar { left: 0; z-index: 9999; }
 		.header { clear: both; }
 		.header-widget-1 a { margin: 0; }
