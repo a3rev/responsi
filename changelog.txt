@@ -1,5 +1,11 @@
 *** Responsi Framework Changelog ***
 
+= 8.1.1 - 2020/09/18 =
+* This maintenance release adds compatibility with WordPress 5.5.1 and added support for get extract from block created content.
+* Tweak - Added Option to pull description on blog cards from Block created Content, default is by Excerpt
+* Tweak - Tweak Style css customize radio control
+* Tweak - Test for compatibility with WordPress 5.5.1
+
 = 8.1.0 - 2020/08/20 =
 * This feature release adds full support for Gutenberg block alignments Wide width and Full width. Works with any block that have those alignment options.
 * Feature - Added Theme Framework support for Gutenberg Blocks alignment Wide width and Full width

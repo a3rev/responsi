@@ -1241,7 +1241,14 @@ function responsi_excerpt_more( $more ){
 
 function responsi_custom_excerpt_more( $output ){
     if ( ! is_attachment() && ! is_admin() ) {
-        $output = '<p class="desc">' . strip_tags( $output ) . '</p>' . responsi_continue_reading_link();
+        global $responsi_options;
+
+        if ( isset( $responsi_options['responsi_blogcard_content_type'] ) && 'content' === $responsi_options['responsi_blogcard_content_type'] ) {
+            $content = get_the_content();
+            $output = '<p class="desc">' . responsi_remove_shortcode_get_the_excerpt( $content ). '</p>' . responsi_continue_reading_link();
+        }else{
+            $output = '<p class="desc">' . strip_tags( $output ) . '</p>' . responsi_continue_reading_link();
+        }
     }
     return $output;
 }

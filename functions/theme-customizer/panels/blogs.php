@@ -932,6 +932,26 @@ class Blogs
 			)
 		);
 
+		$blogs_controls_settings['responsi_blogcard_content_type'] = array(
+			'control' => array(
+			    'label'      => __('Description Display', 'responsi'),
+			    'section'    => 'blogs_style',
+			    'settings'   => 'responsi_blogcard_content_type',
+			    'type'       => 'iradio',
+			    'input_attrs' => array(
+					'checked_label' => 'ON',
+					'unchecked_label' => 'OFF',
+					'container_width' => 80,
+					'class' => 'hide'
+		        ),
+			    'choices' => array("excerpt" => "Excerpt", "content" => "Content")
+			),
+			'setting' => array(
+			    'default'		=> isset($responsi_options['responsi_blogcard_content_type']) ? $responsi_options['responsi_blogcard_content_type'] : 'excerpt',
+			    'sanitize_callback' => 'responsi_sanitize_choices',
+			)
+		);
+
 		$blogs_controls_settings['responsi_blog_post_font_content'] = array(
 			'control' => array(
 			    'label' => __('Font', 'responsi'),
