@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.1.2 - 2020/10/28 =
+* This maintenance release fixes a conflict that was breaking Gravity Multi Form upload feature
+* Fix - Set 404 page redirect conflict breaking Gravity Forms, Multi file uploader script.
+
 = 8.1.1 - 2020/09/18 =
 * This maintenance release adds compatibility with WordPress 5.5.1 and added support for get extract from block created content.
 * Tweak - Added Option to pull description on blog cards from Block created Content, default is by Excerpt

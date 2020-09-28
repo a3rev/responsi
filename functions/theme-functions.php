@@ -1312,6 +1312,9 @@ if ( !function_exists( 'responsi_meta_tags' ) ) {
 /*-----------------------------------------------------------------------------------*/
 
 function responsi_404_redirect() {
+    if ( isset( $_REQUEST[ 'gf_page' ] ) ) {
+        return;
+    }
     if ( is_404() ) {
         global $responsi_options;
         if ( isset( $responsi_options['responsi_404_page'] ) ) {
@@ -1321,8 +1324,11 @@ function responsi_404_redirect() {
         }
         if ( $page_id > 0 ) {
             $redirect_404_url = esc_url( get_permalink( $page_id ) );
-            wp_redirect($redirect_404_url);
-            exit();
+            header ('HTTP/1.1 301 Moved Permanently');
+            header ("Location: " . $redirect_404_url);
+            exit(); 
+            //wp_redirect($redirect_404_url);
+            //exit();
         } 
     }
 }
