@@ -1,5 +1,11 @@
 *** Responsi Framework Changelog ***
 
+= 8.1.3 - 2020/11/19 =
+* This maintenance release fixes an edge case template path fatal error plus compatibility with WordPress 5.5.3 and WooCommerce 4.7.0
+* Tweak - Test for compatibility with WordPress 5.5.3
+* Tweak - Test for compatibility with WooCommerce 4.7.0
+* Fix - Trailingslashit template path when template is not found
+
 = 8.1.2 - 2020/10/28 =
 * This maintenance release fixes a conflict that was breaking Gravity Multi Form upload feature
 * Fix - Set 404 page redirect conflict breaking Gravity Forms, Multi file uploader script.

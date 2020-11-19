@@ -69,7 +69,7 @@ if ( !function_exists( 'responsi_locate_template' ) ) {
 
         // Get default template
         if ( !$template ){
-            $template = $default_path . $template_name;
+            $template = trailingslashit($default_path) . $template_name;
         }
 
         // Return what we found
