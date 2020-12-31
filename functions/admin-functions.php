@@ -1670,7 +1670,7 @@ function responsi_autoembed_media_replace_iframe( $content = '' ){
 function responsi_button_none_css_lists(){
     
 
-    $responsi_button_none_css_lists = '.mejs-button button, .wp-pwd button';
+    $responsi_button_none_css_lists = '.mejs-button button, .wp-pwd button, .fancybox-button';
 
     $responsi_button_none_css_lists = apply_filters( 'responsi_button_none_css_lists', $responsi_button_none_css_lists );
 
@@ -1705,7 +1705,7 @@ function responsi_exclude_button_css(){
 
     global $responsi_options;
 
-    $_exclude_lists = '.customize-partial-edit-shortcut-button, .bfwc-googlepay-button, .close, .none-button-css, .slick-next, .slick-arrow, .slick-prev, [id^="slick-slide-control"]';
+    $_exclude_lists = '.customize-partial-edit-shortcut-button, .bfwc-googlepay-button, .close, .none-button-css, .slick-next, .slick-arrow, .slick-prev, [id^="slick-slide-control"], .fancybox-button';
 
     if( isset( $responsi_options['responsi_exclude_button_lists'] ) && '' != trim( $responsi_options['responsi_exclude_button_lists'] ) ){
         $_exclude_lists .= ',' . trim( $responsi_options['responsi_exclude_button_lists'] );

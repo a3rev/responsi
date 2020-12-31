@@ -141,7 +141,7 @@ function responsi_framework_default_scripts( &$scripts ){
 	$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
     $scripts->add( 'waypoints', get_template_directory_uri() . '/functions/js/waypoints/jquery.waypoints.min.js', array('jquery' ), $responsi_version, true );
 	$scripts->add( 'a3-blockpress-animation', get_template_directory_uri() . '/functions/js/front/js/animation-on-scroll.js', array('waypoints' ), $responsi_version, true );
-	$scripts->add( 'responsi-mobile-custom', get_template_directory_uri() . '/functions/js/jquery.mobile.custom'.$suffix.'.js', array( 'jquery'), $responsi_version, true );
+	$scripts->add( 'jquery-mobile-touch', get_template_directory_uri() . '/functions/js/jquery.mobile.touch.min.js', array( 'jquery'), $responsi_version, true );
 	$scripts->add( 'responsi-custom-fields', get_template_directory_uri() . '/functions/js/custom-fields'.$suffix.'.js', array( 'jquery', 'jquery-ui-tabs' ), $responsi_version, true );
 	$scripts->add( 'responsi-main-script', get_template_directory_uri() . '/functions/js/jquery.responsi'.$suffix.'.js', array( 'jquery' ), $responsi_version, true );
 	$scripts->add( 'responsi-infinitescroll', get_template_directory_uri() . '/functions/js/masonry/jquery.infinitescroll'.$suffix.'.js', array( 'jquery-masonry' ), $responsi_version, true );
@@ -157,7 +157,7 @@ if ( ! function_exists( 'responsi_load_javascript' ) ){
 	function responsi_load_javascript(){
 		global $responsi_version, $responsi_options, $layout, $content_column, $content_column_grid, $responsi_animate;
 		if( wp_is_mobile() ){
-			wp_enqueue_script( 'responsi-mobile-custom' );
+			wp_enqueue_script( 'jquery-mobile-touch' );
 		}
 		wp_enqueue_script( 'responsi-main-script' );
         wp_enqueue_script( 'responsi-infinitescroll' );

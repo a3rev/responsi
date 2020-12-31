@@ -687,6 +687,7 @@
 					switcher.iphoneStyle({
 						duration: 50,
 						resizeContainer: true,
+						customWidth: true,
 						containerWidth: container_width,
 						resizeHandle: false,
 						handleMargin: 10,
@@ -849,6 +850,7 @@
 					switcher.iphoneStyle({
 						duration: 50,
 						resizeContainer: true,
+						customWidth: true,
 						containerWidth: container_width,
 						resizeHandle: false,
 						handleMargin: 10,
@@ -1012,6 +1014,7 @@
 					onoff_switcher.iphoneStyle({
 						duration: 50,
 						resizeContainer: true,
+						customWidth: true,
 						containerWidth: onoff_container_width,
 						resizeHandle: false,
 						handleMargin: 10,
@@ -1043,6 +1046,7 @@
 					inset_switcher.iphoneStyle({
 						duration: 50,
 						resizeContainer: true,
+						customWidth: true,
 						containerWidth: inset_container_width,
 						resizeHandle: false,
 						handleMargin: 10,
@@ -1190,6 +1194,7 @@
 					switcher.iphoneStyle({
 						duration: 50,
 						resizeContainer: true,
+						customWidth: true,
 						containerWidth: container_width,
 						resizeHandle: false,
 						handleMargin: 10,
@@ -1251,6 +1256,7 @@
 						$(this).iphoneStyle({
 							duration: 50,
 							resizeContainer: true,
+							customWidth: true,
 							containerWidth: container_width,
 							resizeHandle: false,
 							handleMargin: 10,
@@ -1306,6 +1312,7 @@
 						current_item.iphoneStyle({
 							duration: 50,
 							resizeContainer: true,
+							customWidth: true,
 							containerWidth: container_width,
 							resizeHandle: false,
 							handleMargin: 10,
@@ -1419,6 +1426,7 @@
 					onoff_switcher.iphoneStyle({
 						duration: 50,
 						resizeContainer: true,
+						customWidth: true,
 						containerWidth: onoff_container_width,
 						resizeHandle: false,
 						handleMargin: 10,

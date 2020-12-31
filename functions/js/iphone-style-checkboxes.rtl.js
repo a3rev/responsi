@@ -47,14 +47,11 @@
       this.offSpan = this.offLabel.children('span');
       this.onLabel = $("<label class='" + this.labelOnClass + "'>\n  <span>" + this.checkedLabel + "</span>\n</label>").appendTo(this.container);
       this.onSpan = this.onLabel.children('span');
-      return this.handle = $("<div class='" + this.handleClass + "'>\n  <div class='" + this.handleRightClass + "'>\n    <div class='" + this.handleCenterClass + "' />\n  </div>\n</div>").appendTo(this.container).before("<span class='iPhoneCheckBeforeContainer'>&nbsp;</span><span class='iPhoneCheckAfterContainer'>&nbsp;</span>");
+      return this.handle = $("<div class='" + this.handleClass + "'>\n  <div class='" + this.handleRightClass + "'>\n    <div class='" + this.handleCenterClass + "'>\n  </div>\n</div>").appendTo(this.container).before("<span class='iPhoneCheckBeforeContainer'>&nbsp;</span><span class='iPhoneCheckAfterContainer'>&nbsp;</span>");
     };
 
     iOSCheckbox.prototype.disableTextSelection = function() {
-      //if ($.browser.msie) {
-      if (navigator.userAgent.match("MSIE")) {
         return $([this.handle, this.offLabel, this.onLabel, this.container]).attr("unselectable", "on");
-      }
     };
 
     iOSCheckbox.prototype._getDimension = function(elem, dimension) {
@@ -77,8 +74,11 @@
       if (mode === "container") {
         newWidth = onLabelWidth > offLabelWidth ? onLabelWidth : offLabelWidth;
         newWidth += this._getDimension(this.handle, "width") + this.handleMargin;
+        if( this.customWidth === true ){
+          newWidth = this.containerWidth;
+        }
         return this.container.css({
-          width: this.containerWidth
+          width: newWidth
         });
       } else {
         newWidth = onLabelWidth > offLabelWidth ? onLabelWidth : offLabelWidth;
@@ -197,16 +197,16 @@
       };
       localMouseUp = function(event) {
         self.onGlobalUp.apply(self, arguments);
-        $(document).unbind('mousemove touchmove', localMouseMove);
-        return $(document).unbind('mouseup touchend', localMouseUp);
+        $(document).off('mousemove touchmove', localMouseMove);
+        return $(document).off('mouseup touchend', localMouseUp);
       };
       this.elem.change(function() {
         return self.refresh();
       });
-      return this.container.bind('mousedown touchstart', function(event) {
+      return this.container.on('mousedown touchstart', function(event) {
         self.onMouseDown.apply(self, arguments);
-        $(document).bind('mousemove touchmove', localMouseMove);
-        return $(document).bind('mouseup touchend', localMouseUp);
+        $(document).on('mousemove touchmove', localMouseMove);
+        return $(document).on('mouseup touchend', localMouseUp);
       });
     };
 
@@ -218,9 +218,6 @@
         width: containerWidth - this.containerRadius - 16
       });
       offset = this.containerRadius + 1;
-      /*if ($.browser.msie && $.browser.version < 7) {
-        offset -= 3;
-      }*/
       this.rightSide = containerWidth - this._getDimension(this.handle, "width") - offset;
 	  leftHandle = this.rightSide;
 	  if ( leftHandle == 0 ) leftHandle = -1;
@@ -274,6 +271,8 @@
     };
 
     iOSCheckbox.defaults = {
+      customWidth: false,
+      containerWidth: 80,
       duration: 200,
       checkedLabel: 'ON',
       uncheckedLabel: 'OFF',
@@ -281,7 +280,6 @@
       resizeContainer: true,
       disabledClass: 'iPhoneCheckDisabled',
       containerClass: 'iPhoneCheckContainer',
-      containerWidth: 80,
       labelOnClass: 'iPhoneCheckLabelOn',
       labelOffClass: 'iPhoneCheckLabelOff',
       handleClass: 'iPhoneCheckHandle',
@@ -343,10 +341,11 @@
       options = {};
     }
     opts = $.extend({}, options, {
+      customWidth: false,
+      containerWidth: 80,
       resizeHandle: false,
       disabledClass: 'iOSCheckDisabled',
       containerClass: 'iOSCheckContainer',
-      containerWidth: 80,
       labelOnClass: 'iOSCheckLabelOn',
       labelOffClass: 'iOSCheckLabelOff',
       handleClass: 'iOSCheckHandle',
