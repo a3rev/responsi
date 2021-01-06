@@ -10,7 +10,7 @@ if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 
 	function responsi_framework_upgrade_version(){
 
-		if( version_compare(get_option('responsi_framework_version'), '8.1.5', '<') ){
+		if( version_compare(get_option('responsi_framework_version'), '8.1.6', '<') ){
 
 	        if( function_exists('responsi_dynamic_css') ){
 	        	responsi_dynamic_css( 'framework' );
@@ -708,6 +708,37 @@ if ( is_admin() && isset( $_GET['activated'] ) && ( true === $_GET['activated'] 
 
 	// Custom action for theme-setup (redirect is at priority 10).
 	do_action( 'responsi_theme_activate' );
+
+}
+
+add_filter( 'wp_prepare_themes_for_js', 'responsi_wp_prepare_themes_for_js' );
+
+function responsi_wp_prepare_themes_for_js( $prepared_themes ){
+	
+	if( is_array( $prepared_themes ) ){
+
+		$responsi_prepared_themes_lists =  array( 
+			'responsi', 
+			'responsi-blank-child',
+			'chameleon-responsi',
+			'cladded-responsi',
+			'decor-responsi',
+			'elegance-responsi',
+			'glider-responsi',
+			'professional-responsi',
+		);
+
+		$responsi_prepared_themes = apply_filters( 'responsi_prepared_themes', $responsi_prepared_themes_lists );
+
+		foreach ( $responsi_prepared_themes as $slug ) {
+			if( isset( $prepared_themes[$slug] ) ){
+				$prepared_themes[$slug]['autoupdate']['supported'] = true;
+			}
+		}
+
+	}
+
+	return $prepared_themes;
 }
 
 ?>

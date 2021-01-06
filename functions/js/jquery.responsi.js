@@ -1,3 +1,45 @@
+var isMobile = {
+    Android: function() {
+        var check;
+        if (navigator.userAgent.match(/Android/i)) check = true;
+        return check;
+    },
+    BlackBerry: function() {
+        var check;
+        if (navigator.userAgent.match(/BlackBerry/i)) check = true;
+        return check;
+    },
+    iOS: function() {
+        var check;
+        if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) check = true;
+        return check;
+    },
+    Opera: function() {
+        var check;
+        if (navigator.userAgent.match(/Opera Mini/i)) check = true;
+        return check;
+    },
+    Windows: function() {
+        var check;
+        if (navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i)) check = true;
+        return check;
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+
+window.browser = function () {
+    var browser = "Unknown browser";
+    if (!!window.chrome && !(!!window.opera)) browser = 'chrome'; // Chrome 1+
+    if (typeof InstallTrigger !== 'undefined') browser = 'firefox'; // Firefox 1.0+
+    if (!!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0) browser = 'opera'; // Opera 8.0+ (UA detection to detect Blink/v8-powered Opera)
+    if ( /*@cc_on!@*/ false || !!document.documentMode) browser = 'ie'; // At least IE6
+    if (Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0) browser = 'safari'; // At least Safari 3+: "[object HTMLElementConstructor]"
+
+    return browser;
+}
+
 // addEventListener passive
 !function(e){"function"==typeof define&&define.amd?define(e):e()}(function(){var e,t=["scroll","wheel","touchstart","touchmove","touchenter","touchend","touchleave","mouseout","mouseleave","mouseup","mousedown","mousemove","mouseenter","mousewheel","mouseover"];if(function(){var e=!1;try{var t=Object.defineProperty({},"passive",{get:function(){e=!0}});window.addEventListener("test",null,t),window.removeEventListener("test",null,t)}catch(e){}return e}()){var n=EventTarget.prototype.addEventListener;e=n,EventTarget.prototype.addEventListener=function(n,o,r){var i,s="object"==typeof r&&null!==r,u=s?r.capture:r;(r=s?function(e){var t=Object.getOwnPropertyDescriptor(e,"passive");return t&&!0!==t.writable&&void 0===t.set?Object.assign({},e):e}(r):{}).passive=void 0!==(i=r.passive)?i:-1!==t.indexOf(n)&&!0,r.capture=void 0!==u&&u,e.call(this,n,o,r)},EventTarget.prototype.addEventListener._original=e}});
 
@@ -38,37 +80,6 @@ window.getBaseURL = function (){
 
 }
 
-var isMobile = {
-    Android: function() {
-        var check;
-        if (navigator.userAgent.match(/Android/i)) check = true;
-        return check;
-    },
-    BlackBerry: function() {
-        var check;
-        if (navigator.userAgent.match(/BlackBerry/i)) check = true;
-        return check;
-    },
-    iOS: function() {
-        var check;
-        if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) check = true;
-        return check;
-    },
-    Opera: function() {
-        var check;
-        if (navigator.userAgent.match(/Opera Mini/i)) check = true;
-        return check;
-    },
-    Windows: function() {
-        var check;
-        if (navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i)) check = true;
-        return check;
-    },
-    any: function() {
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-    }
-};
-
 window.isTouchDevice = function (){
     return ('ontouchstart' in document.documentElement);
 }
@@ -97,17 +108,6 @@ window.responsiGetStyle = function responsiGetStyle(oElm, strCssRule){
 
 window.hexToRGBA = function( hex, opacity ) {
     return 'rgba(' + (hex = hex.replace('#', '')).match(new RegExp('(.{' + hex.length/3 + '})', 'g')).map(function(l) { return parseInt(hex.length%2 ? l+l : l, 16) }).concat(opacity).join(',') + ')';
-}
-
-window.browser = function () {
-    var browser = "Unknown browser";
-    if (!!window.chrome && !(!!window.opera)) browser = 'chrome'; // Chrome 1+
-    if (typeof InstallTrigger !== 'undefined') browser = 'firefox'; // Firefox 1.0+
-    if (!!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0) browser = 'opera'; // Opera 8.0+ (UA detection to detect Blink/v8-powered Opera)
-    if ( /*@cc_on!@*/ false || !!document.documentMode) browser = 'ie'; // At least IE6
-    if (Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0) browser = 'safari'; // At least Safari 3+: "[object HTMLElementConstructor]"
-
-    return browser;
 }
 
 /*

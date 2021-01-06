@@ -1,6 +1,11 @@
 *** Responsi Framework Changelog ***
 
-= 8.1.5 - 2020/01/31 =
+= 8.1.6 - 2020/01/06 =
+* This maintenance release fixes a page scrolling bug in the Chrome browser
+* Fix - Smoothscroll JavaScript not working in Chrome browser causing very jerky load in that browser when scrolling.
+* Tweak - Enable support for theme auto updates
+
+= 8.1.5 - 2020/12/31 =
 * This is an important maintenance release that updates our scripts for compatibility with the latest version of jQuery released in WordPress 5.6
 * Tweak - Update JavaScript on framework for work compatibility with latest version of jQuery
 * Fix - Replace .bind( event, handler ) by .on( event, handler ) for compatibility with latest version of jQuery
