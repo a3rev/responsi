@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.1.7 - 2021/01/08 =
+* This maintenance release fixes a bug on the Mobile Menu dropdown
+* Fix - Mobile menu click loop. bug in update jQuery on version 8.1.5
+
 = 8.1.6 - 2020/01/06 =
 * This maintenance release fixes a page scrolling bug in the Chrome browser
 * Fix - Smoothscroll JavaScript not working in Chrome browser causing very jerky load in that browser when scrolling.

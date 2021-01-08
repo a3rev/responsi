@@ -1134,7 +1134,7 @@ jQuery(document).ready(function($) {
             return true;
         });
 
-        $(document).on('tap click', '.responsi-menu li.menu-item-has-children > a', function() {
+        /*$(document).on('tap click', '.responsi-menu li.menu-item-has-children > a', function() {
             if (!$(this).parent('.responsi-menu li.menu-item-has-children').hasClass('open')) {
                 $('li.menu-item-has-children').removeClass('open');
                 $(this).parent('.responsi-menu li.menu-item-has-children').addClass('open');
@@ -1142,7 +1142,7 @@ jQuery(document).ready(function($) {
                 $(window).trigger('build-icon-arrow');
                 return false;
             }
-        });
+        });*/
 
     }
 
