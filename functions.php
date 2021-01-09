@@ -4,7 +4,7 @@
 /* ResponsiFramework */
 /*-----------------------------------------------------------------------------------*/
 
-define( 'RESPONSI_FRAMEWORK_VERSION', '8.1.7' );
+define( 'RESPONSI_FRAMEWORK_VERSION', '8.1.8' );
 
 require_once ( 'functions/admin-init.php' );					// Framework Init
 

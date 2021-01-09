@@ -1,12 +1,14 @@
 <?php
 //Filter Content - Remove wpautop
-if ( !is_admin() ) {
-    add_filter( 'the_content', 'responsi_remove_wpautop', 99 );
-    add_filter( 'get_the_excerpt', 'responsi_remove_shortcode_get_the_excerpt', 99 );
-    add_filter( 'wp_trim_excerpt', 'responsi_wpshout_excerpt');
+function responsi_add_filter_content_remove_wpautop(){
+    if ( !is_admin() ) {
+        add_filter( 'the_content', 'responsi_remove_wpautop', 99 );
+        add_filter( 'get_the_excerpt', 'responsi_remove_shortcode_get_the_excerpt', 99, 2 );
+        add_filter( 'wp_trim_excerpt', 'responsi_wpshout_excerpt', 10, 2 );
+    }
 }
 
-function responsi_wpshout_excerpt($text = '') {
+function responsi_wpshout_excerpt( $text, $raw_excerpt) {
     $raw_excerpt = $text;
 
     if ( '' == $text || '&nbsp;' == $text ) {
@@ -70,7 +72,7 @@ if ( !function_exists( 'responsi_trim_excerpt' ) ) {
 }
 
 if ( !function_exists( 'responsi_remove_shortcode_get_the_excerpt' ) ) {
-    function responsi_remove_shortcode_get_the_excerpt( $content ) {
+    function responsi_remove_shortcode_get_the_excerpt( $content, $post ) {
 
         global $shortcode_tags;
 

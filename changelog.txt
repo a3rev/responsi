@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.1.8 - 2021/01/09 =
+* This maintenance release fixes a conflict with the Yoast SEO plugin
+* Fix - Filter descriptions conflict with Yoast SEO plugin
+
 = 8.1.7 - 2021/01/08 =
 * This maintenance release fixes a bug on the Mobile Menu dropdown
 * Fix - Mobile menu click loop. bug in update jQuery on version 8.1.5
