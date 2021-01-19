@@ -172,7 +172,7 @@
     var margin_padding_fields = [
         'responsi_post_box_padding',
         'responsi_post_box_margin',
-        'responsi_post_title_margins',
+        'responsi_post_title_margin',
         'responsi_post_meta_margin',
         'responsi_post_meta_padding',
         'responsi_post_meta_cat_tag_margin',
