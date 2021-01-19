@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.1.9 - 2021/01/19 =
+* This maintenance release fixes a bug with blog card image fixed height
+* Fix - Blog Cards image Fixed height as a percentage not working. 
+
 = 8.1.8 - 2021/01/09 =
 * This maintenance release fixes a conflict with the Yoast SEO plugin
 * Fix - Filter descriptions conflict with Yoast SEO plugin

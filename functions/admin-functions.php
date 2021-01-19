@@ -4385,7 +4385,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     if ( 'true' === $responsi_fixed_thumbnail && $responsi_fixed_thumbnail_tall > 0 ) {
         $dynamic_css .= '.box-item .entry-item .thumb > a {display: block !important;max-width: 100% !important;overflow: hidden !important;text-align: center !important;vertical-align: top !important;width: 100% !important;padding:0 !important;margin:0 !important;height: inherit;}';
         $dynamic_css .= '.box-item.masonry-brick .entry-item .thumb a img {height: 100% !important;max-width: 100% !important;max-height: 100% !important;width:auto !important;}';
-        $dynamic_css .= '.box-item.masonry-brick .entry-item .thumb a img:not(.lazy-hidden){height:auto !important;}';
+        //$dynamic_css .= '.box-item.masonry-brick .entry-item .thumb a img:not(.lazy-hidden){height:auto !important;}';
     } else {
         $dynamic_css .= '.box-item .entry-item .thumb img:not(.lazy-hidden){height:auto;max-width: 100% !important;max-height: 100% !important;}';
     }
