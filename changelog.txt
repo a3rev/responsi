@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.1.9.1 - 2021/01/21 =
+* This maintenance release has a bug fix for display in the Firefox browser
+* Fix - Responsi js not apply onload on Firefox browser.
+
 = 8.1.9 - 2021/01/19 =
 * This maintenance release contains 2 small bug fixes.
 * Fix - Blog Cards image Fixed height as a percentage not working.

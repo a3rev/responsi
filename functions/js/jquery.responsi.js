@@ -1292,7 +1292,7 @@ jQuery(document).ready(function($) {
         cache: false
     });
 
-    $(window).on('load', function() {
+    $(document).ready(function() {
 
         parallaxEdge();
         parallax();
