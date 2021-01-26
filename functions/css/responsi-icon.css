@@ -1,4 +1,10 @@
-@font-face{font-family:'responsi-icon';font-style:normal;font-weight:normal;src:local('responsi-icon'),url("../fonts/responsi-icon.eot"),url("../fonts/responsi-icon.woff") format("woff"),url("../fonts/responsi-icon.ttf") format("truetype"),url("../fonts/responsi-icon.svg#responsi-icon") format("svg");font-display:swap}
+@font-face {
+	font-family: 'responsi-icon';
+	font-style: normal;
+	font-weight: normal;
+	src: local('responsi-icon'), url("../fonts/responsi-icon.woff") format("woff"), url("../fonts/responsi-icon.ttf") format("truetype"), url("../fonts/responsi-icon.svg#responsi-icon") format("svg"), url("../fonts/responsi-icon.eot") format("eot");
+	font-display: swap
+}
 [data-responsi-icon]:before{font-family:"responsi-icon";content:attr(data-responsi-icon);font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .responsi-icon-a3-sidebar-menu:before{content:"\a3"}
 .responsi-icon-rsc:before{content:"<"}

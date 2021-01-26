@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 8.1.9.2 - 2021/01/26 =
+* This maintenance release has an orderlist CSS tweak and a bug fix for font face not loading in the Firefox browser.
+* Tweak - Tweak Style CSS for orderlist display inside while text align is centre.
+* Fix - downloadable font: rejected by sanitizer error. fontface not loading on Firefox browser.
+
 = 8.1.9.1 - 2021/01/21 =
 * This maintenance release has a bug fix for display in the Firefox browser
 * Fix - Responsi js not apply onload on Firefox browser.

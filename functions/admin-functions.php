@@ -3227,7 +3227,10 @@ function responsi_build_dynamic_css( $preview = false ) {
     }
     $dynamic_css .= '.sidebar .widget-title h3, .sidebar-alt .widget-title h3{' . $widget_title_css . '}';
     if ( 'true' === $widget_text_alignment_mobile ) {
-        $dynamic_css .= '@media only screen and (max-width: 782px){.sidebar .widget-title, .sidebar .widget-title h3, .sidebar .widget-title *, .sidebar .widget-content, .sidebar .widget-content *,  .sidebar-alt .widget-title, .sidebar-alt .widget-title h3, .sidebar-alt .widget-title *, .sidebar-alt .widget-content, .sidebar-alt .widget-content * {text-align:center !important;}}';
+        $dynamic_css .= '@media only screen and (max-width: 782px){
+            .sidebar .widget-title, .sidebar .widget-title h3, .sidebar .widget-title *, .sidebar .widget-content, .sidebar .widget-content *,  .sidebar-alt .widget-title, .sidebar-alt .widget-title h3, .sidebar-alt .widget-title *, .sidebar-alt .widget-content, .sidebar-alt .widget-content * {text-align:center !important;}
+            .sidebar .widget-content ul li, .sidebar-alt .widget-content ul li { list-style: inside; }
+        }';
     }
 
     $widget_content_padding_top                     = isset( $responsi_options['responsi_widget_content_padding_top'] ) ? esc_attr( $responsi_options['responsi_widget_content_padding_top'] ) : 0;
@@ -4046,7 +4049,10 @@ function responsi_build_dynamic_css( $preview = false ) {
     $footer_widget_item_css .= 'padding-right:' . $footer_widget_content_padding_right . 'px !important;';
     $dynamic_css .= '.msr-wg-footer .widget-content{' . $footer_widget_item_css . '}';
     if ( isset($responsi_options['responsi_font_footer_widget_text_alignment_mobile']) && 'true' === $responsi_options['responsi_font_footer_widget_text_alignment_mobile'] ) {
-        $dynamic_css .= '@media only screen and (max-width: 782px){.msr-wg-footer .widget .widget-title, .msr-wg-footer .widget .widget-title *, .msr-wg-footer .widget .widget-content, .msr-wg-footer .widget .widget-content * {text-align:center !important;}}';
+        $dynamic_css .= '@media only screen and (max-width: 782px){
+            .msr-wg-footer .widget .widget-title, .msr-wg-footer .widget .widget-title *, .msr-wg-footer .widget .widget-content, .msr-wg-footer .widget .widget-content * {text-align:center !important;}
+            .msr-wg-footer .widget .widget-content ul li { list-style: inside; }
+        }';
     }
     
     $footer_widget_css = 'float: none;';

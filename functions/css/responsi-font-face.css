@@ -1,4 +1,10 @@
-@font-face { font-family: 'responsi-font-face'; font-style: normal; font-weight: normal; src: local('responsi-font-face'), url("../fonts/responsi-font-face.eot"), url("../fonts/responsi-font-face.woff") format("woff"), url("../fonts/responsi-font-face.ttf") format("truetype"), url("../fonts/responsi-font-face.svg#responsi-font-face") format("svg"); font-display: swap; }
+@font-face {
+	font-family: 'responsi-font-face';
+	font-style: normal;
+	font-weight: normal;
+	src: local('responsi-font-face'), url("../fonts/responsi-font-face.woff") format("woff"), url("../fonts/responsi-font-face.ttf") format("truetype"), url("../fonts/responsi-font-face.svg#responsi-font-face") format("svg"), url("../fonts/responsi-font-face.eot") format("eot");
+	font-display: swap;
+}
 [class^="responsi-icon-"]:before, .hamburger-icon, [class*=" responsi-icon-"]:before { font-family: "responsi-font-face" !important; font-style: normal !important; font-weight: normal !important; font-variant: normal !important; text-transform: none !important; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 .responsi-icon-a3-sidebar-menu:before { content: "\a3"; }
 .responsi-icon-date-ico:before { content: "b"; }
