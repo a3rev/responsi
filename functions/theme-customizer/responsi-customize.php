@@ -581,7 +581,6 @@ final class Customizer {
 		.responsi-site { margin: 0 auto; padding: 0; }
 		.toolbar-ctn { width: 100%; left: 0; transform: translateZ(0); }
 		.toolbar-sticky .toolbar-ctn { position: fixed }
-		.responsi-frontend #responsi-wrapper:not(.site-width) .responsi-content { overflow-x: hidden; }
 		.responsi-toolbar { left: 0; z-index: 9999; }
 		.header { clear: both; }
 		.header-widget-1 a { margin: 0; }
@@ -714,6 +713,7 @@ final class Customizer {
 		@media only screen and (max-width:782px) {
 			.toolbar-ctn { position: relative; }
 			.responsi-menu { display: none; }
+			.responsi-frontend #responsi-wrapper:not(.site-width) .responsi-content { overflow-x: hidden; }
 			.mobile-header-1 .header-widget-1 { display: none !important; }
 			.mobile-header-2 .header-widget-2 { display: none !important; }
 			.mobile-header-3 .header-widget-3 { display: none !important; }

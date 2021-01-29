@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 8.2.0 - 2021/01/29 =
+* This feature release adds a new parallax function and removes the scrollto lib to improve page scroll.
+* Feature - Add new function parallax for responsi js load good while scroll
+* Tweak - Tweak responsi js remove javascript scrollto library.
+
 = 8.1.9.2 - 2021/01/26 =
 * This maintenance release has an orderlist CSS tweak and a bug fix for font face not loading in the Firefox browser.
 * Tweak - Tweak Style CSS for orderlist display inside while text align is centre.
