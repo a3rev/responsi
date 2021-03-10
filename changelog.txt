@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.2.1 - 2021/03/10 =
+* This maintenance release is for compatibility with WordPress 5.7
+* Tweak - Test for compatibility with WordPress 5.7
+
 = 8.2.0 - 2021/01/29 =
 * This feature release adds a new parallax function and removes the scrollto lib to improve page scroll.
 * Feature - Add new function parallax for responsi js load good while scroll
