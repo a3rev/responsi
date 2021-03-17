@@ -80,7 +80,7 @@
 			if ($('.responsi-metabox-radio-img-img, .responsi-radio-img-img').length) {
 
 
-				$('.responsi-metabox-radio-img-img, .responsi-radio-img-img').click(function() {
+				$('.responsi-metabox-radio-img-img, .responsi-radio-img-img').on( 'click', function() {
 
 					$(this).parent().parent().find('.responsi-metabox-radio-img-img').removeClass('responsi-metabox-radio-img-selected');
 					$(this).parent().parent().find('.responsi-radio-img-img').removeClass('responsi-radio-img-selected');

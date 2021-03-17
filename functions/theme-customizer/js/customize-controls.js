@@ -74,10 +74,10 @@
 
 			//Logic Background Theme
 			if ($('#' + groupID + ' #responsi_disable_background_style_img').prop('checked')) {
-				$('#' + groupID + ' #responsi_use_style_bg_image').removeAttr('checked').iphoneStyle("refresh");
+				$('#' + groupID + ' #responsi_use_style_bg_image').prop('checked', false).iphoneStyle("refresh");
 			}
 			if ($('#' + groupID + ' #responsi_use_style_bg_image').prop('checked')) {
-				$('#' + groupID + ' #responsi_disable_background_style_img').removeAttr('checked').iphoneStyle("refresh");
+				$('#' + groupID + ' #responsi_disable_background_style_img').prop('checked', false).iphoneStyle("refresh");
 			}
 			//end Logic Background Theme
 
@@ -297,12 +297,12 @@
 			$(document).on('responsi-ui-icheckbox-switch', '.customize-control-icheckbox input.responsi-ui-icheckbox', function(event, elem, status) {
 				if (elem.attr('id') == 'responsi_disable_background_style_img') {
 					if (elem.prop('checked')) {
-						$('#responsi_use_style_bg_image').removeAttr('checked').iphoneStyle("refresh");
+						$('#responsi_use_style_bg_image').prop('checked',false).iphoneStyle("refresh");
 					}
 				}
 				if (elem.attr('id') == 'responsi_use_style_bg_image') {
 					if (elem.prop('checked')) {
-						$('#responsi_disable_background_style_img').removeAttr('checked').iphoneStyle("refresh");
+						$('#responsi_disable_background_style_img').prop('checked', false).iphoneStyle("refresh");
 					}
 				}
 			});
@@ -485,7 +485,7 @@
 						pickerContainer = control.container.find( '.wp-picker-container' );
 						if ( pickerContainer.hasClass( 'wp-picker-active' ) ) {
 							picker.wpColorPicker( 'close' );
-							control.container.find( '.wp-color-result' ).focus();
+							control.container.find( '.wp-color-result' ).trigger('focus');
 							event.stopPropagation();
 						}
 					} );
@@ -608,7 +608,7 @@
 						pickerContainer = control.container.find( '.wp-picker-container' );
 						if ( pickerContainer.hasClass( 'wp-picker-active' ) ) {
 							picker.wpColorPicker( 'close' );
-							control.container.find( '.wp-color-result' ).focus();
+							control.container.find( '.wp-color-result' ).trigger('focus');
 							event.stopPropagation();
 						}
 					} );
@@ -824,7 +824,7 @@
 						pickerContainer = control.container.find( '.wp-picker-container' );
 						if ( pickerContainer.hasClass( 'wp-picker-active' ) ) {
 							picker.wpColorPicker( 'close' );
-							control.container.find( '.wp-color-result' ).focus();
+							control.container.find( '.wp-color-result' ).trigger('focus');
 							event.stopPropagation();
 						}
 					} );
@@ -1112,7 +1112,7 @@
 						pickerContainer = control.container.find( '.wp-picker-container' );
 						if ( pickerContainer.hasClass( 'wp-picker-active' ) ) {
 							picker.wpColorPicker( 'close' );
-							control.container.find( '.wp-color-result' ).focus();
+							control.container.find( '.wp-color-result' ).trigger('focus');
 							event.stopPropagation();
 						}
 					} );
@@ -1323,7 +1323,7 @@
 							onChange: function(elem, value) {
 								var status = value.toString();
 								if (elem.prop('checked')) {
-									$('input[name="' + input_name + '"]').not(current_item).removeAttr('checked').removeAttr('checkbox-disabled').iphoneStyle("refresh");
+									$('input[name="' + input_name + '"]').not(current_item).prop('checked', false).prop('checkbox-disabled', null).iphoneStyle("refresh");
 									if( null !== control.setting ){
 										control.setting.set(current_item.val());
 									}
@@ -1333,7 +1333,7 @@
 							onEnd: function(elem, value) {
 								var status = value.toString();
 								if (elem.prop('checked')) {
-									$('input[name="' + input_name + '"]').not(current_item).removeAttr('checkbox-disabled');
+									$('input[name="' + input_name + '"]').not(current_item).prop('checkbox-disabled', null);
 									$(current_item).attr('checkbox-disabled', 'true');
 								}
 								$('input[name="' + input_name + '"]').trigger("responsi-ui-iradio-switch-end", [elem, status]);
@@ -1493,7 +1493,7 @@
 						pickerContainer = control.container.find( '.wp-picker-container' );
 						if ( pickerContainer.hasClass( 'wp-picker-active' ) ) {
 							picker.wpColorPicker( 'close' );
-							control.container.find( '.wp-color-result' ).focus();
+							control.container.find( '.wp-color-result' ).trigger('focus');
 							event.stopPropagation();
 						}
 					} );
@@ -1580,7 +1580,7 @@
 						pickerContainer = control.container.find( '.wp-picker-container' );
 						if ( pickerContainer.hasClass( 'wp-picker-active' ) ) {
 							picker.wpColorPicker( 'close' );
-							control.container.find( '.wp-color-result' ).focus();
+							control.container.find( '.wp-color-result' ).trigger('focus');
 							event.stopPropagation(); // Prevent section from being collapsed.
 						}
 					} );
@@ -1930,7 +1930,7 @@
 						$(this).show();
 					}
 					if ($(this).hasClass('responsi-radio-img-selected') && $(this).data('value') == 6) {
-						$(this).parent('.layout-item').siblings('.layout-item-5').find('img').click();
+						$(this).parent('.layout-item').siblings('.layout-item-5').find('img').trigger( 'click' );
 					}
 				});
 			}
@@ -1942,7 +1942,7 @@
 						$(this).show();
 					}
 					if ($(this).hasClass('responsi-radio-img-selected') && $(this).data('value') >= 5) {
-						$(this).parent('.layout-item').siblings('.layout-item-4').find('img').click();
+						$(this).parent('.layout-item').siblings('.layout-item-4').find('img').trigger( 'click' );
 					}
 				});
 			}
@@ -2179,7 +2179,7 @@
 
 							if ( change_value === 'slide' ) {
 
-								direction_select.find('option[value=""]').attr('disabled','true').removeAttr('selected');
+								direction_select.find('option[value=""]').attr('disabled','true').prop('selected', false);
 
 								if( control.params.values.direction == '' ){
 									control.settings[control.id + '[direction]'].set('left');
@@ -2187,7 +2187,7 @@
 								}
 							
 							}else{
-								direction_select.find('option[value=""]').removeAttr('disabled');
+								direction_select.find('option[value=""]').prop('disabled');
 							}
 
 							if (change_value !== 'none' ) {

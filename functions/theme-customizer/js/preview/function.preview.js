@@ -94,7 +94,7 @@ window.fontsDefaults.push (
                 gFonts = gFonts.replace(" ", "+");
                 gFonts = gFonts.split('|');
                 if (gFonts.length > 0) {
-                    gFonts = $.unique(gFonts);
+                    gFonts = $.uniqueSort(gFonts);
 
                     for (var i = 0; i < gFonts.length; i++) {
                         if (gFonts[i] != '' && gFonts[i] != font.replace(" ", "+")) {
