@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.2.3 - 2021/03/25
+* Tweak - Added global fonts and fonts post card settings for editor post.
+* Tweak - Added global fonts and fonts page settings for editor page.
+
 = 8.2.2 - 2021/03/17
 * This maintenance release updates 23 deprecated jQuery functions for compatibility with the latest version of jQuery in WordPress 5.7
 * Tweak – Replace deprecated .change( handler ) with .on( 'change', handler )

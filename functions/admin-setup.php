@@ -10,7 +10,7 @@ if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 
 	function responsi_framework_upgrade_version(){
 
-		if( version_compare(get_option('responsi_framework_version'), '8.2.2', '<') ){
+		if( version_compare(get_option('responsi_framework_version'), '8.2.3', '<') ){
 
 	        if( function_exists('responsi_dynamic_css') ){
 	        	responsi_dynamic_css( 'framework' );
@@ -585,13 +585,49 @@ if ( !function_exists( 'responsi_get_customizer_css' ) ){
 
 		$blockBgCSS = '';
 
-		$post_box_bg                                    = isset( $responsi_options['responsi_post_box_bg'] ) ? $responsi_options['responsi_post_box_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
+		$blockTitleCSS = '';
+
+		$blockContentCSS = '';
+
+		$post_box_bg            = isset( $responsi_options['responsi_post_box_bg'] ) ? $responsi_options['responsi_post_box_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
 		$page_box_bg 			= isset( $responsi_options['responsi_page_box_bg'] ) ? $responsi_options['responsi_page_box_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
     	$wrap_content_bg       	= isset( $responsi_options['responsi_wrap_content_background'] ) ? $responsi_options['responsi_wrap_content_background'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
     	$box_inner_bg           = isset( $responsi_options['responsi_box_inner_bg'] ) ? $responsi_options['responsi_box_inner_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
     	$is_layout_boxed		= isset( $responsi_options['responsi_layout_boxed'] ) ? esc_attr( $responsi_options['responsi_layout_boxed'] ) : 'true';
     	$is_enable_boxed_style  = isset( $responsi_options['responsi_enable_boxed_style'] ) ? esc_attr( $responsi_options['responsi_enable_boxed_style'] ) : 'false';
     	$wrap_ctn_bg     		= isset( $responsi_options['responsi_wrap_container_background'] ) ? $responsi_options['responsi_wrap_container_background'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
+
+		$font_text				= isset( $responsi_options['responsi_font_text'] ) ? $responsi_options['responsi_font_text'] : array('size' => '14','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#555555');
+	    $font_h1                = isset( $responsi_options['responsi_font_h1'] ) ? $responsi_options['responsi_font_h1'] : array('size' => '26','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
+	    $font_h2                = isset( $responsi_options['responsi_font_h2'] ) ? $responsi_options['responsi_font_h2'] : array('size' => '24','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
+	    $font_h3                = isset( $responsi_options['responsi_font_h3'] ) ? $responsi_options['responsi_font_h3'] : array('size' => '22','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
+	    $font_h4                = isset( $responsi_options['responsi_font_h4'] ) ? $responsi_options['responsi_font_h4'] : array('size' => '20','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
+	    $font_h5                = isset( $responsi_options['responsi_font_h5'] ) ? $responsi_options['responsi_font_h5'] : array('size' => '18','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
+	    $font_h6 				= isset( $responsi_options['responsi_font_h6'] ) ? $responsi_options['responsi_font_h6'] : array('size' => '16','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
+	    
+	    $_font_post_title		= isset( $responsi_options['responsi_font_post_title'] ) ? $responsi_options['responsi_font_post_title'] : array('size' => '26','line_height' => '1.2','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
+	    $_font_post_text		= isset( $responsi_options['responsi_font_post_text'] ) ? $responsi_options['responsi_font_post_text'] : array('size' => '14','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#555555');
+	    
+	    $_page_title_font		= isset( $responsi_options['responsi_page_title_font'] ) ? $responsi_options['responsi_page_title_font'] : array('size' => '26','line_height' => '1.2','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
+	    $_page_content_font		= isset( $responsi_options['responsi_page_content_font'] ) ? $responsi_options['responsi_page_content_font'] : array('size' => '14','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#555555');
+	    
+	    
+		$blockContentCSS .= '.editor-styles-wrapper h1{' . responsi_generate_fonts( $font_h1 ) . '}';
+		$blockContentCSS .= '.editor-styles-wrapper h2{' . responsi_generate_fonts( $font_h2 ) . '}';
+		$blockContentCSS .= '.editor-styles-wrapper h3{' . responsi_generate_fonts( $font_h3 ) . '}';
+		$blockContentCSS .= '.editor-styles-wrapper h4{' . responsi_generate_fonts( $font_h4 ) . '}';
+		$blockContentCSS .= '.editor-styles-wrapper h5{' . responsi_generate_fonts( $font_h5 ) . '}';
+		$blockContentCSS .= '.editor-styles-wrapper h6{' . responsi_generate_fonts( $font_h6 ) . '}';
+
+		if( $post && $post->post_type == 'post' ){
+			$blockTitleCSS .= '.edit-post-visual-editor .wp-block.editor-post-title .editor-post-title__input{' . responsi_generate_fonts( $_font_post_title ) . '}';
+			$blockContentCSS .= '.edit-post-visual-editor .editor-styles-wrapper{' . responsi_generate_fonts( $_font_post_text ) . '}';
+		}elseif( $post && $post->post_type == 'page' ){
+			$blockTitleCSS .= '.edit-post-visual-editor .wp-block.editor-post-title .editor-post-title__input{' . responsi_generate_fonts( $_page_title_font ) . '}';
+			$blockContentCSS .= '.edit-post-visual-editor .editor-styles-wrapper{' . responsi_generate_fonts( $_page_content_font ) . '}';
+		}else{
+			$blockContentCSS .= '.edit-post-visual-editor .editor-styles-wrapper{' . responsi_generate_fonts( $font_text ) . '}';
+		}
 
 		if( $post && $post->post_type == 'post' && isset($post_box_bg['onoff']) && isset($post_box_bg['color']) && 'false' != $post_box_bg['onoff'] && '' != $post_box_bg['color'] && 'transparent' != $post_box_bg['color'] ){
 			$blockBgCSS = responsi_generate_background_color($post_box_bg);
@@ -656,6 +692,14 @@ if ( !function_exists( 'responsi_get_customizer_css' ) ){
 					' . $blockBgCSS . '
 				}
 			';
+		}
+
+		if( '' != $blockTitleCSS ){
+			$css .= $blockTitleCSS;
+		}
+
+		if( '' != $blockContentCSS ){
+			$css .= $blockContentCSS;
 		}
 
 		return $css;

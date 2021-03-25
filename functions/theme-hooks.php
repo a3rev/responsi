@@ -132,6 +132,16 @@ if ( !function_exists( 'responsi_load_styles' ) ){
 }
 add_action( 'wp_head', 'responsi_load_styles', 0 );
 
+add_action( 'admin_head', 'responsi_admin_load_google_fonts', 0 );
+
+function responsi_admin_load_google_fonts(){
+	global $pagenow;
+	responsi_register_webfonts();
+	if ( in_array( $pagenow, array( 'post.php' ) ) && isset( $_GET['post'] ) && isset( $_GET['action'] ) ) {
+		wp_enqueue_style( 'google-fonts' );
+	}
+}
+
 /*-----------------------------------------------------------------------------------*/
 /* Theme Register Scripts */
 /*-----------------------------------------------------------------------------------*/
