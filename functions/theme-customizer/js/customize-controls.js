@@ -74,10 +74,10 @@
 
 			//Logic Background Theme
 			if ($('#' + groupID + ' #responsi_disable_background_style_img').prop('checked')) {
-				$('#' + groupID + ' #responsi_use_style_bg_image').prop('checked', false).iphoneStyle("refresh");
+				$('#' + groupID + ' #responsi_use_style_bg_image').prop('checked', false ).iphoneStyle("refresh");
 			}
 			if ($('#' + groupID + ' #responsi_use_style_bg_image').prop('checked')) {
-				$('#' + groupID + ' #responsi_disable_background_style_img').prop('checked', false).iphoneStyle("refresh");
+				$('#' + groupID + ' #responsi_disable_background_style_img').prop('checked', false ).iphoneStyle("refresh");
 			}
 			//end Logic Background Theme
 
@@ -297,12 +297,12 @@
 			$(document).on('responsi-ui-icheckbox-switch', '.customize-control-icheckbox input.responsi-ui-icheckbox', function(event, elem, status) {
 				if (elem.attr('id') == 'responsi_disable_background_style_img') {
 					if (elem.prop('checked')) {
-						$('#responsi_use_style_bg_image').prop('checked',false).iphoneStyle("refresh");
+						$('#responsi_use_style_bg_image').prop('checked', false ).iphoneStyle("refresh");
 					}
 				}
 				if (elem.attr('id') == 'responsi_use_style_bg_image') {
 					if (elem.prop('checked')) {
-						$('#responsi_disable_background_style_img').prop('checked', false).iphoneStyle("refresh");
+						$('#responsi_disable_background_style_img').prop('checked', false ).iphoneStyle("refresh");
 					}
 				}
 			});
@@ -1323,7 +1323,7 @@
 							onChange: function(elem, value) {
 								var status = value.toString();
 								if (elem.prop('checked')) {
-									$('input[name="' + input_name + '"]').not(current_item).prop('checked', false).prop('checkbox-disabled', null).iphoneStyle("refresh");
+									$('input[name="' + input_name + '"]').not(current_item).prop('checked', false ).removeAttr('checkbox-disabled').iphoneStyle("refresh");
 									if( null !== control.setting ){
 										control.setting.set(current_item.val());
 									}
@@ -1333,7 +1333,7 @@
 							onEnd: function(elem, value) {
 								var status = value.toString();
 								if (elem.prop('checked')) {
-									$('input[name="' + input_name + '"]').not(current_item).prop('checkbox-disabled', null);
+									$('input[name="' + input_name + '"]').not(current_item).removeAttr('checkbox-disabled');
 									$(current_item).attr('checkbox-disabled', 'true');
 								}
 								$('input[name="' + input_name + '"]').trigger("responsi-ui-iradio-switch-end", [elem, status]);
@@ -2179,7 +2179,7 @@
 
 							if ( change_value === 'slide' ) {
 
-								direction_select.find('option[value=""]').attr('disabled','true').prop('selected', false);
+								direction_select.find('option[value=""]').attr('disabled','true').prop('selected', false );
 
 								if( control.params.values.direction == '' ){
 									control.settings[control.id + '[direction]'].set('left');
@@ -2187,7 +2187,7 @@
 								}
 							
 							}else{
-								direction_select.find('option[value=""]').prop('disabled');
+								direction_select.find('option[value=""]').prop('disabled', false );
 							}
 
 							if (change_value !== 'none' ) {
