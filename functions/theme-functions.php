@@ -2246,10 +2246,6 @@ if ( !function_exists( 'responsi_custom_content_metabox' ) ) {
 
         $css = '';
 
-        if ( isset($responsi_custom_meta['hide_title'] ) && 1 === $responsi_custom_meta['hide_title'] ) {
-            $css .= '.responsi_title, .responsi-area .title.entry-title,body .responsi_title, body .responsi-area .title.entry-title,.responsi-area .product_title.entry-title{display:none !important;}';
-        }
-
         if ( $custom_max_width ) {
             $responsi_layout_width = $content_max_width + $border_width_boxed;
             $css .= '@media only screen and (min-width: 783px){.site-width{ max-width:' . $responsi_layout_width . 'px !important; }}';

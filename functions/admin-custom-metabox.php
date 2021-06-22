@@ -517,13 +517,6 @@ function responsi_metabox_handle( $post_id = '' ) {
     if ( isset( $_POST['action'] ) && $_POST['action'] === 'editpost' ) {
         if ( ( get_post_type() !== '' ) && ( get_post_type() !== 'nav_menu_item' ) ) {
 
-
-            if( isset($_POST['responsi_custom_meta']) ){
-                if( isset( $_POST['responsi_custom_meta']['hide_title'] ) ) {
-                    $responsi_custom_meta['hide_title'] = 1;
-                }
-            }
-
             foreach ( $responsi_metaboxe_options as $k => $metabox ) {
                 if( isset( $metabox['type'] ) && ( in_array( $metabox['type'], responsi_metabox_fieldtypes() ) ) ) {
     				$var = $metabox['name'];
@@ -727,28 +720,6 @@ if ( ! function_exists( 'responsi_metabox_load_styles' ) ) {
     }
 }
 
-function responsi_title_custom_field_tab_content( $post ){
-    $output = '';
-    $responsi_custom_meta = get_post_meta( $post->ID , 'responsi_custom_meta', true );
-
-    if( !is_array( $responsi_custom_meta ) ){
-        $responsi_custom_meta = array( 'hide_title' => 0 );
-    }
-
-    $checked = '';
-    if( isset( $responsi_custom_meta['hide_title'] ) && 1 === $responsi_custom_meta['hide_title'] ){
-        $checked = 'checked="checked" ';
-    }
-
-    $output .= '<div class="custom-meta-box"><div style="line-height: 24px;min-height: 25px;margin-top: 5px;padding: 0 10px;color: #666;">';
-    $output .= '<input '.$checked.'type="checkbox" name="responsi_custom_meta[hide_title]" id="responsi_custom_meta_hide_title" value="1" /> <span>'.__( 'Check to hide Title of this post / page.', 'responsi' ).'</span>';
-    $output .= '</div></div>';
-
-    echo $output;
-}
-
-add_action( 'edit_form_before_permalink', 'responsi_title_custom_field_tab_content', 9 );
-
 /*-----------------------------------------------------------------------------------*/
 /* Addnew term page */
 /*-----------------------------------------------------------------------------------*/
@@ -801,10 +772,6 @@ function responsi_taxonomy_add_new_meta_field(){
         <p class="description"><?php _e( 'Maximum content width in pixels in large screens.', 'responsi' );?></p>
     </div>
     <div style="clear: both;"></div>
-    <div class="form-field">
-        <label><strong><?php _e('Custom Title', 'responsi'); ?></strong></label>
-        <label><input type="checkbox" name="responsi_custom_meta_term[hide_title]" value="1" /> <?php _e('Check to hide Title of this Category Page.', 'responsi'); ?></label>
-    </div>
     <?php
 }
 
@@ -813,13 +780,10 @@ function responsi_taxonomy_add_new_meta_field(){
 /*-----------------------------------------------------------------------------------*/
 
 function responsi_taxonomy_edit_meta_field( $term ){
-    $responsi_custom_meta_term = get_term_meta( $term->term_id, 'responsi_custom_meta_term', true );
-    $checked = '';
-    if ( $responsi_custom_meta_term && isset( $responsi_custom_meta_term['hide_title'] ) && 1 === $responsi_custom_meta_term['hide_title'] ) {
-        $checked = 'checked="checked" ';
-    }
-
+    
     global $responsi_options;
+
+    $responsi_custom_meta_term = get_term_meta( $term->term_id, 'responsi_custom_meta_term', true );
 
     $min = ' data-min="600"';
     $max = ' data-max="3000"';
@@ -873,13 +837,6 @@ function responsi_taxonomy_edit_meta_field( $term ){
         <p class="description"><?php _e( 'Maximum content width in pixels in large screens.', 'responsi' );?></p>
         </td>
     </tr>
-
-    <tr class="form-field">
-    <th scope="row" valign="top"><label for="responsi_custom_meta_term"><?php _e('Custom Title', 'responsi'); ?></label></th>
-        <td>
-        <input <?php echo $checked; ?>type="checkbox" name="responsi_custom_meta_term[hide_title]" id="active_responsi_custom_meta_term" value="1" /> <?php _e('Check to hide Title of this Category Page.', 'responsi'); ?>
-        </td>
-    </tr>
     <?php
 }
 
@@ -892,10 +849,6 @@ function responsi_save_taxonomy_custom_meta( $term_id ){
     if ( isset( $_POST['responsi_custom_meta_term'] ) ) {
 
         $responsi_custom_meta_term = array();
-
-        if ( isset( $_POST['responsi_custom_meta_term']['hide_title'] ) ) {
-            $responsi_custom_meta_term['hide_title'] = 1;
-        }
 
         $responsi_metaboxe_options = get_option( 'responsi_metaboxe_options', array() );
 
