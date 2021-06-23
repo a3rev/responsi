@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.2.6 - 2021/06/23 =
+* This maintenance release has a bug fix for the WordPress Image Gallery Column display
+* Fix - WordPress Image Gellery column break in version 8.2.5
+
 = 8.2.5 - 2021/06/22 =
 * This maintenance release has style render on editor and frontend fixes for Core, Paragraph, Table, List, Quote Blocks, and any block that uses the Core Topography control.
 * Fix - Fonts not applying for some p tags>, example custom font size with Core Paragraph block. Add style for WordPress core block that use Typography control.

@@ -977,10 +977,6 @@
 	color: currentColor
 }
 
-.editor-styles-wrapper p {
-	line-height: var(--wp--typography--line-height, var(--global--line-height-body))
-}
-
 .editor-styles-wrapper p.has-background {
 	padding: var(--global--spacing-unit)
 }
