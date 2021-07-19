@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 8.2.7 - 2021/07/19 =
+* This maintenance release has code tweaks for WordPress Major version 5.8 compatibility.
+* Tweak - Test for compatibility with WordPress 5.8
+* Fix - Control Layout not validated on customizer menu.
+
 = 8.2.6 - 2021/06/23 =
 * This maintenance release has a bug fix for the WordPress Image Gallery Column display
 * Fix - WordPress Image Gellery column break in version 8.2.5

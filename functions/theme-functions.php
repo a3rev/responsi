@@ -1872,11 +1872,18 @@ function responsi_add_theme_support_fullwide(){
 
         $css = '
 
+        :root{
+            --responsive--contentwide-width:'.$responsi_layout_width.'px;
+            --responsive--alignwide-width:  calc( '.$responsi_layout_width.'px + 10% );
+        }
+
         @media only screen and (min-width:783px) {
 
             .one-col #content .entry-content > .alignwide {
-                margin-left: -'.$total_ext_left.'px;
-                margin-right: -'.$total_ext_right.'px;
+                //margin-left: -'.$total_ext_left.'px;
+                //margin-right: -'.$total_ext_right.'px;
+                margin-left: -5%;
+                margin-right: -5%;
                 max-width: 100vw;
             }
             .one-col #content .entry-content > .alignfull {
@@ -1898,8 +1905,10 @@ function responsi_add_theme_support_fullwide(){
 
         @media only screen and (max-width:782px) {
             .one-col #content .entry-content > .alignwide {
-                margin-left: -'.$total_ext_left.'px;
-                margin-right: -'.$total_ext_right.'px;
+                //margin-left: -'.$total_ext_left.'px;
+                //margin-right: -'.$total_ext_right.'px;
+                margin-left: -5%;
+                margin-right: -5%;
                 max-width: 100vw;
             }
             .one-col #content .entry-content > .alignfull {
@@ -1921,7 +1930,10 @@ function responsi_add_theme_support_fullwide(){
     }
 
     if( '' != $css ){
-        echo '<style media="screen">'.$css.'</style>';
+
+        wp_add_inline_style( 'responsi-framework', $css );
+        wp_add_inline_style( 'wp-edit-blocks', $css );       
+        //echo '<style media="screen">'.$css.'</style>';
     } 
 }
 

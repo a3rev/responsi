@@ -1693,7 +1693,8 @@
 
 				event.preventDefault();
 
-				var column_val = control.params.values.col;
+				//var column_val = control.params.values.col;
+				var column_val = control.container.find('.column-item input[type="radio"]:checked').val();
 
 				control.container.find('.column-item-input input[type="number"]').addClass('hide-col-inp');
 
@@ -1741,7 +1742,7 @@
 
 						var col = $(this).val();
 
-						if( control.params.validate){
+						if( control.params.validate && control.params.validate_col){
 
 							if( col == 1 ){
 								//control.settings[control.id + '[col1]'].set('100');

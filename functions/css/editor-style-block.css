@@ -169,7 +169,7 @@
 	--widget--line-height-title: 1.4;
 	--widget--font-weight-title: 700;
 	--widget--spacing-menu: calc(0.66 * var(--global--spacing-unit));
-	--global--admin-bar--height: 0px
+	--global--admin-bar--height: 0px;
 }
 
 @media only screen and (min-width:652px) {
@@ -183,84 +183,90 @@
 
 }
 
-.editor-styles-wrapper {
+:root{
+	/*font-family: var( --global--responsi-typo-font-family );
+	font-size: var( --global--responsi-typo-font-size );
+	line-height: var( --global--responsi-typo-font-line-height );
+	font-weight: var( --global--responsi-typo-font-weight );
+	font-style: var( --global--responsi-typo-font-style );
+	color: var( --global--responsi-typo-font-color );*/
 }
 
-.editor-styles-wrapper a, .editor-styles-wrapper a:hover, .editor-styles-wrapper a:link, .editor-styles-wrapper a:visited, .editor-styles-wrapper h1 a:hover, .editor-styles-wrapper h1 a:link, .editor-styles-wrapper h1 a:visited, .editor-styles-wrapper h2 a:hover, .editor-styles-wrapper h2 a:link, .editor-styles-wrapper h2 a:visited, .editor-styles-wrapper h3 a:hover, .editor-styles-wrapper h3 a:link, .editor-styles-wrapper h3 a:visited, .editor-styles-wrapper h4 a:hover, .editor-styles-wrapper h4 a:link, .editor-styles-wrapper h4 a:visited, .editor-styles-wrapper h5 a:hover, .editor-styles-wrapper h5 a:link, .editor-styles-wrapper h5 a:visited, .editor-styles-wrapper h6 a:hover, .editor-styles-wrapper h6 a:link, .editor-styles-wrapper h6 a:visited, .editor-styles-wrapper ins {
-	text-decoration: none
+:root a, :root a:hover, :root a:link, :root a:visited, :root h1 a:hover, :root h1 a:link, :root h1 a:visited, :root h2 a:hover, :root h2 a:link, :root h2 a:visited, :root h3 a:hover, :root h3 a:link, :root h3 a:visited, :root h4 a:hover, :root h4 a:link, :root h4 a:visited, :root h5 a:hover, :root h5 a:link, :root h5 a:visited, :root h6 a:hover, :root h6 a:link, :root h6 a:visited, :root ins {
+	text-decoration: none;
 }
 
-.editor-styles-wrapper .wp-block-button:not(.is-style-outline) .wp-block-button__link:not(:hover):not(:active):not(.has-text-color) {
+:root .wp-block-button:not(.is-style-outline) .wp-block-button__link:not(:hover):not(:active):not(.has-text-color) {
 	color: var(--global--color-background)
 }
 
-.editor-styles-wrapper .has-background .wp-block-button:not(.is-style-outline) .wp-block-button__link:not(:hover):not(:active):not(.has-text-color) {
+:root .has-background .wp-block-button:not(.is-style-outline) .wp-block-button__link:not(:hover):not(:active):not(.has-text-color) {
 	color: var(--local--color-background, var(--global--color-background))
 }
 
-.editor-styles-wrapper .has-background .wp-block-button:not(.is-style-outline) .wp-block-button__link:not(:hover):not(:active):not(.has-text-color).has-background {
+:root .has-background .wp-block-button:not(.is-style-outline) .wp-block-button__link:not(:hover):not(:active):not(.has-text-color).has-background {
 	color: var(--global--color-primary)
 }
 
-.editor-styles-wrapper .wp-block-button:not(.is-style-outline) .wp-block-button__link:not(:hover):not(:active):not(.has-background) {
+:root .wp-block-button:not(.is-style-outline) .wp-block-button__link:not(:hover):not(:active):not(.has-background) {
 	background-color: var(--global--color-primary)
 }
 
-.editor-styles-wrapper .has-background .wp-block-button:not(.is-style-outline) .wp-block-button__link:not(:hover):not(:active):not(.has-background) {
+:root .has-background .wp-block-button:not(.is-style-outline) .wp-block-button__link:not(:hover):not(:active):not(.has-background) {
 	background-color: var(--local--color-primary, var(--global--color-primary))
 }
 
-.editor-styles-wrapper .wp-block-button:not(.is-style-outline) .wp-block-button__link:hover, .editor-styles-wrapper .wp-block-button:not(.is-style-outline) .wp-block-button__link:active {
+:root .wp-block-button:not(.is-style-outline) .wp-block-button__link:hover, :root .wp-block-button:not(.is-style-outline) .wp-block-button__link:active {
 	border-color: currentColor !important;
 	background-color: transparent !important;
 	color: inherit !important
 }
 
-.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:not(:hover):not(:active):not(.has-text-color), .editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:not(:hover):not(:active):not(.has-background), .editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:not(:hover):not(:active).has-background {
+:root .wp-block-button.is-style-outline .wp-block-button__link:not(:hover):not(:active):not(.has-text-color), :root .wp-block-button.is-style-outline .wp-block-button__link:not(:hover):not(:active):not(.has-background), :root .wp-block-button.is-style-outline .wp-block-button__link:not(:hover):not(:active).has-background {
 	border-color: currentColor
 }
 
-.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:not(:hover):not(:active):not(.has-text-color) {
+:root .wp-block-button.is-style-outline .wp-block-button__link:not(:hover):not(:active):not(.has-text-color) {
 	color: var(--global--color-primary)
 }
 
-.editor-styles-wrapper .has-background .wp-block-button.is-style-outline .wp-block-button__link:not(:hover):not(:active):not(.has-text-color) {
+:root .has-background .wp-block-button.is-style-outline .wp-block-button__link:not(:hover):not(:active):not(.has-text-color) {
 	color: var(--local--color-primary, var(--global--color-primary))
 }
 
-.editor-styles-wrapper .has-background .wp-block-button.is-style-outline .wp-block-button__link:not(:hover):not(:active).has-background:not(.has-text-color) {
+:root .has-background .wp-block-button.is-style-outline .wp-block-button__link:not(:hover):not(:active).has-background:not(.has-text-color) {
 	color: inherit
 }
 
-.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:not(:hover):not(:active):not(.has-background) {
+:root .wp-block-button.is-style-outline .wp-block-button__link:not(:hover):not(:active):not(.has-background) {
 	background-color: transparent
 }
 
-.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:hover, .editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:active {
+:root .wp-block-button.is-style-outline .wp-block-button__link:hover, :root .wp-block-button.is-style-outline .wp-block-button__link:active {
 	border-color: transparent !important;
 	background-color: var(--global--color-primary) !important;
 	color: var(--global--color-background) !important
 }
 
-.editor-styles-wrapper .has-background .wp-block-button.is-style-outline .wp-block-button__link:hover, .editor-styles-wrapper .has-background .wp-block-button.is-style-outline .wp-block-button__link:active {
+:root .has-background .wp-block-button.is-style-outline .wp-block-button__link:hover, :root .has-background .wp-block-button.is-style-outline .wp-block-button__link:active {
 	background-color: var(--local--color-primary, var(--global--color-primary)) !important;
 	color: var(--local--color-background, var(--global--color-background)) !important
 }
 
-.editor-styles-wrapper .has-text-color .wp-block-button.is-style-outline .wp-block-button__link:hover, .editor-styles-wrapper .has-text-color .wp-block-button.is-style-outline .wp-block-button__link:active {
+:root .has-text-color .wp-block-button.is-style-outline .wp-block-button__link:hover, :root .has-text-color .wp-block-button.is-style-outline .wp-block-button__link:active {
 	color: var(--local--color-background, var(--global--color-background)) !important
 }
 
-.editor-styles-wrapper .wp-block-button .is-style-squared .wp-block-button__link {
+:root .wp-block-button .is-style-squared .wp-block-button__link {
 	border-radius: 0
 }
 
-.editor-styles-wrapper .is-style-outline .wp-block-button__link[style*=radius]:focus, .editor-styles-wrapper .wp-block-button a.wp-block-button__link[style*=radius]:focus {
+:root .is-style-outline .wp-block-button__link[style*=radius]:focus, :root .wp-block-button a.wp-block-button__link[style*=radius]:focus {
 	outline-offset: 2px;
 	outline: 2px dotted var(--button--color-background)
 }
 
-.editor-styles-wrapper .wp-block-code {
+:root .wp-block-code {
 	border-color: var(--global--color-border);
 	border-radius: 0;
 	border-style: solid;
@@ -268,100 +274,100 @@
 	padding: var(--global--spacing-unit)
 }
 
-.editor-styles-wrapper .wp-block-code code {
+:root .wp-block-code code {
 	color: var(--global--color-primary);
 	white-space: pre;
 	overflow-x: auto;
 	display: block
 }
 
-.editor-styles-wrapper .wp-block-columns:not(.alignwide):not(.alignfull) {
+:root .wp-block-columns:not(.alignwide):not(.alignfull) {
 	clear: both
 }
 
-.editor-styles-wrapper .wp-block-columns .wp-block-column > * {
+:root .wp-block-columns .wp-block-column > * {
 	margin-top: calc(0.66 * var(--global--spacing-vertical));
 	margin-bottom: calc(0.66 * var(--global--spacing-vertical))
 }
 
 @media only screen and (min-width:482px) {
-	.editor-styles-wrapper .wp-block-columns .wp-block-column > * {
+	:root .wp-block-columns .wp-block-column > * {
 		margin-top: var(--global--spacing-vertical);
 		margin-bottom: var(--global--spacing-vertical)
 	}
 
 }
 
-.editor-styles-wrapper .wp-block-columns .wp-block-column > *:first-child {
+:root .wp-block-columns .wp-block-column > *:first-child {
 	margin-top: 0
 }
 
-.editor-styles-wrapper .wp-block-columns .wp-block-column > *:last-child {
+:root .wp-block-columns .wp-block-column > *:last-child {
 	margin-bottom: 0
 }
 
-.editor-styles-wrapper .wp-block-columns .wp-block-column:last-child {
+:root .wp-block-columns .wp-block-column:last-child {
 	margin-bottom: 0
 }
 
-.editor-styles-wrapper .wp-block-columns .wp-block-column:not(:last-child) {
+:root .wp-block-columns .wp-block-column:not(:last-child) {
 	margin-bottom: calc(0.66 * var(--global--spacing-vertical))
 }
 
 @media only screen and (min-width:482px) {
-	.editor-styles-wrapper .wp-block-columns .wp-block-column:not(:last-child) {
+	:root .wp-block-columns .wp-block-column:not(:last-child) {
 		margin-bottom: var(--global--spacing-vertical)
 	}
 
 }
 
 @media only screen and (min-width:822px) {
-	.editor-styles-wrapper .wp-block-columns .wp-block-column:not(:last-child) {
+	:root .wp-block-columns .wp-block-column:not(:last-child) {
 		margin-bottom: 0
 	}
 
 }
 
-.editor-styles-wrapper .wp-block-columns.alignfull .wp-block-column p:not(.has-background), .editor-styles-wrapper .wp-block-columns.alignfull .wp-block-column h1:not(.has-background), .editor-styles-wrapper .wp-block-columns.alignfull .wp-block-column h2:not(.has-background), .editor-styles-wrapper .wp-block-columns.alignfull .wp-block-column h3:not(.has-background), .editor-styles-wrapper .wp-block-columns.alignfull .wp-block-column h4:not(.has-background), .editor-styles-wrapper .wp-block-columns.alignfull .wp-block-column h5:not(.has-background), .editor-styles-wrapper .wp-block-columns.alignfull .wp-block-column h6:not(.has-background) {
+:root .wp-block-columns.alignfull .wp-block-column p:not(.has-background), :root .wp-block-columns.alignfull .wp-block-column h1:not(.has-background), :root .wp-block-columns.alignfull .wp-block-column h2:not(.has-background), :root .wp-block-columns.alignfull .wp-block-column h3:not(.has-background), :root .wp-block-columns.alignfull .wp-block-column h4:not(.has-background), :root .wp-block-columns.alignfull .wp-block-column h5:not(.has-background), :root .wp-block-columns.alignfull .wp-block-column h6:not(.has-background) {
 	padding-left: var(--global--spacing-unit);
 	padding-right: var(--global--spacing-unit)
 }
 
-.editor-styles-wrapper .wp-block-cover, .editor-styles-wrapper .wp-block-cover-image {
+:root .wp-block-cover, :root .wp-block-cover-image {
 	background-color: var(--cover--color-background);
 	min-height: var(--cover--height);
 	margin-top: inherit;
 	margin-bottom: inherit
 }
 
-.editor-styles-wrapper .wp-block-cover:not(.alignwide):not(.alignfull), .editor-styles-wrapper .wp-block-cover-image:not(.alignwide):not(.alignfull) {
+:root .wp-block-cover:not(.alignwide):not(.alignfull), :root .wp-block-cover-image:not(.alignwide):not(.alignfull) {
 	clear: both
 }
 
-.editor-styles-wrapper .wp-block-cover.alignfull, .editor-styles-wrapper .wp-block-cover-image.alignfull {
+:root .wp-block-cover.alignfull, :root .wp-block-cover-image.alignfull {
 	margin-top: 0;
 	margin-bottom: 0
 }
 
-.editor-styles-wrapper .wp-block-cover .wp-block-cover__inner-container, .editor-styles-wrapper .wp-block-cover .wp-block-cover-image-text, .editor-styles-wrapper .wp-block-cover .wp-block-cover-text, .editor-styles-wrapper .wp-block-cover-image .wp-block-cover__inner-container, .editor-styles-wrapper .wp-block-cover-image .wp-block-cover-image-text, .editor-styles-wrapper .wp-block-cover-image .wp-block-cover-text {
+:root .wp-block-cover .wp-block-cover__inner-container, :root .wp-block-cover .wp-block-cover-image-text, :root .wp-block-cover .wp-block-cover-text, :root .wp-block-cover-image .wp-block-cover__inner-container, :root .wp-block-cover-image .wp-block-cover-image-text, :root .wp-block-cover-image .wp-block-cover-text {
 	color: currentColor;
 	margin-top: var(--global--spacing-vertical);
 	margin-bottom: var(--global--spacing-vertical)
 }
 
-.editor-styles-wrapper .wp-block-cover .wp-block-cover__inner-container a:not(.wp-block-button__link):not(.wp-block-file__button), .editor-styles-wrapper .wp-block-cover .wp-block-cover-image-text a:not(.wp-block-button__link):not(.wp-block-file__button), .editor-styles-wrapper .wp-block-cover .wp-block-cover-text a:not(.wp-block-button__link):not(.wp-block-file__button), .editor-styles-wrapper .wp-block-cover-image .wp-block-cover__inner-container a:not(.wp-block-button__link):not(.wp-block-file__button), .editor-styles-wrapper .wp-block-cover-image .wp-block-cover-image-text a:not(.wp-block-button__link):not(.wp-block-file__button), .editor-styles-wrapper .wp-block-cover-image .wp-block-cover-text a:not(.wp-block-button__link):not(.wp-block-file__button) {
+:root .wp-block-cover .wp-block-cover__inner-container a:not(.wp-block-button__link):not(.wp-block-file__button), :root .wp-block-cover .wp-block-cover-image-text a:not(.wp-block-button__link):not(.wp-block-file__button), :root .wp-block-cover .wp-block-cover-text a:not(.wp-block-button__link):not(.wp-block-file__button), :root .wp-block-cover-image .wp-block-cover__inner-container a:not(.wp-block-button__link):not(.wp-block-file__button), :root .wp-block-cover-image .wp-block-cover-image-text a:not(.wp-block-button__link):not(.wp-block-file__button), :root .wp-block-cover-image .wp-block-cover-text a:not(.wp-block-button__link):not(.wp-block-file__button) {
 	color: currentColor
 }
 
-.editor-styles-wrapper .wp-block-cover .wp-block-cover__inner-container .has-link-color a, .editor-styles-wrapper .wp-block-cover .wp-block-cover-image-text .has-link-color a, .editor-styles-wrapper .wp-block-cover .wp-block-cover-text .has-link-color a, .editor-styles-wrapper .wp-block-cover-image .wp-block-cover__inner-container .has-link-color a, .editor-styles-wrapper .wp-block-cover-image .wp-block-cover-image-text .has-link-color a, .editor-styles-wrapper .wp-block-cover-image .wp-block-cover-text .has-link-color a {
+:root .wp-block-cover .wp-block-cover__inner-container .has-link-color a, :root .wp-block-cover .wp-block-cover-image-text .has-link-color a, :root .wp-block-cover .wp-block-cover-text .has-link-color a, :root .wp-block-cover-image .wp-block-cover__inner-container .has-link-color a, :root .wp-block-cover-image .wp-block-cover-image-text .has-link-color a, :root .wp-block-cover-image .wp-block-cover-text .has-link-color a {
 	color: var(--wp--style--color--link, var(--global--color-primary))
 }
 
-.editor-styles-wrapper .wp-block-cover:not([class*=background-color]) .wp-block-cover__inner-container, .editor-styles-wrapper .wp-block-cover:not([class*=background-color]) .wp-block-cover-image-text, .editor-styles-wrapper .wp-block-cover:not([class*=background-color]) .wp-block-cover-text, .editor-styles-wrapper .wp-block-cover-image:not([class*=background-color]) .wp-block-cover__inner-container, .editor-styles-wrapper .wp-block-cover-image:not([class*=background-color]) .wp-block-cover-image-text, .editor-styles-wrapper .wp-block-cover-image:not([class*=background-color]) .wp-block-cover-text {
+:root .wp-block-cover:not([class*=background-color]) .wp-block-cover__inner-container, :root .wp-block-cover:not([class*=background-color]) .wp-block-cover-image-text, :root .wp-block-cover:not([class*=background-color]) .wp-block-cover-text, :root .wp-block-cover-image:not([class*=background-color]) .wp-block-cover__inner-container, :root .wp-block-cover-image:not([class*=background-color]) .wp-block-cover-image-text, :root .wp-block-cover-image:not([class*=background-color]) .wp-block-cover-text {
 	color: var(--cover--color-foreground)
 }
 
-.editor-styles-wrapper .wp-block-cover h2, .editor-styles-wrapper .wp-block-cover-image h2 {
+:root .wp-block-cover h2, :root .wp-block-cover-image h2 {
 	font-size: var(--heading--font-size-h2);
 	letter-spacing: var(--heading--letter-spacing-h2);
 	line-height: var(--heading--line-height-h2);
@@ -370,48 +376,48 @@
 	padding: 0
 }
 
-.editor-styles-wrapper .wp-block-cover h2.has-text-align-left, .editor-styles-wrapper .wp-block-cover-image h2.has-text-align-left {
+:root .wp-block-cover h2.has-text-align-left, :root .wp-block-cover-image h2.has-text-align-left {
 	text-align: left
 }
 
-.editor-styles-wrapper .wp-block-cover h2.has-text-align-center, .editor-styles-wrapper .wp-block-cover-image h2.has-text-align-center {
+:root .wp-block-cover h2.has-text-align-center, :root .wp-block-cover-image h2.has-text-align-center {
 	text-align: center
 }
 
-.editor-styles-wrapper .wp-block-cover h2.has-text-align-right, .editor-styles-wrapper .wp-block-cover-image h2.has-text-align-right {
+:root .wp-block-cover h2.has-text-align-right, :root .wp-block-cover-image h2.has-text-align-right {
 	text-align: right
 }
 
-.editor-styles-wrapper .wp-block-cover .wp-block-cover__inner-container, .editor-styles-wrapper .wp-block-cover-image .wp-block-cover__inner-container {
+:root .wp-block-cover .wp-block-cover__inner-container, :root .wp-block-cover-image .wp-block-cover__inner-container {
 	width: calc(100% - calc(2 * var(--global--spacing-vertical)))
 }
 
-.editor-styles-wrapper .wp-block-cover .wp-block-cover__inner-container > *, .editor-styles-wrapper .wp-block-cover-image .wp-block-cover__inner-container > * {
+:root .wp-block-cover .wp-block-cover__inner-container > *, :root .wp-block-cover-image .wp-block-cover__inner-container > * {
 	margin-top: calc(0.666 * var(--global--spacing-vertical));
 	margin-bottom: calc(0.666 * var(--global--spacing-vertical))
 }
 
 @media only screen and (min-width:482px) {
-	.editor-styles-wrapper .wp-block-cover .wp-block-cover__inner-container > *, .editor-styles-wrapper .wp-block-cover-image .wp-block-cover__inner-container > * {
+	:root .wp-block-cover .wp-block-cover__inner-container > *, :root .wp-block-cover-image .wp-block-cover__inner-container > * {
 		margin-top: var(--global--spacing-vertical);
 		margin-bottom: var(--global--spacing-vertical)
 	}
 
 }
 
-.editor-styles-wrapper .wp-block-cover .wp-block-cover__inner-container > *:first-child, .editor-styles-wrapper .wp-block-cover-image .wp-block-cover__inner-container > *:first-child {
+:root .wp-block-cover .wp-block-cover__inner-container > *:first-child, :root .wp-block-cover-image .wp-block-cover__inner-container > *:first-child {
 	margin-top: 0
 }
 
-.editor-styles-wrapper .wp-block-cover .wp-block-cover__inner-container > *:last-child, .editor-styles-wrapper .wp-block-cover-image .wp-block-cover__inner-container > *:last-child {
+:root .wp-block-cover .wp-block-cover__inner-container > *:last-child, :root .wp-block-cover-image .wp-block-cover__inner-container > *:last-child {
 	margin-bottom: 0
 }
 
-.editor-styles-wrapper .wp-block-cover.alignleft, .editor-styles-wrapper .wp-block-cover.alignright, .editor-styles-wrapper .wp-block-cover-image.alignleft, .editor-styles-wrapper .wp-block-cover-image.alignright {
+:root .wp-block-cover.alignleft, :root .wp-block-cover.alignright, :root .wp-block-cover-image.alignleft, :root .wp-block-cover-image.alignright {
 	margin-top: 0
 }
 
-.editor-styles-wrapper .wp-block-cover.alignleft > *, .editor-styles-wrapper .wp-block-cover.alignright > *, .editor-styles-wrapper .wp-block-cover-image.alignleft > *, .editor-styles-wrapper .wp-block-cover-image.alignright > * {
+:root .wp-block-cover.alignleft > *, :root .wp-block-cover.alignright > *, :root .wp-block-cover-image.alignleft > *, :root .wp-block-cover-image.alignright > * {
 	margin-top: calc(2 * var(--global--spacing-vertical));
 	margin-bottom: calc(2 * var(--global--spacing-vertical));
 	padding-left: var(--global--spacing-horizontal);
@@ -419,163 +425,163 @@
 	width: 100%
 }
 
-.editor-styles-wrapper .wp-block-cover.has-left-content, .editor-styles-wrapper .wp-block-cover.has-right-content, .editor-styles-wrapper .wp-block-cover-image.has-left-content, .editor-styles-wrapper .wp-block-cover-image.has-right-content {
+:root .wp-block-cover.has-left-content, :root .wp-block-cover.has-right-content, :root .wp-block-cover-image.has-left-content, :root .wp-block-cover-image.has-right-content {
 	justify-content: center
 }
 
-.editor-styles-wrapper .wp-block-cover.is-style-twentytwentyone-border, .editor-styles-wrapper .wp-block-cover-image.is-style-twentytwentyone-border {
+:root .wp-block-cover.is-style-twentytwentyone-border, :root .wp-block-cover-image.is-style-twentytwentyone-border {
 	border: calc(3 * var(--separator--height)) solid var(--global--color-border)
 }
 
-.editor-styles-wrapper .wp-block-cover[class*=-background-color][class] .wp-block-cover__inner-container, .editor-styles-wrapper .wp-block-cover-image[class*=-background-color][class] .wp-block-cover__inner-container {
+:root .wp-block-cover[class*=-background-color][class] .wp-block-cover__inner-container, :root .wp-block-cover-image[class*=-background-color][class] .wp-block-cover__inner-container {
 	background-color: unset
 }
 
-.editor-styles-wrapper .wp-block-file a.wp-block-file__button:active, .editor-styles-wrapper .wp-block-file a.wp-block-file__button:focus, .editor-styles-wrapper .wp-block-file a.wp-block-file__button:hover {
+:root .wp-block-file a.wp-block-file__button:active, :root .wp-block-file a.wp-block-file__button:focus, :root .wp-block-file a.wp-block-file__button:hover {
 	opacity: inherit
 }
 
-.editor-styles-wrapper .wp-block-file a.wp-block-file__button {
+:root .wp-block-file a.wp-block-file__button {
 	display: inline-block
 }
 
-.editor-styles-wrapper .wp-block-gallery {
+:root .wp-block-gallery {
 	margin: 0 auto
 }
 
-.editor-styles-wrapper .wp-block-gallery .blocks-gallery-image, .editor-styles-wrapper .wp-block-gallery .blocks-gallery-item {
+:root .wp-block-gallery .blocks-gallery-image, :root .wp-block-gallery .blocks-gallery-item {
 	width: calc((100% - var(--global--spacing-unit)) / 2)
 }
 
-.editor-styles-wrapper .wp-block-gallery .blocks-gallery-image figcaption, .editor-styles-wrapper .wp-block-gallery .blocks-gallery-item figcaption {
+:root .wp-block-gallery .blocks-gallery-image figcaption, :root .wp-block-gallery .blocks-gallery-item figcaption {
 	margin: 0;
 	color: var(--global--color-white);
 	font-size: var(--global--font-size-xs)
 }
 
-.editor-styles-wrapper .wp-block-gallery .blocks-gallery-image figcaption a, .editor-styles-wrapper .wp-block-gallery .blocks-gallery-item figcaption a {
+:root .wp-block-gallery .blocks-gallery-image figcaption a, :root .wp-block-gallery .blocks-gallery-item figcaption a {
 	color: var(--global--color-white)
 }
 
-.editor-styles-wrapper .wp-block-gallery .blocks-gallery-image figcaption a:focus, .editor-styles-wrapper .wp-block-gallery .blocks-gallery-item figcaption a:focus {
+:root .wp-block-gallery .blocks-gallery-image figcaption a:focus, :root .wp-block-gallery .blocks-gallery-item figcaption a:focus {
 	background-color: transparent;
 	outline: 2px solid var(--wp--style--color--link, var(--global--color-primary));
 	text-decoration: none
 }
 
-.editor-styles-wrapper .wp-block-gallery .blocks-gallery-image a:focus img, .editor-styles-wrapper .wp-block-gallery .blocks-gallery-item a:focus img {
+:root .wp-block-gallery .blocks-gallery-image a:focus img, :root .wp-block-gallery .blocks-gallery-item a:focus img {
 	outline-offset: 2px
 }
 
-.editor-styles-wrapper .wp-block-group {
+:root .wp-block-group {
 	display: block;
 	clear: both;
 	display: flow-root
 }
 
-.editor-styles-wrapper .wp-block-group:before, .editor-styles-wrapper .wp-block-group:after {
+:root .wp-block-group:before, :root .wp-block-group:after {
 	content: "";
 	display: block;
 	clear: both
 }
 
-.editor-styles-wrapper .wp-block-group .wp-block-group__inner-container {
+:root .wp-block-group .wp-block-group__inner-container {
 	margin-left: auto;
 	margin-right: auto
 }
 
-.editor-styles-wrapper .wp-block-group .wp-block-group__inner-container > * {
+:root .wp-block-group .wp-block-group__inner-container > * {
 	margin-top: calc(0.666 * var(--global--spacing-vertical));
 	margin-bottom: calc(0.666 * var(--global--spacing-vertical))
 }
 
 @media only screen and (min-width:482px) {
-	.editor-styles-wrapper .wp-block-group .wp-block-group__inner-container > * {
+	:root .wp-block-group .wp-block-group__inner-container > * {
 		margin-top: var(--global--spacing-vertical);
 		margin-bottom: var(--global--spacing-vertical)
 	}
 
 }
 
-.editor-styles-wrapper .wp-block-group .wp-block-group__inner-container > *:first-child {
+:root .wp-block-group .wp-block-group__inner-container > *:first-child {
 	margin-top: 0
 }
 
-.editor-styles-wrapper .wp-block-group .wp-block-group__inner-container > *:last-child {
+:root .wp-block-group .wp-block-group__inner-container > *:last-child {
 	margin-bottom: 0
 }
 
-.editor-styles-wrapper .wp-block-group.has-background {
+:root .wp-block-group.has-background {
 	padding: calc(0.666 * var(--global--spacing-vertical))
 }
 
 @media only screen and (min-width:482px) {
-	.editor-styles-wrapper .wp-block-group.has-background {
+	:root .wp-block-group.has-background {
 		padding: var(--global--spacing-vertical)
 	}
 
 }
 
-.editor-styles-wrapper .wp-block-group.has-background .wp-block-group__inner-container > .alignfull, .editor-styles-wrapper .wp-block-group.has-background .wp-block-group__inner-container > hr.wp-block-separator:not(.is-style-dots):not(.alignwide).alignfull {
+:root .wp-block-group.has-background .wp-block-group__inner-container > .alignfull, :root .wp-block-group.has-background .wp-block-group__inner-container > hr.wp-block-separator:not(.is-style-dots):not(.alignwide).alignfull {
 	max-width: calc(var(--responsive--alignfull-width) + (2 * var(--global--spacing-vertical)));
 	width: calc(var(--responsive--alignfull-width) + (2 * var(--global--spacing-vertical)));
 	margin-left: calc(-1 * var(--global--spacing-vertical))
 }
 
-.editor-styles-wrapper h1, .editor-styles-wrapper .h1, .editor-styles-wrapper h2, .editor-styles-wrapper .h2, .editor-styles-wrapper h3, .editor-styles-wrapper .h3, .editor-styles-wrapper h4, .editor-styles-wrapper .h4, .editor-styles-wrapper h5, .editor-styles-wrapper .h5, .editor-styles-wrapper h6, .editor-styles-wrapper .h6 {
+:root h1, :root .h1, :root h2, :root .h2, :root h3, :root .h3, :root h4, :root .h4, :root h5, :root .h5, :root h6, :root .h6 {
 	clear: both;
 	font-family: var(--heading--font-family);
 	font-weight: var(--heading--font-weight)
 }
 
-.editor-styles-wrapper h1 strong, .editor-styles-wrapper .h1 strong, .editor-styles-wrapper h2 strong, .editor-styles-wrapper .h2 strong, .editor-styles-wrapper h3 strong, .editor-styles-wrapper .h3 strong, .editor-styles-wrapper h4 strong, .editor-styles-wrapper .h4 strong, .editor-styles-wrapper h5 strong, .editor-styles-wrapper .h5 strong, .editor-styles-wrapper h6 strong, .editor-styles-wrapper .h6 strong {
+:root h1 strong, :root .h1 strong, :root h2 strong, :root .h2 strong, :root h3 strong, :root .h3 strong, :root h4 strong, :root .h4 strong, :root h5 strong, :root .h5 strong, :root h6 strong, :root .h6 strong {
 	font-weight: var(--heading--font-weight-strong)
 }
 
-.editor-styles-wrapper h1, .editor-styles-wrapper .h1 {
+:root h1, :root .h1 {
 	font-size: var(--heading--font-size-h1);
 	letter-spacing: var(--heading--letter-spacing-h1);
 	line-height: var(--heading--line-height-h1)
 }
 
-.editor-styles-wrapper h2, .editor-styles-wrapper .h2 {
+:root h2, :root .h2 {
 	font-size: var(--heading--font-size-h2);
 	letter-spacing: var(--heading--letter-spacing-h2);
 	line-height: var(--heading--line-height-h2)
 }
 
-.editor-styles-wrapper h3, .editor-styles-wrapper .h3 {
+:root h3, :root .h3 {
 	font-size: var(--heading--font-size-h3);
 	letter-spacing: var(--heading--letter-spacing-h3);
 	line-height: var(--heading--line-height-h3)
 }
 
-.editor-styles-wrapper h4, .editor-styles-wrapper .h4 {
+:root h4, :root .h4 {
 	font-size: var(--heading--font-size-h4);
 	font-weight: var(--heading--font-weight-strong);
 	letter-spacing: var(--heading--letter-spacing-h4);
 	line-height: var(--heading--line-height-h4)
 }
 
-.editor-styles-wrapper h5, .editor-styles-wrapper .h5 {
+:root h5, :root .h5 {
 	font-size: var(--heading--font-size-h5);
 	font-weight: var(--heading--font-weight-strong);
 	letter-spacing: var(--heading--letter-spacing-h5);
 	line-height: var(--heading--line-height-h5)
 }
 
-.editor-styles-wrapper h6, .editor-styles-wrapper .h6 {
+:root h6, :root .h6 {
 	font-size: var(--heading--font-size-h6);
 	font-weight: var(--heading--font-weight-strong);
 	letter-spacing: var(--heading--letter-spacing-h6);
 	line-height: var(--heading--line-height-h6)
 }
 
-.editor-styles-wrapper .wp-block-image {
+:root .wp-block-image {
 	text-align: center
 }
 
-.editor-styles-wrapper .wp-block-image figcaption {
+:root .wp-block-image figcaption {
 	color: var(--global--color-primary);
 	font-size: var(--global--font-size-xs);
 	line-height: var(--global--line-height-body);
@@ -584,132 +590,132 @@
 	text-align: center
 }
 
-.editor-styles-wrapper .wp-block-image .alignright {
+:root .wp-block-image .alignright {
 	margin-left: var(--global--spacing-horizontal)
 }
 
-.editor-styles-wrapper .wp-block-image .alignleft {
+:root .wp-block-image .alignleft {
 	margin-right: var(--global--spacing-horizontal)
 }
 
-.editor-styles-wrapper .wp-block-image a:focus img {
+:root .wp-block-image a:focus img {
 	outline-offset: 2px
 }
 
-.editor-styles-wrapper .entry-content > *[class=wp-block-image], .editor-styles-wrapper .entry-content [class*=inner-container] > *[class=wp-block-image] {
+:root .entry-content > *[class=wp-block-image], :root .entry-content [class*=inner-container] > *[class=wp-block-image] {
 	margin-top: 0;
 	margin-bottom: 0
 }
 
-.editor-styles-wrapper .entry-content > *[class=wp-block-image] + *, .editor-styles-wrapper .entry-content [class*=inner-container] > *[class=wp-block-image] + * {
+:root .entry-content > *[class=wp-block-image] + *, :root .entry-content [class*=inner-container] > *[class=wp-block-image] + * {
 	margin-top: 0
 }
 
-.editor-styles-wrapper .wp-block-image.is-style-twentytwentyone-border img, .editor-styles-wrapper .wp-block-image.is-style-twentytwentyone-image-frame img {
+:root .wp-block-image.is-style-twentytwentyone-border img, :root .wp-block-image.is-style-twentytwentyone-image-frame img {
 	border: calc(3 * var(--separator--height)) solid var(--global--color-border)
 }
 
-.editor-styles-wrapper .wp-block-image.is-style-twentytwentyone-image-frame img {
+:root .wp-block-image.is-style-twentytwentyone-image-frame img {
 	padding: var(--global--spacing-unit)
 }
 
 @media only screen and (min-width:482px) {
-	.editor-styles-wrapper .entry-content > .wp-block-image > .alignleft, .editor-styles-wrapper .entry-content > .wp-block-image > .alignright {
+	:root .entry-content > .wp-block-image > .alignleft, :root .entry-content > .wp-block-image > .alignright {
 		max-width: 50%
 	}
 
 }
 
 @media only screen and (max-width:481px) {
-	.editor-styles-wrapper .entry-content > .wp-block-image > .alignleft, .editor-styles-wrapper .entry-content > .wp-block-image > .alignright {
+	:root .entry-content > .wp-block-image > .alignleft, :root .entry-content > .wp-block-image > .alignright {
 		margin-left: 0;
 		margin-right: 0
 	}
 
 }
 
-.editor-styles-wrapper .wp-block-latest-comments {
+:root .wp-block-latest-comments {
 	padding-left: 0
 }
 
-.editor-styles-wrapper .wp-block-latest-comments .wp-block-latest-comments__comment {
+:root .wp-block-latest-comments .wp-block-latest-comments__comment {
 	font-size: var(--global--font-size-sm);
 	line-height: var(--global--line-height-body);
 	margin-top: var(--global--spacing-vertical);
 	margin-bottom: var(--global--spacing-vertical)
 }
 
-.editor-styles-wrapper .wp-block-latest-comments .wp-block-latest-comments__comment:first-child {
+:root .wp-block-latest-comments .wp-block-latest-comments__comment:first-child {
 	margin-top: 0
 }
 
-.editor-styles-wrapper .wp-block-latest-comments .wp-block-latest-comments__comment:last-child {
+:root .wp-block-latest-comments .wp-block-latest-comments__comment:last-child {
 	margin-bottom: 0
 }
 
-.editor-styles-wrapper .wp-block-latest-comments .wp-block-latest-comments__comment-meta {
+:root .wp-block-latest-comments .wp-block-latest-comments__comment-meta {
 	font-family: var(--heading--font-family)
 }
 
-.editor-styles-wrapper .wp-block-latest-comments .wp-block-latest-comments__comment-date {
+:root .wp-block-latest-comments .wp-block-latest-comments__comment-date {
 	color: var(--global--color-primary);
 	font-size: var(--global--font-size-sm)
 }
 
-.editor-styles-wrapper .wp-block-latest-comments .wp-block-latest-comments__comment-excerpt p {
+:root .wp-block-latest-comments .wp-block-latest-comments__comment-excerpt p {
 	font-size: var(--global--font-size-sm);
 	line-height: var(--global--line-height-body);
 	margin: 0
 }
 
-.editor-styles-wrapper .wp-block-latest-posts {
+:root .wp-block-latest-posts {
 	padding-left: 0
 }
 
-.editor-styles-wrapper .wp-block-latest-posts:not(.is-grid) > li {
+:root .wp-block-latest-posts:not(.is-grid) > li {
 	margin-top: calc(1.666 * var(--global--spacing-vertical));
 	margin-bottom: calc(1.666 * var(--global--spacing-vertical))
 }
 
-.editor-styles-wrapper .wp-block-latest-posts:not(.is-grid) > li:first-child {
+:root .wp-block-latest-posts:not(.is-grid) > li:first-child {
 	margin-top: 0
 }
 
-.editor-styles-wrapper .wp-block-latest-posts:not(.is-grid) > li:last-child {
+:root .wp-block-latest-posts:not(.is-grid) > li:last-child {
 	margin-bottom: 0
 }
 
-.editor-styles-wrapper .wp-block-latest-posts.is-grid {
+:root .wp-block-latest-posts.is-grid {
 	word-wrap: break-word;
 	word-break: break-word
 }
 
-.editor-styles-wrapper .wp-block-latest-posts.is-grid > li {
+:root .wp-block-latest-posts.is-grid > li {
 	margin-bottom: var(--global--spacing-vertical)
 }
 
-.editor-styles-wrapper .wp-block-latest-posts.is-grid > li:last-child {
+:root .wp-block-latest-posts.is-grid > li:last-child {
 	margin-bottom: 0
 }
 
-.editor-styles-wrapper .wp-block-latest-posts.is-grid.columns-2 > li:nth-last-child(-n+2):nth-child(2n+1), .editor-styles-wrapper .wp-block-latest-posts.is-grid.columns-2 > li:nth-last-child(-n+2):nth-child(2n+1) ~ li, .editor-styles-wrapper .wp-block-latest-posts.is-grid.columns-3 > li:nth-last-child(-n+3):nth-child(3n+1), .editor-styles-wrapper .wp-block-latest-posts.is-grid.columns-3 > li:nth-last-child(-n+3):nth-child(3n+1) ~ li, .editor-styles-wrapper .wp-block-latest-posts.is-grid.columns-4 > li:nth-last-child(-n+4):nth-child(4n+1), .editor-styles-wrapper .wp-block-latest-posts.is-grid.columns-4 > li:nth-last-child(-n+4):nth-child(4n+1) ~ li, .editor-styles-wrapper .wp-block-latest-posts.is-grid.columns-5 > li:nth-last-child(-n+5):nth-child(5n+1), .editor-styles-wrapper .wp-block-latest-posts.is-grid.columns-5 > li:nth-last-child(-n+5):nth-child(5n+1) ~ li, .editor-styles-wrapper .wp-block-latest-posts.is-grid.columns-6 > li:nth-last-child(-n+6):nth-child(6n+1), .editor-styles-wrapper .wp-block-latest-posts.is-grid.columns-6 > li:nth-last-child(-n+6):nth-child(6n+1) ~ li {
+:root .wp-block-latest-posts.is-grid.columns-2 > li:nth-last-child(-n+2):nth-child(2n+1), :root .wp-block-latest-posts.is-grid.columns-2 > li:nth-last-child(-n+2):nth-child(2n+1) ~ li, :root .wp-block-latest-posts.is-grid.columns-3 > li:nth-last-child(-n+3):nth-child(3n+1), :root .wp-block-latest-posts.is-grid.columns-3 > li:nth-last-child(-n+3):nth-child(3n+1) ~ li, :root .wp-block-latest-posts.is-grid.columns-4 > li:nth-last-child(-n+4):nth-child(4n+1), :root .wp-block-latest-posts.is-grid.columns-4 > li:nth-last-child(-n+4):nth-child(4n+1) ~ li, :root .wp-block-latest-posts.is-grid.columns-5 > li:nth-last-child(-n+5):nth-child(5n+1), :root .wp-block-latest-posts.is-grid.columns-5 > li:nth-last-child(-n+5):nth-child(5n+1) ~ li, :root .wp-block-latest-posts.is-grid.columns-6 > li:nth-last-child(-n+6):nth-child(6n+1), :root .wp-block-latest-posts.is-grid.columns-6 > li:nth-last-child(-n+6):nth-child(6n+1) ~ li {
 	margin-bottom: 0
 }
 
-.editor-styles-wrapper .wp-block-latest-posts > li > * {
+:root .wp-block-latest-posts > li > * {
 	margin-top: calc(0.333 * var(--global--spacing-vertical));
 	margin-bottom: calc(0.333 * var(--global--spacing-vertical))
 }
 
-.editor-styles-wrapper .wp-block-latest-posts > li > *:first-child {
+:root .wp-block-latest-posts > li > *:first-child {
 	margin-top: 0
 }
 
-.editor-styles-wrapper .wp-block-latest-posts > li > *:last-child {
+:root .wp-block-latest-posts > li > *:last-child {
 	margin-bottom: 0
 }
 
-.editor-styles-wrapper .wp-block-latest-posts > li > a {
+:root .wp-block-latest-posts > li > a {
 	display: inline-block;
 	font-family: var(--latest-posts--title-font-family);
 	font-size: var(--latest-posts--title-font-size);
@@ -718,193 +724,193 @@
 	margin-bottom: calc(0.333 * var(--global--spacing-vertical))
 }
 
-.editor-styles-wrapper .wp-block-latest-posts .wp-block-latest-posts__post-author {
+:root .wp-block-latest-posts .wp-block-latest-posts__post-author {
 	color: var(--global--color-primary);
 	font-size: var(--global--font-size-md);
 	line-height: var(--global--line-height-body)
 }
 
-.editor-styles-wrapper .wp-block-latest-posts .wp-block-latest-posts__post-date {
+:root .wp-block-latest-posts .wp-block-latest-posts__post-date {
 	color: var(--global--color-primary);
 	font-size: var(--global--font-size-xs);
 	line-height: var(--global--line-height-body)
 }
 
-.editor-styles-wrapper [class*=inner-container] .wp-block-latest-posts .wp-block-latest-posts__post-date, .editor-styles-wrapper .has-background .wp-block-latest-posts .wp-block-latest-posts__post-date {
+:root [class*=inner-container] .wp-block-latest-posts .wp-block-latest-posts__post-date, :root .has-background .wp-block-latest-posts .wp-block-latest-posts__post-date {
 	color: currentColor
 }
 
-.editor-styles-wrapper .wp-block-latest-posts .wp-block-latest-posts__post-excerpt, .editor-styles-wrapper .wp-block-latest-posts .wp-block-latest-posts__post-full-content {
+:root .wp-block-latest-posts .wp-block-latest-posts__post-excerpt, :root .wp-block-latest-posts .wp-block-latest-posts__post-full-content {
 	font-family: var(--latest-posts--description-font-family);
 	font-size: var(--latest-posts--description-font-size);
 	line-height: var(--global--line-height-body);
 	margin-top: calc(0.666 * var(--global--spacing-vertical))
 }
 
-.editor-styles-wrapper .wp-block-latest-posts.alignfull {
+:root .wp-block-latest-posts.alignfull {
 	padding-left: var(--global--spacing-unit);
 	padding-right: var(--global--spacing-unit)
 }
 
-.editor-styles-wrapper .entry-content [class*=inner-container] .wp-block-latest-posts.alignfull, .editor-styles-wrapper .entry-content .has-background .wp-block-latest-posts.alignfull {
+:root .entry-content [class*=inner-container] .wp-block-latest-posts.alignfull, :root .entry-content .has-background .wp-block-latest-posts.alignfull {
 	padding-left: 0;
 	padding-right: 0
 }
 
-.editor-styles-wrapper .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers {
+:root .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers {
 	border-top: calc(3 * var(--separator--height)) solid var(--global--color-border);
 	border-bottom: calc(3 * var(--separator--height)) solid var(--global--color-border)
 }
 
-.editor-styles-wrapper .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers:not(.is-grid) > li, .editor-styles-wrapper .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers > li {
+:root .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers:not(.is-grid) > li, :root .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers > li {
 	padding-bottom: var(--global--spacing-vertical);
 	border-bottom: var(--separator--height) solid var(--global--color-border);
 	margin-top: var(--global--spacing-vertical);
 	margin-bottom: var(--global--spacing-vertical)
 }
 
-.editor-styles-wrapper .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers:not(.is-grid) > li:last-child, .editor-styles-wrapper .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers > li:last-child {
+:root .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers:not(.is-grid) > li:last-child, :root .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers > li:last-child {
 	padding-bottom: 0;
 	border-bottom: none
 }
 
-.editor-styles-wrapper .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid {
+:root .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid {
 	box-shadow: inset 0 -1px 0 0 var(--global--color-border);
 	border-bottom: calc(2 * var(--separator--height)) solid var(--global--color-border)
 }
 
-.editor-styles-wrapper .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid li {
+:root .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid li {
 	margin: 0;
 	padding-top: var(--global--spacing-vertical);
 	padding-right: var(--global--spacing-horizontal)
 }
 
-.editor-styles-wrapper .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid li:last-child {
+:root .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid li:last-child {
 	padding-bottom: var(--global--spacing-vertical)
 }
 
 @media screen and (min-width:600px) {
-	.editor-styles-wrapper .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid.columns-2 li {
+	:root .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid.columns-2 li {
 		width: calc((100% / 2))
 	}
 
-	.editor-styles-wrapper .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid.columns-3 li {
+	:root .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid.columns-3 li {
 		width: calc((100% / 3))
 	}
 
-	.editor-styles-wrapper .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid.columns-4 li {
+	:root .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid.columns-4 li {
 		width: calc((100% / 4))
 	}
 
-	.editor-styles-wrapper .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid.columns-5 li {
+	:root .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid.columns-5 li {
 		width: calc((100% / 5))
 	}
 
-	.editor-styles-wrapper .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid.columns-6 li {
+	:root .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid.columns-6 li {
 		width: calc((100% / 6))
 	}
 
 }
 
-.editor-styles-wrapper .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-borders li {
+:root .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-borders li {
 	border: calc(3 * var(--separator--height)) solid var(--global--color-border);
 	padding: var(--global--spacing-vertical) var(--global--spacing-horizontal)
 }
 
-.editor-styles-wrapper .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-borders li:last-child {
+:root .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-borders li:last-child {
 	padding-bottom: var(--global--spacing-vertical)
 }
 
-.editor-styles-wrapper .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-borders:not(.is-grid) li {
+:root .wp-block-latest-posts.is-style-twentytwentyone-latest-posts-borders:not(.is-grid) li {
 	margin-top: var(--global--spacing-horizontal);
 	margin-bottom: var(--global--spacing-horizontal)
 }
 
-.editor-styles-wrapper ul, .editor-styles-wrapper ol {
+:root ul, :root ol {
 	font-family: var(--list--font-family);
 	margin: 0;
 	padding-left: calc(2 * var(--global--spacing-horizontal))
 }
 
-.editor-styles-wrapper .wp-block-media-text {
+:root .wp-block-media-text {
 }
 
-.editor-styles-wrapper .wp-block-media-text.alignfull {
+:root .wp-block-media-text.alignfull {
 	margin-top: 0;
 	margin-bottom: 0
 }
 
-.editor-styles-wrapper .wp-block-media-text a:focus img {
+:root .wp-block-media-text a:focus img {
 	outline-offset: -1px
 }
 
-.editor-styles-wrapper .wp-block-media-text .wp-block-media-text__content {
+:root .wp-block-media-text .wp-block-media-text__content {
 	padding: var(--global--spacing-horizontal)
 }
 
 @media only screen and (min-width:592px) {
-	.editor-styles-wrapper .wp-block-media-text .wp-block-media-text__content {
+	:root .wp-block-media-text .wp-block-media-text__content {
 		padding: var(--global--spacing-vertical)
 	}
 
 }
 
-.editor-styles-wrapper .wp-block-media-text .wp-block-media-text__content > * {
+:root .wp-block-media-text .wp-block-media-text__content > * {
 	margin-top: calc(0.666 * var(--global--spacing-vertical));
 	margin-bottom: calc(0.666 * var(--global--spacing-vertical))
 }
 
 @media only screen and (min-width:482px) {
-	.editor-styles-wrapper .wp-block-media-text .wp-block-media-text__content > * {
+	:root .wp-block-media-text .wp-block-media-text__content > * {
 		margin-top: var(--global--spacing-vertical);
 		margin-bottom: var(--global--spacing-vertical)
 	}
 
 }
 
-.editor-styles-wrapper .wp-block-media-text .wp-block-media-text__content > *:first-child {
+:root .wp-block-media-text .wp-block-media-text__content > *:first-child {
 	margin-top: 0
 }
 
-.editor-styles-wrapper .wp-block-media-text .wp-block-media-text__content > *:last-child {
+:root .wp-block-media-text .wp-block-media-text__content > *:last-child {
 	margin-bottom: 0
 }
 
 @media only screen and (min-width:482px) {
-	.editor-styles-wrapper .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__content {
+	:root .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__content {
 		padding-top: var(--global--spacing-vertical);
 		padding-bottom: var(--global--spacing-vertical)
 	}
 
 }
 
-.editor-styles-wrapper .wp-block-media-text.is-style-twentytwentyone-border {
+:root .wp-block-media-text.is-style-twentytwentyone-border {
 	border: calc(3 * var(--separator--height)) solid var(--global--color-border)
 }
 
-.editor-styles-wrapper .wp-block-navigation .wp-block-navigation-link {
+:root .wp-block-navigation .wp-block-navigation-link {
 	padding: 0
 }
 
-.editor-styles-wrapper .wp-block-navigation .wp-block-navigation-link .wp-block-navigation-link__content {
+:root .wp-block-navigation .wp-block-navigation-link .wp-block-navigation-link__content {
 	padding: var(--primary-nav--padding)
 }
 
-.editor-styles-wrapper .wp-block-navigation .wp-block-navigation-link .wp-block-navigation-link__label {
+:root .wp-block-navigation .wp-block-navigation-link .wp-block-navigation-link__label {
 	font-family: var(--primary-nav--font-family);
 	font-size: var(--primary-nav--font-size);
 	font-weight: var(--primary-nav--font-weight)
 }
 
-.editor-styles-wrapper .wp-block-navigation .wp-block-navigation-link__submenu-icon {
+:root .wp-block-navigation .wp-block-navigation-link__submenu-icon {
 	padding: 0
 }
 
-.editor-styles-wrapper .wp-block-navigation > .wp-block-navigation__container .has-child .wp-block-navigation-link {
+:root .wp-block-navigation > .wp-block-navigation__container .has-child .wp-block-navigation-link {
 	display: inherit
 }
 
-.editor-styles-wrapper .wp-block-navigation > .wp-block-navigation__container .has-child .wp-block-navigation__container {
+:root .wp-block-navigation > .wp-block-navigation__container .has-child .wp-block-navigation__container {
 	border: none;
 	left: 0;
 	margin-left: var(--primary-nav--padding);
@@ -915,22 +921,22 @@
 	top: inherit
 }
 
-.editor-styles-wrapper .wp-block-navigation > .wp-block-navigation__container .has-child .wp-block-navigation__container .wp-block-navigation-link .wp-block-navigation-link__content {
+:root .wp-block-navigation > .wp-block-navigation__container .has-child .wp-block-navigation__container .wp-block-navigation-link .wp-block-navigation-link__content {
 	display: inline-block;
 	padding: calc(0.5 * var(--primary-nav--padding)) var(--primary-nav--padding)
 }
 
-.editor-styles-wrapper .wp-block-navigation > .wp-block-navigation__container .has-child .wp-block-navigation__container .wp-block-navigation-link__submenu-icon {
+:root .wp-block-navigation > .wp-block-navigation__container .has-child .wp-block-navigation__container .wp-block-navigation-link__submenu-icon {
 	display: none
 }
 
-.editor-styles-wrapper .wp-block-navigation > .wp-block-navigation__container .has-child:hover .wp-block-navigation__container, .editor-styles-wrapper .wp-block-navigation > .wp-block-navigation__container .has-child:focus-within .wp-block-navigation__container {
+:root .wp-block-navigation > .wp-block-navigation__container .has-child:hover .wp-block-navigation__container, :root .wp-block-navigation > .wp-block-navigation__container .has-child:focus-within .wp-block-navigation__container {
 	display: block;
 	opacity: 1;
 	visibility: visible
 }
 
-.editor-styles-wrapper .wp-block-navigation > .wp-block-navigation__container > .has-child > .wp-block-navigation__container {
+:root .wp-block-navigation > .wp-block-navigation__container > .has-child > .wp-block-navigation__container {
 	background: var(--global--color-background);
 	margin: 0;
 	padding: 0;
@@ -939,7 +945,7 @@
 	border: 1px solid var(--primary-nav--border-color)
 }
 
-.editor-styles-wrapper .wp-block-navigation > .wp-block-navigation__container > .has-child > .wp-block-navigation__container:before, .editor-styles-wrapper .wp-block-navigation > .wp-block-navigation__container > .has-child > .wp-block-navigation__container:after {
+:root .wp-block-navigation > .wp-block-navigation__container > .has-child > .wp-block-navigation__container:before, :root .wp-block-navigation > .wp-block-navigation__container > .has-child > .wp-block-navigation__container:after {
 	content: "";
 	display: block;
 	position: absolute;
@@ -951,46 +957,46 @@
 	border-width: 0 7px 10px 7px
 }
 
-.editor-styles-wrapper .wp-block-navigation > .wp-block-navigation__container > .has-child > .wp-block-navigation__container:after {
+:root .wp-block-navigation > .wp-block-navigation__container > .has-child > .wp-block-navigation__container:after {
 	top: -9px;
 	border-color: var(--global--color-background) transparent
 }
 
-.editor-styles-wrapper .wp-block-navigation:not(.has-background) .wp-block-navigation__container {
+:root .wp-block-navigation:not(.has-background) .wp-block-navigation__container {
 	background: var(--global--color-background)
 }
 
-.editor-styles-wrapper .wp-block-navigation:not(.has-background) .wp-block-navigation__container .wp-block-navigation__container {
+:root .wp-block-navigation:not(.has-background) .wp-block-navigation__container .wp-block-navigation__container {
 	background: var(--global--color-background)
 }
 
-.editor-styles-wrapper .wp-block-navigation:not(.has-text-color) .wp-block-navigation-link > a:hover, .editor-styles-wrapper .wp-block-navigation:not(.has-text-color) .wp-block-navigation-link > a:focus {
+:root .wp-block-navigation:not(.has-text-color) .wp-block-navigation-link > a:hover, :root .wp-block-navigation:not(.has-text-color) .wp-block-navigation-link > a:focus {
 	color: var(--primary-nav--color-link-hover)
 }
 
-.editor-styles-wrapper .wp-block-navigation:not(.has-text-color) .wp-block-navigation-link > a:hover {
+:root .wp-block-navigation:not(.has-text-color) .wp-block-navigation-link > a:hover {
 	text-decoration: underline;
 	text-decoration-style: dotted
 }
 
-.editor-styles-wrapper .wp-block-navigation:not(.has-text-color) .wp-block-navigation-link__content {
+:root .wp-block-navigation:not(.has-text-color) .wp-block-navigation-link__content {
 	color: currentColor
 }
 
-.editor-styles-wrapper p.has-background {
+:root p.has-background {
 	padding: var(--global--spacing-unit)
 }
 
-.editor-styles-wrapper p.has-text-color a {
+:root p.has-text-color a {
 	color: var(--wp--style--color--link, var(--global--color-primary))
 }
 
-.editor-styles-wrapper pre.wp-block-preformatted {
+:root pre.wp-block-preformatted {
 	overflow-x: auto;
 	white-space: pre
 }
 
-.editor-styles-wrapper .wp-block-pullquote {
+:root .wp-block-pullquote {
 	padding: calc(2 * var(--global--spacing-unit)) 0;
 	text-align: center;
 	border-width: var(--pullquote--border-width);
@@ -1001,7 +1007,7 @@
 	position: relative
 }
 
-.editor-styles-wrapper .wp-block-pullquote blockquote::before {
+:root .wp-block-pullquote blockquote::before {
 	color: currentColor;
 	content: "“";
 	display: block;
@@ -1012,7 +1018,7 @@
 	line-height: 1
 }
 
-.editor-styles-wrapper .wp-block-pullquote p {
+:root .wp-block-pullquote p {
 	font-family: var(--pullquote--font-family);
 	font-size: var(--pullquote--font-size);
 	font-style: var(--pullquote--font-style);
@@ -1022,11 +1028,11 @@
 	margin: 0
 }
 
-.editor-styles-wrapper .wp-block-pullquote a {
+:root .wp-block-pullquote a {
 	color: currentColor
 }
 
-.editor-styles-wrapper .wp-block-pullquote .wp-block-pullquote__citation, .editor-styles-wrapper .wp-block-pullquote cite, .editor-styles-wrapper .wp-block-pullquote footer {
+:root .wp-block-pullquote .wp-block-pullquote__citation, :root .wp-block-pullquote cite, :root .wp-block-pullquote footer {
 	color: currentColor;
 	display: block;
 	font-size: var(--global--font-size-xs);
@@ -1034,23 +1040,23 @@
 	text-transform: none
 }
 
-.editor-styles-wrapper .wp-block-pullquote:not(.is-style-solid-color) {
+:root .wp-block-pullquote:not(.is-style-solid-color) {
 	background: none
 }
 
-.editor-styles-wrapper .wp-block-pullquote.alignleft:not(.is-style-solid-color) blockquote:before, .editor-styles-wrapper .wp-block-pullquote.alignleft:not(.is-style-solid-color) cite {
+:root .wp-block-pullquote.alignleft:not(.is-style-solid-color) blockquote:before, :root .wp-block-pullquote.alignleft:not(.is-style-solid-color) cite {
 	text-align: center
 }
 
-.editor-styles-wrapper .wp-block-pullquote.alignwide > p, .editor-styles-wrapper .wp-block-pullquote.alignwide blockquote {
+:root .wp-block-pullquote.alignwide > p, :root .wp-block-pullquote.alignwide blockquote {
 	max-width: var(--responsive--alignwide-width)
 }
 
-.editor-styles-wrapper .wp-block-pullquote.alignfull:not(.is-style-solid-color) > p, .editor-styles-wrapper .wp-block-pullquote.alignfull:not(.is-style-solid-color) blockquote {
+:root .wp-block-pullquote.alignfull:not(.is-style-solid-color) > p, :root .wp-block-pullquote.alignfull:not(.is-style-solid-color) blockquote {
 	padding: 0 calc(2 * var(--global--spacing-unit))
 }
 
-.editor-styles-wrapper .wp-block-pullquote.is-style-solid-color {
+:root .wp-block-pullquote.is-style-solid-color {
 	color: var(--pullquote--color-foreground);
 	padding: calc(2.5 * var(--global--spacing-unit));
 	border-width: var(--pullquote--border-width);
@@ -1059,59 +1065,59 @@
 }
 
 @media (min-width:600px) {
-	.editor-styles-wrapper .wp-block-pullquote.is-style-solid-color {
+	:root .wp-block-pullquote.is-style-solid-color {
 		padding: calc(5 * var(--global--spacing-unit))
 	}
 
 }
 
-.editor-styles-wrapper .wp-block-pullquote.is-style-solid-color blockquote::before {
+:root .wp-block-pullquote.is-style-solid-color blockquote::before {
 	text-align: left
 }
 
-.editor-styles-wrapper .wp-block-pullquote.is-style-solid-color blockquote {
+:root .wp-block-pullquote.is-style-solid-color blockquote {
 	margin: 0;
 	max-width: inherit
 }
 
-.editor-styles-wrapper .wp-block-pullquote.is-style-solid-color blockquote p {
+:root .wp-block-pullquote.is-style-solid-color blockquote p {
 	font-size: var(--pullquote--font-size)
 }
 
-.editor-styles-wrapper .wp-block-pullquote.is-style-solid-color .wp-block-pullquote__citation, .editor-styles-wrapper .wp-block-pullquote.is-style-solid-color cite, .editor-styles-wrapper .wp-block-pullquote.is-style-solid-color footer {
+:root .wp-block-pullquote.is-style-solid-color .wp-block-pullquote__citation, :root .wp-block-pullquote.is-style-solid-color cite, :root .wp-block-pullquote.is-style-solid-color footer {
 	color: currentColor
 }
 
-.editor-styles-wrapper .wp-block-pullquote.is-style-solid-color.alignleft, .editor-styles-wrapper .wp-block-pullquote.is-style-solid-color.alignright {
+:root .wp-block-pullquote.is-style-solid-color.alignleft, :root .wp-block-pullquote.is-style-solid-color.alignright {
 	padding: var(--global--spacing-unit)
 }
 
-.editor-styles-wrapper .wp-block-pullquote.is-style-solid-color.alignleft blockquote, .editor-styles-wrapper .wp-block-pullquote.is-style-solid-color.alignright blockquote {
+:root .wp-block-pullquote.is-style-solid-color.alignleft blockquote, :root .wp-block-pullquote.is-style-solid-color.alignright blockquote {
 	max-width: initial
 }
 
-.editor-styles-wrapper .wp-block-quote:before {
+:root .wp-block-quote:before {
 	content: "“";
 	font-size: var(--quote--font-size);
 	line-height: var(--quote--line-height);
 	left: 8px
 }
 
-.editor-styles-wrapper .has-background .wp-block-quote .wp-block-quote__citation, .editor-styles-wrapper [class*=background-color] .wp-block-quote .wp-block-quote__citation, .editor-styles-wrapper [style*=background-color] .wp-block-quote .wp-block-quote__citation, .editor-styles-wrapper .wp-block-cover[style*=background-image] .wp-block-quote .wp-block-quote__citation, .editor-styles-wrapper .has-background .wp-block-quote cite, .editor-styles-wrapper [class*=background-color] .wp-block-quote cite, .editor-styles-wrapper [style*=background-color] .wp-block-quote cite, .editor-styles-wrapper .wp-block-cover[style*=background-image] .wp-block-quote cite, .editor-styles-wrapper .has-background .wp-block-quote footer, .editor-styles-wrapper [class*=background-color] .wp-block-quote footer, .editor-styles-wrapper [style*=background-color] .wp-block-quote footer, .editor-styles-wrapper .wp-block-cover[style*=background-image] .wp-block-quote footer {
+:root .has-background .wp-block-quote .wp-block-quote__citation, :root [class*=background-color] .wp-block-quote .wp-block-quote__citation, :root [style*=background-color] .wp-block-quote .wp-block-quote__citation, :root .wp-block-cover[style*=background-image] .wp-block-quote .wp-block-quote__citation, :root .has-background .wp-block-quote cite, :root [class*=background-color] .wp-block-quote cite, :root [style*=background-color] .wp-block-quote cite, :root .wp-block-cover[style*=background-image] .wp-block-quote cite, :root .has-background .wp-block-quote footer, :root [class*=background-color] .wp-block-quote footer, :root [style*=background-color] .wp-block-quote footer, :root .wp-block-cover[style*=background-image] .wp-block-quote footer {
 	color: currentColor
 }
 
-.editor-styles-wrapper .wp-block-quote.has-text-align-right {
+:root .wp-block-quote.has-text-align-right {
 	margin: var(--global--spacing-vertical) var(--global--spacing-horizontal) var(--global--spacing-vertical) auto;
 	padding-right: 0;
 	border-right: none
 }
 
-.editor-styles-wrapper .wp-block-quote.has-text-align-right:before {
+:root .wp-block-quote.has-text-align-right:before {
 	display: none
 }
 
-.editor-styles-wrapper .wp-block-quote.has-text-align-right p:before {
+:root .wp-block-quote.has-text-align-right p:before {
 	content: "”";
 	font-size: var(--quote--font-size);
 	font-weight: normal;
@@ -1119,38 +1125,38 @@
 	margin-right: 5px
 }
 
-.editor-styles-wrapper .wp-block-quote.has-text-align-center {
+:root .wp-block-quote.has-text-align-center {
 	margin: var(--global--spacing-vertical) auto
 }
 
-.editor-styles-wrapper .wp-block-quote.has-text-align-center:before {
+:root .wp-block-quote.has-text-align-center:before {
 	display: none
 }
 
-.editor-styles-wrapper .wp-block-quote.is-large, .editor-styles-wrapper .wp-block-quote.is-style-large {
+:root .wp-block-quote.is-large, :root .wp-block-quote.is-style-large {
 	padding-left: 0;
 	padding-right: 0;
 	margin-top: var(--global--spacing-vertical);
 	margin-bottom: var(--global--spacing-vertical)
 }
 
-.editor-styles-wrapper .wp-block-quote.is-large p, .editor-styles-wrapper .wp-block-quote.is-style-large p {
+:root .wp-block-quote.is-large p, :root .wp-block-quote.is-style-large p {
 	font-size: var(--quote--font-size-large);
 	font-style: var(--quote--font-style-large);
 	line-height: var(--quote--line-height-large)
 }
 
-.editor-styles-wrapper .wp-block-quote.is-large:before, .editor-styles-wrapper .wp-block-quote.is-style-large:before {
+:root .wp-block-quote.is-large:before, :root .wp-block-quote.is-style-large:before {
 	font-size: var(--quote--font-size-large);
 	line-height: var(--quote--line-height-large);
 	left: calc(-1 * var(--global--spacing-horizontal))
 }
 
-.editor-styles-wrapper .wp-block-quote.is-large.has-text-align-right:before, .editor-styles-wrapper .wp-block-quote.is-style-large.has-text-align-right:before {
+:root .wp-block-quote.is-large.has-text-align-right:before, :root .wp-block-quote.is-style-large.has-text-align-right:before {
 	display: none
 }
 
-.editor-styles-wrapper .wp-block-quote.is-large.has-text-align-right p:before, .editor-styles-wrapper .wp-block-quote.is-style-large.has-text-align-right p:before {
+:root .wp-block-quote.is-large.has-text-align-right p:before, :root .wp-block-quote.is-style-large.has-text-align-right p:before {
 	content: "”";
 	font-size: var(--quote--font-size-large);
 	font-weight: normal;
@@ -1158,30 +1164,30 @@
 	margin-right: 10px
 }
 
-.editor-styles-wrapper .wp-block-quote.is-large .wp-block-quote__citation, .editor-styles-wrapper .wp-block-quote.is-large cite, .editor-styles-wrapper .wp-block-quote.is-large footer, .editor-styles-wrapper .wp-block-quote.is-style-large .wp-block-quote__citation, .editor-styles-wrapper .wp-block-quote.is-style-large cite, .editor-styles-wrapper .wp-block-quote.is-style-large footer {
+:root .wp-block-quote.is-large .wp-block-quote__citation, :root .wp-block-quote.is-large cite, :root .wp-block-quote.is-large footer, :root .wp-block-quote.is-style-large .wp-block-quote__citation, :root .wp-block-quote.is-style-large cite, :root .wp-block-quote.is-style-large footer {
 	color: var(--global--color-primary);
 	font-size: var(--global--font-size-sm)
 }
 
 @media only screen and (max-width:481px) {
-	.editor-styles-wrapper .wp-block-quote.is-large, .editor-styles-wrapper .wp-block-quote.is-style-large {
+	:root .wp-block-quote.is-large, :root .wp-block-quote.is-style-large {
 		padding-left: var(--global--spacing-horizontal)
 	}
 
-	.editor-styles-wrapper .wp-block-quote.is-large:before, .editor-styles-wrapper .wp-block-quote.is-style-large:before {
+	:root .wp-block-quote.is-large:before, :root .wp-block-quote.is-style-large:before {
 		left: 0
 	}
 
-	.editor-styles-wrapper .wp-block-quote.is-large.has-text-align-right, .editor-styles-wrapper .wp-block-quote.is-style-large.has-text-align-right {
+	:root .wp-block-quote.is-large.has-text-align-right, :root .wp-block-quote.is-style-large.has-text-align-right {
 		padding-left: 0;
 		padding-right: var(--global--spacing-horizontal)
 	}
 
-	.editor-styles-wrapper .wp-block-quote.is-large.has-text-align-right:before, .editor-styles-wrapper .wp-block-quote.is-style-large.has-text-align-right:before {
+	:root .wp-block-quote.is-large.has-text-align-right:before, :root .wp-block-quote.is-style-large.has-text-align-right:before {
 		right: 0
 	}
 
-	.editor-styles-wrapper .wp-block-quote.is-large.has-text-align-center, .editor-styles-wrapper .wp-block-quote.is-style-large.has-text-align-center {
+	:root .wp-block-quote.is-large.has-text-align-center, :root .wp-block-quote.is-style-large.has-text-align-center {
 		padding-left: 0;
 		padding-right: 0
 	}
@@ -1189,69 +1195,69 @@
 }
 
 @media only screen and (max-width:481px) {
-	.editor-styles-wrapper .wp-block-quote.has-text-align-right {
+	:root .wp-block-quote.has-text-align-right {
 		padding-left: 0;
 		padding-right: calc(0.5 * var(--global--spacing-horizontal))
 	}
 
-	.editor-styles-wrapper .wp-block-quote.has-text-align-right:before {
+	:root .wp-block-quote.has-text-align-right:before {
 		right: 0
 	}
 
-	.editor-styles-wrapper .wp-block-quote.has-text-align-center {
+	:root .wp-block-quote.has-text-align-center {
 		padding-left: 0;
 		padding-right: 0
 	}
 
 }
 
-.editor-styles-wrapper .wp-block-rss {
+:root .wp-block-rss {
 	padding-left: 0
 }
 
-.editor-styles-wrapper .wp-block-rss > li {
+:root .wp-block-rss > li {
 	list-style: none
 }
 
-.editor-styles-wrapper .wp-block-rss:not(.is-grid) > li {
+:root .wp-block-rss:not(.is-grid) > li {
 	margin-top: calc(1.666 * var(--global--spacing-vertical));
 	margin-bottom: calc(1.666 * var(--global--spacing-vertical))
 }
 
-.editor-styles-wrapper .wp-block-rss:not(.is-grid) > li:first-child {
+:root .wp-block-rss:not(.is-grid) > li:first-child {
 	margin-top: 0
 }
 
-.editor-styles-wrapper .wp-block-rss:not(.is-grid) > li:last-child {
+:root .wp-block-rss:not(.is-grid) > li:last-child {
 	margin-bottom: 0
 }
 
-.editor-styles-wrapper .wp-block-rss.is-grid > li {
+:root .wp-block-rss.is-grid > li {
 	margin-bottom: var(--global--spacing-vertical)
 }
 
-.editor-styles-wrapper .wp-block-rss.is-grid > li:last-child {
+:root .wp-block-rss.is-grid > li:last-child {
 	margin-bottom: 0
 }
 
-.editor-styles-wrapper .wp-block-rss.is-grid.columns-2 > li:nth-last-child(-n+2):nth-child(2n+1), .editor-styles-wrapper .wp-block-rss.is-grid.columns-2 > li:nth-last-child(-n+2):nth-child(2n+1) ~ li, .editor-styles-wrapper .wp-block-rss.is-grid.columns-3 > li:nth-last-child(-n+3):nth-child(3n+1), .editor-styles-wrapper .wp-block-rss.is-grid.columns-3 > li:nth-last-child(-n+3):nth-child(3n+1) ~ li, .editor-styles-wrapper .wp-block-rss.is-grid.columns-4 > li:nth-last-child(-n+4):nth-child(4n+1), .editor-styles-wrapper .wp-block-rss.is-grid.columns-4 > li:nth-last-child(-n+4):nth-child(4n+1) ~ li, .editor-styles-wrapper .wp-block-rss.is-grid.columns-5 > li:nth-last-child(-n+5):nth-child(5n+1), .editor-styles-wrapper .wp-block-rss.is-grid.columns-5 > li:nth-last-child(-n+5):nth-child(5n+1) ~ li, .editor-styles-wrapper .wp-block-rss.is-grid.columns-6 > li:nth-last-child(-n+6):nth-child(6n+1), .editor-styles-wrapper .wp-block-rss.is-grid.columns-6 > li:nth-last-child(-n+6):nth-child(6n+1) ~ li {
+:root .wp-block-rss.is-grid.columns-2 > li:nth-last-child(-n+2):nth-child(2n+1), :root .wp-block-rss.is-grid.columns-2 > li:nth-last-child(-n+2):nth-child(2n+1) ~ li, :root .wp-block-rss.is-grid.columns-3 > li:nth-last-child(-n+3):nth-child(3n+1), :root .wp-block-rss.is-grid.columns-3 > li:nth-last-child(-n+3):nth-child(3n+1) ~ li, :root .wp-block-rss.is-grid.columns-4 > li:nth-last-child(-n+4):nth-child(4n+1), :root .wp-block-rss.is-grid.columns-4 > li:nth-last-child(-n+4):nth-child(4n+1) ~ li, :root .wp-block-rss.is-grid.columns-5 > li:nth-last-child(-n+5):nth-child(5n+1), :root .wp-block-rss.is-grid.columns-5 > li:nth-last-child(-n+5):nth-child(5n+1) ~ li, :root .wp-block-rss.is-grid.columns-6 > li:nth-last-child(-n+6):nth-child(6n+1), :root .wp-block-rss.is-grid.columns-6 > li:nth-last-child(-n+6):nth-child(6n+1) ~ li {
 	margin-bottom: 0
 }
 
-.editor-styles-wrapper .wp-block-rss > li > * {
+:root .wp-block-rss > li > * {
 	margin-top: calc(0.333 * var(--global--spacing-vertical));
 	margin-bottom: calc(0.333 * var(--global--spacing-vertical))
 }
 
-.editor-styles-wrapper .wp-block-rss > li > *:first-child {
+:root .wp-block-rss > li > *:first-child {
 	margin-top: 0
 }
 
-.editor-styles-wrapper .wp-block-rss > li > *:last-child {
+:root .wp-block-rss > li > *:last-child {
 	margin-bottom: 0
 }
 
-.editor-styles-wrapper .wp-block-rss .wp-block-rss__item-title > a {
+:root .wp-block-rss .wp-block-rss__item-title > a {
 	display: inline-block;
 	font-family: var(--latest-posts--title-font-family);
 	font-size: var(--latest-posts--title-font-size);
@@ -1260,54 +1266,54 @@
 	margin-bottom: calc(0.333 * var(--global--spacing-vertical))
 }
 
-.editor-styles-wrapper .wp-block-rss .wp-block-rss__item-author {
+:root .wp-block-rss .wp-block-rss__item-author {
 	color: var(--global--color-primary);
 	font-size: var(--global--font-size-md);
 	line-height: var(--global--line-height-body)
 }
 
-.editor-styles-wrapper .wp-block-rss .wp-block-rss__item-publish-date {
+:root .wp-block-rss .wp-block-rss__item-publish-date {
 	color: var(--global--color-primary);
 	font-size: var(--global--font-size-xs);
 	line-height: var(--global--line-height-body)
 }
 
-.editor-styles-wrapper [class*=inner-container] .wp-block-rss .wp-block-rss__item-publish-date, .editor-styles-wrapper .has-background .wp-block-rss .wp-block-rss__item-publish-date {
+:root [class*=inner-container] .wp-block-rss .wp-block-rss__item-publish-date, :root .has-background .wp-block-rss .wp-block-rss__item-publish-date {
 	color: currentColor
 }
 
-.editor-styles-wrapper .wp-block-rss .wp-block-rss__item-excerpt, .editor-styles-wrapper .wp-block-rss .wp-block-rss__item-full-content {
+:root .wp-block-rss .wp-block-rss__item-excerpt, :root .wp-block-rss .wp-block-rss__item-full-content {
 	font-family: var(--latest-posts--description-font-family);
 	font-size: var(--latest-posts--description-font-size);
 	line-height: var(--global--line-height-body);
 	margin-top: calc(0.666 * var(--global--spacing-vertical))
 }
 
-.editor-styles-wrapper .wp-block-rss.alignfull {
+:root .wp-block-rss.alignfull {
 	padding-left: var(--global--spacing-unit);
 	padding-right: var(--global--spacing-unit)
 }
 
-.editor-styles-wrapper .entry-content [class*=inner-container] .wp-block-rss.alignfull, .editor-styles-wrapper .entry-content .has-background .wp-block-rss.alignfull {
+:root .entry-content [class*=inner-container] .wp-block-rss.alignfull, :root .entry-content .has-background .wp-block-rss.alignfull {
 	padding-left: 0;
 	padding-right: 0
 }
 
-.editor-styles-wrapper .wp-block-search {
+:root .wp-block-search {
 	max-width: var(--responsive--aligndefault-width)
 }
 
-.editor-styles-wrapper .wp-block-search__button-only.aligncenter .wp-block-search__inside-wrapper {
+:root .wp-block-search__button-only.aligncenter .wp-block-search__inside-wrapper {
 	justify-content: center
 }
 
-.editor-styles-wrapper .wp-block-search .wp-block-search__label {
+:root .wp-block-search .wp-block-search__label {
 	font-size: var(--form--font-size);
 	font-weight: var(--form--label-weight);
 	margin-bottom: calc(var(--global--spacing-vertical) / 3)
 }
 
-.editor-styles-wrapper .wp-block-search .wp-block-search__input {
+:root .wp-block-search .wp-block-search__input {
 	border: var(--form--border-width) solid var(--form--border-color);
 	border-radius: var(--form--border-radius);
 	color: var(--form--color-text);
@@ -1317,88 +1323,88 @@
 	padding: var(--form--spacing-unit)
 }
 
-.editor-styles-wrapper .wp-block-search .wp-block-search__input:focus {
+:root .wp-block-search .wp-block-search__input:focus {
 	color: var(--form--color-text);
 	border-color: var(--form--border-color)
 }
 
-.editor-styles-wrapper .has-background .wp-block-search .wp-block-search__input {
+:root .has-background .wp-block-search .wp-block-search__input {
 	border-color: var(--local--color-primary, var(--global--color-primary)) !important
 }
 
-.editor-styles-wrapper .wp-block-search button.wp-block-search__button {
+:root .wp-block-search button.wp-block-search__button {
 	margin-left: 0;
 	line-height: 1
 }
 
-.editor-styles-wrapper .wp-block-search button.wp-block-search__button.has-icon {
+:root .wp-block-search button.wp-block-search__button.has-icon {
 	padding: 6px calc(0.5 * var(--button--padding-horizontal))
 }
 
-.editor-styles-wrapper .wp-block-search button.wp-block-search__button.has-icon svg {
+:root .wp-block-search button.wp-block-search__button.has-icon svg {
 	width: 40px;
 	height: 40px;
 	fill: currentColor
 }
 
-.editor-styles-wrapper .has-background .wp-block-search button.wp-block-search__button:hover, .editor-styles-wrapper .has-background .wp-block-search button.wp-block-search__button:active {
+:root .has-background .wp-block-search button.wp-block-search__button:hover, :root .has-background .wp-block-search button.wp-block-search__button:active {
 	background-color: var(--local--color-background, var(--global--color-background)) !important;
 	color: var(--local--color-primary, var(--global--color-primary)) !important
 }
 
-.editor-styles-wrapper .has-text-color .wp-block-search button.wp-block-search__button:hover, .editor-styles-wrapper .has-text-color .wp-block-search button.wp-block-search__button:active {
+:root .has-text-color .wp-block-search button.wp-block-search__button:hover, :root .has-text-color .wp-block-search button.wp-block-search__button:active {
 	color: var(--local--color-primary, var(--global--color-primary)) !important
 }
 
-.editor-styles-wrapper .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper {
+:root .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper {
 	background-color: var(--global--color-white);
 	border: var(--form--border-width) solid var(--form--border-color);
 	border-radius: var(--form--border-radius);
 	padding: var(--form--border-width)
 }
 
-.editor-styles-wrapper .has-background .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper {
+:root .has-background .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper {
 	border-color: var(--local--color-primary, var(--global--color-primary)) !important
 }
 
-.editor-styles-wrapper .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper .wp-block-search__input {
+:root .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper .wp-block-search__input {
 	margin-left: 0;
 	margin-right: 0;
 	padding-left: var(--form--spacing-unit)
 }
 
-.editor-styles-wrapper .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper .wp-block-search__input:focus {
+:root .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper .wp-block-search__input:focus {
 	color: var(--form--color-text);
 	outline-offset: -2px;
 	outline: 2px dotted var(--form--border-color)
 }
 
-.editor-styles-wrapper .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper button.wp-block-search__button {
+:root .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper button.wp-block-search__button {
 	padding: var(--button--padding-vertical) var(--button--padding-horizontal)
 }
 
-.editor-styles-wrapper .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper button.wp-block-search__button:hover {
+:root .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper button.wp-block-search__button:hover {
 	color: var(--global--color-dark-gray)
 }
 
-.editor-styles-wrapper .is-dark-theme .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper button.wp-block-search__button {
+:root .is-dark-theme .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper button.wp-block-search__button {
 	color: var(--global--color-dark-gray)
 }
 
-.editor-styles-wrapper .is-dark-theme .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper button.wp-block-search__button:hover {
+:root .is-dark-theme .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper button.wp-block-search__button:hover {
 	background-color: var(--global--color-dark-gray);
 	color: var(--global--color-white)
 }
 
-.editor-styles-wrapper .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper button.wp-block-search__button.has-icon {
+:root .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper button.wp-block-search__button.has-icon {
 	padding: 6px calc(0.5 * var(--button--padding-horizontal))
 }
 
-.editor-styles-wrapper .wp-block-search__button {
+:root .wp-block-search__button {
 	box-shadow: none
 }
 
-.editor-styles-wrapper hr {
+:root hr {
 	border-style: none;
 	border-bottom: var(--separator--height) solid var(--separator--border-color);
 	clear: both;
@@ -1406,116 +1412,116 @@
 	margin-right: auto
 }
 
-.editor-styles-wrapper hr.wp-block-separator {
+:root hr.wp-block-separator {
 	border-bottom: var(--separator--height) solid var(--separator--border-color);
 	opacity: 1
 }
 
-.editor-styles-wrapper hr.wp-block-separator:not(.is-style-dots):not(.alignwide) {
+:root hr.wp-block-separator:not(.is-style-dots):not(.alignwide) {
 	max-width: var(--responsive--aligndefault-width)
 }
 
-.editor-styles-wrapper hr.wp-block-separator:not(.is-style-dots).alignwide {
+:root hr.wp-block-separator:not(.is-style-dots).alignwide {
 	max-width: var(--responsive--alignwide-width)
 }
 
-.editor-styles-wrapper hr.wp-block-separator:not(.is-style-dots).alignfull {
+:root hr.wp-block-separator:not(.is-style-dots).alignfull {
 	max-width: var(--responsive--alignfull-width)
 }
 
-.editor-styles-wrapper hr.wp-block-separator.is-style-twentytwentyone-separator-thick {
+:root hr.wp-block-separator.is-style-twentytwentyone-separator-thick {
 	border-bottom-width: calc(3 * var(--separator--height))
 }
 
-.editor-styles-wrapper hr.wp-block-separator.is-style-dots.has-background, .editor-styles-wrapper hr.wp-block-separator.is-style-dots.has-text-color {
+:root hr.wp-block-separator.is-style-dots.has-background, :root hr.wp-block-separator.is-style-dots.has-text-color {
 	background-color: transparent !important
 }
 
-.editor-styles-wrapper hr.wp-block-separator.is-style-dots.has-background:before, .editor-styles-wrapper hr.wp-block-separator.is-style-dots.has-text-color:before {
+:root hr.wp-block-separator.is-style-dots.has-background:before, :root hr.wp-block-separator.is-style-dots.has-text-color:before {
 	color: currentColor !important
 }
 
-.editor-styles-wrapper hr.wp-block-separator.is-style-dots:before {
+:root hr.wp-block-separator.is-style-dots:before {
 	color: var(--separator--border-color);
 	font-size: var(--global--font-size-xl);
 	letter-spacing: var(--global--font-size-sm);
 	padding-left: var(--global--font-size-sm)
 }
 
-.editor-styles-wrapper .has-background hr.wp-block-separator, .editor-styles-wrapper [class*=background-color] hr.wp-block-separator, .editor-styles-wrapper [style*=background-color] hr.wp-block-separator, .editor-styles-wrapper .wp-block-cover[style*=background-image] hr.wp-block-separator {
+:root .has-background hr.wp-block-separator, :root [class*=background-color] hr.wp-block-separator, :root [style*=background-color] hr.wp-block-separator, :root .wp-block-cover[style*=background-image] hr.wp-block-separator {
 	border-color: currentColor
 }
 
-.editor-styles-wrapper .wp-block-social-links a:focus {
+:root .wp-block-social-links a:focus {
 	color: var(--global--color-primary)
 }
 
-.editor-styles-wrapper .wp-block-social-links.is-style-twentytwentyone-social-icons-color a {
+:root .wp-block-social-links.is-style-twentytwentyone-social-icons-color a {
 	color: var(--global--color-primary)
 }
 
-.editor-styles-wrapper .wp-block-social-links.is-style-twentytwentyone-social-icons-color .wp-social-link, .editor-styles-wrapper .wp-block-social-links.is-style-twentytwentyone-social-icons-color.has-icon-background-color.has-icon-background-color .wp-social-link {
+:root .wp-block-social-links.is-style-twentytwentyone-social-icons-color .wp-social-link, :root .wp-block-social-links.is-style-twentytwentyone-social-icons-color.has-icon-background-color.has-icon-background-color .wp-social-link {
 	background: none
 }
 
-.editor-styles-wrapper .wp-block-spacer {
+:root .wp-block-spacer {
 	display: block;
 	margin-bottom: 0 !important;
 	margin-top: 0 !important
 }
 
 @media only screen and (max-width:481px) {
-	.editor-styles-wrapper .wp-block-spacer[style] {
+	:root .wp-block-spacer[style] {
 		height: var(--global--spacing-unit) !important
 	}
 
 }
 
-.editor-styles-wrapper table, .editor-styles-wrapper .wp-block-table {
+:root table, :root .wp-block-table {
 	width: 100%;
 	min-width: 240px;
 	border-collapse: collapse
 }
 
-.editor-styles-wrapper table thead, .editor-styles-wrapper table tfoot, .editor-styles-wrapper .wp-block-table thead, .editor-styles-wrapper .wp-block-table tfoot {
+:root table thead, :root table tfoot, :root .wp-block-table thead, :root .wp-block-table tfoot {
 	text-align: center
 }
 
-.editor-styles-wrapper table th, .editor-styles-wrapper .wp-block-table th {
+:root table th, :root .wp-block-table th {
 	font-family: var(--heading--font-family)
 }
 
-.editor-styles-wrapper table td, .editor-styles-wrapper table th, .editor-styles-wrapper .wp-block-table td, .editor-styles-wrapper .wp-block-table th {
+:root table td, :root table th, :root .wp-block-table td, :root .wp-block-table th {
 	padding: calc(0.5 * var(--global--spacing-unit));
 	border: 1px solid
 }
 
-.editor-styles-wrapper table figcaption, .editor-styles-wrapper .wp-block-table figcaption {
+:root table figcaption, :root .wp-block-table figcaption {
 	color: var(--global--color-primary);
 	font-size: var(--global--font-size-xs)
 }
 
-.editor-styles-wrapper table.is-style-regular .has-background, .editor-styles-wrapper table.is-style-stripes .has-background, .editor-styles-wrapper table.is-style-stripes .has-background thead tr, .editor-styles-wrapper table.is-style-stripes .has-background tfoot tr, .editor-styles-wrapper table.is-style-stripes .has-background tbody tr, .editor-styles-wrapper .wp-block-table.is-style-regular .has-background, .editor-styles-wrapper .wp-block-table.is-style-stripes .has-background, .editor-styles-wrapper .wp-block-table.is-style-stripes .has-background thead tr, .editor-styles-wrapper .wp-block-table.is-style-stripes .has-background tfoot tr, .editor-styles-wrapper .wp-block-table.is-style-stripes .has-background tbody tr {
+:root table.is-style-regular .has-background, :root table.is-style-stripes .has-background, :root table.is-style-stripes .has-background thead tr, :root table.is-style-stripes .has-background tfoot tr, :root table.is-style-stripes .has-background tbody tr, :root .wp-block-table.is-style-regular .has-background, :root .wp-block-table.is-style-stripes .has-background, :root .wp-block-table.is-style-stripes .has-background thead tr, :root .wp-block-table.is-style-stripes .has-background tfoot tr, :root .wp-block-table.is-style-stripes .has-background tbody tr {
 	color: var(--table--has-background-text-color)
 }
 
-.editor-styles-wrapper table.is-style-stripes, .editor-styles-wrapper .wp-block-table.is-style-stripes {
+:root table.is-style-stripes, :root .wp-block-table.is-style-stripes {
 	border-color: var(--table--stripes-border-color)
 }
 
-.editor-styles-wrapper table.is-style-stripes th, .editor-styles-wrapper table.is-style-stripes td, .editor-styles-wrapper .wp-block-table.is-style-stripes th, .editor-styles-wrapper .wp-block-table.is-style-stripes td {
+:root table.is-style-stripes th, :root table.is-style-stripes td, :root .wp-block-table.is-style-stripes th, :root .wp-block-table.is-style-stripes td {
 	border-width: 0
 }
 
-.editor-styles-wrapper table.is-style-stripes tbody tr:nth-child(odd), .editor-styles-wrapper .wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
+:root table.is-style-stripes tbody tr:nth-child(odd), :root .wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
 	background-color: var(--table--stripes-background-color)
 }
 
-.editor-styles-wrapper table.is-style-stripes .has-background tbody tr:nth-child(odd), .editor-styles-wrapper .wp-block-table.is-style-stripes .has-background tbody tr:nth-child(odd) {
+:root table.is-style-stripes .has-background tbody tr:nth-child(odd), :root .wp-block-table.is-style-stripes .has-background tbody tr:nth-child(odd) {
 	background-color: var(--global--color-white-90)
 }
 
-.editor-styles-wrapper table.wp-calendar-table td, .editor-styles-wrapper table.wp-calendar-table th {
+:root table.wp-calendar-table td, :root table.wp-calendar-table th {
 	background: transparent;
 	border: 0;
 	text-align: center;
@@ -1524,50 +1530,50 @@
 	word-break: normal
 }
 
-.editor-styles-wrapper table.wp-calendar-table th {
+:root table.wp-calendar-table th {
 	font-weight: bold
 }
 
-.editor-styles-wrapper table.wp-calendar-table thead, .editor-styles-wrapper table.wp-calendar-table tbody {
+:root table.wp-calendar-table thead, :root table.wp-calendar-table tbody {
 	color: currentColor;
 	border: 1px solid
 }
 
-.editor-styles-wrapper table.wp-calendar-table caption {
+:root table.wp-calendar-table caption {
 	font-weight: bold;
 	text-align: left;
 	margin-bottom: var(--global--spacing-unit);
 	color: currentColor
 }
 
-.editor-styles-wrapper .wp-calendar-nav {
+:root .wp-calendar-nav {
 	text-align: left;
 	margin-top: calc(var(--global--spacing-unit) / 2)
 }
 
-.editor-styles-wrapper .wp-calendar-nav svg {
+:root .wp-calendar-nav svg {
 	height: 1em;
 	vertical-align: middle
 }
 
-.editor-styles-wrapper .wp-calendar-nav svg path {
+:root .wp-calendar-nav svg path {
 	fill: currentColor
 }
 
-.editor-styles-wrapper .wp-calendar-nav .wp-calendar-nav-next {
+:root .wp-calendar-nav .wp-calendar-nav-next {
 	float: right
 }
 
-.editor-styles-wrapper .wp-block-tag-cloud.alignfull {
+:root .wp-block-tag-cloud.alignfull {
 	padding-left: var(--global--spacing-unit);
 	padding-right: var(--global--spacing-unit)
 }
 
-.editor-styles-wrapper .wp-block-verse {
+:root .wp-block-verse {
 	font-family: var(--entry-content--font-family)
 }
 
-.editor-styles-wrapper .wp-block-video figcaption {
+:root .wp-block-video figcaption {
 	color: var(--global--color-primary);
 	font-size: var(--global--font-size-xs);
 	margin-top: calc(0.5 * var(--global--spacing-unit));
@@ -1575,72 +1581,72 @@
 	text-align: center
 }
 
-.editor-styles-wrapper * > figure > video {
+:root * > figure > video {
 	max-width: unset;
 	width: 100%;
 	vertical-align: middle
 }
 
-:root .editor-styles-wrapper .is-extra-small-text, :root .editor-styles-wrapper .has-extra-small-font-size {
+:root :root .is-extra-small-text, :root :root .has-extra-small-font-size {
 	font-size: var(--global--font-size-xs)
 }
 
-:root .editor-styles-wrapper .is-small-text, :root .editor-styles-wrapper .has-small-font-size {
+:root :root .is-small-text, :root :root .has-small-font-size {
 	font-size: var(--global--font-size-sm)
 }
 
-:root .editor-styles-wrapper .is-regular-text, :root .editor-styles-wrapper .has-regular-font-size, :root .editor-styles-wrapper .is-normal-font-size, :root .editor-styles-wrapper .has-normal-font-size, :root .editor-styles-wrapper .has-medium-font-size {
+:root :root .is-regular-text, :root :root .has-regular-font-size, :root :root .is-normal-font-size, :root :root .has-normal-font-size, :root :root .has-medium-font-size {
 	font-size: var(--global--font-size-base)
 }
 
-:root .editor-styles-wrapper .is-large-text, :root .editor-styles-wrapper .has-large-font-size {
+:root :root .is-large-text, :root :root .has-large-font-size {
 	font-size: var(--global--font-size-lg);
 	line-height: var(--global--line-height-heading)
 }
 
-:root .editor-styles-wrapper .is-larger-text, :root .editor-styles-wrapper .has-larger-font-size, :root .editor-styles-wrapper .is-extra-large-text, :root .editor-styles-wrapper .has-extra-large-font-size {
+:root :root .is-larger-text, :root :root .has-larger-font-size, :root :root .is-extra-large-text, :root :root .has-extra-large-font-size {
 	font-size: var(--global--font-size-xl);
 	line-height: var(--global--line-height-heading)
 }
 
-:root .editor-styles-wrapper .is-huge-text, :root .editor-styles-wrapper .has-huge-font-size {
+:root :root .is-huge-text, :root :root .has-huge-font-size {
 	font-size: var(--global--font-size-xxl);
 	line-height: var(--global--line-height-heading);
 	font-weight: var(--heading--font-weight-page-title)
 }
 
-:root .editor-styles-wrapper .is-gigantic-text, :root .editor-styles-wrapper .has-gigantic-font-size {
+:root :root .is-gigantic-text, :root :root .has-gigantic-font-size {
 	font-size: var(--global--font-size-xxxl);
 	line-height: var(--global--line-height-heading);
 	font-weight: var(--heading--font-weight-page-title)
 }
 
-.editor-styles-wrapper .alignleft {
+:root .alignleft {
 	text-align: left;
 	margin-top: 0
 }
 
-.editor-styles-wrapper .entry-content > .alignleft {
+:root .entry-content > .alignleft {
 	max-width: var(--responsive--aligndefault-width)
 }
 
 @media only screen and (min-width:482px) {
-	.editor-styles-wrapper {
+	:root {
 	}
 
-	.editor-styles-wrapper .alignleft {
+	:root .alignleft {
 		float: left;
 		margin-right: var(--global--spacing-horizontal);
 		margin-bottom: var(--global--spacing-vertical)
 	}
 
-	.editor-styles-wrapper .entry-content > .alignleft {
+	:root .entry-content > .alignleft {
 		max-width: calc(50% - var(--responsive--alignleft-margin))
 	}
 
 }
 
-.editor-styles-wrapper .aligncenter {
+:root .aligncenter {
 	clear: both;
 	display: block;
 	float: none;
@@ -1649,55 +1655,55 @@
 	text-align: center
 }
 
-.editor-styles-wrapper .alignright {
+:root .alignright {
 	margin-top: 0;
 	margin-bottom: var(--global--spacing-vertical)
 }
 
-.editor-styles-wrapper .entry-content > .alignright {
+:root .entry-content > .alignright {
 	max-width: var(--responsive--aligndefault-width)
 }
 
 @media only screen and (min-width:482px) {
-	.editor-styles-wrapper {
+	:root {
 	}
 
-	.editor-styles-wrapper .alignright {
+	:root .alignright {
 		float: right;
 		margin-left: var(--global--spacing-horizontal)
 	}
 
-	.editor-styles-wrapper .entry-content > .alignright {
+	:root .entry-content > .alignright {
 		max-width: calc(50% - var(--responsive--alignright-margin))
 	}
 
 }
 
-.editor-styles-wrapper [class*=inner-container] > .alignleft + *, .editor-styles-wrapper [class*=inner-container] > .alignright + * {
+:root [class*=inner-container] > .alignleft + *, :root [class*=inner-container] > .alignright + * {
 	margin-top: 0
 }
 
-.editor-styles-wrapper .alignwide {
+:root .alignwide {
 	clear: both
 }
 
-.editor-styles-wrapper .alignfull {
+:root .alignfull {
 	clear: both
 }
 
-.editor-styles-wrapper .has-left-content {
+:root .has-left-content {
 	justify-content: flex-start
 }
 
-.editor-styles-wrapper .has-right-content {
+:root .has-right-content {
 	justify-content: flex-end
 }
 
-.editor-styles-wrapper .has-parallax {
+:root .has-parallax {
 	background-attachment: fixed
 }
 
-.editor-styles-wrapper .has-drop-cap:not(:focus)::first-letter {
+:root .has-drop-cap:not(:focus)::first-letter {
 	font-family: var(--heading--font-family);
 	font-weight: var(--heading--font-weight);
 	line-height: 0.66;
@@ -1708,7 +1714,7 @@
 	font-size: calc(1.2 * var(--heading--font-size-h1))
 }
 
-.editor-styles-wrapper .has-drop-cap:not(:focus)::after {
+:root .has-drop-cap:not(:focus)::after {
 	content: "";
 	display: table;
 	clear: both;

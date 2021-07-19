@@ -211,4 +211,45 @@ if ( !function_exists( 'responsi_admin_bar_menu_style' ) ) {
 add_action( 'wp_enqueue_scripts', 'responsi_admin_bar_menu_style' );
 add_action( 'admin_enqueue_scripts', 'responsi_admin_bar_menu_style' );
 
+/*-----------------------------------------------------------------------------------*/
+/* responsi_generate_global_fonts() */
+/*-----------------------------------------------------------------------------------*/
+
+if (!function_exists('responsi_generate_global_fonts')) {
+    function responsi_generate_global_fonts( $option, $variableName = '--global--responsi-typo', $enable = true ) {
+
+        global $google_fonts;
+
+        $fonts = '';
+
+        if( $enable != true && $enable != 'true'  ){
+            return $fonts;
+        }
+
+        $systemFonts = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif";
+
+        if( is_array( $option ) && isset( $option['face']) && isset( $option['line_height']) && isset($option['style']) && isset($option['size']) && isset($option['color']) ){
+
+            $fonts .= $variableName.'-font-family:'. stripslashes( $option['face'] ).', '.$systemFonts.';';
+            $fonts .= $variableName.'-font-size:'. esc_attr( $option['size'] ).'px;';
+            $fonts .= $variableName.'-font-line-height:'. esc_attr( $option['line_height'] ).'em;';
+            $fonts .= $variableName.'-font-color:'. esc_attr( $option['color'] ).';';
+
+            $fontStyles = explode( ' ', esc_attr( $option['style'] ) );
+
+            if( is_array( $fontStyles ) ){
+                if( count( $fontStyles ) == 1 ){
+                    $fonts .= $variableName.'-font-weight:'.$fontStyles[0].';';
+                    $fonts .= $variableName.'-font-style:normal;';
+                }elseif( count( $fontStyles ) == 2 ){
+                    $fonts .= $variableName.'-font-weight:'.$fontStyles[0].';';
+                    $fonts .= $variableName.'-font-style:'.$fontStyles[1].';';
+                }
+            }
+        }
+
+        return $fonts;
+    }
+}
+
 ?>

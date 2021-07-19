@@ -10,7 +10,7 @@ if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 
 	function responsi_framework_upgrade_version(){
 
-		if( version_compare(get_option('responsi_framework_version'), '8.2.6', '<') ){
+		if( version_compare(get_option('responsi_framework_version'), '8.2.7', '<') ){
 
 	        if( function_exists('responsi_dynamic_css') ){
 	        	responsi_dynamic_css( 'framework' );
@@ -507,6 +507,13 @@ if ( ! function_exists( 'responsi_setup' ) ){
 		// Add support for editor styles.
 		add_theme_support( 'editor-styles' );
 
+		// Enqueue editor styles.
+		$editor_stylesheet_path =  get_theme_file_uri( '/functions/css/editor-style-block.css' );
+		add_editor_style( $editor_stylesheet_path );
+
+		//$googleFontUrl = responsi_google_webfonts().'&display=swap';
+		//add_editor_style( $googleFontUrl );
+
 		// Add custom editor font sizes.
 		/*add_theme_support(
 			'editor-font-sizes',
@@ -572,6 +579,11 @@ if ( ! function_exists( 'responsi_setup' ) ){
 
 		// Add support for responsive embeds.
 		add_theme_support( 'responsive-embeds' );
+		add_theme_support( 'block-templates' );
+		add_theme_support( 'custom-units' );
+		add_theme_support( 'custom-spacing' );
+		
+
 
 	}
 }
@@ -579,7 +591,7 @@ if ( ! function_exists( 'responsi_setup' ) ){
 add_action( 'after_setup_theme', 'responsi_setup' );
 
 if ( !function_exists( 'responsi_get_customizer_css' ) ){
-	function responsi_get_customizer_css( $type = 'front-end' ) {
+	function responsi_get_customizer_css( $type = 'block-editor' ) {
 
 		global $post, $responsi_options;
 
@@ -612,21 +624,21 @@ if ( !function_exists( 'responsi_get_customizer_css' ) ){
 	    $_page_content_font		= isset( $responsi_options['responsi_page_content_font'] ) ? $responsi_options['responsi_page_content_font'] : array('size' => '14','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#555555');
 	    
 	    
-		$blockContentCSS .= '.editor-styles-wrapper h1{' . responsi_generate_fonts( $font_h1 ) . '}';
-		$blockContentCSS .= '.editor-styles-wrapper h2{' . responsi_generate_fonts( $font_h2 ) . '}';
-		$blockContentCSS .= '.editor-styles-wrapper h3{' . responsi_generate_fonts( $font_h3 ) . '}';
-		$blockContentCSS .= '.editor-styles-wrapper h4{' . responsi_generate_fonts( $font_h4 ) . '}';
-		$blockContentCSS .= '.editor-styles-wrapper h5{' . responsi_generate_fonts( $font_h5 ) . '}';
-		$blockContentCSS .= '.editor-styles-wrapper h6{' . responsi_generate_fonts( $font_h6 ) . '}';
+		$blockContentCSS .= ':root .editor-styles-wrapper h1{' . responsi_generate_fonts( $font_h1 ) . '}';
+		$blockContentCSS .= ':root .editor-styles-wrapper h2{' . responsi_generate_fonts( $font_h2 ) . '}';
+		$blockContentCSS .= ':root .editor-styles-wrapper h3{' . responsi_generate_fonts( $font_h3 ) . '}';
+		$blockContentCSS .= ':root .editor-styles-wrapper h4{' . responsi_generate_fonts( $font_h4 ) . '}';
+		$blockContentCSS .= ':root .editor-styles-wrapper h5{' . responsi_generate_fonts( $font_h5 ) . '}';
+		$blockContentCSS .= ':root .editor-styles-wrapper h6{' . responsi_generate_fonts( $font_h6 ) . '}';
 
 		if( $post && $post->post_type == 'post' ){
-			$blockTitleCSS .= '.edit-post-visual-editor .wp-block.editor-post-title .editor-post-title__input{' . responsi_generate_fonts( $_font_post_title ) . '}';
-			$blockContentCSS .= '.edit-post-visual-editor .editor-styles-wrapper{' . responsi_generate_fonts( $_font_post_text ) . '}';
+			$blockTitleCSS .= '.edit-post-visual-editor .wp-block.editor-post-title .editor-post-title__input, :root .editor-styles-wrapper{' . responsi_generate_fonts( $_font_post_title ) . '}';
+			$blockContentCSS .= '.edit-post-visual-editor :root .editor-styles-wrapper, :root .editor-styles-wrapper{' . responsi_generate_fonts( $_font_post_text ) . '}';
 		}elseif( $post && $post->post_type == 'page' ){
-			$blockTitleCSS .= '.edit-post-visual-editor .wp-block.editor-post-title .editor-post-title__input{' . responsi_generate_fonts( $_page_title_font ) . '}';
-			$blockContentCSS .= '.edit-post-visual-editor .editor-styles-wrapper{' . responsi_generate_fonts( $_page_content_font ) . '}';
+			$blockTitleCSS .= '.edit-post-visual-editor .wp-block.editor-post-title .editor-post-title__input, :root .editor-styles-wrapper{' . responsi_generate_fonts( $_page_title_font ) . '}';
+			$blockContentCSS .= '.edit-post-visual-editor :root .editor-styles-wrapper, :root .editor-styles-wrapper{' . responsi_generate_fonts( $_page_content_font ) . '}';
 		}else{
-			$blockContentCSS .= '.edit-post-visual-editor .editor-styles-wrapper{' . responsi_generate_fonts( $font_text ) . '}';
+			$blockContentCSS .= '.edit-post-visual-editor :root .editor-styles-wrapper, :root .editor-styles-wrapper{' . responsi_generate_fonts( $font_text ) . '}';
 		}
 
 		if( $post && $post->post_type == 'post' && isset($post_box_bg['onoff']) && isset($post_box_bg['color']) && 'false' != $post_box_bg['onoff'] && '' != $post_box_bg['color'] && 'transparent' != $post_box_bg['color'] ){
@@ -684,12 +696,18 @@ if ( !function_exists( 'responsi_get_customizer_css' ) ){
 		    }
 		}
 
+		$rootCSS = ':root{';
+			//$rootCSS .= responsi_generate_global_fonts( $font_text );
+		$rootCSS .= '}';
+
 		$css = '';
+
+		$css .= $rootCSS;
 
 		if( '' != $blockBgCSS ){
 			$css .= '
 				.editor-styles-wrapper {
-					' . $blockBgCSS . '
+				' . $blockBgCSS . '
 				}
 			';
 		}
@@ -706,6 +724,7 @@ if ( !function_exists( 'responsi_get_customizer_css' ) ){
 
 	}
 }
+
 /**
  * Enqueue supplemental block editor styles.
  */
@@ -714,14 +733,30 @@ function responsi_block_editor_styles() {
 	$css_dependencies = array();
 
 	// Enqueue the editor styles.
-	wp_enqueue_style( 'responsi-block-editor-styles', get_theme_file_uri( '/functions/css/editor-style-block.css' ), $css_dependencies, wp_get_theme()->get( 'Version' ), 'all' );
+	//wp_enqueue_style( 'responsi-block-editor-styles', get_theme_file_uri( '/functions/css/editor-style-block.css' ), $css_dependencies, wp_get_theme()->get( 'Version' ), 'all' );
+	//add_editor_style( get_theme_file_uri( '/functions/css/editor-style-block.css' ) );
 
 	// Add inline style from the Customizer.
-	wp_add_inline_style( 'responsi-block-editor-styles', responsi_get_customizer_css( 'block-editor' ) );
+	wp_add_inline_style( 'wp-edit-blocks', responsi_get_customizer_css( 'block-editor' ) );
 	
 }
 
-add_action( 'enqueue_block_editor_assets', 'responsi_block_editor_styles', 1, 1 );
+add_action( 'enqueue_block_editor_assets', 'responsi_block_editor_styles' );
+
+function responsi_global_styles(){
+	$stylesheet = '';
+	return $stylesheet;
+}
+
+function responsi_enqueue_global_styles(){
+	wp_add_inline_style( 'global-styles', responsi_global_styles() );
+}
+
+add_action( 'wp_enqueue_scripts', 'responsi_enqueue_global_styles' );
+add_action( 'wp_footer', 'responsi_enqueue_global_styles', 1 );
+
+
+
 
 /*-----------------------------------------------------------------------------------*/
 /* responsi_after_setup_theme */
