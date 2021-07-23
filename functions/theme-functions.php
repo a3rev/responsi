@@ -1303,6 +1303,7 @@ if ( !function_exists( 'responsi_meta_tags' ) ) {
         //$html .= '<meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1">';
         $html .= '<meta name="viewport" content="width=device-width, initial-scale=1, height=device-height">';
         $html .= '<meta name="format-detection" content="telephone=yes">';
+        $html .= '<meta name="theme-color" content="#FFFFFF">';
         echo $html;
     }
 }

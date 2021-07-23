@@ -375,9 +375,31 @@ function responsi_get_thumbnail( $args = array() ) {
             }
 
             if( 'image' === $type ){
+
                 if( $style ){
                     $style_ext = ' style="' . esc_attr( $style ) . '"';
                 }
+
+                $supported_image = array(
+                    'gif',
+                    'jpg',
+                    'jpeg',
+                    'png'
+                );
+
+                //$ext = strtolower( end( explode('.', $_thumbnail_src ) ) );
+                $ext = strtolower( substr( strrchr( $_thumbnail_src , '.'), 1) );
+
+                if( '' != $ext && !in_array( $ext, $supported_image ) ){
+
+                    $pattern = responsi_parse_yturl_pattern();
+                    $output  = preg_match_all( $pattern, $_thumbnail_src, $matches );
+                    
+                    if ( !empty( $matches[1][0] ) ) {
+                        $_thumbnail_src = "http://img.youtube.com/vi/" . urlencode($matches[1][0]) . "/0.jpg";
+                    }
+                }
+
                 $_thumbnail_image = '<img class="' . esc_attr( stripslashes( trim($class ) ) ) . '"' . $style_ext . ' src="' . esc_url( $_thumbnail_src ) . '" alt="' . esc_attr( $alt ) . '"'.$width_height_attr.'>';
             }elseif( 'src' === $type ){
                 $_thumbnail_src = $_thumbnail_src;
@@ -3427,7 +3449,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $responsi_navi_border_padding_bottom            = isset( $responsi_options['responsi_navi_border_padding_bottom'] ) ? esc_attr( $responsi_options['responsi_navi_border_padding_bottom'] ) : 0;
     $responsi_navi_border_padding_left              = isset( $responsi_options['responsi_navi_border_padding_left'] ) ? esc_attr( $responsi_options['responsi_navi_border_padding_left'] ) : 0;
     $responsi_navi_border_padding_right             = isset( $responsi_options['responsi_navi_border_padding_right'] ) ? esc_attr( $responsi_options['responsi_navi_border_padding_right'] ) : 0;
-    $nav_font                                       = isset( $responsi_options['responsi_nav_font'] ) ? $responsi_options['responsi_nav_font'] : array('size' => '13','line_height' => '1','face' => 'Open Sans','style' => 'bold','color' => '#FFFFFF');
+    $nav_font                                       = isset( $responsi_options['responsi_nav_font'] ) ? $responsi_options['responsi_nav_font'] : array('size' => '14','line_height' => '1','face' => 'Open Sans','style' => 'bold','color' => '#FFFFFF');
     $nav_font_transform                             = isset( $responsi_options['responsi_nav_font_transform'] ) ? esc_attr( $responsi_options['responsi_nav_font_transform'] ) : 'uppercase';
     $nav_hover                                      = isset( $responsi_options['responsi_nav_hover'] ) ? esc_attr( $responsi_options['responsi_nav_hover'] ) : '#ffffff';
     $nav_hover_bg                                   = isset( $responsi_options['responsi_nav_hover_bg'] ) ? $responsi_options['responsi_nav_hover_bg'] :  array( 'onoff' => 'true', 'color' => '#8cc700');

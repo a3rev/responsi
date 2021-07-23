@@ -28,7 +28,7 @@ if ( have_comments() ) {
 	echo '<div id="comments">';
 
  	if ( ! empty( $comments_by_type['comment'] ) ) { ?>
-	 	<h3 id="comments-title"><?php printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', (int)get_comments_number(), 'responsi' ), number_format_i18n( (int)get_comments_number() ), '<em>' . get_the_title() . '</em>' ); ?></h3>
+	 	<h2 id="comments-title"><?php printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', (int)get_comments_number(), 'responsi' ), number_format_i18n( (int)get_comments_number() ), '<em>' . get_the_title() . '</em>' ); ?></h2>
 	 	<ol class="commentlist">
 			<?php
 				/* Loop through and list the comments. Tell wp_list_comments()
@@ -55,7 +55,7 @@ if ( have_comments() ) {
 	}
 
 	if ( ! empty( $comments_by_type['pings'] ) ) { ?>
-	 	<h3 id="comments-title"><?php  _e( 'Trackbacks/Pingbacks', 'responsi' ); ?></h3>
+	 	<h2 id="comments-title"><?php  _e( 'Trackbacks/Pingbacks', 'responsi' ); ?></h2>
 	 	<ol class="commentlist">
 			<?php
 				/* Loop through and list the pings. Tell wp_list_comments()
@@ -78,6 +78,12 @@ if ( have_comments() ) {
  *
  * This is where the comment form is generated.
  */
-
-comment_form();
+comment_form(
+	array(
+		//'logged_in_as'       => null,
+		'title_reply'        => esc_html__( 'Leave a comment', 'responsi' ),
+		'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title">',
+		'title_reply_after'  => '</h2>',
+	)
+);
 ?>

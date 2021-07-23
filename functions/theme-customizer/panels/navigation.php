@@ -1416,7 +1416,7 @@ class Navigation
 			    'type'       => 'typography'
 			),
 			'setting' => array(
-			    'default'		=> isset($responsi_options['responsi_nav_font']) ? $responsi_options['responsi_nav_font'] : array('size' => '13','line_height' => '1','face' => 'Open Sans','style' => 'bold','color' => '#FFFFFF'),
+			    'default'		=> isset($responsi_options['responsi_nav_font']) ? $responsi_options['responsi_nav_font'] : array('size' => '14','line_height' => '1','face' => 'Open Sans','style' => 'bold','color' => '#FFFFFF'),
 			    'sanitize_callback' => 'responsi_sanitize_typography',
 			    'transport'	=> 'postMessage'
 			)

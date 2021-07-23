@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 8.2.8 - 2021/07/23 =
+* This maintenance release has 1 bug fix and 1 code tweak for compatibility with WordPress 5.8
+* Tweak - Change Comment title tab from h3 to h2
+* Fix - Images not showing on Blog Cards in WordPress 5.8
+
 = 8.2.7 - 2021/07/19 =
 * This maintenance release has code tweaks for WordPress Major version 5.8 compatibility.
 * Tweak - Test for compatibility with WordPress 5.8
