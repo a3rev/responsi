@@ -36,6 +36,31 @@ function responsi_register_styles( $styles ){
 
 add_action( 'wp_default_styles', 'responsi_register_styles', 1 );
 
+function responsi_register_googlefonts( $styles ){
+	global $responsi_version;
+	$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+
+	$fontUrl = responsi_google_webfonts();
+
+	if( $fontUrl != '' ){
+		$urls = $fontUrl.'&display=swap';
+		$styles->add( 'responsi-googlefonts', $urls, array( 'common' ) );
+	}
+	
+}
+
+add_action( 'wp_default_styles', 'responsi_register_googlefonts', 11 );
+
+function responsi_print_styles_array( $handles ){
+	if( function_exists('wp_should_load_block_editor_scripts_and_styles') && wp_should_load_block_editor_scripts_and_styles() ){
+		$handles[] = 'responsi-googlefonts';
+	}
+	return $handles;
+}
+
+add_filter('print_styles_array', 'responsi_print_styles_array');
+
+
 /*-----------------------------------------------------------------------------------*/
 /* Theme Enqueue Google Fonts */
 /*-----------------------------------------------------------------------------------*/

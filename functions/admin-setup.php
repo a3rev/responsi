@@ -10,7 +10,7 @@ if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 
 	function responsi_framework_upgrade_version(){
 
-		if( version_compare(get_option('responsi_framework_version'), '8.2.8', '<') ){
+		if( version_compare(get_option('responsi_framework_version'), '8.2.9', '<') ){
 
 	        if( function_exists('responsi_dynamic_css') ){
 	        	responsi_dynamic_css( 'framework' );
@@ -616,6 +616,10 @@ if ( !function_exists( 'responsi_get_customizer_css' ) ){
 	    $font_h4                = isset( $responsi_options['responsi_font_h4'] ) ? $responsi_options['responsi_font_h4'] : array('size' => '20','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
 	    $font_h5                = isset( $responsi_options['responsi_font_h5'] ) ? $responsi_options['responsi_font_h5'] : array('size' => '18','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
 	    $font_h6 				= isset( $responsi_options['responsi_font_h6'] ) ? $responsi_options['responsi_font_h6'] : array('size' => '16','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
+	    $link                   = isset( $responsi_options['responsi_link_color'] ) ? esc_attr( $responsi_options['responsi_link_color'] ) : '#009ee0';
+    	$hover                  = isset( $responsi_options['responsi_link_hover_color'] ) ? esc_attr( $responsi_options['responsi_link_hover_color'] ) : '#ff6868';
+    	$link_visited_color     = isset( $responsi_options['responsi_link_visited_color'] ) ? esc_attr( $responsi_options['responsi_link_visited_color'] ) : '#009ee0';
+    
 	    
 	    $_font_post_title		= isset( $responsi_options['responsi_font_post_title'] ) ? $responsi_options['responsi_font_post_title'] : array('size' => '26','line_height' => '1.2','face' => 'Open Sans','style' => 'normal','color' => '#009ee0');
 	    $_font_post_text		= isset( $responsi_options['responsi_font_post_text'] ) ? $responsi_options['responsi_font_post_text'] : array('size' => '14','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#555555');
@@ -624,22 +628,35 @@ if ( !function_exists( 'responsi_get_customizer_css' ) ){
 	    $_page_content_font		= isset( $responsi_options['responsi_page_content_font'] ) ? $responsi_options['responsi_page_content_font'] : array('size' => '14','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#555555');
 	    
 	    
-		$blockContentCSS .= ':root .editor-styles-wrapper h1{' . responsi_generate_fonts( $font_h1 ) . '}';
-		$blockContentCSS .= ':root .editor-styles-wrapper h2{' . responsi_generate_fonts( $font_h2 ) . '}';
-		$blockContentCSS .= ':root .editor-styles-wrapper h3{' . responsi_generate_fonts( $font_h3 ) . '}';
-		$blockContentCSS .= ':root .editor-styles-wrapper h4{' . responsi_generate_fonts( $font_h4 ) . '}';
-		$blockContentCSS .= ':root .editor-styles-wrapper h5{' . responsi_generate_fonts( $font_h5 ) . '}';
-		$blockContentCSS .= ':root .editor-styles-wrapper h6{' . responsi_generate_fonts( $font_h6 ) . '}';
+		$blockContentCSS .= '.editor-styles-wrapper h1:not(.wp-block-site-title){' . responsi_generate_fonts( $font_h1 ) . '}';
+		$blockContentCSS .= '.editor-styles-wrapper h2{' . responsi_generate_fonts( $font_h2 ) . '}';
+		$blockContentCSS .= '.editor-styles-wrapper h3{' . responsi_generate_fonts( $font_h3 ) . '}';
+		$blockContentCSS .= '.editor-styles-wrapper h4{' . responsi_generate_fonts( $font_h4 ) . '}';
+		$blockContentCSS .= '.editor-styles-wrapper h5{' . responsi_generate_fonts( $font_h5 ) . '}';
+		$blockContentCSS .= '.editor-styles-wrapper h6{' . responsi_generate_fonts( $font_h6 ) . '}';
+
+		//$blockContentCSS .= '.editor-styles-wrapper a, .editor-styles-wrapper a:link, .editor-styles-wrapper a:visited{color:' . $link . '}';
+    	//$blockContentCSS .= '.editor-styles-wrapper a:visited{color:' . $link_visited_color . '}';
+    	//$blockContentCSS .= '.editor-styles-wrapper a:hover, .editor-styles-wrapper .post-meta a:hover, .editor-styles-wrapper  .post p.tags a:hover, .editor-styles-wrapper .post-entries a:hover{color:' . $hover . '}';
 
 		if( $post && $post->post_type == 'post' ){
-			$blockTitleCSS .= '.edit-post-visual-editor .wp-block.editor-post-title .editor-post-title__input, :root .editor-styles-wrapper{' . responsi_generate_fonts( $_font_post_title ) . '}';
-			$blockContentCSS .= '.edit-post-visual-editor :root .editor-styles-wrapper, :root .editor-styles-wrapper{' . responsi_generate_fonts( $_font_post_text ) . '}';
+			$blockTitleCSS .= '.edit-post-visual-editor .wp-block.editor-post-title .editor-post-title__input, :root .editor-styles-wrapper .wp-block-post-title, :root .editor-styles-wrapper .wp-block-post-title a{' . responsi_generate_fonts( $_font_post_title ) . '}';
+			$blockContentCSS .= '.edit-post-visual-editor .editor-styles-wrapper .is-root-container, .editor-styles-wrapper .is-root-container main{' . responsi_generate_fonts( $_font_post_text ) . '}';
 		}elseif( $post && $post->post_type == 'page' ){
-			$blockTitleCSS .= '.edit-post-visual-editor .wp-block.editor-post-title .editor-post-title__input, :root .editor-styles-wrapper{' . responsi_generate_fonts( $_page_title_font ) . '}';
-			$blockContentCSS .= '.edit-post-visual-editor :root .editor-styles-wrapper, :root .editor-styles-wrapper{' . responsi_generate_fonts( $_page_content_font ) . '}';
+			$blockTitleCSS .= '.edit-post-visual-editor .wp-block.editor-post-title .editor-post-title__input, :root .editor-styles-wrapper .wp-block-post-title, :root .editor-styles-wrapper .wp-block-post-title a{' . responsi_generate_fonts( $_page_title_font ) . '}';
+			$blockContentCSS .= '.edit-post-visual-editor .editor-styles-wrapper .is-root-container, .editor-styles-wrapper .is-root-container main{' . responsi_generate_fonts( $_page_content_font ) . '}';
 		}else{
-			$blockContentCSS .= '.edit-post-visual-editor :root .editor-styles-wrapper, :root .editor-styles-wrapper{' . responsi_generate_fonts( $font_text ) . '}';
+			$blockContentCSS .= '.edit-post-visual-editor .editor-styles-wrapper .is-root-container, .editor-styles-wrapper .is-root-container main{' . responsi_generate_fonts( $font_text ) . '}';
 		}
+
+		$header_bg           = isset( $responsi_options['responsi_header_bg'] ) ? $responsi_options['responsi_header_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
+		$_responsi_font_logo = isset( $responsi_options['responsi_font_logo'] ) ? $responsi_options['responsi_font_logo'] : array('size' => '36','line_height' => '1.5','face' => 'Open Sans','style' => 'normal','color' => '#FFFFFF');
+		$_responsi_font_desc = isset( $responsi_options['responsi_font_desc'] ) ? $responsi_options['responsi_font_desc'] : array('size' => '13','line_height' => '1.5','face' => 'PT Sans','style' => 'normal','color' => '#7c7c7c');
+
+		$headerCSS = '';
+		$headerCSS .= '.editor-styles-wrapper header.wp-block-group{' . responsi_generate_fonts( $_responsi_font_logo ) . responsi_generate_background_color( $header_bg ) . '}';
+
+		$headerCSS .= '.editor-styles-wrapper header.wp-block-group .wp-block-site-tagline{' . responsi_generate_fonts( $_responsi_font_desc ) . '}';
 
 		if( $post && $post->post_type == 'post' && isset($post_box_bg['onoff']) && isset($post_box_bg['color']) && 'false' != $post_box_bg['onoff'] && '' != $post_box_bg['color'] && 'transparent' != $post_box_bg['color'] ){
 			$blockBgCSS = responsi_generate_background_color($post_box_bg);
@@ -703,6 +720,8 @@ if ( !function_exists( 'responsi_get_customizer_css' ) ){
 		$css = '';
 
 		$css .= $rootCSS;
+
+		$css .= $headerCSS;
 
 		if( '' != $blockBgCSS ){
 			$css .= '

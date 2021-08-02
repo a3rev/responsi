@@ -1931,7 +1931,6 @@ function responsi_add_theme_support_fullwide(){
     }
 
     if( '' != $css ){
-
         wp_add_inline_style( 'responsi-framework', $css );
         wp_add_inline_style( 'wp-edit-blocks', $css );       
         //echo '<style media="screen">'.$css.'</style>';

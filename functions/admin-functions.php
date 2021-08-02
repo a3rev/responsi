@@ -2764,6 +2764,9 @@ function responsi_build_dynamic_css( $preview = false ) {
 
     $dynamic_css .= '.header-in{' . $header_inner_css . '}';
     $dynamic_css .= '.logo-ctn a.site-title, .logo-ctn a.site-title:hover, .logo-ctn a:link:hover, .site-title, a.site-title:link, a.site-title:hover, a.site-title:link:hover, .header-widget-1 a, .header-widget-1 a:hover, .header .header-widget-1 .widget a, .header .header-widget-1 .widget a:link, .header .header-widget-1 .widget a:link:hover{' . responsi_generate_fonts( $font_logo, true ) . '}';
+    $dynamic_css .= '.wp-block-site-title , .wp-site-blocks header.wp-block-group{' . responsi_generate_fonts( $font_logo ) . '}';
+    $dynamic_css .= '.wp-site-blocks header.wp-block-group{' . responsi_generate_background_color( $header_bg ) . '}';
+    $dynamic_css .= '.wp-block-site-tagline , .wp-site-blocks header.wp-block-group .wp-block-site-tagline{' . responsi_generate_fonts( $font_desc ) . '}';
     $dynamic_css .= '.site-description {' . responsi_generate_fonts($font_desc) . '}';
     $dynamic_css .= '.msr-wg-header .widget-title h3 {' . responsi_generate_fonts($font_header_widget_title) . '}';
     $dynamic_css .= '.header .widget .textwidget, .header .widget:not(div), .header .widget p,.header .widget label,.header .widget .textwidget,.header .login-username label, .header .login-password label, .header .widget .textwidget .tel, .header .widget .textwidget .tel a, .header .widget .textwidget a[href^=tel], .header .widget * a[href^=tel], .header .widget a[href^=tel]{' . responsi_generate_fonts($responsi_font_header_widget_text) . ' text-decoration: none;}';
@@ -2951,9 +2954,12 @@ function responsi_build_dynamic_css( $preview = false ) {
     $post_title_css .= 'margin-top:' . $_post_title_margin_top . 'px !important;margin-bottom:' . $_post_title_margin_bottom . 'px !important;';
     $post_title_css .= 'margin-left:' . $_post_title_margin_left . 'px !important;margin-right:' . $_post_title_margin_right . 'px !important;';
     
+    $dynamic_css .= '.post-template main .wp-block-post-title{' . responsi_generate_fonts( $_font_post_title ) . '}';
+    $dynamic_css .= '.post-template .wp-site-blocks{' . responsi_generate_fonts( $_font_post_text ) . '}';
     $dynamic_css .= '.main .responsi-area.responsi-area-post h1.title, .responsi-area.responsi-area-post h1.title, .main .responsi-area.responsi-area-post h1.title a:link, .main .responsi-area.responsi-area-post h1.title a:visited{' . $post_title_css . '}';
     $dynamic_css .= '.responsi-area.responsi-area-post{' . responsi_generate_fonts( $_font_post_text ) . '}';
 
+    
     $post_box_padding_top                           = isset( $responsi_options['responsi_post_box_padding_top'] ) ? esc_attr( $responsi_options['responsi_post_box_padding_top'] ) : 0;
     $post_box_padding_bottom                        = isset( $responsi_options['responsi_post_box_padding_bottom'] ) ? esc_attr( $responsi_options['responsi_post_box_padding_bottom'] ) : 0;
     $post_box_padding_left                          = isset( $responsi_options['responsi_post_box_padding_left'] ) ? esc_attr( $responsi_options['responsi_post_box_padding_left'] ) : 0;
@@ -2994,6 +3000,9 @@ function responsi_build_dynamic_css( $preview = false ) {
     $page_title_css .= 'margin-left:' . $_page_title_margin_left . 'px !important;margin-right:' . $_page_title_margin_right . 'px !important;';
     $page_title_css .= 'text-transform:' . $_page_title_font_transform . ' !important;';
     $page_title_css .= 'text-align:' . $_page_title_position . ';';
+
+    $dynamic_css .= '.page-template main .wp-block-post-title{' . responsi_generate_fonts( $_page_title_font ) . '}';
+    $dynamic_css .= '.page-template .wp-site-blocks{' . responsi_generate_fonts( $_page_content_font ) . '}';
     $dynamic_css .= '.main .responsi-area.responsi-area-page h1.title, .responsi-area.responsi-area-page h1.title, .main .responsi-area.responsi-area-page h1.title a:link, .main .responsi-area.responsi-area-page h1.title a:visited{' . $page_title_css . '}';
     $dynamic_css .= '.responsi-area.responsi-area-page{' . responsi_generate_fonts( $_page_content_font ) . '}';
 

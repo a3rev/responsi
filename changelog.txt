@@ -1,5 +1,14 @@
 *** Responsi Framework Changelog ***
 
+= 8.2.9 - 2021/08/02 =
+* This maintenance release adds support for show framework default Google fonts in new post and page template features. 
+* Add - Added google fonts URL to editor support display google-fonts on Post template
+* Add - Added google fonts URL to editor support display google-fonts on Page template
+* Tweak - Responsi general CSS apply fonts text, fonts heading for Post & Page template
+* Tweak -  Background colour header apply Block Group Header on Post Page Template
+* Tweak -  Fonts Site Title apply Block Site Title on Post Page Template
+* Tweak -  Fonts Site Descriptionapply site descrtipon on Post Page Template
+
 = 8.2.8 - 2021/07/23 =
 * This maintenance release has 1 bug fix and 1 code tweak for compatibility with WordPress 5.8
 * Tweak - Change Comment title tab from h3 to h2

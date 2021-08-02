@@ -530,51 +530,15 @@
 
 :root h1, :root .h1, :root h2, :root .h2, :root h3, :root .h3, :root h4, :root .h4, :root h5, :root .h5, :root h6, :root .h6 {
 	clear: both;
-	font-family: var(--heading--font-family);
-	font-weight: var(--heading--font-weight)
 }
 
 :root h1 strong, :root .h1 strong, :root h2 strong, :root .h2 strong, :root h3 strong, :root .h3 strong, :root h4 strong, :root .h4 strong, :root h5 strong, :root .h5 strong, :root h6 strong, :root .h6 strong {
 	font-weight: var(--heading--font-weight-strong)
 }
 
-:root h1, :root .h1 {
-	font-size: var(--heading--font-size-h1);
-	letter-spacing: var(--heading--letter-spacing-h1);
-	line-height: var(--heading--line-height-h1)
-}
-
-:root h2, :root .h2 {
-	font-size: var(--heading--font-size-h2);
-	letter-spacing: var(--heading--letter-spacing-h2);
-	line-height: var(--heading--line-height-h2)
-}
-
-:root h3, :root .h3 {
-	font-size: var(--heading--font-size-h3);
-	letter-spacing: var(--heading--letter-spacing-h3);
-	line-height: var(--heading--line-height-h3)
-}
-
-:root h4, :root .h4 {
-	font-size: var(--heading--font-size-h4);
-	font-weight: var(--heading--font-weight-strong);
-	letter-spacing: var(--heading--letter-spacing-h4);
-	line-height: var(--heading--line-height-h4)
-}
-
-:root h5, :root .h5 {
-	font-size: var(--heading--font-size-h5);
-	font-weight: var(--heading--font-weight-strong);
-	letter-spacing: var(--heading--letter-spacing-h5);
-	line-height: var(--heading--line-height-h5)
-}
-
-:root h6, :root .h6 {
-	font-size: var(--heading--font-size-h6);
-	font-weight: var(--heading--font-weight-strong);
-	letter-spacing: var(--heading--letter-spacing-h6);
-	line-height: var(--heading--line-height-h6)
+:root .wp-block-site-title, :root .wp-block-site-title a {
+    font: inherit;
+    color: inherit;
 }
 
 :root .wp-block-image {
@@ -1587,35 +1551,35 @@
 	vertical-align: middle
 }
 
-:root :root .is-extra-small-text, :root :root .has-extra-small-font-size {
+:root .is-extra-small-text, :root .has-extra-small-font-size {
 	font-size: var(--global--font-size-xs)
 }
 
-:root :root .is-small-text, :root :root .has-small-font-size {
+:root .is-small-text, :root .has-small-font-size {
 	font-size: var(--global--font-size-sm)
 }
 
-:root :root .is-regular-text, :root :root .has-regular-font-size, :root :root .is-normal-font-size, :root :root .has-normal-font-size, :root :root .has-medium-font-size {
+:root .is-regular-text, :root .has-regular-font-size, :root .is-normal-font-size, :root .has-normal-font-size, :root .has-medium-font-size {
 	font-size: var(--global--font-size-base)
 }
 
-:root :root .is-large-text, :root :root .has-large-font-size {
+:root .is-large-text, :root .has-large-font-size {
 	font-size: var(--global--font-size-lg);
 	line-height: var(--global--line-height-heading)
 }
 
-:root :root .is-larger-text, :root :root .has-larger-font-size, :root :root .is-extra-large-text, :root :root .has-extra-large-font-size {
+:root .is-larger-text, :root .has-larger-font-size, :root .is-extra-large-text, :root .has-extra-large-font-size {
 	font-size: var(--global--font-size-xl);
 	line-height: var(--global--line-height-heading)
 }
 
-:root :root .is-huge-text, :root :root .has-huge-font-size {
+:root .is-huge-text, :root .has-huge-font-size {
 	font-size: var(--global--font-size-xxl);
 	line-height: var(--global--line-height-heading);
 	font-weight: var(--heading--font-weight-page-title)
 }
 
-:root :root .is-gigantic-text, :root :root .has-gigantic-font-size {
+:root .is-gigantic-text, :root .has-gigantic-font-size {
 	font-size: var(--global--font-size-xxxl);
 	line-height: var(--global--line-height-heading);
 	font-weight: var(--heading--font-weight-page-title)
