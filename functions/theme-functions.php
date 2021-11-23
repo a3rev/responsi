@@ -630,15 +630,14 @@ if ( !function_exists( 'responsi_single_post_meta_date' ) ) {
         $time_string = '<time class="entry-date published updated i_date" datetime="%1$s">%2$s</time>';
 
         if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-            $time_string = '<time class="entry-date published i_date" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+            $time = get_the_modified_date();
+            $timeAttr = get_the_modified_date( 'c' );
+        } else {
+            $time = get_the_date();
+            $timeAttr = get_the_date( 'c' );
         }
 
-        $time_string = sprintf( $time_string,
-            esc_attr( get_the_date( 'c' ) ),
-            get_the_date(),
-            esc_attr( get_the_modified_date( 'c' ) ),
-            get_the_modified_date()
-        );
+        $time_string = sprintf( $time_string, esc_attr( $timeAttr ), $time );
 
         /*$output = sprintf( '<span class="posted-on i_dates"><span class="screen-reader-text">%1$s </span><a href="%2$s" rel="bookmark">%3$s</a></span>',
             _x( 'Posted on', 'Used before publish date.', 'responsi' ),

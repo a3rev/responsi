@@ -1,5 +1,11 @@
 *** Responsi Framework Changelog ***
 
+= 8.2.11 - 2021/11/23 =
+* This maintenance release has 1 small post date time bug fix plus a CSS checkbox conflict with Gravity forms
+* Tweak - Skip version 8.2.10 to prevent PHP misread on version .10 as .1
+* Fix - Datetime on post duplicate while use get_the_modified_date function
+* Fix - Style CSS for checkbox input conflict with gravity form plugin
+
 = 8.2.9 - 2021/08/02 =
 * This maintenance release adds support for show framework default Google fonts in new post and page template features. 
 * Add - Added google fonts URL to editor support display google-fonts on Post template

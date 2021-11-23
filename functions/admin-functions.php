@@ -2835,6 +2835,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $dynamic_css .= '.single .responsi-area-post .post-meta a:hover {color:' . $post_meta_link_hover . ' !important;}';
     $dynamic_css .= '.single .responsi-area-post .post-meta .i_author:before, .single .responsi-area-post .post-meta .i_comment:before, .single .responsi-area-post .post-meta .i_authors span.author .fn:before, .single .i_dates time.i_date:before {color:' . $post_meta_icon . ' !important;}';
     $dynamic_css .= '.single .i_dates time.i_date:before{font-size:90%;}';
+    $dynamic_css .= '.single .responsi-area-post .post-meta .i_authors{margin-right:5px;}';
     if ( 'true' !== $enable_post_meta_icon ) {
         $dynamic_css .= '.single .responsi-area-post .post-meta .i_author:before, .single .responsi-area-post .post-meta .i_comment:before, .single .responsi-area-post .post-meta .i_authors span.author .fn:before, .single .i_dates time.i_date:before{display:none !important;}';
     }
