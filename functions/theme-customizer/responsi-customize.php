@@ -766,7 +766,16 @@ final class Customizer {
 		@media only screen and (max-width:600px) {
 			.footer .copyright { text-align: center; }
 			.footer .credit { text-align: center; }
+			.box-item.masonry-brick .entry-item .thumb a img,
+			.responsi-site .box-item .thumb > a img, 
+			.responsi-site .main .box-item .thumb > a img {
+		      	height: auto !important;
+		      	max-width: 100% !important;
+		      	max-height: none !important;
+		      	width: auto !important;
+		   	}
 		}
+
 		@media only screen and (max-width:480px) {
 			.sidebar .sidebar-in, .sidebar-alt .sidebar-in { height: auto !important; position: relative !important; }
 			.sidebar .msr-wg, .sidebar-alt .msr-wg { display: block; width: 100%; position: inherit !important; top: 0 !important; left: 0 !important; }

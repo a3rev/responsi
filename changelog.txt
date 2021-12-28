@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 8.3.0 - 2021/12/28 =
+* This feature release adds a customizer style filter for custom post types and a bug fix for safari iOS browser blog card display.
+* Feature - Added filter to apply customizer editor style to custom post types
+* Fix - Blog card image and Lazy Load conflict on iOS Safari browser
+
 = 8.2.11 - 2021/11/23 =
 * This maintenance release has 1 small post date time bug fix plus a CSS checkbox conflict with Gravity forms
 * Tweak - Skip version 8.2.10 to prevent PHP misread on version .10 as .1
