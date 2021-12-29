@@ -641,7 +641,7 @@ if ( !function_exists( 'responsi_get_customizer_css' ) ){
     	//$blockContentCSS .= '.editor-styles-wrapper a:visited{color:' . $link_visited_color . '}';
     	//$blockContentCSS .= '.editor-styles-wrapper a:hover, .editor-styles-wrapper .post-meta a:hover, .editor-styles-wrapper  .post p.tags a:hover, .editor-styles-wrapper .post-entries a:hover{color:' . $hover . '}';
 
-		if( $post && ( $post->post_type == 'post' || in_array( $post->post_type, $post_type_supports ) ){
+		if( $post && ( $post->post_type == 'post' || in_array( $post->post_type, $post_type_supports ) ) ){
 			$blockTitleCSS .= '.edit-post-visual-editor .wp-block.editor-post-title .editor-post-title__input, :root .editor-styles-wrapper .wp-block-post-title, :root .editor-styles-wrapper .wp-block-post-title a{' . responsi_generate_fonts( $_font_post_title ) . '}';
 			$blockContentCSS .= '.edit-post-visual-editor .editor-styles-wrapper .is-root-container, .editor-styles-wrapper .is-root-container main{' . responsi_generate_fonts( $_font_post_text ) . '}';
 		}elseif( $post && $post->post_type == 'page' ){
