@@ -1,5 +1,12 @@
 *** Responsi Framework Changelog ***
 
+= 8.3.1 - 2022/01/24 =
+* This maintenance release has tweaks for compatibility with WordPress major version 5.9
+* Tweak - Style editor CSS for compatibility with WordPress 5.9
+* Tweak - Style CSS for compatibility with WordPress 5.9
+* Refactor - Remove archive-listing post type property
+* Refactor - Remove single-listing post type property
+
 = 8.3.0 - 2021/12/28 =
 * This feature release adds a customizer style filter for custom post types and a bug fix for safari iOS browser blog card display.
 * Feature - Added filter to apply customizer editor style to custom post types
