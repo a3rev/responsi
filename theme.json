@@ -291,13 +291,6 @@
                 }
             },
             "h1": {
-                "color": {
-                    "text": "var(--wp--preset--color--header-lightblue)"
-                },
-                "typography": {
-                    "fontWeight": "300",
-                    "fontSize": "var(--wp--preset--font-size--x-large)"
-                },
                 "spacing": {
                     "blockGap": "0",
                     "margin": {
@@ -309,13 +302,6 @@
                 }
             },
             "h2": {
-                "color": {
-                    "text": "var(--wp--preset--color--header-lightblue)"
-                },
-                "typography": {
-                    "fontWeight": "300",
-                    "fontSize": "var(--wp--preset--font-size--large)"
-                },
                 "spacing": {
                     "blockGap": "0",
                     "margin": {
@@ -327,12 +313,6 @@
                 }
             },
             "h3": {
-                "color": {
-                    "text": "var(--wp--preset--color--header-lightblue)"
-                },
-                "typography": {
-                    "fontWeight": "300"
-                },
                 "spacing": {
                     "blockGap": "0",
                     "margin": {
@@ -344,12 +324,6 @@
                 }
             },
             "h4": {
-                "color": {
-                    "text": "var(--wp--preset--color--header-lightblue)"
-                },
-                "typography": {
-                    "fontWeight": "300"
-                },
                 "spacing": {
                     "blockGap": "0",
                     "margin": {
@@ -361,12 +335,6 @@
                 }
             },
             "h5": {
-                "color": {
-                    "text": "var(--wp--preset--color--header-lightblue)"
-                },
-                "typography": {
-                    "fontWeight": "300"
-                },
                 "spacing": {
                     "blockGap": "0",
                     "margin": {
@@ -378,12 +346,6 @@
                 }
             },
             "h6": {
-                "color": {
-                    "text": "var(--wp--preset--color--header-lightblue)"
-                },
-                "typography": {
-                    "fontWeight": "300"
-                },
                 "spacing": {
                     "blockGap": "0",
                     "margin": {

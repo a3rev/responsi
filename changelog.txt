@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.3.2 - 2022/01/25 =
+* This maintenance release has a h tag CSS conflict with WordPress 5.9 RC4
+* Fix - Customizer menu CSS style not applying to h tags.
+
 = 8.3.1 - 2022/01/24 =
 * This maintenance release has tweaks for compatibility with WordPress major version 5.9
 * Tweak - Style editor CSS for compatibility with WordPress 5.9
