@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.3.3 - 2022/01/26 =
+* This maintenance release has a fix for JS conflict with WordPress 5.9
+* Fix - Responsi JavaCcript WP available undefine conflict with WordPress 5.9
+
 = 8.3.2 - 2022/01/25 =
 * This maintenance release has a h tag CSS conflict with WordPress 5.9 RC4
 * Fix - Customizer menu CSS style not applying to h tags.

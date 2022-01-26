@@ -872,7 +872,7 @@ jQuery(document).ready(function($) {
             $('.pagination-ctrl').hide();
         }
 
-        if (typeof wp.customize != "undefined") {
+        if ( ( typeof wp != "undefined" && typeof wp != undefined ) && ( typeof wp.customize != "undefined" && typeof wp.customize != undefined ) ) {
             setTimeout(function() {
                 if (responsi_paramaters.responsi_google_webfonts != '') {
                     if ($('#google-fonts-css').length > 0) {
