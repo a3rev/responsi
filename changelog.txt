@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.3.4 - 2022/01/29 =
+* This maintenance release has another fix for css conflict with WordPress 5.9
+* Fix - Responsi Style CSS not applying background colour on editor post page with WordPress 5.9
+
 = 8.3.3 - 2022/01/26 =
 * This maintenance release has a fix for JS conflict with WordPress 5.9
 * Fix - Responsi JavaCcript WP available undefine conflict with WordPress 5.9

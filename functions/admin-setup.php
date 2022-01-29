@@ -10,7 +10,7 @@ if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 
 	function responsi_framework_upgrade_version(){
 
-		if( version_compare(get_option('responsi_framework_version'), '8.3.3', '<') ){
+		if( version_compare(get_option('responsi_framework_version'), '8.3.4', '<') ){
 
 	        if( function_exists('responsi_dynamic_css') ){
 	        	responsi_dynamic_css( 'framework' );
@@ -661,15 +661,15 @@ if ( !function_exists( 'responsi_get_customizer_css' ) ){
 		$headerCSS .= '.editor-styles-wrapper header.wp-block-group .wp-block-site-tagline{' . responsi_generate_fonts( $_responsi_font_desc ) . '}';
 
 		if( $post && ( $post->post_type == 'post' || in_array( $post->post_type, $post_type_supports ) ) && isset($post_box_bg['onoff']) && isset($post_box_bg['color']) && 'false' != $post_box_bg['onoff'] && '' != $post_box_bg['color'] && 'transparent' != $post_box_bg['color'] ){
-			$blockBgCSS = responsi_generate_background_color($post_box_bg);
+			$blockBgCSS = responsi_generate_background_color($post_box_bg, true);
 		}elseif( isset($page_box_bg['onoff']) && isset($page_box_bg['color']) && 'false' != $page_box_bg['onoff'] && '' != $page_box_bg['color'] && 'transparent' != $page_box_bg['color'] ){
-			$blockBgCSS = responsi_generate_background_color($page_box_bg);
+			$blockBgCSS = responsi_generate_background_color($page_box_bg, true);
 		}elseif( isset($wrap_content_bg['onoff']) && isset($wrap_content_bg['color']) && 'false' != $wrap_content_bg['onoff'] && '' != $wrap_content_bg['color'] && 'transparent' != $wrap_content_bg['color'] ){
-			$blockBgCSS = responsi_generate_background_color($wrap_content_bg);
+			$blockBgCSS = responsi_generate_background_color($wrap_content_bg, true);
 		}elseif( isset($wrap_ctn_bg['onoff']) && isset($wrap_ctn_bg['color']) && 'false' != $wrap_ctn_bg['onoff'] && '' != $wrap_ctn_bg['color'] && 'transparent' != $wrap_ctn_bg['color'] ){
-			$blockBgCSS = responsi_generate_background_color($wrap_ctn_bg);
+			$blockBgCSS = responsi_generate_background_color($wrap_ctn_bg, true);
 		}elseif( 'true' === $is_layout_boxed && 'true' === $is_enable_boxed_style && isset($box_inner_bg['onoff']) && isset($box_inner_bg['color']) && 'false' != $box_inner_bg['onoff'] && '' != $box_inner_bg['color'] && 'transparent' != $box_inner_bg['color'] ){
-			$blockBgCSS = responsi_generate_background_color($box_inner_bg);
+			$blockBgCSS = responsi_generate_background_color($box_inner_bg, true);
 		}else {
 		    $responsi_use_style_bg_image                = isset($responsi_options['responsi_use_style_bg_image']) ? esc_attr( $responsi_options['responsi_use_style_bg_image'] ) : 'false';
 		    $responsi_style_bg                          = isset($responsi_options['responsi_style_bg']) ? $responsi_options['responsi_style_bg'] : array( 'onoff' => 'true', 'color' => '#ffffff' );
