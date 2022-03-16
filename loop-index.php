@@ -16,25 +16,25 @@
  * @subpackage Template
  */
 ?>
-<?php 
+<?php
 global $content_column_grid, $count;
 ?>
-<?php do_action( 'responsi_loop_before' ); ?>
+<?php do_action('responsi_loop_before'); ?>
 <?php
-if ( have_posts() ) {
-	?>
-	<div class="box-content col<?php echo esc_attr( $content_column_grid );?>">
-	<?php
-	while ( have_posts() ) {
-		the_post();
-		$count++;
-		get_template_part( 'content', get_post_format() );
-	}
-	?>
-	</div>
-	<?php
+if (have_posts()) {
+    ?>
+    <div class="box-content col<?php echo esc_attr($content_column_grid);?>">
+    <?php
+    while (have_posts()) {
+        the_post();
+        $count++;
+        get_template_part('content', get_post_format());
+    }
+    ?>
+    </div>
+    <?php
 } else {
-	get_template_part( 'content', 'noposts' );
+    get_template_part('content', 'noposts');
 }
 ?>
-<?php do_action( 'responsi_loop_after' ); ?>
+<?php do_action('responsi_loop_after'); ?>

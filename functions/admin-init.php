@@ -2,30 +2,31 @@
 /*-----------------------------------------------------------------------------------*/
 /* File Security Check */
 /*-----------------------------------------------------------------------------------*/
-if (!defined('ABSPATH'))
+if (!defined('ABSPATH')) {
     exit;
+}
 
 
 /*-----------------------------------------------------------------------------------*/
 /* Framework Variables */
 /*-----------------------------------------------------------------------------------*/
 
-global $responsi_options, 
-    $responsi_layout_boxed, 
-    $responsi_layout_width, 
-    $responsi_header_is_inside, 
-    $responsi_header_is_outside, 
+global $responsi_options,
+    $responsi_layout_boxed,
+    $responsi_layout_width,
+    $responsi_header_is_inside,
+    $responsi_header_is_outside,
     $responsi_footer_is_outside,
-    $layout,  
-    $layout_column, 
-    $layout_column_top,  
-    $layout_top, 
-    $content_column, 
-    $content_column_grid, 
-    $main_box, 
-    $sidebar_box, 
+    $layout,
+    $layout_column,
+    $layout_column_top,
+    $layout_top,
+    $content_column,
+    $content_column_grid,
+    $main_box,
+    $sidebar_box,
     $sidebar_alt_box,
-    $wrapper_content, 
+    $wrapper_content,
     $wrapper_content_top,
     $blog_animation,
     $gFonts,
@@ -756,12 +757,12 @@ $google_fonts = array(
     array( 'name' => "Zeyada", "variant" => ':regular' )
 );
 
-$google_fonts = apply_filters( 'responsi_google_fonts', $google_fonts );
+$google_fonts = apply_filters('responsi_google_fonts', $google_fonts);
 
-sort( $google_fonts );
+sort($google_fonts);
 
 $new_google_fonts = array();
-foreach ( $google_fonts as $font ) {
+foreach ($google_fonts as $font) {
     $new_google_fonts[$font['name']] = $font;
 }
 
@@ -780,8 +781,8 @@ $responsi_version = RESPONSI_FRAMEWORK_VERSION;
 
 global $shiftclick;
 $shiftclick = '';
-if( is_customize_preview() ){
-    $shiftclick = '<span class="shiftclick" title="' . __( 'Click to edit element style CSS', 'responsi' ) . '"><i class="responsi-icon responsi-icon-edit" aria-hidden="true"></i></span>';
+if (is_customize_preview()) {
+    $shiftclick = '<span class="shiftclick" title="' . __('Click to edit element style CSS', 'responsi') . '"><i class="responsi-icon responsi-icon-edit" aria-hidden="true"></i></span>';
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -799,11 +800,11 @@ $responsi_requires = array(
     'functions/theme-sidebar-init.php',
 );
 
-foreach ( $responsi_requires as $i ) {
-    $located = locate_template( $i, true );
-    if ( '' === $located ) {
-        if ( file_exists( $i ) && function_exists( 'load_template' ) ) {
-            load_template( $i, true );
+foreach ($responsi_requires as $i) {
+    $located = locate_template($i, true);
+    if ('' === $located) {
+        if (file_exists($i) && function_exists('load_template')) {
+            load_template($i, true);
         }
     }
 }
@@ -813,24 +814,23 @@ foreach ( $responsi_requires as $i ) {
 /*-----------------------------------------------------------------------------------*/
 
 $responsi_customize_disabled_addon = false;
-if( isset( $_GET['disabled-addon'] ) && 'disabled' === $_GET['disabled-addon'] ) {
+if (isset($_GET['disabled-addon']) && 'disabled' === $_GET['disabled-addon']) {
     $responsi_customize_disabled_addon = true;
 }
 
-$responsi_includes = apply_filters( 'responsi_includes', array() );
-if ( is_array( $responsi_includes ) && count( $responsi_includes ) > 0 ) {
-    foreach ( $responsi_includes as $i ){
-        $located = locate_template( $i, true );
-        if ( '' === $located ) {
-            if ( file_exists( $i ) && function_exists('load_template') ) {
-                load_template( $i, true );
+$responsi_includes = apply_filters('responsi_includes', array());
+if (is_array($responsi_includes) && count($responsi_includes) > 0) {
+    foreach ($responsi_includes as $i) {
+        $located = locate_template($i, true);
+        if ('' === $located) {
+            if (file_exists($i) && function_exists('load_template')) {
+                load_template($i, true);
             }
         }
     }
 }
 
-if ( version_compare( PHP_VERSION, '5.6.0', '>=' ) ) {
-    
+if (version_compare(PHP_VERSION, '5.6.0', '>=')) {
     require dirname(__FILE__) . '/../vendor/autoload.php';
 
     new \A3Rev\Responsi\Customizer();
@@ -845,10 +845,9 @@ if ( version_compare( PHP_VERSION, '5.6.0', '>=' ) ) {
     new \A3Rev\Responsi\Settings();
     new \A3Rev\Responsi\Privacy();
 
-    if( !$responsi_customize_disabled_addon ){
-        do_action( 'responsi_allow_addon_customizer' );
+    if (!$responsi_customize_disabled_addon) {
+        do_action('responsi_allow_addon_customizer');
     }
-
 } else {
     return;
 }
@@ -859,16 +858,16 @@ if ( version_compare( PHP_VERSION, '5.6.0', '>=' ) ) {
 
 $responsi_includes_customizer = array();
 
-if( !$responsi_customize_disabled_addon ){
-    $responsi_includes_customizer = apply_filters( 'responsi_includes_customizer', $responsi_includes_customizer );
+if (!$responsi_customize_disabled_addon) {
+    $responsi_includes_customizer = apply_filters('responsi_includes_customizer', $responsi_includes_customizer);
 }
 
-if( is_array( $responsi_includes_customizer ) && count( $responsi_includes_customizer ) > 0 ){
-    foreach ( $responsi_includes_customizer as $i ) {
-        $located = locate_template( $i, true );
-        if ( '' === $located ) {
-            if ( file_exists( $i ) && function_exists('load_template') ){
-                load_template( $i, true );
+if (is_array($responsi_includes_customizer) && count($responsi_includes_customizer) > 0) {
+    foreach ($responsi_includes_customizer as $i) {
+        $located = locate_template($i, true);
+        if ('' === $located) {
+            if (file_exists($i) && function_exists('load_template')) {
+                load_template($i, true);
             }
         }
     }
@@ -878,43 +877,42 @@ if( is_array( $responsi_includes_customizer ) && count( $responsi_includes_custo
 /* default Options Function - responsi_default_options */
 /*-----------------------------------------------------------------------------------*/
 
-function responsi_default_options( $type = 'options' )
+function responsi_default_options($type = 'options')
 {
-    if ( 'options' === $type ) {
-        $responsi_default_options = apply_filters( 'responsi_default_options', array() );
+    if ('options' === $type) {
+        $responsi_default_options = apply_filters('responsi_default_options', array());
     } else {
-        $responsi_default_options = apply_filters( 'responsi_default_options_' . $type, array() );
+        $responsi_default_options = apply_filters('responsi_default_options_' . $type, array());
     }
 
     $options = array();
 
-    if ( is_array( $responsi_default_options ) && count( $responsi_default_options ) > 0 ) {
-        foreach ( $responsi_default_options as $option_id => $default ) {
-
-            if ( isset($default['control']['type']) ) {
+    if (is_array($responsi_default_options) && count($responsi_default_options) > 0) {
+        foreach ($responsi_default_options as $option_id => $default) {
+            if (isset($default['control']['type'])) {
                 $type = $default['control']['type'];
-                switch ( $type ) {
+                switch ($type) {
                     case "multitext":
                         $i = 0;
-                        foreach ( $default['control']['choices'] as $key => $value ) {
+                        foreach ($default['control']['choices'] as $key => $value) {
                             $options[$option_id . '_' . $key] = $default['setting']['default'][$i];
                             $i++;
                         }
-                    break;
+                        break;
 
                     case "imulticheckbox":
                         $i = 0;
-                        foreach ( $default['control']['choices'] as $key => $value ) {
+                        foreach ($default['control']['choices'] as $key => $value) {
                             $options[$option_id . '_' . $key] = $default['setting']['default'][$i];
                             $i++;
                         }
-                    break;
+                        break;
 
                     default:
-                        if ( 'ilabel' !== $type && isset( $default['setting']['default']) ) {
+                        if ('ilabel' !== $type && isset($default['setting']['default'])) {
                             $options[$option_id] = $default['setting']['default'];
                         }
-                    break;
+                        break;
                 }
             }
         }
@@ -925,49 +923,45 @@ function responsi_default_options( $type = 'options' )
 /*-----------------------------------------------------------------------------------*/
 /* Global $responsi_options for theme blank-child-theme */
 /*-----------------------------------------------------------------------------------*/
-function _blank_child_customize_options( $slug = '', $_customize_options = array(), $_default_options = array() )
-{  
-    if( '' === $slug ) return $_customize_options;
+function _blank_child_customize_options($slug = '', $_customize_options = array(), $_default_options = array())
+{
+    if ('' === $slug) {
+        return $_customize_options;
+    }
             
-    $responsi_blank_child =  get_option( $slug . '_responsi-blank-child', array() );
+    $responsi_blank_child =  get_option($slug . '_responsi-blank-child', array());
 
-    $_is_blank = ( is_array($responsi_blank_child) && isset($responsi_blank_child['_is_blank'] ) && $responsi_blank_child['_is_blank'] === true ? true : false ) ;
+    $_is_blank = ( is_array($responsi_blank_child) && isset($responsi_blank_child['_is_blank']) && $responsi_blank_child['_is_blank'] === true ? true : false ) ;
 
-    if( !$_is_blank ){
-        $responsi_mods = get_option( $slug .'_responsi', array() );
+    if (!$_is_blank) {
+        $responsi_mods = get_option($slug .'_responsi', array());
 
-        if( is_array($responsi_mods) ){
-            $_customize_options = array_replace_recursive( $_customize_options, $responsi_mods );
+        if (is_array($responsi_mods)) {
+            $_customize_options = array_replace_recursive($_customize_options, $responsi_mods);
         }
 
-        if( is_array( $responsi_mods ) ){
-        
-            foreach( $responsi_mods as $key => $value ){
-
-                if( !array_key_exists( $key, $responsi_blank_child ) ){
-
+        if (is_array($responsi_mods)) {
+            foreach ($responsi_mods as $key => $value) {
+                if (!array_key_exists($key, $responsi_blank_child)) {
                     $responsi_blank_child[$key] = $value ;
                     $_is_blank = true;
-
                 }
             }
-
         }
 
-        if( $_is_blank ){
-
-            if( is_array( $responsi_blank_child ) ){
-                foreach( $responsi_blank_child as $key => $value ){
-                    if( array_key_exists( $key, $_default_options )){
-                        if( is_array( $value ) && is_array( $_default_options[$key] ) ){
-                            $new_opt = array_diff_assoc( $value, $_default_options[$key] );
-                            if( is_array( $new_opt ) && count( $new_opt ) > 0 ){
+        if ($_is_blank) {
+            if (is_array($responsi_blank_child)) {
+                foreach ($responsi_blank_child as $key => $value) {
+                    if (array_key_exists($key, $_default_options)) {
+                        if (is_array($value) && is_array($_default_options[$key])) {
+                            $new_opt = array_diff_assoc($value, $_default_options[$key]);
+                            if (is_array($new_opt) && count($new_opt) > 0) {
                                 $responsi_blank_child[$key] = $value;
-                            }else{
+                            } else {
                                 unset($responsi_blank_child[$key]);
                             }
-                        }else{
-                            if( !is_array( $value ) && !is_array($_default_options[$key]) && $value == $_default_options[$key] ){
+                        } else {
+                            if (!is_array($value) && !is_array($_default_options[$key]) && $value == $_default_options[$key]) {
                                 unset($responsi_blank_child[$key]);
                             }
                         }
@@ -976,17 +970,15 @@ function _blank_child_customize_options( $slug = '', $_customize_options = array
             }
 
             $responsi_blank_child['_is_blank'] = true;
-            update_option( $slug . '_responsi-blank-child',  $responsi_blank_child );
-
+            update_option($slug . '_responsi-blank-child', $responsi_blank_child);
         }
     }
 
-    if( is_array($responsi_blank_child) ){
-        $_customize_options = array_replace_recursive( $_customize_options, $responsi_blank_child );
+    if (is_array($responsi_blank_child)) {
+        $_customize_options = array_replace_recursive($_customize_options, $responsi_blank_child);
     }
 
     return $_customize_options;
-
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -999,58 +991,50 @@ function responsi_options()
 
     $responsi_default_options = responsi_default_options();
 
-    $responsi_options = apply_filters( 'responsi_options_default', $responsi_default_options );
+    $responsi_options = apply_filters('responsi_options_default', $responsi_default_options);
 
     $responsi_theme_mods = get_theme_mods();
 
-    if( is_array( $responsi_theme_mods ) ){
-        $responsi_options = array_replace_recursive( $responsi_options, $responsi_theme_mods );
+    if (is_array($responsi_theme_mods)) {
+        $responsi_options = array_replace_recursive($responsi_options, $responsi_theme_mods);
     }
 
     $_childthemes = get_option('stylesheet');
 
-    if( 'responsi-blank-child' === $_childthemes ){
-
+    if ('responsi-blank-child' === $_childthemes) {
         $responsi_blank_child = $responsi_theme_mods;
 
-        $_is_blank = ( is_array($responsi_blank_child) && isset($responsi_blank_child['_is_blank'] ) && $responsi_blank_child['_is_blank'] === true ? true : false ) ;
+        $_is_blank = ( is_array($responsi_blank_child) && isset($responsi_blank_child['_is_blank']) && $responsi_blank_child['_is_blank'] === true ? true : false ) ;
 
-        if( !$_is_blank ){
-
-            $theme_mods_responsi = get_option( 'theme_mods_responsi' );
+        if (!$_is_blank) {
+            $theme_mods_responsi = get_option('theme_mods_responsi');
             
-            if( is_array( $theme_mods_responsi ) ){
-                $responsi_options = array_replace_recursive( $responsi_options, $theme_mods_responsi );
+            if (is_array($theme_mods_responsi)) {
+                $responsi_options = array_replace_recursive($responsi_options, $theme_mods_responsi);
             }
 
-            if( is_array( $theme_mods_responsi ) ){
-                
-                foreach( $theme_mods_responsi as $key => $value ){
-
-                    if( !array_key_exists( $key, $responsi_blank_child ) ){
-
+            if (is_array($theme_mods_responsi)) {
+                foreach ($theme_mods_responsi as $key => $value) {
+                    if (!array_key_exists($key, $responsi_blank_child)) {
                         $responsi_blank_child[$key] = $value ;
                         $_is_blank = true;
-
                     }
                 }
-
             }
 
-            if( $_is_blank ){
-
-                if( is_array( $responsi_blank_child ) ){
-                    foreach( $responsi_blank_child as $key => $value ){
-                        if( array_key_exists( $key, $responsi_default_options )){
-                            if( is_array( $value ) && is_array( $responsi_default_options[$key] ) ){
-                                $new_opt = array_diff_assoc( $value, $responsi_default_options[$key] );
-                                if( is_array( $new_opt ) && count( $new_opt ) > 0 ){
+            if ($_is_blank) {
+                if (is_array($responsi_blank_child)) {
+                    foreach ($responsi_blank_child as $key => $value) {
+                        if (array_key_exists($key, $responsi_default_options)) {
+                            if (is_array($value) && is_array($responsi_default_options[$key])) {
+                                $new_opt = array_diff_assoc($value, $responsi_default_options[$key]);
+                                if (is_array($new_opt) && count($new_opt) > 0) {
                                     $responsi_blank_child[$key] = $value;
-                                }else{
+                                } else {
                                     unset($responsi_blank_child[$key]);
                                 }
-                            }else{
-                                if( !is_array( $value ) && !is_array($responsi_default_options[$key]) && $value == $responsi_default_options[$key] ){
+                            } else {
+                                if (!is_array($value) && !is_array($responsi_default_options[$key]) && $value == $responsi_default_options[$key]) {
                                     unset($responsi_blank_child[$key]);
                                 }
                             }
@@ -1059,77 +1043,74 @@ function responsi_options()
                 }
 
                 $responsi_blank_child['_is_blank'] = true;
-                update_option( 'theme_mods_responsi-blank-child',  $responsi_blank_child );
-
+                update_option('theme_mods_responsi-blank-child', $responsi_blank_child);
             }
-
         }
 
-        if( is_array( $responsi_blank_child ) ){
-            $responsi_options = array_replace_recursive( $responsi_options, $responsi_blank_child );
-        }
-    }
-
-    foreach( $responsi_options as $key => $value ){
-        if( !array_key_exists( $key, $responsi_default_options ) ){
-            unset( $responsi_options[$key] );
+        if (is_array($responsi_blank_child)) {
+            $responsi_options = array_replace_recursive($responsi_options, $responsi_blank_child);
         }
     }
 
-    $responsi_options = apply_filters( 'responsi_options_before', $responsi_options );
+    foreach ($responsi_options as $key => $value) {
+        if (!array_key_exists($key, $responsi_default_options)) {
+            unset($responsi_options[$key]);
+        }
+    }
 
-    if( is_customize_preview() && ( isset( $_REQUEST['changeset_uuid'] ) || isset( $_REQUEST['customize_changeset_uuid'] ) ) ){
+    $responsi_options = apply_filters('responsi_options_before', $responsi_options);
+
+    if (is_customize_preview() && ( isset($_REQUEST['changeset_uuid']) || isset($_REQUEST['customize_changeset_uuid']) )) {
         $changeset_data = $wp_customize->changeset_data();
-        if ( is_array($changeset_data) ) {
-            if( count( $changeset_data ) > 0 ){
+        if (is_array($changeset_data)) {
+            if (count($changeset_data) > 0) {
                 $responsi_options_preview = array();
-                foreach ( $changeset_data as $setting_id => $setting_params ){
-                    if ( ! array_key_exists( 'value', $setting_params ) ) {
+                foreach ($changeset_data as $setting_id => $setting_params) {
+                    if (! array_key_exists('value', $setting_params)) {
                         continue;
                     }
 
-                    if ( isset( $setting_params['type'] ) && 'theme_mod' === $setting_params['type'] ) {
+                    if (isset($setting_params['type']) && 'theme_mod' === $setting_params['type']) {
                         $namespace_pattern = '/^(?P<stylesheet>.+?)::(?P<setting_id>.+)$/';
-                        if ( preg_match( $namespace_pattern, $setting_id, $matches ) && get_stylesheet() === $matches['stylesheet'] ) {
+                        if (preg_match($namespace_pattern, $setting_id, $matches) && get_stylesheet() === $matches['stylesheet']) {
                             $responsi_options_preview[ $matches['setting_id'] ] = $setting_params['value'];
                         }
                     } else {
                         $responsi_options_preview[ $setting_id ] = $setting_params['value'];
                     }
                 }
-                $responsi_options_preview = apply_filters( 'responsi_customized_post_value', $responsi_options_preview );
-                if ( is_array($responsi_options) && is_array( $responsi_options_preview ) && count( $responsi_options_preview ) > 0 ) {
-                    if ( is_object( $responsi_options_preview ) ){
+                $responsi_options_preview = apply_filters('responsi_customized_post_value', $responsi_options_preview);
+                if (is_array($responsi_options) && is_array($responsi_options_preview) && count($responsi_options_preview) > 0) {
+                    if (is_object($responsi_options_preview)) {
                         $responsi_options_preview = clone $responsi_options_preview;
                     }
-                    $responsi_options = array_replace_recursive( $responsi_options, $responsi_options_preview );
+                    $responsi_options = array_replace_recursive($responsi_options, $responsi_options_preview);
                 }
             }
         }
     }
 
-    if ( isset($_POST['customized']) ){
-        $responsi_options         = apply_filters( 'responsi_options_preview_before', $responsi_options );
-        $responsi_options_preview = json_decode( wp_unslash( $_POST['customized'] ), true );
-        $responsi_options_preview = apply_filters( 'responsi_customized_post_value', $responsi_options_preview );
-        if ( is_array($responsi_options) && is_array($responsi_options_preview) ) {
-            if ( is_object( $responsi_options_preview ) ){
+    if (isset($_POST['customized'])) {
+        $responsi_options         = apply_filters('responsi_options_preview_before', $responsi_options);
+        $responsi_options_preview = json_decode(wp_unslash($_POST['customized']), true);
+        $responsi_options_preview = apply_filters('responsi_customized_post_value', $responsi_options_preview);
+        if (is_array($responsi_options) && is_array($responsi_options_preview)) {
+            if (is_object($responsi_options_preview)) {
                 $responsi_options_preview = clone $responsi_options_preview;
             }
-            $responsi_options = array_replace_recursive( $responsi_options, $responsi_options_preview );
+            $responsi_options = array_replace_recursive($responsi_options, $responsi_options_preview);
         }
-        $responsi_options = apply_filters( 'responsi_options_preview_after', $responsi_options );
+        $responsi_options = apply_filters('responsi_options_preview_after', $responsi_options);
     }
 
-    $responsi_options = apply_filters( 'responsi_options_after', $responsi_options );
+    $responsi_options = apply_filters('responsi_options_after', $responsi_options);
 
-    if( function_exists('responsi_generate_animation') && is_array($responsi_options) && isset($responsi_options['responsi_blog_animation']) ){
+    if (function_exists('responsi_generate_animation') && is_array($responsi_options) && isset($responsi_options['responsi_blog_animation'])) {
         $responsi_blog_animation = responsi_generate_animation($responsi_options['responsi_blog_animation']);
     }
 
     return $responsi_options;
 }
 
-add_action( 'init', 'responsi_options', 1 );
-add_action( 'widgets_init', 'responsi_options', 1 );
-?>
+add_action('init', 'responsi_options', 1);
+add_action('widgets_init', 'responsi_options', 1);

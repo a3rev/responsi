@@ -13,15 +13,15 @@
 ?>
 <?php get_header(); ?>
 <?php global $main_box; ?>
-<?php do_action( 'responsi_content_before' ); ?>
+<?php do_action('responsi_content_before'); ?>
 <div id="content" class="content col-full page">
- 	<?php do_action( 'responsi_main_before' ); ?>
-	<div id="main" class="box<?php echo esc_attr( $main_box );?> main-archive-ctn">
-  		<?php do_action( 'responsi_main_content_before' ); ?>
-    	<?php get_template_part( 'loop', 'search' ); ?>
-  		<?php do_action( 'responsi_main_content_after' ); ?>
-  	</div>
-  	<?php do_action( 'responsi_main_after' ); ?>
+    <?php do_action('responsi_main_before'); ?>
+    <div id="main" class="box<?php echo esc_attr($main_box);?> main-archive-ctn">
+        <?php do_action('responsi_main_content_before'); ?>
+        <?php get_template_part('loop', 'search'); ?>
+        <?php do_action('responsi_main_content_after'); ?>
+    </div>
+    <?php do_action('responsi_main_after'); ?>
 </div>
-<?php do_action( 'responsi_content_after' ); ?>
+<?php do_action('responsi_content_after'); ?>
 <?php get_footer(); ?>
