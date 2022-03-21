@@ -9,16 +9,16 @@
  * @subpackage Template
  */
 ?>
-<?php do_action('responsi_post_before'); ?>
-<?php do_action('responsi_post_title_before'); ?>
-<?php do_action('responsi_post_title'); ?>
-<?php do_action('responsi_post_title_after'); ?>
-<?php do_action('responsi_post_meta'); ?>
+<?php do_action( 'responsi_post_before' ); ?>
+<?php do_action( 'responsi_post_title_before' ); ?>
+<?php do_action( 'responsi_post_title' ); ?>
+<?php do_action( 'responsi_post_title_after' ); ?>
+<?php do_action( 'responsi_post_meta' ); ?>
 <div class="entry-content clearfix">
-    <?php do_action('responsi_single_post_content_before'); ?>
-    <?php the_content(__('Continue Reading &rarr;', 'responsi')); ?>
-    <?php do_action('responsi_single_post_content_after'); ?>
+    <?php do_action( 'responsi_single_post_content_before' ); ?>
+    <?php the_content(__('Continue Reading &rarr;', 'responsi') ); ?>
+    <?php do_action( 'responsi_single_post_content_after' ); ?>
 </div>
-<?php $page_link_args = apply_filters('responsi_pagelinks_args', array( 'before' => '<div class="page-link">' . __('Pages:', 'responsi'), 'after' => '</div>' )); ?>
-<?php wp_link_pages($page_link_args); ?>
-<?php do_action('responsi_post_after'); ?>
+<?php $page_link_args = apply_filters( 'responsi_pagelinks_args', array( 'before' => '<div class="page-link">' . __( 'Pages:', 'responsi' ), 'after' => '</div>' ) ); ?>
+<?php wp_link_pages( $page_link_args ); ?>
+<?php do_action( 'responsi_post_after' ); ?>

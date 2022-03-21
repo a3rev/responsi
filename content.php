@@ -34,7 +34,7 @@ if ($title === get_the_title()) {
         </div>
         <div class="card-content">
             <?php do_action('responsi_archive_post_title_item_before'); ?>
-            <h2 class="card-title"><a title="<?php echo esc_html(get_the_title()); ?>" href="<?php echo esc_url(get_permalink()); ?>"><?php echo esc_attr($title);?></a></h2>
+            <h2 class="card-title"><a title="<?php echo esc_html(get_the_title()); ?>" href="<?php echo esc_url(get_permalink()); ?>"><?php echo esc_html($title);?></a></h2>
             <?php do_action('responsi_archive_post_title_item_after'); ?>
             <div class="card-info">
               <div class="info-ctn">
@@ -43,8 +43,8 @@ if ($title === get_the_title()) {
             </div>
         </div>
         <div class="card-meta">
-            <div class="postinfo"><div class="meta-lines"><?php echo wp_kses_post(apply_filters('responsi_post_author_posts_card_link', '', array( 'before' => '<span class="i_author">By ', 'after' => '</span> <span class="i_in">in</span>' )));?><?php if ($cats) {
-                echo '<span class="i_cat">'.wp_kses_post($cats).'</span>';
+            <div class="postinfo"><div class="meta-lines"><?php echo apply_filters('responsi_post_author_posts_card_link', '', array( 'before' => '<span class="i_author">By ', 'after' => '</span> <span class="i_in">in</span>' ));?><?php if ($cats) {
+                echo '<span class="i_cat">'.$cats.'</span>';
                                                           }?></div></div>
             <div class="posttags">
                 <div class="meta-lines">
@@ -64,7 +64,7 @@ if ($title === get_the_title()) {
                     $html .= '</span></span>';
                 }
                 ?>
-                <span class="i_comment"><a href="<?php comments_link(); ?>"><?php comments_number('No Comment', '1 Comment', '% Comments'); ?></a></span> <?php echo ' '.wp_kses_post($html);?>
+                <span class="i_comment"><a href="<?php comments_link(); ?>"><?php comments_number('No Comment', '1 Comment', '% Comments'); ?></a></span> <?php echo ' '.$html;?>
                 </div>
             </div>
         </div>

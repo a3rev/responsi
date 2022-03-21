@@ -8,3 +8,4 @@
  * @subpackage Template
  */
  responsi_sidebar();
+?>

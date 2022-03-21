@@ -18,9 +18,9 @@ if (!function_exists('responsi_metabox_options')) {
         if ('post' === get_post_type() || !get_post_type()) {
             $responsi_metaboxe_options[] = array(
                 'name'      => 'layout',
-                'label'     => __('Content Sidebar Layout', 'responsi'),
+                'label'     => esc_attr__('Content Sidebar Layout', 'responsi'),
                 'type'      => "images",
-                'desc'      => __('Select a specific layout for this post/page. Overrides default site layout.', 'responsi'),
+                'desc'      => esc_attr__('Select a specific layout for this post/page. Overrides default site layout.', 'responsi'),
                 'options'   => array(
                     ''                  => $responsi_images_directory . 'layout-off.png',
                     'one-col'           => $responsi_images_directory . '1c.png',
@@ -33,9 +33,9 @@ if (!function_exists('responsi_metabox_options')) {
             );
             $responsi_metaboxe_options[] = array(
                 'name' => 'content_layout',
-                'label' => __('Content Width', 'responsi'),
+                'label' => esc_attr__('Content Width', 'responsi'),
                 'type' => 'images',
-                'desc' => __('Select a specific content wide for this post/page. Overrides default site content width.', 'responsi'),
+                'desc' => esc_attr__('Select a specific content wide for this post/page. Overrides default site content width.', 'responsi'),
                 'options' => array(
                     ''                  => $responsi_images_directory . 'layout-off.png',
                     '1'                 => $responsi_images_directory . 'cw1.png',
@@ -49,9 +49,9 @@ if (!function_exists('responsi_metabox_options')) {
 
             $responsi_metaboxe_options[] = array(
                 'name' => 'content_column_grid',
-                'label' => __('Grid View Column', 'responsi'),
+                'label' => esc_attr__('Grid View Column', 'responsi'),
                 'type' => 'images',
-                'desc' => __('Select a specific Column for grid view show in content width for this post/page. Overrides default site content wide.', 'responsi'),
+                'desc' => esc_attr__('Select a specific Column for grid view show in content width for this post/page. Overrides default site content wide.', 'responsi'),
                 'options' => array(
                     ''                  => $responsi_images_directory . 'layout-off.png',
                     '1'                 => $responsi_images_directory . 'bc1.png',
@@ -65,9 +65,9 @@ if (!function_exists('responsi_metabox_options')) {
 
             /*$responsi_metaboxe_options[] = array(
                 'name' => 'content_max_width',
-                'label' => __( 'Maximun Content Width', 'responsi' ),
+                'label' => esc_attr__( 'Maximun Content Width', 'responsi' ),
                 'type' => 'number',
-                'desc' => __( 'Maximum content width in pixels in large screens.', 'responsi' ),
+                'desc' => esc_attr__( 'Maximum content width in pixels in large screens.', 'responsi' ),
                 'options' => array(
                     'min'                 => 600,
                     'max'                 => 3000,
@@ -77,9 +77,9 @@ if (!function_exists('responsi_metabox_options')) {
 
             $responsi_metaboxe_options[] = array(
                 'name' => 'content_max_width',
-                'label' => __('Maximun Content Width', 'responsi'),
+                'label' => esc_attr__('Maximun Content Width', 'responsi'),
                 'type' => 'slider',
-                'desc' => __('Maximum content width in pixels in large screens.', 'responsi'),
+                'desc' => esc_attr__('Maximum content width in pixels in large screens.', 'responsi'),
                 'options' => array(
                     'min'                   => 600,
                     'max'                   => 3000,
@@ -123,7 +123,7 @@ function responsi_metabox_create($post, $callback)
         $output .= '<div class="responsi-metabox-tabs">';
         //$output .= '<ul class="tabber hide-if-no-js">';
         if ($display_general_fields) {
-            //$output .= '<li class="wf-tab-general"><a href="#wf-tab-general">' . __( 'Custom Layout', 'responsi' ) . '</a></li>';
+            //$output .= '<li class="wf-tab-general"><a href="#wf-tab-general">' . esc_attr__( 'Custom Layout', 'responsi' ) . '</a></li>';
         }
         $output .= apply_filters('responsi_metaboxe_custom_field_tab_headings', '');
         //$output .= '</ul>';
@@ -137,7 +137,7 @@ function responsi_metabox_create($post, $callback)
 
     $output .= '</div>';
 
-    echo wp_kses_post($output);
+    echo $output;
 }
 
 /**
@@ -314,7 +314,7 @@ function responsi_metabox_create_fields($metaboxes, $callback, $token = 'general
                 $output .= '<tr class="' . esc_attr($row_css_class) . '">';
                 //$output .= '<th class="responsi-metabox-name"></th>';
                 $output .= '<td><label class="responsi-metabox-name" for="' . esc_attr($metaboxid) . '">' . $metabox['label'] . '</label><select class="responsi-metabox-select" id="' . esc_attr($metaboxid) . '" name="' . esc_attr($metaboxname) . '">';
-                $output .= '<option value="">' . __('Select to return to default', 'responsi') . '</option>';
+                $output .= '<option value="">' . esc_attr__('Select to return to default', 'responsi') . '</option>';
 
                 $array = $metabox['options'];
 
@@ -346,7 +346,7 @@ function responsi_metabox_create_fields($metaboxes, $callback, $token = 'general
                 $output .= '<tr class="' . esc_attr($row_css_class) . '">';
                 //$output .= '<th class="responsi-metabox-name"></th>';
                 $output .= '<td><label class="responsi-metabox-name" for="' . esc_attr($metaboxid) . '">' . $metabox['label'] . '</label><select class="responsi-metabox-select" id="' . esc_attr($metaboxid) . '" name="' . esc_attr($metaboxname) . '">';
-                $output .= '<option value="">' . __('Select to return to default', 'responsi') . '</option>';
+                $output .= '<option value="">' . esc_attr__('Select to return to default', 'responsi') . '</option>';
 
                 $array = $metabox['options'];
 
@@ -507,7 +507,7 @@ function responsi_metabox_handle($post_id = '')
                     $current_value = get_post_meta($pid, $var, true);
                     if (isset($_POST[$var])) {
                         $posted_value = '';
-                        $posted_value = wp_unslash($_POST[$var]);
+                        $posted_value = $_POST[$var];
 
                         if ('content_max_width' == $var) {
                             if (isset($metabox['std']) && $metabox['std'] == $posted_value) {
@@ -544,11 +544,11 @@ function responsi_metabox_handle($post_id = '')
                     $var = $metabox['name'];
 
                     // Format the data into a timestamp.
-                    $date = wp_unslash($_POST[$var]['date']);
+                    $date = $_POST[$var]['date'];
 
-                    $hour = wp_unslash($_POST[$var]['hour']);
-                    $minute = wp_unslash($_POST[$var]['minute']);
-                    // $second = wp_unslash($_POST[$var]['second']);
+                    $hour = $_POST[$var]['hour'];
+                    $minute = $_POST[$var]['minute'];
+                    // $second = $_POST[$var]['second'];
                     $second = '00';
 
                     $day = substr($date, 3, 2);
@@ -561,14 +561,14 @@ function responsi_metabox_handle($post_id = '')
                     $id = $metabox['name'];
                     $override['action'] = 'editpost';
                     if (!empty($_FILES['attachement_'.$id]['name'])) {
-                        $_FILES['attachement_'.$id]['name'] = preg_replace('/[^a-zA-Z0-9._\-]/', '', wp_unslash($_FILES['attachement_'.$id]['name']));
-                        $uploaded_file = wp_handle_upload(wp_unslash($_FILES['attachement_' . $id ]), $override);
+                        $_FILES['attachement_'.$id]['name'] = preg_replace('/[^a-zA-Z0-9._\-]/', '', $_FILES['attachement_'.$id]['name']);
+                        $uploaded_file = wp_handle_upload($_FILES['attachement_' . $id ], $override);
                         $uploaded_file['option_name'] = $metabox['label'];
                         $upload_tracking[] = $uploaded_file;
                         update_post_meta($pid, $id, $uploaded_file['url']);
                     } elseif (empty($_FILES['attachement_'.$id]['name']) && isset($_POST[ $id ])) {
                         $posted_value = '';
-                        $posted_value = wp_unslash($_POST[$id]);
+                        $posted_value = $_POST[$id];
                         update_post_meta($pid, $id, $posted_value);
                     } elseif ($_POST[ $id ] === '') {
                         delete_post_meta($pid, $id, get_post_meta($pid, $id, true));
@@ -606,7 +606,7 @@ function responsi_metabox_add()
             foreach ($custom_post_list as $type) {
                 $settings = array(
                     'id'               => 'responsi-metabox-settings',
-                    'title'            => __('Framework Custom Settings', 'responsi'),
+                    'title'            => esc_attr__('Framework Custom Settings', 'responsi'),
                     'callback'         => 'responsi_metabox_create',
                     'page'             => $type,
                     'context'          => 'side',
@@ -742,13 +742,13 @@ function responsi_taxonomy_add_new_meta_field()
     }
     ?>
     <div class="form-field">
-        <label><strong><?php esc_attr_e(__('Maximun Content Width', 'responsi')); ?></strong></label>
+        <label><strong><?php esc_attr_e('Maximun Content Width', 'responsi'); ?></strong></label>
         <div class="responsi-range-slider">
             <div class="ui-slide" id="<?php echo esc_attr($metabox_content_max_width['name']);?>_div"></div>
-            <input type="text" readonly="readonly" id="responsi_custom_meta_term_content_max_width" name="responsi_custom_meta_term[<?php echo esc_attr($metabox_content_max_width['name']);?>]" value="<?php echo esc_attr($content_max_width);?>" class="responsi-input regular-text islide-value" <?php echo esc_attr($min.$max.$step);?> />
+            <input type="text" readonly="readonly" id="responsi_custom_meta_term_content_max_width" name="responsi_custom_meta_term[<?php echo esc_attr($metabox_content_max_width['name']);?>]" value="<?php echo esc_attr__($content_max_width);?>" class="responsi-input regular-text islide-value" <?php echo esc_attr__($min.$max.$step);?> />
         </div>
         <div style="clear: both;"></div>
-        <p class="description"><?php esc_attr_e(__('Maximum content width in pixels in large screens.', 'responsi'));?></p>
+        <p class="description"><?php esc_attr_e('Maximum content width in pixels in large screens.', 'responsi');?></p>
     </div>
     <div style="clear: both;"></div>
     <?php
@@ -806,14 +806,14 @@ function responsi_taxonomy_edit_meta_field($term)
     ?>
     
     <tr class="form-field">
-    <th scope="row" valign="top"><label for="responsi_custom_meta_term_content_max_width"><?php esc_attr_e(__('Maximun Content Width', 'responsi')); ?></label></th>
+    <th scope="row" valign="top"><label for="responsi_custom_meta_term_content_max_width"><?php esc_attr_e('Maximun Content Width', 'responsi'); ?></label></th>
         <td>
         <div class="responsi-range-slider">
             <div class="ui-slide" id="<?php echo esc_attr($metabox_content_max_width['name']);?>_div"></div>
-            <input type="text" readonly="readonly" id="responsi_custom_meta_term_content_max_width" name="responsi_custom_meta_term[<?php echo esc_attr($metabox_content_max_width['name']);?>]" value="<?php echo esc_attr($content_max_width);?>" class="responsi-input regular-text islide-value" <?php echo esc_attr($min.$max.$step);?> />
+            <input type="text" readonly="readonly" id="responsi_custom_meta_term_content_max_width" name="responsi_custom_meta_term[<?php echo esc_attr__($metabox_content_max_width['name']);?>]" value="<?php echo esc_attr__($content_max_width);?>" class="responsi-input regular-text islide-value" <?php echo esc_attr__($min.$max.$step);?> />
         </div>
         <div style="clear: both;"></div>
-        <p class="description"><?php esc_attr_e(__('Maximum content width in pixels in large screens.', 'responsi'));?></p>
+        <p class="description"><?php esc_attr_e('Maximum content width in pixels in large screens.', 'responsi');?></p>
         </td>
     </tr>
     <?php
@@ -842,7 +842,7 @@ function responsi_save_taxonomy_custom_meta($term_id)
         }
 
         if (isset($_POST['responsi_custom_meta_term']['content_max_width']) && isset($metabox_content_max_width['std']) && $metabox_content_max_width['std'] != $_POST['responsi_custom_meta_term']['content_max_width']) {
-            $responsi_custom_meta_term['content_max_width'] = wp_unslash($_POST['responsi_custom_meta_term']['content_max_width']);
+            $responsi_custom_meta_term['content_max_width'] = $_POST['responsi_custom_meta_term']['content_max_width'];
         }
 
         if (count($responsi_custom_meta_term) > 0) {

@@ -292,7 +292,7 @@ if (!function_exists('responsi_body_class')) {
         } elseif ($is_chrome) {
             $classes[] = 'chrome';
         } elseif ($is_IE) {
-            $browser = wp_unslash($_SERVER['HTTP_USER_AGENT']);
+            $browser = $_SERVER['HTTP_USER_AGENT'];
             $browser = substr("$browser", 25, 8);
             if ("MSIE 7.0" === $browser) {
                 $classes[] = 'ie7';
@@ -481,7 +481,7 @@ if (!function_exists('responsi_sidebar')) {
     {
         global $responsi_options, $layout, $sidebar_box;
         if ('one-col' !== $layout) {
-            $sidebar_args = apply_filters('responsi_sidebar_args', array( 'sidebar_id' => 'primary', 'class' => '', 'blank_sidebar' => true, 'blank_sidebar_title' => __('Primary Sidebar', 'responsi'), 'blank_sidebar_content' => __('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec massa enim. Aliquam viverra at est ullamcorper sollicitudin. Proin a leo sit amet nunc malesuada imperdiet pharetra ut eros.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec massa enim. Aliquam viverra at est ullamcorper sollicitudin. Proin a leo sit amet nunc malesuada imperdiet pharetra ut eros.</p>', 'responsi') ));
+            $sidebar_args = apply_filters('responsi_sidebar_args', array( 'sidebar_id' => 'primary', 'class' => '', 'blank_sidebar' => true, 'blank_sidebar_title' => esc_attr__('Primary Sidebar', 'responsi'), 'blank_sidebar_content' => esc_attr__('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec massa enim. Aliquam viverra at est ullamcorper sollicitudin. Proin a leo sit amet nunc malesuada imperdiet pharetra ut eros.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec massa enim. Aliquam viverra at est ullamcorper sollicitudin. Proin a leo sit amet nunc malesuada imperdiet pharetra ut eros.</p>', 'responsi') ));
             if (is_array($sidebar_args)) {
                 if (responsi_active_sidebar(esc_attr($sidebar_args['sidebar_id']))) {
                     ?>
@@ -513,8 +513,8 @@ if (!function_exists('responsi_sidebar')) {
                             <div class="sidebar-in">
                             <div class="msr-wg widget-blank <?php echo 'blank-'. esc_attr($sidebar_args['sidebar_id']);?>">
                             <div class="widget widget_text">
-                            <div class="widget-title clearfix"><h3><?php echo esc_attr($sidebar_args['blank_sidebar_title']); ?></h3></div>
-                            <div class="widget-content clearfix"><div class="textwidget"><?php echo wp_kses_post($sidebar_args['blank_sidebar_content']); ?></div></div>
+                            <div class="widget-title clearfix"><h3><?php echo esc_attr__($sidebar_args['blank_sidebar_title']); ?></h3></div>
+                            <div class="widget-content clearfix"><div class="textwidget"><?php echo esc_attr__($sidebar_args['blank_sidebar_content']); ?></div></div>
                             </div>
                             </div>
                             </div>
@@ -543,7 +543,7 @@ if (!function_exists('responsi_sidebar_alt')) {
         $layouts = array( 'three-col-left', 'three-col-middle', 'three-col-right' );
         $layout = apply_filters('responsi_sidebar_alt', $layout);
         if (in_array($layout, $layouts)) {
-            $sidebar_alt_args = apply_filters('responsi_sidebar_alt_args', array( 'sidebar_id' => 'secondary', 'class' => '', 'blank_sidebar' => true, 'blank_sidebar_title' => __('Secondary Sidebar', 'responsi'), 'blank_sidebar_content' => __('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec massa enim. Aliquam viverra at est ullamcorper sollicitudin. Proin a leo sit amet nunc malesuada imperdiet pharetra ut eros.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec massa enim. Aliquam viverra at est ullamcorper sollicitudin. Proin a leo sit amet nunc malesuada imperdiet pharetra ut eros.</p>', 'responsi') ));
+            $sidebar_alt_args = apply_filters('responsi_sidebar_alt_args', array( 'sidebar_id' => 'secondary', 'class' => '', 'blank_sidebar' => true, 'blank_sidebar_title' => esc_attr__('Secondary Sidebar', 'responsi'), 'blank_sidebar_content' => esc_attr__('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec massa enim. Aliquam viverra at est ullamcorper sollicitudin. Proin a leo sit amet nunc malesuada imperdiet pharetra ut eros.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec massa enim. Aliquam viverra at est ullamcorper sollicitudin. Proin a leo sit amet nunc malesuada imperdiet pharetra ut eros.</p>', 'responsi') ));
             if (is_array($sidebar_alt_args)) {
                 if (responsi_active_sidebar(esc_attr($sidebar_alt_args['sidebar_id']))) {
                     ?>
@@ -575,8 +575,8 @@ if (!function_exists('responsi_sidebar_alt')) {
                             <div class="sidebar-in">
                             <div class="msr-wg widget-blank <?php echo 'blank-' . esc_attr($sidebar_alt_args['sidebar_id']);?>">
                             <div class="widget widget_text">
-                            <div class="widget-title clearfix"><h3><?php echo esc_attr($sidebar_alt_args['blank_sidebar_title']); ?></h3></div>
-                            <div class="widget-content clearfix"><div class="textwidget"><?php echo wp_kses_post($sidebar_alt_args['blank_sidebar_content']); ?></div></div>
+                            <div class="widget-title clearfix"><h3><?php echo esc_attr__($sidebar_alt_args['blank_sidebar_title']); ?></h3></div>
+                            <div class="widget-content clearfix"><div class="textwidget"><?php echo esc_attr__($sidebar_alt_args['blank_sidebar_content']); ?></div></div>
                             </div>
                             </div>
                             </div>
@@ -653,7 +653,7 @@ if (!function_exists('responsi_get_sidebar_main_after')) {
             ob_end_clean();
             $html = $wp_embed->run_shortcode( $html );
             $html = do_shortcode( $wp_embed->autoembed( $html ) );
-            echo wp_kses_post($html);
+            echo $html;
         }
     }
 }*/
@@ -772,11 +772,11 @@ if (!function_exists('responsi_single_post_meta_comments')) {
         global $post;
         
         $defaults = array(
-            'zero'          => __('Comments [ 0 ]', 'responsi'),
-            'one'           => __('Comments [ 1 ]', 'responsi'),
-            'more'          => __('Comments [ % ]', 'responsi'),
+            'zero'          => esc_attr__('Comments [ 0 ]', 'responsi'),
+            'one'           => esc_attr__('Comments [ 1 ]', 'responsi'),
+            'more'          => esc_attr__('Comments [ % ]', 'responsi'),
             'hide_if_off'   => 'disabled',
-            'closed_text'   => apply_filters('responsi_post_more_comment_closed_text', __('Comments are closed', 'responsi')),
+            'closed_text'   => apply_filters('responsi_post_more_comment_closed_text', esc_attr__('Comments are closed', 'responsi')),
             'before'        => '',
             'after'         => ''
         );
@@ -818,7 +818,7 @@ if (!function_exists('responsi_single_post_meta_tags')) {
         $atts = (array) $atts;
         $defaults = array(
             'sep'       => ', ',
-            'before'    => __('Tags: ', 'responsi'),
+            'before'    => esc_attr__('Tags: ', 'responsi'),
             'after'     => ''
         );
         $atts = array_merge($defaults, $atts);
@@ -889,9 +889,9 @@ if (!function_exists('responsi_build_loginout')) {
         $atts = array_merge($defaults, $atts);
 
         if (!is_user_logged_in()) {
-            $link = '<a href="' . esc_url(wp_login_url($atts['redirect'])) . '">' . __('Login', 'responsi') . '</a>';
+            $link = '<a href="' . esc_url(wp_login_url($atts['redirect'])) . '">' . esc_attr__('Login', 'responsi') . '</a>';
         } else {
-            $link = '<a href="' . esc_url(wp_logout_url($atts['redirect'])) . '">' . __('Logout', 'responsi') . '</a>';
+            $link = '<a href="' . esc_url(wp_logout_url($atts['redirect'])) . '">' . esc_attr__('Logout', 'responsi') . '</a>';
         }
 
         $output = $atts['before'] . apply_filters('loginout', $link) . $atts['after'];
@@ -1048,10 +1048,10 @@ if (!function_exists('responsi_build_credit')) {
             $right_logo = '';
             if ('' !== trim($footer_right_logo_url) && '' !== trim($footer_right_logo)) {
                 $width_height_attr = responsi_get_image_attribute($footer_right_logo);
-                $right_logo = '<a href="' . esc_url($footer_right_logo_url) . '" target="_blank" rel="noopener"><img src="' .  esc_url($footer_right_logo) . '" alt="'.__('Logo', 'responsi').'"'.$width_height_attr.'></a>';
+                $right_logo = '<a href="' . esc_url($footer_right_logo_url) . '" target="_blank" rel="noopener"><img src="' .  esc_url($footer_right_logo) . '" alt="'.esc_attr__('Logo', 'responsi').'"'.$width_height_attr.'></a>';
             } elseif ('' !== trim($footer_right_logo)) {
                 $width_height_attr = responsi_get_image_attribute($footer_right_logo);
-                $right_logo = '<img src="' . esc_url($footer_right_logo) . '" alt="'.__('Logo', 'responsi').'"'.$width_height_attr.'>';
+                $right_logo = '<img src="' . esc_url($footer_right_logo) . '" alt="'.esc_attr__('Logo', 'responsi').'"'.$width_height_attr.'>';
             }
 
             $footer_right_text_after     = $responsi_options['responsi_footer_right_text_after'];
@@ -1199,7 +1199,7 @@ if (!function_exists('responsi_archive_title')) {
 
         // General Taxonomy Archive
         if (is_tax()) {
-            $title = sprintf(__('%1$s', 'responsi'), $taxonomy_obj->name);
+            $title = sprintf(esc_attr__('%1$s', 'responsi'), $taxonomy_obj->name);
         }
 
         if (strlen($title) === 0) {
@@ -1212,7 +1212,7 @@ if (!function_exists('responsi_archive_title')) {
         $title = apply_filters('responsi_archive_title', $title, $before, $after);
 
         if ($echo) {
-            echo wp_kses_post($title);
+            echo $title;
         } else {
             return $title;
         }
@@ -1234,7 +1234,7 @@ function responsi_archive_title_rss_links($title, $before, $after)
         $taxonomy_raw_obj    = get_taxonomy($taxonomy_short_name);
         $cat_obj             = $wp_query->get_queried_object();
         $cat_id              = $cat_obj->cat_ID;
-        $title_rss = '<span class="fr catrss"><a href="' . esc_url(get_term_feed_link($term_id, $taxonomy_short_name, '')) . '">' . __('RSS feed for this section', 'responsi') . '</a></span>';
+        $title_rss = '<span class="fr catrss"><a href="' . esc_url(get_term_feed_link($term_id, $taxonomy_short_name, '')) . '">' . esc_attr__('RSS feed for this section', 'responsi') . '</a></span>';
 
         $title = str_replace('<h1 class="title entry-title">', '<h1 class="title fl cat entry-title">', $title);
         $title = str_replace('</span>', $title_rss, $title);
@@ -1364,7 +1364,7 @@ if (!function_exists('responsi_meta_tags')) {
         $html .= '<meta name="viewport" content="width=device-width, initial-scale=1, height=device-height">';
         $html .= '<meta name="format-detection" content="telephone=yes">';
         $html .= '<meta name="theme-color" content="#FFFFFF">';
-        echo wp_kses_post($html);
+        echo $html;
     }
 }
 
@@ -1466,7 +1466,7 @@ if (!function_exists('responsi_wrapper_header_content')) {
                     <div class="box<?php echo esc_attr($box_last); ?> col-item header-widget-<?php echo esc_attr($i); ?>">
 
                         <?php
-                        $header_animation = responsi_generate_animation($responsi_options['responsi_header_animation_'.esc_attr($i)]);
+                        $header_animation = responsi_generate_animation($responsi_options['responsi_header_animation_'.$i]);
                         $header_class = '';
                         $header_data = '';
                         $header_style = '';
@@ -1477,11 +1477,11 @@ if (!function_exists('responsi_wrapper_header_content')) {
                             $header_style = ' style="'.$header_animation['style'].'"';
                         }
 
-                        echo '<div id="header-animation-'.esc_attr($i).'" class="clearfix'.esc_attr($header_class).'"'.esc_attr($header_data) . esc_attr($header_style).'>';
+                        echo '<div id="header-animation-'.esc_attr($i).'" class="clearfix'.$header_class.'"'.$header_data . $header_style.'>';
                    
                         ?>
 
-                        <?php  responsi_dynamic_sidebar('header-' . esc_attr($i)); ?>
+                        <?php  responsi_dynamic_sidebar('header-' . $i); ?>
                             
                         <?php echo '</div>';?>    
 
@@ -1500,7 +1500,7 @@ if (!function_exists('responsi_wrapper_header_content')) {
                             $header_data = ' data-animation="'.$header_animation['data'].'"';
                             $header_style = ' style="'.$header_animation['style'].'"';
                         }
-                        echo '<div id="header-animation-1" class="clearfix'.esc_attr($header_class).'"'.esc_attr($header_data) . esc_attr($header_style).'>';
+                        echo '<div id="header-animation-1" class="clearfix'.$header_class.'"'.$header_data . $header_style.'>';
                         ?>
                             <div class="widget widget_text">
                                 <?php
@@ -1517,11 +1517,11 @@ if (!function_exists('responsi_wrapper_header_content')) {
                         <?php
                     }
                 } else {
-                    if (responsi_active_sidebar('header-' . esc_attr($i))) {
+                    if (responsi_active_sidebar('header-' . $i)) {
                         ?>
                         <div class="box<?php echo esc_attr($box_last); ?> col-item header-widget-<?php echo esc_attr($i); ?> responsi-shiftclick">
                         <?php
-                        $header_animation = responsi_generate_animation($responsi_options['responsi_header_animation_'.esc_attr($i)]);
+                        $header_animation = responsi_generate_animation($responsi_options['responsi_header_animation_'.$i]);
                         $header_class = '';
                         $header_data = '';
                         $header_style = '';
@@ -1530,9 +1530,9 @@ if (!function_exists('responsi_wrapper_header_content')) {
                             $header_data = ' data-animation="'.$header_animation['data'].'"';
                             $header_style = ' style="'.$header_animation['style'].'"';
                         }
-                        echo '<div id="header-animation-'.esc_attr($i).'" class="clearfix'.esc_attr($header_class).'"'.esc_attr($header_data) . esc_attr($header_style).'>';
+                        echo '<div id="header-animation-'.esc_attr($i).'" class="clearfix'.$header_class.'"'.$header_data . $header_style.'>';
                         ?>
-                        <?php responsi_dynamic_sidebar('header-' . esc_attr($i)); ?>
+                        <?php responsi_dynamic_sidebar('header-' . $i); ?>
                         <?php echo '</div>';?> 
                         <?php echo wp_kses_post($shiftclick); ?>
                         </div>
@@ -1559,7 +1559,7 @@ if (!function_exists('responsi_wrapper_header_content')) {
                         $header_data = ' data-animation="'.$header_animation['data'].'"';
                         $header_style = ' style="'.$header_animation['style'].'"';
                     }
-                    echo '<div id="header-animation-1" class="clearfix'.esc_attr($header_class).'"'.esc_attr($header_data) . esc_attr($header_style).'>';
+                    echo '<div id="header-animation-1" class="clearfix'.$header_class.'"'.$header_data . $header_style.'>';
                     ?>
                         <div class="widget widget_text">
                             <?php
@@ -1636,10 +1636,10 @@ if (!function_exists('responsi_navigation')) {
                     'echo'              => false
                 ));
                 if ($nav != '') {
-                    echo wp_kses_post($nav_ctr.$nav);
+                    echo $nav_ctr.$nav;
                 }
             } else {
-                echo wp_kses_post($nav_ctr);
+                echo $nav_ctr
                 ?>
             <ul id="main-nav" class="responsi-menu menu nav">
                 <?php
@@ -1649,7 +1649,7 @@ if (!function_exists('responsi_navigation')) {
                     $highlight = "page_item current_page_item";
                 }
                 ?>
-              <li class="<?php echo esc_attr($highlight); ?>"><a href="<?php echo esc_url(home_url('/')); ?>"><?php esc_attr_e(__('Home', 'responsi')); ?></a></li>
+              <li class="<?php echo esc_attr($highlight); ?>"><a href="<?php echo esc_url(home_url('/')); ?>"><?php esc_attr_e('Home', 'responsi'); ?></a></li>
                 <?php wp_list_pages('sort_column=menu_order&depth=6&title_li=&exclude='); ?>
             </ul>
                 <?php
@@ -1728,14 +1728,14 @@ if (!function_exists('responsi_footer_sidebars')) {
                 <div id="footer-widgets-in" class="footer-widgets-in clearfix">';
         $footer_widget_container_after = '
                 </div>
-                '.wp_kses_post($shiftclick).'
+                '.$shiftclick.'
             </div>
-            '.wp_kses_post($shiftclick).'
+            '.$shiftclick.'
         </div>
         ';
 
         if ($has_footer_sidebars && $total > 0) {
-            echo wp_kses_post($footer_widget_container_before);
+            echo $footer_widget_container_before;
             ?>
             <div id="footer-widgets" class="footer-widgets col-full col-<?php echo esc_attr($total); ?> clearfix">
             <?php do_action('responsi_footer_widget_before'); ?>
@@ -1761,7 +1761,7 @@ if (!function_exists('responsi_footer_sidebars')) {
                             $footer_data = ' data-animation="'.$footer_animation['data'].'"';
                             $footer_style = ' style="'.$footer_animation['style'].'"';
                         }
-                        echo '<div id="footer-widgets-animation-'.esc_attr($i).'" class="clearfix'.esc_attr($footer_class).'"'.esc_attr($footer_data) . esc_attr($footer_style).'>';
+                        echo '<div id="footer-widgets-animation-'.esc_attr($i).'" class="clearfix'.$footer_class.'"'.$footer_data . $footer_style.'>';
                         ?>
                         <?php responsi_dynamic_sidebar('footer-' . $i); ?>
                         <?php echo '</div>';?>
@@ -1775,7 +1775,7 @@ if (!function_exists('responsi_footer_sidebars')) {
             <?php do_action('responsi_footer_widget_after'); ?>
             </div>
             <?php
-            echo wp_kses_post($footer_widget_container_after);
+            echo $footer_widget_container_after;
         } elseif ($total > 0) {
         }
     }
@@ -1792,14 +1792,14 @@ if (!function_exists('responsi_title')) {
             the_title('<span class="archive-title-ctn"><h1 class="title entry-title">', '</h1></span>');
             global $post;
             ?>
-            <div class="page-description clearfix"><?php echo wp_kses_post(apply_filters('the_content', $post->post_content));?></div>
+            <div class="page-description clearfix"><?php echo apply_filters('the_content', $post->post_content);?></div>
             <?php
         } elseif (is_singular()) {
             the_title('<h1 class="title entry-title">', '</h1>');
         } elseif (is_single()) {
             the_title('<h1 class="title entry-title">', '</h1>');
         } elseif (is_search()) {
-            echo '<span class="archive-title-ctn"><h1 class="title entry-title">' . sprintf(__('Search results for &quot;%s&quot;', 'responsi'), get_search_query()) . '</h1></span>';
+            echo '<span class="archive-title-ctn"><h1 class="title entry-title">' . sprintf(esc_attr__('Search results for &quot;%s&quot;', 'responsi'), get_search_query()) . '</h1></span>';
         } elseif (is_archive()) {
             responsi_archive_title('<span class="archive-title-ctn"><h1 class="title entry-title">', '</h1></span>', true);
             if (category_description()) {
@@ -1847,7 +1847,7 @@ if (!function_exists('responsi_footer_copyright')) {
 
         $html = apply_filters('responsi_footer_copyright', $html);
 
-        echo wp_kses_post($html);
+        echo $html;
 
         do_action('responsi_footer_copyright_after');
     }
@@ -1874,7 +1874,7 @@ if (!function_exists('responsi_footer_credit')) {
 
         $html = apply_filters('responsi_footer_credit', $html);
 
-        echo wp_kses_post($html);
+        echo $html;
 
         do_action('responsi_footer_credit_after');
     }
@@ -2026,7 +2026,7 @@ if (!function_exists('responsi_footer_additional')) {
 
         $html = apply_filters('responsi_footer_additional', $html);
 
-        echo wp_kses_post($html);
+        echo $html;
 
         do_action('responsi_footer_additional_after');
     }
@@ -2057,7 +2057,7 @@ if (!function_exists('responsi_single_post_meta')) {
         $post_info = $postauthorlink . $postdate . $postcomments;
 
         if ('' !== $post_info) {
-            printf('<div class="post-meta">%s</div>', wp_kses_post(apply_filters('responsi_single_post_meta', $post_info)));
+            printf('<div class="post-meta">%s</div>', apply_filters('responsi_single_post_meta', $post_info));
         }
     }
 }
@@ -2074,11 +2074,11 @@ if (!function_exists('responsi_single_post_meta_categories_default')) {
         }
         $attr_post_categories = apply_filters('responsi_single_post_meta_categories_attr', array(
             'sep'       => ', ',
-            'before'    => '<span class="i_cat">' . __('Posted in', 'responsi') . ' : ',
+            'before'    => '<span class="i_cat">' . esc_attr__('Posted in', 'responsi') . ' : ',
             'after'     => '</span>'
         ));
         $post_info_categories = responsi_single_post_meta_categories($attr_post_categories);
-        printf('<div class="meta categories col-full">%s</div>', wp_kses_post(apply_filters('responsi_single_post_meta_categories_default', $post_info_categories)));
+        printf('<div class="meta categories col-full">%s</div>', apply_filters('responsi_single_post_meta_categories_default', $post_info_categories));
     }
 }
 
@@ -2094,11 +2094,11 @@ if (!function_exists('responsi_single_post_meta_tags_default')) {
         }
         $attr_post_tags = apply_filters('responsi_single_post_meta_tags_attr', array(
             'sep'       => ', ',
-            'before'    => '<span class="i_tag">' . __('Tags', 'responsi') . ' : ',
+            'before'    => '<span class="i_tag">' . esc_attr__('Tags', 'responsi') . ' : ',
             'after'     => '</span>'
         ));
         $post_info_tags = responsi_single_post_meta_tags($attr_post_tags);
-        printf('<div class="meta tags col-full">%s</div>', wp_kses_post(apply_filters('responsi_single_post_meta_tags_default', $post_info_tags)));
+        printf('<div class="meta tags col-full">%s</div>', apply_filters('responsi_single_post_meta_tags_default', $post_info_tags));
     }
 }
 
@@ -2129,9 +2129,9 @@ if (!function_exists('responsi_comment_form_default_fields')) {
         $commenter = wp_get_current_commenter();
         $req      = get_option('require_name_email');
         $html_req = ( $req ? " required='required'" : '' );
-        $fields['author']   = '<p class="comment-form-author"><input id="author" name="author" type="text" class="txt" tabindex="1" value="' . sanitize_text_field(esc_attr($commenter['comment_author'])) . '" size="30" maxlength="245"' . $html_req . ' />' . '<label for="author">' . __('Name', 'responsi') . ($req ? ' <span class="required">(' . __('required', 'responsi') . ')</span>' : '') . '</label> ' . '</p>';
-        $fields['email']    = '<p class="comment-form-email"><input id="email" name="email" type="text" class="txt" tabindex="2" value="' . sanitize_email(esc_attr($commenter['comment_author_email'])) . '" size="30" maxlength="100" aria-describedby="email-notes"' . $html_req . ' />' . '<label for="email">' . __('Email', 'responsi') . ($req ? ' <span class="required">(' . __('required', 'responsi') . ')</span>' : '') . '</label> ' . '</p>';
-        $fields['url']      = '<p class="comment-form-url"><input id="url" name="url" type="text" class="txt" tabindex="3" value="' . esc_url($commenter['comment_author_url']) . '" size="30" maxlength="200" />' . '<label for="url">' . __('Website', 'responsi') . '</label></p>';
+        $fields['author']   = '<p class="comment-form-author"><input id="author" name="author" type="text" class="txt" tabindex="1" value="' . sanitize_text_field(esc_attr($commenter['comment_author'])) . '" size="30" maxlength="245"' . $html_req . ' />' . '<label for="author">' . esc_attr__('Name', 'responsi') . ($req ? ' <span class="required">(' . esc_attr__('required', 'responsi') . ')</span>' : '') . '</label> ' . '</p>';
+        $fields['email']    = '<p class="comment-form-email"><input id="email" name="email" type="text" class="txt" tabindex="2" value="' . sanitize_email(esc_attr($commenter['comment_author_email'])) . '" size="30" maxlength="100" aria-describedby="email-notes"' . $html_req . ' />' . '<label for="email">' . esc_attr__('Email', 'responsi') . ($req ? ' <span class="required">(' . esc_attr__('required', 'responsi') . ')</span>' : '') . '</label> ' . '</p>';
+        $fields['url']      = '<p class="comment-form-url"><input id="url" name="url" type="text" class="txt" tabindex="3" value="' . esc_url($commenter['comment_author_url']) . '" size="30" maxlength="200" />' . '<label for="url">' . esc_attr__('Website', 'responsi') . '</label></p>';
 
         return $fields;
     }
@@ -2150,10 +2150,10 @@ if (!function_exists('responsi_comment_form_defaults')) {
 
         $tabindex++;
 
-        $args['label_submit']         = __('Submit Comment', 'responsi');
+        $args['label_submit']         = esc_attr__('Submit Comment', 'responsi');
         $args['comment_notes_before'] = '';
         $args['comment_notes_after']  = '';
-        $args['cancel_reply_link']    = __('Cancel reply', 'responsi');
+        $args['cancel_reply_link']    = esc_attr__('Cancel reply', 'responsi');
 
         return $args;
     }
@@ -2347,7 +2347,7 @@ if (!function_exists('responsi_custom_content_metabox')) {
         }
 
         if ('' != $css) {
-            echo '<style type="text/css">'.wp_kses_post($css).'</style>';
+            echo '<style type="text/css">'.$css.'</style>';
         }
     }
 }
@@ -2363,7 +2363,7 @@ function responsi_site_logo()
     } else {
         $site_title = get_bloginfo('name');
         ?>
-        <a aria-label="<?php echo esc_attr($site_title); ?>" class="logo site-title" href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php echo  esc_attr($site_title); ?></a>
+        <a aria-label="<?php echo $site_title; ?>" class="logo site-title" href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php echo $site_title; ?></a>
         <?php
     }
 }
@@ -2391,7 +2391,7 @@ function responsi_site_description()
     global $responsi_options;
     $site_description = get_bloginfo('description');
     if ('true' === $responsi_options['responsi_enable_site_description'] && '' !== $site_description) {
-        echo '<span class="site-description">' . wp_kses_post($site_description) . '</span>';
+        echo '<span class="site-description">' . $site_description . '</span>';
     }
 }
 
@@ -2407,15 +2407,15 @@ if (!function_exists('responsi_custom_comment')) {
                 <?php } ?>
                 <div class="comment-head">
                     <span class="name"><?php responsi_the_commenter_link() ?></span>
-                    <span class="date"><?php echo esc_attr(get_comment_date(get_option('date_format'))) ?> <?php esc_attr_e(__('at', 'responsi')); ?> <?php echo esc_attr(get_comment_time(get_option('time_format'))); ?></span>
-                    <span class="perma"><a href="<?php echo esc_url(get_comment_link()); ?>" title="<?php esc_attr_e(__('Direct link to this comment', 'responsi')); ?>">#</a></span>
-                    <span class="edit"><?php edit_comment_link(__('Edit', 'responsi'), '', ''); ?></span>
+                    <span class="date"><?php echo get_comment_date(get_option('date_format')) ?> <?php esc_attr_e('at', 'responsi'); ?> <?php echo get_comment_time(get_option('time_format')); ?></span>
+                    <span class="perma"><a href="<?php echo esc_url(get_comment_link()); ?>" title="<?php esc_attr_e('Direct link to this comment', 'responsi'); ?>">#</a></span>
+                    <span class="edit"><?php edit_comment_link(esc_attr__('Edit', 'responsi'), '', ''); ?></span>
                 </div>
                 <div class="comment-entry"  id="comment-<?php comment_ID(); ?>">
                 <?php comment_text() ?>
 
                 <?php if ($comment->comment_approved == '0') { ?>
-                    <p class='unapproved'><?php esc_attr_e(__('Your comment is awaiting moderation.', 'responsi')); ?></p>
+                    <p class='unapproved'><?php esc_attr_e('Your comment is awaiting moderation.', 'responsi'); ?></p>
                 <?php } ?>
                     <div class="reply">
                         <?php comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth'] ))) ?>
@@ -2432,10 +2432,6 @@ if (!function_exists('responsi_custom_comment')) {
 /*-----------------------------------------------------------------------------------*/
 
 if (!function_exists('responsi_blog_animation_html_open')) {
-    /**
-     * responsi_blog_animation_html_open.
-     */
-    
     function responsi_blog_animation_html_open()
     {
 
@@ -2462,7 +2458,7 @@ if (!function_exists('responsi_blog_animation_html_open')) {
 
             $html = '<div class="animCard clearfix'.$animation_class.'"'.$animation_data . $animation_style.'>';
             
-            echo wp_kses_post($html);
+            echo $html;
         //}
     }
 }
@@ -2472,17 +2468,13 @@ if (!function_exists('responsi_blog_animation_html_open')) {
 /*-----------------------------------------------------------------------------------*/
 
 if (!function_exists('responsi_blog_animation_html_close')) {
-    /**
-     * responsi_blog_animation_html_close.
-     */
-    
     function responsi_blog_animation_html_close()
     {
         global $is_blog_template;
 
         //if( is_category() || $is_blog_template || is_archive() ){
             $html = '</div>';
-            echo wp_kses_post($html);
+            echo $html;
        //}
     }
 }
@@ -2496,7 +2488,7 @@ if (! function_exists('responsi_list_pings')) {
         ?>
         <li id="comment-<?php comment_ID(); ?>">
             <span class="author"><?php comment_author_link(); ?></span> -
-            <span class="date"><?php echo esc_attr(get_comment_date(get_option('date_format'))); ?></span>
+            <span class="date"><?php echo get_comment_date(get_option('date_format')); ?></span>
             <span class="pingcontent"><?php comment_text(); ?></span>
         <?php
     }
@@ -2506,7 +2498,7 @@ if (! function_exists('responsi_the_commenter_link')) {
     function responsi_the_commenter_link()
     {
         $commenter = get_comment_author_link();
-        echo wp_kses_post($commenter);
+        echo $commenter;
     }
 }
 
@@ -2515,16 +2507,11 @@ if (! function_exists('responsi_the_commenter_avatar')) {
     {
         global $comment;
         $avatar = get_avatar($comment, $args['avatar_size']);
-        echo wp_kses_post($avatar);
+        echo $avatar;
     }
 }
 
-
 if (! function_exists('responsi_sanitize_numeric')) {
-    /**
-     * responsi_sanitize_numeric.
-     */
-
     function responsi_sanitize_numeric($value, $setting)
     {
         if (is_numeric($value)) {
@@ -2534,10 +2521,6 @@ if (! function_exists('responsi_sanitize_numeric')) {
 }
 
 if (! function_exists('responsi_sanitize_background_position')) {
-    /**
-     * responsi_sanitize_background_position.
-     */
-    
     function responsi_sanitize_background_position($value, $setting)
     {
         if (strripos($value, 'px', strlen($value)-2) || strripos($value, 'em', strlen($value)-2) || strripos($value, 'rem', strlen($value)-3) || strripos($value, '%', strlen($value)-1)) {
@@ -2555,10 +2538,6 @@ if (! function_exists('responsi_sanitize_background_position')) {
 }
 
 if (! function_exists('responsi_sanitize_background_size')) {
-    /**
-     * responsi_sanitize_background_size.
-     */
-    
     function responsi_sanitize_background_size($value, $setting)
     {
         if (strripos($value, 'px', strlen($value)-2) || strripos($value, 'em', strlen($value)-2) || strripos($value, 'rem', strlen($value)-3) || strripos($value, '%', strlen($value)-1)) {
@@ -2576,10 +2555,6 @@ if (! function_exists('responsi_sanitize_background_size')) {
 }
 
 if (! function_exists('responsi_sanitize_background_color')) {
-    /**
-     * responsi_sanitize_background_color.
-     */
-    
     function responsi_sanitize_background_color($value, $setting)
     {
         $keys = preg_split('/\[/', str_replace(']', '', $setting->id));
@@ -2594,10 +2569,6 @@ if (! function_exists('responsi_sanitize_background_color')) {
 }
 
 if (! function_exists('responsi_sanitize_background_patterns')) {
-    /**
-     * responsi_sanitize_background_patterns.
-     */
-    
     function responsi_sanitize_background_patterns($value, $setting)
     {
         return esc_url($value);
@@ -2605,10 +2576,6 @@ if (! function_exists('responsi_sanitize_background_patterns')) {
 }
 
 if (! function_exists('responsi_sanitize_border')) {
-    /**
-     * responsi_sanitize_border.
-     */
-    
     function responsi_sanitize_border($value, $setting)
     {
         $keys = preg_split('/\[/', str_replace(']', '', $setting->id));
@@ -2625,10 +2592,6 @@ if (! function_exists('responsi_sanitize_border')) {
 }
 
 if (! function_exists('responsi_sanitize_border_radius')) {
-    /**
-     * responsi_sanitize_border_radius.
-     */
-    
     function responsi_sanitize_border_radius($value, $setting)
     {
         $keys = preg_split('/\[/', str_replace(']', '', $setting->id));
@@ -2645,10 +2608,6 @@ if (! function_exists('responsi_sanitize_border_radius')) {
 }
 
 if (! function_exists('responsi_sanitize_border_boxes')) {
-     /**
-     * responsi_sanitize_border_boxes.
-     */
-    
     function responsi_sanitize_border_boxes($value, $setting)
     {
         $keys = preg_split('/\[/', str_replace(']', '', $setting->id));
@@ -2672,10 +2631,6 @@ if (! function_exists('responsi_sanitize_border_boxes')) {
 }
 
 if (! function_exists('responsi_sanitize_box_shadow')) {
-    /**
-     * responsi_sanitize_box_shadow.
-     */
-    
     function responsi_sanitize_box_shadow($value, $setting)
     {
         $keys = preg_split('/\[/', str_replace(']', '', $setting->id));
@@ -2702,10 +2657,6 @@ if (! function_exists('responsi_sanitize_box_shadow')) {
 }
 
 if (! function_exists('responsi_sanitize_animation')) {
-    /**
-     * responsi_sanitize_animation.
-     */
-    
     function responsi_sanitize_animation($value, $setting)
     {
         $keys = preg_split('/\[/', str_replace(']', '', $setting->id));
@@ -2724,10 +2675,6 @@ if (! function_exists('responsi_sanitize_animation')) {
 }
 
 if (! function_exists('responsi_sanitize_slider')) {
-    /**
-     * responsi_sanitize_slider.
-     */
-    
     function responsi_sanitize_slider($value, $setting)
     {
         if (is_numeric($value)) {
@@ -2737,10 +2684,6 @@ if (! function_exists('responsi_sanitize_slider')) {
 }
 
 if (! function_exists('responsi_sanitize_typography')) {
-    /**
-     * responsi_sanitize_typography.
-     */
-    
     function responsi_sanitize_typography($value, $setting)
     {
         $keys = preg_split('/\[/', str_replace(']', '', $setting->id));
@@ -2763,10 +2706,6 @@ if (! function_exists('responsi_sanitize_typography')) {
 }
 
 if (! function_exists('responsi_sanitize_choices')) {
-    /**
-     * responsi_sanitize_choices.
-     */
-    
     function responsi_sanitize_choices($value, $setting)
     {
         
@@ -2783,18 +2722,14 @@ if (! function_exists('responsi_sanitize_choices')) {
 }
 
 if (! function_exists('responsi_sanitize_checkboxs')) {
-    /**
-     * responsi_sanitize_checkboxs.
-     */
-    
     function responsi_sanitize_checkboxs($value, $setting)
     {
 
         $default_choices = array(
             'checked_value'     => 'true',
             'unchecked_value'   => 'false',
-            'checked_label'     => __('ON', 'responsi'),
-            'unchecked_label'   => __('OFF', 'responsi'),
+            'checked_label'     => esc_attr__('ON', 'responsi'),
+            'unchecked_label'   => esc_attr__('OFF', 'responsi'),
             'container_width'   => 80
         );
 
@@ -2813,10 +2748,6 @@ if (! function_exists('responsi_sanitize_checkboxs')) {
 }
 
 if (! function_exists('responsi_sanitize_multicheckboxs')) {
-    /**
-     * responsi_sanitize_multicheckboxs.
-     */
-    
     function responsi_sanitize_multicheckboxs($value, $setting)
     {
         $value = sanitize_key($value);
@@ -2825,10 +2756,6 @@ if (! function_exists('responsi_sanitize_multicheckboxs')) {
 }
 
 if (! function_exists('responsi_sanitize_layout_width')) {
-    /**
-     * responsi_sanitize_layout_width.
-     */
-    
     function responsi_sanitize_layout_width($value, $setting)
     {
         if ($value >= 600 && $value <= 3000 && is_numeric($value)) {
@@ -2838,10 +2765,6 @@ if (! function_exists('responsi_sanitize_layout_width')) {
 }
 
 if (! function_exists('responsi_sanitize_ieditor')) {
-    /**
-     * responsi_sanitize_ieditor.
-     */
-    
     function responsi_sanitize_ieditor($value, $setting)
     {
         return wp_unslash(sanitize_post_field('post_content', $value, 0, 'db'));
@@ -2849,10 +2772,6 @@ if (! function_exists('responsi_sanitize_ieditor')) {
 }
 
 if (! function_exists('responsi_sanitize_textarea')) {
-    /**
-     * responsi_sanitize_textarea.
-     */
-    
     function responsi_sanitize_textarea($value, $setting)
     {
         $value = wp_kses_post($value);
@@ -2861,10 +2780,6 @@ if (! function_exists('responsi_sanitize_textarea')) {
 }
 
 if (! function_exists('responsi_sanitize_textarea_esc_html')) {
-    /**
-     * responsi_sanitize_textarea_esc_html.
-     */
-    
     function responsi_sanitize_textarea_esc_html($value, $setting)
     {
         $value = htmlspecialchars_decode(strip_tags(wp_kses_post($value)));
@@ -2873,10 +2788,6 @@ if (! function_exists('responsi_sanitize_textarea_esc_html')) {
 }
 
 if (! function_exists('responsi_sanitize_columns')) {
-    /**
-     * responsi_sanitize_columns.
-     */
-    
     function responsi_sanitize_columns($value, $setting)
     {
         $keys = preg_split('/\[/', str_replace(']', '', $setting->id));
@@ -2900,7 +2811,7 @@ if (! function_exists('responsi_add_crossorigin_fontface')) {
         do_action('responsi_add_crossorigin_fontface_before');
         echo '<link rel="preload" href="'.esc_url(get_template_directory_uri()).'/functions/fonts/responsi-font-face.woff" as="font" crossorigin="anonymous">';
         if (is_user_logged_in()) {
-            echo '<link rel="preload" href="'. esc_url(get_template_directory_uri()).'/functions/fonts/responsi-icon.woff" as="font" crossorigin="anonymous">';
+            echo '<link rel="preload" href="'.esc_url(get_template_directory_uri()).'/functions/fonts/responsi-icon.woff" as="font" crossorigin="anonymous">';
         }
         do_action('responsi_add_crossorigin_fontface_after');
     }

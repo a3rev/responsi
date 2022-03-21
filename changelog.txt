@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 8.3.6 - 2022/03/21 =
+* This maintenance release has some further security tweaks and a mobile viewport bug fix.
+* Tweak - Some escaping / sanitizing wrong in version 8.3.5
+* Fix - Meta viewport missing with WordPress 5.9
+
 = 8.3.5 - 2022/03/16 =
 This security hardening release follows a PHPCS code audit with code refactoring and security hardening including additional escaping and sanitizing.
 * Security - Escape all $-variable 

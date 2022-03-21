@@ -97,7 +97,7 @@ if (! class_exists('\A3Rev\Responsi\Customize_Background_Patterns_Control') && c
                 bg_url = _wpCustomBackgroundPatternsControl.bg_url;
             } #>
             <div class="customize-ctrl">
-                <span class="customize-control-title"><?php echo esc_attr(__('Background Tiles', 'responsi')); ?></span>
+                <span class="customize-control-title"><?php echo esc_attr__('Background Tiles', 'responsi'); ?></span>
                 <# var i = 0,checked = '',selected = '',imglink; _.each( backgrounds, function( val, key ) {
                     i++; checked  = ''; selected = ''; imglink  = bg_url + '/backgrounds/' + val;
                     if(data.value == imglink){
@@ -107,7 +107,7 @@ if (! class_exists('\A3Rev\Responsi\Customize_Background_Patterns_Control') && c
                     <span onClick="document.getElementById('bp-img-{{ setting_id }}{{ i }}').click();" class="bp-item bp-item-{{ i }} {{ selected }}"><input type="radio" id="bp-img-{{ setting_id }}{{ i }}" class="checkbox bp-radio" value="{{ bg_url }}/backgrounds/{{val}}" name="{{ setting_id }}" {{ checked }} /></span>
                 <# }); #>
                 <hr class="bg-hr">
-                <span class="customize-control-title"><?php echo esc_attr(__('Patterns', 'responsi')); ?></span>
+                <span class="customize-control-title"><?php echo esc_attr__('Patterns', 'responsi'); ?></span>
                 <# _.each( patterns, function( val, key ) {
                     i++;
                     checked  = '';

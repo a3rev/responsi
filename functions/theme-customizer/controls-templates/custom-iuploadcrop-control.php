@@ -18,13 +18,13 @@ if (! class_exists('\A3Rev\Responsi\Customize_iUploadCrop_Control') && class_exi
             parent::__construct($manager, $id, $args);
             if (( $this instanceof WP_Customize_Cropped_Image_Control )) {
                 $this->button_labels = array(
-                    'select'       => esc_attr(__('Add Image', 'responsi')),
-                    'change'       => esc_attr(__('Change Image', 'responsi')),
-                    'default'      => esc_attr(__('Default', 'responsi')),
-                    'remove'       => esc_attr(__('Remove', 'responsi')),
-                    'placeholder'  => esc_attr(__('No image set', 'responsi')),
-                    'frame_title'  => esc_attr(__('Select Image', 'responsi')),
-                    'frame_button' => esc_attr(__('Choose Image', 'responsi')),
+                    'select'       => esc_attr__('Add Image', 'responsi'),
+                    'change'       => esc_attr__('Change Image', 'responsi'),
+                    'default'      => esc_attr__('Default', 'responsi'),
+                    'remove'       => esc_attr__('Remove', 'responsi'),
+                    'placeholder'  => esc_attr__('No image set', 'responsi'),
+                    'frame_title'  => esc_attr__('Select Image', 'responsi'),
+                    'frame_button' => esc_attr__('Choose Image', 'responsi'),
                 );
             }
         }
@@ -80,13 +80,13 @@ if (! class_exists('\A3Rev\Responsi\Customize_iUploadCrop_Control') && class_exi
             <# var setting_id = data.setting_id ? data.setting_id : 'iupload';
             if( 'undefined' === typeof data.button_labels ){
                 data.button_labels = {
-                    'select'       : '<?php echo esc_attr(__('Add Image', 'responsi'));?>',
-                    'change'       : '<?php echo esc_attr(__('Change Image', 'responsi'));?>',
-                    'default'      : '<?php echo esc_attr(__('Default', 'responsi'));?>',
-                    'remove'       : '<?php echo esc_attr(__('Remove', 'responsi'));?>',
-                    'placeholder'  : '<?php echo esc_attr(__('No image set', 'responsi'));?>',
-                    'frame_title'  : '<?php echo esc_attr(__('Select Image', 'responsi'));?>',
-                    'frame_button' : '<?php echo esc_attr(__('Choose Image', 'responsi'));?>',
+                    'select'       : '<?php echo esc_attr__('Add Image', 'responsi');?>',
+                    'change'       : '<?php echo esc_attr__('Change Image', 'responsi');?>',
+                    'default'      : '<?php echo esc_attr__('Default', 'responsi');?>',
+                    'remove'       : '<?php echo esc_attr__('Remove', 'responsi');?>',
+                    'placeholder'  : '<?php echo esc_attr__('No image set', 'responsi');?>',
+                    'frame_title'  : '<?php echo esc_attr__('Select Image', 'responsi');?>',
+                    'frame_button' : '<?php echo esc_attr__('Choose Image', 'responsi');?>',
                 };
             }
             #>

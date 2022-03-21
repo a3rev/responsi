@@ -9,3 +9,4 @@
  * @subpackage Template
  */
  responsi_sidebar_alt();
+?>

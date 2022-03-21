@@ -114,19 +114,19 @@ if (! class_exists('\A3Rev\Responsi\Customize_Animation_Control') && class_exist
                     <div class="animation-inner-container">
                         
                         <div class="responsi-range-slider">
-                            <label><?php echo esc_attr(__('Duration', 'responsi')); ?> (s)</label>
+                            <label><?php echo esc_attr__('Duration', 'responsi'); ?> (s)</label>
                             <div class="ui-slide ui-slide-duration" id="{{ setting_id }}_duration_div"></div>
                             <input type="text" readonly="readonly" id="{{ setting_id }}_duration" name="{{ setting_id }}_duration" value="{{ data.values.duration }}" class="responsi-input regular-text islide-value islide-value-duration" />
                         </div>
                         
                         <div class="responsi-range-slider">
-                            <label><?php echo esc_attr(__('Delay', 'responsi')); ?> (s)</label>
+                            <label><?php echo esc_attr__('Delay', 'responsi'); ?> (s)</label>
                             <div class="ui-slide ui-slide-delay" id="{{ setting_id }}_delay_div"></div>
                             <input type="text" readonly="readonly" id="{{ setting_id }}_delay" name="{{ setting_id }}_delay" value="{{ data.values.delay }}" class="responsi-input regular-text islide-value islide-value-delay" />
                         </div>
 
                         <div class="responsi-direction-container">
-                            <label><?php echo esc_attr(__('Direction', 'responsi')); ?></label>
+                            <label><?php echo esc_attr__('Direction', 'responsi'); ?></label>
                             <select name="{{ setting_id }}[direction]" class="responsi-animation responsi-iselect responsi-animation-direction"></select>
                         </div>
                         

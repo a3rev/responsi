@@ -14,20 +14,20 @@
  */
 ?>
 <?php global $count; ?>
-<?php do_action('responsi_loop_before');?>
+<?php do_action( 'responsi_loop_before' );?>
 <?php
-if (have_posts()) {
-    $count = 0;
-    ?>
-    <div class="clear"></div>
-    <?php
-    while (have_posts()) {
-        the_post();
-        $count++;
-        get_template_part('content', get_post_format());
-    }
+if (have_posts()) { 
+	$count = 0;
+	?>
+	<div class="clear"></div>
+	<?php
+	while ( have_posts() ) {
+		the_post();
+		$count++;
+		get_template_part( 'content', get_post_format() );
+	} 
 } else {
-    get_template_part('content', 'noposts');
+	get_template_part( 'content', 'noposts' );
 }
 ?>
-<?php do_action('responsi_loop_after'); ?>
+<?php do_action( 'responsi_loop_after' ); ?>

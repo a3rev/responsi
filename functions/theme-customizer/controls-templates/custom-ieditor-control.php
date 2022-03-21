@@ -90,7 +90,7 @@ if (! class_exists('\A3Rev\Responsi\Customize_iEditor_Control') && class_exists(
             ?>
             <# 
             var setting_id = data.setting_id ? data.setting_id : 'ieditor'; 
-            if( 'undefined' === typeof data.button_label ){ data.button_label = '<?php echo esc_attr(__('Edit content', 'responsi'));?>';}
+            if( 'undefined' === typeof data.button_label ){ data.button_label = '<?php echo esc_attr__('Edit content', 'responsi');?>';}
             #>
             <div class="customize-ctrl">
                 <# if(data.label){ #><span class="customize-control-title">{{{ data.label }}}</span><# } #>

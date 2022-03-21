@@ -12,12 +12,12 @@
 
 // Do not delete these lines
 if (! empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME'])) {
-    die(esc_attr(__('Please do not load this page directly. Thanks!', 'responsi')));
+    die(esc_attr__('Please do not load this page directly. Thanks!', 'responsi'));
 }
 
 // Password is required so don't display comments.
 if (post_password_required()) {
-    ?><p class="nocomments"><?php  esc_attr_e(__('This post is password protected. Enter the password to view comments.', 'responsi')); ?></p><?php return;
+    ?><p class="nocomments"><?php esc_attr_e('This post is password protected. Enter the password to view comments.', 'responsi'); ?></p><?php return;
 }
 
 /**
@@ -31,7 +31,7 @@ if (have_comments()) {
     echo '<div id="comments">';
 
     if (! empty($comments_by_type['comment'])) { ?>
-        <h2 id="comments-title"><?php printf(wp_kses_post(_n('One Response to %2$s', '%1$s Responses to %2$s', (int)get_comments_number(), 'responsi')), wp_kses_post(number_format_i18n((int)get_comments_number())), '<em>' . esc_attr(get_the_title()) . '</em>'); ?></h2>
+        <h2 id="comments-title"><?php printf(_n('One Response to %2$s', '%1$s Responses to %2$s', (int)get_comments_number(), 'responsi'), number_format_i18n((int)get_comments_number()), '<em>' . esc_html(get_the_title()) . '</em>'); ?></h2>
         <ol class="commentlist">
             <?php
                 /* Loop through and list the comments. Tell wp_list_comments()
@@ -57,7 +57,7 @@ if (have_comments()) {
     }
 
     if (! empty($comments_by_type['pings'])) { ?>
-        <h2 id="comments-title"><?php  esc_attr_e("Trackbacks/Pingbacks"); ?></h2>
+        <h2 id="comments-title"><?php  esc_attr_e('Trackbacks/Pingbacks', 'responsi'); ?></h2>
         <ol class="commentlist">
             <?php
                 /* Loop through and list the pings. Tell wp_list_comments()

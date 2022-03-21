@@ -444,7 +444,7 @@ function responsi_get_thumbnail( $args = array() ) {
             }
             if( '' === $width_height_attr )
                 $width_height_attr = responsi_get_image_attribute( esc_url($_thumbnail_src ) );
-            $_thumbnail_image = '<img class="' . esc_attr( stripslashes( trim( $class ) ) ) . '"' . $style_ext . ' src="' . esc_url( $_thumbnail_src ) . '" alt="'.__( 'No Image', 'responsi' ).'"'.$width_height_attr.'>';
+            $_thumbnail_image = '<img class="' . esc_attr( stripslashes( trim( $class ) ) ) . '"' . $style_ext . ' src="' . esc_url( $_thumbnail_src ) . '" alt="'.esc_attr__( 'No Image', 'responsi' ).'"'.$width_height_attr.'>';
         } elseif ( 'src' === $type ){
             $_thumbnail_src = esc_url( $_thumbnail_src );
         }
@@ -452,15 +452,15 @@ function responsi_get_thumbnail( $args = array() ) {
 
     if ( $return ){
         if( 'image' === $type ){
-            return wp_kses_post( apply_filters( 'a3_lazy_load_html', $_thumbnail_image ) );
+            return apply_filters( 'a3_lazy_load_html', $_thumbnail_image );
         }elseif( 'src' === $type ){
-            return esc_url( $_thumbnail_src );
+            return $_thumbnail_src;
         }
     } else {
         if( 'image' === $type ){
-            echo wp_kses_post( apply_filters( 'a3_lazy_load_html', $_thumbnail_image ) );
+            echo apply_filters( 'a3_lazy_load_html', $_thumbnail_image );
         }elseif( 'src' === $type ){
-            echo esc_url( $_thumbnail_src );
+            echo $_thumbnail_src;
         }
     }
 }
@@ -555,8 +555,8 @@ function responsi_get_image_attribute( $url ) {
 
     if ( ! empty( $home ) && 0 !== strcasecmp( $home, $siteurl ) ) {
         $wp_path_rel_to_home = str_ireplace( $home, '', $siteurl ); /* $siteurl - $home */
-        $pos = strripos( str_replace( '\\', '/', wp_unslash( $_SERVER['SCRIPT_FILENAME'] ) ), trailingslashit( $wp_path_rel_to_home ) );
-        $home_path = substr( wp_unslash( $_SERVER['SCRIPT_FILENAME'] ), 0, $pos );
+        $pos = strripos( str_replace( '\\', '/', $_SERVER['SCRIPT_FILENAME'] ), trailingslashit( $wp_path_rel_to_home ) );
+        $home_path = substr( $_SERVER['SCRIPT_FILENAME'], 0, $pos );
         $home_path = trailingslashit( $home_path );
     } else {
         $home_path = ABSPATH;
@@ -623,8 +623,8 @@ if ( !function_exists( 'responsi_pagination' ) ) {
             'current'  => $paged,
             'mid_size' => 1,
             'add_args' => array_map( 'urlencode', $query_args ),
-            'prev_text' => __( '&larr; Previous', 'responsi' ),
-            'next_text' => __( 'Next &rarr;', 'responsi' ),
+            'prev_text' => esc_attr__( '&larr; Previous', 'responsi' ),
+            'next_text' => esc_attr__( 'Next &rarr;', 'responsi' ),
             'prev_next' => false,
             'show_all' => true,
             'end_size' => 1,
@@ -650,9 +650,9 @@ if ( !function_exists( 'responsi_pagination' ) ) {
         do_action( 'responsi_pagination_end' );
 
         if ( $args['echo'] )
-            echo wp_kses_post( $paginate_links );
+            echo $paginate_links;
         else
-            return wp_kses_post( $paginate_links );
+            return $paginate_links;
     }
 }
 
@@ -672,7 +672,7 @@ function responsi_custom_breadcrumbs() {
     $separator          = '&gt;';
     $breadcrums_id      = 'breadcrumbs';
     $breadcrums_class   = 'breadcrumb breadcrumbs responsi-breadcrumbs';
-    $home_title         = __('Home', 'responsi');
+    $home_title         = esc_attr__('Home', 'responsi');
       
     // If you have any custom post types with custom taxonomies, put the taxonomy name below (e.g. product_cat)
     $custom_taxonomy    = "{$wp_query->post->post_type}_cat";
@@ -684,10 +684,10 @@ function responsi_custom_breadcrumbs() {
     if ( !is_front_page() ) {
        
         // Build the breadcrums
-        echo '<div id="' . esc_attr($breadcrums_id) . '" class="' . esc_attr($breadcrums_class) . '"><div class="breadcrumb-trail">';
+        echo '<div id="' . $breadcrums_id . '" class="' . $breadcrums_class . '"><div class="breadcrumb-trail">';
            
         // Home page
-        echo '<a href="' . esc_url( home_url() ) . '" title="' . esc_attr( get_bloginfo( 'name' ) ) . '" rel="home" class="trail-begin">' . esc_attr( $home_title ). '</a>';
+        echo '<a href="' . esc_url( home_url() ) . '" title="' . esc_attr( get_bloginfo( 'name' ) ) . '" rel="home" class="trail-begin">' . $home_title . '</a>';
         echo '<span class="sep"> ' . wp_kses_post( $separator ) . ' </span>';
            
         if ( is_archive() && !is_tax() && !is_category() && !is_tag() && !is_author() ) {
@@ -705,13 +705,13 @@ function responsi_custom_breadcrumbs() {
                 $post_type_object = get_post_type_object($post_type);
                 $post_type_archive = get_post_type_archive_link($post_type);
               
-                echo '<a href="' . esc_url($post_type_archive) . '">' . esc_attr($post_type_object->labels->name) . '</a>';
+                echo '<a href="' . $post_type_archive . '">' . $post_type_object->labels->name . '</a>';
                 echo '<span class="sep"> ' . wp_kses_post( $separator ) . ' </span>';
               
             }
               
             $custom_tax_name = get_queried_object()->name;
-            echo '<span class="trail-end">' . esc_attr($custom_tax_name) . '</span>';
+            echo '<span class="trail-end">' . $custom_tax_name . '</span>';
               
         } else if ( is_single() ) {
               
@@ -724,7 +724,7 @@ function responsi_custom_breadcrumbs() {
                 $post_type_object = get_post_type_object($post_type);
                 $post_type_archive = get_post_type_archive_link($post_type);
               
-                echo '<a href="' . esc_url($post_type_archive) . '">' . esc_attr($post_type_object->labels->name) . '</a>';
+                echo '<a href="' . $post_type_archive . '">' . $post_type_object->labels->name . '</a>';
                 echo '<span class="sep"> ' . wp_kses_post( $separator ) . ' </span>';
               
             }
@@ -764,19 +764,19 @@ function responsi_custom_breadcrumbs() {
               
             // Check if the post is in a category
             if(!empty($last_category)) {
-                echo wp_kses_post($cat_display);
-                echo '<span class="trail-end">' . wp_kses_post(get_the_title()) . '</span>';
+                echo $cat_display;
+                echo '<span class="trail-end">' . get_the_title() . '</span>';
                   
             // Else if post is in a custom taxonomy
             } else if(!empty($cat_id)) {
                   
-                echo '<a href="' . esc_url($cat_link) . '">' . esc_attr($cat_name) . '</a>';
+                echo '<a href="' . $cat_link . '">' . $cat_name . '</a>';
                 echo '<span class="sep"> ' . wp_kses_post( $separator ) . ' </span>';
-                echo '<span class="trail-end">' . wp_kses_post(get_the_title()) . '</span>';
+                echo '<span class="trail-end">' . get_the_title() . '</span>';
               
             } else {
                   
-                echo '<span class="trail-end">' . wp_kses_post(get_the_title()) . '</span>';
+                echo '<span class="trail-end">' . get_the_title() . '</span>';
                   
             }
               
@@ -791,7 +791,7 @@ function responsi_custom_breadcrumbs() {
             if( $post->post_parent ){
                    
                 // If child page, get parents 
-                $anc = wp_kses_post(get_post_ancestors( $post->ID ));
+                $anc = get_post_ancestors( $post->ID );
                    
                 // Get parents in the right order
                 $anc = array_reverse($anc);
@@ -799,20 +799,20 @@ function responsi_custom_breadcrumbs() {
                 // Parent page loop
                 if ( !isset( $parents ) ) $parents = null;
                 foreach ( $anc as $ancestor ) {
-                    $parents .= '<a href="' . get_permalink($ancestor) . '">' . wp_kses_post(get_the_title($ancestor)) . '</a>';
+                    $parents .= '<a href="' . get_permalink($ancestor) . '">' . get_the_title($ancestor) . '</a>';
                     $parents .= '<span class="sep"> ' . wp_kses_post( $separator ) . ' </span>';
                 }
                    
                 // Display parent pages
-                echo  wp_kses_post( $parents );
+                echo $parents;
                    
                 // Current page
-                echo '<span class="trail-end">' . wp_kses_post(get_the_title()) . '</span>';
+                echo '<span class="trail-end">' . get_the_title() . '</span>';
                    
             } else {
                    
                 // Just display current page if not parents
-                echo '<span class="trail-end">' . wp_kses_post(get_the_title()) . '</span>';
+                echo '<span class="trail-end">' . get_the_title() . '</span>';
                    
             }
                
@@ -830,38 +830,38 @@ function responsi_custom_breadcrumbs() {
             $get_term_name  = $terms[0]->name;
                
             // Display the tag name
-            echo '<span class="trail-end">' . esc_attr($get_term_name) . '</span>';
+            echo '<span class="trail-end">' . $get_term_name . '</span>';
            
         } elseif ( is_day() ) {
                
             // Day archive
                
             // Year link
-            echo '<a href="' . esc_url( get_year_link( esc_attr( get_the_time('Y') )) ). '">' . esc_attr( get_the_time('Y') ). '</a>';
+            echo '<a href="' . get_year_link( get_the_time('Y') ) . '">' . get_the_time('Y') . '</a>';
             echo '<span class="sep"> ' . wp_kses_post( $separator ) . ' </span>';
                
             // Month link
-            echo '<a href="' . esc_url(get_month_link( get_the_time('Y'), get_the_time('m') )) . '">' . esc_attr(get_the_time('M')) . '</a>';
+            echo '<a href="' . get_month_link( get_the_time('Y'), get_the_time('m') ) . '">' . get_the_time('M') . '</a>';
             echo '<span class="sep"> ' . wp_kses_post( $separator ) . ' </span>';
                
             // Day display
-            echo '<span class="trail-end">' . esc_attr(get_the_time('jS')) . ' ' . esc_attr(get_the_time('M')) . '</span>';
+            echo '<span class="trail-end">' . get_the_time('jS') . ' ' . get_the_time('M') . '</span>';
                
         } else if ( is_month() ) {
                
             // Month Archive
                
             // Year link
-            echo '<a href="' . esc_url( get_year_link( esc_attr( get_the_time('Y') ))) . '">' . esc_attr(get_the_time('Y')) . '</a>';
+            echo '<a href="' . get_year_link( get_the_time('Y') ) . '">' . get_the_time('Y') . '</a>';
             echo '<span class="sep"> ' . wp_kses_post( $separator ) . ' </span>';
                
             // Month display
-            echo '<span class="trail-end">' . esc_attr(get_the_time('M')) . '</span>';
+            echo '<span class="trail-end">' . get_the_time('M') . '</span>';
                
         } else if ( is_year() ) {
                
             // Display year archive
-            echo '<span class="trail-end">' . esc_attr(get_the_time('Y')) . '</span>';
+            echo '<span class="trail-end">' . get_the_time('Y') . '</span>';
                
         } else if ( is_author() ) {
                
@@ -872,12 +872,12 @@ function responsi_custom_breadcrumbs() {
             $userdata = get_userdata( $author );
                
             // Display author name
-            echo '<span class="trail-end">' . wp_kses_post($userdata->display_name) . '</span>';
+            echo '<span class="trail-end">' . $userdata->display_name . '</span>';
            
         } else if ( get_query_var('paged') ) {
                
             // Paginated archives
-            echo '<span class="trail-end">'. esc_attr(__('Page','responsi')) . ' ' . wp_kses_post(get_query_var('paged')) . '</span>';
+            echo '<span class="trail-end">'.esc_attr__('Page','responsi') . ' ' . get_query_var('paged') . '</span>';
                
         } else if ( is_search() ) {
            
@@ -887,7 +887,7 @@ function responsi_custom_breadcrumbs() {
         } elseif ( is_404() ) {
                
             // 404 page
-            echo '<span class="trail-end">' .esc_attr(__('Error 404','responsi')) . '</span>';
+            echo '<span class="trail-end">' .esc_attr__('Error 404','responsi') . '</span>';
         }
        
         echo '</div></div>';
@@ -917,10 +917,10 @@ function responsi_breadcrumbs( $args = array() ) {
     /* Set up the default arguments for the breadcrumb. */
     $defaults = array(
         'separator' => '&gt;',
-        'before' => '<span class="breadcrumb-title">' . __( 'You are here:', 'responsi' ) . '</span>',
+        'before' => '<span class="breadcrumb-title">' . esc_attr__( 'You are here:', 'responsi' ) . '</span>',
         'after' => false,
         'front_page' => false,
-        'show_home' => __('Home', 'responsi'),
+        'show_home' => esc_attr__('Home', 'responsi'),
         'echo' => true,
         'show_posts_page' => true
     );
@@ -1075,11 +1075,11 @@ function responsi_breadcrumbs( $args = array() ) {
             $trail['trail_end'] = get_the_author_meta( 'display_name', get_query_var( 'author' ) );
         } elseif ( is_time() ) {
             if ( get_query_var( 'minute' ) && get_query_var( 'hour' ) )
-                $trail['trail_end'] = get_the_time( __( 'g:i a', 'responsi' ) );
+                $trail['trail_end'] = get_the_time( esc_attr__( 'g:i a', 'responsi' ) );
             elseif ( get_query_var( 'minute' ) )
-                $trail['trail_end'] = sprintf( __( 'Minute %1$s', 'responsi' ), get_the_time( esc_attr(__( 'i', 'responsi' ) ) ) );
+                $trail['trail_end'] = sprintf( esc_attr__( 'Minute %1$s', 'responsi' ), get_the_time( esc_attr__( 'i', 'responsi' ) ) );
             elseif ( get_query_var( 'hour' ) )
-                $trail['trail_end'] = get_the_time( esc_attr(__( 'g a', 'responsi' ) ));
+                $trail['trail_end'] = get_the_time( esc_attr__( 'g a', 'responsi' ) );
         } elseif ( is_date() ) {
 
             /* If $front has been set, check for parent pages. */
@@ -1087,25 +1087,25 @@ function responsi_breadcrumbs( $args = array() ) {
                 $trail = array_merge( $trail, responsi_breadcrumbs_get_parents( '', $wp_rewrite->front ) );
 
             if ( is_day() ) {
-                $trail[]            = '<a href="' . get_year_link( get_the_time( 'Y' ) ) . '" title="' . get_the_time( esc_attr__( 'Y', 'responsi' ) ) . '">' . get_the_time( esc_attr(__( 'Y', 'responsi' ) ) ) . '</a>';
-                $trail[]            = '<a href="' . get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) . '" title="' . get_the_time( esc_attr__( 'F', 'responsi' ) ) . '">' . get_the_time( esc_attr(__( 'F', 'responsi' ) )) . '</a>';
-                $trail['trail_end'] = get_the_time( __( 'j', 'responsi' ) );
+                $trail[]            = '<a href="' . get_year_link( get_the_time( 'Y' ) ) . '" title="' . get_the_time( esc_attresc_attr__( 'Y', 'responsi' ) ) . '">' . get_the_time( esc_attr__( 'Y', 'responsi' ) ) . '</a>';
+                $trail[]            = '<a href="' . get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) . '" title="' . get_the_time( esc_attresc_attr__( 'F', 'responsi' ) ) . '">' . get_the_time( esc_attr__( 'F', 'responsi' ) ) . '</a>';
+                $trail['trail_end'] = get_the_time( esc_attr__( 'j', 'responsi' ) );
             }
 
             elseif ( get_query_var( 'w' ) ) {
-                $trail[]            = '<a href="' . get_year_link( get_the_time( 'Y' ) ) . '" title="' . get_the_time( esc_attr__( 'Y', 'responsi' ) ) . '">' . get_the_time( esc_attr(__( 'Y', 'responsi' )) ) . '</a>';
-                $trail['trail_end'] = sprintf( __( 'Week %1$s', 'responsi' ), get_the_time( esc_attr__( 'W', 'responsi' ) ) );
+                $trail[]            = '<a href="' . get_year_link( get_the_time( 'Y' ) ) . '" title="' . get_the_time( esc_attresc_attr__( 'Y', 'responsi' ) ) . '">' . get_the_time( esc_attr__( 'Y', 'responsi' ) ) . '</a>';
+                $trail['trail_end'] = sprintf( esc_attr__( 'Week %1$s', 'responsi' ), get_the_time( esc_attresc_attr__( 'W', 'responsi' ) ) );
             } elseif ( is_month() ) {
-                $trail[]            = '<a href="' . get_year_link( get_the_time( 'Y' ) ) . '" title="' . get_the_time( esc_attr__( 'Y', 'responsi' ) ) . '">' . get_the_time( esc_attr(__( 'Y', 'responsi' )) ) . '</a>';
-                $trail['trail_end'] = get_the_time( esc_attr(__( 'F', 'responsi' )) );
+                $trail[]            = '<a href="' . get_year_link( get_the_time( 'Y' ) ) . '" title="' . get_the_time( esc_attresc_attr__( 'Y', 'responsi' ) ) . '">' . get_the_time( esc_attr__( 'Y', 'responsi' ) ) . '</a>';
+                $trail['trail_end'] = get_the_time( esc_attr__( 'F', 'responsi' ) );
             } elseif ( is_year() ) {
-                $trail['trail_end'] = get_the_time( esc_attr(__( 'Y', 'responsi' )) );
+                $trail['trail_end'] = get_the_time( esc_attr__( 'Y', 'responsi' ) );
             }
         }
     } elseif ( is_search() )
-        $trail['trail_end'] = sprintf( __('Search results for &quot;%1$s&quot;', 'responsi' ), esc_attr( get_search_query() ) );
+        $trail['trail_end'] = sprintf( esc_attr__('Search results for &quot;%1$s&quot;', 'responsi' ), esc_attr( get_search_query() ) );
     elseif ( is_404() )
-        $trail['trail_end'] = esc_attr(__( '404 Not Found', 'responsi' ));
+        $trail['trail_end'] = esc_attr__( '404 Not Found', 'responsi' );
 
     /* Allow child themes/plugins to filter the trail array. */
     $trail = apply_filters( 'responsi_breadcrumbs_trail', $trail, $args );
@@ -1144,7 +1144,7 @@ function responsi_breadcrumbs( $args = array() ) {
 
     /* Output the breadcrumb. */
     if ( $echo )
-        echo wp_kses_post($breadcrumb);
+        echo $breadcrumb;
     else
         return $breadcrumb;
 }
@@ -1515,7 +1515,6 @@ if ( !function_exists( 'responsi_hextorgb' ) ) {
 }
 
 if ( !function_exists( 'responsi_generate_background_transparent_color' ) ) {
-
     function responsi_generate_background_transparent_color( $color, $transparency = 100, $important = true ) {
 
         if ( $important ) {
@@ -1539,10 +1538,6 @@ if ( !function_exists( 'responsi_generate_background_transparent_color' ) ) {
 }
 
 if ( !function_exists( 'responsi_generate_animation' ) ) {
-
-    /**
-     * responsi_generate_animation
-    */
 
     function responsi_generate_animation( $options = array('type' => 'none', 'direction' => '', 'duration' => '1','delay' => '1') ) {
 
@@ -4621,7 +4616,6 @@ function responsi_framework_upgrade(){
             'responsi_hext_n_container_mobile_margin_right'             => 'responsi_container_nav_mobile_margin_right',
 
             //'responsi_hext_n_container_mobile_padding'                  => 'responsi_container_nav_mobile_padding',
-            
             'responsi_hext_n_container_mobile_padding_top'              => 'responsi_container_nav_mobile_padding_top',
             'responsi_hext_n_container_mobile_padding_bottom'           => 'responsi_container_nav_mobile_padding_bottom',
             'responsi_hext_n_container_mobile_padding_left'             => 'responsi_container_nav_mobile_padding_left',
@@ -4634,12 +4628,10 @@ function responsi_framework_upgrade(){
             'responsi_hext_n_content_background_image_size_on'          => 'responsi_content_nav_background_image_size_on',
             
             //'responsi_hext_n_content_background_image_size'             => 'responsi_content_nav_background_image_size',
-
             'responsi_hext_n_content_background_image_size_height'      => 'responsi_content_nav_background_image_size_height',
             'responsi_hext_n_content_background_image_size_width'       => 'responsi_content_nav_background_image_size_width',
             
             //'responsi_hext_n_content_background_image_position'         => 'responsi_content_nav_background_image_position',
-
             'responsi_hext_n_content_background_image_position_vertical'    => 'responsi_content_nav_background_image_position_vertical',
             'responsi_hext_n_content_background_image_position_horizontal'  => 'responsi_content_nav_background_image_position_horizontal',
             
@@ -4657,28 +4649,24 @@ function responsi_framework_upgrade(){
             'responsi_hext_n_content_margin_right'                      => 'responsi_content_nav_margin_right',
 
             //'responsi_hext_n_content_padding'                           => 'responsi_content_nav_padding',
-
             'responsi_hext_n_content_padding_top'                       => 'responsi_content_nav_padding_top',
             'responsi_hext_n_content_padding_bottom'                    => 'responsi_content_nav_padding_bottom',
             'responsi_hext_n_content_padding_left'                      => 'responsi_content_nav_padding_left',
             'responsi_hext_n_content_padding_right'                     => 'responsi_content_nav_padding_right',
 
             //'responsi_hext_n_content_mobile_margin'                     => 'responsi_content_nav_mobile_margin',
-
             'responsi_hext_n_content_mobile_margin_top'                 => 'responsi_content_nav_mobile_margin_top',
             'responsi_hext_n_content_mobile_margin_bottom'              => 'responsi_content_nav_mobile_margin_bottom',
             'responsi_hext_n_content_mobile_margin_left'                => 'responsi_content_nav_mobile_margin_left',
             'responsi_hext_n_content_mobile_margin_right'               => 'responsi_content_nav_mobile_margin_right',
 
             //'responsi_hext_n_content_mobile_padding'                    => 'responsi_content_nav_mobile_padding',
-
             'responsi_hext_n_content_mobile_padding_top'                => 'responsi_content_nav_mobile_padding_top',
             'responsi_hext_n_content_mobile_padding_bottom'             => 'responsi_content_nav_mobile_padding_bottom',
             'responsi_hext_n_content_mobile_padding_left'               => 'responsi_content_nav_mobile_padding_left',
             'responsi_hext_n_content_mobile_padding_right'              => 'responsi_content_nav_mobile_padding_right',
 
             //Navbar Wrapper Options
-
             'responsi_hext_navbar_container_bg_color'                   => 'responsi_nav_bg',
             'responsi_hext_navbar_container_border_top'                 => 'responsi_nav_border_top',
             'responsi_hext_navbar_container_border_bottom'              => 'responsi_nav_border_bottom',
@@ -4690,21 +4678,18 @@ function responsi_framework_upgrade(){
             'responsi_hext_navbar_container_shadow'                     => 'responsi_nav_shadow',
 
             //'responsi_hext_navbar_container_margin'                     => 'responsi_nav_margin',
-
             'responsi_hext_navbar_container_margin_top'                 => 'responsi_nav_margin_top',
             'responsi_hext_navbar_container_margin_bottom'              => 'responsi_nav_margin_bottom',
             'responsi_hext_navbar_container_margin_left'                => 'responsi_nav_margin_left',
             'responsi_hext_navbar_container_margin_right'               => 'responsi_nav_margin_right',
             
             //'responsi_hext_navbar_container_padding'                    => 'responsi_nav_padding',
-
             'responsi_hext_navbar_container_padding_top'                => 'responsi_nav_padding_top',
             'responsi_hext_navbar_container_padding_bottom'             => 'responsi_nav_padding_bottom',
             'responsi_hext_navbar_container_padding_left'               => 'responsi_nav_padding_left',
             'responsi_hext_navbar_container_padding_right'              => 'responsi_nav_padding_right',
 
             //Navbar Items Options
-
             'responsi_hext_navi_border_top'                             => 'responsi_navi_border_top',
             'responsi_hext_navi_border_bottom'                          => 'responsi_navi_border_bottom',
             'responsi_hext_navi_border_left'                            => 'responsi_navi_border_left',
@@ -6944,7 +6929,7 @@ function responsi_framework_upgrade(){
 function responsi_wp_editor_customize() {
     ?>
     <div id="wp-editor-customize-container" style="display:none;">
-        <a href="#" class="close close-editor-button" title="<?php echo esc_attr(__( 'Close', 'responsi' )); ?>"><span class="icon"></span></a>
+        <a href="#" class="close close-editor-button" title="<?php echo esc_attr__( 'Close', 'responsi' ); ?>"><span class="icon"></span></a>
         <div class="editor">
             <span id="wpeditor_customize_title" class="customize-control-title"></span>
             <?php
@@ -6955,9 +6940,9 @@ function responsi_wp_editor_customize() {
             wp_editor( '', 'wpeditorcustomize', array( 'textarea_name' => 'wpeditorcustomize', 'media_buttons' => true, 'textarea_rows' => 20, 'tinymce' => true, 'wpautop' => true ) );
             do_action('filter_mce_external_plugins_after');
             $output .= ob_get_clean();
-            echo wp_kses_post($output);
+            echo $output;
             ?>
-            <p><a href="#" data-id="setting-id" class="button button-primary update-editor-button"><?php echo esc_attr(__( 'Save and close', 'responsi' )); ?></a></p>
+            <p><a href="#" data-id="setting-id" class="button button-primary update-editor-button"><?php echo esc_attr__( 'Save and close', 'responsi' ); ?></a></p>
         </div>
     </div>
     <div id="wp-editor-customize-backdrop" style="display:none;"></div>
