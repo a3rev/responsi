@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.3.7 - 2022/03/24 =
+* This maintenance relase fixes an call to an undefined function in version 8.3.6
+* Fix - Uncaught Error: Call to undefined function ecs_attr__()
+
 = 8.3.6 - 2022/03/21 =
 * This maintenance release has some further security tweaks and a mobile viewport bug fix.
 * Tweak - Some escaping / sanitizing wrong in version 8.3.5

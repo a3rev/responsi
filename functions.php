@@ -4,9 +4,9 @@
 /* ResponsiFramework */
 /*-----------------------------------------------------------------------------------*/
 
-define('RESPONSI_FRAMEWORK_VERSION', '8.3.6');
+define( 'RESPONSI_FRAMEWORK_VERSION', '8.3.7' );
 
-require_once('functions/admin-init.php');                    // Framework Init
+require_once ( 'functions/admin-init.php' );					// Framework Init
 
 /*-----------------------------------------------------------------------------------*/
 /* You can add custom functions below */
@@ -16,3 +16,5 @@ require_once('functions/admin-init.php');                    // Framework Init
 /*-----------------------------------------------------------------------------------*/
 /* Don't add any code below here or the sky will fall down */
 /*-----------------------------------------------------------------------------------*/
+
+?>

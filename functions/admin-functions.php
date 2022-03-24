@@ -623,8 +623,8 @@ if ( !function_exists( 'responsi_pagination' ) ) {
             'current'  => $paged,
             'mid_size' => 1,
             'add_args' => array_map( 'urlencode', $query_args ),
-            'prev_text' => esc_attr__( '&larr; Previous', 'responsi' ),
-            'next_text' => esc_attr__( 'Next &rarr;', 'responsi' ),
+            'prev_text' => __( '&larr; Previous', 'responsi' ),
+            'next_text' => __( 'Next &rarr;', 'responsi' ),
             'prev_next' => false,
             'show_all' => true,
             'end_size' => 1,
@@ -1087,23 +1087,23 @@ function responsi_breadcrumbs( $args = array() ) {
                 $trail = array_merge( $trail, responsi_breadcrumbs_get_parents( '', $wp_rewrite->front ) );
 
             if ( is_day() ) {
-                $trail[]            = '<a href="' . get_year_link( get_the_time( 'Y' ) ) . '" title="' . get_the_time( esc_attresc_attr__( 'Y', 'responsi' ) ) . '">' . get_the_time( esc_attr__( 'Y', 'responsi' ) ) . '</a>';
-                $trail[]            = '<a href="' . get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) . '" title="' . get_the_time( esc_attresc_attr__( 'F', 'responsi' ) ) . '">' . get_the_time( esc_attr__( 'F', 'responsi' ) ) . '</a>';
+                $trail[]            = '<a href="' . get_year_link( get_the_time( 'Y' ) ) . '" title="' . get_the_time( esc_attr__( 'Y', 'responsi' ) ) . '">' . get_the_time( esc_attr__( 'Y', 'responsi' ) ) . '</a>';
+                $trail[]            = '<a href="' . get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) . '" title="' . get_the_time( esc_attr__( 'F', 'responsi' ) ) . '">' . get_the_time( esc_attr__( 'F', 'responsi' ) ) . '</a>';
                 $trail['trail_end'] = get_the_time( esc_attr__( 'j', 'responsi' ) );
             }
 
             elseif ( get_query_var( 'w' ) ) {
-                $trail[]            = '<a href="' . get_year_link( get_the_time( 'Y' ) ) . '" title="' . get_the_time( esc_attresc_attr__( 'Y', 'responsi' ) ) . '">' . get_the_time( esc_attr__( 'Y', 'responsi' ) ) . '</a>';
-                $trail['trail_end'] = sprintf( esc_attr__( 'Week %1$s', 'responsi' ), get_the_time( esc_attresc_attr__( 'W', 'responsi' ) ) );
+                $trail[]            = '<a href="' . get_year_link( get_the_time( 'Y' ) ) . '" title="' . get_the_time( esc_attr__( 'Y', 'responsi' ) ) . '">' . get_the_time( esc_attr__( 'Y', 'responsi' ) ) . '</a>';
+                $trail['trail_end'] = sprintf( __( 'Week %1$s', 'responsi' ), get_the_time( esc_attr__( 'W', 'responsi' ) ) );
             } elseif ( is_month() ) {
-                $trail[]            = '<a href="' . get_year_link( get_the_time( 'Y' ) ) . '" title="' . get_the_time( esc_attresc_attr__( 'Y', 'responsi' ) ) . '">' . get_the_time( esc_attr__( 'Y', 'responsi' ) ) . '</a>';
+                $trail[]            = '<a href="' . get_year_link( get_the_time( 'Y' ) ) . '" title="' . get_the_time( esc_attr__( 'Y', 'responsi' ) ) . '">' . get_the_time( esc_attr__( 'Y', 'responsi' ) ) . '</a>';
                 $trail['trail_end'] = get_the_time( esc_attr__( 'F', 'responsi' ) );
             } elseif ( is_year() ) {
                 $trail['trail_end'] = get_the_time( esc_attr__( 'Y', 'responsi' ) );
             }
         }
     } elseif ( is_search() )
-        $trail['trail_end'] = sprintf( esc_attr__('Search results for &quot;%1$s&quot;', 'responsi' ), esc_attr( get_search_query() ) );
+        $trail['trail_end'] = sprintf( __('Search results for &quot;%1$s&quot;', 'responsi' ), esc_attr( get_search_query() ) );
     elseif ( is_404() )
         $trail['trail_end'] = esc_attr__( '404 Not Found', 'responsi' );
 
