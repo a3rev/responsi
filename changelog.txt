@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 8.3.8 - 2022/03/29 =
+* This maintenance release has 2 customizer text colour conflict fixes for WordPress 5.9
+* Fix - Customizer global text colour conflict with WordPress 5.9
+* Fix - Customizer global link colour conflict with WordPress 5.9
+
 = 8.3.7 - 2022/03/24 =
 * This maintenance relase fixes an call to an undefined function in version 8.3.6
 * Fix - Uncaught Error: Call to undefined function ecs_attr__()
