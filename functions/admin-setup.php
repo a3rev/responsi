@@ -10,7 +10,7 @@ if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 
 	function responsi_framework_upgrade_version(){
 
-		if( version_compare(get_option('responsi_framework_version'), '8.3.8', '<') ){
+		if( version_compare(get_option('responsi_framework_version'), '8.3.9', '<') ){
 
 	        if( function_exists('responsi_dynamic_css') ){
 	        	responsi_dynamic_css( 'framework' );
@@ -839,4 +839,11 @@ function responsi_wp_prepare_themes_for_js( $prepared_themes ){
 	return $prepared_themes;
 }
 
+function responsi_tweak_css_adminmenuback(){
+	$css = '.php-error #adminmenuback, .php-error #adminmenuwrap{
+		margin-top: 0;
+	}';
+	wp_add_inline_style( 'admin-menu', $css );
+}
+add_action( 'admin_init', 'responsi_tweak_css_adminmenuback' );
 ?>

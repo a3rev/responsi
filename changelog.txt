@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 8.3.9 - 2022/05/24 =
+* This maintenance release has various tweaks for compatibility with WordPress major version 6.0
+* Tweak - Test for compatibility with WordPress 6.0
+* Tweak - Style for compatibility with WordPress 6.0
+
 = 8.3.8 - 2022/03/29 =
 * This maintenance release has 2 customizer text colour conflict fixes for WordPress 5.9
 * Fix - Customizer global text colour conflict with WordPress 5.9
