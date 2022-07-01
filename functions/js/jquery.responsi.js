@@ -810,6 +810,7 @@ jQuery(document).ready(function($) {
             });
             maxPageNumber = pageNumbers.length + 1;
         }
+
         if (nextPage) {
             if (responsi_paramaters.responsi_is_customized) {
                 onAjaxLoad = false;
@@ -825,21 +826,39 @@ jQuery(document).ready(function($) {
                             img: responsi_paramaters.responsi_loading_icon
                         },
                         maxPage: maxPageNumber,
-                        //if ( ! responsi_paramaters.responsi_is_customized ) {
                         path: function generatePageUrl(currentPage) {
+                            
                             var pageNumbers = $('div.pagination').find('a.page-numbers');
                             var url = window.location.href;
-                            if (responsi_paramaters.responsi_is_search) {
-                                return [url + "&paged=" + currentPage];
-                            } else {
-                                if (responsi_paramaters.responsi_is_permalinks) {
-                                    return [url + "page/" + currentPage + "/"];
+                            var urls = '';
+
+                            if (pageNumbers.length > 0) {
+                                pageNumbers.each(function(index) {
+                                    if ($(this).html() == (parseInt(currentPage))) {
+                                        urls = $(this).attr('href');
+                                    }
+                                });
+                            }
+
+                            var checkExt = urls.toString().split('.').pop(); 
+
+                            if( responsi_paramaters.responsi_allow_nextpage_ext.includes(checkExt) ){
+                                url = urls;
+                            }else{
+                                if (responsi_paramaters.responsi_is_search) {
+                                    url = url + "&paged=" + currentPage;
                                 } else {
-                                    return [url + "&paged=" + currentPage];
+                                    if (responsi_paramaters.responsi_is_permalinks) {
+                                        url = url + "page/" + currentPage + "/";
+                                    } else {
+                                        url  = url + "&paged=" + currentPage;
+                                    }
                                 }
                             }
+
+                            return url;
+
                         }
-                        //}
                     },
                     function(newElements, opts) {
                         var $newElems = $(newElements).css({

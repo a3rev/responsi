@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 8.4.0 - 2022/07/01 =
+* This release adds support for pagination to automatically support .html and .htm url extensions
+* Feature - Add new pagination filter to automatically work with sites that use .html and .htm url extensions
+* Dev - Developers can use new filter can be used to add pagination support for other url extensions.
+
 = 8.3.9 - 2022/05/24 =
 * This maintenance release has various tweaks for compatibility with WordPress major version 6.0
 * Tweak - Test for compatibility with WordPress 6.0

@@ -213,6 +213,7 @@ if ( ! function_exists( 'responsi_load_javascript' ) ){
 	        'responsi_loading_text_end'     	=> apply_filters( 'responsi_infinitescroll_loading_text_end', __( "No more Posts to load.", "responsi" ) ),
 	        'responsi_loading_text'      		=> apply_filters( 'responsi_infinitescroll_loading_text', __( "Loading the next set of post...", "responsi" ) ),
 	        'responsi_loading_icon'      		=> apply_filters( 'responsi_infinitescroll_loading_icon', esc_url( get_template_directory_uri().'/functions/js/masonry/loading-black.gif' ) ),
+	        'responsi_allow_nextpage_ext'     	=> apply_filters( 'responsi_allow_nextpage_ext', array( 'html', 'htm' ) ),
 	        'responsi_google_webfonts'      	=> is_customize_preview() ? esc_url( responsi_google_webfonts() ) : false,
 	        'responsi_exclude_button_css'   	=> responsi_exclude_button_css(),
 	        'responsi_button_none_css_lists'	=> responsi_button_none_css_lists()
