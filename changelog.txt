@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.4.1 - 2022/07/11 =
+* This release has a fix for a conflict with post excerpts and Core Excerpt Block
+* Fix - Conflict post excerpt with block excerpt core (loop while excerpt is blank or empty)
+
 = 8.4.0 - 2022/07/01 =
 * This release adds support for pagination to automatically support .html and .htm url extensions
 * Feature - Add new pagination filter to automatically work with sites that use .html and .htm url extensions
