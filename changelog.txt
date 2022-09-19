@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.4.2 - 2022/09/19 =
+* This maintenance release has various Style tweaks for compatibility with WooCommerce major version 6.9.0
+* Tweak - WooCommerce style for compatibility with WooCommerce 6.9.2
+
 = 8.4.1 - 2022/07/11 =
 * This release has a fix for a conflict with post excerpts and Core Excerpt Block
 * Fix - Conflict post excerpt with block excerpt core (loop while excerpt is blank or empty)

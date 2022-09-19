@@ -10,7 +10,7 @@ if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 
 	function responsi_framework_upgrade_version(){
 
-		if( version_compare(get_option('responsi_framework_version'), '8.4.1', '<') ){
+		if( version_compare(get_option('responsi_framework_version'), '8.4.2', '<') ){
 
 	        if( function_exists('responsi_dynamic_css') ){
 	        	responsi_dynamic_css( 'framework' );
@@ -582,6 +582,7 @@ if ( ! function_exists( 'responsi_setup' ) ){
 		add_theme_support( 'block-templates' );
 		add_theme_support( 'custom-units' );
 		add_theme_support( 'custom-spacing' );
+		//add_theme_support( 'block-template-parts' );
 		
 
 
