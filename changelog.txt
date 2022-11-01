@@ -1,5 +1,13 @@
 *** Responsi Framework Changelog ***
 
+= 8.5.0 - 2022/11/01 =
+* This feature release adds the first steps in redeveloping Responsi from a Customizer Theme to a Universal Theme plus various tweaks for compatibility with WordPress major version 6.1
+* Feature - Create Header Pattern for FSE template to get Responsi header style
+* Feature - Create Footer Pattern for FSE template to get Responsi footer style
+* Feature - Create Navigation Pattern for FSE template to get Responsi Navigation style
+* Tweak - Test for compatibility with WordPress 6.1
+* Tweak - Style for compatibility with WordPress 6.1
+
 = 8.4.2 - 2022/09/19 =
 * This maintenance release has various Style tweaks for compatibility with WooCommerce major version 6.9.0
 * Tweak - WooCommerce style for compatibility with WooCommerce 6.9.2

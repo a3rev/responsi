@@ -590,6 +590,7 @@ final class Customizer {
 		.logo.site-logo a, .logo.site-logo img { vertical-align: top; }
 		.logo.site-logo, .header .header-widget-1 .widget .logo.site-logo, .header .header-widget-1 .widget .logo.site-logo:hover, .header .header-widget-1 .widget .logo.site-logo:link, .header .header-widget-1 .widget .logo.site-logo:visited, .header .header-widget-1 .widget .logo.site-logo:focus { display: inline-block; line-height: 0; max-width: 100%; }
 		.logo-ctn, .desc-ctn { line-height: 0; padding: 0; margin: 0; box-sizing: border-box; }
+		.logo-ctn h1{margin:0 !important}
 		.site-description { display: block; }
 		.header a.logo { display: inline; }
 		.header .header-widget-1 a, .header .header-widget-2 a, .header .header-widget-3 a, .header .header-widget-4 a, .header .header-widget-5 a, .header .header-widget-6 a { display: inline; }
@@ -635,7 +636,11 @@ final class Customizer {
 		.responsi-area-post .post, .responsi-area-post .post-entries, .responsi-area-post #comments, .responsi-area-post #respond { margin-bottom: 0; margin-top: 0; }
 		p.pvc_stats { margin-bottom: 0; background-position: left center !important; }
 		.msr-wg-footer { display: inline-block; width: 100%; }
-		.footer .credit a { vertical-align: middle; display: inline-block; }
+		.footer .credit a { vertical-align: middle; display: inline-block;line-height:0;margin-left:5px; }
+		.footer .credit-animation {display: flex;justify-content: end;align-items: center;}
+		.footer .credit-animation:before,.footer .credit-animation:after{display:none;}
+		.footer .copyright-animation:before,.footer .copyright-animation:after{display:none;}
+		.footer .wp-block-loginout{display:inline}
 		.footer-widgets { clear: both; position: relative; }
 		.infinite-scroll.masonry { transition-property: none; }
 		.navigation-mobile { display: none; }
@@ -760,6 +765,11 @@ final class Customizer {
 			.main { width: 100% !important; }
 		}
 		@media only screen and (min-width:601px) {
+			.footer .footer-copyright-credit{
+				display:flex;
+				align-items:center;
+				justify-content:space-between;
+			}
 			.footer .col-left { margin-bottom: 0; float: left; }
 			.footer .col-right { margin-bottom: 0; text-align: right; float: right; }
 		}

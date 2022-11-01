@@ -841,9 +841,9 @@ if ( !function_exists( 'responsi_build_loginout' ) ) {
         $atts = array_merge( $defaults, $atts );
 
         if ( !is_user_logged_in() )
-            $link = '<a href="' . esc_url( wp_login_url( $atts['redirect'] ) ) . '">' . __('Login', 'responsi') . '</a>';
+            $link = '<div class="logged-out wp-block-loginout"><a href="' . esc_url( wp_login_url( $atts['redirect'] ) ) . '">' . __('Log in', 'responsi') . '</a></div>';
         else
-            $link = '<a href="' . esc_url( wp_logout_url( $atts['redirect'] ) ) . '">' . __('Logout', 'responsi') . '</a>';
+            $link = '<div class="logged-in wp-block-loginout"><a href="' . esc_url( wp_logout_url( $atts['redirect'] ) ) . '">' . __('Log out', 'responsi') . '</a></div>';
 
         $output = $atts['before'] . apply_filters( 'loginout', $link ) . $atts['after'];
 
@@ -1008,7 +1008,7 @@ if ( !function_exists( 'responsi_build_credit' ) ) {
                 $text_after = $footer_right_text_after;
             }
 
-            $html = $text_before . ' ' . $right_logo . ' ' . $text_after;
+            $html = '<p>'.$text_before . $right_logo . $text_after.'</p>';
         }
 
         $html .= $loginout;
@@ -1747,11 +1747,13 @@ if ( !function_exists( 'responsi_title' ) ) {
 if ( !function_exists( 'responsi_wrapper_footer_content' ) ) {
     function responsi_wrapper_footer_content(){
         ?>
-        <div id="copyright" class="copyright col-left">
-            <?php do_action( 'responsi_wrapper_footer_content_copyright' ); ?>
-        </div>
-        <div id="credit" class="credit col-right">
-            <?php do_action( 'responsi_wrapper_footer_content_credit' ); ?>
+        <div class="footer-copyright-credit">
+            <div id="copyright" class="copyright col-left">
+                <?php do_action( 'responsi_wrapper_footer_content_copyright' ); ?>
+            </div>
+            <div id="credit" class="credit col-right">
+                <?php do_action( 'responsi_wrapper_footer_content_credit' ); ?>
+            </div>
         </div>
         <?php
     }
@@ -2703,4 +2705,5 @@ if ( ! function_exists( 'responsi_add_crossorigin_fontface' ) ) {
         do_action( 'responsi_add_crossorigin_fontface_after' );
     }
 }
+
 ?>

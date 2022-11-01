@@ -797,6 +797,7 @@ $responsi_requires = array(
     'functions/theme-actions.php',
     'functions/theme-extension.php',
     'functions/theme-sidebar-init.php',
+    'functions/block-patterns.php',
 );
 
 foreach ( $responsi_requires as $i ) {

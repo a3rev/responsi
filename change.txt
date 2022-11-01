@@ -12,7 +12,13 @@
 
 *** If's fine then continue upgrade other sites - Have Issue STOP -> And please notice - Thanks
 
-
+/*
+Templates FSE
+<!-- wp:template-part {"slug":"header","tagName":"div"} /-->
+<!-- wp:template-part {"slug":"navigation","tagName":"div"} /-->
+<!-- wp:template-part {"slug":"main","tagName":"div"} /-->
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
+*/
 
 // Phase 2 -----------
 
