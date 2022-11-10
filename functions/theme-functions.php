@@ -256,12 +256,6 @@ if ( !function_exists( 'responsi_body_class' ) ) {
                 $classes[] = 'mobile-header-6';
         }
 
-        if ( isset($responsi_options['responsi_layout_boxed']) && 'true' === $responsi_options['responsi_layout_boxed'] ) {
-            $classes[] = 'layout-box-mode';
-        } else {
-            $classes[] = 'layout-wide-mode';
-        }
-
         if ( wp_style_is( 'fontawesome', 'enqueued' ) ){
             $classes[] = 'has-fontawesome';
         }
@@ -316,10 +310,6 @@ if ( !function_exists( 'responsi_body_class' ) ) {
             $classes[] = 'is-login';
         }
 
-        if ( version_compare( $wp_version, '5.2.4', '>' ) ) {
-            $classes[] = 'wpNew';
-        }
-        
         return $classes;
     }
 }
@@ -2369,7 +2359,7 @@ if ( !function_exists( 'responsi_blog_animation_html_open' ) ) {
                 $animation_style = ' style="'.$responsi_blog_animation['style'].'"';
             }
 
-            $html = '<div class="animCard clearfix'.$animation_class.'"'.$animation_data . $animation_style.'>';        
+            $html = '<div class="animCard'.$animation_class.'"'.$animation_data . $animation_style.'>';        
             
             echo $html;
         //}

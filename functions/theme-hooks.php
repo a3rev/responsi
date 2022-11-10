@@ -178,8 +178,8 @@ function responsi_framework_default_scripts( &$scripts ){
 	$scripts->add( 'a3-blockpress-animation', get_template_directory_uri() . '/functions/js/front/js/animation-on-scroll.js', array('waypoints' ), $responsi_version, true );
 	$scripts->add( 'jquery-mobile-touch', get_template_directory_uri() . '/functions/js/jquery.mobile.touch.min.js', array( 'jquery'), $responsi_version, true );
 	$scripts->add( 'responsi-custom-fields', get_template_directory_uri() . '/functions/js/custom-fields'.$suffix.'.js', array( 'jquery', 'jquery-ui-tabs' ), $responsi_version, true );
-	$scripts->add( 'responsi-main-script', get_template_directory_uri() . '/functions/js/jquery.responsi'.$suffix.'.js', array( 'jquery' ), $responsi_version, true );
-	$scripts->add( 'responsi-infinitescroll', get_template_directory_uri() . '/functions/js/masonry/jquery.infinitescroll'.$suffix.'.js', array( 'jquery-masonry' ), $responsi_version, true );
+	$scripts->add( 'infinitescroll', get_template_directory_uri() . '/functions/js/infinite-scroll.pkgd.min.js', array( 'jquery' ), '4.0.1', true );
+	$scripts->add( 'responsi-main-script', get_template_directory_uri() . '/functions/js/jquery.responsi'.$suffix.'.js', array( 'jquery', 'infinitescroll' ), $responsi_version, true );
 }
 
 add_action( 'wp_default_scripts', 'responsi_framework_default_scripts', 11 );
@@ -194,8 +194,9 @@ if ( ! function_exists( 'responsi_load_javascript' ) ){
 		if( wp_is_mobile() ){
 			wp_enqueue_script( 'jquery-mobile-touch' );
 		}
+
 		wp_enqueue_script( 'responsi-main-script' );
-        wp_enqueue_script( 'responsi-infinitescroll' );
+        wp_enqueue_script( 'infinitescroll' );
         if( $responsi_animate ){
         	wp_enqueue_script( 'a3-blockpress-animation' );
         }
@@ -212,14 +213,13 @@ if ( ! function_exists( 'responsi_load_javascript' ) ){
 	        'responsi_fixed_thumbnail_tall'		=> isset( $responsi_options['responsi_fixed_thumbnail_tall'] ) ? $responsi_options['responsi_fixed_thumbnail_tall'] : 63,
 	        'responsi_loading_text_end'     	=> apply_filters( 'responsi_infinitescroll_loading_text_end', __( "No more Posts to load.", "responsi" ) ),
 	        'responsi_loading_text'      		=> apply_filters( 'responsi_infinitescroll_loading_text', __( "Loading the next set of post...", "responsi" ) ),
-	        'responsi_loading_icon'      		=> apply_filters( 'responsi_infinitescroll_loading_icon', esc_url( get_template_directory_uri().'/functions/js/masonry/loading-black.gif' ) ),
 	        'responsi_allow_nextpage_ext'     	=> apply_filters( 'responsi_allow_nextpage_ext', array( 'html', 'htm' ) ),
 	        'responsi_google_webfonts'      	=> is_customize_preview() ? esc_url( responsi_google_webfonts() ) : false,
 	        'responsi_exclude_button_css'   	=> responsi_exclude_button_css(),
 	        'responsi_button_none_css_lists'	=> responsi_button_none_css_lists()
 		);
 
-		wp_localize_script( 'jquery-masonry', 'responsi_paramaters', $responsi_paramaters );
+		wp_localize_script( 'responsi-main-script', 'responsi_paramaters', $responsi_paramaters );
 	    
 	    if ( is_singular() ) {
 	    	wp_enqueue_script( 'comment-reply' );

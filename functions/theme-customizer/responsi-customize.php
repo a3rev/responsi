@@ -607,7 +607,6 @@ final class Customizer {
 		#twitter a { display: inline; padding: 0; background: none !important; border: none !important; }
 		.fb_iframe_widget, .fb_iframe_widget > span, .fb_iframe_widget iframe * { max-width: 100%; }
 		.fb_iframe_widget iframe { position: relative; left: 0; max-width: 100%; }
-		.box-item .entry-item .card-thumb .thumb a img:not(.lazy-hidden) { opacity: 0; }
 		.site-loaded .box-item .entry-item .card-thumb .thumb a img { opacity: 1; transition: opacity 0.5s; }
 		.box-item { box-sizing: border-box; float: left; }
 		.card-item { overflow: hidden; }

@@ -9,9 +9,6 @@ if (!defined('ABSPATH'))
 /*-----------------------------------------------------------------------------------*/
 function responsi_admin_body_class( $classes ) {
     global $wp_version;
-    if ( version_compare( $wp_version, '5.2.4', '>' ) ) {
-        $classes .= ' wpNew';
-    }
     return $classes;
 }
 
@@ -601,20 +598,24 @@ if ( !function_exists( 'responsi_pagination' ) ) {
             return;
         }
 
-        $paged        = get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
-        $pagenum_link = html_entity_decode( get_pagenum_link() );
-        $query_args   = array();
-        $url_parts    = explode( '?', $pagenum_link );
+        $paged          = get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
+        $pagenum_link   = html_entity_decode( get_pagenum_link() );
+        $query_args     = array();
+        $url_parts      = explode( '?', $pagenum_link );
+        $default_format = '?paged=%#%';
 
         if ( isset( $url_parts[1] ) ) {
             wp_parse_str( $url_parts[1], $query_args );
+            if( isset($query_args['page_id']) ){
+                $default_format = '?page_id='.$query_args['page_id'].'&paged=%#%';
+            }
         }
 
         $pagenum_link = remove_query_arg( array_keys( $query_args ), $pagenum_link );
         $pagenum_link = trailingslashit( $pagenum_link ) . '%_%';
 
         $format  = $wp_rewrite->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
-        $format .= $wp_rewrite->using_permalinks() ? user_trailingslashit( $wp_rewrite->pagination_base . '/%#%', 'paged' ) : '?paged=%#%';
+        $format .= $wp_rewrite->using_permalinks() ? user_trailingslashit( $wp_rewrite->pagination_base . '/%#%', 'paged' ) : $default_format;
 
         $defaults = apply_filters( 'responsi_pagination_args', array(
             'base'     => $pagenum_link,
@@ -625,7 +626,7 @@ if ( !function_exists( 'responsi_pagination' ) ) {
             'add_args' => array_map( 'urlencode', $query_args ),
             'prev_text' => __( '&larr; Previous', 'responsi' ),
             'next_text' => __( 'Next &rarr;', 'responsi' ),
-            'prev_next' => false,
+            'prev_next' => true,
             'show_all' => true,
             'end_size' => 1,
             'mid_size' => 1,
@@ -642,7 +643,33 @@ if ( !function_exists( 'responsi_pagination' ) ) {
         $paginate_links = '';
 
         if ( $links ) {
-            $paginate_links = '<div class="pagination responsi-pagination clearfix" role="navigation">' . $links . '</div>';
+
+            $paginate_links = '';
+
+            $responsi_showmore           = isset( $responsi_options['responsi_showmore'] ) ? $responsi_options['responsi_showmore'] : 'click_showmore';
+            $responsi_showmore_text      = isset( $responsi_options['responsi_showmore_text'] ) ? trim( $responsi_options['responsi_showmore_text'] ) : __( 'Show more', 'responsi' );
+            
+            $responsi_loading_text_end   = apply_filters( 'responsi_infinitescroll_loading_text_end', __( "No more Posts to load.", "responsi" ) );
+            $responsi_loading_text       = apply_filters( 'responsi_infinitescroll_loading_text', __( "Loading the next set of post...", "responsi" ) );
+            
+            $paginate_links .= '<div class="responsi-scroller-status page-load-status">
+              <div class="loader-ellips infinite-scroll-request">
+                <span class="loader-ellips__dot"></span>
+                <span class="loader-ellips__dot"></span>
+                <span class="loader-ellips__dot"></span>
+                <span class="loader-ellips__dot"></span>
+              </div>
+              <p class="infinite-scroll-last">'.$responsi_loading_text_end.'</p>
+              <p class="infinite-scroll-error">'.$responsi_loading_text_end.'</p>
+            </div>';
+
+
+            if( $responsi_showmore === 'click_showmore' ){
+                $paginate_links .= '<div class="pagination-ctrl"><div class="pagination-btn"><a class="view-more showmore" href="#" rel="noopener">'.$responsi_showmore_text.'</a></div></div>';
+            }
+
+           
+            $paginate_links .= '<div class="pagination responsi-pagination clearfix" role="navigation">' . $links . '</div>';
         }
 
         $paginate_links = apply_filters( 'responsi_pagination', $paginate_links );
@@ -1778,10 +1805,20 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
         $gutter = ( esc_attr( $gutter ) );
 
         $output = '
-        .box-item{
-            margin-bottom: '.( ($gutter_vertical) ).'px !important;
+        .box-content, .box-content-custom {
+            display:flex;
+            flex-wrap: wrap;
+            gap:'.( ($gutter) ).'%;
+            column-gap: '.( ($gutter) ).'% !important;
+            row-gap: '.( ($gutter_vertical) ).'px !important;
+            margin-bottom: '.( ($gutter_vertical) ).'px;
         }
-        .box-content .box-item{margin-right:'.($gutter).'%;}';
+
+        .box-content .box-item, .box-content-custom .box-item{
+            width:100%;
+        }
+
+        ';
 
         $output .= '@media only screen and (min-width:783px) {';
 
@@ -1921,315 +1958,36 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                 }';
 
             $output .= '
-                .box .box-content.col1, .col-1-full .box .box-content.col1 .box-item, .box .box-content.col1 .box-item {
+                .box .box-content.col1, .col-1-full .box .box-content.col1 .box-item, .box .box-content.col1 .box-item,
+                .box .box-content-custom.col1, .col-1-full .box .box-content-custom.col1 .box-item, .box .box-content-custom.col1 .box-item {
                     width: 100% !important;
                 }';
 
-            $box_item_2 = ((100-(($gutter*2)))/2);
-            $box_item_3 = ((100-(($gutter*3)))/3);
-            $box_item_4 = ((100-(($gutter*4)))/4);
-            $box_item_5 = ((100-(($gutter*5)))/5);
-            $box_item_6 = ((100-(($gutter*6)))/6);
-
-            $box_item_1_2 = ((100-(($gutter*2)))/2);
-            $box_item_1_3 = ((100-(($gutter*3)))/3);
-            $box_item_1_4 = ((100-(($gutter*4)))/4);
-            $box_item_1_5 = ((100-(($gutter*5)))/5);
-            $box_item_1_6 = ((100-(($gutter*6)))/6);
-
-            $box_item_2_3 = ((100-(($gutter*3)))/2);
-            $box_item_2_4 = ((100-(($gutter*4)))/3);
-            $box_item_2_5 = ((100-(($gutter*5)))/4);
-            $box_item_2_6 = ((100-(($gutter*6)))/5);
-
-            $box_item_3_4 = ((100-(($gutter*3.5)))/2);
-            $box_item_3_5 = ((100-(($gutter*4.5)))/3);
-            $box_item_3_6 = ((100-(($gutter*5.5)))/4);
-
-            if( $gutter == 0 ){
-
-                $box_content_2 = (100.1+(($gutter)));
-                $box_content_3 = (100.1+(($gutter)));
-                $box_content_4 = (100.1+(($gutter)));
-                $box_content_5 = (100.1+(($gutter)));
-                $box_content_6 = (100.1+(($gutter)));
-
-                $box_content_1_2 = (100.1+(($gutter*2)));
-                $box_content_1_3 = (100.1+(($gutter*3)));
-                $box_content_1_4 = (100.1+(($gutter*4)));
-                $box_content_1_5 = (100.1+(($gutter*5)));
-                $box_content_1_6 = (100.1+(($gutter*6)));
-
-                $box_content_2_3 = (100.1+(($gutter*2)));
-                $box_content_2_4 = (100.1+(($gutter*3)));
-                $box_content_2_5 = (100.1+(($gutter*4)));
-                $box_content_2_6 = (100.1+(($gutter*5)));
-
-                $box_content_3_4 = (100.1+(($gutter*2)));
-                $box_content_3_5 = (100.1+(($gutter*2)));
-                $box_content_3_6 = (100.2+(($gutter*3)));
-                
-            }elseif( $gutter == 0.5 ){
-
-                $box_content_2 = (100.1+(($gutter)));
-                $box_content_3 = (100.1+(($gutter)));
-                $box_content_4 = (100.1+(($gutter)));
-                $box_content_5 = (100.1+(($gutter)));
-                $box_content_6 = (100.2+(($gutter)));
-
-                $box_content_1_2 = (99.6+(($gutter*2)));
-                $box_content_1_3 = (99.1+(($gutter*3)));
-                $box_content_1_4 = (98.6+(($gutter*4)));
-                $box_content_1_5 = (98.1+(($gutter*5)));
-                $box_content_1_6 = (97.6+(($gutter*6)));
-
-                $box_content_2_3 = (99.8+(($gutter*2)));
-                $box_content_2_4 = (99.2+(($gutter*3)));
-                $box_content_2_5 = (98.6+(($gutter*4)));
-                $box_content_2_6 = (98.2+(($gutter*5)));
-
-                $box_content_3_4 = (99.8+(($gutter*2.2)));
-                $box_content_3_5 = (99.8+(($gutter*2)));
-                $box_content_3_6 = (99.8+(($gutter*2)));
-                
-            }elseif( $gutter == 1 ){
-
-                $box_content_2 = (100.1+(($gutter)));
-                $box_content_3 = (100.1+(($gutter)));
-                $box_content_4 = (100.1+(($gutter)));
-                $box_content_5 = (100.1+(($gutter)));
-                $box_content_6 = (100.1+(($gutter)));
-
-                $box_content_1_2 = (99.1+(($gutter*2)));
-                $box_content_1_3 = (98.1+(($gutter*3)));
-                $box_content_1_4 = (97.1+(($gutter*4)));
-                $box_content_1_5 = (96.1+(($gutter*5)));
-                $box_content_1_6 = (95.1+(($gutter*6)));
-
-                $box_content_2_3 = (99.5+(($gutter*2)));
-                $box_content_2_4 = (98.5+(($gutter*3)));
-                $box_content_2_5 = (97.3+(($gutter*4)));
-                $box_content_2_6 = (96.3+(($gutter*5)));
-
-                $box_content_3_4 = (99.7+(($gutter*2.2)));
-                $box_content_3_5 = (99.6+(($gutter*2)));
-                $box_content_3_6 = (99.6+(($gutter*2)));
-                
-            }elseif( $gutter == 1.5 ){
-
-                $box_content_2 = (100.1+(($gutter)));
-                $box_content_3 = (100.1+(($gutter)));
-                $box_content_4 = (100.1+(($gutter)));
-                $box_content_5 = (100.1+(($gutter)));
-                $box_content_6 = (100.1+(($gutter)));
-
-                $box_content_1_2 = (98.6+(($gutter*2)));
-                $box_content_1_3 = (97.1+(($gutter*3)));
-                $box_content_1_4 = (95.6+(($gutter*4)));
-                $box_content_1_5 = (94.1+(($gutter*5)));
-                $box_content_1_6 = (92.6+(($gutter*6)));
-
-                $box_content_2_3 = (99.2+(($gutter*2)));
-                $box_content_2_4 = (97.6+(($gutter*3)));
-                $box_content_2_5 = (96+(($gutter*4)));
-                $box_content_2_6 = (94.5+(($gutter*5)));
-
-                $box_content_3_4 = (99.4+(($gutter*2.2)));
-                $box_content_3_5 = (99.4+(($gutter*2)));
-                $box_content_3_6 = (99.2+(($gutter*2)));
-                
-            }elseif( $gutter == 2 ){
-
-                $box_content_2 = (100.1+(($gutter)));
-                $box_content_3 = (100.1+(($gutter)));
-                $box_content_4 = (100.1+(($gutter)));
-                $box_content_5 = (100.1+(($gutter)));
-                $box_content_6 = (100.2+(($gutter)));
-
-                $box_content_1_2 = (98.1+(($gutter*2)));
-                $box_content_1_3 = (96.1+(($gutter*3)));
-                $box_content_1_4 = (94.1+(($gutter*4)));
-                $box_content_1_5 = (92.1+(($gutter*5)));
-                $box_content_1_6 = (90.1+(($gutter*6)));
-
-                $box_content_2_3 = (99.2+(($gutter*2)));
-                $box_content_2_4 = (96.8+(($gutter*3)));
-                $box_content_2_5 = (94.6+(($gutter*4)));
-                $box_content_2_6 = (92.6+(($gutter*5)));
-
-                $box_content_3_4 = (99.3+(($gutter*2.2)));
-                $box_content_3_5 = (99.2+(($gutter*2)));
-                $box_content_3_6 = (98.9+(($gutter*2)));
-                
-            }elseif( $gutter == 2.5 ){
-
-                $box_content_2 = (100.1+(($gutter)));
-                $box_content_3 = (100.1+(($gutter)));
-                $box_content_4 = (100.1+(($gutter)));
-                $box_content_5 = (100.1+(($gutter)));
-                $box_content_6 = (100.2+(($gutter)));
-
-                $box_content_1_2 = (97.6+(($gutter*2)));
-                $box_content_1_3 = (95.1+(($gutter*3)));
-                $box_content_1_4 = (92.6+(($gutter*4)));
-                $box_content_1_5 = (90.2+(($gutter*5)));
-                $box_content_1_6 = (87.6+(($gutter*6)));
-
-                $box_content_2_3 = (98.8+(($gutter*2)));
-                $box_content_2_4 = (96.03+(($gutter*3)));
-                $box_content_2_5 = (93.3+(($gutter*4)));
-                $box_content_2_6 = (90.8+(($gutter*5)));
-
-                $box_content_3_4 = (99.1+(($gutter*2.2)));
-                $box_content_3_5 = (99+(($gutter*2)));
-                $box_content_3_6 = (98.6+(($gutter*2)));
-                
-            }elseif( $gutter == 3 ){
-
-                $box_content_2 = (100.1+(($gutter)));
-                $box_content_3 = (100.1+(($gutter)));
-                $box_content_4 = (100.1+(($gutter)));
-                $box_content_5 = (100.1+(($gutter)));
-                $box_content_6 = (100.2+(($gutter)));
-
-                $box_content_1_2 = (97.2+(($gutter*2)));
-                $box_content_1_3 = (94.1+(($gutter*3)));
-                $box_content_1_4 = (91.2+(($gutter*4)));
-                $box_content_1_5 = (88.2+(($gutter*5)));
-                $box_content_1_6 = (85.2+(($gutter*6)));
-
-                $box_content_2_3 = (98.7+(($gutter*2)));
-                $box_content_2_4 = (95.2+(($gutter*3)));
-                $box_content_2_5 = (92+(($gutter*4)));
-                $box_content_2_6 = (88.8+(($gutter*5)));
-
-                $box_content_3_4 = (99+(($gutter*2.2)));
-                $box_content_3_5 = (98.8+(($gutter*2)));
-                $box_content_3_6 = (98.4+(($gutter*2)));
-
-            }
-
             $output .= '
-                .box-content.col2 {
-                    width: '.$box_content_2.'%;
+                .box-content.col2 .box-item,
+                .box-content-custom.col2 .box-item{
+                    width:calc( ( 100% - '. $gutter.'% ) / 2 );
                 }
 
-                .box-content.col2 .box-item {
-                    width: '.$box_item_2.'%;
+                .box-content.col3 .box-item,
+                .box-content-custom.col3 .box-item{
+                    width:calc( ( 100% - '. ( $gutter * 2 ).'% ) / 3 );
                 }
 
-                .box-content.col3 {
-                    width: '.$box_content_3.'%;
-                }
-                .box-content.col3 .box-item {
-                    width: '.$box_item_3.'%;
+                .box-content.col4 .box-item,
+                .box-content-custom.col4 .box-item{
+                    width:calc( ( 100% - '. ( $gutter * 3 ).'% ) / 4 );
                 }
 
-                .box-content.col4 {
-                    width: '.$box_content_4.'%;
-                }
-                .box-content.col4 .box-item {
-                    width: '.$box_item_4.'%;
+                .box-content.col5 .box-item,
+                .box-content-custom.col5 .box-item{
+                    width:calc( ( 100% - '. ( $gutter * 4 ).'% ) / 5 );
                 }
 
-                .box-content.col5 {
-                    width: '.$box_content_5.'%;
-                }
-                .box-content.col5 .box-item {
-                    width: '.$box_item_5.'%;
-                }
-
-                .box-content.col6 {
-                    width: '.$box_content_6.'%;
-                }
-                .box-content.col6 .box-item {
-                    width: '.$box_item_6.'%;
+                .box-content.col6 .box-item,
+                .box-content-custom.col6 .box-item{
+                    width:calc( ( 100% - '. ( $gutter * 5 ).'% ) / 6 );
                 }';
-
-            $output .= '
-                .col-1-full .box .box-content.col2 {
-                    width: '.$box_content_1_2.'%;
-                }
-                .col-1-full .box .box-content.col2 .box-item {
-                    width: '.$box_item_1_2.'%;
-                }
-                .col-1-full .box .box-content.col3 {
-                    width: '.$box_content_1_3.'%;
-                }
-                .col-1-full .box .box-content.col3 .box-item {
-                    width: '.$box_item_1_3.'%;
-                }
-                .col-1-full .box .box-content.col4 {
-                    width: '.$box_content_1_4.'%;
-                }
-                .col-1-full .box .box-content.col4 .box-item {
-                    width: '.$box_item_1_4.'%;
-                }
-                .col-1-full .box .box-content.col5 {
-                    width: '.$box_content_1_5.'%;
-                }
-                .col-1-full .box .box-content.col5 .box-item {
-                    width: '.$box_item_1_5.'%;
-                }
-                .col-1-full .box .box-content.col6 {
-                    width: '.$box_content_1_6.'%;
-                }
-                .col-1-full .box .box-content.col6 .box-item {
-                    width: '.$box_item_1_6.'%;
-                }
-                ';
-
-            $output .= '
-                .col-2-3 .box .box-content.col2 {
-                    width: '.$box_content_2_3.'%;
-                }
-                .col-2-3 .box .box-content.col2 .box-item{
-                    width: '.$box_item_2_3.'%;
-                }
-                .col-2-4 .box .box-content.col3 {
-                    width: '.$box_content_2_4.'%;
-                }
-                .col-2-4 .box .box-content.col3 .box-item {
-                    width: '.$box_item_2_4.'%;
-                }
-                .col-2-5 .box .box-content.col4 {
-                    width: '.$box_content_2_5.'%;
-                }
-                .col-2-5 .box .box-content.col4 .box-item{
-                    width: '.$box_item_2_5.'%;
-                }
-                .col-2-6 .box .box-content.col5 {
-                    width: '.$box_content_2_6.'%;
-                }
-                .col-2-6 .box .box-content.col5 .box-item{
-                    width: '.$box_item_2_6.'%;
-                }
-                ';
-
-            $output .= '
-                .col-3-4 .box .box-content.col2 {
-                    width: '.$box_content_3_4.'%;
-                }
-                .col-3-4 .box .box-content.col2 .box-item{
-                    width: '.$box_item_3_4.'%;
-                }';
-
-            $output .= '
-                .col-3-5 .box .box-content.col3 {
-                    width: '.$box_content_3_5.'%;
-                }
-                .col-3-5 .box .box-content.col3 .box-item {
-                    width: '.$box_item_3_5.'%;
-                }';
-
-            $output .= '
-                .col-3-6 .box .box-content.col4 {
-                    width: '.$box_content_3_6.'%;
-                }
-                .col-3-6 .box .box-content.col4 .box-item {
-                    width: '.$box_item_3_6.'%;
-                }
-                ';
 
         $output .= '}';
 
@@ -2264,12 +2022,20 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                 margin-right: '.$gutter.'% !important;
             }
 
-            .content .main .box-content {
-                width: '.$box_content_2.'% !important;
+            .box-content.col2 .box-item,
+            .box-content.col3 .box-item,
+            .box-content.col4 .box-item,
+            .box-content.col5 .box-item,
+            .box-content.col6 .box-item,
+            .box-content-custom.col2 .box-item,
+            .box-content-custom.col3 .box-item,
+            .box-content-custom.col4 .box-item,
+            .box-content-custom.col5 .box-item,
+            .box-content-custom.col6 .box-item
+            {
+                width:calc( ( 100% - '. $gutter.'% ) / 2 );
             }
-            .content .main .box-content .box-item {
-                width: '.$box_item_2.'% !important;
-            }
+
             .content .main .box.col-item {
                 display: inline-block;
                 float: left;
@@ -2288,15 +2054,10 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
                 margin-right: '.$gutter.'% !important;
             }
 
-            .content .sidebar .sidebar-in,
-            .content .sidebar-alt .sidebar-in {
-                width: '.$box_content_2.'% !important;
-            }
             .content .sidebar .msr-wg,
             .content .sidebar-alt .msr-wg {
                 margin-left: auto !important;
                 margin-right: auto !important;
-                width: '.$box_item_2.'% !important;
             }
 
             .col-2 .box.col-item {

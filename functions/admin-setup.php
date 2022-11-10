@@ -10,7 +10,7 @@ if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 
 	function responsi_framework_upgrade_version(){
 
-		if( version_compare(get_option('responsi_framework_version'), '8.5.0', '<') ){
+		if( version_compare(get_option('responsi_framework_version'), '8.6.0', '<') ){
 
 	        if( function_exists('responsi_dynamic_css') ){
 	        	responsi_dynamic_css( 'framework' );
@@ -76,6 +76,12 @@ if ( ! function_exists( 'responsi_framework_upgrade_version' ) ){
 	    if ( version_compare(get_option('responsi_framework_version'), '7.6.2') === -1 ) {
 	        if( function_exists('responsi_dynamic_css') ){
 	        	_upgrade_customize_custom_css_phase2();
+		        responsi_dynamic_css( 'framework' );
+		    }
+	    }
+
+	    if ( version_compare(get_option('responsi_framework_version'), '8.6.0') === -1 ) {
+	        if( function_exists('responsi_dynamic_css') ){
 		        responsi_dynamic_css( 'framework' );
 		    }
 	    }
