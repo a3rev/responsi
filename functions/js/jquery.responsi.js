@@ -771,58 +771,114 @@ jQuery(document).ready(function($) {
             }
         }
 
-        let elemInfiniteScroll = document.querySelector('.box-content');
+        function responsiInfiniteScroll( elem ){
 
-        if( null !== elemInfiniteScroll ){
+            if( null !== elem ){
 
-            let scrollThresholdData = true
-        
-            if ('click_showmore' === responsi_paramaters.responsi_showmore) {
-                scrollThresholdData = false;
+                let scrollThresholdData = true
+            
+                if ('click_showmore' === responsi_paramaters.responsi_showmore) {
+                    scrollThresholdData = false;
+                }
+
+                if( null !== document.querySelector('a.next.page-numbers') ){
+
+                    let options = {
+                        path:'a.next.page-numbers',
+                        path1: function generatePageUrl() {
+
+                            let pageNumbers = $('body').find('.pagination').find('a.page-numbers:not(.next)');
+
+                            if( pageNumbers.length > 0 && pageNumbers.length == 1){
+                                return pageNumbers[this.loadCount] ? pageNumbers[this.loadCount].href : false;
+                            }else{
+
+                                if (pageNumbers.length > 0 && this.loadCount <= pageNumbers.length ) {
+                                    console.log(pageNumbers[this.loadCount] ? pageNumbers[this.loadCount].href : false);
+                                    return pageNumbers[this.loadCount] ? pageNumbers[this.loadCount].href : false;
+                                }
+                            }
+
+                            return false;
+
+                        },
+                        append: false,
+                        history: false,
+                        checkLastPage: true,
+                        status: '.responsi-scroller-status',
+                        button: '.pagination-ctrl',
+                        hideNav: '.responsi-pagination',
+                        scrollThreshold: scrollThresholdData,
+                    };
+
+
+                    let infScroll = new InfiniteScroll( elem, options);
+
+                    infScroll.on( 'load', function( body, path, response ) {
+                        if( null !== document.querySelector('a.next.page-numbers') ){
+                            let items = '';
+                            let appendItems = '';
+                            let contents = body.querySelector('.box-content');
+                            if( null !== contents ){
+
+                                items = contents.querySelectorAll('.box-item');
+                                appendItems = items;
+                                elem.append( ...appendItems );
+                                
+                                $(document.body).trigger('newElements');
+
+                                if (typeof $(window).lazyLoadXT !== 'undefined' && typeof $(window).lazyLoadXT === 'function') { 
+                                    $(window).lazyLoadXT();
+                                }
+
+                                if( this.button != undefined ){
+                                    this.button.element.classList.remove("requesting");
+                                }
+
+                            }
+                        }
+                    });
+
+                    infScroll.on( 'request', function( path, fetchPromise ) {
+                        if( this.button != undefined  ){
+                            this.button.element.classList.add("requesting");
+                        }
+                    });
+
+                    infScroll.on( 'last', function( body, path ) {
+                        $('.page-load-status .infinite-scroll-last').fadeOut( 2600, function() {});
+                    });
+
+                    infScroll.on( 'error', function( body, path ) {
+                        $('.page-load-status .infinite-scroll-error').fadeOut( 2600, function() {});
+                    });
+
+                    return infScroll;
+                    
+                }else{
+                    return false;
+                }
+
             }
 
-            if( null !== document.querySelector('a.next.page-numbers') ){
-                let infScroll = new InfiniteScroll( elemInfiniteScroll, {
-                    path: 'a.next.page-numbers',
-                    append: false,
-                    history: false,
-                    checkLastPage: true,
-                    status: '.responsi-scroller-status',
-                    button: '.pagination-ctrl',
-                    scrollThreshold: scrollThresholdData,
-                });
-
-                infScroll.on( 'load', function( body, path, response ) {
-                    let items = '';
-                    let appendItems = '';
-                    let contents = body.querySelector('.box-content');
-                    if( null !== contents ){
-
-                        items = contents.querySelectorAll('.box-item');
-                        appendItems = items;
-                        elemInfiniteScroll.append( ...appendItems );
-                        
-                        $(document.body).trigger('newElements');
-
-                        if (typeof jQuery(window).lazyLoadXT !== 'undefined' && typeof jQuery(window).lazyLoadXT === 'function') { 
-                            $(window).lazyLoadXT();
-                        }
-
-                        if( this.button != undefined ){
-                            this.button.element.classList.remove("requesting");
-                        }
-
-                    }
-                });
-
-                infScroll.on( 'request', function( path, fetchPromise ) {
-                    if( this.button != undefined  ){
-                        this.button.element.classList.add("requesting");
-                    }
-                });
-            }
+            return false;
 
         }
+
+        let elemInfiniteScroll = document.querySelector('.box-content');
+
+        let infScroll = responsiInfiniteScroll( elemInfiniteScroll );
+
+        $(window).on('vsaf_ajax_filtering_end' , function() {
+        
+            if( infScroll ){
+                infScroll.destroy();
+                infScroll = responsiInfiniteScroll( elemInfiniteScroll );
+            }else{
+                infScroll = responsiInfiniteScroll( elemInfiniteScroll );
+            }
+        });
+
 
         if ( ( typeof wp != "undefined" && typeof wp != undefined ) && ( typeof wp.customize != "undefined" && typeof wp.customize != undefined ) ) {
             setTimeout(function() {

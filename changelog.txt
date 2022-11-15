@@ -1,12 +1,12 @@
 *** Responsi Framework Changelog ***
 
-= 8.6.0 - 2022/11/10 =
+= 8.6.0 - 2022/11/15 =
 * This feature release is a major Framework upgrade from Masonry JS to Flex CSS grid Layouts plus upgraded Infinite Scroll JavaScript.
 * Feature - Removed Masonry layout JavaScript and CSS and replace with Flex CSS 
 * Feature - Updated all layout that used Masonry to use style Flex css
 * Feature - Grid Rows are now always in aligned rows in desktop & tablet with equal sized display cards
 * Performance - Improved Performance of Grid pages display times with smaller CSS and JS
-* Upgrade - Upgrade infinitescroll JavaScript to version v3.0.6
+* Upgrade - Upgrade infinitescroll JavaScript to version v4.0.1
 
 = 8.5.0 - 2022/11/01 =
 * This feature release adds the first steps in redeveloping Responsi from a Customizer Theme to a Universal Theme plus various tweaks for compatibility with WordPress major version 6.1

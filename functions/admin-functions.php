@@ -590,7 +590,7 @@ function responsi_send_no_xss_protection_header( $headers, $object ) {
 
 if ( !function_exists( 'responsi_pagination' ) ) {
     function responsi_pagination( $args = array() ) {
-        global $wp_query, $wp_rewrite;
+        global $wp_query, $wp_rewrite, $responsi_options;
 
         do_action('responsi_pagination_start');
 

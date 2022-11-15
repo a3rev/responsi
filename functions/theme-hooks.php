@@ -195,8 +195,9 @@ if ( ! function_exists( 'responsi_load_javascript' ) ){
 			wp_enqueue_script( 'jquery-mobile-touch' );
 		}
 
-		wp_enqueue_script( 'responsi-main-script' );
         wp_enqueue_script( 'infinitescroll' );
+		wp_enqueue_script( 'responsi-main-script' );
+
         if( $responsi_animate ){
         	wp_enqueue_script( 'a3-blockpress-animation' );
         }
@@ -220,7 +221,7 @@ if ( ! function_exists( 'responsi_load_javascript' ) ){
 		);
 
 		wp_localize_script( 'responsi-main-script', 'responsi_paramaters', $responsi_paramaters );
-	    
+
 	    if ( is_singular() ) {
 	    	wp_enqueue_script( 'comment-reply' );
 	    }
