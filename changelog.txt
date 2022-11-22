@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.6.1 - 2022/11/22 =
+* This maintenance release removes the obsolete jQuery Mobile script.
+* Performance - Removed jQuery mobile script
+
 = 8.6.0 - 2022/11/15 =
 * This feature release is a major Framework upgrade from Masonry JS to Flex CSS grid Layouts plus upgraded Infinite Scroll JavaScript.
 * Feature - Removed Masonry layout JavaScript and CSS and replace with Flex CSS 

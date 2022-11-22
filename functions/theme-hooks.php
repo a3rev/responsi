@@ -192,7 +192,7 @@ if ( ! function_exists( 'responsi_load_javascript' ) ){
 	function responsi_load_javascript(){
 		global $responsi_version, $responsi_options, $layout, $content_column, $content_column_grid, $responsi_animate;
 		if( wp_is_mobile() ){
-			wp_enqueue_script( 'jquery-mobile-touch' );
+			//wp_enqueue_script( 'jquery-mobile-touch' );
 		}
 
         wp_enqueue_script( 'infinitescroll' );
