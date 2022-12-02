@@ -10,6 +10,9 @@
  */
 ?>
 <?php
+
+global $responsi_icons;
+
 $cats = get_the_category_list( ', ' . ' ' );
 $cats = str_replace( '<li>', '<span>', $cats );
 $cats = str_replace( '</li>', '</span>', $cats );
@@ -42,14 +45,14 @@ if( $title === get_the_title() ){
             </div>
         </div>
         <div class="card-meta">
-            <div class="postinfo"><div class="meta-lines"><?php echo apply_filters( 'responsi_post_author_posts_card_link', '', array( 'before' => '<span class="i_author">By ', 'after' => '</span> <span class="i_in">in</span>' ) );?><?php if($cats) echo '<span class="i_cat">'.$cats.'</span>';?></div></div>
+            <div class="postinfo"><div class="meta-lines"><?php echo apply_filters( 'responsi_post_author_posts_card_link', '', array( 'before' => '<span class="i_author">'.$responsi_icons['author'].' By ', 'after' => '</span> <span class="i_in">in</span>' ) );?><?php if($cats) echo '<span class="i_cat">'.$responsi_icons['category'].' '.$cats.'</span>';?></div></div>
             <div class="posttags">
                 <div class="meta-lines">
                 <?php
                 $tags = get_the_tags( get_the_ID() );
                 $html = '';
                 if( $tags ){
-                    $html = '<span class="i_tag"><span class="i_tag_text">'.__( 'Tagged', 'responsi' ).'</span><span>';
+                    $html = '<span class="i_tag">'.$responsi_icons['tag'].' <span class="i_tag_text">'.__( 'Tagged', 'responsi' ).'</span><span>';
                     $note = '';
                     foreach ( $tags as $tag ){
                         $tag_link = get_tag_link( $tag->term_id ) ;
@@ -61,7 +64,7 @@ if( $title === get_the_title() ){
                     $html .= '</span></span>';
                 }
                 ?>
-                <span class="i_comment"><a href="<?php comments_link(); ?>"><?php comments_number( 'No Comment', '1 Comment', '% Comments' ); ?></a></span> <?php echo ' '.$html;?>
+                <span class="i_comment"><?php echo $responsi_icons['comment']; ?> <a href="<?php comments_link(); ?>"><?php comments_number( 'No Comment', '1 Comment', '% Comments' ); ?></a></span> <?php echo ' '.$html;?>
                 </div>
             </div>
         </div>

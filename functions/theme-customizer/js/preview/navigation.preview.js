@@ -216,7 +216,7 @@
             css += '}';
 
             /* Nav Bar Icon Mobile Style */
-            css += '.navigation-mobile .hamburger-icon:before, .navigation-mobile svg.hext-icon, .navigation-mobile svg {';
+            css += '.navigation-mobile svg.hext-icon, .navigation-mobile svg {';
                 css += _cFn.renderBG('responsi_nav_icon_mobile_background_color', true);
                 css += _cFn.renderMarPad('responsi_nav_icon_mobile_padding', 'padding', true);
                 css += _cFn.renderMarPad('responsi_nav_icon_mobile_margin', 'margin', true);
@@ -242,9 +242,11 @@
                 css += _cFn.renderBorder('responsi_nav_icon_mobile_separator', _iconSeparatorPos);
             css += '}';
 
-            css += '.navigation-mobile .hamburger-icon:before, .navigation-mobile svg.hext-icon, .navigation-mobile svg{';
+            css += '.navigation-mobile svg.hext-icon, .navigation-mobile svg{';
                 css += 'font-size: ' + wp.customize.value('responsi_nav_icon_mobile_size')() + 'px !important;';
                 css += 'color: ' + wp.customize.value('responsi_nav_icon_mobile_color')() + ' !important;';
+                css += 'width: ' + wp.customize.value('responsi_nav_icon_mobile_size')() + 'px !important;';
+                css += 'height: ' + wp.customize.value('responsi_nav_icon_mobile_size')() + 'px !important;';
             css += '}';
 
             if (wp.customize.value('responsi_nav_container_mobile_text_on')() == 'false') {
@@ -286,10 +288,10 @@
                 css += 'color:'+ wp.customize.value('responsi_nav_item_dropdown_mobile_hover_color')() +' !important;';    
             css += '}';
 
-            css += 'ul.responsi-menu .menu-item-has-children > i,ul.responsi-menu .menu-item-has-children > svg{';
-                css += 'font-size: ' + wp.customize.value('responsi_nav_item_dropdown_mobile_font[size]')() + 'px;';
-                css += 'color: ' + wp.customize.value('responsi_nav_item_dropdown_mobile_font[color]')() + ';';
-                css += 'font-weight: ' + wp.customize.value('responsi_nav_item_dropdown_mobile_font[style]')() + ';';
+            css += 'ul.responsi-menu .menu-item-has-children svg{';
+                css += 'width: ' + wp.customize.value('responsi_nav_item_dropdown_mobile_font[size]')() + 'px;';
+                css += 'height: ' + wp.customize.value('responsi_nav_item_dropdown_mobile_font[size]')() + 'px;';
+                css += 'fill: ' + wp.customize.value('responsi_nav_item_dropdown_mobile_font[color]')() + ';';
             css += '}';
 
             css += 'ul.responsi-menu .menu-item-has-children > svg{';

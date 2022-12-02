@@ -1,5 +1,11 @@
 *** Responsi Framework Changelog ***
 
+= 8.7.0 - 2022/12/02 =
+* This feature release is performance improving release that removes all Responsi font face icons and replaces them with a SVG equivalent.
+* Feature - Remove Responsi font face JS and CSS
+* Feature - Create an SVG for each font face icon that was removed.
+* Performance - Removes Font face and fontawesome render blocking scripts for better Lighthouse Performance audit scores.
+
 = 8.6.1 - 2022/11/22 =
 * This maintenance release removes the obsolete jQuery Mobile script.
 * Performance - Removed jQuery mobile script

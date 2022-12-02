@@ -26,8 +26,6 @@ function responsi_register_styles( $styles ){
     $styles->add( 'responsi-custom-fields', get_template_directory_uri() . '/functions/css/custom-fields'.$suffix.'.css', array(), $responsi_version, 'all' );
     $styles->add( 'responsi-custom-fields-rtl', get_template_directory_uri() . '/functions/css/custom-fields.rtl'.$suffix.'.css', array(), $responsi_version, 'all' );
     $styles->add( 'responsi-icon', get_template_directory_uri() . '/functions/css/responsi-icon'.$suffix.'.css', array(), $responsi_version, 'all' );
-    $styles->add( 'responsi-font-face', get_template_directory_uri() . '/functions/css/responsi-font-face' . $suffix . '.css', $group_styles, $responsi_version, 'all' );
-    //$styles->add( 'responsi-layout', get_template_directory_uri() . '/functions/css/layout' . $suffix . '.css', array( 'responsi-font-face' ), $responsi_version, 'all' );
     $styles->add( 'responsi-framework', get_template_directory_uri() . '/style.css', array(), $responsi_version, 'all' );
     if( is_child_theme() ){
 	    $styles->add( 'responsi-theme', get_bloginfo('stylesheet_url'), array( 'responsi-framework' ), $responsi_version, 'all' );
@@ -91,8 +89,6 @@ if ( !function_exists( 'responsi_load_styles' ) ){
     	if ( is_user_logged_in() ) {
 	    	wp_enqueue_style( 'responsi-icon' );
 	    }
-        wp_enqueue_style( 'responsi-font-face' );
-        //wp_enqueue_style( 'responsi-layout' );
         wp_enqueue_style( 'responsi-framework' );
         wp_enqueue_style( 'responsi-theme' );
 
@@ -190,7 +186,7 @@ add_action( 'wp_default_scripts', 'responsi_framework_default_scripts', 11 );
 
 if ( ! function_exists( 'responsi_load_javascript' ) ){
 	function responsi_load_javascript(){
-		global $responsi_version, $responsi_options, $layout, $content_column, $content_column_grid, $responsi_animate;
+		global $responsi_version, $responsi_options, $layout, $content_column, $content_column_grid, $responsi_animate, $responsi_icons;
 		if( wp_is_mobile() ){
 			//wp_enqueue_script( 'jquery-mobile-touch' );
 		}
@@ -217,7 +213,8 @@ if ( ! function_exists( 'responsi_load_javascript' ) ){
 	        'responsi_allow_nextpage_ext'     	=> apply_filters( 'responsi_allow_nextpage_ext', array( 'html', 'htm' ) ),
 	        'responsi_google_webfonts'      	=> is_customize_preview() ? esc_url( responsi_google_webfonts() ) : false,
 	        'responsi_exclude_button_css'   	=> responsi_exclude_button_css(),
-	        'responsi_button_none_css_lists'	=> responsi_button_none_css_lists()
+	        'responsi_button_none_css_lists'	=> responsi_button_none_css_lists(),
+	        'responsi_icons'					=> $responsi_icons
 		);
 
 		wp_localize_script( 'responsi-main-script', 'responsi_paramaters', $responsi_paramaters );

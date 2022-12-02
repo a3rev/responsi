@@ -423,7 +423,7 @@ jQuery(document).ready(function($) {
 
     var $elMenuItem = $('.responsi-menu .menu-item-has-children > a, #sidenav-content .menu-item-has-children > a');
 
-    $elMenuItem.before('<i class="fa fa-caret-down"></i>');
+    $elMenuItem.before('<i class="arrow-caret-down">'+responsi_paramaters.responsi_icons.arrowchevronbottom+''+responsi_paramaters.responsi_icons.arrowchevrontop+'</i>');
     $elMenuItem.append('<i class="item-arrow"> </i>');
 
     $(document).ready(function() {
@@ -642,14 +642,14 @@ jQuery(document).ready(function($) {
 
     $(document).on("tap click", ".responsi-menu .menu-item-has-children > i, .responsi-menu .menu-item-has-children > svg", function() {
         $(this).parent().addClass('open');
-        $(this).addClass('fa-caret-up').removeClass('fa-caret-down');
+        $(this).addClass('arrow-caret-up').removeClass('arrow-caret-down');
         $(window).trigger('build-icon-arrow');
         return false;
     });
 
     $(document).on("tap click", ".responsi-menu .menu-item-has-children.open > i, .responsi-menu .menu-item-has-children.open > svg", function() {
         $(this).parent().removeClass('open');
-        $(this).addClass('fa-caret-down').removeClass('fa-caret-up');
+        $(this).addClass('arrow-caret-down').removeClass('arrow-caret-up');
         $(window).trigger('build-icon-arrow');
         return false;
     });

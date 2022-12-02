@@ -1754,7 +1754,7 @@ function responsi_exclude_button_css(){
 
     global $responsi_options;
 
-    $_exclude_lists = '.customize-partial-edit-shortcut-button, .bfwc-googlepay-button, .close, .none-button-css, .slick-next, .slick-arrow, .slick-prev, [id^="slick-slide-control"], .fancybox-button, .wp-block-search__button, .pswp__button, .wp-block-navigation button';
+    $_exclude_lists = '.customize-partial-edit-shortcut-button, .bfwc-googlepay-button, .close, .none-button-css, .slick-next, .slick-arrow, .slick-prev, [id^="slick-slide-control"], .fancybox-button, .wp-block-search__button, .pswp__button, .wp-block-navigation button, .components-button.has-icon, .wc-block-components-quantity-selector__button,.wc-block-cart-item__remove-link, .wc-block-mini-cart__button';
 
     if( isset( $responsi_options['responsi_exclude_button_lists'] ) && '' != trim( $responsi_options['responsi_exclude_button_lists'] ) ){
         $_exclude_lists .= ',' . trim( $responsi_options['responsi_exclude_button_lists'] );
@@ -2594,11 +2594,11 @@ function responsi_build_dynamic_css( $preview = false ) {
     $dynamic_css .= '.single .responsi-area-post .post-meta {' . $post_meta_css . '}';
     $dynamic_css .= '.single .responsi-area-post .post-meta a {text-transform:' . $post_meta_transform . ';color:' . $post_meta_link . ' !important;}';
     $dynamic_css .= '.single .responsi-area-post .post-meta a:hover {color:' . $post_meta_link_hover . ' !important;}';
-    $dynamic_css .= '.single .responsi-area-post .post-meta .i_author:before, .single .responsi-area-post .post-meta .i_comment:before, .single .responsi-area-post .post-meta .i_authors span.author .fn:before, .single .i_dates time.i_date:before {color:' . $post_meta_icon . ' !important;}';
-    $dynamic_css .= '.single .i_dates time.i_date:before{font-size:90%;}';
-    $dynamic_css .= '.single .responsi-area-post .post-meta .i_authors{margin-right:5px;}';
+    $dynamic_css .= '.single .responsi-area-post .post-meta svg {fill:' . $post_meta_icon . ' !important;width:' . $font_post_meta['size'] . 'px;height:' . $font_post_meta['size'] . 'px;}';
+    $dynamic_css .= '.single .responsi-area-post .post-meta .i_authors, .single .responsi-area-post .post-meta .posted-on.i_dates{margin-right:7px;}';
+    $dynamic_css .= '.single .post-meta svg{position:relative;top:1px;}';
     if ( 'true' !== $enable_post_meta_icon ) {
-        $dynamic_css .= '.single .responsi-area-post .post-meta .i_author:before, .single .responsi-area-post .post-meta .i_comment:before, .single .responsi-area-post .post-meta .i_authors span.author .fn:before, .single .i_dates time.i_date:before{display:none !important;}';
+        $dynamic_css .= '.single .responsi-area-post .post-meta .i_author svg, .single .responsi-area-post .post-meta .i_comment svg, .single .responsi-area-post .post-meta .i_authors span.author .fn svg, .single .i_dates time.i_date svg{display:none !important;}';
     }
     if ( $disable_post_meta_author != 'true' ) {
         $dynamic_css .= '.single .responsi-area-post .post-meta .i_authors{display:none;}';
@@ -2648,11 +2648,12 @@ function responsi_build_dynamic_css( $preview = false ) {
     $post_cat_tag_css .= $post_meta_cat_tag_border_radius;
     $post_cat_tag_css .= 'text-transform:' . $font_post_cat_tag_transform . ';';
     $dynamic_css .= '.categories .categories{display:block;' . $post_cat_tag_css . '}';
+    $dynamic_css .= '.categories .categories svg{width:'.$font_post_cat_tag['size'].'px;height:'.$font_post_cat_tag['size'].'px;}';
     $dynamic_css .= '.categories .categories a{color:' . $font_post_cat_tag_link . ' !important;}';
     $dynamic_css .= '.categories .categories a:hover{color:' . $font_post_cat_tag_link_hover . ' !important;}';
-    $dynamic_css .= '.categories .categories .i_cat:before{color:' . $font_post_cat_tag_icon . ' !important;}';
+    $dynamic_css .= '.categories .categories .i_cat svg{fill:' . $font_post_cat_tag_icon . ' !important;}';
     if ( 'true' !== $enable_font_post_cat_tag_icon ) {
-        $dynamic_css .= '.categories .categories .i_cat:before{display:none !important;}';
+        $dynamic_css .= '.categories .categories .i_cat svg{display:none !important;}';
     }
 
     $post_meta_utility_tag_bg                       = isset( $responsi_options['responsi_post_meta_utility_tag_bg'] ) ? $responsi_options['responsi_post_meta_utility_tag_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
@@ -2690,11 +2691,12 @@ function responsi_build_dynamic_css( $preview = false ) {
     $post_utility_tag_css .= $post_meta_utility_tag_border_radius;
     $post_utility_tag_css .= 'text-transform:' . $font_post_utility_tag_transform . ';';
     $dynamic_css .= '.tags .posts-tags{display:block;' . $post_utility_tag_css . '}';
+    $dynamic_css .= '.tags .posts-tags svg{width:'.$font_post_utility_tag['size'].'px;height:'.$font_post_utility_tag['size'].'px;}';
     $dynamic_css .= '.tags .posts-tags a{color:' . $font_post_utility_tag_link . ' !important;}';
     $dynamic_css .= '.tags .posts-tags a:hover{color:' . $font_post_utility_tag_link_hover . ' !important;}';
-    $dynamic_css .= '.tags .posts-tags .i_tag:before{color:' . $font_post_utility_tag_icon . ' !important;}';
+    $dynamic_css .= '.tags .posts-tags .i_tag svg{fill:' . $font_post_utility_tag_icon . ' !important;}';
     if ( 'true' !== $enable_font_post_utility_tag_icon ) {
-        $dynamic_css .= '.tags .posts-tags .i_tag:before{display:none !important;}';
+        $dynamic_css .= '.tags .posts-tags .i_tag svg{display:none !important;}';
     }
     $dynamic_css .= '#comments .comment.thread-even{' . responsi_generate_background_color( $post_comments_bg ) . '}';
     $dynamic_css .= 'body .main .box-item .entry-item.card-item .card-meta .postinfo,.main .box-item .entry-item .card-meta .postinfo,body .main .box-item .entry-item.card-item .card-meta .posttags,.main .box-item .entry-item .card-meta .posttags, .main .box-item .entry-item .card-meta .postinfo{' . responsi_generate_background_color( $post_author_archive_bg ) . '}';
@@ -2720,6 +2722,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $dynamic_css .= '.post-template .wp-site-blocks{' . responsi_generate_fonts( $_font_post_text ) . '}';
     $dynamic_css .= '.main .responsi-area.responsi-area-post h1.title, .responsi-area.responsi-area-post h1.title, .main .responsi-area.responsi-area-post h1.title a:link, .main .responsi-area.responsi-area-post h1.title a:visited{' . $post_title_css . '}';
     $dynamic_css .= '.responsi-area.responsi-area-post{' . responsi_generate_fonts( $_font_post_text ) . '}';
+    $dynamic_css .= '.responsi-area.responsi-area-post .post-entries svg, .responsi-area.responsi-area-post .profile-link svg{width:' . $_font_post_text['size'] . 'px;height:' . $_font_post_text['size'] . 'px;}';
 
     
     $post_box_padding_top                           = isset( $responsi_options['responsi_post_box_padding_top'] ) ? esc_attr( $responsi_options['responsi_post_box_padding_top'] ) : 0;
@@ -3394,7 +3397,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     
         $dynamic_css .= '.navigation{text-align:' . $pri_navbar_postion . ';}';
         $dynamic_css .= '.navigation-mobile{color:' . esc_attr( $nav_font['color'] ) . ';}';
-        $dynamic_css .= '.navigation-mobile .hamburger-icon:before,.navigation-mobile .responsi-icon-cancel:before{box-shadow: 1px 0 0 ' . esc_attr( $nav_font['color'] ) . ';}';
+        $dynamic_css .= '.navigation-mobile .responsi-icon-cancel svg{box-shadow: 1px 0 0 ' . esc_attr( $nav_font['color'] ) . ';}';
 
     $dynamic_css .= '}';
 
@@ -3471,7 +3474,7 @@ function responsi_build_dynamic_css( $preview = false ) {
 
     $_navbar_icon_mobile_el = '';
 
-    $_navbar_icon_mobile_el .= '.navigation-mobile .hamburger-icon:before, .navigation-mobile svg.hext-icon, .navigation-mobile svg{'.$_navbar_icon_mobile_css.'}';
+    $_navbar_icon_mobile_el .= '.navigation-mobile svg.hext-icon, .navigation-mobile svg{'.$_navbar_icon_mobile_css.'}';
 
     $_navbar_icon_mobile_separator = $responsi_options['responsi_nav_icon_mobile_separator'];
 
@@ -3488,9 +3491,11 @@ function responsi_build_dynamic_css( $preview = false ) {
     $_navbar_icon_mobile_size = $responsi_options['responsi_nav_icon_mobile_size'];
     $_navbar_icon_mobile_color = $responsi_options['responsi_nav_icon_mobile_color'];
 
-    $_navbar_icon_mobile_el .= '.navigation-mobile .hamburger-icon:before, .navigation-mobile svg.hext-icon, .navigation-mobile svg{
+    $_navbar_icon_mobile_el .= '.navigation-mobile svg.hext-icon, .navigation-mobile svg{
         font-size: '.$_navbar_icon_mobile_size.'px !important;
         color: '.$_navbar_icon_mobile_color.' !important;
+        width: '.$_navbar_icon_mobile_size.'px !important;
+        height: '.$_navbar_icon_mobile_size.'px !important;
     }';
 
     /* Nav Bar Mobile Text Style */
@@ -3579,11 +3584,11 @@ function responsi_build_dynamic_css( $preview = false ) {
         color:'.$_nav_dropdown_mobile_items_hover_color.' !important;    
     }';
 
-    $_nav_dropdown_mobile_items_el  .= 'ul.responsi-menu .menu-item-has-children > i,
-    ul.responsi-menu .menu-item-has-children > svg{
-        font-size:'.$_nav_dropdown_mobile_items_font['size'].'px;
-        color:'.$_nav_dropdown_mobile_items_font['color'].';
-        font-weight:'.$_nav_dropdown_mobile_items_font['style'].';
+    $_nav_dropdown_mobile_items_el  .= '
+    ul.responsi-menu .menu-item-has-children svg{
+        width:'.$_nav_dropdown_mobile_items_font['size'].'px;
+        height:'.$_nav_dropdown_mobile_items_font['size'].'px;
+        fill:'.$_nav_dropdown_mobile_items_font['color'].';
     }';
 
     $_nav_dropdown_mobile_items_el  .= 'ul.responsi-menu .menu-item-has-children > svg{
@@ -4175,6 +4180,7 @@ function responsi_build_dynamic_css( $preview = false ) {
     $dynamic_css .= 'body.category .main .box-item .entry-item h2 a:hover,body.tag .main .box-item .entry-item h2 a:hover,body.page-template-template-blog-php .main .box-item .entry-item h2 a:hover, .box-item .entry-item h2 a:hover,.main .card.box-item .entry-item h2 a:link:hover, .main .card.box-item .entry-item h2 a:visited:hover{ color:' . $hover . ' !important;}';
     $dynamic_css .= 'body.category .main .box-item .entry-item .card-info p,body.tag .main .box-item .entry-item .card-info p,body.page-template-template-blog-php .main .box-item .entry-item .card-info p, .box-item .entry-item .card-info p{text-align:' . $responsi_blog_post_content_alignment . ';' . responsi_generate_fonts($responsi_blog_post_font_content) . '}';
     $dynamic_css .= 'body.category .main .box-item .entry-item .card-meta,body.tag .main .box-item .entry-item .card-meta,body.page-template-template-blog-php .main .box-item .entry-item .card-meta, .box-item .entry-item .card-meta{text-align:' . $responsi_blog_ext_alignment . ';' . responsi_generate_fonts($responsi_blog_ext_font) . '}';
+    $dynamic_css .= 'body.category .main .box-item .entry-item .card-meta svg,body.tag .main .box-item .entry-item .card-meta svg,body.page-template-template-blog-php .main .box-item .entry-item .card-meta svg, .box-item .entry-item .card-meta svg{width:' . $responsi_blog_ext_font['size'] . 'px;height:' . $responsi_blog_ext_font['size'] . 'px;}';
     $dynamic_css .= '@media only screen and (min-width: 480px) {';
     if ( $enable_fix_tall_title_grid == '1' ) {
         $blog_title_height = floatval($blog_title_line_height) + 0.1;
@@ -4216,9 +4222,9 @@ function responsi_build_dynamic_css( $preview = false ) {
     }
     $dynamic_css .= '.box-item .entry-item .postinfotitle{display:none !important;}';
     $dynamic_css .= '.box-item .entry-item .blogpostinfo{padding-top:' . $responsi_blog_post_date_padding_top . 'px;padding-bottom:' . $responsi_blog_post_date_padding_bottom . 'px;padding-left:' . $responsi_blog_post_date_padding_left . 'px;padding-right:' . $responsi_blog_post_date_padding_right . 'px;text-align:' . $responsi_blog_post_date_alignment . ';text-transform:' . $responsi_blog_post_font_date_transform . ';' . responsi_generate_fonts($responsi_blog_post_font_date) . '}';
-    $dynamic_css .= '.box-item .entry-item .blogpostinfo .i_date:before{color:' . $responsi_blog_post_date_icon . ';position: relative;font-size: 90%;}';
+    $dynamic_css .= '.box-item .entry-item .blogpostinfo .i_date svg{width:'.$responsi_blog_post_font_date['size'].'px;height:'.$responsi_blog_post_font_date['size'].'px;fill:' . $responsi_blog_post_date_icon . ';}';
     if ( 'true' !== $responsi_enable_blog_post_date_icon ) {
-        $dynamic_css .= '.box-item .entry-item .blogpostinfo .i_date:before{display:none !important;}';
+        $dynamic_css .= '.box-item .entry-item .blogpostinfo .i_date svg{display:none !important;}';
     }
     $dynamic_css .= '.box-item .entry-item .card-info .info-ctn{margin-bottom:0px;}.entry p.desc{margin-bottom:10px;}';
     $dynamic_css .= '.ctrl-open{display:block;box-sizing:border-box;text-align:' . $responsi_blog_morelink_alignment . ';}';
@@ -4288,13 +4294,12 @@ function responsi_build_dynamic_css( $preview = false ) {
     if ( $responsi_post_author_archive_icon ) {
         $dynamic_css .= 'body .logout-link:after, body .profile-link:after, body .dashboard-link:after, body .lost_password-link:after, body .register-link:after{color:' . $responsi_post_author_archive_icon . ' !important;}';
         $dynamic_css .= 'span.i_tag_text, span.i_author, span.i_in,span.i_date.updated,.comment-head span.name,.comment-head span.date, .comment-head .perma{margin-right:3px !important;}';
-        $dynamic_css .= '.i_author:before,.i_cat:before,.i_comment:before,.i_tag:before,.i_authors span.author .fn:before, .i_date:before {margin-right:3px;position:relative;color:' . $responsi_post_author_archive_icon . ';}';
-        $dynamic_css .= '.meta-lines .i_comment{margin-right:3px;}';
-        $dynamic_css .= '.post p.tags:hover:before,.post p.tags:before,.icon:before, .icon:after {color:' . $responsi_post_author_archive_icon . ';}';
+        $dynamic_css .= '.i_author svg,.i_cat svg,.i_comment svg,.i_tag svg,.i_authors span.author .fn svg, .i_date svg {position:relative;fill:' . $responsi_post_author_archive_icon . ';}';
+        $dynamic_css .= '.post p.tags:hover svg,.post p.tags svg,.icon svg, .icon svg {fill:' . $responsi_post_author_archive_icon . ';}';
     }
 
     if ( 'true' !== $responsi_enable_post_author_archive_icon ) {
-        $dynamic_css .= '.box-item .card-meta .i_author:before, .box-item .card-meta .i_cat:before, .box-item .card-meta .i_comment:before, .box-item .card-meta .i_tag:before{display:none !important;}';
+        $dynamic_css .= '.box-item .card-meta .i_author svg, .box-item .card-meta .i_cat svg, .box-item .card-meta .i_comment svg, .box-item .card-meta .i_tag svg{display:none !important;}';
     }
 
     $dynamic_css_ext = '';

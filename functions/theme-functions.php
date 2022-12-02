@@ -375,7 +375,7 @@ if ( !function_exists( 'responsi_header' ) ) {
         <div id="content-ctn" class="content-ctn site-width clearfix">
         <?php do_action( 'responsi_wrapper_article_before' ); ?>
         <article id="content-in" class="content-in clearfix">
-        <?php global $shiftclick; echo wp_kses_post($shiftclick);?>
+        <?php global $shiftclick; echo ($shiftclick);?>
         <?php do_action( 'responsi_wrapper_article_content_before' ); ?>
         <?php
     }
@@ -416,11 +416,11 @@ if ( !function_exists( 'responsi_footer' ) ) {
                 <?php do_action( 'responsi_wrapper_footer_additional' ); ?>
               </div>
               <?php do_action( 'responsi_wrapper_footer_content' ); ?>
-              <?php echo wp_kses_post($shiftclick);?>
+              <?php echo ($shiftclick);?>
             </footer>
             </div>
           </div>
-          <?php echo wp_kses_post($shiftclick);?>
+          <?php echo ($shiftclick);?>
         </div>
         <?php do_action( 'responsi_wrapper_footer_after' ); ?>
         <?php
@@ -463,7 +463,7 @@ if ( !function_exists( 'responsi_sidebar' ) ) {
                         <div class="sidebar-in">
                         <?php responsi_dynamic_sidebar( esc_attr( $sidebar_args['sidebar_id'] ) ); ?>
                         </div>
-                        <?php global $shiftclick; echo wp_kses_post($shiftclick); ?>
+                        <?php global $shiftclick; echo ($shiftclick); ?>
                         </div>
                         <?php do_action( 'responsi_sidebar_wrap_after' ); ?>
                     </div>
@@ -484,7 +484,7 @@ if ( !function_exists( 'responsi_sidebar' ) ) {
                             </div>
                             </div>
                             </div>
-                            <?php global $shiftclick; echo wp_kses_post($shiftclick); ?>
+                            <?php global $shiftclick; echo ($shiftclick); ?>
                             </div>
                             <?php do_action( 'responsi_sidebar_wrap_after' ); ?>
                         </div>
@@ -518,7 +518,7 @@ if ( !function_exists( 'responsi_sidebar_alt' ) ) {
                         <div class="sidebar-in">
                         <?php responsi_dynamic_sidebar( esc_attr( $sidebar_alt_args['sidebar_id'] ) ); ?>
                         </div>
-                        <?php global $shiftclick; echo wp_kses_post($shiftclick); ?>
+                        <?php global $shiftclick; echo ($shiftclick); ?>
                         </div>
                         <?php do_action( 'responsi_sidebar_wrap_after' ); ?>
                     </div>
@@ -539,7 +539,7 @@ if ( !function_exists( 'responsi_sidebar_alt' ) ) {
                             </div>
                             </div>
                             </div>
-                            <?php global $shiftclick; echo wp_kses_post($shiftclick); ?>
+                            <?php global $shiftclick; echo ($shiftclick); ?>
                             </div>
                             <?php do_action( 'responsi_sidebar_wrap_after' ); ?>
                         </div>
@@ -616,8 +616,10 @@ if ( !function_exists( 'responsi_get_sidebar_main_after' ) ) {
 if ( !function_exists( 'responsi_single_post_meta_date' ) ) {
 
     function responsi_single_post_meta_date() {
+
+        global $responsi_icons;
         
-        $time_string = '<time class="entry-date published updated i_date" datetime="%1$s">%2$s</time>';
+        $time_string = '<time class="entry-date published updated i_date" datetime="%1$s">'.$responsi_icons['calendar'].' %2$s</time>';
 
         if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
             $time = get_the_modified_date();
@@ -656,8 +658,10 @@ if ( !function_exists( 'responsi_single_post_meta_date' ) ) {
 if ( !function_exists( 'responsi_single_post_meta_author' ) ) {
 
     function responsi_single_post_meta_author() {
+
+        global $responsi_icons;
         
-        $output = sprintf( '<span class="i_authors"><span class="author vcard"><span class="screen-reader-text">%1$s </span> <a class="url fn n" href="%2$s">%3$s</a></span></span>',
+        $output = sprintf( '<span class="i_authors"><span class="author vcard"><span class="screen-reader-text">%1$s </span><a class="url fn n" href="%2$s">'.$responsi_icons['author'].' %3$s</a></span></span>',
             _x( 'Author', 'Used before post author name.', 'responsi' ),
             esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
             get_the_author()
@@ -713,7 +717,7 @@ if ( !function_exists( 'responsi_single_post_meta_comments' ) ) {
 
     function responsi_single_post_meta_comments() {
 
-        global $post;
+        global $post, $responsi_icons;
         
         $defaults = array(
             'zero'          => __( 'Comments [ 0 ]', 'responsi' ),
@@ -738,7 +742,7 @@ if ( !function_exists( 'responsi_single_post_meta_comments' ) ) {
             $comments = $defaults['closed_text'];
         }
 
-        $output = sprintf( '<span class="post-comments comments">%2$s%1$s%3$s</span>', $comments, '<span class="i_comment">', '<span>' );
+        $output = sprintf( '<span class="post-comments comments">%2$s%1$s%3$s</span>', $comments, '<span class="i_comment">'.$responsi_icons['comment'].' ', '<span>' );
         if ( 'open' === $post->comment_status ) {
             return apply_filters( 'responsi_single_post_meta_comments', $output );
         }
@@ -790,6 +794,7 @@ if ( !function_exists( 'responsi_single_post_meta_tags' ) ) {
 if ( !function_exists( 'responsi_single_post_meta_categories' ) ) {
 
     function responsi_single_post_meta_categories( $atts ) {
+        global $responsi_icons;
         $atts = (array) $atts;
         $defaults = array(
             'sep'       => ', ',
@@ -1185,10 +1190,10 @@ function responsi_archive_title_rss_links( $title, $before, $after ){
 /*-----------------------------------------------------------------------------------*/
 function responsi_archive_post_date()
 {
-    global $responsi_options;
+    global $responsi_options, $responsi_icons;
     if ( is_array($responsi_options) && isset($responsi_options['responsi_enable_post_date_blog']) && 'true' === $responsi_options['responsi_enable_post_date_blog'] ) {
         ?>
-        <div class="blogpostinfo"><span class="i_date date published time"><?php the_time('M j, Y'); ?></span> </div>
+        <div class="blogpostinfo"><span class="i_date date published time"><?php echo $responsi_icons['calendar']. ' ';the_time('M j, Y'); ?></span> </div>
         <?php
     }
 }
@@ -1339,7 +1344,7 @@ function responsi_wrapper_header() {
         </div>
       </div>
       <?php do_action( 'responsi_wrapper_header_content_after' ); ?>
-      <?php echo wp_kses_post($shiftclick);?>
+      <?php echo ($shiftclick);?>
     </div>
     <?php
     do_action( 'responsi_wrapper_header_after' );
@@ -1461,7 +1466,7 @@ if ( !function_exists( 'responsi_wrapper_header_content' ) ) {
                         ?>
                         <?php responsi_dynamic_sidebar( 'header-' . $i ); ?>
                         <?php echo '</div>';?> 
-                        <?php echo wp_kses_post($shiftclick); ?>
+                        <?php echo ($shiftclick); ?>
                         </div>
                         <?php
                     }
@@ -1520,7 +1525,7 @@ function responsi_wrapper_nav() {
       <div id="navigation-ctn" class="navigation-ctn site-width clearfix">
         <?php do_action( 'responsi_wrapper_nav_content' ); ?>
       </div>
-      <?php echo wp_kses_post($shiftclick);?>
+      <?php echo ($shiftclick);?>
     </div>
     <?php
     do_action( 'responsi_wrapper_nav_after' );
@@ -1532,7 +1537,7 @@ function responsi_wrapper_nav() {
 
 if ( !function_exists( 'responsi_navigation' ) ) {
     function responsi_navigation() {
-        global $responsi_options;
+        global $responsi_options, $responsi_icons;
         do_action( 'responsi_navigation_before' );
         ?>
         <div id="navigation-in" class="navigation-in clearfix">
@@ -1547,7 +1552,7 @@ if ( !function_exists( 'responsi_navigation' ) ) {
             if( isset($responsi_options['responsi_nav_container_mobile_text_on']) && $responsi_options['responsi_nav_container_mobile_text_on'] == 'true' ){
                 $text_navigation = $responsi_options['responsi_nav_container_mobile_text'];
             }
-            $nav_ctr = '<div class="navigation-mobile open alignment-'.$responsi_options['responsi_nav_icon_mobile_alignment'].'">'.$nav_ctr_before.'<span class="menu-text before">'. esc_html( $text_navigation ) .'</span><span class="separator nav-separator"><i class="menu-icon hamburger-icon hext-icon"></i></span><span class="menu-text after">'. esc_html( $text_navigation ) .'</span>'.$nav_ctr_after.'</div>';
+            $nav_ctr = '<div class="navigation-mobile open alignment-'.$responsi_options['responsi_nav_icon_mobile_alignment'].'">'.$nav_ctr_before.'<span class="menu-text before">'. esc_html( $text_navigation ) .'</span><span class="separator nav-separator"><i class="menu-icon hamburger-icon hext-icon">'.$responsi_icons['hamburger'].'</i></span><span class="menu-text after">'. esc_html( $text_navigation ) .'</span>'.$nav_ctr_after.'</div>';
                 
             $nav_ctr = apply_filters( 'responsi_mobile_navigation', $nav_ctr );
             
@@ -1615,7 +1620,7 @@ if ( !function_exists( 'responsi_main_wrap_before' ) ) {
 if ( !function_exists( 'responsi_main_wrap_after' ) ) {
     function responsi_main_wrap_after() {
         global $shiftclick;
-        echo wp_kses_post($shiftclick).'</div>';
+        echo ($shiftclick).'</div>';
     }
 }
 
@@ -1689,7 +1694,7 @@ if ( !function_exists( 'responsi_footer_sidebars' ) ) {
                     ?>
                     <?php responsi_dynamic_sidebar( 'footer-' . $i ); ?>
                     <?php echo '</div>';?>
-                    <?php echo wp_kses_post($shiftclick); ?>
+                    <?php echo ($shiftclick); ?>
                     </div>
                     <?php
                     }
@@ -1993,9 +1998,11 @@ if ( !function_exists( 'responsi_single_post_meta_categories_default' ) ) {
     function responsi_single_post_meta_categories_default() {
         if ( !is_singular('post') )
             return;
+
+        global $responsi_icons;
         $attr_post_categories = apply_filters( 'responsi_single_post_meta_categories_attr', array(
             'sep'       => ', ',
-            'before'    => '<span class="i_cat">' . __('Posted in', 'responsi' ) . ' : ',
+            'before'    => '<span class="i_cat">' .$responsi_icons['category'].' '. __('Posted in', 'responsi' ) . ' : ',
             'after'     => '</span>'
         ));
         $post_info_categories = responsi_single_post_meta_categories( $attr_post_categories );
@@ -2012,9 +2019,11 @@ if ( !function_exists( 'responsi_single_post_meta_tags_default' ) ) {
     function responsi_single_post_meta_tags_default() {
         if ( !is_singular( 'post' ) )
             return;
+
+        global $responsi_icons;
         $attr_post_tags = apply_filters( 'responsi_single_post_meta_tags_attr', array(
             'sep'       => ', ',
-            'before'    => '<span class="i_tag">' . __('Tags', 'responsi' ) . ' : ',
+            'before'    => '<span class="i_tag">' .$responsi_icons['tag'].' ' . __('Tags', 'responsi' ) . ' : ',
             'after'     => '</span>'
         ) );
         $post_info_tags = responsi_single_post_meta_tags($attr_post_tags);
@@ -2106,7 +2115,7 @@ if ( !function_exists( 'responsi_blog_item_content_shiftclick' ) ) {
 
     function responsi_blog_item_content_shiftclick() {
         global $shiftclick;
-        echo wp_kses_post($shiftclick);
+        echo ($shiftclick);
     }
 
 }
@@ -2175,8 +2184,9 @@ if ( !function_exists( 'responsi_blog_template_list_post' ) ) {
 
 if ( !function_exists( 'responsi_scrolltop' ) ) {
     function responsi_scrolltop() {
+        global $responsi_icons;
         ?>
-        <div id="backTopBtn" class="backTopBtn"><a href="#responsi-site" aria-label="Back to top"><span class="responsi-icon-up"></span></a></div>
+        <div id="backTopBtn" class="backTopBtn"><a href="#responsi-site" aria-label="Back to top"><span class="responsi-icon-up"><?php echo $responsi_icons['arrowcircleup']; ?></span></a></div>
         <?php
     }
 }
@@ -2688,10 +2698,6 @@ if ( ! function_exists( 'responsi_sanitize_columns' ) ) {
 if ( ! function_exists( 'responsi_add_crossorigin_fontface' ) ) {
     function responsi_add_crossorigin_fontface(){
         do_action( 'responsi_add_crossorigin_fontface_before' );
-        echo '<link rel="preload" href="'.esc_url(get_template_directory_uri()).'/functions/fonts/responsi-font-face.woff" as="font" crossorigin="anonymous">';
-        if ( is_user_logged_in() ) {
-            echo '<link rel="preload" href="'.esc_url(get_template_directory_uri()).'/functions/fonts/responsi-icon.woff" as="font" crossorigin="anonymous">';
-        }
         do_action( 'responsi_add_crossorigin_fontface_after' );
     }
 }
