@@ -645,7 +645,7 @@ final class Customizer {
 		.navigation-mobile { display: none; }
 		.navigation-mobile * { vertical-align: middle; }
 		.ctrl-close { display: none !important; }
-		.box-content { overflow: hidden; }
+		.box-content .card{position:relative;}
 		.box-content.masonry { overflow: visible; }
 		html body.ie9 .box-content .masonry-brick { margin-left: 0 !important; margin-right: 0 !important; }
 		.main.box .box-content.col1 { width: 100% !important; box-sizing: border-box; }

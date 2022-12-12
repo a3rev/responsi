@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.7.1 - 2022/12/12 =
+* This maintenance release converts more Responi font face icons to SVG's
+* Tweak - Add more SVGs to replace Responsi icons to support the upgrade on Responsi addons
+
 = 8.7.0 - 2022/12/02 =
 * This feature release is performance improving release that removes all Responsi font face icons and replaces them with a SVG equivalent.
 * Feature - Remove Responsi font face JS and CSS

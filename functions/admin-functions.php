@@ -1818,6 +1818,10 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
             width:100%;
         }
 
+        .box-content > .box-item, .box-content-custom > .box-item{
+            position:relative;
+        }
+
         ';
 
         $output .= '@media only screen and (min-width:783px) {';

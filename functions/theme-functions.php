@@ -1867,6 +1867,10 @@ function responsi_add_theme_support_fullwide(){
 
         $alignl_value                           = $responsi_layout_width - $total_ext;
 
+        if( is_admin() ){
+            $responsi_layout_width = 960;
+        }
+
         $css = '
 
         :root{
