@@ -2652,12 +2652,12 @@ function responsi_build_dynamic_css( $preview = false ) {
     $post_cat_tag_css .= $post_meta_cat_tag_border_radius;
     $post_cat_tag_css .= 'text-transform:' . $font_post_cat_tag_transform . ';';
     $dynamic_css .= '.categories .categories{display:block;' . $post_cat_tag_css . '}';
-    $dynamic_css .= '.categories .categories svg{width:'.$font_post_cat_tag['size'].'px;height:'.$font_post_cat_tag['size'].'px;}';
+    $dynamic_css .= '.categories svg{width:'.$font_post_cat_tag['size'].'px;height:'.$font_post_cat_tag['size'].'px;}';
     $dynamic_css .= '.categories .categories a{color:' . $font_post_cat_tag_link . ' !important;}';
     $dynamic_css .= '.categories .categories a:hover{color:' . $font_post_cat_tag_link_hover . ' !important;}';
-    $dynamic_css .= '.categories .categories .i_cat svg{fill:' . $font_post_cat_tag_icon . ' !important;}';
+    $dynamic_css .= '.categories .i_cat svg{fill:' . $font_post_cat_tag_icon . ' !important;}';
     if ( 'true' !== $enable_font_post_cat_tag_icon ) {
-        $dynamic_css .= '.categories .categories .i_cat svg{display:none !important;}';
+        $dynamic_css .= '.categories .i_cat svg{display:none !important;}';
     }
 
     $post_meta_utility_tag_bg                       = isset( $responsi_options['responsi_post_meta_utility_tag_bg'] ) ? $responsi_options['responsi_post_meta_utility_tag_bg'] : array( 'onoff' => 'false', 'color' => '#ffffff' );
@@ -2695,12 +2695,12 @@ function responsi_build_dynamic_css( $preview = false ) {
     $post_utility_tag_css .= $post_meta_utility_tag_border_radius;
     $post_utility_tag_css .= 'text-transform:' . $font_post_utility_tag_transform . ';';
     $dynamic_css .= '.tags .posts-tags{display:block;' . $post_utility_tag_css . '}';
-    $dynamic_css .= '.tags .posts-tags svg{width:'.$font_post_utility_tag['size'].'px;height:'.$font_post_utility_tag['size'].'px;}';
+    $dynamic_css .= '.tags .i_tag svg{width:'.$font_post_utility_tag['size'].'px;height:'.$font_post_utility_tag['size'].'px;}';
     $dynamic_css .= '.tags .posts-tags a{color:' . $font_post_utility_tag_link . ' !important;}';
     $dynamic_css .= '.tags .posts-tags a:hover{color:' . $font_post_utility_tag_link_hover . ' !important;}';
-    $dynamic_css .= '.tags .posts-tags .i_tag svg{fill:' . $font_post_utility_tag_icon . ' !important;}';
+    $dynamic_css .= '.tags .i_tag svg{fill:' . $font_post_utility_tag_icon . ' !important;}';
     if ( 'true' !== $enable_font_post_utility_tag_icon ) {
-        $dynamic_css .= '.tags .posts-tags .i_tag svg{display:none !important;}';
+        $dynamic_css .= '.tags .i_tag svg{display:none !important;}';
     }
     $dynamic_css .= '#comments .comment.thread-even{' . responsi_generate_background_color( $post_comments_bg ) . '}';
     $dynamic_css .= 'body .main .box-item .entry-item.card-item .card-meta .postinfo,.main .box-item .entry-item .card-meta .postinfo,body .main .box-item .entry-item.card-item .card-meta .posttags,.main .box-item .entry-item .card-meta .posttags, .main .box-item .entry-item .card-meta .postinfo{' . responsi_generate_background_color( $post_author_archive_bg ) . '}';

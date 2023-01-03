@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.7.2 - 2023/01/03 =
+* This maintenance release has a small bug fix for the post icon SVG
+* Tweak - Update Posted icon svg not working on customizer preview.
+
 = 8.7.1 - 2022/12/12 =
 * This maintenance release converts more Responi font face icons to SVG's
 * Tweak - Add more SVGs to replace Responsi icons to support the upgrade on Responsi addons

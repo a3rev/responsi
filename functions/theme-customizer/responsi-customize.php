@@ -801,7 +801,7 @@ final class Customizer {
 		/* Icons Style */
 		.post-entries .nav-previous a,.post-entries .nav-next a{display:flex;align-items:center;gap:5px;}
 		.post-entries svg{zoom:0.7;fill:currentColor;}
-		.meta-lines svg,.categories .categories svg,.tags .posts-tags svg,.post-meta svg{zoom:0.9;fill:currentColor;position:relative;top:1px;}
+		.meta-lines svg,.categories svg,.tags .i_tag svg,.post-meta svg{zoom:0.9;fill:currentColor;position:relative;top:1px;}
 		.i_date.date svg{zoom:0.9;position:relative;top:1px;}
 
 		/* Widget Login*/
