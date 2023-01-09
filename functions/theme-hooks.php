@@ -174,8 +174,8 @@ function responsi_framework_default_scripts( &$scripts ){
 	$scripts->add( 'a3-blockpress-animation', get_template_directory_uri() . '/functions/js/front/js/animation-on-scroll.js', array('waypoints' ), $responsi_version, true );
 	$scripts->add( 'jquery-mobile-touch', get_template_directory_uri() . '/functions/js/jquery.mobile.touch.min.js', array( 'jquery'), $responsi_version, true );
 	$scripts->add( 'responsi-custom-fields', get_template_directory_uri() . '/functions/js/custom-fields'.$suffix.'.js', array( 'jquery', 'jquery-ui-tabs' ), $responsi_version, true );
-	$scripts->add( 'infinitescroll', get_template_directory_uri() . '/functions/js/infinite-scroll.pkgd.min.js', array( 'jquery' ), '4.0.1', true );
-	$scripts->add( 'responsi-main-script', get_template_directory_uri() . '/functions/js/jquery.responsi'.$suffix.'.js', array( 'jquery', 'infinitescroll' ), $responsi_version, true );
+	$scripts->add( 'infinite-scroll', get_template_directory_uri() . '/functions/js/infinite-scroll.pkgd.min.js', array( 'jquery' ), '4.0.1', true );
+	$scripts->add( 'responsi-main-script', get_template_directory_uri() . '/functions/js/jquery.responsi'.$suffix.'.js', array( 'jquery', 'infinite-scroll' ), $responsi_version, true );
 }
 
 add_action( 'wp_default_scripts', 'responsi_framework_default_scripts', 11 );
@@ -191,7 +191,7 @@ if ( ! function_exists( 'responsi_load_javascript' ) ){
 			//wp_enqueue_script( 'jquery-mobile-touch' );
 		}
 
-        wp_enqueue_script( 'infinitescroll' );
+        wp_enqueue_script( 'infinite-scroll' );
 		wp_enqueue_script( 'responsi-main-script' );
 
         if( $responsi_animate ){
