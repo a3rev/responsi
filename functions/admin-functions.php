@@ -1196,14 +1196,7 @@ function responsi_breadcrumbs_get_parents( $post_id = '', $path = '' ){
 
         if (empty( $parent_page) )
             // search on page name (single word)
-            $parent_page = get_page_by_title( $path );
-
-        if (empty($parent_page) )
-            // search on page title (multiple words)
-            $parent_page = get_page_by_title( str_replace( array(
-                '-',
-                '_'
-            ), ' ', $path ) );
+            $parent_page = '';
 
         /* If a parent post is found, set the $post_id variable to it. */
         if ( !empty( $parent_page ) )

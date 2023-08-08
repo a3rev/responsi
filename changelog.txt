@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.7.5 - 2023/08/08 =
+* This maintenance release has tweaks for compatibility with WooCommerce 7.9.0 and WordPress 6.3 
+* Fix - get_page_by_title is deprecated since version 6.2.0! Use WP_Query instead.
+
 = 8.7.4 - 2023/06/26 =
 * This maintenance release fixes and issue with Select dropdown boxes not working.
 * Fix - Removed old IE touch events script that was causing Unable to preventdefault inside passive event listener invocation when click on a dropdown select box.
