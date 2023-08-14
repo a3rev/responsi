@@ -1,5 +1,9 @@
 *** Responsi Framework Changelog ***
 
+= 8.7.6 - 2023/08/14 =
+* This release resolves an issue with the new block templates loading on the front end.
+* Tweak - add_theme_support( ‘block-templates’ ) always load on frontend.
+
 = 8.7.5 - 2023/08/08 =
 * This maintenance release has tweaks for compatibility with WooCommerce 7.9.0 and WordPress 6.3 
 * Fix - get_page_by_title is deprecated since version 6.2.0! Use WP_Query instead.
