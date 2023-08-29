@@ -621,13 +621,16 @@ if ( !function_exists( 'responsi_single_post_meta_date' ) ) {
         
         $time_string = '<time class="entry-date published updated i_date" datetime="%1$s">'.$responsi_icons['calendar'].' %2$s</time>';
 
-        if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+        /*if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
             $time = get_the_modified_date();
             $timeAttr = get_the_modified_date( 'c' );
         } else {
             $time = get_the_date();
             $timeAttr = get_the_date( 'c' );
-        }
+        }*/
+
+        $time = get_the_date();
+        $timeAttr = get_the_date( 'c' );
 
         $time_string = sprintf( $time_string, esc_attr( $timeAttr ), $time );
 
