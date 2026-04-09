@@ -478,6 +478,135 @@ function responsi_metabox_create_fields( $metaboxes, $callback, $token = 'genera
 }
 
 /**
+ * Apply framework metabox values from an associative array (same rules as classic $_POST save).
+ *
+ * @param int                  $post_id Post ID.
+ * @param array<string, mixed> $posted  Field name => value (same shape as $_POST for these fields).
+ * @param array<string, mixed>|null $files Optional $_FILES-style array; null uses global $_FILES.
+ * @return void
+ */
+function responsi_metabox_apply_posted_values( $post_id, $posted, $files = null ) {
+	$post_id = (int) $post_id;
+	if ( $post_id <= 0 ) {
+		return;
+	}
+
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		return;
+	}
+
+	$ptype = get_post_type( $post_id );
+	if ( ! $ptype || 'nav_menu_item' === $ptype ) {
+		return;
+	}
+
+	if ( null === $files ) {
+		$files = isset( $_FILES ) && is_array( $_FILES ) ? $_FILES : array();
+	} elseif ( ! is_array( $files ) ) {
+		$files = array();
+	}
+
+	if ( ! is_array( $posted ) ) {
+		return;
+	}
+
+	$responsi_metaboxe_options = get_option( 'responsi_metaboxe_options', array() );
+	if ( ! is_array( $responsi_metaboxe_options ) ) {
+		return;
+	}
+
+	$upload_tracking        = array();
+	$responsi_custom_meta   = array();
+
+	foreach ( $responsi_metaboxe_options as $k => $metabox ) {
+		if ( isset( $metabox['type'] ) && ( in_array( $metabox['type'], responsi_metabox_fieldtypes(), true ) ) ) {
+			$var           = $metabox['name'];
+			$current_value = get_post_meta( $post_id, $var, true );
+			if ( isset( $posted[ $var ] ) ) {
+				$posted_value = $posted[ $var ];
+				if ( ! is_scalar( $posted_value ) ) {
+					$posted_value = '';
+				} else {
+					$posted_value = (string) $posted_value;
+				}
+
+				if ( 'content_max_width' === $var ) {
+					if ( isset( $metabox['std'] ) && (string) $metabox['std'] === $posted_value ) {
+					} else {
+						if ( get_post_meta( $post_id, $var ) === '' ) {
+							$responsi_custom_meta['content_max_width'] = $posted_value;
+						} elseif ( $posted_value !== (string) get_post_meta( $post_id, $var, true ) ) {
+							$responsi_custom_meta['content_max_width'] = $posted_value;
+						} elseif ( '' === $posted_value ) {
+						}
+					}
+				} else {
+					if ( get_post_meta( $post_id, $var ) === '' ) {
+						add_post_meta( $post_id, $var, $posted_value, true );
+					} elseif ( $posted_value !== (string) get_post_meta( $post_id, $var, true ) ) {
+						update_post_meta( $post_id, $var, $posted_value );
+					} elseif ( '' === $posted_value ) {
+						delete_post_meta( $post_id, $var, $current_value );
+					}
+				}
+			} elseif ( ! isset( $posted[ $var ] ) && 'checkbox' === $metabox['type'] ) {
+				update_post_meta( $post_id, $var, 'false' );
+			} else {
+				delete_post_meta( $post_id, $var, $current_value );
+			}
+		} elseif ( isset( $metabox['type'] ) && 'timestamp' === $metabox['type'] ) {
+			$var = $metabox['name'];
+			if ( ! isset( $posted[ $var ] ) || ! is_array( $posted[ $var ] ) ) {
+				continue;
+			}
+			$tsdata = $posted[ $var ];
+			$date   = isset( $tsdata['date'] ) ? (string) $tsdata['date'] : '';
+			if ( strlen( $date ) < 10 ) {
+				continue;
+			}
+			$hour   = isset( $tsdata['hour'] ) ? (int) $tsdata['hour'] : 0;
+			$minute = isset( $tsdata['minute'] ) ? (int) $tsdata['minute'] : 0;
+			$second = '00';
+
+			$day   = substr( $date, 3, 2 );
+			$month = substr( $date, 0, 2 );
+			$year  = substr( $date, 6, 4 );
+
+			$timestamp = mktime( $hour, $minute, (int) $second, (int) $month, (int) $day, (int) $year );
+			update_post_meta( $post_id, $var, $timestamp );
+		} elseif ( isset( $metabox['type'] ) && 'upload' === $metabox['type'] ) {
+			$id       = $metabox['name'];
+			$override = array( 'action' => 'editpost' );
+			$file_key = 'attachement_' . $id;
+			$has_file = ! empty( $files[ $file_key ]['name'] );
+
+			if ( $has_file ) {
+				$files[ $file_key ]['name'] = preg_replace( '/[^a-zA-Z0-9._\-]/', '', $files[ $file_key ]['name'] );
+				$uploaded_file              = wp_handle_upload( $files[ $file_key ], $override );
+				if ( ! empty( $uploaded_file['url'] ) ) {
+					$uploaded_file['option_name'] = isset( $metabox['label'] ) ? $metabox['label'] : '';
+					$upload_tracking[]            = $uploaded_file;
+					update_post_meta( $post_id, $id, $uploaded_file['url'] );
+				}
+			} elseif ( ! $has_file && isset( $posted[ $id ] ) ) {
+				$posted_value = (string) $posted[ $id ];
+				update_post_meta( $post_id, $id, $posted_value );
+			} elseif ( isset( $posted[ $id ] ) && '' === $posted[ $id ] ) {
+				delete_post_meta( $post_id, $id, get_post_meta( $post_id, $id, true ) );
+			}
+		}
+
+		update_option( 'responsi_metabox_custom_upload_tracking', $upload_tracking );
+	}
+
+	if ( count( $responsi_custom_meta ) > 0 ) {
+		update_post_meta( $post_id, 'responsi_custom_meta', $responsi_custom_meta );
+	} else {
+		delete_post_meta( $post_id, 'responsi_custom_meta', get_post_meta( $post_id, 'responsi_custom_meta', true ) );
+	}
+}
+
+/**
  * responsi_metabox_handle()
  *
  * Handle the saving of the custom fields.
@@ -487,125 +616,39 @@ function responsi_metabox_create_fields( $metaboxes, $callback, $token = 'genera
  * @return void
  */
 function responsi_metabox_handle( $post_id = '' ) {
-    $pid = '';
-    global $globals, $post;
+	global $globals, $post;
 
-    if ( isset($_POST['post_type']) && 'page' == $_POST['post_type'] ) {
-        if ( ! current_user_can( 'edit_page', $post_id ) ) {
-            return $post_id;
-        }
-    } else {
-        if ( ! current_user_can( 'edit_post', $post_id ) ) {
-            return $post_id;
-        }
-    }
+	if ( isset( $_POST['post_type'] ) && 'page' === $_POST['post_type'] ) {
+		if ( ! current_user_can( 'edit_page', $post_id ) ) {
+			return $post_id;
+		}
+	} else {
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			return $post_id;
+		}
+	}
 
-    $responsi_metaboxe_options = get_option( 'responsi_metaboxe_options', array() );
+	if ( ! isset( $_POST['post_ID'] ) ) {
+		return $post_id;
+	}
 
-    // Sanitize post ID.
-    if( isset( $_POST['post_ID'] ) ) {
-		$pid = intval( $_POST['post_ID'] );
-    }
+	$pid = (int) $_POST['post_ID'];
+	if ( 0 === $pid ) {
+		return $post_id;
+	}
 
-    // Don't continue if we don't have a valid post ID.
-    if ( $pid == 0 ) return;
+	if ( ! isset( $_POST['action'] ) || 'editpost' !== $_POST['action'] ) {
+		return $post_id;
+	}
 
-    $upload_tracking = array();
+	$ptype = get_post_type( $pid );
+	if ( ! $ptype || 'nav_menu_item' === $ptype ) {
+		return $post_id;
+	}
 
-    $responsi_custom_meta = array();
+	responsi_metabox_apply_posted_values( $pid, wp_unslash( $_POST ), isset( $_FILES ) ? $_FILES : array() );
 
-    if ( isset( $_POST['action'] ) && $_POST['action'] === 'editpost' ) {
-        if ( ( get_post_type() !== '' ) && ( get_post_type() !== 'nav_menu_item' ) ) {
-
-            foreach ( $responsi_metaboxe_options as $k => $metabox ) {
-                if( isset( $metabox['type'] ) && ( in_array( $metabox['type'], responsi_metabox_fieldtypes() ) ) ) {
-    				$var = $metabox['name'];
-    			    $current_value = '';
-    			    $current_value = get_post_meta( $pid, $var, true );
-    				if ( isset( $_POST[$var] ) ) {
-    					$posted_value = '';
-    					$posted_value = $_POST[$var];
-
-                        if( 'content_max_width' == $var ){
-                            if( isset( $metabox['std'] ) && $metabox['std'] == $posted_value ){
-                            }else{
-                                if( get_post_meta( $pid, $var ) === '' ) {
-                                    $responsi_custom_meta['content_max_width'] = $posted_value;
-                                } elseif( $posted_value != get_post_meta( $pid, $var, true ) ) {
-                                    $responsi_custom_meta['content_max_width'] = $posted_value;
-                                } elseif( $posted_value === '' ) {
-                                }
-                            }
-                            
-                        }else{
-        					if( get_post_meta( $pid, $var ) === '' ) {
-        						add_post_meta( $pid, $var, $posted_value, true );
-        					} elseif( $posted_value != get_post_meta( $pid, $var, true ) ) {
-        						update_post_meta( $pid, $var, $posted_value );
-        					} elseif( $posted_value === '' ) {
-        						delete_post_meta( $pid, $var, get_post_meta( $pid, $var, true ) );
-        					}
-                        }
-    				} elseif ( ! isset( $_POST[$var] ) && $metabox['type'] === 'checkbox' ) {
-    					update_post_meta( $pid, $var, 'false' );
-    				} else {
-    					delete_post_meta( $pid, $var, $current_value );
-    				}
-                } else if ( $metabox['type'] === 'timestamp' ) {
-                	
-                    // Timestamp save logic.
-                	// It is assumed that the data comes back in the following format:
-    				// date: month/day/year
-    				// hour: int(2)
-    				// minute: int(2)
-    				// second: int(2)
-
-    				$var = $metabox['name'];
-
-    				// Format the data into a timestamp.
-    				$date = $_POST[$var]['date'];
-
-    				$hour = $_POST[$var]['hour'];
-    				$minute = $_POST[$var]['minute'];
-    				// $second = $_POST[$var]['second'];
-    				$second = '00';
-
-    				$day = substr( $date, 3, 2 );
-    				$month = substr( $date, 0, 2 );
-    				$year = substr( $date, 6, 4 );
-
-    				$timestamp = mktime( $hour, $minute, $second, $month, $day, $year );
-    				update_post_meta( $pid, $var, $timestamp );
-
-                } elseif( isset( $metabox['type'] ) && $metabox['type'] === 'upload' ) {
-    				$id = $metabox['name'];
-    				$override['action'] = 'editpost';
-    			    if( !empty($_FILES['attachement_'.$id]['name']) ){
-                        $_FILES['attachement_'.$id]['name'] = preg_replace( '/[^a-zA-Z0-9._\-]/', '', $_FILES['attachement_'.$id]['name']);
-                        $uploaded_file = wp_handle_upload( $_FILES['attachement_' . $id ], $override );
-    			        $uploaded_file['option_name'] = $metabox['label'];
-                        $upload_tracking[] = $uploaded_file;
-                        update_post_meta( $pid, $id, $uploaded_file['url'] );
-    			    } elseif ( empty( $_FILES['attachement_'.$id]['name'] ) && isset( $_POST[ $id ] ) ) {
-    					$posted_value = '';
-    					$posted_value = $_POST[$id];
-    			        update_post_meta( $pid, $id, $posted_value );
-    			    } elseif ( $_POST[ $id ] === '' )  {
-    			    	delete_post_meta( $pid, $id, get_post_meta( $pid, $id, true ) );
-    			    }
-
-    			}
-
-                update_option( 'responsi_metabox_custom_upload_tracking', $upload_tracking );
-            }
-
-            if( count( $responsi_custom_meta ) > 0 ){
-                update_post_meta( $pid, 'responsi_custom_meta', $responsi_custom_meta );
-            } else {
-                delete_post_meta( $pid, 'responsi_custom_meta', get_post_meta( $pid, 'responsi_custom_meta', true ) );
-            }
-        }
-    }
+	return $post_id;
 }
 
 /**
@@ -624,6 +667,10 @@ function responsi_metabox_add() {
     		$custom_post_list = get_post_types();
 
 			foreach ( $custom_post_list as $type ) {
+
+				if ( function_exists( 'use_block_editor_for_post_type' ) && use_block_editor_for_post_type( $type ) ) {
+					continue;
+				}
 
 				$settings = array(
 					'id'               => 'responsi-metabox-settings',

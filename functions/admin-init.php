@@ -824,6 +824,7 @@ $responsi_requires = array(
     'functions/admin-functions.php',
     'functions/admin-setup.php',
     'functions/admin-custom-metabox.php',
+    'functions/admin-block-editor-framework-metabox.php',
     'functions/theme-functions.php',
     'functions/theme-hooks.php',
     'functions/theme-actions.php',

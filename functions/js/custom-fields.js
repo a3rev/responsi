@@ -47,7 +47,7 @@
 
 					$(this).parent().find('.counter').html(length + ' character' + s + ', ' + w_length + ' word' + s2);
 
-					$(this).keyup(function() {
+					$(this).off('keyup.responsiMetaboxWordcount').on('keyup.responsiMetaboxWordcount', function() {
 						var s = '';
 						var s2 = '';
 						var new_length = $(this).val().length;
@@ -79,8 +79,7 @@
 		setup_image_selectors: function() {
 			if ($('.responsi-metabox-radio-img-img, .responsi-radio-img-img').length) {
 
-
-				$('.responsi-metabox-radio-img-img, .responsi-radio-img-img').on( 'click', function() {
+				$('.responsi-metabox-radio-img-img, .responsi-radio-img-img').off('click.responsiMetaboxRadioImg').on('click.responsiMetaboxRadioImg', function() {
 
 					$(this).parent().parent().find('.responsi-metabox-radio-img-img').removeClass('responsi-metabox-radio-img-selected');
 					$(this).parent().parent().find('.responsi-radio-img-img').removeClass('responsi-radio-img-selected');
@@ -302,8 +301,8 @@
 				});
 			}
 
-
-			$(document).on('click', '.responsi-metabox-radio-img-img', function() {
+			$(document).off('click.responsiMetaboxMetaImg', '.responsi-metabox-radio-img-img');
+			$(document).on('click.responsiMetaboxMetaImg', '.responsi-metabox-radio-img-img', function() {
 
 				var layout = $(this).attr('onclick').replace("document.getElementById('responsi-metabox-radio-img-layout", "").replace("').checked = true;", "");
 
