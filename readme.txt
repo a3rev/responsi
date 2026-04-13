@@ -1,8 +1,8 @@
 === Responsi ===
 Contributors: a3rev, a3rev Software
 Requires at least: WordPress 4.5
-Tested up to: WordPress 4.5.2
-Version: 1.0
+Tested up to: WordPress 7.0
+Version: 8.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, blue, gray, pink, purple, white, yellow, dark, light, , one-column, two-columns, three-columns, four-columns, five-columns, six-columns, left-sidebar, fixed-layout, responsive-layout, wordpress-customizer, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, sticky-post, threaded-comments, translation-ready
@@ -67,9 +67,19 @@ a3rev.com Responsi Premium Pack customers can get support at the [a3rev support 
 == Contribute to Responsi Framework ==
 Github is the place to discuss new features and possible changes to Responsi Framework codebase. Please create an issue to discuss any code related queries. If you'd like to contribute please create a pull request to the latest release branch. Please remember, Github is for bug reports and contributions, not support
 
-
 ==  Changelog ==
+
+= 8.8.0 - 2026/04/07 =
+* This maintenance release has compatibility with WordPress 7.0, WooCommerce 10.6
+* Tweak - Tested for compatibility with WordPress 7.0
+* Tweak - Tested for compatibility with WooCommerce 10.6
+* Tweak - Update meta box for compatibility with WordPress 7.0 Block Editor
 
 = 1.0.0 - 2016/05/31 =
 * Initial Public Release
 * Create Github public repository
+
+== Upgrade Notice ==
+
+= 8.8.0 =
+This maintenance release has compatibility with WordPress 7.0, WooCommerce 10.6
