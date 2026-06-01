@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 8.8.1 - 2026/06/01 =
+* This maintenance release has a bug fix for Block Editor meta box save conflict with third-party plugins and compatibility with WooCommerce 10.8
+* Fix - Block Editor meta box fields not saving when third-party plugins with compatible meta boxes are active (e.g. Yoast SEO)
+* Tweak - Tested for compatibility with WooCommerce 10.8
+
 = 8.8.0 - 2026/04/09 =
 * This maintenance release has compatibility with WordPress 7.0, WooCommerce 10.6
 * Tweak - Tested for compatibility with WordPress 7.0

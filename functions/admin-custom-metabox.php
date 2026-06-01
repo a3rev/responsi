@@ -618,6 +618,16 @@ function responsi_metabox_apply_posted_values( $post_id, $posted, $files = null 
 function responsi_metabox_handle( $post_id = '' ) {
 	global $globals, $post;
 
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return $post_id;
+	}
+
+	if ( ! isset( $_POST['responsi-metabox-custom-fields-nonce'] )
+		|| ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['responsi-metabox-custom-fields-nonce'] ) ), 'responsi-metabox-custom-fields' )
+	) {
+		return $post_id;
+	}
+
 	if ( isset( $_POST['post_type'] ) && 'page' === $_POST['post_type'] ) {
 		if ( ! current_user_can( 'edit_page', $post_id ) ) {
 			return $post_id;

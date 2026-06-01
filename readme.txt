@@ -2,7 +2,7 @@
 Contributors: a3rev, a3rev Software
 Requires at least: WordPress 4.5
 Tested up to: WordPress 7.0
-Version: 8.8.0
+Version: 8.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, blue, gray, pink, purple, white, yellow, dark, light, , one-column, two-columns, three-columns, four-columns, five-columns, six-columns, left-sidebar, fixed-layout, responsive-layout, wordpress-customizer, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, sticky-post, threaded-comments, translation-ready
@@ -69,6 +69,11 @@ Github is the place to discuss new features and possible changes to Responsi Fra
 
 ==  Changelog ==
 
+= 8.8.1 - 2026/06/01 =
+* This maintenance release has a bug fix for Block Editor meta box save conflict with third-party plugins and compatibility with WooCommerce 10.8
+* Fix - Block Editor meta box fields not saving when third-party plugins with compatible meta boxes are active (e.g. Yoast SEO)
+* Tweak - Tested for compatibility with WooCommerce 10.8
+
 = 8.8.0 - 2026/04/07 =
 * This maintenance release has compatibility with WordPress 7.0, WooCommerce 10.6
 * Tweak - Tested for compatibility with WordPress 7.0
@@ -81,5 +86,5 @@ Github is the place to discuss new features and possible changes to Responsi Fra
 
 == Upgrade Notice ==
 
-= 8.8.0 =
-This maintenance release has compatibility with WordPress 7.0, WooCommerce 10.6
+= 8.8.1 =
+This maintenance release has a bug fix for Block Editor meta box save conflict with third-party plugins and compatibility with WooCommerce 10.8
