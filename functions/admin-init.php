@@ -1142,7 +1142,7 @@ function responsi_options()
         }
     }
 
-    if ( isset($_POST['customized']) ){
+    if ( is_customize_preview() && current_user_can( 'customize' ) && isset($_POST['customized']) ){
         $responsi_options         = apply_filters( 'responsi_options_preview_before', $responsi_options );
         $responsi_options_preview = json_decode( wp_unslash( $_POST['customized'] ), true );
         $responsi_options_preview = apply_filters( 'responsi_customized_post_value', $responsi_options_preview );

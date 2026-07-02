@@ -888,7 +888,7 @@ if ( !function_exists( 'responsi_build_copyright' ) ) {
                 $footer_copyright_style = ' style="'.$footer_copyright_animation['style'].'"';
             }
 
-            $output = '<div id="copyright-animation" class="copyright-animation clearfix'.$footer_copyright_class.'"'.$footer_copyright_data . $footer_copyright_style.'>'.sprintf('%1$s%3$s%2$s', $atts['before'], $atts['after'], wpautop( strip_tags($responsi_options['responsi_footer_left_text']) ) ).'</div>';
+            $output = '<div id="copyright-animation" class="copyright-animation clearfix'.$footer_copyright_class.'"'.$footer_copyright_data . $footer_copyright_style.'>'.sprintf('%1$s%3$s%2$s', $atts['before'], $atts['after'], wp_kses_post( wpautop( strip_tags($responsi_options['responsi_footer_left_text']) ) ) ).'</div>';
         }
 
         return apply_filters( 'responsi_build_copyright', $output, $atts );
@@ -933,7 +933,7 @@ if ( !function_exists( 'responsi_build_additional' ) ) {
         
         if( isset( $responsi_options['responsi_footer_below']) && 'true' === $responsi_options['responsi_footer_below'] ){
             $output     .= '<div id="additional-animation" class="additional-animation clearfix'.$additional_class.'"'.$additional_data . $additional_style.'>';
-            $output     .= sprintf('%1$s%3$s%2$s', $atts['before'], $atts['after'], do_shortcode(apply_filters( 'a3_lazy_load_html', wpautop(responsi_autoembed_media($responsi_options['responsi_footer_below_text'])))));
+            $output     .= sprintf('%1$s%3$s%2$s', $atts['before'], $atts['after'], wp_kses_post( do_shortcode(apply_filters( 'a3_lazy_load_html', wpautop(responsi_autoembed_media($responsi_options['responsi_footer_below_text'])))) ) );
             $output     .= '</div>';
         }
         return apply_filters( 'responsi_build_additional', $output, $atts );
@@ -2258,7 +2258,7 @@ if ( !function_exists( 'responsi_custom_content_metabox' ) ) {
         $content_max_width = isset( $responsi_options['responsi_layout_width'] ) ? esc_attr( $responsi_options['responsi_layout_width'] ) : 1024;
 
         if( is_array($responsi_custom_meta) && isset($responsi_custom_meta['content_max_width']) ){
-            $content_max_width = $responsi_custom_meta['content_max_width'];
+            $content_max_width = absint( $responsi_custom_meta['content_max_width'] );
             if( $content_max_width > 0 ){
                 $custom_max_width = true;
             }

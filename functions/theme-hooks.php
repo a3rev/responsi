@@ -4,13 +4,22 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 add_action( 'init', 'responsi_clear_version_cached' );
 function responsi_clear_version_cached() {
-	if ( isset( $_POST['rf_clear_version_cached'] ) && 1 === $_POST['rf_clear_version_cached'] ) {
-		delete_transient( 'a3_responsi_parent_theme_update_info' );
-		delete_option( '_site_transient_update_themes' );
-		delete_option( '_site_transient_update_plugins' );
-		delete_transient( 'a3_responsi_all_child_themes_info' );
-		delete_transient( 'a3_responsi_all_addon_free_info' );
+	if ( ! is_admin() ) {
+		return;
 	}
+	if ( ! isset( $_POST['rf_clear_version_cached'] ) || '1' !== $_POST['rf_clear_version_cached'] ) {
+		return;
+	}
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+	check_admin_referer( 'rf_clear_version_cached' );
+
+	delete_transient( 'a3_responsi_parent_theme_update_info' );
+	delete_option( '_site_transient_update_themes' );
+	delete_option( '_site_transient_update_plugins' );
+	delete_transient( 'a3_responsi_all_child_themes_info' );
+	delete_transient( 'a3_responsi_all_addon_free_info' );
 }
 
 /*-----------------------------------------------------------------------------------*/

@@ -1,5 +1,10 @@
 *** Responsi Framework Changelog ***
 
+= 8.8.2 - 2026/07/02 =
+* This maintenance release has security hardening and hygiene improvements
+* Security - Security hardening for front-end options handling and settings save
+* Tweak - Additional sanitization and validation on stored option and meta values
+
 = 8.8.1 - 2026/06/01 =
 * This maintenance release has a bug fix for Block Editor meta box save conflict with third-party plugins and compatibility with WooCommerce 10.8
 * Fix - Block Editor meta box fields not saving when third-party plugins with compatible meta boxes are active (e.g. Yoast SEO)

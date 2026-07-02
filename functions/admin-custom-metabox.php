@@ -830,6 +830,7 @@ function responsi_taxonomy_add_new_meta_field(){
     </div>
     <div style="clear: both;"></div>
     <?php
+    wp_nonce_field( 'responsi-taxonomy-custom-fields', 'responsi-taxonomy-custom-fields-nonce', true, true );
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -895,6 +896,7 @@ function responsi_taxonomy_edit_meta_field( $term ){
         </td>
     </tr>
     <?php
+    wp_nonce_field( 'responsi-taxonomy-custom-fields', 'responsi-taxonomy-custom-fields-nonce', true, true );
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -902,6 +904,10 @@ function responsi_taxonomy_edit_meta_field( $term ){
 /*-----------------------------------------------------------------------------------*/
 
 function responsi_save_taxonomy_custom_meta( $term_id ){
+
+    if ( ! isset( $_POST['responsi-taxonomy-custom-fields-nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['responsi-taxonomy-custom-fields-nonce'] ) ), 'responsi-taxonomy-custom-fields' ) ) {
+        return;
+    }
 
     if ( isset( $_POST['responsi_custom_meta_term'] ) ) {
 
@@ -920,7 +926,7 @@ function responsi_save_taxonomy_custom_meta( $term_id ){
         }
 
         if ( isset( $_POST['responsi_custom_meta_term']['content_max_width'] ) && isset( $metabox_content_max_width['std'] ) && $metabox_content_max_width['std'] != $_POST['responsi_custom_meta_term']['content_max_width'] ) {
-            $responsi_custom_meta_term['content_max_width'] = $_POST['responsi_custom_meta_term']['content_max_width'];
+            $responsi_custom_meta_term['content_max_width'] = absint( $_POST['responsi_custom_meta_term']['content_max_width'] );
         }
 
         if( count( $responsi_custom_meta_term ) > 0 ){
