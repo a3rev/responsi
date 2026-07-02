@@ -73,6 +73,7 @@ Github is the place to discuss new features and possible changes to Responsi Fra
 * This maintenance release has security hardening and hygiene improvements
 * Security - Security hardening for front-end options handling and settings save
 * Tweak - Additional sanitization and validation on stored option and meta values
+* Tweak - Code hygiene: replace extract() with explicit variable assignments
 
 = 8.8.1 - 2026/06/01 =
 * This maintenance release has a bug fix for Block Editor meta box save conflict with third-party plugins and compatibility with WooCommerce 10.8
