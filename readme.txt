@@ -2,7 +2,7 @@
 Contributors: a3rev, a3rev Software
 Requires at least: WordPress 4.5
 Tested up to: WordPress 7.0
-Version: 8.8.1
+Version: 8.8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, blue, gray, pink, purple, white, yellow, dark, light, , one-column, two-columns, three-columns, four-columns, five-columns, six-columns, left-sidebar, fixed-layout, responsive-layout, wordpress-customizer, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, sticky-post, threaded-comments, translation-ready
@@ -68,6 +68,12 @@ a3rev.com Responsi Premium Pack customers can get support at the [a3rev support 
 Github is the place to discuss new features and possible changes to Responsi Framework codebase. Please create an issue to discuss any code related queries. If you'd like to contribute please create a pull request to the latest release branch. Please remember, Github is for bug reports and contributions, not support
 
 ==  Changelog ==
+
+= 8.8.2 - 2026/07/02 =
+* This maintenance release has security hardening and hygiene improvements
+* Security - Security hardening for front-end options handling and settings save
+* Tweak - Additional sanitization and validation on stored option and meta values
+* Tweak - Code hygiene: replace extract() with explicit variable assignments
 
 = 8.8.1 - 2026/06/01 =
 * This maintenance release has a bug fix for Block Editor meta box save conflict with third-party plugins and compatibility with WooCommerce 10.8

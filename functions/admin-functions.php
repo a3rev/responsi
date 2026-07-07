@@ -316,7 +316,18 @@ function responsi_get_thumbnail( $args = array() ) {
 
     $args = array_merge( $default, $args );
 
-    extract( $args );
+    $class  = $args['class'];
+    $type   = $args['type'];
+    $return = $args['return'];
+    $size   = $args['size'];
+    $id     = $args['id'];
+    $style  = $args['style'];
+    if ( isset( $args['width'] ) ) {
+        $width = $args['width'];
+    }
+    if ( isset( $args['height'] ) ) {
+        $height = $args['height'];
+    }
 
     if ( empty( $id ) ) {
         $id = $post->ID;
@@ -959,8 +970,15 @@ function responsi_breadcrumbs( $args = array() ) {
     /* Apply filters to the arguments. */
     $args = apply_filters( 'responsi_breadcrumbs_args', $args );
 
-    /* Parse the arguments and extract them for easy variable naming. */
-    extract( wp_parse_args( $args, $defaults ) );
+    /* Parse the arguments for easy variable naming. */
+    $parsed_args     = wp_parse_args( $args, $defaults );
+    $separator       = $parsed_args['separator'];
+    $before          = $parsed_args['before'];
+    $after           = $parsed_args['after'];
+    $front_page      = $parsed_args['front_page'];
+    $show_home       = $parsed_args['show_home'];
+    $echo            = $parsed_args['echo'];
+    $show_posts_page = $parsed_args['show_posts_page'];
 
     /* If $show_home is set and we're not on the front page of the site, link to the home page. */
     if ( !is_front_page() && $show_home )
@@ -1792,7 +1810,8 @@ if ( !function_exists( 'responsi_dynamic_gutter' ) ) {
 
     function responsi_dynamic_gutter( $params = array( 'gutter' => 2, 'gutter_vertical' => 20 ) ) {
 
-        extract( $params );
+        $gutter          = isset( $params['gutter'] ) ? $params['gutter'] : 2;
+        $gutter_vertical = isset( $params['gutter_vertical'] ) ? $params['gutter_vertical'] : 20;
 
         $gutter_vertical = ( esc_attr( $gutter_vertical ) );
         $gutter = ( esc_attr( $gutter ) );
